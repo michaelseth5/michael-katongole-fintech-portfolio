@@ -10,13 +10,19 @@
 .globe-wrap .fx-demo-panel { display: none !important; }
 
 .gf-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 240px);
-  column-gap: 12px;
+  display: block;
   width: 100%;
   height: 100%;
   min-width: 0;
 }
+/* Globe, stats rail and introduction are independent siblings in the homepage grid. */
+.hero.gf-hero-layout {
+  grid-template-columns: minmax(0, .86fr) minmax(0, 1.35fr) minmax(220px, .67fr);
+  gap: 16px;
+}
+.hero.gf-hero-layout > .fade,
+.hero.gf-hero-layout > .globe-wrap,
+.hero.gf-hero-layout > .gf-panel { min-width: 0; }
 .gf-stage {
   position: relative;
   height: 100%;
@@ -220,47 +226,36 @@
 .gf-panel .gf-unavailable { color: #bcb5ce; margin: 14px 0; }
 .gf-fallback { padding: 75px 12px; text-align: center; color: #b5b1c9; }
 
-/* Make room for both content columns in the existing hero, without moving other sections. */
-@media (min-width: 1201px) {
-  .hero:has(.gf-shell) { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+/* At tablet widths, the intro gets its own row; globe and rail stay side by side. */
+@media (max-width: 1050px) {
+  .hero.gf-hero-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(215px, 245px);
+    gap: 14px;
+    overflow: visible;
+  }
+  .hero.gf-hero-layout > .fade { grid-column: 1 / -1; }
+  .hero.gf-hero-layout > .globe-wrap { height: 470px; order: 0; }
+  .hero.gf-hero-layout > .gf-panel { height: 470px; }
 }
-@media (max-width: 1200px) {
-  .globe-wrap { height: auto !important; }
-  .gf-shell { grid-template-columns: minmax(0, 1fr); grid-template-rows: 450px auto; gap: 10px; }
-  .gf-stage { height: 450px; }
-  .gf-panel { height: auto; max-height: 340px; }
-}
+/* On phones the panel remains outside the globe and stacks underneath. */
 @media (max-width: 650px) {
-  .gf-shell { grid-template-rows: 390px auto; }
-  .gf-stage { height: 390px; }
-  .gf-panel { padding: 17px 16px; max-height: 320px; }
+  .hero.gf-hero-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .hero.gf-hero-layout > .fade { grid-column: auto; }
+  .hero.gf-hero-layout > .globe-wrap { height: 390px !important; order: 0; }
+  .hero.gf-hero-layout > .gf-panel { height: auto; max-height: none; }
   .gf-hud { top: 9px; left: 9px; padding: 7px 9px; }
   .gf-expand { right: 9px; top: 9px; }
   .gf-status { left: 9px; bottom: 9px; font-size: 9px; }
 }
-
-/* Fullscreen retains the separate sidebar. */
+/* Fullscreen expands only the globe box; the rail remains a separate page element. */
 .globe-wrap:fullscreen {
   width: 100vw !important;
   height: 100vh !important;
-  padding: 12px;
+  padding: 0;
   background: #090b15;
 }
-.globe-wrap:fullscreen .gf-shell {
-  height: 100%;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
-  grid-template-rows: minmax(0, 1fr);
-}
+.globe-wrap:fullscreen .gf-shell,
 .globe-wrap:fullscreen .gf-stage { height: 100%; }
-.globe-wrap:fullscreen .gf-panel { max-height: none; height: 100%; }
-@media (max-width: 650px) {
-  .globe-wrap:fullscreen .gf-shell {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 60%) minmax(0, 40%);
-  }
-  .globe-wrap:fullscreen .gf-stage { height: 100%; }
-  .globe-wrap:fullscreen .gf-panel { max-height: none; }
-}
 @media (prefers-reduced-motion: reduce) {
   #financial-globe *, .gf-panel *, .gf-hud * { transition: none !important; }
 }
