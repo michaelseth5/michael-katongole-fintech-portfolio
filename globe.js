@@ -56,7 +56,7 @@
   wrap.append(shell);
   const hero = wrap.closest('.hero');
   if (hero) {
-    hero.classList.add('gf-hero-layout');
+    hero.classList.add('gf-hero-panel-mode');
     hero.append(panel); // The stats rail is a separate HERO item, outside .globe-wrap.
   } else {
     // Defensive fallback for a standalone globe embedded outside the homepage hero.
