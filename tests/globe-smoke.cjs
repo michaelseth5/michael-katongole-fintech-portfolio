@@ -56,6 +56,21 @@ const { chromium } = require('playwright');
     assert.equal(await page.locator('script[src="polish.js"]').count(),1,'Animation script loaded');
     await page.waitForFunction(()=>document.querySelectorAll('#home h1 .polish-letter').length>=12,{timeout:12000});
     assert.match(await page.locator('#home h1').getAttribute('aria-label'),/Michael.*Katongole/);
+    assert.equal(await page.locator('link[href="hero-legibility.css"]').count(),1,
+      'Homepage legibility stylesheet should load');
+    assert.equal(await page.locator('#home .mk-title-glow').innerText(),'Michael');
+    assert.equal(await page.locator('#home .mk-title-glow .polish-letter').count(),0,
+      'Do not split the gradient word into potentially invisible subspans');
+    const nameStyle=await page.locator('#home .mk-title-glow').evaluate(node=>{
+      const c=getComputedStyle(node);
+      return {fill:c.webkitTextFillColor,color:c.color,opacity:c.opacity};
+    });
+    assert.notEqual(nameStyle.fill,'rgba(0, 0, 0, 0)',
+      'Michael must have a visible lavender text fill');
+    const portrait=await page.locator('#home .hero-headshot').boundingBox();
+    assert.ok(portrait.width>=145&&portrait.height>=145,
+      'Headshot should be larger than the former 142px desktop version');
+
     assert.equal(await page.locator('.polish-skill-marquee').count(),0,'Keep original Skills without new marquee');
     assert.equal(await page.locator('#skills .three > .large-panel').count(),3,'Preserve original Skills cards');
         assert.equal(await page.locator('#site-preview-notice').count(),1,
