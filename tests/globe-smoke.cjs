@@ -26,7 +26,13 @@ const { chromium } = require('playwright');
         ]}));
         return;
       }
-      res.end(JSON.stringify({quotes:{},updatedAt:new Date().toISOString()}));return;
+      res.end(JSON.stringify({quotes:{
+        '^GSPC':{price:6100,previousClose:6000,source:'TEST FIXTURE'},
+        '^DJI':{price:41000,previousClose:42000,source:'TEST FIXTURE'},
+        'BTC-USD':{price:98000,previousClose:96000,source:'TEST FIXTURE'},
+        'ETH-USD':{price:3100,previousClose:3200,source:'TEST FIXTURE'},
+        '^FVX':{price:38.2,previousClose:37.5,yieldPercent:3.82,source:'TEST FIXTURE'}
+      },updatedAt:new Date().toISOString()}));return;
     }
     const file = path.resolve(root, '.' + decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname));
     if (!file.startsWith(root+path.sep)) {res.writeHead(403);res.end();return;}
@@ -46,11 +52,22 @@ const { chromium } = require('playwright');
     page.on('pageerror',e=>errors.push(e.message));
     await page.goto(address,{waitUntil:'domcontentloaded',timeout:60000});
     await page.waitForSelector('#financial-globe canvas',{timeout:60000});
-    await page.waitForFunction(()=>document.querySelector('.gf-status')?.textContent.includes('visible corridors'),{timeout:30000});
+    await page.waitForFunction(()=>document.querySelector('.gf-status')?.textContent.includes('annual corridors'),{timeout:30000});
+    assert.equal(await page.locator('.gf-controls').count(),0,'Oversized globe menu should be gone');
+    assert.equal(await page.locator('.gf-hud').count(),1,'Compact globe HUD should exist');
+    assert.equal(await page.locator('.gf-expand').count(),1,'Fullscreen affordance should remain');
+    assert.match(await page.locator('.gf-panel').innerText(),/Exports/);
+    assert.match(await page.locator('.gf-panel').innerText(),/Imports/);
+    assert.match(await page.locator('.gf-panel').innerText(),/UN Comtrade/);
+    await page.waitForFunction(()=>document.querySelector('.preview-tile.mk-up') && document.querySelector('.preview-tile.mk-down'),{timeout:15000});
+    assert.ok(await page.locator('.mk-wing-quotes a.mk-up').count()>0,'Positive crypto/rate movement should be green');
+    assert.ok(await page.locator('.mk-wing-quotes a.mk-down').count()>0,'Negative crypto/rate movement should be red');
+    assert.match(await page.locator('.gf-legend').innerText(),/Exports/);
+    assert.match(await page.locator('.gf-legend').innerText(),/Imports/);
     assert.match(await page.locator('.gf-panel h3').innerText(),/United States/i);
     assert.match(await page.locator('.gf-panel').innerText(),/Canada/);
     // Interaction checks: compare rendered WebGL canvas pixels, not merely visibility.
-    await page.locator('#gf-spin').uncheck();
+    await page.mouse.move(0,0);
     const globeCanvas=page.locator('#financial-globe canvas');
     const rect=await globeCanvas.boundingBox();
     assert.ok(rect&&rect.width>100&&rect.height>100,'Globe canvas has measurable dimensions');
@@ -69,15 +86,12 @@ const { chromium } = require('playwright');
     await page.waitForTimeout(700);
     const pixelsAfterZoom=await globeCanvas.screenshot();
     assert.notEqual(Buffer.compare(pixelsAfterDrag,pixelsAfterZoom),0,'Mouse wheel should visually zoom the globe');
-    await page.locator('#gf-top').selectOption('10');
-    await page.locator('#gf-mode').selectOption('out');
-    assert.match(await page.locator('.gf-status').innerText(),/visible corridors/);
-    await page.locator('#gf-country').selectOption('124');
-    await page.waitForFunction(()=>document.querySelector('.gf-panel h3')?.textContent.includes('Canada'),{timeout:15000});
-    await page.locator('#gf-year').selectOption('2023');
-    await page.waitForFunction(()=>document.querySelector('.gf-status')?.textContent.includes('2023'),{timeout:15000});
-    await page.locator('#gf-reset').click();
-    assert.match(await page.locator('.gf-panel h3').innerText(),/Global globe view/);
+    await page.locator('.gf-expand').click();
+    await page.waitForFunction(()=>Boolean(document.fullscreenElement),{timeout:7000});
+    await page.locator('.gf-expand').click();
+    await page.waitForFunction(()=>!document.fullscreenElement,{timeout:7000});
+    assert.match(await page.locator('.gf-panel h3').innerText(),/United States/i);
+    assert.equal(await page.locator('.gf-panel').isVisible(),true);
     await page.setViewportSize({width:390,height:844});
     await page.waitForTimeout(500);
     assert.ok(await page.locator('#financial-globe canvas').isVisible(),'3D canvas should remain visible on mobile');
@@ -100,7 +114,7 @@ const { chromium } = require('playwright');
     await page.screenshot({path:'globe-smoke.png',fullPage:false});
     const globeErrors=errors.filter(m=>/globe|three|webgl|financial/i.test(m));
     assert.deepEqual(globeErrors,[],'Globe console errors: '+globeErrors.join('; '));
-    console.log('PASS: browser loads globe, trade arcs, country selection, filters, global view, and mobile canvas');
+    console.log('PASS: browser loads minimalist globe, directional arcs, fullscreen, market tones, and mobile canvas');
   } finally {
     if(browser)await browser.close();
     await new Promise(resolve=>server.close(resolve));
