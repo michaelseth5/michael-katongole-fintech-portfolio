@@ -1,0 +1,102 @@
+/* Legible homepage name + larger portrait. Scoped to the homepage only. */
+
+/* A solid lavender fallback ensures "Michael" remains readable even in
+   browsers where background-clip:text and nested animations conflict. */
+#home .demo-hero-identity h1 .mk-title-glow {
+  color: #c9a5fa !important;
+  -webkit-text-fill-color: #c9a5fa !important;
+  background-image: none !important;
+  text-shadow: 0 0 20px rgba(168, 121, 232, .13);
+  filter: none !important;
+  animation: none !important;
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .polish-ready #home .demo-hero-identity h1 .mk-title-glow {
+    animation: hero-name-readable-in 850ms cubic-bezier(.22,1,.36,1) both !important;
+  }
+}
+@keyframes hero-name-readable-in {
+  from { opacity: .30; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enlarged original headshot asset, not a new photo or crop. */
+#home .demo-hero-identity {
+  gap: 18px;
+  min-width: 0;
+}
+#home .demo-hero-identity .hero-headshot {
+  width: 175px;
+  height: 175px;
+  flex: 0 0 175px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+#home .demo-hero-identity h1 {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: clamp(40px, 3vw, 57px) !important;
+  line-height: 1.06;
+  letter-spacing: -.055em;
+}
+#home .demo-hero-identity h1 .mk-title-glow { display: inline-block; }
+
+@media (min-width: 901px) and (max-width: 1350px) {
+  #home .demo-hero-identity .hero-headshot {
+    width: 150px;
+    height: 150px;
+    flex-basis: 150px;
+  }
+  #home .demo-hero-identity h1 { font-size: clamp(36px, 3.4vw, 47px) !important; }
+}
+/* Two narrow desktop columns cannot fit the enlarged portrait beside a long name. */
+@media (min-width: 901px) and (max-width: 1200px) {
+  #home .demo-hero-identity {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  #home .demo-hero-identity .hero-headshot {
+    width: 150px;
+    height: 150px;
+    flex: none;
+  }
+  #home .demo-hero-identity h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(34px, 4.3vw, 45px) !important;
+  }
+}
+@media (max-width: 900px) {
+  #home .demo-hero-identity .hero-headshot {
+    width: 150px;
+    height: 150px;
+    flex-basis: 150px;
+  }
+  #home .demo-hero-identity h1 { font-size: clamp(37px, 5.3vw, 58px) !important; }
+}
+@media (max-width: 560px) {
+  /* A vertical hero identity prevents a larger portrait from crushing the name. */
+  #home .demo-hero-identity {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+  #home .demo-hero-identity .hero-headshot {
+    width: 142px;
+    height: 142px;
+    flex: none;
+  }
+  #home .demo-hero-identity h1 {
+    font-size: clamp(37px, 9vw, 52px) !important;
+    overflow-wrap: normal;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #home .demo-hero-identity h1 .mk-title-glow {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -54,8 +54,23 @@ const { chromium } = require('playwright');
     await page.waitForSelector('#financial-globe canvas',{timeout:60000});
     assert.equal(await page.locator('link[href="polish.css"]').count(),1,'Animation stylesheet loaded');
     assert.equal(await page.locator('script[src="polish.js"]').count(),1,'Animation script loaded');
-    await page.waitForFunction(()=>document.querySelectorAll('#home h1 .polish-letter').length>=12,{timeout:12000});
+    await page.waitForFunction(()=>document.querySelectorAll('#home h1 .polish-letter').length>=9,{timeout:12000});
     assert.match(await page.locator('#home h1').getAttribute('aria-label'),/Michael.*Katongole/);
+    assert.equal(await page.locator('link[href="hero-legibility.css"]').count(),1,
+      'Homepage legibility stylesheet should load');
+    assert.equal(await page.locator('#home .mk-title-glow').innerText(),'Michael');
+    assert.equal(await page.locator('#home .mk-title-glow .polish-letter').count(),0,
+      'Do not split the gradient word into potentially invisible subspans');
+    const nameStyle=await page.locator('#home .mk-title-glow').evaluate(node=>{
+      const c=getComputedStyle(node);
+      return {fill:c.webkitTextFillColor,color:c.color,opacity:c.opacity};
+    });
+    assert.notEqual(nameStyle.fill,'rgba(0, 0, 0, 0)',
+      'Michael must have a visible lavender text fill');
+    const portrait=await page.locator('#home .hero-headshot').boundingBox();
+    assert.ok(portrait.width>=145&&portrait.height>=145,
+      'Headshot should be larger than the former 142px desktop version');
+
     assert.equal(await page.locator('.polish-skill-marquee').count(),0,'Keep original Skills without new marquee');
     assert.equal(await page.locator('#skills .three > .large-panel').count(),3,'Preserve original Skills cards');
         assert.equal(await page.locator('#site-preview-notice').count(),1,
@@ -156,6 +171,15 @@ const { chromium } = require('playwright');
         viewport:document.documentElement.clientWidth
       }));
       console.log('VIEWPORT '+width+'px: scrollWidth='+size.content+'px, clientWidth='+size.viewport+'px');
+      if(size.content>size.viewport+5){
+        const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(el=>{
+          const r=el.getBoundingClientRect();
+          return {tag:el.tagName,id:el.id,cls:typeof el.className==='string'?el.className.slice(0,80):'',
+            left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};
+        }).filter(x=>x.right>innerWidth+5&&x.width>0)
+          .sort((a,b)=>b.right-a.right).slice(0,18));
+        console.log('OVERFLOW ELEMENTS '+width+' '+JSON.stringify(offenders));
+      }
       assert.ok(size.content<=size.viewport+5,'Unexpected horizontal page overflow at '+width+'px');
       if(width===1920){
         const check=await page.evaluate(()=>{
