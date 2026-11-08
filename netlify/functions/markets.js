@@ -67,9 +67,37 @@ async function tradeFlows(event) {
   return pending;
 }
 
+
+const gdpCache = new Map();
+async function gdpData(event) {
+  const iso = String(event.queryStringParameters?.country || '').toUpperCase();
+  const year = Number(event.queryStringParameters?.year || 2024);
+  const headers = {'Content-Type':'application/json; charset=utf-8','Cache-Control':'public, max-age=600, s-maxage=86400'};
+  const reply = (statusCode,body)=>({statusCode,headers,body:JSON.stringify(body)});
+  if (!/^[A-Z]{3}$/.test(iso) || !Number.isInteger(year) || year < 2015 || year > 2025)
+    return reply(400,{error:'Invalid ISO3 country or year'});
+  const key=iso+':'+year, cached=gdpCache.get(key);
+  if(cached && cached.expires>Date.now())return cached.response;
+  try {
+    const url='https://api.worldbank.org/v2/country/'+iso+'/indicator/NY.GDP.MKTP.CD?format=json&date='+(year-3)+':'+year+'&per_page=20';
+    const response=await fetch(url,{headers:{Accept:'application/json'},signal:AbortSignal.timeout(10000)});
+    if(!response.ok)throw Error('World Bank API status '+response.status);
+    const raw=await response.json();
+    const data=Array.isArray(raw?.[1])?raw[1]:[];
+    const observation=data.filter(x=>Number(x.value)>0&&Number(x.date)<=year)
+      .sort((a,b)=>Number(b.date)-Number(a.date))[0];
+    const body=observation?{country:iso,value:Number(observation.value),year:Number(observation.date),indicator:'GDP (current US$)',source:'World Bank World Development Indicators'}:
+      {country:iso,value:null,year:null,indicator:'GDP (current US$)',source:'World Bank World Development Indicators'};
+    const result=reply(200,body);
+    gdpCache.set(key,{response:result,expires:Date.now()+86400000});
+    return result;
+  } catch(e){return reply(503,{error:'GDP source temporarily unavailable',value:null});}
+}
+
 exports.handler=async function(event){
  if(event.httpMethod!=='GET') return {statusCode:405,headers:{'Content-Type':'application/json'},body:JSON.stringify({error:'Method not allowed'})};
  if(event.queryStringParameters?.dataset==='trade') return tradeFlows(event);
+ if(event.queryStringParameters?.dataset==='gdp') return gdpData(event);
  const headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'public, max-age=60, s-maxage=120, stale-while-revalidate=120'};
  const reply=(statusCode,body)=>({statusCode,headers,body:JSON.stringify(body)});
  if(event.httpMethod!=='GET')return reply(405,{error:'Method not allowed'});
