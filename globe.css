@@ -16,3 +16,20 @@
 .gf-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:7px;font-size:10px;color:#bbb6d5}
 .gf-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px}
 @media(max-width:650px){.globe-wrap{height:580px!important}.gf-controls{width:46%;padding:9px;top:8px;left:7px}.gf-panel{width:47%;top:8px;right:7px;padding:9px}.gf-status{font-size:9px;left:7px;right:7px;bottom:7px}.gf-controls .gf-actions button{font-size:10px}}
+
+/* Fullscreen is limited to the globe wrapper; never changes other portfolio sections. */
+.globe-wrap:fullscreen{width:100vw!important;height:100vh!important;padding:0;background:#070911;display:block}
+.globe-wrap:fullscreen #financial-globe{height:100vh;min-height:100vh}
+.globe-wrap:fullscreen .gf-controls{width:245px;max-width:46vw}
+.globe-wrap:fullscreen .gf-panel{width:285px;max-width:43vw}
+.gf-controls button:hover,.gf-controls button:focus-visible{border-color:#b5a3ff;background:#51406f}
+.gf-controls select:focus-visible,.gf-controls input:focus-visible{outline:2px solid #b5a3ff;outline-offset:2px}
+.gf-panel ol{max-height:165px;overflow:auto}
+.gf-panel ol li{margin-bottom:4px}
+@media(max-width:650px){
+  .globe-wrap:fullscreen .gf-controls{max-width:47vw;width:47vw}
+  .globe-wrap:fullscreen .gf-panel{max-width:46vw;width:46vw}
+  .gf-controls .gf-actions{gap:4px}
+  .gf-controls button{font-size:10px;padding:5px}
+}
+@media(prefers-reduced-motion:reduce){#financial-globe *, .gf-controls *, .gf-panel *{transition:none!important}}
