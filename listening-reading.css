@@ -1,0 +1,46 @@
+/* Favorite listening & reading — a quiet extension of Hobbies. */
+#listening-reading {
+  padding:clamp(54px,6vw,86px) 0 clamp(66px,7vw,100px);
+  background:radial-gradient(ellipse at 7% 8%,rgba(219,194,234,.36),transparent 44%),linear-gradient(145deg,#fbf6fc 0%,#f3eafa 100%);
+  border-top:1px solid rgba(146,110,168,.13);
+  color:#2d2739;
+}
+#listening-reading .lr-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:25px}
+#listening-reading .lr-heading h2{font-size:clamp(29px,4vw,44px);font-weight:750;letter-spacing:-.055em;line-height:1.12;margin:7px 0 0;color:#2b2038}
+#listening-reading .lr-heading h2 span{color:#8b67ba}
+#listening-reading .lr-heading p{max-width:360px;color:#675974;font-size:14px;line-height:1.65;margin:0}
+#listening-reading .lr-eyebrow{font:700 11px 'Space Grotesk',Arial,sans-serif;letter-spacing:.19em;color:#8868a9;text-transform:uppercase}
+#listening-reading .lr-group+.lr-group{margin-top:45px}
+#listening-reading .lr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#listening-reading .lr-books{grid-template-columns:repeat(2,minmax(0,1fr))}
+#listening-reading .lr-card{--lr-accent:133,101,181;position:relative;min-width:0;border-radius:20px;border:1px solid rgba(118,93,149,.17);background:rgba(255,255,255,.76);box-shadow:0 5px 22px rgba(63,45,84,.045);overflow:hidden;transition:transform 310ms cubic-bezier(.22,.68,0,1),border-color 310ms ease,box-shadow 310ms ease}
+#listening-reading .lr-card--purpose{--lr-accent:143,112,94}
+#listening-reading .lr-card--huberman{--lr-accent:58,139,200}
+#listening-reading .lr-card--ceo{--lr-accent:121,107,170}
+#listening-reading .lr-card--monk{--lr-accent:57,110,170}
+#listening-reading .lr-card--rich{--lr-accent:85,134,95}
+#listening-reading .lr-card>a{display:flex;flex-direction:column;height:100%;padding:19px;text-decoration:none;color:inherit}
+#listening-reading .lr-art{display:grid;place-items:center;align-self:center;width:min(100%,205px);aspect-ratio:1;margin:0 auto 18px;background:#eae3ef;border-radius:14px;overflow:hidden}
+#listening-reading .lr-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 340ms cubic-bezier(.22,.68,0,1)}
+#listening-reading .lr-type{font:700 10px 'Space Grotesk',Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgb(var(--lr-accent));margin-bottom:7px}
+#listening-reading .lr-card h3{font-size:clamp(18px,1.7vw,23px);line-height:1.23;letter-spacing:-.025em;color:#2b2536;margin:0 0 4px}
+#listening-reading .lr-byline{font-size:12px;font-weight:650;color:#86758e;margin:0 0 12px}
+#listening-reading .lr-card p.lr-description{margin:0 0 15px;color:#63596d;font-size:13px;line-height:1.65;flex:1}
+#listening-reading .lr-link{margin-top:auto;display:inline-flex;align-items:center;gap:6px;color:#7659a0;font:700 12px 'Space Grotesk',Arial,sans-serif}
+#listening-reading .lr-link svg{width:13px;height:13px;transition:transform 240ms ease}
+#listening-reading .lr-books .lr-card>a{flex-direction:row;align-items:center;gap:22px;padding:22px}
+#listening-reading .lr-books .lr-art{width:141px;min-width:141px;aspect-ratio:2/3;margin:0;border-radius:8px;background:#e4deeb;box-shadow:0 8px 17px rgba(42,30,48,.12)}
+#listening-reading .lr-books .lr-art img{object-fit:cover}
+#listening-reading .lr-books .lr-copy{display:flex;flex-direction:column;align-items:start;align-self:stretch;min-width:0}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  #listening-reading .lr-card:hover{transform:translate3d(0,-5px,0);border-color:rgba(var(--lr-accent),.36);box-shadow:0 17px 35px -20px rgba(var(--lr-accent),.34),0 7px 21px -17px rgba(56,45,82,.28)}
+  #listening-reading .lr-card:nth-child(2):hover{transform:translate3d(0,-3px,0) scale(1.012)}
+  #listening-reading .lr-card:nth-child(3):hover{transform:translate3d(0,-4px,0)}
+  #listening-reading .lr-card:hover img{transform:scale(1.028)}
+  #listening-reading .lr-card:hover .lr-link svg{transform:translate(2px,-2px)}
+}
+#listening-reading .lr-card a:focus-visible{outline:2px solid #8965bb;outline-offset:-4px;border-radius:18px}
+@media(max-width:900px){#listening-reading .lr-grid{gap:12px}#listening-reading .lr-books .lr-card>a{gap:15px;padding:16px}#listening-reading .lr-books .lr-art{width:106px;min-width:106px}}
+@media(max-width:700px){#listening-reading .lr-grid{grid-template-columns:1fr}#listening-reading .lr-card>a{flex-direction:row;gap:17px;align-items:center;padding:15px}#listening-reading .lr-art{width:108px;min-width:108px;aspect-ratio:1;margin:0}#listening-reading .lr-copy{display:flex;min-width:0;flex:1;flex-direction:column}#listening-reading .lr-books .lr-art{width:101px;min-width:101px;aspect-ratio:2/3}#listening-reading .lr-heading p{max-width:100%}}
+@media(max-width:400px){#listening-reading .lr-card>a,#listening-reading .lr-books .lr-card>a{gap:12px;padding:13px}#listening-reading .lr-art{width:91px;min-width:91px}#listening-reading .lr-books .lr-art{width:84px;min-width:84px}#listening-reading .lr-card h3{font-size:17px}}
+@media(prefers-reduced-motion:reduce){#listening-reading .lr-card,#listening-reading .lr-art img,#listening-reading .lr-link svg{transition:none!important}#listening-reading .lr-card:hover{transform:none!important}#listening-reading .lr-card:hover img{transform:none!important}}
