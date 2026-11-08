@@ -1549,6 +1549,8 @@ requestAnimationFrame(()=>{
   if(!match)return;
   const number=Number(match[1]);
   if(number!==1&&number!==2&&(number<10||number>70))return;
+  // Exclude University at Albany Great Danes sports images from Life Off Screen only.
+  if(number===69||number===70)return;
   if(!sources.has(number))sources.set(number,{src:source,alt:img.alt||'Portfolio memory'});
  });
  const candidates=[...sources.entries()].sort((a,b)=>a[0]-b[0]).map(entry=>entry[1]);
