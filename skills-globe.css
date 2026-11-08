@@ -1,0 +1,97 @@
+/* Skills globe interaction and locally hosted brand marks. */
+#mk-skills-visual {
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  outline-offset: 5px;
+}
+#mk-skills-visual.is-dragging { cursor: grabbing; touch-action: none; }
+#mk-skills-visual:focus-visible { outline: 2px solid #8173cf; }
+#mk-skills-visual canvas { pointer-events: none; }
+#mk-skills-logos { position: absolute; inset: 0; pointer-events: none; }
+#mk-skills-visual .mk-skill-particle {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+  min-width: 55px;
+  text-align: center;
+  transition: filter .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+#mk-skills-visual .mk-skill-particle .mk-icon {
+  background: rgba(255,255,255,.96);
+  border: 1px solid rgba(190,195,218,.58);
+  box-shadow: 0 5px 17px rgba(34,42,85,.19);
+  border-radius: 11px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+#mk-skills-visual .mk-skill-particle .mk-icon img {
+  display: block;
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+  pointer-events: none;
+}
+#mk-skills-visual .mk-skill-particle:is(:hover, :focus-visible, .is-selected) .mk-icon {
+  border-color: #8776d6;
+  box-shadow: 0 0 0 3px rgba(157,138,236,.22), 0 8px 22px rgba(58,51,113,.25);
+}
+#mk-skills-visual .mk-skill-particle:is(:hover, :focus-visible, .is-selected) .mk-logo-text {
+  color: #332c68 !important;
+  background: #f6f2ff !important;
+  border-color: rgba(123,103,210,.58);
+}
+#mk-skills-visual .mk-skill-particle:focus-visible {
+  outline: 2px solid #7b69d5;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+.mk-skills-tools {
+  position: absolute; right: 5px; top: 5px; z-index: 6;
+  display: flex; gap: 6px;
+}
+.mk-skills-tools button {
+  appearance: none;
+  border: 1px solid rgba(144,131,211,.36);
+  border-radius: 100px;
+  background: rgba(250,249,255,.9);
+  color: #4d4779;
+  padding: 7px 10px;
+  font: 700 10px 'Space Grotesk', sans-serif;
+  cursor: pointer;
+}
+.mk-skills-tools button:hover, .mk-skills-tools button:focus-visible {
+  background: #eeeaff;
+  border-color: #8e7acf;
+  outline-offset: 3px;
+}
+.mk-skills-hint, .mk-skills-selection {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  white-space: nowrap; max-width: 98%;
+  overflow: hidden; text-overflow: ellipsis;
+  margin: 0;
+  color: #6d7290;
+  font: 600 11px 'Space Grotesk',sans-serif;
+  pointer-events: none;
+  z-index: 6;
+  text-align: center;
+}
+.mk-skills-hint { bottom: 21px; }
+.mk-skills-selection { top: 11px; left: 5px; transform: none; text-align: left; max-width: 45%; color: #514c76; }
+@media(max-width: 600px) {
+  .mk-skills-tools { right: 0; top: 0; gap: 4px; }
+  .mk-skills-tools button { padding: 7px 8px; font-size: 9px; }
+  .mk-skills-selection { max-width: 42%; font-size: 9px; }
+  .mk-skills-hint { font-size: 9px; bottom: 4px; }
+  #mk-skills-visual .mk-skill-particle .mk-icon img { width: 78%; height: 78%; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #mk-skills-visual .mk-skill-particle { transition: none; }
+}
