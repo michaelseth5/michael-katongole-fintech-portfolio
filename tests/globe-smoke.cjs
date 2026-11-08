@@ -60,12 +60,12 @@ const { chromium } = require('playwright');
     assert.match(await page.locator('#home h1').getAttribute('aria-label'),/Michael.*Katongole/);
     assert.equal(await page.locator('#skills .skills .skill').count(),24,
       'Original skills list must remain intact');
-    assert.equal(await page.locator('.polish-skill-marquee').count(),1,'Skills marquee should exist');
-    assert.equal(await page.locator('.polish-skill-marquee').getAttribute('aria-hidden'),'true');
-    assert.ok(await page.locator('.polish-skill-track span').count()>=48,
-      'Decorative marquee should repeat original skills only');
-    assert.match(await page.locator('.apple-navlinks').evaluate(el=>
-      getComputedStyle(el).backdropFilter),/blur\(20px\)/);
+    assert.equal(await page.locator('.polish-skill-marquee').count(),0,
+      'Do not insert any new skills UI; keep the original cards');
+    assert.equal(await page.locator('.polish-skill-track').count(),0,
+      'No decorative duplicates of the original cards');
+    assert.ok(await page.locator('#skills .three > .large-panel').count()===3,
+      'Keep all three original skill category cards');
     assert.equal(await page.locator('.gf-controls').count(),0,'Oversized globe menu should be gone');
     assert.equal(await page.locator('.gf-hud').count(),1,'Compact globe HUD should exist');
     assert.equal(await page.locator('.gf-expand').count(),1,'Fullscreen affordance should remain');
@@ -152,16 +152,14 @@ const { chromium } = require('playwright');
     // Reduced-motion users should see all original content with no reveal/scroll animation.
     const quiet=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
     await quiet.goto(address,{waitUntil:'domcontentloaded'});
-    await quiet.waitForSelector('#skills .polish-skill-marquee',{timeout:12000});
+    await quiet.waitForSelector('#home h1',{timeout:12000});
     const reduced=await quiet.evaluate(()=>{
-      const track=document.querySelector('.polish-skill-track');
       const heading=document.querySelector('#home h1');
-      return {animation:getComputedStyle(track).animationDuration,
-        letters:heading.querySelectorAll('.polish-letter').length,
-        visible:getComputedStyle(heading).opacity};
+      return {letters:heading.querySelectorAll('.polish-letter').length,
+        cards:document.querySelectorAll('#skills .three > .large-panel').length};
     });
     assert.equal(reduced.letters,0,'Reduced motion should skip letter animations');
-    assert.match(reduced.animation,/0|none/,'Reduced motion should disable marquee animation');
+    assert.equal(reduced.cards,3,'Reduced motion must keep all the existing skill cards');
     await quiet.close();
 
     const globeErrors=errors.filter(m=>/globe|three|webgl|financial/i.test(m));
