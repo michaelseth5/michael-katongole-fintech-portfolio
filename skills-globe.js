@@ -205,7 +205,7 @@
   }
 
   host.addEventListener('pointerdown', event => {
-    if (event.target.closest('.mk-skills-tools')) return;
+    if (event.target.closest('.mk-skills-tools') || event.target.closest('.mk-skill-particle')) return;
     if (event.button !== 0 && event.pointerType === 'mouse') return;
     activePointer = {id: event.pointerId, x: event.clientX, y: event.clientY};
     pointerMoved = false;
