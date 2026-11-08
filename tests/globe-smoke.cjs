@@ -140,6 +140,10 @@ const { chromium } = require('playwright');
     const shuffled = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
     assert.notEqual(shuffled,firstPos,'Shuffle should change skill positions');
     await page.locator('.mk-skills-tools [data-action="reset"]').click();
+    await page.waitForFunction((before)=>{
+      const el=document.querySelector('#mk-skills-logos .mk-skill-particle');
+      return el && (el.style.left+'|'+el.style.top)!==before;
+    },shuffled,{timeout:7000});
     const restored = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
     assert.ok(restored.length>0,'Reset should restore a rendered layout');
     const sphereBox = await skills.boundingBox();
