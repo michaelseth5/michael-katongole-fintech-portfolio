@@ -6,6 +6,10 @@
   if (!mount) return;
 
   const wrap = mount.parentElement;
+  const shell = document.createElement('div');
+  shell.className = 'gf-shell';
+  const stage = document.createElement('div');
+  stage.className = 'gf-stage';
   const year = 2024;
   const topConnections = 25;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -30,7 +34,7 @@
 
   const hud = document.createElement('div');
   hud.className = 'gf-hud';
-  hud.innerHTML = '<span class="gf-live-dot" aria-hidden="true"></span><strong>GLOBAL TRADE</strong><small>2024 · ANNUAL REPORTED DATA</small>';
+  hud.innerHTML = '<strong>INTERNATIONAL TRADE</strong><small>2024 · REPORTED DATA</small>';
   const panel = document.createElement('aside');
   panel.className = 'gf-panel';
   panel.setAttribute('aria-label', 'Selected country trade statistics');
@@ -47,7 +51,9 @@
   fullscreen.setAttribute('aria-label', 'Expand interactive globe');
   fullscreen.title = 'Expand interactive globe';
   fullscreen.textContent = '⤢';
-  wrap.append(hud, panel, status, fullscreen);
+  stage.append(mount, hud, status, fullscreen);
+  shell.append(stage, panel);
+  wrap.append(shell);
 
   function centroid(feature) {
     let rings = feature.geometry.coordinates;
@@ -101,7 +107,7 @@
     if (state.message) {
       content += '<p class="gf-unavailable">' + html(state.message) + '</p>';
     } else if (!state.flows.length) {
-      content += '<p class="gf-unavailable">Retrieving reported trade data…</p>';
+      content += '<p class="gf-unavailable">Loading trade records…</p>';
     } else {
       content += row('Exports', money(totalExports), 'gf-positive');
       content += row('Imports', money(totalImports), 'gf-negative');
@@ -123,9 +129,8 @@
     }
     content += '<div class="gf-legend"><span><i class="gf-dot gf-dot-export"></i>Exports</span>' +
       '<span><i class="gf-dot gf-dot-import"></i>Imports</span></div>';
-    content += '<p class="gf-source">Annual goods trade · partial public preview (up to 500 rows). ' +
-      'Shown totals cover returned records only, not official national totals. ' +
-      'GDP: World Bank' + (state.gdpYear ? ' ' + state.gdpYear : '') + '.</p>';
+    content += '<p class="gf-source">Sources: UN Comtrade (merchandise trade); World Bank (GDP).</p>' +
+      '<p class="gf-source gf-source-muted">Trade values summarize returned public-preview records, not full national totals.</p>';
     panel.innerHTML = content;
     const shortBalance = state.flows.length && !state.message
       ? (isSurplus ? 'rgba(41,210,123,.34)' : 'rgba(255,91,104,.34)')
