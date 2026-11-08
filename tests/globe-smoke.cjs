@@ -75,12 +75,12 @@ const { chromium } = require('playwright');
     const separated=await page.evaluate(()=>{
       const globe=document.querySelector('.gf-stage').getBoundingClientRect();
       const sidebar=document.querySelector('.gf-panel').getBoundingClientRect();
-      return {stageRight:globe.right,panelLeft:sidebar.left,stageWidth:globe.width,panelWidth:sidebar.width};
+      return {globeRight:globe.right,globeBottom:globe.bottom,panelLeft:sidebar.left,panelTop:sidebar.top,stageWidth:globe.width};
     });
-    assert.ok(separated.panelLeft>=separated.stageRight+5,
-      'At desktop widths the statistics rail must not overlay the globe: '+JSON.stringify(separated));
-    assert.ok(separated.stageWidth>260&&separated.panelWidth>=200,
-      'Both side-by-side columns should remain usable');
+    assert.ok(separated.panelTop >= separated.globeBottom+5 ||
+      separated.panelLeft >= separated.globeRight+5,
+      'Country panel must neither overlap nor shrink the globe: '+JSON.stringify(separated));
+    assert.ok(separated.stageWidth>300,'Keep the original globe large');
     // Interaction checks: compare rendered WebGL canvas pixels, not merely visibility.
     await page.mouse.move(0,0);
     const globeCanvas=page.locator('#financial-globe canvas');
@@ -127,6 +127,22 @@ const { chromium } = require('playwright');
       }));
       console.log('VIEWPORT '+width+'px: scrollWidth='+size.content+'px, clientWidth='+size.viewport+'px');
       assert.ok(size.content<=size.viewport+5,'Unexpected horizontal page overflow at '+width+'px');
+      if(width===1920) {
+        const layout=await page.evaluate(()=>{
+          const hero=document.querySelector('.hero').getBoundingClientRect();
+          const text=document.querySelector('.hero > .fade').getBoundingClientRect();
+          const globe=document.querySelector('.globe-wrap').getBoundingClientRect();
+          const panel=document.querySelector('.gf-panel').getBoundingClientRect();
+          return {heroRight:hero.right,textRight:text.right,globeLeft:globe.left,
+            globeRight:globe.right,panelLeft:panel.left,panelRight:panel.right};
+        });
+        assert.ok(layout.globeLeft >= layout.textRight-3,
+          'Original introduction must not be covered by globe: '+JSON.stringify(layout));
+        assert.ok(layout.panelLeft >= layout.heroRight+10,
+          'At wide desktop, the panel must be in blank space OUTSIDE the hero box: '+JSON.stringify(layout));
+        assert.ok(layout.panelRight <= size.viewport-12,
+          'The panel must fit within viewport: '+JSON.stringify(layout));
+      }
     }
     await page.setViewportSize({width:390,height:844});
     assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex, nofollow, noarchive, nosnippet');

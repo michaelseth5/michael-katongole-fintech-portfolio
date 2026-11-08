@@ -15,14 +15,26 @@
   height: 100%;
   min-width: 0;
 }
-/* Globe, stats rail and introduction are independent siblings in the homepage grid. */
-.hero.gf-hero-layout {
-  grid-template-columns: minmax(0, .86fr) minmax(0, 1.35fr) minmax(220px, .67fr);
-  gap: 16px;
+/* Preserve the original intro and globe widths. The panel uses the blank
+   right-hand viewport margin, beyond the hero box, on wide desktops. */
+.hero.gf-hero-panel-mode {
+  position: relative;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 10px;
+  overflow: visible;
 }
-.hero.gf-hero-layout > .fade,
-.hero.gf-hero-layout > .globe-wrap,
-.hero.gf-hero-layout > .gf-panel { min-width: 0; }
+.hero.gf-hero-panel-mode > .fade,
+.hero.gf-hero-panel-mode > .globe-wrap { min-width: 0; }
+.hero.gf-hero-panel-mode > .globe-wrap { height: 570px; }
+.hero.gf-hero-panel-mode > .gf-panel {
+  position: absolute;
+  top: 82px;
+  left: calc(100% + 18px);
+  width: 250px;
+  height: auto;
+  max-height: 590px;
+  z-index: 10;
+}
 .gf-stage {
   position: relative;
   height: 100%;
@@ -226,28 +238,38 @@
 .gf-panel .gf-unavailable { color: #bcb5ce; margin: 14px 0; }
 .gf-fallback { padding: 75px 12px; text-align: center; color: #b5b1c9; }
 
-/* At tablet widths, the intro gets its own row; globe and rail stay side by side. */
-@media (max-width: 1050px) {
-  .hero.gf-hero-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(215px, 245px);
-    gap: 14px;
-    overflow: visible;
+/* When the right outside margin is too narrow, keep the full-size globe
+   and put the statistics in a separate row rather than covering content. */
+@media (max-width: 1799px) {
+  .hero.gf-hero-panel-mode {
+    grid-template-columns: 1.05fr .95fr;
+    gap: 12px;
   }
-  .hero.gf-hero-layout > .fade { grid-column: 1 / -1; }
-  .hero.gf-hero-layout > .globe-wrap { height: 470px; order: 0; }
-  .hero.gf-hero-layout > .gf-panel { height: 470px; }
+  .hero.gf-hero-panel-mode > .gf-panel {
+    position: relative;
+    top: auto;
+    left: auto;
+    grid-column: 2;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    align-self: stretch;
+  }
 }
-/* On phones the panel remains outside the globe and stacks underneath. */
+@media (max-width: 900px) {
+  .hero.gf-hero-panel-mode { grid-template-columns: minmax(0, 1fr); }
+  .hero.gf-hero-panel-mode > .fade { order: 0; }
+  .hero.gf-hero-panel-mode > .globe-wrap { height: 430px; order: 1; }
+  .hero.gf-hero-panel-mode > .gf-panel { grid-column: 1; order: 2; }
+}
 @media (max-width: 650px) {
-  .hero.gf-hero-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .hero.gf-hero-layout > .fade { grid-column: auto; }
-  .hero.gf-hero-layout > .globe-wrap { height: 390px !important; order: 0; }
-  .hero.gf-hero-layout > .gf-panel { height: auto; max-height: none; }
+  .hero.gf-hero-panel-mode { gap: 12px; }
+  .hero.gf-hero-panel-mode > .globe-wrap { height: 390px !important; }
+  .hero.gf-hero-panel-mode > .gf-panel { padding: 16px; max-height: none; }
   .gf-hud { top: 9px; left: 9px; padding: 7px 9px; }
   .gf-expand { right: 9px; top: 9px; }
   .gf-status { left: 9px; bottom: 9px; font-size: 9px; }
 }
-/* Fullscreen expands only the globe box; the rail remains a separate page element. */
 .globe-wrap:fullscreen {
   width: 100vw !important;
   height: 100vh !important;
