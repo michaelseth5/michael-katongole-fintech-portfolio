@@ -84,7 +84,7 @@
     const iso=feature.properties.ISO_A3;
     if(!/^[A-Z]{3}$/.test(iso)){state.gdp=null;draw();return;}
     try{
-      const response=await fetch('/api/markets?dataset=gdp&country='+encodeURIComponent(iso)+'&year='+opt.year.value);
+      const response=await fetch('/api/financial?dataset=gdp&country='+encodeURIComponent(iso)+'&year='+opt.year.value);
       if(!response.ok)throw Error('GDP unavailable');
       const result=await response.json();
       if(seq!==state.gdpSeq)return;
@@ -108,7 +108,7 @@
         const controller=new AbortController();
         const timeout=setTimeout(()=>controller.abort(),18000);
         try{
-          const response=await fetch('/api/markets?dataset=trade&reporter='+encodeURIComponent(m49)+'&year='+year,{signal:controller.signal});
+          const response=await fetch('/api/financial?dataset=trade&reporter='+encodeURIComponent(m49)+'&year='+year,{signal:controller.signal});
           if(!response.ok)throw Error('Trade data unavailable (HTTP '+response.status+')');
           result=await response.json();
           if(!Array.isArray(result.flows))throw Error('Unexpected trade response');
