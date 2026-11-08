@@ -1,0 +1,12 @@
+{
+  "name": "michael-katongole-fintech-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Personal FinTech engineering portfolio with interactive globe and financial market data",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
