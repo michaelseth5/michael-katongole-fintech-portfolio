@@ -1198,7 +1198,7 @@ img{image-rendering:auto;vertical-align:middle}
   <div class="mk-nyc-map-canvas" id="mk-nyc-overview-map" role="img" aria-label="Fixed map showing Manhattan, Brooklyn, Queens, the Bronx, Staten Island, and Jersey City with animated illustrative traffic corridors"></div>
   <div class="mk-nyc-radar" aria-hidden="true"><span class="mk-nyc-radar-sweep"></span><span class="mk-nyc-radar-rings"></span></div>
 
-  <div class="mk-nyc-map-heading"><span class="mk-nyc-map-kicker">NEW YORK METRO / TRAFFIC PULSE</span><h3>THE FIVE BOROUGHS <span>+ JERSEY CITY</span></h3></div>
+  <div class="mk-nyc-map-heading"><span class="mk-nyc-map-kicker">NEW YORK METRO / TRAFFIC PULSE</span><h3>CURRENT <span>LOCATION</span></h3></div>
   <div class="mk-nyc-map-footer"><span><i class="mk-nyc-map-dot"></i> NYC + NJ</span><span>6 LOCATIONS · ILLUSTRATIVE FLOW</span></div>
  </article>
 </div>
@@ -1793,10 +1793,13 @@ window.addEventListener('load',()=>{
   zoomControl:false,attributionControl:true,
   zoomSnap:0.1
  });
- // CARTO Light map tiles are publicly available without embedding a secret API key.
- L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-  maxZoom:18,
-  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+ // Standard OpenStreetMap tiles: no API key, while keeping attribution visible.
+ // This is a personal portfolio map, not a live traffic service.
+ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19,
+  tileSize:256,
+  crossOrigin:true,
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
  }).addTo(map);
  map.createPane('trafficFlow');
  map.getPane('trafficFlow').style.zIndex=410;
