@@ -16,7 +16,11 @@
     for (const node of nodes) {
       if (!node.textContent || !node.textContent.trim()) continue;
       // Animate only the actual name. The "Hi, I'm" opener remains stable.
-      if (node.parentElement?.classList.contains('mk-title-solid')) continue;
+      // A gradient clipped to the entire word becomes invisible when every
+      // letter is wrapped in a nested element with transparent text fill.
+      // Keep the purple "Michael" word intact and animate it as one unit.
+      if (node.parentElement?.classList.contains('mk-title-solid') ||
+          node.parentElement?.classList.contains('mk-title-glow')) continue;
       const fragment = document.createDocumentFragment();
       for (const character of node.textContent) {
         if (/\s/.test(character)) {
