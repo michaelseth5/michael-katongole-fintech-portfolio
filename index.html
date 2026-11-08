@@ -2302,7 +2302,15 @@ async function updateFX(){if(!fx)return;
   }catch(e){label.textContent='RATES UNAVAILABLE';if(foot)foot.textContent='FX illustrations are not actual money transfers. Source unavailable.';}
 }
 const marketRoot=document.querySelector('#markets'),marketTiles=[...document.querySelectorAll('.preview-tile')];
-function signedPct(n){return (n>=0?'+':'')+n.toFixed(2)+'%';}
+function signedPct(n){return (n>0?'+':'')+n.toFixed(2)+'%';}
+function marketTone(element,current,previous){
+ if(!element)return 'mk-flat';
+ element.classList.remove('mk-up','mk-down','mk-flat');
+ const valid=Number.isFinite(current)&&current>0&&Number.isFinite(previous)&&previous>0;
+ const tone=!valid||current===previous?'mk-flat':current>previous?'mk-up':'mk-down';
+ element.classList.add(tone);
+ return tone;
+}
 async function updateMarkets(){
  if(!marketRoot)return;
  const status=marketRoot.querySelector('.preview-markets-head span');
@@ -2315,9 +2323,10 @@ async function updateMarkets(){
    const symbol=tile.querySelector('small')?.textContent.trim();
    const q=quotes[symbol],price=Number(q?.price),prev=Number(q?.previousClose);
    const value=tile.querySelector('span'),change=tile.querySelector('em');
+   marketTone(tile,price,prev);
    if(!(Number.isFinite(price)&&price>0)){
      if(value)value.textContent='—';
-     if(change){change.textContent='Quote unavailable';change.style.color='#b7b0cd';}
+     if(change)change.textContent='Quote unavailable';
      return;
    }
    if(value)value.textContent=price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -2325,26 +2334,24 @@ async function updateMarkets(){
     if(Number.isFinite(prev)&&prev>0){
      const pct=(price-prev)/prev*100;
      change.textContent=signedPct(pct)+' · delayed quote';
-     change.style.color=pct>=0?'#79dcb5':'#ff9ca9';
-    }else{
-     change.textContent=(q.source||'Spot / daily quote');
-     change.style.color='#b7b0cd';
-    }
+    }else change.textContent=q?.source||'Quote available · change unavailable';
    }
    count++;
   });
   let wingCount=0;
   document.querySelectorAll('[data-wing-symbol]').forEach(node=>{
-   const symbol=node.dataset.wingSymbol,q=quotes[symbol];
-   const price=Number(q?.price);
-   if(!(Number.isFinite(price)&&price>0)){node.textContent='—';return;}
+   const q=quotes[node.dataset.wingSymbol];
+   const price=Number(q?.price),previous=Number(q?.previousClose);
+   const tone=marketTone(node.closest('a'),price,previous);
+   if(!(Number.isFinite(price)&&price>0)){node.textContent='—';node.title='Quote unavailable';return;}
    if(node.dataset.wingType==='yield'){
     const yieldPct=Number.isFinite(Number(q?.yieldPercent))?Number(q.yieldPercent):price/10;
     node.textContent=yieldPct.toFixed(2)+'%';
-    node.title='U.S. Treasury par yield'+(q.asOf?' · '+q.asOf:'')+' · daily';
+    node.title='U.S. Treasury yield'+(q.asOf?' · '+q.asOf:'')+
+      ' · '+(tone==='mk-flat'?'daily level; comparable change unavailable':tone==='mk-up'?'yield rose':'yield fell');
    }else{
     node.textContent='$'+price.toLocaleString('en-US',{maximumFractionDigits:0});
-    node.title='Coinbase spot price · may change';
+    node.title='Crypto spot quote'+(tone==='mk-flat'?' · change unavailable':tone==='mk-up'?' · price rose':' · price fell');
    }
    wingCount++;
   });
@@ -2356,8 +2363,16 @@ async function updateMarkets(){
     : 'Market data unavailable';
   }
  }catch(e){
-  document.querySelectorAll('[data-wing-symbol]').forEach(node=>node.textContent='—');
-  marketTiles.forEach(tile=>{const value=tile.querySelector('span'),change=tile.querySelector('em');if(value)value.textContent='—';if(change){change.textContent='Quote unavailable · refresh later';change.style.color='#b7b0cd';}});
+  document.querySelectorAll('[data-wing-symbol]').forEach(node=>{
+   node.textContent='—';node.title='Quote unavailable';
+   marketTone(node.closest('a'),NaN,NaN);
+  });
+  marketTiles.forEach(tile=>{
+   const value=tile.querySelector('span'),change=tile.querySelector('em');
+   marketTone(tile,NaN,NaN);
+   if(value)value.textContent='—';
+   if(change)change.textContent='Quote unavailable · refresh later';
+  });
   if(status)status.textContent='Quotes temporarily unavailable · refresh later';
  }
 }
