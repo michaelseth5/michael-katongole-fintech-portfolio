@@ -1,0 +1,23 @@
+/* Static portfolio quality checks. Runs separately from the globe's API fixture tests. */
+const fs=require('node:fs');
+const path=require('node:path');
+const assert=require('node:assert/strict');
+const html=fs.readFileSync(path.resolve(__dirname,'../index.html'),'utf8');
+const vercel=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../vercel.json'),'utf8'));
+const netlify=fs.readFileSync(path.resolve(__dirname,'../netlify.toml'),'utf8');
+const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
+assert.equal(ids.length,new Set(ids).size,'Duplicate HTML id');
+assert.equal((html.match(/<script\b/g)||[]).length,(html.match(/<\/script>/g)||[]).length,'Script tag mismatch');
+assert.equal((html.match(/<main\b/g)||[]).length,1,'Expected one main landmark');
+assert.match(html,/<a class="mk-skip-link" href="#main-content">/);
+assert.match(html,/<meta name="robots" content="noindex,/);
+assert.ok(!html.includes('Capital One employment is not listed'),'Internal editorial note remains');
+assert.ok(!html.includes('NYC + NJ</span>'),'Misleading current-location label remains');
+assert.ok(!html.includes('Fetching latest available price…'),'Indefinite stock placeholder remains');
+assert.ok(!html.includes('FX / USD BASE <span>Connecting…'),'Indefinite FX placeholder remains');
+assert.ok(vercel.headers.some(x=>x.headers.some(y=>y.key==='X-Robots-Tag'&&y.value.includes('noindex'))),'Vercel noindex header missing');
+assert.ok(netlify.includes('X-Robots-Tag = "noindex'),'Netlify noindex header missing');
+assert.ok(fs.existsSync(path.resolve(__dirname,'../globe.js')),'Globe JS missing');
+assert.ok(fs.existsSync(path.resolve(__dirname,'../ux.css')),'UX styling missing');
+assert.ok(fs.existsSync(path.resolve(__dirname,'../assets/countries.geojson')),'Country data missing');
+console.log('PASS: document landmarks, unique ids, script structure, unlisted headers, factual copy, and source assets');
