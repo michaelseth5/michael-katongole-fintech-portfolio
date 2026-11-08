@@ -66,6 +66,15 @@ const { chromium } = require('playwright');
     assert.match(await page.locator('.gf-legend').innerText(),/Imports/);
     assert.match(await page.locator('.gf-panel h3').innerText(),/United States/i);
     assert.match(await page.locator('.gf-panel').innerText(),/Canada/);
+    const separated=await page.evaluate(()=>{
+      const globe=document.querySelector('.gf-stage').getBoundingClientRect();
+      const sidebar=document.querySelector('.gf-panel').getBoundingClientRect();
+      return {stageRight:globe.right,panelLeft:sidebar.left,stageWidth:globe.width,panelWidth:sidebar.width};
+    });
+    assert.ok(separated.panelLeft>=separated.stageRight+5,
+      'At desktop widths the statistics rail must not overlay the globe: '+JSON.stringify(separated));
+    assert.ok(separated.stageWidth>260&&separated.panelWidth>=200,
+      'Both side-by-side columns should remain usable');
     // Interaction checks: compare rendered WebGL canvas pixels, not merely visibility.
     await page.mouse.move(0,0);
     const globeCanvas=page.locator('#financial-globe canvas');
@@ -94,6 +103,13 @@ const { chromium } = require('playwright');
     assert.equal(await page.locator('.gf-panel').isVisible(),true);
     await page.setViewportSize({width:390,height:844});
     await page.waitForTimeout(500);
+    const stacked=await page.evaluate(()=>{
+      const globe=document.querySelector('.gf-stage').getBoundingClientRect();
+      const sidebar=document.querySelector('.gf-panel').getBoundingClientRect();
+      return {stageBottom:globe.bottom,panelTop:sidebar.top};
+    });
+    assert.ok(stacked.panelTop>=stacked.stageBottom+4,
+      'On mobile statistics must stack below globe, never overlap');
     assert.ok(await page.locator('#financial-globe canvas').isVisible(),'3D canvas should remain visible on mobile');
     // Responsive layout audit: report exact viewport and document overflow measurements.
     for(const width of [375,430,768,1024,1440,1920]){
