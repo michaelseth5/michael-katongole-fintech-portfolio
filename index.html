@@ -518,7 +518,7 @@ function paint(){indicator.style.transform='translateX('+x+'px)';indicator.style
 function activate(link,scroll=false){if(!link)return;current=link;links.forEach(a=>{const on=a===link;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});measure(link,false);
 if(scroll){link.scrollIntoView({block:'nearest',inline:'nearest',behavior:reduced?'instant':'smooth'});}
 }
-function animate(t){if(!last)last=t;const dt=Math.min((t-last)/1000,.05);last=t;const stiffness=175,damping=28;vx+=(targetX-x)*stiffness*dt;vx*=Math.exp(-damping*dt);x+=vx*dt*60*.75;vw+=(targetWidth-width)*stiffness*dt;vw*=Math.exp(-damping*dt);width+=vw*dt*60*.75;
+function animate(t){if(!last)last=t;const dt=Math.min((t-last)/1000,.05);last=t;const stiffness=175,damping=28;vx+=(targetX-x)*stiffness*dt;vx*=Math.exp(-damping*dt);x+=vx*dt;vw+=(targetWidth-width)*stiffness*dt;vw*=Math.exp(-damping*dt);width+=vw*dt;
 // avoid oscillating when targets are reached
 if(Math.abs(targetX-x)<.4&&Math.abs(targetWidth-width)<.4&&Math.abs(vx)<.25&&Math.abs(vw)<.25){x=targetX;width=targetWidth;paint();last=0;frame=0;return}
 paint();frame=requestAnimationFrame(animate);
