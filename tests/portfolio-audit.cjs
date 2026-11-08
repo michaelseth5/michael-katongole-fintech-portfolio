@@ -20,4 +20,9 @@ assert.ok(netlify.includes('X-Robots-Tag = "noindex'),'Netlify noindex header mi
 assert.ok(fs.existsSync(path.resolve(__dirname,'../globe.js')),'Globe JS missing');
 assert.ok(fs.existsSync(path.resolve(__dirname,'../ux.css')),'UX styling missing');
 assert.ok(fs.existsSync(path.resolve(__dirname,'../assets/countries.geojson')),'Country data missing');
+assert.ok(!html.includes("quotes available · Treasury daily"),'Quote-count status still visible');
+assert.ok(!html.includes('Market quotes · Connecting to source…'),'Market loading banner should be removed');
+assert.match(html,/03 \/ COMPUTER SCIENCE &amp; FINANCE/,'Education tile needs accurate emphasis');
+assert.match(html,/Incoming M\.S\. Computer Science \(Align\)/,'Northeastern program should be named');
+assert.match(html,/B\.S\. Finance \(FinTech\)/,'Finance undergraduate program should remain distinct');
 console.log('PASS: document landmarks, unique ids, script structure, unlisted headers, factual copy, and source assets');
