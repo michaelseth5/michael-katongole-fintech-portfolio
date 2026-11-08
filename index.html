@@ -1551,7 +1551,7 @@ requestAnimationFrame(()=>{
   if(number!==1&&number!==2&&(number<10||number>70))return;
   // Exclude University at Albany Great Danes sports images from Life Off Screen only.
   if(number===69||number===70)return;
-  if(!sources.has(number))sources.set(number,{src:source,alt:img.alt||'Portfolio memory'});
+  if(!sources.has(number))sources.set(number,{src:source,alt:img.alt||'Portfolio memory',number});
  });
  const candidates=[...sources.entries()].sort((a,b)=>a[0]-b[0]).map(entry=>entry[1]);
  const format=n=>String(n).padStart(2,'0');
@@ -1580,25 +1580,40 @@ requestAnimationFrame(()=>{
  const inspect=photo=>new Promise(resolve=>{
   const img=new Image();
   img.onload=()=>{
-   // Only use wide / landscape photos; avoid vertical crops.
+   // Include group, conference and SEO memories even when they are less panoramic.
+   // The viewer uses object-fit:contain, so these photos stay fully visible.
    const ratio=img.naturalWidth/Math.max(1,img.naturalHeight);
-   resolve(ratio>=1.25?photo:null);
+   const community=(photo.number>=42&&photo.number<=68);
+   resolve((community?ratio>=0.86:ratio>=1.25)?photo:null);
   };
   img.onerror=()=>resolve(null);
   img.src=photo.src;
  });
  Promise.all(candidates.map(inspect)).then(photos=>{
-  const landscape=photos.filter(Boolean);
-  // Fisher-Yates shuffle: a fresh random slide order on each page load.
-  for(let i=landscape.length-1;i>0;i--){
-   const j=Math.floor(Math.random()*(i+1));
-   [landscape[i],landscape[j]]=[landscape[j],landscape[i]];
+  const eligible=photos.filter(Boolean);
+  // Bias the randomized rotation toward people and professional-community moments.
+  // Include SEO Summit (53–55), ColorStack (42–45, 65), MLT (58–59),
+  // NSBE (56–57), Bloomberg (60–64) and AfroTech (65–68).
+  const featured=eligible.filter(photo=>photo.number>=42&&photo.number<=68);
+  const other=eligible.filter(photo=>photo.number<42||photo.number>68);
+  const shuffle=list=>{
+   for(let i=list.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [list[i],list[j]]=[list[j],list[i]];
+   }
+  };
+  shuffle(featured);shuffle(other);
+  // Two community/group shots followed by one other landscape memory.
+  const selected=[];
+  while(featured.length||other.length){
+   for(let i=0;i<2&&featured.length;i++)selected.push(featured.pop());
+   if(other.length)selected.push(other.pop());
   }
-  if(!landscape.length){
-   if(counter)counter.textContent='No landscape photos';
+  if(!selected.length){
+   if(counter)counter.textContent='No photos available';
    return;
   }
-  frames=landscape.map((photo,index)=>{
+  frames=selected.map((photo,index)=>{
    const img=document.createElement('img');
    img.src=photo.src;
    img.alt=photo.alt;
