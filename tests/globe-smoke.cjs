@@ -53,6 +53,19 @@ const { chromium } = require('playwright');
     await page.goto(address,{waitUntil:'domcontentloaded',timeout:60000});
     await page.waitForSelector('#financial-globe canvas',{timeout:60000});
     await page.waitForFunction(()=>document.querySelector('.gf-status')?.textContent.includes('annual corridors'),{timeout:30000});
+    // Progressive Apple-style polish: original copy and layout stay intact.
+    assert.ok(await page.locator('link[href="polish.css"]').count()===1,'Polish stylesheet should load');
+    assert.ok(await page.locator('script[src="polish.js"]').count()===1,'Polish JS should load');
+    await page.waitForFunction(()=>document.querySelectorAll('#home h1 .polish-letter').length>=12,{timeout:10000});
+    assert.match(await page.locator('#home h1').getAttribute('aria-label'),/Michael.*Katongole/);
+    assert.equal(await page.locator('#skills .skills .skill').count(),24,
+      'Original skills list must remain intact');
+    assert.equal(await page.locator('.polish-skill-marquee').count(),0,
+      'Do not insert any new skills UI; keep the original cards');
+    assert.equal(await page.locator('.polish-skill-track').count(),0,
+      'No decorative duplicates of the original cards');
+    assert.ok(await page.locator('#skills .three > .large-panel').count()===3,
+      'Keep all three original skill category cards');
     assert.equal(await page.locator('.gf-controls').count(),0,'Oversized globe menu should be gone');
     assert.equal(await page.locator('.gf-hud').count(),1,'Compact globe HUD should exist');
     assert.equal(await page.locator('.gf-expand').count(),1,'Fullscreen affordance should remain');
@@ -107,6 +120,8 @@ const { chromium } = require('playwright');
     await page.waitForFunction(()=>!document.fullscreenElement,{timeout:7000});
     assert.match(await page.locator('.gf-panel h3').innerText(),/United States/i);
     assert.equal(await page.locator('.gf-panel').isVisible(),true);
+    await page.waitForTimeout(1600);
+    await page.screenshot({path:'polish-desktop.png',fullPage:false});
     await page.setViewportSize({width:390,height:844});
     await page.waitForTimeout(500);
     const stacked=await page.evaluate(()=>{
@@ -134,6 +149,19 @@ const { chromium } = require('playwright');
     assert.equal(await page.evaluate(()=>document.activeElement?.className),'mk-skip-link');
     console.log('PASS: responsive width checks and keyboard skip navigation');
     await page.screenshot({path:'globe-smoke.png',fullPage:false});
+    // Reduced-motion users should see all original content with no reveal/scroll animation.
+    const quiet=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
+    await quiet.goto(address,{waitUntil:'domcontentloaded'});
+    await quiet.waitForSelector('#home h1',{timeout:12000});
+    const reduced=await quiet.evaluate(()=>{
+      const heading=document.querySelector('#home h1');
+      return {letters:heading.querySelectorAll('.polish-letter').length,
+        cards:document.querySelectorAll('#skills .three > .large-panel').length};
+    });
+    assert.equal(reduced.letters,0,'Reduced motion should skip letter animations');
+    assert.equal(reduced.cards,3,'Reduced motion must keep all the existing skill cards');
+    await quiet.close();
+
     const globeErrors=errors.filter(m=>/globe|three|webgl|financial/i.test(m));
     assert.deepEqual(globeErrors,[],'Globe console errors: '+globeErrors.join('; '));
     console.log('PASS: browser loads minimalist globe, directional arcs, fullscreen, market tones, and mobile canvas');

@@ -15,6 +15,8 @@ on:
       - ux.css
       - vercel.json
       - netlify.toml
+      - polish.css
+      - polish.js
       - .github/workflows/globe-smoke.yml
   workflow_dispatch:
 jobs:
@@ -40,5 +42,7 @@ jobs:
         if: always()
         with:
           name: globe-browser-screenshot
-          path: globe-smoke.png
+          path: |
+            globe-smoke.png
+            polish-desktop.png
           if-no-files-found: ignore
