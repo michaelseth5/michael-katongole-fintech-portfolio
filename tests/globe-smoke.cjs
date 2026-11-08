@@ -52,7 +52,13 @@ const { chromium } = require('playwright');
     page.on('pageerror',e=>errors.push(e.message));
     await page.goto(address,{waitUntil:'domcontentloaded',timeout:60000});
     await page.waitForSelector('#financial-globe canvas',{timeout:60000});
-    assert.equal(await page.locator('#site-preview-notice').count(),1,
+    assert.equal(await page.locator('link[href="polish.css"]').count(),1,'Animation stylesheet loaded');
+    assert.equal(await page.locator('script[src="polish.js"]').count(),1,'Animation script loaded');
+    await page.waitForFunction(()=>document.querySelectorAll('#home h1 .polish-letter').length>=12,{timeout:12000});
+    assert.match(await page.locator('#home h1').getAttribute('aria-label'),/Michael.*Katongole/);
+    assert.equal(await page.locator('.polish-skill-marquee').count(),0,'Keep original Skills without new marquee');
+    assert.equal(await page.locator('#skills .three > .large-panel').count(),3,'Preserve original Skills cards');
+        assert.equal(await page.locator('#site-preview-notice').count(),1,
       'Welcome/testing note should appear once');
     assert.match(await page.locator('#site-preview-notice').innerText(),/Welcome to my website!/);
     assert.match(await page.locator('#site-preview-notice').innerText(),/testing phase/);

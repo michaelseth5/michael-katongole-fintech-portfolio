@@ -1,0 +1,67 @@
+/* Motion-only enhancement. Every original card, color, corner, and section stays intact. */
+:root {
+  --polish-ease: cubic-bezier(.22, 1, .36, 1);
+  --polish-rise: 850ms;
+}
+/* The original top navigation and scroll structure are unchanged. */
+@media (prefers-reduced-motion: no-preference) {
+  #home .demo-hero-identity h1 .polish-letter { display: inline-block; }
+  .polish-ready #home .demo-hero-identity h1 .polish-letter {
+    animation: polish-letter-in 850ms var(--polish-ease) both;
+    animation-delay: calc(var(--letter-index, 0) * 50ms + 80ms);
+  }
+  .polish-ready #home .subtitle,
+  .polish-ready #home .actions,
+  .polish-ready #home .mk-socials {
+    animation: polish-hero-detail 850ms var(--polish-ease) both;
+  }
+  .polish-ready #home .subtitle { animation-delay: 900ms; }
+  .polish-ready #home .actions { animation-delay: 1030ms; }
+  .polish-ready #home .mk-socials { animation-delay: 1110ms; }
+  /* Only the new classes animate. No base card styling is replaced. */
+  .polish-observe {
+    opacity: 0;
+    transform: translate3d(0, 35px, 0);
+    transition: opacity var(--polish-rise) var(--polish-ease),
+                transform var(--polish-rise) var(--polish-ease);
+    transition-delay: var(--polish-stagger, 0ms);
+  }
+  .polish-observe.polish-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  @media (hover:hover) and (pointer:fine) {
+    /* A small hover lift, retaining all original padding, radius and colors. */
+    :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
+        #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
+        #hobbies .art-photo-card, #hobbies .travel-photo-card) {
+      transition: transform 520ms var(--polish-ease),
+                  box-shadow 520ms var(--polish-ease);
+    }
+    :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
+        #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
+        #hobbies .art-photo-card, #hobbies .travel-photo-card):hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 46px rgba(8,8,20,.16);
+    }
+    :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
+        #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
+        #hobbies .art-photo-card, #hobbies .travel-photo-card):active {
+      transform: scale(.985);
+    }
+  }
+}
+@keyframes polish-letter-in {
+  from { opacity: 0; transform: translateY(60px); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes polish-hero-detail {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .polish-observe { opacity: 1 !important; transform: none !important; }
+  #home .demo-hero-identity h1 .polish-letter {
+    opacity: 1 !important; transform: none !important; filter: none !important;
+  }
+}
