@@ -2313,7 +2313,6 @@ function marketTone(element,current,previous){
 }
 async function updateMarkets(){
  if(!marketRoot)return;
- const status=marketRoot.querySelector('.preview-markets-head span');
  try{
   const res=await fetch('/api/markets',{cache:'no-store',signal:AbortSignal.timeout(16000)});
   if(!res.ok)throw Error('Market feed unavailable');
@@ -2355,13 +2354,7 @@ async function updateMarkets(){
    }
    wingCount++;
   });
-  if(status){
-   const total=count+wingCount;
-   const date=data.timestamps?.treasuryAsOf;
-   status.textContent=total
-    ? total+' quotes available · Treasury daily'+(date?' '+date:'')+' · Crypto spot'
-    : 'Market data unavailable';
-  }
+
  }catch(e){
   document.querySelectorAll('[data-wing-symbol]').forEach(node=>{
    node.textContent='—';node.title='Quote unavailable';
@@ -2373,7 +2366,6 @@ async function updateMarkets(){
    if(value)value.textContent='—';
    if(change)change.textContent='Quote unavailable · refresh later';
   });
-  if(status)status.textContent='Quotes temporarily unavailable · refresh later';
  }
 }
 updateFX();updateMarkets();setInterval(()=>{if(!document.hidden){updateFX();updateMarkets()}},15*60*1000);
