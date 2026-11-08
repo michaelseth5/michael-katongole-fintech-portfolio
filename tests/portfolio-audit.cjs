@@ -24,6 +24,6 @@ assert.ok(!html.includes("quotes available · Treasury daily"),'Quote-count stat
 assert.ok(!html.includes('Market quotes · Connecting to source…'),'Market loading banner should be removed');
 assert.match(html,/03 \/ COMPUTER SCIENCE &amp; FINANCE/,'Education tile needs accurate emphasis');
 assert.match(html,/Computer Science at Northeastern University/,'Use requested Northeastern wording');
-assert.ok(!/MSCS|M\\.S\\. Computer Science|MS Align|Computer Science \\(Align\\)/i.test(html),'No graduate-program labels on public page');
+assert.ok(!/MSCS|M\.S\. Computer Science|MS Align|Computer Science \(Align\)/i.test(html),'No graduate-program labels on public page');
 assert.match(html,/B\.S\. Finance \(FinTech\)/,'Finance undergraduate program should remain distinct');
 console.log('PASS: document landmarks, unique ids, script structure, unlisted headers, factual copy, and source assets');
