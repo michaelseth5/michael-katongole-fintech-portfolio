@@ -19,10 +19,18 @@ assert.ok(vercel.headers.some(x=>x.headers.some(y=>y.key==='X-Robots-Tag'&&y.val
 assert.ok(netlify.includes('X-Robots-Tag = "noindex'),'Netlify noindex header missing');
 assert.ok(fs.existsSync(path.resolve(__dirname,'../globe.js')),'Globe JS missing');
 assert.ok(fs.existsSync(path.resolve(__dirname,'../ux.css')),'UX styling missing');
+assert.ok(html.includes('href="hobbies-caption.css"'),'Hobbies black-caption stylesheet must load');
+const hobbiesCaptionCss=fs.readFileSync(path.resolve(__dirname,'../hobbies-caption.css'),'utf8');
+assert.match(hobbiesCaptionCss,/#hobbies \.art-photo-card figcaption strong/,'Art caption titles should be styled');
+assert.match(hobbiesCaptionCss,/color: #111 !important/,'Art captions should be black');
+assert.ok(html.includes('Courtyard with Renaissance-inspired arches and gardens'),'Keep original Hobbies description');
+assert.ok(html.includes('Boston Public Library · McKim Courtyard - Boston, MA'),'Keep original caption location');
+
 assert.ok(fs.existsSync(path.resolve(__dirname,'../assets/countries.geojson')),'Country data missing');
 assert.ok(!html.includes("quotes available · Treasury daily"),'Quote-count status still visible');
 assert.ok(!html.includes('Market quotes · Connecting to source…'),'Market loading banner should be removed');
 assert.match(html,/03 \/ COMPUTER SCIENCE &amp; FINANCE/,'Education tile needs accurate emphasis');
-assert.match(html,/Incoming M\.S\. Computer Science \(Align\)/,'Northeastern program should be named');
+assert.match(html,/Computer Science at Northeastern University/,'Use requested Northeastern wording');
+assert.ok(!/MSCS|M\.S\. Computer Science|MS Align|Computer Science \(Align\)/i.test(html),'No graduate-program labels on public page');
 assert.match(html,/B\.S\. Finance \(FinTech\)/,'Finance undergraduate program should remain distinct');
 console.log('PASS: document landmarks, unique ids, script structure, unlisted headers, factual copy, and source assets');
