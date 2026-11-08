@@ -748,6 +748,113 @@ img{image-rendering:auto;vertical-align:middle}
  #project-details #project-2 .ds-team-feature{grid-template-columns:100px minmax(0,1fr)!important}
  #project-details #project-2 .ds-team-feature img{width:100px!important;height:100px!important}
 }
+</style><style>
+/* Cohesive purple-and-white sectional palette | November 2026
+   Alternate soft lavender with dark plum, preserving original card surfaces. */
+:root{
+ --mk-lavender-50:#fbfaff;
+ --mk-lavender-100:#f2edfc;
+ --mk-lavender-200:#e6dbf5;
+ --mk-purple-ink:#291f42;
+ --mk-purple-accent:#9f76dd;
+}
+/* Distinctive dark hero area without changing its layout or anchored navigation. */
+#home{
+ background:
+ radial-gradient(ellipse at 83% 30%,rgba(173,121,237,.19),transparent 52%),
+ radial-gradient(ellipse at 8% 87%,rgba(121,94,212,.14),transparent 50%),
+ linear-gradient(135deg,#0e1123 0%,#17132b 58%,#211638 100%)!important;
+ border:1px solid rgba(181,153,238,.16);
+ border-radius:24px;
+ padding-left:clamp(18px,3vw,42px)!important;
+ padding-right:clamp(18px,3vw,42px)!important;
+ box-shadow:inset 0 0 80px rgba(108,65,172,.06);
+}
+/* Experience: pale violet background with original dark, readable job cards. */
+#experience{
+ background:
+ radial-gradient(ellipse at 8% 3%,rgba(211,191,246,.78),transparent 47%),
+ radial-gradient(ellipse at 90% 80%,rgba(231,215,255,.8),transparent 49%),
+ linear-gradient(145deg,#fbfaff 0%,#ede6f9 100%)!important;
+ color:var(--mk-purple-ink)!important;
+ border-top:1px solid #e1d5f3!important;
+ border-bottom:1px solid #d8cceb!important;
+}
+#experience .page-hero h1,#experience .page-hero .page-title{color:#2a213e!important}
+#experience .page-hero p{color:#615573!important}
+#experience .page-hero .eyebrow,#experience .page-hero .back{color:#7853ac!important}
+#experience .page-hero .highlight{color:#a368c8!important}
+#experience .note{color:#5c5273!important;background:rgba(255,255,255,.64)!important;border-color:#d9c9ec!important}
+#experience .timeline .job{color:#eeeaf8}
+#experience .timeline .job p,#experience .timeline .job li{color:#c9c8d9}
+/* Projects: deep purple slate, creating contrast with Experience and Skills. */
+#project-details{
+ background:
+ radial-gradient(ellipse at 90% 12%,rgba(124,79,196,.3),transparent 50%),
+ radial-gradient(ellipse at 8% 85%,rgba(84,76,154,.2),transparent 55%),
+ linear-gradient(165deg,#151024 0%,#111627 55%,#1a1230 100%)!important;
+ border-top:1px solid #3b2b5c!important;
+ border-bottom:1px solid #41315c!important;
+}
+#project-details .selected-projects-grid>.project-block{box-shadow:0 12px 30px rgba(7,6,20,.16)}
+/* Skills: airy white-lavender with a restrained lavender glow. */
+#skills{
+ background:
+ radial-gradient(ellipse at 90% 10%,rgba(226,205,253,.76),transparent 48%),
+ radial-gradient(ellipse at 9% 88%,rgba(219,223,252,.55),transparent 45%),
+ linear-gradient(125deg,#fff 0%,#f8f5ff 58%,#eeeafa 100%)!important;
+ border-bottom:1px solid #ded5ed!important;
+}
+#skills .sectionhead .eyebrow{color:#7351a5!important}
+#skills .sectionhead h2{color:#2d2545!important}
+#skills .sectionhead h2 .highlight{color:#9b6bd4!important}
+#skills .sectionhead p{color:#5f5771!important}
+/* Hobbies: aubergine violet, with brighter accents and existing photo cards. */
+#hobbies{
+ background:
+ radial-gradient(ellipse at 5% 10%,rgba(158,108,211,.29),transparent 46%),
+ radial-gradient(ellipse at 93% 80%,rgba(112,86,190,.29),transparent 50%),
+ linear-gradient(150deg,#21152f 0%,#1a1931 54%,#251936 100%)!important;
+ border-top:1px solid #4c365f!important;
+ border-bottom:1px solid #594268!important;
+}
+#hobbies .page-hero .back,#hobbies .page-hero .eyebrow{color:#d4b5ff!important}
+#hobbies .page-hero h1{color:#f8f5ff!important}
+#hobbies .page-hero .highlight{color:#d2a5f3!important}
+#hobbies .page-hero p{color:#dad0e8!important}
+/* Milestone: lilac white, paired with existing dark milestone cards. */
+#achievements{
+ background:
+ radial-gradient(ellipse at 6% 9%,rgba(210,185,243,.66),transparent 48%),
+ radial-gradient(ellipse at 93% 89%,rgba(210,208,255,.64),transparent 48%),
+ linear-gradient(130deg,#faf7ff 0%,#eee9fa 100%)!important;
+ color:#2d2444!important;
+ border-top:1px solid #e0d2f2!important;
+ border-bottom:1px solid #d6c8e9!important;
+}
+#achievements .page-hero h1{color:#2a2141!important}
+#achievements .page-hero .highlight{color:#9b69d2!important}
+#achievements .page-hero .back,#achievements .page-hero .eyebrow{color:#7751ab!important}
+#achievements .page-hero p{color:#5f5571!important}
+#achievements .dev-heading h2{color:#312541!important}
+#achievements .dev-heading p{color:#655873!important}
+#achievements .simple-list article{box-shadow:0 10px 24px rgba(54,36,92,.08)}
+/* Contact: rich royal-plum close to the site, retaining light text and dark panel. */
+#contact{
+ background:
+ radial-gradient(ellipse at 85% 17%,rgba(159,116,226,.29),transparent 48%),
+ radial-gradient(ellipse at 8% 93%,rgba(97,87,195,.23),transparent 48%),
+ linear-gradient(145deg,#181026 0%,#241737 63%,#101423 100%)!important;
+ border-top:1px solid #50406d!important;
+}
+#contact .page-hero .back,#contact .page-hero .eyebrow{color:#cfb0fd!important}
+#contact .page-hero h1{color:#fff!important}
+#contact .page-hero .highlight{color:#d7b1fa!important}
+#contact .page-hero p{color:#d1c4df!important}
+#contact .contact-single .large-panel{border-color:#6e558d!important;box-shadow:0 16px 40px rgba(7,6,22,.2)}
+@media(max-width:700px){
+ #home{border-radius:16px;padding-left:15px!important;padding-right:15px!important}
+}
 </style></head><body><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#experience">Experience</a><a href="#project-details">Projects</a><a href="#skills">Skills</a><a href="#hobbies">Hobbies</a><a href="#achievements">Milestone</a><a href="#contact">Contact</a></div></nav></header><section class="preview-markets" id="markets"><div class="preview-markets-head"><strong>● US &amp; GLOBAL MARKETS</strong><span>Market quotes · Connecting to source…</span><a href="https://finance.yahoo.com/markets/" rel="noopener noreferrer" target="_blank">Yahoo Finance ↗</a></div><div class="preview-viewport"><div class="preview-track"><div class="preview-set"><a class="preview-tile" href="https://finance.yahoo.com/quote/^GSPC/" rel="noopener noreferrer" target="_blank"><b>S&amp;P 500</b><small>^GSPC</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^DJI/" rel="noopener noreferrer" target="_blank"><b>Dow 30</b><small>^DJI</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^IXIC/" rel="noopener noreferrer" target="_blank"><b>Nasdaq</b><small>^IXIC</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^RUT/" rel="noopener noreferrer" target="_blank"><b>Russell 2000</b><small>^RUT</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^TNX/" rel="noopener noreferrer" target="_blank"><b>10-Yr Bond</b><small>^TNX</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^VIX/" rel="noopener noreferrer" target="_blank"><b>VIX</b><small>^VIX</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/GC=F/" rel="noopener noreferrer" target="_blank"><b>Gold</b><small>GC=F</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/BTC-USD/" rel="noopener noreferrer" target="_blank"><b>Bitcoin USD</b><small>BTC-USD</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/CL=F/" rel="noopener noreferrer" target="_blank"><b>Crude Oil</b><small>CL=F</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/PRIVATE-EQUITY/" rel="noopener noreferrer" target="_blank"><b>US Private Equity</b><small>PRIVATE-EQUITY</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/NVDA/" rel="noopener noreferrer" target="_blank"><b>NVIDIA</b><small>NVDA</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/AAPL/" rel="noopener noreferrer" target="_blank"><b>Apple</b><small>AAPL</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/MSFT/" rel="noopener noreferrer" target="_blank"><b>Microsoft</b><small>MSFT</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a></div><div aria-hidden="true" class="preview-set"><a class="preview-tile" href="https://finance.yahoo.com/quote/^GSPC/" rel="noopener noreferrer" target="_blank"><b>S&amp;P 500</b><small>^GSPC</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^DJI/" rel="noopener noreferrer" target="_blank"><b>Dow 30</b><small>^DJI</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^IXIC/" rel="noopener noreferrer" target="_blank"><b>Nasdaq</b><small>^IXIC</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^RUT/" rel="noopener noreferrer" target="_blank"><b>Russell 2000</b><small>^RUT</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^TNX/" rel="noopener noreferrer" target="_blank"><b>10-Yr Bond</b><small>^TNX</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^VIX/" rel="noopener noreferrer" target="_blank"><b>VIX</b><small>^VIX</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/GC=F/" rel="noopener noreferrer" target="_blank"><b>Gold</b><small>GC=F</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/BTC-USD/" rel="noopener noreferrer" target="_blank"><b>Bitcoin USD</b><small>BTC-USD</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/CL=F/" rel="noopener noreferrer" target="_blank"><b>Crude Oil</b><small>CL=F</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/PRIVATE-EQUITY/" rel="noopener noreferrer" target="_blank"><b>US Private Equity</b><small>PRIVATE-EQUITY</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/NVDA/" rel="noopener noreferrer" target="_blank"><b>NVIDIA</b><small>NVDA</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/AAPL/" rel="noopener noreferrer" target="_blank"><b>Apple</b><small>AAPL</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/MSFT/" rel="noopener noreferrer" target="_blank"><b>Microsoft</b><small>MSFT</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a></div></div></div></section><main><section class="container hero" id="home"><div class="fade"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Finance × Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1>Hi, I'm<br/><span>Michael</span><br/>Katongole.</h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div aria-label="Social profile links" class="mk-socials mk-socials-top" role="group"><a aria-label="Email - Michael Katongole" class="mk-social-link mk-social-email" href="mailto:MichaelKatongole5@gmail.com"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="mk-social-word">Email</span></a><a aria-label="GitHub - Michael Katongole" class="mk-social-link mk-social-github" href="https://github.com/michaelseth5" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 0S17.73-.35 15 2a13.38 13.38 0 0 0-7 0C5.27-.35 4.09 0 4.09 0A5.07 5.07 0 0 0 4 3.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 17.13V21"></path></svg><span class="mk-social-word">GitHub</span></a><a aria-label="LinkedIn - Michael Katongole" class="mk-social-link mk-social-linkedin" href="https://www.linkedin.com/in/michael-k-65b1a8222/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="20" rx="3" width="20" x="2" y="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7h3v1.3a3 3 0 0 1 5 2.6V17"></path></svg><span class="mk-social-word">LinkedIn</span></a></div></div><div class="globe-wrap"><canvas aria-label="Interactive rotating financial data globe" id="globe" role="img"></canvas><div class="globe-badge">● FX ROUTES / INTERACTIVE MODEL</div><div class="globe-label"><strong>Global Currency Activity</strong><small>Animated financial routes - not transfers</small></div><div class="fx-demo-panel"><div class="fx-d-head">FX / USD BASE <span>Connecting…</span></div><div class="fx-d-row">USD / EUR <b>--</b></div><div class="fx-d-row">USD / GBP <b>--</b></div><div class="fx-d-row">USD / JPY <b>--</b></div><div class="fx-d-row">USD / CHF <b>--</b></div><div class="fx-d-row">USD / SGD <b>--</b></div><div class="fx-d-foot">Frankfurter reference rates · Usually updated daily, not live trades</div></div></div></section><section class="mk-editorial-intro" id="portfolio-intro-grid"><div class="container">
 <div class="mk-intro-top mk-reveal"><span>● MORE THAN A RESUME</span><span>THE PERSON BEHIND THE WORK / 2026</span></div>
 <div class="mk-intro-heading mk-reveal"><h2>HELLO, I'M<br/><em>MICHAEL.</em></h2><div class="mk-intro-aside"><strong>✳</strong><p>Curious by nature. Building the systems behind smarter finance, exploring new places, and helping others grow.</p><a href="#experience">Discover my story ↘</a></div></div>
