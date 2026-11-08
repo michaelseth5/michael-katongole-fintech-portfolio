@@ -1,6 +1,6 @@
 // Netlify function for unofficial Yahoo Finance chart data.
 // Market quotes may be delayed or unavailable. Not intended for trading decisions.
-const SYMBOLS=['NVDA','AAPL','MSFT','AMZN','GOOGL','META','TSLA','JPM','^IXIC','^NDX','^GSPC','^DJI','GC=F','CL=F','SI=F','NG=F'];
+const SYMBOLS=['NVDA','AAPL','MSFT','AMZN','GOOGL','META','TSLA','JPM','^IXIC','^NDX','^GSPC','^DJI','^RUT','^TNX','^VIX','GC=F','CL=F','SI=F','NG=F','BTC-USD'];
 let cached=null, cacheUntil=0;
 async function quote(symbol){
   const url='https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(symbol)+'?range=1d&interval=5m';
