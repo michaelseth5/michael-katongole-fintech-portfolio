@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="IBM x UTD Case Competition — Synapse Solutions"><rect width="1200" height="675" fill="#fff"/><rect width="34" height="675" fill="#1f70bd"/><g fill="#eaf0f6" opacity=".8" font-family="Arial,sans-serif" font-size="350" font-weight="900"><text x="230" y="470">IBM</text></g><g font-family="Arial,Helvetica,sans-serif" fill="#101010"><text x="135" y="255" font-size="45">IBM x UTD Case Competition</text><text x="135" y="305" font-size="43">Agentic AI for Cross-Department Collaboration</text><text x="135" y="352" font-size="24">Team Name: Synapse Solutions</text><text x="135" y="385" font-size="24">Prepared By: Hajar Abdulkadir, Michael Katongole</text><text x="135" y="418" font-size="24">September 2025</text></g><g fill="#111" font-family="Arial,sans-serif" font-weight="900" font-size="52"><text x="1030" y="615">IBM</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" role="img" aria-label="IBM x UTD Case Competition Synapse Solutions">
+<defs>
+ <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f8faff"/></linearGradient>
+ <pattern id="ibmstripes" width="1" height="14" patternUnits="userSpaceOnUse"><rect width="1" height="9" fill="#171717"/></pattern>
+</defs>
+<rect width="1672" height="941" fill="url(#paper)"/>
+<rect width="26" height="941" fill="#0667d3"/>
+<g font-family="Arial, Helvetica, sans-serif" font-weight="900" fill="#eaf0f6" opacity=".48" letter-spacing="-30"><text x="205" y="718" font-size="520">IBM</text></g>
+<g font-family="Arial, Helvetica, sans-serif" fill="#090a0c">
+<text x="139" y="229" font-size="49" font-weight="400">IBM x UTD Case Competition</text>
+<rect x="139" y="269" width="132" height="10" fill="#006bdc"/>
+<text x="135" y="419" font-size="112" letter-spacing="-5" font-weight="800">Synapse Solutions</text>
+<text x="139" y="511" font-size="57" letter-spacing="-1">Agentic AI for Cross-Department Collaboration</text>
+<text x="139" y="609" font-size="36">Prepared by Hajar Abdulkadir, Michael Katongole</text>
+<text x="139" y="658" font-size="35">September 2025</text>
+</g>
+<text x="1433" y="856" font-family="Arial Black, Arial, sans-serif" font-size="103" font-weight="900" letter-spacing="-9" fill="url(#ibmstripes)">IBM</text>
+</svg>
