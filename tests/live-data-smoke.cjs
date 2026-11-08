@@ -23,4 +23,17 @@ async function json(url){
   const gdp=await json('https://api.worldbank.org/v2/country/USA/indicator/NY.GDP.MKTP.CD?format=json&date=2023');
   assert.ok(Array.isArray(gdp[1])&&Number(gdp[1][0]?.value)>0,'World Bank GDP observation missing');
   console.log('LIVE World Bank: '+gdp[1][0].date+' USA GDP observation retrieved successfully');
+  const netlify=require('../netlify/functions/markets.js').handler;
+  const tradeProxy=await netlify({httpMethod:'GET',queryStringParameters:{dataset:'trade',reporter:'36',year:'2023'}});
+  assert.equal(tradeProxy.statusCode,200,'Portfolio trade function returned '+tradeProxy.statusCode+': '+tradeProxy.body);
+  const normalized=JSON.parse(tradeProxy.body);
+  assert.ok(Array.isArray(normalized.flows)&&normalized.flows.length>0,'Netlify trade endpoint returned no bilateral rows');
+  assert.ok(normalized.flows.some(f=>f.flow==='X'&&f.from===36&&f.to>0&&f.usd>0),'Netlify trade output lacks exported trade arcs');
+  console.log('LIVE PORTFOLIO TRADE PROXY: '+normalized.flows.length+' annual reported corridors normalized');
+  const gdpProxy=await netlify({httpMethod:'GET',queryStringParameters:{dataset:'gdp',country:'USA',year:'2023'}});
+  assert.equal(gdpProxy.statusCode,200,'Portfolio GDP endpoint unavailable');
+  const value=JSON.parse(gdpProxy.body);
+  assert.ok(value.value>0&&value.year===2023,'Portfolio GDP endpoint returned no actual-year observation');
+  console.log('LIVE PORTFOLIO GDP PROXY: '+value.country+' '+value.year+' indicator verified');
+
 })().catch(e=>{console.error(e);process.exitCode=1});
