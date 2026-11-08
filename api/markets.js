@@ -1,7 +1,7 @@
 // Unified market endpoint for Vercel and Netlify. No API keys required.
 // Stocks: unofficial Yahoo Finance (best effort); crypto: Coinbase spot;
 // bonds: official U.S. Treasury daily par yields (not intraday).
-const YAHOO=['NVDA','AAPL','MSFT','AMZN','GOOGL','META','TSLA','JPM','^IXIC','^NDX','^GSPC','^DJI','^RUT','^VIX','GC=F','CL=F','SI=F','NG=F'];
+const YAHOO=['NVDA','AAPL','MSFT','AMZN','GOOGL','META','TSLA','JPM','^IXIC','^NDX','^GSPC','^DJI','^RUT','^FVX','^TNX','^TYX','^VIX','GC=F','CL=F','SI=F','NG=F'];
 const cryptoSymbols=['BTC-USD','ETH-USD'];
 const ttl=120000;let memo=null,expires=0,ongoing=null;
 async function get(url,ms=6500){
