@@ -16,7 +16,7 @@ async function tradeFlows(event) {
   if (cached && cached.expires > Date.now()) return cached.response;
   const query = new URLSearchParams({
     reporterCode: String(reporter), period: String(year),
-    partnerCode: 'all', cmdCode: 'TOTAL', flowCode: 'X'
+    partnerCode: 'all', cmdCode: 'TOTAL', flowCode: 'X,M'
   });
   const url = 'https://comtradeapi.un.org/public/v1/preview/C/A/HS?' + query;
   try {
@@ -25,11 +25,13 @@ async function tradeFlows(event) {
     const payload = await upstream.json();
     if (payload.error) throw Error('Comtrade returned an error');
     const flows = (Array.isArray(payload.data) ? payload.data : [])
-      .filter(row => row.flowCode === 'X' && Number(row.partnerCode) > 0 &&
+      .filter(row => (row.flowCode === 'X' || row.flowCode === 'M') && Number(row.partnerCode) > 0 &&
           Number(row.partnerCode) !== reporter && Number(row.primaryValue) > 0 &&
           String(row.cmdCode).toUpperCase() === 'TOTAL')
       .map(row => ({
-        from: reporter, to: Number(row.partnerCode),
+        from: row.flowCode === 'X' ? reporter : Number(row.partnerCode),
+        to: row.flowCode === 'X' ? Number(row.partnerCode) : reporter,
+        flow: row.flowCode,
         usd: Number(row.primaryValue), partner: row.partnerDesc || null,
         year: Number(row.refYear || year)
       }));
@@ -38,7 +40,7 @@ async function tradeFlows(event) {
       'Cache-Control':'public, max-age=600, s-maxage=3600'
     }, body:JSON.stringify({
       flows, reporter, year, retrievedAt:new Date().toISOString(),
-      source:'UN Comtrade public API - annual reported merchandise exports',
+      source:'UN Comtrade public API - annual reporter-recorded merchandise imports and exports',
       coverage:'Public preview limited to 500 records; not global or real-time capital flows',
       unit:'USD', count:flows.length
     }) };
