@@ -11,7 +11,7 @@
   wrap.append(controls,panel,status);
   const $=id=>document.getElementById(id);
   const opt={mode:$('gf-mode'),year:$('gf-year'),top:$('gf-top'),min:$('gf-min'),spin:$('gf-spin'),animate:$('gf-animate')};
-  const state={globe:null,features:[],lookup:new Map(),selected:null,flows:[],updated:'',loading:false,seq:0,cache:new Map(),countryName:'United States of America',source:'UN Comtrade'};
+  const state={globe:null,features:[],lookup:new Map(),selected:null,flows:[],updated:'',loading:false,seq:0,cache:new Map(),countryName:'United States of America',source:'UN Comtrade',gdp:null,gdpYear:null,gdpSeq:0};
   const unsupported=['fdi','portfolio','remit','capital'];
   [...opt.mode.options].forEach(option=>{if(unsupported.includes(option.value)){option.disabled=true;option.textContent+=' (unavailable)';}});
   const escapeHTML=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -34,6 +34,8 @@
     state.selected=feature;
     $('gf-country').value=String(code(feature));
     state.countryName=name(feature);
+    state.gdp=null;state.gdpYear=null;
+    fetchGDP(feature);
     state.globe.pointOfView({...centroid(feature),altitude:1.7},800);
     state.globe.polygonCapColor(f=>f===feature?'rgba(178,127,255,.42)':'rgba(60,42,105,.16)');
     if(!Number.isInteger(code(feature))||code(feature)<1){
@@ -59,18 +61,37 @@
     const outgoing=state.flows.filter(x=>x.flow==='X'&&x.year===year);
     const total=a=>a.reduce((s,x)=>s+x.usd,0);
     let body='<h3>'+escapeHTML(name(f))+'</h3><p>UN Comtrade · '+year+' · USD</p>';
+    body+='<p>GDP (current US$): <b>'+(state.gdp?money(state.gdp):'Not Available')+'</b>'+(state.gdpYear?' <small>('+state.gdpYear+', World Bank)</small>':'')+'</p>';
     if(!available){
       body+='<p><b>Data unavailable.</b> This source contains merchandise trade, not '+escapeHTML(opt.mode.selectedOptions[0].text)+'.</p>';
     }else if(!state.flows.length){
       body+='<p><b>Data unavailable.</b> No reporter-level bilateral records were returned.</p>';
     }else{
       body+='<p>Reported imports: <b>'+money(total(incoming))+'</b></p><p>Reported exports: <b>'+money(total(outgoing))+'</b></p><p>Reported trade balance (exports − imports): <b>'+money(Math.abs(total(outgoing)-total(incoming)))+(total(outgoing)>=total(incoming)?' surplus':' deficit')+'</b></p>';
-      const top=good.slice(0,5);
-      body+='<p><b>Largest visible corridors</b></p><ol>'+top.map(x=>'<li>'+escapeHTML(x.src)+' → '+escapeHTML(x.dst)+' · '+money(x.usd)+'</li>').join('')+'</ol>';
+      const partnerList=(arr,side)=>arr.slice().sort((a,b)=>b.usd-a.usd).slice(0,5).map(x=>{
+        const p=state.lookup.get(side==='from'?x.from:x.to);
+        return '<li>'+escapeHTML(p?.name||x.partner||'Country')+' · '+money(x.usd)+'</li>';
+      }).join('');
+      body+='<p><b>Top import origins (reported)</b></p><ol>'+partnerList(incoming,'from')+'</ol>';
+      body+='<p><b>Top export destinations (reported)</b></p><ol>'+partnerList(outgoing,'to')+'</ol>';
     }
     body+='<div class="gf-legend"><span><i class="gf-dot" style="background:#b795ff"></i>Imports</span><span><i class="gf-dot" style="background:#31e3ee"></i>Exports</span></div><p style="font-size:9px;margin-top:8px">UN Comtrade public preview · USD · '+year+'. Partial reporting and up to 500 records; sums are only from the records retrieved, not official national totals. These are merchandise trade values, not money transfers.</p>';
     panel.innerHTML=body;
     status.textContent=available?(arcs.length+' visible corridors · '+escapeHTML(name(f))+' · '+year+' · UN Comtrade annual reports'):'Data unavailable for this flow category · choose merchandise trade';
+  }
+  async function fetchGDP(feature){
+    const seq=++state.gdpSeq;
+    const iso=feature.properties.ISO_A3;
+    if(!/^[A-Z]{3}$/.test(iso)){state.gdp=null;draw();return;}
+    try{
+      const response=await fetch('/api/markets?dataset=gdp&country='+encodeURIComponent(iso)+'&year='+opt.year.value);
+      if(!response.ok)throw Error('GDP unavailable');
+      const result=await response.json();
+      if(seq!==state.gdpSeq)return;
+      state.gdp=Number(result.value)>0?Number(result.value):null;
+      state.gdpYear=result.year||null;
+    }catch(e){if(seq!==state.gdpSeq)return;state.gdp=null;state.gdpYear=null;}
+    if(seq===state.gdpSeq)draw();
   }
   async function fetchFlows(){
     const selected=state.selected;
@@ -141,11 +162,11 @@
     }catch(error){status.textContent='Interactive globe unavailable: '+error.message+' · your portfolio remains accessible.';mount.innerHTML='<div style="padding:50px 12px;text-align:center;color:#a69cce">3D globe could not load. Check your connection or browser WebGL support.</div>';}
   }
   for(const el of [opt.mode,opt.top,opt.min,opt.animate])el.addEventListener('change',draw);
-  opt.year.addEventListener('change',fetchFlows);
+  opt.year.addEventListener('change',()=>{if(state.selected)fetchGDP(state.selected);fetchFlows();});
   $('gf-country').addEventListener('change',e=>{const c=Number(e.target.value);const f=state.features.find(f=>code(f)===c);if(f)pick(f);});
   opt.spin.addEventListener('change',()=>{if(state.globe)state.globe.controls().autoRotate=opt.spin.checked;});
   $('gf-reload').addEventListener('click',fetchFlows);
-  $('gf-reset').addEventListener('click',()=>{if(!state.globe)return;state.selected=null;$('gf-country').value='';state.globe.polygonCapColor('rgba(60,42,105,.16)');state.globe.pointOfView({lat:28,lng:-25,altitude:2.3},900);draw();});
+  $('gf-reset').addEventListener('click',()=>{if(!state.globe)return;state.selected=null;state.gdpSeq++;$('gf-country').value='';state.globe.polygonCapColor('rgba(60,42,105,.16)');state.globe.pointOfView({lat:28,lng:-25,altitude:2.3},900);draw();});
   $('gf-fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(wrap.requestFullscreen)await wrap.requestFullscreen();}catch(e){status.textContent='Fullscreen is unavailable in this browser.';}});
   document.addEventListener('fullscreenchange',()=>$('gf-fullscreen').textContent=document.fullscreenElement?'Close':'Expand');
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){opt.animate.checked=false;opt.spin.checked=false;}
