@@ -1,0 +1,80 @@
+
+/* Centered editorial UI treatment, without flattening market tables or globe controls. */
+main .page-hero,main .sectionhead,
+#portfolio-intro-grid .mk-bento-tile,
+#experience .job.demo-entry,#experience .job .demo-entry-body,
+#education .preview-school,#project-details .project-block,
+#project-details .slide-deck-shelf,#project-details .slide-deck-tile,
+#skills .large-panel,#hobbies .hobby-slide,
+#networking .network-event-slide,#achievements .demo-milestone,
+#achievements .dev-program,#contact .contact-single>.large-panel,
+#listening-reading .lr-card {text-align:center!important}
+#portfolio-intro-grid .mk-bento-tile :is(h2,h3,p),
+#experience .job.demo-entry :is(h2,p,.date,.muted),
+#education .preview-school :is(h3,p),
+#project-details .project-block :is(h2,h3,p),
+#skills .large-panel :is(h3,p),
+#hobbies .hobby-slide :is(h2,h3,p,figcaption),
+#networking .network-event-slide :is(h2,h3,p,figcaption),
+#achievements .demo-milestone :is(h2,p),
+#contact .contact-single>.large-panel :is(h2,p) {text-align:center!important}
+#portfolio-intro-grid .mk-bento-craft a,
+#portfolio-intro-grid .mk-bento-mindset .mk-bento-eyebrow,
+#portfolio-intro-grid .mk-bento-craft .mk-bento-eyebrow{display:block;text-align:center!important}
+#experience .job .demo-entry-art{margin-inline:auto!important;justify-content:center!important}
+#experience .job ul{list-style-position:inside;padding-left:0!important}
+#education .preview-school :is(h3,p){margin-inline:auto}
+#listening-reading .lr-heading,#listening-reading .lr-heading p{text-align:center!important}
+#listening-reading .lr-heading{justify-content:center!important;flex-direction:column;align-items:center!important}
+#listening-reading .lr-copy{align-items:center!important;text-align:center!important}
+#listening-reading .lr-link{justify-content:center!important}
+#project-details .project-block .actions,#contact .actions{justify-content:center!important}
+#project-details .project-block .project-cover{margin-inline:auto}
+#project-details .project-framework-item{text-align:center}
+#project-details .project-framework-label{justify-content:center}
+#skills .large-panel .skills{justify-content:center}
+#achievements .dev-program{align-items:center}
+#portfolio-intro-grid .mk-bento-fact{text-align:center!important}
+#portfolio-intro-grid .mk-bento-fact span{text-align:center!important}
+#portfolio-intro-grid .mk-bento-mindset .mk-bento-rule,
+#portfolio-intro-grid .mk-bento-craft .mk-bento-rule{margin-inline:auto}
+#portfolio-intro-grid .mk-bento-mini-photo.mk-mindset-photo-rotator{
+  position:relative!important;isolation:isolate;display:block;flex:0 0 auto;
+  width:100%;max-width:165px;min-height:118px;height:118px;
+  margin:0 auto 15px;border-radius:15px;overflow:hidden;
+  background:#e9e3ef;box-shadow:0 10px 22px rgba(89,59,116,.18)
+}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame{
+  position:absolute;inset:0;width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center 24%;opacity:0;
+  transition:opacity .65s ease;pointer-events:none;
+  border:0!important;margin:0!important
+}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame.is-active{opacity:1}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--sprite{
+  background-image:url("assets/mindset-photo-rotation.jpg");
+  background-repeat:no-repeat;background-size:200% 200%;
+}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--1{background-position:0 0}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--2{background-position:100% 0}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--3{background-position:0 100%}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--4{background-position:100% 100%}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-next{
+  position:absolute;bottom:7px;right:7px;z-index:3;
+  display:grid;place-items:center;width:27px;height:27px;
+  border:1px solid rgba(255,255,255,.55);border-radius:50%;
+  background:rgba(27,23,39,.64);color:#fff;
+  cursor:pointer;font-size:17px;line-height:1;
+  transition:background .2s ease,transform .2s ease
+}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-next:hover{background:rgba(84,54,122,.9);transform:scale(1.06)}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-next:focus-visible{outline:2px solid #e1ceff;outline-offset:2px}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-index{
+  position:absolute;bottom:9px;left:9px;z-index:3;
+  color:#fff;font:600 10px 'Space Grotesk',sans-serif;
+  background:rgba(26,23,37,.64);border-radius:12px;padding:3px 6px;letter-spacing:.05em
+}
+@media(prefers-reduced-motion:reduce){
+  #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame,
+  #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-next{transition:none!important;animation:none!important}
+}
