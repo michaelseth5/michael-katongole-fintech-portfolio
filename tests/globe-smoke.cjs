@@ -133,6 +133,10 @@ const { chromium } = require('playwright');
     assert.match(await page.locator('.mk-skills-selection').innerText(),/Python/);
     const firstPos = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
     await page.locator('.mk-skills-tools [data-action="shuffle"]').click();
+    await page.waitForFunction((before)=>{
+      const el=document.querySelector('#mk-skills-logos .mk-skill-particle');
+      return el && (el.style.left+'|'+el.style.top)!==before;
+    },firstPos,{timeout:7000});
     const shuffled = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
     assert.notEqual(shuffled,firstPos,'Shuffle should change skill positions');
     await page.locator('.mk-skills-tools [data-action="reset"]').click();
