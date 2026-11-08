@@ -1210,6 +1210,242 @@ img{image-rendering:auto;vertical-align:middle}
 @media(max-width:750px){
  #portfolio-intro-grid .mk-nyc-map-canvas.mk-nyc-aerial-image{background-position:center 50%!important}
 }
+</style><style>
+/* =============================================================
+   2026 EDITORIAL SYSTEM · matches The Person Behind The Code.
+   Unified pearl canvas, violet accent, ink typography & bento tiles.
+   ============================================================= */
+:root{
+ --mk-ink:#292631;--mk-mid:#585367;--mk-violet:#9966d3;
+ --mk-paper:#f8f6fc;--mk-soft:#f0edf5;--mk-line:#e3dfea;
+ --mk-ease:cubic-bezier(.22,1,.36,1);
+}
+html{scroll-padding-top:78px}
+body{background:#f8f6fc!important}
+#home,#experience,#project-details,#skills,#hobbies,#achievements,#contact{
+ color:var(--mk-ink)!important;
+ background:
+  radial-gradient(circle at 92% 6%,rgba(234,209,249,.36),transparent 37%),
+  radial-gradient(circle at 4% 78%,rgba(221,226,250,.31),transparent 40%),
+  radial-gradient(circle,rgba(151,122,180,.15) .65px,transparent .9px) 0 0 / 27px 27px,
+  linear-gradient(128deg,#fbfaff 0%,#f8f6fc 53%,#f6f1f9 100%)!important;
+ position:relative;
+}
+#home::before,#experience::before,#project-details::before,#skills::before,#hobbies::before,#achievements::before,#contact::before{
+ content:"";pointer-events:none;position:absolute;inset:0;opacity:.65;
+ background:radial-gradient(ellipse at 85% 22%,rgba(207,166,237,.14),transparent 45%);
+ z-index:0;
+}
+#home>.container,#experience>.container,#project-details>.container,#skills>.container,#hobbies>.container,#achievements>.container,#contact>.container,
+#experience>section.container,#project-details>section.container,#hobbies>section.container,#achievements>section.container,#contact>section.container{
+ position:relative;z-index:1;
+}
+#experience,#project-details,#skills,#hobbies,#achievements,#contact{
+ padding-top:74px!important;padding-bottom:86px!important;
+ border-top:1px solid #eae5f0!important;
+}
+#experience .container,#project-details .container,#skills .container,#hobbies .container,#achievements .container,#contact .container{
+ max-width:1160px;
+}
+#home{color:var(--mk-ink)!important}
+#home .hero,#home.hero{background:transparent!important;color:var(--mk-ink)!important}
+#home h1,#home .subtitle,#home p{color:#312a3c!important}
+#home .hero-headshot{box-shadow:0 12px 40px rgba(72,49,109,.15)}
+#home .subtitle .highlight{color:var(--mk-violet)!important}
+#home .actions .btn.primary{background:#8e56c9!important;color:white!important;border-color:transparent!important;box-shadow:0 10px 24px rgba(135,80,182,.18)}
+#home .actions .btn.primary:hover{background:#6e3ea8!important;transform:translateY(-3px)}
+#home .mk-social-link{background:#fff!important;color:#584673!important;border-color:#ddd2e9!important}
+#home .eyebrow,#home .eyebrowline{color:#8b659e!important}
+#experience .page-hero,#project-details .page-hero,#hobbies .page-hero,#achievements .page-hero,#contact .page-hero{
+ padding:8px 0 26px!important;margin-bottom:21px!important;
+ background:transparent!important;box-shadow:none!important;border:0!important;
+ color:var(--mk-ink)!important;max-width:100%!important;
+}
+#experience .page-hero .eyebrow,#project-details .page-hero .eyebrow,#hobbies .page-hero .eyebrow,
+#achievements .page-hero .eyebrow,#contact .page-hero .eyebrow,#skills .sectionhead .eyebrow{
+ color:#9168b5!important;font:800 10px 'Space Grotesk',sans-serif!important;letter-spacing:.19em!important;
+}
+#experience .page-hero .back,#project-details .page-hero .back,#hobbies .page-hero .back,#achievements .page-hero .back,#contact .page-hero .back{
+ color:#847692!important;font-size:12px!important;letter-spacing:.01em;transition:color .2s;
+}
+#experience .page-hero .back:hover,#project-details .page-hero .back:hover,#hobbies .page-hero .back:hover,#achievements .page-hero .back:hover,#contact .page-hero .back:hover{
+ color:#8852bf!important;
+}
+#experience .page-hero h1,#project-details .page-hero h1,#hobbies .page-hero h1,#achievements .page-hero h1,#contact .page-hero h1,
+#skills .sectionhead h2{
+ color:#2a2732!important;
+ font-size:clamp(40px,5.65vw,83px)!important;
+ line-height:1.04!important;letter-spacing:-.075em!important;font-weight:800!important;
+ text-transform:uppercase;
+ margin:11px 0 16px!important;
+}
+#experience .page-hero h1 .mk-title-solid,#project-details .page-hero h1 .mk-title-solid,
+#hobbies .page-hero h1 .mk-title-solid,#achievements .page-hero h1 .mk-title-solid,
+#contact .page-hero h1 .mk-title-solid,#skills .sectionhead .mk-title-solid{
+ color:#292631!important;
+}
+#experience .page-hero h1 .mk-title-glow,#project-details .page-hero h1 .mk-title-glow,
+#hobbies .page-hero h1 .mk-title-glow,#achievements .page-hero h1 .mk-title-glow,
+#contact .page-hero h1 .mk-title-glow,#skills .sectionhead .mk-title-glow{
+ background-image:linear-gradient(95deg,#9058c0,#c39af0,#e8c2ff,#9153c9,#9058c0)!important;
+ background-size:240% 100%!important;color:transparent!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+ animation:mk-editorial-shimmer 7s ease-in-out infinite!important;
+ filter:drop-shadow(0 0 10px rgba(169,92,219,.11));
+}
+#experience .page-hero h1 .highlight,#project-details .page-hero h1 .highlight,
+#hobbies .page-hero h1 .highlight,#achievements .page-hero h1 .highlight,#contact .page-hero h1 .highlight{color:#995fc7!important}
+#experience .page-hero p,#project-details .page-hero p,#hobbies .page-hero p,
+#achievements .page-hero p,#contact .page-hero p,#skills .sectionhead p{
+ color:#706779!important;max-width:720px;font-size:15px;line-height:1.75;
+}
+#experience .note{
+ border:1px solid #e8dfef!important;border-radius:16px!important;
+ background:#ffffffbf!important;color:#73687c!important;
+ padding:15px 20px!important;font-size:12px!important;
+}
+#experience .timeline{gap:16px!important}
+#experience .timeline .job,#experience .timeline .demo-entry{
+ color:#292631!important;border-radius:21px!important;
+ border:1px solid #e4dfe9!important;
+ background:linear-gradient(145deg,#fdfcff,#f1eef6)!important;
+ box-shadow:0 4px 20px rgba(61,42,83,.035)!important;
+ transition:transform .38s var(--mk-ease),box-shadow .38s var(--mk-ease),border-color .38s!important;
+}
+#experience .timeline .job:hover{
+ transform:translateY(-5px);border-color:#cbb1e7!important;box-shadow:0 21px 42px rgba(75,47,113,.10)!important;
+}
+#experience .job h2,#experience .demo-entry h2{color:#2c2637!important;letter-spacing:-.045em!important}
+#experience .timeline .job p,#experience .timeline .job li,#experience .timeline .job .muted{color:#655b70!important}
+#experience .timeline .job .date{color:#965ac8!important}
+#experience .demo-entry-art{background:#faf8fd!important;border:1px solid #e8e1ed!important;border-radius:16px!important}
+#experience .preview-education,#experience .preview-school{
+ border-radius:18px!important;background:#faf8fdbf!important;border-color:#e7ddec!important;color:#30283b!important;
+}
+#experience .preview-education h2,#experience .preview-school h3{color:#30283b!important}
+#experience .preview-school p{color:#70657c!important}
+#project-details .slide-deck-shelf,#project-details .slide-deck-tile,
+#project-details .project-block{
+ background:linear-gradient(135deg,#fdfcff,#eeebf5)!important;
+ border:1px solid #e4ddea!important;
+ border-radius:22px!important;color:#332b3b!important;
+ box-shadow:0 5px 24px rgba(74,44,104,.04)!important;
+}
+#project-details .slide-deck-shelf{padding:21px!important}
+#project-details .slide-deck-shelf h2,#project-details .slide-deck-tile strong,
+#project-details .project-block h2,#project-details .project-block h3{color:#30273a!important}
+#project-details .slide-deck-shelf p,#project-details .slide-deck-tile p,#project-details .project-block p,
+#project-details .project-block li,#project-details .case-box p{color:#675b70!important}
+#project-details .project-block{overflow:hidden;transition:transform .35s var(--mk-ease),box-shadow .35s var(--mk-ease),border-color .35s!important}
+#project-details .project-block:hover,#project-details .slide-deck-tile:hover{transform:translateY(-4px);border-color:#cfb2e9!important;box-shadow:0 16px 42px rgba(74,44,104,.10)!important}
+#project-details .project-expand{color:#7a42b5!important;border-color:#d7c5e5!important;background:#f6f0fc!important}
+#project-details .case-box,#project-details .project-framework-item{
+ background:#f7f4fb!important;border-color:#e3d9ed!important;color:#3c3247!important;border-radius:12px!important;
+}
+#project-details .project-framework-label{color:#62546e!important}
+#project-details .project-framework-num{color:#9c6ac3!important}
+#project-details .slide-deck-tile .deck-tile-tag,#project-details .project-block .eyebrow{color:#9060b6!important}
+#skills .sectionhead{position:relative;z-index:1}
+#skills .mk-skills-legend{color:#86758e!important}
+#skills .large-panel{
+ background:linear-gradient(145deg,#fefcff,#f0edf6)!important;
+ border:1px solid #e2dce9!important;color:#30283b!important;
+ border-radius:22px!important;padding:24px!important;
+ box-shadow:0 6px 25px rgba(64,43,93,.045)!important;
+ transition:transform .3s var(--mk-ease),box-shadow .3s!important;
+}
+#skills .large-panel:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(70,48,100,.10)!important}
+#skills .large-panel .eyebrow{color:#966ab3!important;letter-spacing:.14em!important}
+#skills .large-panel .skill{
+ background:#fff!important;color:#51445e!important;
+ border:1px solid #e1d6eb!important;border-radius:999px!important;
+ padding:9px 14px!important;transition:background .22s,color .22s,transform .22s!important;
+}
+#skills .large-panel .skill:hover{background:#ede2f7!important;color:#8042bb!important;transform:translateY(-2px)}
+#hobbies .hobbies-carousel-wrap{color:#30283b!important}
+#hobbies .hobby-carousel-controls{background:transparent!important}
+#hobbies .hobby-carousel-btn,#hobbies .hobby-carousel-dots button{
+ border-color:#dfd4ec!important;color:#744d9d!important;background:#fff!important;
+}
+#hobbies .hobby-carousel-dots button[aria-selected="true"]{background:#9260c6!important;color:#fff!important;border-color:#9260c6!important}
+#hobbies .hobby-slide{
+ background:linear-gradient(145deg,#fdfcff,#f2eef7)!important;
+ border:1px solid #e3ddea!important;border-radius:24px!important;
+ color:#30283b!important;box-shadow:0 8px 28px rgba(74,46,108,.055)!important;
+}
+#hobbies .hobby-slide h2{color:#2e2538!important;letter-spacing:-.06em!important}
+#hobbies .hobby-slide>p,#hobbies .hobby-slide .art-showcase-desc,#hobbies .hobby-slide .travel-gallery-intro{color:#6b6075!important}
+#hobbies .hobby-slide .eyebrow{color:#925eba!important}
+#hobbies .photo-carousel-controls .photo-carousel-arrow{
+ background:#fff!important;color:#7545a8!important;border:1px solid #dfd0ed!important;
+}
+#hobbies .photo-carousel-status{color:#8c6dab!important}
+#hobbies .art-photo-card,#hobbies .travel-photo-card,#hobbies .mentorship-shot{
+ background:#fff!important;border:1px solid #e2dbeb!important;color:#392c44!important;
+ border-radius:18px!important;box-shadow:0 4px 15px rgba(51,39,72,.04)!important;
+}
+#hobbies .art-photo-card figcaption,#hobbies .travel-photo-card figcaption,#hobbies .mentorship-shot figcaption{color:#4d4059!important}
+#hobbies .art-photo-card figcaption span,#hobbies .travel-photo-card figcaption span{color:#8b7d91!important}
+#hobbies .unserious-hobby-slide .unserious-photo{background:#171422!important}
+#hobbies .unserious-hobby-slide .unserious-photo figcaption{color:#f6efff!important}
+#hobbies .rb-converts-slide .rb-converts-status{color:#7d54ab!important;background:#eee3f6!important;border-color:#d7c4e8!important}
+#achievements .simple-list{gap:15px!important}
+#achievements .demo-milestone,#achievements .dev-milestone{
+ background:linear-gradient(135deg,#fff,#f0ecf7)!important;
+ border:1px solid #e3dce9!important;border-radius:22px!important;
+ color:#332b3b!important;box-shadow:0 6px 24px rgba(70,45,100,.045)!important;
+ transition:transform .35s var(--mk-ease),box-shadow .35s!important;
+}
+#achievements .demo-milestone:hover,#achievements .dev-milestone:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(71,47,108,.09)!important}
+#achievements .demo-milestone h2,#achievements .dev-heading h2{color:#30283a!important}
+#achievements .demo-milestone p,#achievements .dev-milestone p{color:#6c6177!important}
+#achievements .demo-milestone .eyebrow,#achievements .dev-heading .eyebrow{color:#9369b6!important}
+#achievements .demo-milestone-art{background:#faf8fc!important;border-radius:17px!important}
+#achievements .dev-program{
+ border-radius:17px!important;background:#fff!important;border:1px solid #e5ddeb!important;
+ color:#40364b!important;box-shadow:0 3px 16px rgba(65,40,84,.035)!important;
+}
+#achievements .dev-program h3,#achievements .dev-program strong{color:#3d304a!important}
+#contact .contact-single>.large-panel{
+ background:linear-gradient(145deg,#fff,#f0edf7)!important;
+ border:1px solid #e1d8ec!important;border-radius:26px!important;
+ padding:clamp(24px,4vw,48px)!important;color:#332b3e!important;
+ box-shadow:0 16px 45px rgba(72,46,106,.07)!important;
+}
+#contact .large-panel h2{color:#2a2632!important;letter-spacing:-.065em!important}
+#contact .large-panel .muted{color:#73667d!important}
+#contact .large-panel .eyebrow{color:#9b66bd!important}
+#contact .mk-social-link{background:#fff!important;border:1px solid #ded0e8!important;color:#694f85!important}
+#contact .mk-social-link:hover{background:#eee4f8!important;border-color:#b994d8!important;transform:translateY(-3px)}
+#experience .page-hero::after,#project-details .page-hero::after,#hobbies .page-hero::after,
+#achievements .page-hero::after,#contact .page-hero::after,#skills .sectionhead::after{
+ content:"";display:block;width:100%;height:1px;margin-top:22px;
+ background:linear-gradient(90deg,#ded6e8,#d9ccea,transparent 95%);
+}
+@keyframes mk-editorial-shimmer{0%,100%{background-position:100% 50%}50%{background-position:0% 50%}}
+@keyframes mk-editorial-arrive{from{opacity:.63;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.mk-editorial-arrived{animation:mk-editorial-arrive .85s var(--mk-ease) both}
+@media(min-width:900px){
+ #experience .timeline .job:nth-child(2n){background:linear-gradient(145deg,#f4effa,#fcfbff)!important}
+ #achievements .demo-milestone:nth-child(2n){background:linear-gradient(145deg,#f5f0fb,#fefcff)!important}
+}
+@media(max-width:750px){
+ #experience,#project-details,#skills,#hobbies,#achievements,#contact{padding-top:48px!important;padding-bottom:57px!important}
+ #experience .page-hero h1,#project-details .page-hero h1,#hobbies .page-hero h1,
+ #achievements .page-hero h1,#contact .page-hero h1,#skills .sectionhead h2{font-size:clamp(35px,9.2vw,60px)!important}
+ #experience .timeline .job,#project-details .project-block,#hobbies .hobby-slide,
+ #achievements .demo-milestone{border-radius:18px!important}
+ #experience .timeline .job{padding:20px!important}
+ #contact .contact-single>.large-panel{padding:24px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .mk-editorial-arrived{animation:none!important}
+ #experience .timeline .job:hover,#project-details .project-block:hover,
+ #achievements .demo-milestone:hover,#skills .large-panel:hover{transform:none!important}
+ #experience .page-hero .mk-title-glow,#project-details .page-hero .mk-title-glow,
+ #hobbies .page-hero .mk-title-glow,#achievements .page-hero .mk-title-glow,
+ #contact .page-hero .mk-title-glow,#skills .sectionhead .mk-title-glow{animation:none!important}
+}
 </style></head><body><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#experience">Experience</a><a href="#project-details">Projects</a><a href="#skills">Skills</a><a href="#hobbies">Hobbies</a><a href="#achievements">Milestone</a><a href="#contact">Contact</a></div></nav></header><section class="preview-markets" id="markets"><div class="preview-markets-head"><strong>● US &amp; GLOBAL MARKETS</strong><span>Market quotes · Connecting to source…</span><a href="https://finance.yahoo.com/markets/" rel="noopener noreferrer" target="_blank">Yahoo Finance ↗</a></div><div class="preview-viewport"><div class="preview-track"><div class="preview-set"><a class="preview-tile" href="https://finance.yahoo.com/quote/^GSPC/" rel="noopener noreferrer" target="_blank"><b>S&amp;P 500</b><small>^GSPC</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^DJI/" rel="noopener noreferrer" target="_blank"><b>Dow 30</b><small>^DJI</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^IXIC/" rel="noopener noreferrer" target="_blank"><b>Nasdaq</b><small>^IXIC</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^RUT/" rel="noopener noreferrer" target="_blank"><b>Russell 2000</b><small>^RUT</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^TNX/" rel="noopener noreferrer" target="_blank"><b>10-Yr Bond</b><small>^TNX</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^VIX/" rel="noopener noreferrer" target="_blank"><b>VIX</b><small>^VIX</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/GC=F/" rel="noopener noreferrer" target="_blank"><b>Gold</b><small>GC=F</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/BTC-USD/" rel="noopener noreferrer" target="_blank"><b>Bitcoin USD</b><small>BTC-USD</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/CL=F/" rel="noopener noreferrer" target="_blank"><b>Crude Oil</b><small>CL=F</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/PRIVATE-EQUITY/" rel="noopener noreferrer" target="_blank"><b>US Private Equity</b><small>PRIVATE-EQUITY</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/NVDA/" rel="noopener noreferrer" target="_blank"><b>NVIDIA</b><small>NVDA</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/AAPL/" rel="noopener noreferrer" target="_blank"><b>Apple</b><small>AAPL</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/MSFT/" rel="noopener noreferrer" target="_blank"><b>Microsoft</b><small>MSFT</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a></div><div aria-hidden="true" class="preview-set"><a class="preview-tile" href="https://finance.yahoo.com/quote/^GSPC/" rel="noopener noreferrer" target="_blank"><b>S&amp;P 500</b><small>^GSPC</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^DJI/" rel="noopener noreferrer" target="_blank"><b>Dow 30</b><small>^DJI</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^IXIC/" rel="noopener noreferrer" target="_blank"><b>Nasdaq</b><small>^IXIC</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^RUT/" rel="noopener noreferrer" target="_blank"><b>Russell 2000</b><small>^RUT</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^TNX/" rel="noopener noreferrer" target="_blank"><b>10-Yr Bond</b><small>^TNX</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/^VIX/" rel="noopener noreferrer" target="_blank"><b>VIX</b><small>^VIX</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/GC=F/" rel="noopener noreferrer" target="_blank"><b>Gold</b><small>GC=F</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/BTC-USD/" rel="noopener noreferrer" target="_blank"><b>Bitcoin USD</b><small>BTC-USD</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/CL=F/" rel="noopener noreferrer" target="_blank"><b>Crude Oil</b><small>CL=F</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/PRIVATE-EQUITY/" rel="noopener noreferrer" target="_blank"><b>US Private Equity</b><small>PRIVATE-EQUITY</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/NVDA/" rel="noopener noreferrer" target="_blank"><b>NVIDIA</b><small>NVDA</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/AAPL/" rel="noopener noreferrer" target="_blank"><b>Apple</b><small>AAPL</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a><a class="preview-tile" href="https://finance.yahoo.com/quote/MSFT/" rel="noopener noreferrer" target="_blank"><b>Microsoft</b><small>MSFT</small><span>-</span><em>Fetching latest available price…</em><svg aria-hidden="true" viewbox="0 0 120 26"><path d="M0 17L120 17" fill="none" stroke="#49445d" stroke-dasharray="4 4"></path></svg></a></div></div></div></section><main><section class="container hero" id="home"><div class="fade"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Finance × Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael</span><br/>Katongole.</h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div aria-label="Social profile links" class="mk-socials mk-socials-top" role="group"><a aria-label="Email - Michael Katongole" class="mk-social-link mk-social-email" href="mailto:MichaelKatongole5@gmail.com"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="mk-social-word">Email</span></a><a aria-label="GitHub - Michael Katongole" class="mk-social-link mk-social-github" href="https://github.com/michaelseth5" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 0S17.73-.35 15 2a13.38 13.38 0 0 0-7 0C5.27-.35 4.09 0 4.09 0A5.07 5.07 0 0 0 4 3.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 17.13V21"></path></svg><span class="mk-social-word">GitHub</span></a><a aria-label="LinkedIn - Michael Katongole" class="mk-social-link mk-social-linkedin" href="https://www.linkedin.com/in/michael-k-65b1a8222/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="20" rx="3" width="20" x="2" y="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7h3v1.3a3 3 0 0 1 5 2.6V17"></path></svg><span class="mk-social-word">LinkedIn</span></a></div></div><div class="globe-wrap"><canvas aria-label="Interactive rotating financial data globe" id="globe" role="img"></canvas><div class="globe-badge">● FX ROUTES / INTERACTIVE MODEL</div><div class="globe-label"><strong>Global Currency Activity</strong><small>Animated financial routes - not transfers</small></div><div class="fx-demo-panel"><div class="fx-d-head">FX / USD BASE <span>Connecting…</span></div><div class="fx-d-row">USD / EUR <b>--</b></div><div class="fx-d-row">USD / GBP <b>--</b></div><div class="fx-d-row">USD / JPY <b>--</b></div><div class="fx-d-row">USD / CHF <b>--</b></div><div class="fx-d-row">USD / SGD <b>--</b></div><div class="fx-d-foot">Frankfurter reference rates · Usually updated daily, not live trades</div></div></div></section><section class="mk-editorial-intro mk-bento-about" id="portfolio-intro-grid" aria-label="More about Michael Katongole">
 <div class="container">
 <div class="mk-intro-top mk-reveal"><span>● MORE THAN A RESUME</span><span>THE PERSON BEHIND THE WORK / 2026</span></div>
@@ -1826,4 +2062,19 @@ requestAnimationFrame(()=>{
 </script><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
 <script>
 /* Aerial NYC overview is a local image, so no tile API or map library is needed. */
+</script><script>
+/* Editorial scroll arrivals: reveal only after a section becomes visible. */
+(()=>{
+ const selector='#experience .page-hero,#project-details .page-hero,#skills .sectionhead,#hobbies .page-hero,#achievements .page-hero,#contact .page-hero,#experience .job,#project-details .project-block,#project-details .slide-deck-tile,#skills .large-panel,#achievements .demo-milestone,#contact .contact-single>.large-panel';
+ const items=[...document.querySelectorAll(selector)];
+ if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(!entry.isIntersecting)return;
+   entry.target.classList.add('mk-editorial-arrived');
+   observer.unobserve(entry.target);
+  });
+ },{rootMargin:'0px 0px -7% 0px',threshold:.06});
+ items.forEach(item=>observer.observe(item));
+})();
 </script></body></html>
