@@ -93,10 +93,12 @@
     });
   }
 
+  /* Compact 2024 annual goods-trade teaser. Values can be partial API records. */
   function showPanel() {
     const selected = state.selected;
+    const globe = state.globe;
     if (!selected) {
-      panel.innerHTML = '<h3>International merchandise trade</h3><p class="gf-meta">Select a country on the globe</p><p>Routes show annual reported goods trade, not financial transfers.</p>';
+      panel.innerHTML = '<h3>Trade snapshot</h3><p class="gf-meta">Select a country on the globe.</p>';
       return;
     }
     const imports = state.flows.filter(row => row.flow === 'M' && row.year === year);
@@ -105,46 +107,39 @@
     const totalImports = sum(imports);
     const totalExports = sum(exports);
     const balance = totalExports - totalImports;
+    const validTrade = state.flows.length > 0 && !state.message;
     const isSurplus = balance >= 0;
-    const row = (label, value, tone) =>
-      '<div class="gf-stat"><span>' + label + '</span><b class="' + (tone || '') + '">' + value + '</b></div>';
-    let content = '<h3>' + html(countryName(selected)) + '</h3>' +
-      '<p class="gf-meta">UN Comtrade · ' + year + ' · USD</p>';
-    content += row('GDP', state.gdp === null ? 'Not Available' : money(state.gdp) +
-      ' <small>(' + state.gdpYear + ')</small>');
-    if (state.message) {
-      content += '<p class="gf-unavailable">' + html(state.message) + '</p>';
-    } else if (!state.flows.length) {
-      content += '<p class="gf-unavailable">Loading trade records…</p>';
+    const gdpText = state.gdp === null ? 'Not Available' : money(state.gdp);
+    const balanceText = !validTrade ? 'Not Available' :
+      money(Math.abs(balance)) + (balance === 0 ? ' balanced' : (isSurplus ? ' surplus' : ' deficit'));
+    const tone = isSurplus ? 'gf-positive' : 'gf-negative';
+
+    let content = '<div class="gf-teaser-head"><div><h3>' +
+      html(countryName(selected)) + '</h3><p class="gf-meta">Goods trade · ' + year +
+      ' · USD</p></div><span class="gf-teaser-year" title="Annual reported data">ANNUAL</span></div>';
+    content += '<div class="gf-teaser-gdp"><span>GDP · current US$</span><strong>' +
+      gdpText + '</strong></div>';
+    if (validTrade) {
+      content += '<div class="gf-teaser-pair"><div><span>Exports</span><b class="gf-positive">' +
+        money(totalExports) + '</b></div><div><span>Imports</span><b class="gf-negative">' +
+        money(totalImports) + '</b></div></div>';
+      content += '<div class="gf-teaser-balance"><span>Reported balance</span><b class="' +
+        tone + '">' + balanceText + '</b></div>';
     } else {
-      content += row('Exports', money(totalExports), 'gf-positive');
-      content += row('Imports', money(totalImports), 'gf-negative');
-      content += row('Reported balance',
-        money(Math.abs(balance)) + ' ' + (isSurplus ? 'surplus' : 'deficit'),
-        isSurplus ? 'gf-positive' : 'gf-negative');
-      const partner = (data, direction) => data
-        .slice().sort((a, b) => b.usd - a.usd).slice(0, 3)
-        .map(flow => {
-          const id = direction === 'from' ? flow.from : flow.to;
-          const location = state.countryByCode.get(id);
-          return '<li><span>' + html(location ? location.name : (flow.partner || 'Country')) +
-            '</span><b>' + money(flow.usd) + '</b></li>';
-        }).join('');
-      content += '<div class="gf-partners"><strong>Top import origins</strong><ol>' +
-        partner(imports, 'from') + '</ol></div>';
-      content += '<div class="gf-partners"><strong>Top export destinations</strong><ol>' +
-        partner(exports, 'to') + '</ol></div>';
+      content += '<p class="gf-teaser-state" role="status">' +
+        html(state.message || 'Loading trade records…') + '</p>';
     }
-    content += '<div class="gf-legend"><span><i class="gf-dot gf-dot-export"></i>Exports</span>' +
-      '<span><i class="gf-dot gf-dot-import"></i>Imports</span></div>';
-    content += '<p class="gf-source">Sources: UN Comtrade (merchandise trade); World Bank (GDP).</p>' +
-      '<p class="gf-source gf-source-muted">Trade values summarize returned public-preview records, not full national totals.</p>';
+    content += '<p class="gf-teaser-source">UN Comtrade · public preview' +
+      (state.gdpYear ? ' | GDP: World Bank ' + state.gdpYear : '') +
+      ' · Trade values may be incomplete.</p>';
     panel.innerHTML = content;
-    const shortBalance = state.flows.length && !state.message
-      ? (isSurplus ? 'rgba(41,210,123,.34)' : 'rgba(255,91,104,.34)')
-      : 'rgba(181,151,255,.34)';
-    state.globe.polygonCapColor(feature => feature === selected
-      ? shortBalance : 'rgba(46,36,88,.14)');
+    if (globe) {
+      const highlight = validTrade
+        ? (isSurplus ? 'rgba(41,210,123,.34)' : 'rgba(255,91,104,.34)')
+        : 'rgba(181,151,255,.34)';
+      globe.polygonCapColor(feature => feature === selected
+        ? highlight : 'rgba(46,36,88,.14)');
+    }
   }
 
   function drawArcs() {
