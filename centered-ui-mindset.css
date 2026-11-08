@@ -52,7 +52,7 @@ main .page-hero,main .sectionhead,
 }
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame.is-active{opacity:1}
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--sprite{
-  background-image:url("assets/mindset-photo-rotation.jpg");
+  background-image:url("assets/mindset-photo-rotation.webp");
   background-repeat:no-repeat;background-size:200% 200%;
 }
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--1{background-position:0 0}
