@@ -76,7 +76,7 @@
     const image = document.createElement('img');
     image.src = 'assets/skills/' + asset + '.svg';
     image.alt = '';
-    image.loading = 'lazy';
+    image.loading = 'eager';
     image.decoding = 'async';
     image.width = 40;
     image.height = 40;
