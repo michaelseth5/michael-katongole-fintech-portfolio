@@ -2610,407 +2610,6 @@ requestAnimationFrame(()=>{
  },{rootMargin:'0px 0px -7% 0px',threshold:.06});
  items.forEach(item=>observer.observe(item));
 })();
-</script>
-<style id="financial-globe-style">
-#financial-globe{width:100%;height:100%;min-height:320px;position:relative}
-#financial-globe canvas{cursor:grab;touch-action:pan-y}
-.globe-wrap{isolation:isolate}
-.globe-wrap .globe-label,.globe-wrap .globe-badge,.globe-wrap .fx-demo-panel{display:none!important}
-.gf-controls{position:absolute;top:12px;left:12px;z-index:8;width:min(232px,43%);padding:13px;background:#0c0d1cef;border:1px solid #a88aff55;border-radius:12px;color:#eae8ff;backdrop-filter:blur(12px);font:12px 'DM Sans',sans-serif}
-.gf-controls strong{display:block;font:600 12px 'Space Grotesk';margin-bottom:7px}
-.gf-controls label{display:block;margin:7px 0 2px;font-size:10px;color:#b7b4d6}
-.gf-controls select,.gf-controls input[type=number]{width:100%;background:#17172c;color:#fff;border:1px solid #5d5284;border-radius:5px;padding:5px;font-size:11px}
-.gf-controls button{background:#393055;color:#fff;border:1px solid #9181c8;border-radius:6px;padding:5px 8px;cursor:pointer;margin-top:8px}
-.gf-controls .gf-actions{display:flex;flex-wrap:wrap;gap:7px}
-.gf-controls .gf-toggle{display:flex;align-items:center;gap:5px;font-size:10px;margin-top:7px}
-.gf-status{position:absolute;bottom:10px;left:12px;right:12px;background:#0b0e1fe9;border:1px solid #a48bff45;padding:9px 12px;border-radius:9px;z-index:8;color:#c4c8e5;font-size:10px}
-.gf-panel{position:absolute;top:12px;right:12px;width:min(240px,38%);max-height:75%;overflow:auto;background:#0d1021eb;border:1px solid #ab93ef55;border-radius:12px;z-index:8;padding:12px;color:#eee9ff;font-size:11px;backdrop-filter:blur(10px)}
-.gf-panel h3{font-size:13px;margin:0 0 7px;color:#fff}.gf-panel p{margin:3px 0;color:#b8bdd6}.gf-panel b{color:#fff}.gf-panel ol{padding-left:18px;line-height:1.5}
-.gf-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:7px;font-size:10px;color:#bbb6d5}
-.gf-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px}
-@media(max-width:650px){.globe-wrap{height:580px!important}.gf-controls{width:46%;padding:9px;top:8px;left:7px}.gf-panel{width:47%;top:8px;right:7px;padding:9px}.gf-status{font-size:9px;left:7px;right:7px;bottom:7px}.gf-controls .gf-actions button{font-size:10px}}
-</style>
-<script id="financial-globe-js">
-(function(){
-  const mount=document.getElementById('financial-globe');
-  if(!mount)return;
-  const wrap=mount.parentElement;
-  const controls=document.createElement('div');controls.className='gf-controls';
-  controls.innerHTML='<strong>GLOBAL FINANCIAL FLOWS</strong><label for="gf-mode">Flow category</label><select id="gf-mode"><option value="trade">International merchandise trade</option><option value="in">Reported imports (inflows)</option><option value="out">Reported exports (outflows)</option><option value="fdi">Foreign direct investment</option><option value="portfolio">Portfolio investment</option><option value="remit">Remittances</option><option value="capital">All capital flows</option></select><label for="gf-year">Reporting year</label><select id="gf-year"><option>2023</option><option selected>2024</option><option>2025</option></select><label for="gf-top">Largest connections</label><select id="gf-top"><option>10</option><option selected>25</option><option>50</option><option>100</option></select><label for="gf-min">Minimum USD billions</label><input type="number" id="gf-min" min="0" step="0.5" value="0"><div class="gf-actions"><button id="gf-reset" type="button">Reset view</button><button id="gf-reload" type="button">Refresh data</button></div><label class="gf-toggle"><input type="checkbox" id="gf-spin" checked> Auto rotate</label><label class="gf-toggle"><input type="checkbox" id="gf-animate" checked> Animate flows</label>';
-  const panel=document.createElement('div');panel.className='gf-panel';panel.innerHTML='<h3>Explore countries</h3><p>Select a country on the globe to inspect its reported trade partners.</p>';
-  const status=document.createElement('div');status.className='gf-status';status.textContent='Loading globe geography…';
-  wrap.append(controls,panel,status);
-  const $=id=>document.getElementById(id);
-  const opt={mode:$('gf-mode'),year:$('gf-year'),top:$('gf-top'),min:$('gf-min'),spin:$('gf-spin'),animate:$('gf-animate')};
-  const state={globe:null,features:[],lookup:new Map(),selected:null,flows:[],updated:'',loading:false};
-  const unsupported=['fdi','portfolio','remit','capital'];
-  const escapeHTML=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const money=v=>'+price.toLocaleString('en-US',{maximumFractionDigits:0});
-      }
-    });
-    if(!count)throw Error('No prices returned');
-    if(status)status.textContent=count+' available quotes · '+new Date(data.updatedAt||Date.now()).toLocaleTimeString()+' · may be delayed';
-  }catch(e){if(status)status.textContent='Quotes temporarily unavailable · Yahoo Finance';}
-}
-updateFX();updateMarkets();setInterval(()=>{if(!document.hidden){updateFX();updateMarkets()}},15*60*1000);
-})();</script><script>
-(()=>{
-const el=document.querySelector('#achievements .dev-carousel');
-if(!el)return;
-const track=el.querySelector('.dev-track');
-const original=[...track.children];
-const prev=document.querySelector('#achievements .dev-prev');
-const next=document.querySelector('#achievements .dev-next');
-const counter=document.querySelector('#achievements .dev-counter');
-if(!original.length)return;
-const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const count=original.length;
-const clones=items=>items.map(item=>{
-  const clone=item.cloneNode(true);
-  clone.setAttribute('aria-hidden','true');
-  clone.setAttribute('inert','');
-  return clone;
-});
-clones(original).forEach(item=>track.insertBefore(item,original[0]));
-clones(original).forEach(item=>track.appendChild(item));
-const items=[...track.children];
-const position=i=>items[i].offsetLeft-items[0].offsetLeft;
-const cycle=()=>position(2*count)-position(count);
-let selected=0;
-let interacting=false;
-let over=false;
-let focused=false;
-let manualUntil=0;
-let lastFrame=0;
-let autoFrame=0;
-let resetPending=false;
-function normalize(){
- const size=cycle();
- if(size<=0)return;
- const start=position(count);
- if(el.scrollLeft>=start+size)el.scrollLeft-=size;
- else if(el.scrollLeft<start)el.scrollLeft+=size;
-}
-function update(){
- const stride=cycle()/count;
- if(stride<=0)return;
- const raw=Math.round((el.scrollLeft-position(count))/stride);
- selected=((raw%count)+count)%count;
- if(counter)counter.textContent=String(selected+1).padStart(2,'0')+' / '+String(count).padStart(2,'0');
- if(prev)prev.disabled=false;
- if(next)next.disabled=false;
-}
-function shift(direction){
- const stride=cycle()/count;
- if(!stride)return;
- normalize();
- manualUntil=performance.now()+3000;
- el.scrollTo({left:el.scrollLeft+direction*stride,behavior:reduced?'instant':'smooth'});
-}
-prev?.addEventListener('click',()=>shift(-1));
-next?.addEventListener('click',()=>shift(1));
-el.addEventListener('keydown',event=>{
- if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
-  event.preventDefault();
-  shift(event.key==='ArrowRight'?1:-1);
- }
-});
-el.addEventListener('pointerenter',()=>{over=true});
-el.addEventListener('pointerleave',()=>{over=false;interacting=false;manualUntil=performance.now()+1400});
-el.addEventListener('pointerdown',()=>{interacting=true;manualUntil=performance.now()+2400});
-window.addEventListener('pointerup',()=>{if(interacting){interacting=false;manualUntil=performance.now()+2400}});
-el.addEventListener('focusin',()=>{focused=true});
-el.addEventListener('focusout',event=>{if(!el.contains(event.relatedTarget)){focused=false;manualUntil=performance.now()+1200}});
-let scrollTimer;
-el.addEventListener('scroll',()=>{
- update();
- clearTimeout(scrollTimer);
- scrollTimer=setTimeout(()=>{if(!interacting)normalize()},250);
-},{passive:true});
-window.addEventListener('resize',()=>{
- el.scrollLeft=position(count+selected);
- update();
-},{passive:true});
-function animate(now){
- if(!lastFrame)lastFrame=now;
- const elapsed=Math.min(now-lastFrame,50);
- lastFrame=now;
- if(!reduced&&!document.hidden&&!over&&!focused&&!interacting&&now>manualUntil){
-  // Constant, moderate horizontal motion; the next logo enters from the right.
-  el.scrollLeft+=elapsed*0.034;
-  normalize();
-  update();
- }
- autoFrame=requestAnimationFrame(animate);
-}
-requestAnimationFrame(()=>{
- el.scrollLeft=position(count);
- update();
- if(!reduced)autoFrame=requestAnimationFrame(animate);
-});
-})();
-</script><script>
-/* Show only landscape photographs from the existing portfolio galleries. */
-(()=>{
- const card=document.querySelector('#portfolio-intro-grid .mk-photo-carousel');
- if(!card)return;
- const stage=card.querySelector('.mk-photo-carousel-stage');
- const counter=card.querySelector('.mk-photo-carousel-counter');
- const previous=card.querySelector('.mk-photo-carousel-prev');
- const next=card.querySelector('.mk-photo-carousel-next');
- const sources=new Map();
- document.querySelectorAll('img[src^="assets/portfolio-photo-"]').forEach(img=>{
-  const source=img.getAttribute('src');
-  const match=source.match(/portfolio-photo-(\d+)\.(?:webp|jpg|jpeg|png)$/i);
-  if(!match)return;
-  const number=Number(match[1]);
-  if(number!==1&&number!==2&&(number<10||number>70))return;
-  // Exclude University at Albany Great Danes sports images from Life Off Screen only.
-  if(number===69||number===70)return;
-  if(!sources.has(number))sources.set(number,{src:source,alt:img.alt||'Portfolio memory',number});
- });
- const candidates=[...sources.entries()].sort((a,b)=>a[0]-b[0]).map(entry=>entry[1]);
- const format=n=>String(n).padStart(2,'0');
- const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- let frames=[],current=0,timer=0,paused=false;
- if(counter)counter.textContent='Loading photos';
- function stop(){window.clearInterval(timer);timer=0}
- function show(index){
-  if(!frames.length)return;
-  current=(index+frames.length)%frames.length;
-  frames.forEach((frame,i)=>frame.classList.toggle('is-active',i===current));
-  if(counter)counter.textContent=format(current+1)+' / '+format(frames.length);
- }
- function start(){
-  stop();
-  if(reduced||paused||document.hidden||frames.length<2)return;
-  timer=window.setInterval(()=>show(current+1),2500);
- }
- previous?.addEventListener('click',()=>{show(current-1);start()});
- next?.addEventListener('click',()=>{show(current+1);start()});
- card.addEventListener('pointerenter',()=>{paused=true;stop()});
- card.addEventListener('pointerleave',()=>{paused=false;start()});
- card.addEventListener('focusin',()=>{paused=true;stop()});
- card.addEventListener('focusout',event=>{if(!card.contains(event.relatedTarget)){paused=false;start()}});
- document.addEventListener('visibilitychange',start);
- const inspect=photo=>new Promise(resolve=>{
-  const img=new Image();
-  img.onload=()=>{
-   // Include group, conference and SEO memories even when they are less panoramic.
-   // The viewer uses object-fit:contain, so these photos stay fully visible.
-   const ratio=img.naturalWidth/Math.max(1,img.naturalHeight);
-   const community=(photo.number>=42&&photo.number<=68);
-   resolve((community?ratio>=0.86:ratio>=1.25)?photo:null);
-  };
-  img.onerror=()=>resolve(null);
-  img.src=photo.src;
- });
- Promise.all(candidates.map(inspect)).then(photos=>{
-  const eligible=photos.filter(Boolean);
-  // Bias the randomized rotation toward people and professional-community moments.
-  // Include SEO Summit (53–55), ColorStack (42–45, 65), MLT (58–59),
-  // NSBE (56–57), Bloomberg (60–64) and AfroTech (65–68).
-  const featured=eligible.filter(photo=>photo.number>=42&&photo.number<=68);
-  const other=eligible.filter(photo=>photo.number<42||photo.number>68);
-  const shuffle=list=>{
-   for(let i=list.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [list[i],list[j]]=[list[j],list[i]];
-   }
-  };
-  shuffle(featured);shuffle(other);
-  // Two community/group shots followed by one other landscape memory.
-  const selected=[];
-  while(featured.length||other.length){
-   for(let i=0;i<2&&featured.length;i++)selected.push(featured.pop());
-   if(other.length)selected.push(other.pop());
-  }
-  if(!selected.length){
-   if(counter)counter.textContent='No photos available';
-   return;
-  }
-  frames=selected.map((photo,index)=>{
-   const img=document.createElement('img');
-   img.src=photo.src;
-   img.alt=photo.alt;
-   img.loading=index<2?'eager':'lazy';
-   img.decoding='async';
-   img.classList.toggle('is-active',index===0);
-   stage.appendChild(img);
-   return img;
-  });
-  show(0);start();
- });
-})();
-</script><script>
-/* A separate candid-photo slideshow; the existing landscape memories carousel is unchanged. */
-(()=>{
- const card=document.querySelector('#portfolio-intro-grid .mk-unserious-carousel');
- if(!card)return;
- const stage=card.querySelector('.mk-unserious-stage');
- const counter=card.querySelector('.mk-unserious-counter');
- const photos=[
-  ['assets/unserious-01.avif','Playful close-up selfie wearing glasses'],
-  ['assets/unserious-02.avif','Cowboy hat selfie inside a car'],
-  ['assets/unserious-03.avif','Casual photo with another attendee'],
-  ['assets/unserious-04.avif','Holding a Citi volunteers shirt'],
-  ['assets/unserious-05.avif','Showing the Citi volunteers shirt'],
-  ['assets/unserious-06.avif','Casual pose in a modern office'],
-  ['assets/unserious-07.avif','Working beneath a parked vehicle']
- ];
- const slides=[stage.querySelector('img')];
- photos.slice(1).forEach(([src,alt])=>{
-  const img=document.createElement('img');
-  img.src=src;img.alt=alt;img.loading='lazy';img.decoding='async';
-  stage.appendChild(img);slides.push(img);
- });
- const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- let current=0,timer=0,paused=false;
- const format=n=>String(n).padStart(2,'0');
- const show=i=>{
-  current=(i+slides.length)%slides.length;
-  slides.forEach((img,index)=>img.classList.toggle('is-active',index===current));
-  if(counter)counter.textContent=format(current+1)+' / '+format(slides.length);
- };
- const stop=()=>{clearInterval(timer);timer=0};
- const play=()=>{
-  stop();if(reduceMotion||paused||document.hidden)return;
-  timer=setInterval(()=>show(current+1),2800);
- };
- card.querySelector('.mk-unserious-prev')?.addEventListener('click',()=>{show(current-1);play()});
- card.querySelector('.mk-unserious-next')?.addEventListener('click',()=>{show(current+1);play()});
- card.addEventListener('pointerenter',()=>{paused=true;stop()});
- card.addEventListener('pointerleave',()=>{paused=false;play()});
- card.addEventListener('focusin',()=>{paused=true;stop()});
- card.addEventListener('focusout',e=>{if(!card.contains(e.relatedTarget)){paused=false;play()}});
- document.addEventListener('visibilitychange',play);
- play();
-})();
-</script><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
-<script>
-/* Aerial NYC overview is a local image, so no tile API or map library is needed. */
-</script><script>
-/* Editorial scroll arrivals: reveal only after a section becomes visible. */
-(()=>{
- const selector='#experience .page-hero,#project-details .page-hero,#skills .sectionhead,#hobbies .page-hero,#achievements .page-hero,#contact .page-hero,#experience .job,#project-details .project-block,#project-details .slide-deck-tile,#skills .large-panel,#achievements .demo-milestone,#contact .contact-single>.large-panel';
- const items=[...document.querySelectorAll(selector)];
- if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-   if(!entry.isIntersecting)return;
-   entry.target.classList.add('mk-editorial-arrived');
-   observer.unobserve(entry.target);
-  });
- },{rootMargin:'0px 0px -7% 0px',threshold:.06});
- items.forEach(item=>observer.observe(item));
-})();
-</script></body></html>+(v>=1e12?(v/1e12).toFixed(2)+'T':v>=1e9?(v/1e9).toFixed(2)+'B':v>=1e6?(v/1e6).toFixed(1)+'M':Math.round(v).toLocaleString('en-US'));
-  const code=f=>Number(f.properties.UN_A3);
-  const name=f=>f.properties.ADMIN||f.properties.NAME||'Unknown country';
-  function centroid(feature){
-    let p=feature.geometry.coordinates;
-    while(Array.isArray(p[0])&&Array.isArray(p[0][0]))p=p[0];
-    if(!Array.isArray(p))return {lat:0,lng:0};
-    let x=0,y=0,z=0;
-    for(let i=0;i<p.length;i+=Math.max(1,Math.floor(p.length/120))){
-      const lon=p[i][0]*Math.PI/180,lat=p[i][1]*Math.PI/180;
-      x+=Math.cos(lat)*Math.cos(lon);y+=Math.cos(lat)*Math.sin(lon);z+=Math.sin(lat);
-    }
-    return {lat:Math.atan2(z,Math.sqrt(x*x+y*y))*180/Math.PI,lng:Math.atan2(y,x)*180/Math.PI};
-  }
-  function loadScript(url){return new Promise((ok,fail)=>{const s=document.createElement('script');s.src=url;s.onload=ok;s.onerror=fail;document.head.appendChild(s);});}
-  function pick(feature){
-    state.selected=feature;
-    state.globe.polygonCapColor(f=>f===feature?'rgba(178,127,255,.42)':'rgba(60,42,105,.16)');
-    if(!Number.isInteger(code(feature))||code(feature)<1){
-      state.flows=[];draw();status.textContent='No UN M49 reporting code is available for this country.';return;
-    }
-    fetchFlows();
-  }
-  function draw(){
-    if(!state.globe)return;
-    const f=state.selected,m=opt.mode.value,year=Number(opt.year.value);
-    const available=!unsupported.includes(m);
-    const good=available?state.flows.filter(x=>x.year===year&&(m==='trade'||(m==='in'?x.flow==='M':x.flow==='X'))&&x.usd>=Math.max(0,Number(opt.min.value)||0)*1e9&&state.lookup.has(x.from)&&state.lookup.has(x.to)).sort((a,b)=>b.usd-a.usd).slice(0,Number(opt.top.value)):[];
-    const arcs=good.map(x=>{
-      const src=state.lookup.get(x.from),dst=state.lookup.get(x.to);
-      return {startLat:src.pos.lat,startLng:src.pos.lng,endLat:dst.pos.lat,endLng:dst.pos.lng,usd:x.usd,flow:x.flow,src:src.name,dst:dst.name};
-    });
-    const max=Math.max(1,...arcs.map(x=>x.usd));
-    state.globe.arcsData(arcs).arcColor(x=>x.flow==='M'?['#63efa8','#31e3ee']:['#ff7186','#b795ff']).arcStroke(x=>.22+1.8*Math.sqrt(x.usd/max))
-      .arcAltitudeAutoScale(.38).arcDashLength(opt.animate.checked?.24:1).arcDashGap(opt.animate.checked?1.3:0).arcDashAnimateTime(opt.animate.checked?2000:0)
-      .arcLabel(x=>escapeHTML(x.src)+' → '+escapeHTML(x.dst)+'<br>'+money(x.usd)+' reported '+(x.flow==='M'?'imports':'exports')+' ('+year+')');
-    if(!f){panel.innerHTML='<h3>Explore countries</h3><p>Select a country to view its trade corridors.</p>';return;}
-    const incoming=state.flows.filter(x=>x.flow==='M'&&x.year===year);
-    const outgoing=state.flows.filter(x=>x.flow==='X'&&x.year===year);
-    const total=a=>a.reduce((s,x)=>s+x.usd,0);
-    let body='<h3>'+escapeHTML(name(f))+'</h3><p>UN Comtrade · '+year+' · USD</p>';
-    if(!available){
-      body+='<p><b>Data unavailable.</b> This source contains merchandise trade, not '+escapeHTML(opt.mode.selectedOptions[0].text)+'.</p>';
-    }else if(!state.flows.length){
-      body+='<p><b>Data unavailable.</b> No reporter-level bilateral records were returned.</p>';
-    }else{
-      body+='<p>Reported imports: <b>'+money(total(incoming))+'</b></p><p>Reported exports: <b>'+money(total(outgoing))+'</b></p><p>Trade balance (exports − imports): <b>'+money(Math.abs(total(outgoing)-total(incoming)))+(total(outgoing)>=total(incoming)?' surplus':' deficit')+'</b></p>';
-      const top=good.slice(0,5);
-      body+='<p><b>Largest visible corridors</b></p><ol>'+top.map(x=>'<li>'+escapeHTML(x.src)+' → '+escapeHTML(x.dst)+' · '+money(x.usd)+'</li>').join('')+'</ol>';
-    }
-    body+='<div class="gf-legend"><span><i class="gf-dot" style="background:#63efa8"></i>Reported imports</span><span><i class="gf-dot" style="background:#ff7186"></i>Reported exports</span></div><p style="font-size:9px;margin-top:8px">Annual reported merchandise values (not real-time transactions or capital flows). Public preview has a 500-row limit. No global totals are inferred.</p>';
-    panel.innerHTML=body;
-    status.textContent=available?(arcs.length+' visible corridors · '+escapeHTML(name(f))+' · '+year+' · UN Comtrade annual reports'):'Data unavailable for this flow category · choose merchandise trade';
-  }
-  async function fetchFlows(){
-    const selected=state.selected;if(!selected||state.loading)return;
-    state.loading=true;state.flows=[];draw();
-    status.textContent='Loading UN Comtrade annual bilateral statistics…';
-    try{
-      const m49=code(selected)===840?842:code(selected);
-      const url='/api/markets?dataset=trade&reporter='+encodeURIComponent(m49)+'&year='+encodeURIComponent(opt.year.value);
-      const response=await fetch(url);
-      if(!response.ok)throw Error('Financial data source temporarily unavailable ('+response.status+')');
-      const result=await response.json();
-      if(state.selected!==selected)return;
-      state.flows=(result.flows||[]).filter(x=>Number.isFinite(x.usd)&&x.usd>0);
-      state.updated=result.retrievedAt||'';
-      draw();
-    }catch(err){state.flows=[];draw();status.textContent=err.message+' · no synthetic financial data shown.';}
-    finally{state.loading=false;}
-  }
-  async function init(){
-    try{
-      await loadScript('https://unpkg.com/globe.gl/dist/globe.gl.min.js');
-      const response=await fetch('https://raw.githubusercontent.com/vasturiano/three-globe/master/example/country-polygons/ne_110m_admin_0_countries.geojson');
-      if(!response.ok)throw Error('Geographic dataset unavailable');
-      const geo=await response.json();
-      state.features=geo.features.filter(f=>f.geometry&&f.properties);
-      state.features.forEach(f=>{const c=code(f);if(c>0)state.lookup.set(c,{name:name(f),pos:centroid(f)});});
-      state.lookup.set(842,state.lookup.get(840)||{name:'United States of America',pos:{lat:39,lng:-98}});
-      state.globe=Globe()(mount).backgroundColor('rgba(0,0,0,0)').showAtmosphere(true).atmosphereColor('#6855c4').atmosphereAltitude(.18)
-        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
-        .polygonsData(state.features).polygonAltitude(.009).polygonCapColor('rgba(60,42,105,.16)')
-        .polygonSideColor('rgba(35,27,70,.12)').polygonStrokeColor('#aa86ff')
-        .polygonLabel(f=>'<b>'+escapeHTML(name(f))+'</b><br>Click to inspect annual reported trade')
-        .onPolygonClick(f=>pick(f));
-      state.globe.controls().enableDamping=true;
-      state.globe.controls().dampingFactor=.07;
-      state.globe.controls().autoRotate=true;
-      state.globe.controls().autoRotateSpeed=.42;
-      state.globe.pointOfView({lat:28,lng:-25,altitude:2.3},0);
-      state.globe.onGlobeClick(()=>{});
-      const ro=new ResizeObserver(()=>state.globe.width(mount.clientWidth).height(mount.clientHeight));ro.observe(mount);
-      state.globe.width(mount.clientWidth).height(mount.clientHeight);
-      const usa=state.features.find(f=>code(f)===840||name(f)==='United States of America');
-      status.textContent='Drag to rotate · scroll to zoom · select a country';
-      if(usa)pick(usa);
-    }catch(error){status.textContent='Interactive globe unavailable: '+error.message+' · your portfolio remains accessible.';mount.innerHTML='<div style="padding:50px 12px;text-align:center;color:#a69cce">3D globe could not load. Check your connection or browser WebGL support.</div>';}
-  }
-  for(const el of [opt.mode,opt.top,opt.min,opt.animate])el.addEventListener('change',draw);
-  opt.year.addEventListener('change',fetchFlows);
-  opt.spin.addEventListener('change',()=>{if(state.globe)state.globe.controls().autoRotate=opt.spin.checked;});
-  $('gf-reload').addEventListener('click',fetchFlows);
-  $('gf-reset').addEventListener('click',()=>{if(state.globe)state.globe.pointOfView({lat:28,lng:-25,altitude:2.3},900);});
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){opt.animate.checked=false;opt.spin.checked=false;}
-  init();
-})();
 </script></body></html>+price.toLocaleString('en-US',{maximumFractionDigits:0});
       }
     });
@@ -3269,5 +2868,145 @@ requestAnimationFrame(()=>{
   });
  },{rootMargin:'0px 0px -7% 0px',threshold:.06});
  items.forEach(item=>observer.observe(item));
+})();
+</script><style id="financial-globe-style">
+#financial-globe{width:100%;height:100%;min-height:320px;position:relative}
+#financial-globe canvas{cursor:grab;touch-action:pan-y}
+.globe-wrap{isolation:isolate}
+.globe-wrap .globe-label,.globe-wrap .globe-badge,.globe-wrap .fx-demo-panel{display:none!important}
+.gf-controls{position:absolute;top:12px;left:12px;z-index:8;width:min(232px,43%);padding:13px;background:#0c0d1cef;border:1px solid #a88aff55;border-radius:12px;color:#eae8ff;backdrop-filter:blur(12px);font:12px 'DM Sans',sans-serif}
+.gf-controls strong{display:block;font:600 12px 'Space Grotesk';margin-bottom:7px}
+.gf-controls label{display:block;margin:7px 0 2px;font-size:10px;color:#b7b4d6}
+.gf-controls select,.gf-controls input[type=number]{width:100%;background:#17172c;color:#fff;border:1px solid #5d5284;border-radius:5px;padding:5px;font-size:11px}
+.gf-controls button{background:#393055;color:#fff;border:1px solid #9181c8;border-radius:6px;padding:5px 8px;cursor:pointer;margin-top:8px}
+.gf-controls .gf-actions{display:flex;flex-wrap:wrap;gap:7px}
+.gf-controls .gf-toggle{display:flex;align-items:center;gap:5px;font-size:10px;margin-top:7px}
+.gf-status{position:absolute;bottom:10px;left:12px;right:12px;background:#0b0e1fe9;border:1px solid #a48bff45;padding:9px 12px;border-radius:9px;z-index:8;color:#c4c8e5;font-size:10px}
+.gf-panel{position:absolute;top:12px;right:12px;width:min(240px,38%);max-height:75%;overflow:auto;background:#0d1021eb;border:1px solid #ab93ef55;border-radius:12px;z-index:8;padding:12px;color:#eee9ff;font-size:11px;backdrop-filter:blur(10px)}
+.gf-panel h3{font-size:13px;margin:0 0 7px;color:#fff}.gf-panel p{margin:3px 0;color:#b8bdd6}.gf-panel b{color:#fff}.gf-panel ol{padding-left:18px;line-height:1.5}
+.gf-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:7px;font-size:10px;color:#bbb6d5}
+.gf-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px}
+@media(max-width:650px){.globe-wrap{height:580px!important}.gf-controls{width:46%;padding:9px;top:8px;left:7px}.gf-panel{width:47%;top:8px;right:7px;padding:9px}.gf-status{font-size:9px;left:7px;right:7px;bottom:7px}.gf-controls .gf-actions button{font-size:10px}}
+</style><script id="financial-globe-js">
+(function(){
+  const mount=document.getElementById('financial-globe');
+  if(!mount)return;
+  const wrap=mount.parentElement;
+  const controls=document.createElement('div');controls.className='gf-controls';
+  controls.innerHTML='<strong>GLOBAL FINANCIAL FLOWS</strong><label for="gf-mode">Flow category</label><select id="gf-mode"><option value="trade">International merchandise trade</option><option value="in">Reported imports (inflows)</option><option value="out">Reported exports (outflows)</option><option value="fdi">Foreign direct investment</option><option value="portfolio">Portfolio investment</option><option value="remit">Remittances</option><option value="capital">All capital flows</option></select><label for="gf-year">Reporting year</label><select id="gf-year"><option>2023</option><option selected>2024</option><option>2025</option></select><label for="gf-top">Largest connections</label><select id="gf-top"><option>10</option><option selected>25</option><option>50</option><option>100</option></select><label for="gf-min">Minimum USD billions</label><input type="number" id="gf-min" min="0" step="0.5" value="0"><div class="gf-actions"><button id="gf-reset" type="button">Reset view</button><button id="gf-reload" type="button">Refresh data</button></div><label class="gf-toggle"><input type="checkbox" id="gf-spin" checked> Auto rotate</label><label class="gf-toggle"><input type="checkbox" id="gf-animate" checked> Animate flows</label>';
+  const panel=document.createElement('div');panel.className='gf-panel';panel.innerHTML='<h3>Explore countries</h3><p>Select a country on the globe to inspect its reported trade partners.</p>';
+  const status=document.createElement('div');status.className='gf-status';status.textContent='Loading globe geography…';
+  wrap.append(controls,panel,status);
+  const $=id=>document.getElementById(id);
+  const opt={mode:$('gf-mode'),year:$('gf-year'),top:$('gf-top'),min:$('gf-min'),spin:$('gf-spin'),animate:$('gf-animate')};
+  const state={globe:null,features:[],lookup:new Map(),selected:null,flows:[],updated:'',loading:false};
+  const unsupported=['fdi','portfolio','remit','capital'];
+  const escapeHTML=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const money=v=>'$'+(v>=1e12?(v/1e12).toFixed(2)+'T':v>=1e9?(v/1e9).toFixed(2)+'B':v>=1e6?(v/1e6).toFixed(1)+'M':Math.round(v).toLocaleString('en-US'));
+  const code=f=>Number(f.properties.UN_A3);
+  const name=f=>f.properties.ADMIN||f.properties.NAME||'Unknown country';
+  function centroid(feature){
+    let p=feature.geometry.coordinates;
+    while(Array.isArray(p[0])&&Array.isArray(p[0][0]))p=p[0];
+    if(!Array.isArray(p))return {lat:0,lng:0};
+    let x=0,y=0,z=0;
+    for(let i=0;i<p.length;i+=Math.max(1,Math.floor(p.length/120))){
+      const lon=p[i][0]*Math.PI/180,lat=p[i][1]*Math.PI/180;
+      x+=Math.cos(lat)*Math.cos(lon);y+=Math.cos(lat)*Math.sin(lon);z+=Math.sin(lat);
+    }
+    return {lat:Math.atan2(z,Math.sqrt(x*x+y*y))*180/Math.PI,lng:Math.atan2(y,x)*180/Math.PI};
+  }
+  function loadScript(url){return new Promise((ok,fail)=>{const s=document.createElement('script');s.src=url;s.onload=ok;s.onerror=fail;document.head.appendChild(s);});}
+  function pick(feature){
+    state.selected=feature;
+    state.globe.polygonCapColor(f=>f===feature?'rgba(178,127,255,.42)':'rgba(60,42,105,.16)');
+    if(!Number.isInteger(code(feature))||code(feature)<1){
+      state.flows=[];draw();status.textContent='No UN M49 reporting code is available for this country.';return;
+    }
+    fetchFlows();
+  }
+  function draw(){
+    if(!state.globe)return;
+    const f=state.selected,m=opt.mode.value,year=Number(opt.year.value);
+    const available=!unsupported.includes(m);
+    const good=available?state.flows.filter(x=>x.year===year&&(m==='trade'||(m==='in'?x.flow==='M':x.flow==='X'))&&x.usd>=Math.max(0,Number(opt.min.value)||0)*1e9&&state.lookup.has(x.from)&&state.lookup.has(x.to)).sort((a,b)=>b.usd-a.usd).slice(0,Number(opt.top.value)):[];
+    const arcs=good.map(x=>{
+      const src=state.lookup.get(x.from),dst=state.lookup.get(x.to);
+      return {startLat:src.pos.lat,startLng:src.pos.lng,endLat:dst.pos.lat,endLng:dst.pos.lng,usd:x.usd,flow:x.flow,src:src.name,dst:dst.name};
+    });
+    const max=Math.max(1,...arcs.map(x=>x.usd));
+    state.globe.arcsData(arcs).arcColor(x=>x.flow==='M'?['#63efa8','#31e3ee']:['#ff7186','#b795ff']).arcStroke(x=>.22+1.8*Math.sqrt(x.usd/max))
+      .arcAltitudeAutoScale(.38).arcDashLength(opt.animate.checked?.24:1).arcDashGap(opt.animate.checked?1.3:0).arcDashAnimateTime(opt.animate.checked?2000:0)
+      .arcLabel(x=>escapeHTML(x.src)+' → '+escapeHTML(x.dst)+'<br>'+money(x.usd)+' reported '+(x.flow==='M'?'imports':'exports')+' ('+year+')');
+    if(!f){panel.innerHTML='<h3>Explore countries</h3><p>Select a country to view its trade corridors.</p>';return;}
+    const incoming=state.flows.filter(x=>x.flow==='M'&&x.year===year);
+    const outgoing=state.flows.filter(x=>x.flow==='X'&&x.year===year);
+    const total=a=>a.reduce((s,x)=>s+x.usd,0);
+    let body='<h3>'+escapeHTML(name(f))+'</h3><p>UN Comtrade · '+year+' · USD</p>';
+    if(!available){
+      body+='<p><b>Data unavailable.</b> This source contains merchandise trade, not '+escapeHTML(opt.mode.selectedOptions[0].text)+'.</p>';
+    }else if(!state.flows.length){
+      body+='<p><b>Data unavailable.</b> No reporter-level bilateral records were returned.</p>';
+    }else{
+      body+='<p>Reported imports: <b>'+money(total(incoming))+'</b></p><p>Reported exports: <b>'+money(total(outgoing))+'</b></p><p>Trade balance (exports − imports): <b>'+money(Math.abs(total(outgoing)-total(incoming)))+(total(outgoing)>=total(incoming)?' surplus':' deficit')+'</b></p>';
+      const top=good.slice(0,5);
+      body+='<p><b>Largest visible corridors</b></p><ol>'+top.map(x=>'<li>'+escapeHTML(x.src)+' → '+escapeHTML(x.dst)+' · '+money(x.usd)+'</li>').join('')+'</ol>';
+    }
+    body+='<div class="gf-legend"><span><i class="gf-dot" style="background:#63efa8"></i>Reported imports</span><span><i class="gf-dot" style="background:#ff7186"></i>Reported exports</span></div><p style="font-size:9px;margin-top:8px">Annual reported merchandise values (not real-time transactions or capital flows). Public preview has a 500-row limit. No global totals are inferred.</p>';
+    panel.innerHTML=body;
+    status.textContent=available?(arcs.length+' visible corridors · '+escapeHTML(name(f))+' · '+year+' · UN Comtrade annual reports'):'Data unavailable for this flow category · choose merchandise trade';
+  }
+  async function fetchFlows(){
+    const selected=state.selected;if(!selected||state.loading)return;
+    state.loading=true;state.flows=[];draw();
+    status.textContent='Loading UN Comtrade annual bilateral statistics…';
+    try{
+      const m49=code(selected)===840?842:code(selected);
+      const url='/api/markets?dataset=trade&reporter='+encodeURIComponent(m49)+'&year='+encodeURIComponent(opt.year.value);
+      const response=await fetch(url);
+      if(!response.ok)throw Error('Financial data source temporarily unavailable ('+response.status+')');
+      const result=await response.json();
+      if(state.selected!==selected)return;
+      state.flows=(result.flows||[]).filter(x=>Number.isFinite(x.usd)&&x.usd>0);
+      state.updated=result.retrievedAt||'';
+      draw();
+    }catch(err){state.flows=[];draw();status.textContent=err.message+' · no synthetic financial data shown.';}
+    finally{state.loading=false;}
+  }
+  async function init(){
+    try{
+      await loadScript('https://unpkg.com/globe.gl/dist/globe.gl.min.js');
+      const response=await fetch('https://raw.githubusercontent.com/vasturiano/three-globe/master/example/country-polygons/ne_110m_admin_0_countries.geojson');
+      if(!response.ok)throw Error('Geographic dataset unavailable');
+      const geo=await response.json();
+      state.features=geo.features.filter(f=>f.geometry&&f.properties);
+      state.features.forEach(f=>{const c=code(f);if(c>0)state.lookup.set(c,{name:name(f),pos:centroid(f)});});
+      state.lookup.set(842,state.lookup.get(840)||{name:'United States of America',pos:{lat:39,lng:-98}});
+      state.globe=Globe()(mount).backgroundColor('rgba(0,0,0,0)').showAtmosphere(true).atmosphereColor('#6855c4').atmosphereAltitude(.18)
+        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+        .polygonsData(state.features).polygonAltitude(.009).polygonCapColor('rgba(60,42,105,.16)')
+        .polygonSideColor('rgba(35,27,70,.12)').polygonStrokeColor('#aa86ff')
+        .polygonLabel(f=>'<b>'+escapeHTML(name(f))+'</b><br>Click to inspect annual reported trade')
+        .onPolygonClick(f=>pick(f));
+      state.globe.controls().enableDamping=true;
+      state.globe.controls().dampingFactor=.07;
+      state.globe.controls().autoRotate=true;
+      state.globe.controls().autoRotateSpeed=.42;
+      state.globe.pointOfView({lat:28,lng:-25,altitude:2.3},0);
+      state.globe.onGlobeClick(()=>{});
+      const ro=new ResizeObserver(()=>state.globe.width(mount.clientWidth).height(mount.clientHeight));ro.observe(mount);
+      state.globe.width(mount.clientWidth).height(mount.clientHeight);
+      const usa=state.features.find(f=>code(f)===840||name(f)==='United States of America');
+      status.textContent='Drag to rotate · scroll to zoom · select a country';
+      if(usa)pick(usa);
+    }catch(error){status.textContent='Interactive globe unavailable: '+error.message+' · your portfolio remains accessible.';mount.innerHTML='<div style="padding:50px 12px;text-align:center;color:#a69cce">3D globe could not load. Check your connection or browser WebGL support.</div>';}
+  }
+  for(const el of [opt.mode,opt.top,opt.min,opt.animate])el.addEventListener('change',draw);
+  opt.year.addEventListener('change',fetchFlows);
+  opt.spin.addEventListener('change',()=>{if(state.globe)state.globe.controls().autoRotate=opt.spin.checked;});
+  $('gf-reload').addEventListener('click',fetchFlows);
+  $('gf-reset').addEventListener('click',()=>{if(state.globe)state.globe.pointOfView({lat:28,lng:-25,altitude:2.3},900);});
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){opt.animate.checked=false;opt.spin.checked=false;}
+  init();
 })();
 </script></body></html>
