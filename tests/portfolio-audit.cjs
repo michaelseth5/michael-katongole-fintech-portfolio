@@ -19,6 +19,13 @@ assert.ok(vercel.headers.some(x=>x.headers.some(y=>y.key==='X-Robots-Tag'&&y.val
 assert.ok(netlify.includes('X-Robots-Tag = "noindex'),'Netlify noindex header missing');
 assert.ok(fs.existsSync(path.resolve(__dirname,'../globe.js')),'Globe JS missing');
 assert.ok(fs.existsSync(path.resolve(__dirname,'../ux.css')),'UX styling missing');
+assert.ok(html.includes('href="hobbies-caption.css"'),'Hobbies black-caption stylesheet must load');
+const hobbiesCaptionCss=fs.readFileSync(path.resolve(__dirname,'../hobbies-caption.css'),'utf8');
+assert.match(hobbiesCaptionCss,/#hobbies \.art-photo-card figcaption strong/,'Art caption titles should be styled');
+assert.match(hobbiesCaptionCss,/color: #111 !important/,'Art captions should be black');
+assert.ok(html.includes('Courtyard with Renaissance-inspired arches and gardens'),'Keep original Hobbies description');
+assert.ok(html.includes('Boston Public Library · McKim Courtyard - Boston, MA'),'Keep original caption location');
+
 assert.ok(fs.existsSync(path.resolve(__dirname,'../assets/countries.geojson')),'Country data missing');
 assert.ok(!html.includes("quotes available · Treasury daily"),'Quote-count status still visible');
 assert.ok(!html.includes('Market quotes · Connecting to source…'),'Market loading banner should be removed');
