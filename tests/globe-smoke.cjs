@@ -171,6 +171,15 @@ const { chromium } = require('playwright');
         viewport:document.documentElement.clientWidth
       }));
       console.log('VIEWPORT '+width+'px: scrollWidth='+size.content+'px, clientWidth='+size.viewport+'px');
+      if(size.content>size.viewport+5){
+        const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(el=>{
+          const r=el.getBoundingClientRect();
+          return {tag:el.tagName,id:el.id,cls:typeof el.className==='string'?el.className.slice(0,80):'',
+            left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};
+        }).filter(x=>x.right>innerWidth+5&&x.width>0)
+          .sort((a,b)=>b.right-a.right).slice(0,18));
+        console.log('OVERFLOW ELEMENTS '+width+' '+JSON.stringify(offenders));
+      }
       assert.ok(size.content<=size.viewport+5,'Unexpected horizontal page overflow at '+width+'px');
       if(width===1920){
         const check=await page.evaluate(()=>{
