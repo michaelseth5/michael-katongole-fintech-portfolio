@@ -120,6 +120,8 @@ const { chromium } = require('playwright');
     await page.waitForFunction(()=>!document.fullscreenElement,{timeout:7000});
     assert.match(await page.locator('.gf-panel h3').innerText(),/United States/i);
     assert.equal(await page.locator('.gf-panel').isVisible(),true);
+    await page.waitForTimeout(1600);
+    await page.screenshot({path:'polish-desktop.png',fullPage:false});
     await page.setViewportSize({width:390,height:844});
     await page.waitForTimeout(500);
     const stacked=await page.evaluate(()=>{
