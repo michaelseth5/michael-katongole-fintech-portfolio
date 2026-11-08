@@ -127,7 +127,9 @@ const { chromium } = require('playwright');
       'Each logo should be keyboard-focusable');
     assert.equal(await page.locator('#mk-skills-logos').locator('button').first().getAttribute('aria-label'),
       'Python · Languages');
-    await skillItems.first().click();
+    await page.locator('.mk-skills-tools [data-action="motion"]').click();
+    await page.mouse.move(0,0);
+    await skillItems.first().click({force:true});
     assert.match(await page.locator('.mk-skills-selection').innerText(),/Python/);
     const firstPos = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
     await page.locator('.mk-skills-tools [data-action="shuffle"]').click();
