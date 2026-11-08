@@ -75,10 +75,11 @@ const { chromium } = require('playwright');
     assert.equal(await page.locator('[data-wing-symbol]').count(),0,'No orphaned wing quote elements');
     assert.equal(await page.locator('.preview-tile.mk-up').count()>0,true,'Main ticker still displays gains');
     assert.equal(await page.locator('.preview-tile.mk-down').count()>0,true,'Main ticker still displays declines');
-    assert.match(await page.locator('.gf-legend').innerText(),/Exports/);
-    assert.match(await page.locator('.gf-legend').innerText(),/Imports/);
+    assert.equal(await page.locator('.gf-partners').count(),0,'Teaser must not contain long partner lists');
+    assert.equal(await page.locator('.gf-teaser-pair').count(),1,'Teaser should show two compact totals');
     assert.match(await page.locator('.gf-panel h3').innerText(),/United States/i);
-    assert.match(await page.locator('.gf-panel').innerText(),/Canada/);
+    assert.match(await page.locator('.gf-panel').innerText(),/may be incomplete/);
+    assert.equal(await page.locator('link[href="globe-teaser.css"]').count(),1,'Seamless skin must load');
     assert.ok(await page.evaluate(()=>{
       const globe=document.querySelector('.globe-wrap');
       const panel=document.querySelector('.gf-panel');
@@ -97,8 +98,17 @@ const { chromium } = require('playwright');
     assert.ok(separated.panelTop>=separated.stageBottom+4 ||
       separated.panelLeft>=separated.stageRight+4,
       'Trade card must not overlap globe: '+JSON.stringify(separated));
-    assert.ok(separated.stageWidth>260 && separated.panelWidth>=200,
+    assert.ok(separated.stageWidth>260 && separated.panelWidth>=175,
       'Trade card and globe must both stay usable');
+    const blended=await page.evaluate(()=>{
+      const stage=document.querySelector('.gf-stage');
+      const computed=getComputedStyle(stage);
+      return {border:computed.borderTopWidth,background:computed.backgroundColor};
+    });
+    assert.equal(blended.border,'0px','Globe is no longer surrounded by a separate border');
+    assert.match(blended.background,/rgba?\(0, 0, 0, 0\)/,'Globe stage is transparent');
+    const teaser=await page.locator('.gf-panel').boundingBox();
+    assert.ok(teaser.height<270,'Trade panel must be compact, not a full-height sidebar');
     assert.ok(separated.titleRight<=separated.globeLeft+3,
       'Globe must never cover the hero name: '+JSON.stringify(separated));
     // Interaction checks: compare rendered WebGL canvas pixels, not merely visibility.
