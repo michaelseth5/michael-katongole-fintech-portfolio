@@ -92,3 +92,54 @@ main .page-hero,main .sectionhead,
     width:min(100%,206px);height:148px;min-height:148px;
   }
 }
+
+/* Craft tech stack: seamless, right-moving marquee. The two groups have identical widths. */
+#portfolio-intro-grid .mk-bento-craft .mk-bento-tech.mk-tech-marquee{
+ display:block!important;
+ overflow:hidden!important;
+ white-space:nowrap!important;
+ position:relative;
+ padding:12px 0!important;
+ isolation:isolate;
+}
+#portfolio-intro-grid .mk-tech-marquee-track{
+ display:flex;
+ width:max-content;
+ align-items:center;
+ gap:0;
+ animation:mk-craft-marquee-right 24s linear infinite;
+ will-change:transform;
+}
+#portfolio-intro-grid .mk-tech-marquee-group{
+ display:inline-flex;
+ align-items:center;
+ gap:13px;
+ width:max-content;
+ flex:0 0 auto;
+ padding-right:13px;
+ font:700 10px 'Space Grotesk',Arial,sans-serif;
+ letter-spacing:.12em;
+ color:#7b7287;
+}
+#portfolio-intro-grid .mk-tech-marquee-group .mk-tech-label{
+ color:#7b7287!important;
+ white-space:nowrap;
+ flex:0 0 auto;
+}
+#portfolio-intro-grid .mk-tech-marquee-group .mk-tech-spark{
+ color:#a98bcd!important;
+ flex:0 0 auto;
+}
+@keyframes mk-craft-marquee-right{
+ from{transform:translate3d(-50%,0,0)}
+ to{transform:translate3d(0,0,0)}
+}
+@media(hover:hover) and (pointer:fine){
+ #portfolio-intro-grid .mk-tech-marquee:hover .mk-tech-marquee-track{animation-play-state:paused}
+}
+#portfolio-intro-grid .mk-tech-marquee:focus-within .mk-tech-marquee-track{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){
+ #portfolio-intro-grid .mk-bento-craft .mk-tech-marquee-track{animation:none!important;transform:none!important;will-change:auto}
+ #portfolio-intro-grid .mk-tech-marquee-group[aria-hidden="true"]{display:none}
+ #portfolio-intro-grid .mk-bento-craft .mk-tech-marquee{overflow-x:auto!important}
+}
