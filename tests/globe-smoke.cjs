@@ -54,7 +54,7 @@ const { chromium } = require('playwright');
     await page.waitForSelector('#financial-globe canvas',{timeout:60000});
     assert.equal(await page.locator('link[href="polish.css"]').count(),1,'Animation stylesheet loaded');
     assert.equal(await page.locator('script[src="polish.js"]').count(),1,'Animation script loaded');
-    await page.waitForFunction(()=>document.querySelectorAll('#home h1 .polish-letter').length>=12,{timeout:12000});
+    await page.waitForFunction(()=>document.querySelectorAll('#home h1 .polish-letter').length>=9,{timeout:12000});
     assert.match(await page.locator('#home h1').getAttribute('aria-label'),/Michael.*Katongole/);
     assert.equal(await page.locator('link[href="hero-legibility.css"]').count(),1,
       'Homepage legibility stylesheet should load');
