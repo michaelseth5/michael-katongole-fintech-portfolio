@@ -1,129 +1,67 @@
-/* Additive portfolio polish. No layout changes, font downloads, or new dependencies. */
+/* Motion-only enhancement. Every original card, color, corner, and section stays intact. */
 :root {
   --polish-ease: cubic-bezier(.22, 1, .36, 1);
-  --polish-rise: 800ms;
-  --polish-border: var(--line, #343849);
-  --polish-accent: var(--purple, #b9a1ff);
+  --polish-rise: 850ms;
 }
-html { scroll-padding-top: 86px; }
-body { padding-bottom: env(safe-area-inset-bottom, 0px); }
-.apple-topbar {
-  padding-top: env(safe-area-inset-top, 0px) !important;
-}
-.apple-navlinks {
-  min-height: 52px;
-  border: 1px solid rgba(255,255,255,.68) !important;
-  background: rgba(245,246,251,.82) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-}
-/* Animate existing hero copy without editing what the heading says. */
-#home .demo-hero-identity h1 .polish-letter {
-  display: inline-block;
-  will-change: auto;
-}
-.polish-ready #home .demo-hero-identity h1 .polish-letter {
-  animation: polish-letter-in 850ms var(--polish-ease) both;
-  animation-delay: calc(var(--letter-index, 0) * 50ms + 80ms);
+/* The original top navigation and scroll structure are unchanged. */
+@media (prefers-reduced-motion: no-preference) {
+  #home .demo-hero-identity h1 .polish-letter { display: inline-block; }
+  .polish-ready #home .demo-hero-identity h1 .polish-letter {
+    animation: polish-letter-in 850ms var(--polish-ease) both;
+    animation-delay: calc(var(--letter-index, 0) * 50ms + 80ms);
+  }
+  .polish-ready #home .subtitle,
+  .polish-ready #home .actions,
+  .polish-ready #home .mk-socials {
+    animation: polish-hero-detail 850ms var(--polish-ease) both;
+  }
+  .polish-ready #home .subtitle { animation-delay: 900ms; }
+  .polish-ready #home .actions { animation-delay: 1030ms; }
+  .polish-ready #home .mk-socials { animation-delay: 1110ms; }
+  /* Only the new classes animate. No base card styling is replaced. */
+  .polish-observe {
+    opacity: 0;
+    transform: translate3d(0, 35px, 0);
+    transition: opacity var(--polish-rise) var(--polish-ease),
+                transform var(--polish-rise) var(--polish-ease);
+    transition-delay: var(--polish-stagger, 0ms);
+  }
+  .polish-observe.polish-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  @media (hover:hover) and (pointer:fine) {
+    /* A small hover lift, retaining all original padding, radius and colors. */
+    :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
+        #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
+        #hobbies .art-photo-card, #hobbies .travel-photo-card) {
+      transition: transform 520ms var(--polish-ease),
+                  box-shadow 520ms var(--polish-ease);
+    }
+    :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
+        #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
+        #hobbies .art-photo-card, #hobbies .travel-photo-card):hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 46px rgba(8,8,20,.16);
+    }
+    :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
+        #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
+        #hobbies .art-photo-card, #hobbies .travel-photo-card):active {
+      transform: scale(.985);
+    }
+  }
 }
 @keyframes polish-letter-in {
   from { opacity: 0; transform: translateY(60px); filter: blur(8px); }
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
-.polish-ready #home .subtitle,
-.polish-ready #home .actions,
-.polish-ready #home .mk-socials {
-  animation: polish-hero-detail 850ms var(--polish-ease) both;
-}
-.polish-ready #home .subtitle { animation-delay: 900ms; }
-.polish-ready #home .actions { animation-delay: 1030ms; }
-.polish-ready #home .mk-socials { animation-delay: 1110ms; }
 @keyframes polish-hero-detail {
   from { opacity: 0; transform: translateY(22px); }
   to { opacity: 1; transform: translateY(0); }
 }
-/* Classes added only to elements approaching the viewport; content remains
-   visible if JavaScript is disabled or IntersectionObserver is unavailable. */
-.polish-observe {
-  opacity: 0;
-  transform: translate3d(0, 35px, 0);
-  transition: opacity var(--polish-rise) var(--polish-ease),
-              transform var(--polish-rise) var(--polish-ease);
-  transition-delay: var(--polish-stagger, 0ms);
-}
-.polish-observe.polish-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-/* Exclude the WebGL stage and moving skill logos from transform effects. */
-@media (hover:hover) and (pointer:fine) {
-  :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
-      #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
-      #hobbies .art-photo-card, #hobbies .travel-photo-card) {
-    transition: transform 520ms var(--polish-ease),
-                box-shadow 520ms var(--polish-ease);
-  }
-  :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
-      #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
-      #hobbies .art-photo-card, #hobbies .travel-photo-card):hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 22px 52px rgba(8,8,20,.16);
-  }
-  :is(#skills .large-panel, #experience .job, #achievements .demo-milestone,
-      #project-details .project-block, #portfolio-intro-grid .mk-ed-card,
-      #hobbies .art-photo-card, #hobbies .travel-photo-card):active {
-    transform: scale(.985);
-  }
-  :is(a.btn, button.btn, #home .btn.primary):hover {
-    transform: scale(1.045);
-    transition: transform 450ms var(--polish-ease), box-shadow 450ms var(--polish-ease);
-  }
-}
-:is(a.btn, button.btn, #home .btn.primary) {
-  border-radius: 999px;
-  transition: transform 450ms var(--polish-ease), box-shadow 450ms var(--polish-ease);
-}
-:is(a.btn, button.btn, #home .btn.primary):active { transform: scale(.96); }
-/* A modest, noninteractive visual echo of the existing skills lists. */
-.polish-skill-marquee {
-  width: 100%;
-  overflow: hidden;
-  margin: 0 0 22px;
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-}
-.polish-skill-track {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  gap: 10px;
-  animation: polish-scroll 65s linear infinite;
-}
-.polish-skill-marquee:hover .polish-skill-track { animation-play-state: paused; }
-.polish-skill-track span {
-  white-space: nowrap;
-  font: 600 12px/1.3 -apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif;
-  padding: 9px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--polish-border);
-  background: var(--panel, #10121d);
-  color: var(--txt, #f2f0f8);
-}
-@keyframes polish-scroll { to { transform: translateX(-50%); } }
-@media(max-width:700px) {
-  html { scroll-padding-top: 72px; }
-  .apple-topbar { top: max(8px, env(safe-area-inset-top, 0px)) !important; }
-  .polish-skill-track { animation-duration: 80s; }
-}
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto !important; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
   .polish-observe { opacity: 1 !important; transform: none !important; }
-  #home .demo-hero-identity h1 .polish-letter { opacity: 1 !important; transform: none !important; filter: none !important; }
-  .polish-skill-track { animation: none !important; transform: none; }
+  #home .demo-hero-identity h1 .polish-letter {
+    opacity: 1 !important; transform: none !important; filter: none !important;
+  }
 }
