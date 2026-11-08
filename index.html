@@ -730,7 +730,7 @@ setTimeout(()=>{const raw=Math.round(el.scrollLeft/Math.max(1,step()));if(raw<co
 function seekFromScroll(){const raw=Math.round(el.scrollLeft/Math.max(1,step()));const mapped=((raw-count)%count+count)%count;if(mapped!==logical){logical=mapped;report()}}
 prev?.addEventListener('click',()=>go(-1));next?.addEventListener('click',()=>go(1));
 el.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();go(e.key==='ArrowRight'?1:-1)}});
-let frame=0;el.addEventListener('scroll',()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{if(!settling)seekFromScroll()})},{passive:true});
+let frame=0,swipeEnd=0;el.addEventListener('scroll',()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{if(!settling)seekFromScroll()});clearTimeout(swipeEnd);swipeEnd=setTimeout(()=>{if(settling)return;const raw=Math.round(el.scrollLeft/Math.max(1,step()));if(raw<count||raw>=count*2)move(count+logical,false)},180)},{passive:true});
 el.addEventListener('pointerenter',()=>hovered=true);el.addEventListener('pointerleave',()=>hovered=false);el.addEventListener('focusin',()=>hovered=true);el.addEventListener('focusout',()=>hovered=false);
 if(!reduce){timer=setInterval(()=>{if(!hovered&&!document.hidden)go(1)},3800)}
 window.addEventListener('resize',()=>move(count+logical,false),{passive:true});
