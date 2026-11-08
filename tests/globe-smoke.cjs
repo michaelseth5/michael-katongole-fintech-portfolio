@@ -81,6 +81,22 @@ const { chromium } = require('playwright');
     await page.setViewportSize({width:390,height:844});
     await page.waitForTimeout(500);
     assert.ok(await page.locator('#financial-globe canvas').isVisible(),'3D canvas should remain visible on mobile');
+    // Responsive layout audit: report exact viewport and document overflow measurements.
+    for(const width of [375,430,768,1024,1440,1920]){
+      await page.setViewportSize({width,height:900});
+      await page.waitForTimeout(120);
+      const size=await page.evaluate(()=>({
+        content:document.documentElement.scrollWidth,
+        viewport:document.documentElement.clientWidth
+      }));
+      console.log('VIEWPORT '+width+'px: scrollWidth='+size.content+'px, clientWidth='+size.viewport+'px');
+      assert.ok(size.content<=size.viewport+5,'Unexpected horizontal page overflow at '+width+'px');
+    }
+    await page.setViewportSize({width:390,height:844});
+    assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex, nofollow, noarchive, nosnippet');
+    await page.locator('.mk-skip-link').focus();
+    assert.equal(await page.evaluate(()=>document.activeElement?.className),'mk-skip-link');
+    console.log('PASS: responsive width checks and keyboard skip navigation');
     await page.screenshot({path:'globe-smoke.png',fullPage:false});
     const globeErrors=errors.filter(m=>/globe|three|webgl|financial/i.test(m));
     assert.deepEqual(globeErrors,[],'Globe console errors: '+globeErrors.join('; '));
