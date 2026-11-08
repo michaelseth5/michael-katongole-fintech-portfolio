@@ -1,35 +1,75 @@
+/* Compact, view-first finance globe. All rules are scoped to this component. */
+.globe-wrap { isolation: isolate; }
+.globe-wrap .globe-label,
+.globe-wrap .globe-badge,
+.globe-wrap .fx-demo-panel { display: none !important; }
+#financial-globe { width: 100%; height: 100%; min-height: 320px; position: relative; }
+#financial-globe canvas { cursor: grab; touch-action: pan-y; }
+#financial-globe canvas:active { cursor: grabbing; }
 
-#financial-globe{width:100%;height:100%;min-height:320px;position:relative}
-#financial-globe canvas{cursor:grab;touch-action:pan-y}
-.globe-wrap{isolation:isolate}
-.globe-wrap .globe-label,.globe-wrap .globe-badge,.globe-wrap .fx-demo-panel{display:none!important}
-.gf-controls{position:absolute;top:12px;left:12px;z-index:8;width:min(232px,43%);padding:13px;background:#0c0d1cef;border:1px solid #a88aff55;border-radius:12px;color:#eae8ff;backdrop-filter:blur(12px);font:12px 'DM Sans',sans-serif}
-.gf-controls strong{display:block;font:600 12px 'Space Grotesk';margin-bottom:7px}
-.gf-controls label{display:block;margin:7px 0 2px;font-size:10px;color:#b7b4d6}
-.gf-controls select,.gf-controls input[type=number]{width:100%;background:#17172c;color:#fff;border:1px solid #5d5284;border-radius:5px;padding:5px;font-size:11px}
-.gf-controls button{background:#393055;color:#fff;border:1px solid #9181c8;border-radius:6px;padding:5px 8px;cursor:pointer;margin-top:8px}
-.gf-controls .gf-actions{display:flex;flex-wrap:wrap;gap:7px}
-.gf-controls .gf-toggle{display:flex;align-items:center;gap:5px;font-size:10px;margin-top:7px}
-.gf-status{position:absolute;bottom:10px;left:12px;right:12px;background:#0b0e1fe9;border:1px solid #a48bff45;padding:9px 12px;border-radius:9px;z-index:8;color:#c4c8e5;font-size:10px}
-.gf-panel{position:absolute;top:12px;right:12px;width:min(240px,38%);max-height:75%;overflow:auto;background:#0d1021eb;border:1px solid #ab93ef55;border-radius:12px;z-index:8;padding:12px;color:#eee9ff;font-size:11px;backdrop-filter:blur(10px)}
-.gf-panel h3{font-size:13px;margin:0 0 7px;color:#fff}.gf-panel p{margin:3px 0;color:#b8bdd6}.gf-panel b{color:#fff}.gf-panel ol{padding-left:18px;line-height:1.5}
-.gf-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:7px;font-size:10px;color:#bbb6d5}
-.gf-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px}
-@media(max-width:650px){.globe-wrap{height:580px!important}.gf-controls{width:46%;padding:9px;top:8px;left:7px}.gf-panel{width:47%;top:8px;right:7px;padding:9px}.gf-status{font-size:9px;left:7px;right:7px;bottom:7px}.gf-controls .gf-actions button{font-size:10px}}
-
-/* Fullscreen is limited to the globe wrapper; never changes other portfolio sections. */
-.globe-wrap:fullscreen{width:100vw!important;height:100vh!important;padding:0;background:#070911;display:block}
-.globe-wrap:fullscreen #financial-globe{height:100vh;min-height:100vh}
-.globe-wrap:fullscreen .gf-controls{width:245px;max-width:46vw}
-.globe-wrap:fullscreen .gf-panel{width:285px;max-width:43vw}
-.gf-controls button:hover,.gf-controls button:focus-visible{border-color:#b5a3ff;background:#51406f}
-.gf-controls select:focus-visible,.gf-controls input:focus-visible{outline:2px solid #b5a3ff;outline-offset:2px}
-.gf-panel ol{max-height:165px;overflow:auto}
-.gf-panel ol li{margin-bottom:4px}
-@media(max-width:650px){
-  .globe-wrap:fullscreen .gf-controls{max-width:47vw;width:47vw}
-  .globe-wrap:fullscreen .gf-panel{max-width:46vw;width:46vw}
-  .gf-controls .gf-actions{gap:4px}
-  .gf-controls button{font-size:10px;padding:5px}
+.gf-hud {
+  position: absolute; top: 13px; left: 12px; z-index: 8;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  max-width: calc(100% - 70px); padding: 9px 11px;
+  background: rgba(8, 11, 26, .69); border: 1px solid rgba(174, 144, 240, .20);
+  border-radius: 10px; backdrop-filter: blur(10px);
+  color: #e8eaff; pointer-events: none;
 }
-@media(prefers-reduced-motion:reduce){#financial-globe *, .gf-controls *, .gf-panel *{transition:none!important}}
+.gf-hud strong { font: 700 10px/1.2 'Space Grotesk',sans-serif; letter-spacing: .065em; }
+.gf-hud small { color: #aaaac7; font: 600 9px/1.2 'Space Grotesk',sans-serif; }
+.gf-live-dot { width: 6px; height: 6px; background: #c6a9ff; border-radius: 50%; box-shadow: 0 0 9px #8c65d2; }
+
+.gf-panel {
+  position: absolute; top: 52px; right: 10px; z-index: 8;
+  width: min(204px, 37%); max-height: 63%; overflow-y: auto; overflow-x: hidden;
+  scrollbar-width: thin; scrollbar-color: #786c9b transparent;
+  background: rgba(7, 11, 27, .86); border: 1px solid rgba(178, 158, 230, .25);
+  border-radius: 11px; padding: 11px 12px;
+  color: #f2f1fc; backdrop-filter: blur(12px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, .22);
+  font: 11px/1.45 'DM Sans',sans-serif;
+}
+.gf-panel h3 { font: 700 13px/1.25 'Space Grotesk',sans-serif; color: #f4f2ff; margin: 0 0 5px; }
+.gf-panel p { margin: 4px 0; color: #b5b8cf; }
+.gf-panel .gf-meta { color: #a5a5c3; font-size: 10px; margin-bottom: 10px; }
+.gf-stat { display: flex; justify-content: space-between; gap: 9px; align-items: baseline; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.gf-stat > span { color: #b1b5ca; }
+.gf-stat > b { color: #f3f2fa; text-align: right; font-size: 11px; font-variant-numeric: tabular-nums; }
+.gf-stat small { font-size: 9px; color: #9b9eb8; }
+.gf-positive, .gf-panel b.gf-positive { color: #46e195; }
+.gf-negative, .gf-panel b.gf-negative { color: #ff687b; }
+.gf-partners { padding-top: 9px; }
+.gf-partners > strong { font: 700 10px 'Space Grotesk',sans-serif; color: #d5d7ed; }
+.gf-partners ol { margin: 5px 0 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+.gf-partners li { display: flex; justify-content: space-between; gap: 7px; font-size: 10px; color: #b8bed7; }
+.gf-partners li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gf-partners li b { white-space: nowrap; font-variant-numeric: tabular-nums; color: #e6e8f6; }
+.gf-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 11px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,.09); font-size: 10px; color: #b6b6ce; }
+.gf-dot { display: inline-block; width: 7px; height: 7px; margin-right: 4px; border-radius: 50%; }
+.gf-dot-export { background: #36d887; }
+.gf-dot-import { background: #ff667c; }
+.gf-panel .gf-source { font-size: 9px; line-height: 1.4; color: #9896af; margin-top: 9px; }
+.gf-panel .gf-unavailable { color: #dbbcc6; padding: 8px 0; }
+.gf-status { position: absolute; bottom: 12px; left: 12px; z-index: 8; max-width: calc(100% - 24px); padding: 7px 10px; background: rgba(7,10,23,.67); border: 1px solid rgba(178, 158, 230, .14); border-radius: 20px; color: #bbc1d7; font: 10px/1.25 'DM Sans',sans-serif; pointer-events: none; }
+.gf-expand { position: absolute; top: 12px; right: 12px; z-index: 9; border: 1px solid rgba(178,158,230,.24); color: #dedcf1; background: rgba(8,11,26,.78); border-radius: 9px; width: 33px; height: 33px; font-size: 20px; line-height: 1; cursor: pointer; }
+.gf-expand:hover, .gf-expand:focus-visible { border-color: #bda5ff; background: #24203d; }
+.gf-fallback { padding: 80px 12px; text-align: center; color: #b7aecf; }
+
+.globe-wrap:fullscreen { width: 100vw !important; height: 100vh !important; background: #070911; padding: 0; }
+.globe-wrap:fullscreen #financial-globe { min-height: 100vh; height: 100vh; }
+.globe-wrap:fullscreen .gf-panel { width: 260px; max-height: 70vh; }
+@media(max-width: 650px) {
+  .globe-wrap { height: 510px !important; }
+  .gf-hud { top: 9px; left: 8px; padding: 7px 9px; max-width: calc(100% - 55px); }
+  .gf-hud strong { font-size: 9px; }
+  .gf-hud small { font-size: 8px; }
+  .gf-expand { top: 8px; right: 8px; width: 29px; height: 29px; }
+  .gf-panel { top: 48px; right: 8px; width: min(180px, 44%); max-height: 68%; padding: 9px; }
+  .gf-panel h3 { font-size: 11px; }
+  .gf-stat, .gf-stat > b { font-size: 10px; }
+  .gf-status { bottom: 8px; left: 8px; font-size: 9px; }
+  .globe-wrap:fullscreen .gf-panel { width: min(220px, 45%); max-height: 75vh; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #financial-globe *, .gf-panel *, .gf-hud * { transition: none !important; }
+}

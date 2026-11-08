@@ -15,3 +15,23 @@
 @media (prefers-reduced-motion: reduce) {
   .mk-skip-link { transition: none; }
 }
+
+/* Market direction styling: green/red only when a comparable prior price exists. */
+:root {
+  --market-up: #43df8c;
+  --market-down: #ff667a;
+  --market-neutral: #b6bfd6;
+}
+.preview-tile.mk-up span, .preview-tile.mk-up em,
+.mk-wing-quotes a.mk-up strong { color: var(--market-up) !important; }
+.preview-tile.mk-down span, .preview-tile.mk-down em,
+.mk-wing-quotes a.mk-down strong { color: var(--market-down) !important; }
+.preview-tile.mk-flat span, .preview-tile.mk-flat em,
+.mk-wing-quotes a.mk-flat strong { color: var(--market-neutral) !important; }
+.preview-tile.mk-up { border-color: rgba(67,223,140,.32); }
+.preview-tile.mk-down { border-color: rgba(255,102,122,.34); }
+.mk-market-wing { border-color: rgba(175,152,222,.20); }
+.mk-wing-quotes a.mk-up strong, .mk-wing-quotes a.mk-down strong {
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 13px currentColor;
+}
