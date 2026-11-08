@@ -1,0 +1,199 @@
+/* Networking presentation polish — scoped to the sixth Hobbies panel. */
+#hobbies #networking{
+ --network-ink:#f7f3ff;
+ --network-muted:#c8c3d8;
+ --network-accent:#c3a8ff;
+ --network-line:rgba(207,190,255,.22);
+ color:#292436;
+}
+#hobbies #networking .network-carousel-eyebrow,
+#hobbies #networking .network-carousel-meta,
+#hobbies .networking-hobby-kicker{
+ color:#76658d!important;
+ letter-spacing:.12em;
+}
+#hobbies #networking .network-carousel-controls{
+ margin-bottom:12px!important;
+ gap:12px!important;
+}
+#hobbies #networking .network-carousel-tabs{
+ gap:9px!important;
+ padding:4px 4px 9px!important;
+}
+#hobbies #networking .network-carousel-tabs .network-tab{
+ border:1px solid #d6cbe7!important;
+ color:#4c425f!important;
+ background:rgba(255,255,255,.78)!important;
+ border-radius:999px!important;
+ font:650 12px/1.2 'Space Grotesk',system-ui,sans-serif!important;
+ padding:12px 17px!important;
+ box-shadow:none!important;
+ transition:background-color .25s ease,border-color .25s ease,color .25s ease,transform .25s ease!important;
+}
+#hobbies #networking .network-carousel-tabs .network-tab:hover{
+ background:#f0e8fc!important;
+ border-color:#ac8fe2!important;
+ transform:translateY(-1px)!important;
+}
+#hobbies #networking .network-carousel-tabs .network-tab.active,
+#hobbies #networking .network-carousel-tabs .network-tab[aria-selected="true"]{
+ color:#4b2b7e!important;
+ background:#e9ddff!important;
+ border-color:#b49ae5!important;
+ box-shadow:0 0 0 2px rgba(177,150,220,.1)!important;
+}
+#hobbies #networking .network-carousel-controls>.network-prev,
+#hobbies #networking .network-carousel-controls>.network-next{
+ border:1px solid #d0c0e4!important;
+ background:#f4edff!important;
+ color:#5e4385!important;
+ box-shadow:0 5px 14px rgba(73,45,114,.08)!important;
+}
+#hobbies #networking .network-carousel-controls>.network-prev:hover,
+#hobbies #networking .network-carousel-controls>.network-next:hover{
+ background:#e5d7fa!important;
+ border-color:#ad91d8!important;
+}
+#hobbies #networking .network-carousel-meta{margin:0 0 16px!important;}
+#hobbies #networking .network-progress span{background:#d3c9df!important}
+#hobbies #networking .network-progress span.active{background:#a678ed!important}
+#hobbies #networking .network-carousel-track{
+ border-radius:24px;
+ scroll-padding-inline:0;
+}
+#hobbies #networking .network-event-slide{
+ --event-glow:rgba(155,113,226,.15);
+ position:relative;
+ border:1px solid rgba(199,174,241,.27)!important;
+ border-radius:24px!important;
+ background:
+ radial-gradient(ellipse at 8% -15%,var(--event-glow),transparent 48%),
+ linear-gradient(150deg,#211b36 0%,#171525 57%,#1c172d 100%)!important;
+ box-shadow:0 15px 38px rgba(55,32,82,.11)!important;
+ padding:clamp(20px,3vw,38px)!important;
+ color:var(--network-ink)!important;
+ overflow:hidden;
+}
+#hobbies #networking #networking-jpmc{--event-glow:rgba(137,113,222,.18)}
+#hobbies #networking #networking-seo{--event-glow:rgba(92,153,214,.15)}
+#hobbies #networking #networking-bofa{--event-glow:rgba(149,113,212,.18)}
+#hobbies #networking #networking-mlt{--event-glow:rgba(116,143,193,.16)}
+#hobbies #networking #networking-bloomberg{--event-glow:rgba(202,143,83,.11)}
+#hobbies #networking #networking-afrotech{--event-glow:rgba(187,92,155,.14)}
+#hobbies #networking .seo-event-header{
+ display:flex!important;
+ flex-wrap:wrap!important;
+ flex-direction:column!important;
+ justify-content:center!important;
+ align-items:center!important;
+ text-align:center!important;
+ gap:12px!important;
+ border-top:1px solid var(--network-line)!important;
+ margin:0 0 clamp(22px,3vw,30px)!important;
+ padding:26px 0 0!important;
+}
+#hobbies #networking .seo-event-header>div{min-width:0;width:100%;max-width:900px;text-align:center!important}
+#hobbies #networking .seo-event-header .eyebrow{
+ color:#cbb0ed!important;
+ font:750 11px/1.5 'Space Grotesk',system-ui,sans-serif!important;
+ text-transform:uppercase;
+ letter-spacing:.16em!important;
+ margin-bottom:10px!important;
+}
+#hobbies #networking .seo-event-header h2,
+#hobbies #networking .seo-event-header h2 *{
+ color:#f7f1ff!important;
+ -webkit-text-fill-color:#f7f1ff!important;
+ text-shadow:none!important;
+ opacity:1!important;
+}
+#hobbies #networking .seo-event-header h2{
+ font:750 clamp(26px,3.25vw,43px)/1.16 'Space Grotesk',system-ui,sans-serif!important;
+ letter-spacing:-.055em!important;
+ margin:0 auto 11px!important;
+ overflow-wrap:anywhere;
+ max-width:950px;
+}
+#hobbies #networking .seo-event-header p{
+ color:#d5d0e1!important;
+ opacity:1!important;
+ font:400 clamp(13px,1.25vw,15px)/1.7 Inter,system-ui,sans-serif!important;
+ max-width:790px;
+ margin:0 auto!important;
+ text-align:center!important;
+}
+#hobbies #networking .seo-event-label{
+ display:inline-flex!important;
+ flex:none!important;
+ justify-content:center;
+ align-items:center;
+ max-width:100%;
+ white-space:normal;
+ text-align:center;
+ color:#e3d5ff!important;
+ background:rgba(190,155,247,.1)!important;
+ border:1px solid rgba(195,159,248,.32)!important;
+ border-radius:999px!important;
+ padding:9px 15px!important;
+ letter-spacing:.10em!important;
+ font-size:10px!important;
+ line-height:1.4!important;
+}
+#hobbies #networking .seo-networking-grid.photo-carousel-rail{
+ gap:15px!important;
+ padding:2px 1px 12px!important;
+}
+#hobbies #networking .seo-photo{
+ background:#241e38!important;
+ border:1px solid rgba(204,188,231,.26)!important;
+ border-radius:17px!important;
+ box-shadow:0 7px 23px rgba(8,6,18,.19);
+ overflow:hidden!important;
+}
+#hobbies #networking .seo-photo img{
+ object-fit:cover;
+ transition:transform .35s cubic-bezier(.22,.68,0,1)!important;
+}
+#hobbies #networking .seo-photo figcaption{
+ color:#e7e2f1!important;
+ background:#241e38!important;
+ font:500 12px/1.55 Inter,system-ui,sans-serif!important;
+ padding:13px 15px!important;
+ min-height:48px;
+ text-align:center!important;
+ justify-content:center!important;
+ align-items:center!important;
+}
+#hobbies #networking .seo-photo-index{color:#bfa2ff!important}
+#hobbies #networking .photo-carousel-controls{
+ justify-content:center!important;
+ margin-top:13px!important;
+}
+#hobbies #networking .photo-carousel-status{color:#c9bedb!important}
+#hobbies #networking .photo-carousel-arrow{
+ border-color:rgba(207,189,238,.33)!important;
+ background:rgba(204,176,252,.12)!important;
+ color:#f7edff!important;
+}
+#hobbies #networking .photo-carousel-arrow:hover{
+ border-color:#cbb1fa!important;
+ background:rgba(204,176,252,.24)!important;
+}
+#hobbies #networking button:focus-visible,
+#hobbies #networking .photo-carousel-rail:focus-visible{
+ outline:2px solid #c2a4ff!important;
+ outline-offset:3px!important;
+}
+@media(max-width:700px){
+ #hobbies #networking .network-event-slide{padding:18px!important;border-radius:18px!important}
+ #hobbies #networking .seo-event-header{padding-top:18px!important}
+ #hobbies #networking .seo-event-header h2{font-size:clamp(25px,6vw,34px)!important}
+ #hobbies #networking .seo-event-label{font-size:9px!important}
+ #hobbies #networking .network-carousel-tabs .network-tab{font-size:11px!important;padding:10px 13px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #hobbies #networking .seo-photo img,
+ #hobbies #networking .network-tab{transition:none!important}
+ #hobbies #networking .seo-photo:hover,
+ #hobbies #networking .seo-photo:hover img{transform:none!important}
+}
