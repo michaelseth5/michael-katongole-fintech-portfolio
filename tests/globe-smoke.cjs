@@ -112,6 +112,55 @@ const { chromium } = require('playwright');
     assert.equal(await page.evaluate(()=>document.activeElement?.className),'mk-skip-link');
     console.log('PASS: responsive width checks and keyboard skip navigation');
     await page.screenshot({path:'globe-smoke.png',fullPage:false});
+    // Skills sphere: local artwork, drag rotation, keyboard, shuffle and reset.
+    await page.locator('#apple-navlinks a[href="#skills"]').click();
+    await page.waitForSelector('#mk-skills-logos .mk-skill-particle',{state:'visible',timeout:20000});
+    const skills = page.locator('#mk-skills-visual');
+    const skillItems = page.locator('#mk-skills-logos .mk-skill-particle');
+    assert.equal(await skillItems.count(),12,'Expected the original 12 technology marks');
+    assert.equal(await page.locator('#mk-skills-logos img').count(),12,'Every skill should have a logo image');
+    await page.waitForFunction(()=>[...document.querySelectorAll('#mk-skills-logos img')]
+      .every(img=>img.complete && img.naturalWidth>0),{timeout:15000});
+    assert.ok(await page.evaluate(()=>[...document.querySelectorAll('#mk-skills-logos img')]
+      .every(img=>img.complete && img.naturalWidth>0)), 'Local brand SVGs must load');
+    assert.equal(await page.locator('#mk-skills-logos').locator('button').count(),12,
+      'Each logo should be keyboard-focusable');
+    assert.equal(await page.locator('#mk-skills-logos').locator('button').first().getAttribute('aria-label'),
+      'Python · Languages');
+    await page.locator('.mk-skills-tools [data-action="motion"]').click();
+    await page.mouse.move(0,0);
+    await skillItems.first().click({force:true});
+    assert.match(await page.locator('.mk-skills-selection').innerText(),/Python/);
+    const firstPos = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
+    await page.locator('.mk-skills-tools [data-action="shuffle"]').click();
+    await page.waitForFunction((before)=>{
+      const el=document.querySelector('#mk-skills-logos .mk-skill-particle');
+      return el && (el.style.left+'|'+el.style.top)!==before;
+    },firstPos,{timeout:7000});
+    const shuffled = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
+    assert.notEqual(shuffled,firstPos,'Shuffle should change skill positions');
+    await page.locator('.mk-skills-tools [data-action="reset"]').click();
+    await page.waitForFunction((before)=>{
+      const el=document.querySelector('#mk-skills-logos .mk-skill-particle');
+      return el && (el.style.left+'|'+el.style.top)!==before;
+    },shuffled,{timeout:7000});
+    const restored = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
+    assert.ok(restored.length>0,'Reset should restore a rendered layout');
+    const sphereBox = await skills.boundingBox();
+    assert.ok(sphereBox && sphereBox.width>150 && sphereBox.height>150);
+    await page.mouse.move(sphereBox.x+sphereBox.width*.12,sphereBox.y+sphereBox.height*.84);
+    await page.mouse.down();
+    await page.mouse.move(sphereBox.x+sphereBox.width*.36,sphereBox.y+sphereBox.height*.72,{steps:8});
+    await page.mouse.up();
+    await page.waitForTimeout(250);
+    const dragged = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
+    assert.notEqual(dragged,restored,'Dragging sphere should rotate skill positions');
+    await skills.focus();
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(100);
+    const keyboardMoved = await skillItems.first().evaluate(el=>el.style.left+'|'+el.style.top);
+    assert.notEqual(keyboardMoved,dragged,'Arrow keys should rotate sphere');
+    console.log('PASS: official skills logos, logo selection, shuffle, reset, pointer drag and keyboard rotation');
     const globeErrors=errors.filter(m=>/globe|three|webgl|financial/i.test(m));
     assert.deepEqual(globeErrors,[],'Globe console errors: '+globeErrors.join('; '));
     console.log('PASS: browser loads minimalist globe, directional arcs, fullscreen, market tones, and mobile canvas');
