@@ -66,6 +66,12 @@ const { chromium } = require('playwright');
     assert.match(await page.locator('.gf-legend').innerText(),/Imports/);
     assert.match(await page.locator('.gf-panel h3').innerText(),/United States/i);
     assert.match(await page.locator('.gf-panel').innerText(),/Canada/);
+    assert.ok(await page.evaluate(()=>{
+      const globe=document.querySelector('.globe-wrap');
+      const panel=document.querySelector('.gf-panel');
+      const hero=document.querySelector('.hero');
+      return !globe.contains(panel) && panel.parentElement===hero && globe.parentElement===hero;
+    }), 'Panel must be a separate homepage element outside the entire globe box');
     const separated=await page.evaluate(()=>{
       const globe=document.querySelector('.gf-stage').getBoundingClientRect();
       const sidebar=document.querySelector('.gf-panel').getBoundingClientRect();
