@@ -119,6 +119,8 @@ const { chromium } = require('playwright');
     const skillItems = page.locator('#mk-skills-logos .mk-skill-particle');
     assert.equal(await skillItems.count(),12,'Expected the original 12 technology marks');
     assert.equal(await page.locator('#mk-skills-logos img').count(),12,'Every skill should have a logo image');
+    await page.waitForFunction(()=>[...document.querySelectorAll('#mk-skills-logos img')]
+      .every(img=>img.complete && img.naturalWidth>0),{timeout:15000});
     assert.ok(await page.evaluate(()=>[...document.querySelectorAll('#mk-skills-logos img')]
       .every(img=>img.complete && img.naturalWidth>0)), 'Local brand SVGs must load');
     assert.equal(await page.locator('#mk-skills-logos').locator('button').count(),12,
