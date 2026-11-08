@@ -1,0 +1,35 @@
+name: Financial Globe Smoke Test
+on:
+  push:
+    branches: [feature/interactive-financial-globe]
+  pull_request:
+    paths:
+      - index.html
+      - globe.js
+      - globe.css
+      - assets/countries.geojson
+      - netlify/functions/markets.js
+      - tests/globe-smoke.cjs
+      - .github/workflows/globe-smoke.yml
+  workflow_dispatch:
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test-only Chromium dependencies
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install chromium --with-deps
+      - name: Run real Chromium smoke tests against local HTML site
+        run: node tests/globe-smoke.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: globe-browser-screenshot
+          path: globe-smoke.png
+          if-no-files-found: ignore
