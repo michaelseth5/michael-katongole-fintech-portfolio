@@ -36,27 +36,6 @@
     document.documentElement.classList.add('polish-ready');
   }
 
-  // Add a decorative marquee sourced from existing skill labels; no skills
-  // are modified, moved, removed, or duplicated for screen readers.
-  const skills = document.querySelector('#skills .sectionhead');
-  const skillNames = [...document.querySelectorAll('#skills .skills .skill')]
-    .map(element => element.textContent.trim()).filter(Boolean);
-  if (skills && skillNames.length) {
-    const marquee = document.createElement('div');
-    marquee.className = 'polish-skill-marquee';
-    marquee.setAttribute('aria-hidden', 'true');
-    const track = document.createElement('div');
-    track.className = 'polish-skill-track';
-    const names = reduce ? skillNames : [...skillNames, ...skillNames];
-    for (const name of names) {
-      const pill = document.createElement('span');
-      pill.textContent = name;
-      track.append(pill);
-    }
-    marquee.append(track);
-    skills.insertAdjacentElement('afterend', marquee);
-  }
-
   if (!ioSupported || reduce) return;
 
   // Observe existing cards/headings only; never animate the globe canvases,
