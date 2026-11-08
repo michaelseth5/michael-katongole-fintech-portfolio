@@ -8,7 +8,7 @@
 
   // The name is visually staggered but exposed once to assistive technology.
   if (heroName && !reduce) {
-    const originalName = heroName.textContent.trim().replace(/\s+/g, ' ');
+    const originalName = heroName.innerText.trim().replace(/\s+/g, ' ');
     let index = 0;
     const walker = document.createTreeWalker(heroName, NodeFilter.SHOW_TEXT);
     const nodes = [];
