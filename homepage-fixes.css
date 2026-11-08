@@ -1,0 +1,109 @@
+/* Surgical homepage repair: preserve existing art, fonts, cards and globe. */
+#site-preview-notice {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: min(1306px, calc(100% - 32px));
+  margin: 14px auto 0;
+  padding: 12px 17px;
+  border: 1px solid rgba(186,160,226,.27);
+  border-radius: 10px;
+  background: #181426;
+  color: #eae4f5;
+  font: 13px/1.55 'DM Sans',system-ui,sans-serif;
+}
+#site-preview-notice p { margin: 0; max-width: 960px; }
+#site-preview-notice strong { color: #f9f6ff; font-weight: 700; }
+#site-preview-notice a {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(194,164,246,.45);
+  border-radius: 999px;
+  color: #dec5ff;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+#site-preview-notice a:hover,
+#site-preview-notice a:focus-visible { background: #2a203e; border-color: #d2b8ff; }
+
+/* Undo the three-column layout responsible for cutting across the hero name.
+   The original two columns are for the introduction and the globe only. */
+#home.hero.gf-hero-safe-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: 18px;
+  align-items: center;
+  overflow: visible;
+  min-height: 710px;
+  height: auto;
+}
+#home.hero.gf-hero-safe-layout > .fade,
+#home.hero.gf-hero-safe-layout > .globe-wrap { min-width: 0; }
+#home.hero.gf-hero-safe-layout .demo-hero-identity {
+  max-width: 100%;
+}
+#home.hero.gf-hero-safe-layout .demo-hero-identity h1 {
+  min-width: 0;
+  font-size: clamp(36px, 4vw, 74px);
+  overflow-wrap: normal;
+}
+#home.hero.gf-hero-safe-layout .globe-wrap { height: 570px; }
+#home.hero.gf-hero-safe-layout > .gf-panel {
+  z-index: 4;
+  width: auto;
+  height: auto;
+  max-height: none;
+  margin: 0;
+}
+/* On wider screens the country panel occupies the OUTSIDE right margin,
+   not the introduction or the globe box. */
+@media (min-width: 1900px) {
+  #home.hero.gf-hero-safe-layout > .gf-panel {
+    position: absolute;
+    top: 76px;
+    left: calc(100% + 18px);
+    width: 245px;
+    max-height: 570px;
+  }
+}
+/* When there is insufficient outside space, create a separate second-row
+   statistics area instead of squeezing or overlaying the introduction. */
+@media (min-width: 901px) and (max-width: 1899px) {
+  #home.hero.gf-hero-safe-layout > .gf-panel {
+    position: relative;
+    grid-column: 2;
+    align-self: stretch;
+    top: auto;
+    left: auto;
+    max-height: none;
+  }
+}
+/* Preserve the original stacked mobile/tablet flow. */
+@media (max-width: 900px) {
+  #home.hero.gf-hero-safe-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    min-height: 0;
+  }
+  #home.hero.gf-hero-safe-layout > .fade { grid-column: 1; }
+  #home.hero.gf-hero-safe-layout > .globe-wrap { grid-column: 1; height: 450px; }
+  #home.hero.gf-hero-safe-layout > .gf-panel {
+    grid-column: 1;
+    position: relative;
+    top: auto;
+    left: auto;
+    align-self: stretch;
+  }
+}
+@media (max-width: 650px) {
+  #site-preview-notice { flex-direction: column; align-items: flex-start; gap: 9px; font-size: 12px; padding: 12px 14px; }
+  #home.hero.gf-hero-safe-layout > .globe-wrap { height: 390px !important; }
+  #home.hero.gf-hero-safe-layout .demo-hero-identity h1 { font-size: clamp(30px, 7.3vw, 50px); }
+}

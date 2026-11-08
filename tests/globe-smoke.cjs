@@ -52,6 +52,11 @@ const { chromium } = require('playwright');
     page.on('pageerror',e=>errors.push(e.message));
     await page.goto(address,{waitUntil:'domcontentloaded',timeout:60000});
     await page.waitForSelector('#financial-globe canvas',{timeout:60000});
+    assert.equal(await page.locator('#site-preview-notice').count(),1,
+      'Welcome/testing note should appear once');
+    assert.match(await page.locator('#site-preview-notice').innerText(),/Welcome to my website!/);
+    assert.match(await page.locator('#site-preview-notice').innerText(),/testing phase/);
+    assert.match(await page.locator('#site-preview-notice a').getAttribute('href'),/^mailto:MichaelKatongole5@gmail.com/);
     await page.waitForFunction(()=>document.querySelector('.gf-status')?.textContent.includes('annual corridors'),{timeout:30000});
     assert.equal(await page.locator('.gf-controls').count(),0,'Oversized globe menu should be gone');
     assert.equal(await page.locator('.gf-hud').count(),1,'Compact globe HUD should exist');
@@ -75,12 +80,19 @@ const { chromium } = require('playwright');
     const separated=await page.evaluate(()=>{
       const globe=document.querySelector('.gf-stage').getBoundingClientRect();
       const sidebar=document.querySelector('.gf-panel').getBoundingClientRect();
-      return {stageRight:globe.right,panelLeft:sidebar.left,stageWidth:globe.width,panelWidth:sidebar.width};
+      const title=document.querySelector('#home .demo-hero-identity h1').getBoundingClientRect();
+      const stage=document.querySelector('.globe-wrap').getBoundingClientRect();
+      return {stageLeft:globe.left,stageRight:globe.right,stageBottom:globe.bottom,
+        panelLeft:sidebar.left,panelTop:sidebar.top,stageWidth:globe.width,
+        panelWidth:sidebar.width,titleRight:title.right,globeLeft:stage.left};
     });
-    assert.ok(separated.panelLeft>=separated.stageRight+5,
-      'At desktop widths the statistics rail must not overlay the globe: '+JSON.stringify(separated));
-    assert.ok(separated.stageWidth>260&&separated.panelWidth>=200,
-      'Both side-by-side columns should remain usable');
+    assert.ok(separated.panelTop>=separated.stageBottom+4 ||
+      separated.panelLeft>=separated.stageRight+4,
+      'Trade card must not overlap globe: '+JSON.stringify(separated));
+    assert.ok(separated.stageWidth>260 && separated.panelWidth>=200,
+      'Trade card and globe must both stay usable');
+    assert.ok(separated.titleRight<=separated.globeLeft+3,
+      'Globe must never cover the hero name: '+JSON.stringify(separated));
     // Interaction checks: compare rendered WebGL canvas pixels, not merely visibility.
     await page.mouse.move(0,0);
     const globeCanvas=page.locator('#financial-globe canvas');
@@ -127,6 +139,22 @@ const { chromium } = require('playwright');
       }));
       console.log('VIEWPORT '+width+'px: scrollWidth='+size.content+'px, clientWidth='+size.viewport+'px');
       assert.ok(size.content<=size.viewport+5,'Unexpected horizontal page overflow at '+width+'px');
+      if(width===1920){
+        const check=await page.evaluate(()=>{
+          const hero=document.querySelector('#home').getBoundingClientRect();
+          const panel=document.querySelector('#home .gf-panel').getBoundingClientRect();
+          const globe=document.querySelector('#home .globe-wrap').getBoundingClientRect();
+          const title=document.querySelector('#home h1').getBoundingClientRect();
+          return {heroRight:hero.right,panelLeft:panel.left,panelRight:panel.right,
+            globeLeft:globe.left,titleRight:title.right};
+        });
+        assert.ok(check.panelLeft>=check.heroRight+8,
+          'Wide desktop financial card must sit outside hero in right open margin: '+JSON.stringify(check));
+        assert.ok(check.panelRight <= size.viewport+2,
+          'Country card must fit inside viewport: '+JSON.stringify(check));
+        assert.ok(check.titleRight<=check.globeLeft+3,
+          'Wide desktop name must not be covered by globe: '+JSON.stringify(check));
+      }
     }
     await page.setViewportSize({width:390,height:844});
     assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex, nofollow, noarchive, nosnippet');
