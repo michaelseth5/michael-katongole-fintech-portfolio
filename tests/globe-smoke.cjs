@@ -11,7 +11,7 @@ const { chromium } = require('playwright');
   const mime = {'.html':'text/html','.js':'application/javascript','.css':'text/css','.geojson':'application/geo+json','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.webp':'image/webp','.avif':'image/avif'};
   const server = http.createServer((req,res) => {
     const url = new URL(req.url, 'http://localhost');
-    if (url.pathname === '/api/markets') {
+    if ((url.pathname === '/api/markets' || url.pathname === '/api/financial')) {
       res.setHeader('Content-Type','application/json');
       const year=Number(url.searchParams.get('year') || 2024);
       if (url.searchParams.get('dataset')==='gdp') {
