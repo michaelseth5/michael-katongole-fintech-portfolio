@@ -10,6 +10,7 @@ on:
       - assets/countries.geojson
       - netlify/functions/markets.js
       - tests/globe-smoke.cjs
+      - tests/live-data-smoke.cjs
       - .github/workflows/globe-smoke.yml
   workflow_dispatch:
 jobs:
@@ -27,6 +28,8 @@ jobs:
           npx playwright install chromium --with-deps
       - name: Run real Chromium smoke tests against local HTML site
         run: node tests/globe-smoke.cjs
+      - name: Verify live UN Comtrade and World Bank public responses
+        run: node tests/live-data-smoke.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
