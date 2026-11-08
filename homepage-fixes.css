@@ -64,18 +64,18 @@
 }
 /* On wider screens the country panel occupies the OUTSIDE right margin,
    not the introduction or the globe box. */
-@media (min-width: 1850px) {
+@media (min-width: 1900px) {
   #home.hero.gf-hero-safe-layout > .gf-panel {
     position: absolute;
     top: 76px;
     left: calc(100% + 18px);
-    width: min(265px, calc((100vw - 100%) / 2 - 35px));
+    width: 245px;
     max-height: 570px;
   }
 }
 /* When there is insufficient outside space, create a separate second-row
    statistics area instead of squeezing or overlaying the introduction. */
-@media (min-width: 901px) and (max-width: 1849px) {
+@media (min-width: 901px) and (max-width: 1899px) {
   #home.hero.gf-hero-safe-layout > .gf-panel {
     position: relative;
     grid-column: 2;
