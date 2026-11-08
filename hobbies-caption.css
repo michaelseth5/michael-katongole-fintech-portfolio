@@ -1,0 +1,15 @@
+/* Hobbies photo captions: readable black text on light card surfaces. */
+#hobbies .art-photo-card figcaption,
+#hobbies .travel-photo-card figcaption,
+#hobbies .mentorship-shot figcaption {
+  background: #fff !important;
+  color: #111 !important;
+}
+#hobbies .art-photo-card figcaption strong,
+#hobbies .art-photo-card figcaption span,
+#hobbies .travel-photo-card figcaption strong,
+#hobbies .travel-photo-card figcaption span,
+#hobbies .mentorship-shot figcaption strong,
+#hobbies .mentorship-shot figcaption span {
+  color: #111 !important;
+}
