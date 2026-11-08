@@ -1,0 +1,180 @@
+/* Seamless hero globe + compact teaser. Deliberately scoped to the homepage. */
+
+/* The light document body had been showing through a narrow gap between the
+   ticker and main's purple background. Keep it dark underneath both. */
+body:has(#main-content #home) { background: #21152f !important; }
+#markets { margin-bottom: 0 !important; border-bottom: 0 !important; }
+#markets + #main-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: 0 !important;
+}
+#site-preview-notice { margin-top: 0; }
+
+/* The globe is a rendered element WITHIN the hero, not a second card. */
+#home.gf-hero-safe-layout .globe-wrap,
+#home.gf-hero-safe-layout .gf-shell,
+#home.gf-hero-safe-layout .gf-stage,
+#home.gf-hero-safe-layout #financial-globe {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+#home.gf-hero-safe-layout .gf-stage { overflow: visible; }
+#home.gf-hero-safe-layout .gf-hud {
+  background: rgba(10, 11, 25, .44);
+  border-color: rgba(170, 155, 217, .14);
+}
+#home.gf-hero-safe-layout .gf-status {
+  background: rgba(10, 11, 25, .48);
+  border-color: transparent;
+}
+#home.gf-hero-safe-layout .gf-expand {
+  background: rgba(10, 11, 25, .6);
+  border-color: rgba(151, 135, 205, .21);
+}
+
+/* Shrunk from an approximately 245x570 scrolling rail to a roughly 195x200
+   teaser, around 25% of the old surface area. Never touches the introduction. */
+#home.gf-hero-safe-layout > .gf-panel {
+  box-sizing: border-box;
+  padding: 12px 13px 10px;
+  width: 195px;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  overflow: visible;
+  align-self: start;
+  background: rgba(12, 13, 28, .84);
+  border: 1px solid rgba(166, 153, 207, .23);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .10);
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  line-height: 1.45;
+}
+#home .gf-teaser-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 5px;
+}
+#home .gf-panel h3 {
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.25;
+  margin: 0 0 3px;
+  overflow-wrap: anywhere;
+}
+#home .gf-panel .gf-meta {
+  font-size: 9px;
+  margin: 0;
+  color: #aab0c7;
+}
+#home .gf-teaser-year {
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #a497c5;
+  flex: none;
+  padding-top: 2px;
+}
+#home .gf-teaser-gdp {
+  padding: 10px 0 9px;
+}
+#home .gf-teaser-gdp span,
+#home .gf-teaser-pair span,
+#home .gf-teaser-balance span {
+  display: block;
+  font-size: 9px;
+  color: #aeb5ca;
+}
+#home .gf-teaser-gdp strong {
+  display: block;
+  font: 700 19px/1.25 'Space Grotesk', system-ui, sans-serif;
+  letter-spacing: -.025em;
+  margin-top: 2px;
+}
+#home .gf-teaser-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  padding: 8px 0;
+  border-top: 1px solid rgba(255,255,255,.075);
+  border-bottom: 1px solid rgba(255,255,255,.075);
+}
+#home .gf-teaser-pair b {
+  display: block;
+  font-size: 11px;
+  margin-top: 3px;
+  white-space: nowrap;
+}
+#home .gf-teaser-balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 5px;
+  padding: 8px 0 5px;
+}
+#home .gf-teaser-balance b {
+  text-align: right;
+  font-size: 10px;
+  line-height: 1.3;
+}
+#home .gf-teaser-source {
+  margin: 6px 0 0 !important;
+  color: #929bb2 !important;
+  font-size: 8px;
+  line-height: 1.4;
+}
+#home .gf-teaser-state {
+  color: #b6bed4;
+  font-size: 10px;
+  margin: 8px 0;
+}
+/* Wide desktop: tuck the teaser into the empty space outside the hero card. */
+@media (min-width: 1900px) {
+  #home.hero.gf-hero-safe-layout > .gf-panel {
+    position: absolute;
+    left: calc(100% + 14px);
+    top: 74px;
+    width: 195px;
+    max-height: none;
+    height: auto;
+  }
+}
+/* Standard desktop: the teaser is a compact item in the next grid row,
+   never a stretched 570px rail, and never across the text. */
+@media (min-width: 901px) and (max-width: 1899px) {
+  #home.hero.gf-hero-safe-layout > .gf-panel {
+    position: relative;
+    grid-column: 2;
+    justify-self: end;
+    align-self: start;
+    top: auto;
+    left: auto;
+    width: 195px;
+    height: auto;
+    margin-top: -6px;
+  }
+}
+/* Narrow screens: retain the teaser below the globe, centered and compact. */
+@media (max-width: 900px) {
+  #home.hero.gf-hero-safe-layout > .gf-panel {
+    position: relative;
+    grid-column: 1;
+    width: min(100%, 270px);
+    height: auto;
+    justify-self: end;
+    margin-top: 0;
+  }
+}
+@media (max-width: 650px) {
+  #home.gf-hero-safe-layout .gf-stage { overflow: hidden; }
+  #home.hero.gf-hero-safe-layout > .gf-panel { justify-self: stretch; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #home.gf-hero-safe-layout .gf-panel { backdrop-filter: none; }
+}
