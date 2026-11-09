@@ -47,7 +47,7 @@ main .page-hero,main .sectionhead,
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame{
   position:absolute;inset:0;width:100%;height:100%;display:block;
   object-fit:contain;object-position:center center;opacity:0;
-  filter:contrast(1.035) saturate(1.025);
+  filter:none;
   transition:opacity .65s ease;pointer-events:none;
   border:0!important;margin:0!important
 }
@@ -78,12 +78,17 @@ main .page-hero,main .sectionhead,
   image-rendering:auto;max-width:none!important;
   background:#e9e3ef;
 }
-/* Original 2×2 sprite is only 320×226 pixels total. Keep each full
-   quadrant intact and display it closer to its native size to reduce blur. */
+/* Remaining three 160×113 sprite originals: display at native resolution
+   rather than stretching small raster assets to fill the entire stage.
+   Other frames render their original full-resolution photos directly. */
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--sprite{
-  inset:14% !important;
-  width:72% !important;
-  height:72% !important;
+  inset:auto!important;
+  left:50%!important;
+  top:50%!important;
+  width:min(160px,78%)!important;
+  height:113px!important;
+  transform:translate(-50%,-50%);
+  max-width:160px!important;
   background-image:url("assets/mindset-photo-rotation.webp");
   background-repeat:no-repeat;
   background-size:200% 200%;
