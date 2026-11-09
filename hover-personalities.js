@@ -28,6 +28,8 @@
   add('.fx-d-row',['mk-hfx--still']);
   add('#home .globe-wrap',['mk-hfx--still']);
   add('#contact .large-panel',['mk-hfx--bloom']);
+  add('#contact .mk-connect-left, #contact .mk-chat-panel',['mk-hfx--bloom']);
+  add('#contact .mk-connect-link, #contact .mk-chat-chips button',['mk-hfx--button']);
   add('.mk-social-link',['mk-hfx--social']);
   add('.apple-navlinks a, .page-hero a.back',['mk-hfx--still']);
   add('a.btn:not(.ghost), button.btn:not(.ghost)',['mk-hfx--button-primary']);
