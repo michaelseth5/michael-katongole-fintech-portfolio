@@ -1,0 +1,41 @@
+/* Interactive contact section / portfolio Q&A */
+#contact{background:radial-gradient(ellipse at 18% 12%,rgba(102,51,161,.25),transparent 47%),linear-gradient(148deg,#0f0b1d 0%,#1a1030 55%,#100b1d 100%)!important;color:#f6f1ff!important;}
+#contact .container{max-width:1320px!important}
+#contact .page-hero{max-width:1200px;margin:0 auto 27px!important}
+#contact .page-hero h1{font-size:clamp(48px,7vw,92px)!important;line-height:1.05!important;color:#f6f1ff!important}
+#contact .page-hero p{max-width:680px;color:#c8bfda!important}
+#contact .mk-connect-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:stretch;gap:clamp(18px,3vw,40px);max-width:none!important}
+#contact .mk-connect-left{display:flex;flex-direction:column;justify-content:center;gap:18px;min-width:0;padding:clamp(22px,3vw,40px);background:linear-gradient(150deg,rgba(53,31,81,.58),rgba(22,17,43,.38));border:1px solid rgba(185,131,248,.28);border-radius:26px}
+#contact .mk-connect-left .eyebrow{color:#c5a1ff!important;letter-spacing:.16em}
+#contact .mk-connect-left h2{font-size:clamp(27px,3vw,39px);line-height:1.15;letter-spacing:-.05em;color:#fff!important;margin:0}
+#contact .mk-connect-left p{color:#c9bedc!important;line-height:1.7;margin:0}
+#contact .mk-connect-heading{display:flex;align-items:center;justify-content:space-between;gap:18px}
+#contact .mk-connect-avatar{width:clamp(86px,11vw,132px);height:clamp(86px,11vw,132px);flex-shrink:0;filter:drop-shadow(0 0 20px rgba(159,104,238,.32));transform:rotate(-4deg)}
+#contact .mk-connect-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:8px}
+#contact .mk-connect-links .mk-connect-link{display:flex;align-items:center;justify-content:space-between;min-height:64px;padding:15px 18px;border-radius:16px;border:1px solid rgba(188,137,252,.42);background:rgba(72,42,104,.19);color:#f7f0ff!important;text-decoration:none!important;font-weight:650;box-shadow:0 6px 20px rgba(49,18,83,.12);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+#contact .mk-connect-links .mk-connect-link:hover{transform:translateY(-5px);border-color:#c88bff;box-shadow:0 13px 34px rgba(157,88,244,.26)}
+#contact .mk-connect-links .mk-connect-link span:last-child{font-size:22px;color:#c4a0f2}
+#contact .mk-chat-panel{display:flex;flex-direction:column;min-width:0;min-height:470px;padding:clamp(18px,2.6vw,30px);border-radius:28px;background:linear-gradient(150deg,rgba(43,26,75,.86),rgba(17,14,34,.95));border:1px solid rgba(191,116,255,.76);box-shadow:0 0 34px rgba(153,71,246,.15),inset 0 1px rgba(255,255,255,.06);color:#f5f0ff}
+#contact .mk-chat-head{display:flex;align-items:center;gap:13px}
+#contact .mk-chat-avatar{width:64px;height:64px;flex-shrink:0;background:#352250;border-radius:50%;overflow:hidden;display:grid;place-items:center}
+#contact .mk-chat-avatar svg{width:100%;height:100%}
+#contact .mk-chat-title{font-size:clamp(20px,2vw,27px);font-weight:750;letter-spacing:-.04em;line-height:1.2;color:#fff}
+#contact .mk-chat-beta{font-size:11px;font-weight:700;letter-spacing:.025em;padding:4px 10px;margin-left:6px;border-radius:999px;background:linear-gradient(110deg,#8f59d5,#bb72ec);color:white}
+#contact .mk-chat-subtitle{color:#c0b3d6;font-size:13px;line-height:1.5;margin-top:5px}
+#contact .mk-chat-conversation{flex:1;max-height:260px;min-height:160px;overflow:auto;display:flex;flex-direction:column;gap:10px;margin:22px 0;padding:3px 5px 3px 0;scrollbar-color:#745596 transparent}
+#contact .mk-chat-message{align-self:flex-start;max-width:95%;border-radius:18px 18px 18px 5px;background:#383052;color:#f5f0ff;padding:13px 16px;font-size:14px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+#contact .mk-chat-message[data-role="visitor"]{align-self:flex-end;border-radius:18px 18px 5px 18px;background:#7652af;color:#fff}
+#contact .mk-chat-message a{color:#e2c2ff}
+#contact .mk-chat-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+#contact .mk-chat-chips button{border:1px solid #574370;border-radius:999px;background:rgba(126,87,170,.14);color:#ece1ff;padding:9px 13px;font:600 12px Inter,Arial,sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+#contact .mk-chat-chips button:hover{background:rgba(159,102,239,.28);border-color:#b083ed;transform:translateY(-2px)}
+#contact .mk-chat-form{display:flex;gap:8px;align-items:center;padding:6px;border:1px solid #78529e;border-radius:999px;background:rgba(10,9,24,.5)}
+#contact .mk-chat-form input{flex:1;min-width:0;padding:12px 13px;border:0;outline:none;background:transparent;color:#f5edff;font:14px Inter,Arial,sans-serif}
+#contact .mk-chat-form input::placeholder{color:#a39ab4}
+#contact .mk-chat-form button{border:0;border-radius:50%;min-width:42px;width:42px;height:42px;color:white;background:linear-gradient(135deg,#ae72f4,#7841bf);cursor:pointer;font-size:19px}
+#contact .mk-chat-form button:hover{filter:brightness(1.14)}
+#contact .mk-chat-form:focus-within{outline:2px solid #a375e5;outline-offset:2px}
+#contact .mk-chat-disclaimer{font-size:11px;color:#a99bbd;line-height:1.5;margin:10px 3px 0}
+@media(max-width:850px){#contact .mk-connect-layout{grid-template-columns:1fr}#contact .mk-chat-panel{min-height:420px}}
+@media(max-width:440px){#contact .mk-connect-links{grid-template-columns:1fr}#contact .mk-connect-avatar{width:84px;height:84px}#contact .mk-chat-head{align-items:flex-start}#contact .mk-chat-avatar{width:50px;height:50px}#contact .mk-chat-panel{padding:18px}}
+@media(prefers-reduced-motion:reduce){#contact .mk-connect-links .mk-connect-link,#contact .mk-chat-chips button{transition:none!important}#contact .mk-connect-links .mk-connect-link:hover,#contact .mk-chat-chips button:hover{transform:none!important}}
