@@ -18,7 +18,7 @@
 #contact .mk-chat-panel{display:flex;flex-direction:column;min-width:0;min-height:470px;padding:clamp(18px,2.6vw,30px);border-radius:28px;background:linear-gradient(150deg,rgba(43,26,75,.86),rgba(17,14,34,.95));border:1px solid rgba(191,116,255,.76);box-shadow:0 0 34px rgba(153,71,246,.15),inset 0 1px rgba(255,255,255,.06);color:#f5f0ff}
 #contact .mk-chat-head{display:flex;align-items:center;gap:13px}
 #contact .mk-chat-avatar{width:64px;height:64px;flex-shrink:0;background:#352250;border-radius:50%;overflow:hidden;display:grid;place-items:center}
-#contact .mk-chat-avatar svg{width:100%;height:100%}
+#contact .mk-chat-avatar img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;image-rendering:auto}
 #contact .mk-chat-title{font-size:clamp(20px,2vw,27px);font-weight:750;letter-spacing:-.04em;line-height:1.2;color:#fff}
 #contact .mk-chat-beta{font-size:11px;font-weight:700;letter-spacing:.025em;padding:4px 10px;margin-left:6px;border-radius:999px;background:linear-gradient(110deg,#8f59d5,#bb72ec);color:white}
 #contact .mk-chat-subtitle{color:#c0b3d6;font-size:13px;line-height:1.5;margin-top:5px}
