@@ -51,14 +51,6 @@ main .page-hero,main .sectionhead,
   border:0!important;margin:0!important
 }
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame.is-active{opacity:1}
-#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--sprite{
-  background-image:url("assets/mindset-photo-rotation.webp");
-  background-repeat:no-repeat;background-size:200% 200%;
-}
-#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--1{background-position:0 0}
-#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--2{background-position:100% 0}
-#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--3{background-position:0 100%}
-#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--4{background-position:100% 100%}
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-next{
   position:absolute;bottom:7px;right:7px;z-index:3;
   display:grid;place-items:center;width:27px;height:27px;
@@ -79,9 +71,10 @@ main .page-hero,main .sectionhead,
   #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-next{transition:none!important;animation:none!important}
 }
 
-/* Mindset photo fit: preserve full portrait and landscape frames at 125% original size. */
+/* Mindset image fit: show the entire uncropped photo using original full-resolution assets. */
 #portfolio-intro-grid .mk-mindset-photo-rotator img.mk-mindset-frame{
   object-fit:contain!important;object-position:center center!important;
+  image-rendering:auto;max-width:none!important;
   background:#e9e3ef;
 }
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--sprite{
