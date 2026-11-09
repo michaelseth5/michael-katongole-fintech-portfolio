@@ -40,7 +40,7 @@ main .page-hero,main .sectionhead,
 #portfolio-intro-grid .mk-bento-craft .mk-bento-rule{margin-inline:auto}
 #portfolio-intro-grid .mk-bento-mini-photo.mk-mindset-photo-rotator{
   position:relative!important;isolation:isolate;display:block;flex:0 0 auto;
-  width:min(100%, 206px);max-width:206px;min-height:148px;height:148px;
+  width:min(100%, 278px);max-width:278px;min-height:200px;height:200px;
   margin:0 auto 15px;border-radius:15px;overflow:hidden;
   background:#e9e3ef;box-shadow:0 10px 22px rgba(89,59,116,.18)
 }
@@ -89,7 +89,7 @@ main .page-hero,main .sectionhead,
 }
 @media(max-width:420px){
   #portfolio-intro-grid .mk-bento-mini-photo.mk-mindset-photo-rotator{
-    width:min(100%,206px);height:148px;min-height:148px;
+    width:min(100%,278px);height:200px;min-height:200px;
   }
 }
 
