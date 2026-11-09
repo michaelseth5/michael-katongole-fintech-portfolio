@@ -182,7 +182,7 @@ a.mk-hfx:focus-visible,button.mk-hfx:focus-visible,summary:focus-visible,.mk-hfx
   --employer-glow:31,112,235; --employer-accent:34,123,242; /* Citi blue */
 }
 #experience .timeline > article.job.mk-hfx:nth-child(4){
-  --employer-glow:191,138,60; --employer-accent:190,137,64; /* Bloomberg amber */
+  --employer-glow:255,255,255; --employer-accent:245,245,255; /* Bloomberg white */
 }
 /* Keep the glow beyond each article's border, and don't obscure its text. */
 #experience .timeline > article.job.mk-hfx::after{
@@ -217,4 +217,64 @@ a.mk-hfx:focus-visible,button.mk-hfx:focus-visible,summary:focus-visible,.mk-hfx
 }
 @media(prefers-reduced-motion:reduce){
   #experience .timeline > article.job.mk-hfx::after{transition:none!important}
+}
+
+/* Employer white spotlight + dedicated university and project glows.
+   Match real DOM: education is nested under #experience and projects
+   include both case-study cards and their presentation thumbnails. */
+#experience #education > article.preview-school.mk-hfx,
+#project-details #project-1.mk-hfx,
+#project-details #project-2.mk-hfx,
+#project-details .slide-deck-grid > a.slide-deck-tile.mk-hfx{
+  position:relative;
+  overflow:visible;
+  isolation:isolate;
+  transition:transform 260ms cubic-bezier(.2,.82,.25,1),
+    box-shadow 260ms ease,border-color 260ms ease!important;
+}
+#experience #education > article.preview-school.mk-hfx:nth-of-type(1){
+  --mk-brand-light:219,46,58;  /* Northeastern red */
+}
+#experience #education > article.preview-school.mk-hfx:nth-of-type(2){
+  --mk-brand-light:237,127,32; /* UT Dallas orange */
+}
+#project-details #project-1.mk-hfx,
+#project-details .slide-deck-grid > a.slide-deck-tile.mk-hfx:nth-child(1){
+  --mk-brand-light:34,119,242; /* IBM / Synapse blue */
+}
+#project-details #project-2.mk-hfx,
+#project-details .slide-deck-grid > a.slide-deck-tile.mk-hfx:nth-child(2){
+  --mk-brand-light:244,139,31; /* DemandSync orange */
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  /* A bright white spotlight that remains legible against Bloomberg's pale card. */
+  #experience .timeline > article.job.mk-hfx:nth-child(4):hover{
+    border-color:#fff!important;
+    background:linear-gradient(130deg,#fff 0%,#f9faff 55%,#f1eef6 100%)!important;
+    box-shadow:
+      0 0 0 2px rgba(90,94,122,.38),
+      0 0 0 5px rgba(255,255,255,.92),
+      0 0 32px 10px rgba(255,255,255,.96),
+      0 0 78px 24px rgba(241,241,255,.7),
+      0 26px 45px rgba(24,20,45,.28)!important;
+  }
+  #experience #education > article.preview-school.mk-hfx:hover,
+  #project-details :is(#project-1.mk-hfx,#project-2.mk-hfx):hover,
+  #project-details .slide-deck-grid > a.slide-deck-tile.mk-hfx:hover{
+    transform:translate3d(0,-13px,0) scale(1.035)!important;
+    border-color:rgba(var(--mk-brand-light),.95)!important;
+    box-shadow:
+      0 0 0 2px rgba(var(--mk-brand-light),.6),
+      0 0 24px 6px rgba(var(--mk-brand-light),.52),
+      0 0 65px 15px rgba(var(--mk-brand-light),.36),
+      0 24px 44px -12px rgba(19,15,41,.3)!important;
+    z-index:15!important;
+  }
+}
+#experience #education > article.preview-school.mk-hfx:focus-within,
+#project-details :is(#project-1.mk-hfx,#project-2.mk-hfx):focus-within,
+#project-details .slide-deck-grid > a.slide-deck-tile.mk-hfx:focus-visible{
+  border-color:rgba(var(--mk-brand-light),.95)!important;
+  box-shadow:0 0 0 3px rgba(var(--mk-brand-light),.44),
+    0 0 35px rgba(var(--mk-brand-light),.25)!important;
 }
