@@ -160,3 +160,61 @@ a.mk-hfx:focus-visible,button.mk-hfx:focus-visible,summary:focus-visible,.mk-hfx
     transform:none!important;
   }
 }
+
+/* High-impact employer glow. Target actual Experience articles (not the generic
+   global lavender hover), so each employer keeps its brand color. */
+#experience .timeline > article.job.mk-hfx{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  --employer-glow:37,150,91;
+  --employer-accent:42,165,95;
+  transition:transform 260ms cubic-bezier(.2,.82,.25,1),
+             box-shadow 260ms ease,border-color 260ms ease,background 260ms ease!important;
+}
+#experience .timeline > article.job.mk-hfx:nth-child(1){
+  --employer-glow:24,170,92; --employer-accent:31,177,95; /* Fidelity green */
+}
+#experience .timeline > article.job.mk-hfx:nth-child(2){
+  --employer-glow:147,65,225; --employer-accent:159,79,234; /* Accenture purple */
+}
+#experience .timeline > article.job.mk-hfx:nth-child(3){
+  --employer-glow:31,112,235; --employer-accent:34,123,242; /* Citi blue */
+}
+#experience .timeline > article.job.mk-hfx:nth-child(4){
+  --employer-glow:191,138,60; --employer-accent:190,137,64; /* Bloomberg amber */
+}
+/* Keep the glow beyond each article's border, and don't obscure its text. */
+#experience .timeline > article.job.mk-hfx::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  inset:-7px;
+  z-index:-1;
+  border-radius:27px;
+  opacity:0;
+  box-shadow:0 0 40px 15px rgba(var(--employer-glow),.27);
+  transition:opacity 260ms ease;
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  #experience .timeline > article.job.mk-hfx:hover{
+    transform:translate3d(0,-13px,0) scale(1.025)!important;
+    border-color:rgba(var(--employer-accent),.95)!important;
+    background:linear-gradient(130deg,rgba(var(--employer-glow),.13),#fdfcff 32%,#f1eef6 100%)!important;
+    box-shadow:
+      0 0 0 2px rgba(var(--employer-glow),.50),
+      0 0 22px 4px rgba(var(--employer-glow),.49),
+      0 0 68px 14px rgba(var(--employer-glow),.36),
+      0 25px 48px -10px rgba(22,19,39,.28)!important;
+    filter:none!important;
+    z-index:15!important;
+  }
+  #experience .timeline > article.job.mk-hfx:hover::after{opacity:1}
+}
+#experience .timeline > article.job.mk-hfx:focus-within{
+  border-color:rgba(var(--employer-accent),.9)!important;
+  box-shadow:0 0 0 3px rgba(var(--employer-glow),.3),0 0 30px rgba(var(--employer-glow),.25)!important;
+}
+@media(prefers-reduced-motion:reduce){
+  #experience .timeline > article.job.mk-hfx::after{transition:none!important}
+}
