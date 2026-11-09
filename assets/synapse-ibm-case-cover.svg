@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1133 632" width="1133" height="632" role="img" aria-label="IBM x UTD Case Competition — Agentic AI for Cross-Department Collaboration">
+<rect width="1133" height="632" fill="#fff"/>
+<rect width="31" height="632" fill="#2070BF"/>
+<g opacity=".055" fill="#1B70BA" font-family="Arial,Helvetica,sans-serif" font-size="245" font-weight="900" letter-spacing="1">
+<text x="223" y="449">IBM</text>
+</g>
+<rect x="130" y="223" width="990" height="100" fill="none" stroke="#893CFF" stroke-width="3"/>
+<g fill="#080808" font-family="Arial,Helvetica,sans-serif" font-size="43.5" font-weight="400" letter-spacing="1.2">
+<text x="132" y="267">IBM x UTD Case Competition</text>
+<text x="132" y="312">Agentic AI for Cross-Department Collaboration</text>
+</g>
+<defs><pattern id="ibm-lines" width="4" height="8" patternUnits="userSpaceOnUse"><rect width="4" height="3" fill="#111"/></pattern></defs>
+<text x="994" y="584" font-family="Arial,Helvetica,sans-serif" font-size="48" font-weight="900" letter-spacing="-4" fill="url(#ibm-lines)">IBM</text>
+</svg>
