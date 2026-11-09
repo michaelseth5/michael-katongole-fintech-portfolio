@@ -77,9 +77,24 @@ main .page-hero,main .sectionhead,
   image-rendering:auto;max-width:none!important;
   background:#e9e3ef;
 }
+/* Original 2×2 sprite is only 320×226 pixels total. Keep each full
+   quadrant intact and display it closer to its native size to reduce blur. */
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--sprite{
+  inset:14% !important;
+  width:72% !important;
+  height:72% !important;
+  background-image:url("assets/mindset-photo-rotation.webp");
+  background-repeat:no-repeat;
+  background-size:200% 200%;
   background-color:#e9e3ef;
+  border-radius:10px;
+  box-shadow:0 4px 18px rgba(25,18,43,.1);
+  image-rendering:auto;
 }
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--1{background-position:0 0}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--2{background-position:100% 0}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--3{background-position:0 100%}
+#portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--4{background-position:100% 100%}
 @media(max-width:420px){
   #portfolio-intro-grid .mk-bento-mini-photo.mk-mindset-photo-rotator{
     width:min(100%,278px);height:200px;min-height:200px;
