@@ -78,17 +78,16 @@ main .page-hero,main .sectionhead,
   image-rendering:auto;max-width:none!important;
   background:#e9e3ef;
 }
-/* Remaining three 160×113 sprite originals: display at native resolution
-   rather than stretching small raster assets to fill the entire stage.
-   Other frames render their original full-resolution photos directly. */
+/* Expand the three original small sprite photos to fill the Mindset frame.
+   Preserve the existing photos and their full composition. */
 #portfolio-intro-grid .mk-mindset-photo-rotator .mk-mindset-frame--sprite{
-  inset:auto!important;
-  left:50%!important;
-  top:50%!important;
-  width:min(160px,78%)!important;
-  height:113px!important;
-  transform:translate(-50%,-50%);
-  max-width:160px!important;
+  inset:0!important;
+  left:0!important;
+  top:0!important;
+  width:100%!important;
+  height:100%!important;
+  transform:none!important;
+  max-width:none!important;
   background-image:url("assets/mindset-photo-rotation.webp");
   background-repeat:no-repeat;
   background-size:200% 200%;
