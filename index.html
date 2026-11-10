@@ -2542,7 +2542,70 @@ main{
 #project-details .mk-project-coming-soon{cursor:not-allowed!important;opacity:.68!important;filter:saturate(.6);box-shadow:none!important;transform:none!important;}
 #project-details .mk-project-coming-soon:focus-visible{outline:2px solid #c5a3ef;outline-offset:3px;}
 #hobbies .mk-food-coming-soon{display:inline-flex;align-items:center;margin-top:22px;padding:9px 17px;border:1px solid rgba(195,152,255,.43);border-radius:999px;color:#e5d1ff;background:rgba(120,75,161,.16);font:650 13px/1.2 "DM Sans",sans-serif;letter-spacing:.02em;}
-</style><link rel="stylesheet" href="shared-gallery.css?v=4"/></head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#milestone">Milestones</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div aria-label="Social profile links" class="mk-socials mk-socials-top" role="group"><a aria-label="Email - Michael Katongole" class="mk-social-link mk-social-email" href="mailto:MichaelKatongole5@gmail.com"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="mk-social-word">Email</span></a><a aria-label="GitHub - Michael Katongole" class="mk-social-link mk-social-github" href="https://github.com/michaelseth5" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 0S17.73-.35 15 2a13.38 13.38 0 0 0-7 0C5.27-.35 4.09 0 4.09 0A5.07 5.07 0 0 0 4 3.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 17.13V21"></path></svg><span class="mk-social-word">GitHub</span></a><a aria-label="LinkedIn - Michael Katongole" class="mk-social-link mk-social-linkedin" href="https://www.linkedin.com/in/michael-k-65b1a8222/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="20" rx="3" width="20" x="2" y="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7h3v1.3a3 3 0 0 1 5 2.6V17"></path></svg><span class="mk-social-word">LinkedIn</span></a></div></div><div class="mk-unified-globe-hint" aria-hidden="true">Drag to explore · Hover to pause</div></section><aside id="site-preview-notice" aria-label="Website welcome and feedback"><p><strong>Welcome to my website!</strong> It’s still under development and in the testing phase, but I hope you enjoy exploring it. If you have any ideas or recommendations, I’d love to hear them.</p><a href="mailto:MichaelKatongole5@gmail.com?subject=Portfolio%20Feedback">Email your feedback ↗</a></aside><div class="mk-purple-section-transition" aria-hidden="true"></div><section class="mk-editorial-intro mk-bento-about" id="portfolio-intro-grid" aria-label="More about Michael Katongole">
+</style><link rel="stylesheet" href="shared-gallery.css?v=4"/><style id="mk-northeastern-card-fit">
+/* Keep all three education elements inside the card at every TV viewport size. */
+#portfolio-intro-grid .mk-bento-layout .mk-bento-education{
+ box-sizing:border-box!important;
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ grid-template-rows:min-content minmax(90px,1fr) min-content!important;
+ gap:clamp(12px,2.2vw,22px)!important;
+ align-content:stretch!important;
+ justify-items:center!important;
+ min-width:0!important;
+ min-height:340px!important;
+ height:100%!important;
+ overflow:hidden!important;
+ padding:clamp(23px,3vw,36px) clamp(20px,3vw,34px)!important;
+ text-align:center!important;
+}
+#portfolio-intro-grid .mk-bento-education .mk-bento-eyebrow{
+ position:relative!important;inset:auto!important;
+ justify-self:center!important;align-self:start!important;
+ max-width:100%!important;
+ font-size:clamp(10px,1vw,12px)!important;
+ line-height:1.35!important;letter-spacing:.14em!important;
+ text-align:center!important;
+}
+#portfolio-intro-grid .mk-bento-education .mk-bento-education-logo{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ align-self:center!important;
+ min-height:0!important;height:100%!important;width:100%!important;
+ position:relative!important;inset:auto!important;
+}
+#portfolio-intro-grid .mk-bento-education .mk-bento-education-logo img{
+ display:block!important;
+ width:auto!important;height:auto!important;
+ max-width:min(100%,150px)!important;
+ max-height:clamp(95px,16vh,145px)!important;
+ object-fit:contain!important;
+}
+#portfolio-intro-grid .mk-bento-education h3{
+ position:relative!important;inset:auto!important;
+ justify-self:center!important;align-self:end!important;
+ display:block!important;
+ max-width:min(100%,570px)!important;
+ width:auto!important;
+ margin:0!important;padding:0!important;
+ font:800 clamp(20px,2.05vw,30px)/1.18 'Space Grotesk',sans-serif!important;
+ letter-spacing:-.045em!important;
+ text-align:center!important;text-wrap:balance!important;
+ overflow-wrap:normal!important;hyphens:none!important;
+}
+@media(max-width:750px){
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-education{
+  min-height:320px!important;height:auto!important;
+  padding:24px 20px!important;
+  grid-template-rows:min-content minmax(92px,1fr) min-content!important;
+ }
+ #portfolio-intro-grid .mk-bento-education h3{
+  font-size:clamp(19px,5vw,26px)!important;
+ }
+ #portfolio-intro-grid .mk-bento-education .mk-bento-education-logo img{
+  max-height:112px!important;
+ }
+}
+</style></head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#milestone">Milestones</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div aria-label="Social profile links" class="mk-socials mk-socials-top" role="group"><a aria-label="Email - Michael Katongole" class="mk-social-link mk-social-email" href="mailto:MichaelKatongole5@gmail.com"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="mk-social-word">Email</span></a><a aria-label="GitHub - Michael Katongole" class="mk-social-link mk-social-github" href="https://github.com/michaelseth5" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 0S17.73-.35 15 2a13.38 13.38 0 0 0-7 0C5.27-.35 4.09 0 4.09 0A5.07 5.07 0 0 0 4 3.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 17.13V21"></path></svg><span class="mk-social-word">GitHub</span></a><a aria-label="LinkedIn - Michael Katongole" class="mk-social-link mk-social-linkedin" href="https://www.linkedin.com/in/michael-k-65b1a8222/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="20" rx="3" width="20" x="2" y="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7h3v1.3a3 3 0 0 1 5 2.6V17"></path></svg><span class="mk-social-word">LinkedIn</span></a></div></div><div class="mk-unified-globe-hint" aria-hidden="true">Drag to explore · Hover to pause</div></section><aside id="site-preview-notice" aria-label="Website welcome and feedback"><p><strong>Welcome to my website!</strong> It’s still under development and in the testing phase, but I hope you enjoy exploring it. If you have any ideas or recommendations, I’d love to hear them.</p><a href="mailto:MichaelKatongole5@gmail.com?subject=Portfolio%20Feedback">Email your feedback ↗</a></aside><div class="mk-purple-section-transition" aria-hidden="true"></div><section class="mk-editorial-intro mk-bento-about" id="portfolio-intro-grid" aria-label="More about Michael Katongole">
 <div class="container">
 <div class="mk-intro-top mk-reveal"><span>● MORE THAN A RESUME</span><span>THE PERSON BEHIND THE WORK / 2026</span></div>
 <div class="mk-intro-heading mk-reveal"><h2 class="mk-animated-title"><span class="mk-title-solid">THE PERSON</span><br/><em class="mk-title-glow">BEHIND THE CODE.</em></h2><div class="mk-intro-aside"><p>I work with financial data, build software projects, and make time for mentorship and exploring new places.</p><a href="#experience">Discover my story ↘</a></div></div>
