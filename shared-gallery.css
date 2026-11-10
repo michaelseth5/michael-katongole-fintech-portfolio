@@ -354,3 +354,65 @@ body.tv-mode #networking.tv-gallery-page .network-carousel-track.tv-shared-panel
  }
  body.tv-mode #networking.tv-gallery-page .network-carousel-track.tv-shared-panel{max-height:460px!important}
 }
+
+/* Networking gallery: show larger, complete photographs without cropping.
+   Two full cards on desktop, one on narrow screens; the filmstrip remains swipeable. */
+body.tv-mode #networking.tv-gallery-page .network-carousel-track.tv-shared-panel{
+ max-height:none!important;
+ height:auto!important;
+ overflow-x:hidden!important;
+ overflow-y:hidden!important;
+}
+body.tv-mode #networking.tv-gallery-page .network-event-slide .photo-carousel-rail{
+ gap:14px!important;
+ scroll-snap-type:x mandatory!important;
+ scroll-padding-inline:0!important;
+ overscroll-behavior-x:contain!important;
+}
+body.tv-mode #networking.tv-gallery-page .network-event-slide .photo-carousel-rail>figure{
+ flex:0 0 calc((100% - 14px)/2)!important;
+ width:calc((100% - 14px)/2)!important;
+ min-width:0!important;
+ max-width:none!important;
+ scroll-snap-align:start!important;
+ scroll-snap-stop:always!important;
+}
+body.tv-mode #networking.tv-gallery-page .network-event-slide .photo-carousel-rail>figure:last-child{
+ scroll-snap-align:end!important;
+}
+body.tv-mode #networking.tv-gallery-page .network-event-slide .photo-carousel-rail>figure img{
+ width:100%!important;
+ height:clamp(240px,36vh,380px)!important;
+ max-height:none!important;
+ object-fit:contain!important;
+ object-position:center!important;
+ background:linear-gradient(145deg,#f7f3fc,#eae2f2)!important;
+ border-radius:0!important;
+}
+body.tv-mode #networking.tv-gallery-page .network-event-slide .photo-carousel-rail>figure figcaption{
+ min-height:53px!important;
+ max-height:none!important;
+ flex:0 0 auto!important;
+}
+body.tv-mode #networking.tv-gallery-page .network-event-slide .tv-shared-gallery-wrap::after{
+ width:18px!important;
+}
+@media (min-width:900px) and (max-height:800px){
+ body.tv-mode #networking.tv-gallery-page .network-carousel-track.tv-shared-panel{
+  max-height:none!important;
+ }
+ body.tv-mode #networking.tv-gallery-page .network-event-slide .photo-carousel-rail>figure img{
+  height:clamp(205px,34vh,300px)!important;
+ }
+}
+@media(max-width:750px){
+ body.tv-mode #networking.tv-gallery-page .network-event-slide .photo-carousel-rail>figure{
+  flex:0 0 100%!important;width:100%!important;
+ }
+ body.tv-mode #networking.tv-gallery-page .network-event-slide .photo-carousel-rail>figure img{
+  height:clamp(240px,45vh,440px)!important;
+ }
+ body.tv-mode #networking.tv-gallery-page .network-carousel-track.tv-shared-panel{
+  max-height:none!important;
+ }
+}
