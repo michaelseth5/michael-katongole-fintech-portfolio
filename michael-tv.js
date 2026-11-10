@@ -15,7 +15,7 @@
    footer.appendChild(link);
    link.addEventListener('click',e=>{e.preventDefault();openIntro(true)});
  }
- if(previouslySeen)return;
+
 
  const dialog=document.createElement('dialog');
  dialog.id='mtv-intro';
@@ -245,5 +245,5 @@
    staticFrame=requestAnimationFrame(frame);
  }
  // Normal first visit. Replay bypasses session restriction only on explicit click.
- openIntro(false);
+ if(!previouslySeen)openIntro(false);
 })();
