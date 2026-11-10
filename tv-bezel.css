@@ -207,3 +207,19 @@ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] .mk-
 }
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] .mk-footer-quotes-kicker{margin-bottom:10px!important}
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] .mk-footer-quote-controls{margin-top:8px!important}
+
+/* Compact iOS-inspired CRT switch, no emoji. */
+.tv-effects-control{position:fixed;top:17px;left:22px;z-index:1000;display:flex;align-items:center;gap:11px;padding:5px 9px;border-radius:15px;background:rgba(25,18,38,.86);backdrop-filter:blur(12px);color:#f4eafd}
+.tv-effects-description{font:600 12px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;white-space:nowrap}
+.tv-effects-control .tv-effects-toggle{position:relative;top:auto;left:auto;display:block;width:66px;height:38px;min-width:66px;min-height:38px;padding:0;border:0;border-radius:999px;background:transparent;box-shadow:none;transform:none;cursor:pointer}
+.tv-effects-track{position:absolute;inset:0;border-radius:999px;background:#3a3148;box-shadow:inset 0 0 0 2px rgba(255,255,255,.14);transition:background .3s,box-shadow .3s}
+.tv-effects-knob{position:absolute;top:4px;left:4px;width:40px;height:30px;border-radius:999px;background:linear-gradient(#fff,#f1ecf8);box-shadow:0 2px 6px #0005,inset 0 0 0 1px #fffe;transition:transform .35s cubic-bezier(.3,1.35,.5,1),width .2s}
+.tv-effects-toggle[aria-checked="true"] .tv-effects-track{background:#b794f6;box-shadow:inset 0 0 0 2px #ffffff73,0 0 14px #b794f666}
+.tv-effects-toggle[aria-checked="true"] .tv-effects-knob{transform:translateX(18px)}
+.tv-effects-toggle:active .tv-effects-knob{width:46px}
+.tv-effects-toggle[aria-checked="true"]:active .tv-effects-knob{transform:translateX(12px)}
+.tv-effects-control .tv-effects-toggle:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@keyframes tvEffectsPop{from{box-shadow:0 0 0 0 #b794f6aa}to{box-shadow:0 0 0 15px #b794f600}}
+.tv-effects-pop{animation:tvEffectsPop .6s ease-out}
+@media(max-width:819px){.tv-effects-control{top:8px;left:9px;gap:7px;padding:4px 7px}.tv-effects-description{font-size:10px}.tv-effects-control .tv-effects-toggle{transform:scale(.8);transform-origin:left center;margin-right:-13px}}
+@media(prefers-reduced-motion:reduce){.tv-effects-track,.tv-effects-knob{transition:none!important}.tv-effects-pop{animation:none!important}}
