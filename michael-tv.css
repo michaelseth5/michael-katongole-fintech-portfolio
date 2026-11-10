@@ -101,3 +101,52 @@ dialog#mtv-intro::backdrop{background:rgba(5,4,12,.94);backdrop-filter:blur(10px
 #mtv-intro .mtv-announcement strong{font-size:clamp(25px,4.7vw,72px);max-width:100%;overflow-wrap:normal;}
 #mtv-intro .mtv-announcement-live{display:inline-block;font-size:.7em;color:#f5eaff;letter-spacing:.015em;}
 @media(max-width:600px){#mtv-intro .mtv-announcement{padding:20px 12px;gap:14px}#mtv-intro .mtv-announcement strong{font-size:clamp(20px,5.8vw,36px);line-height:1.16}#mtv-intro .mtv-announcement-kicker,#mtv-intro .mtv-announcement-station{font-size:10px;letter-spacing:.13em}}
+
+/* Continuous VHS handoff: cover YouTube's changing player frames while the
+   second video buffers. No flashing or empty black frames are exposed. */
+#mtv-intro .mtv-handoff{
+ position:absolute;inset:0;z-index:8;
+ display:grid;place-items:center;overflow:hidden;
+ background:radial-gradient(ellipse at 50% 42%,#1b356d 0%,#0d1b40 52%,#080e22 100%);
+ opacity:0;visibility:hidden;pointer-events:none;
+ transition:opacity .22s ease,visibility .22s ease;
+}
+#mtv-intro.mtv-handoff-active .mtv-handoff{
+ opacity:1;visibility:visible;
+}
+#mtv-intro .mtv-handoff::before{
+ content:"";position:absolute;inset:0;
+ background:repeating-linear-gradient(0deg,rgba(205,220,255,.055) 0 1px,transparent 1px 5px);
+ pointer-events:none;
+}
+#mtv-intro .mtv-handoff::after{
+ content:"";position:absolute;left:0;right:0;top:42%;height:12%;
+ background:linear-gradient(180deg,transparent,rgba(157,192,255,.1),transparent);
+ transform:translateY(-15%);
+ pointer-events:none;
+}
+#mtv-intro .mtv-handoff-art{
+ position:relative;z-index:1;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;text-align:center;gap:13px;
+ padding:26px;color:#f6f1ff;text-shadow:0 0 22px #7897f266;
+}
+#mtv-intro .mtv-handoff-kicker,
+#mtv-intro .mtv-handoff-detail{
+ font:700 clamp(12px,1.4vw,17px)/1.2 "MichaelVT323",ui-monospace,monospace;
+ letter-spacing:.2em;color:#99ecb6;
+}
+#mtv-intro .mtv-handoff-art strong{
+ font:850 clamp(42px,7vw,110px)/1 "Space Grotesk",system-ui,sans-serif;
+ letter-spacing:-.075em;
+}
+#mtv-intro.mtv-handoff-active .mtv-handoff-art{
+ animation:mtv-handoff-rise .3s ease-out both;
+}
+@keyframes mtv-handoff-rise{
+ from{opacity:.75;transform:translateY(7px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+ #mtv-intro .mtv-handoff-art{animation:none!important}
+ #mtv-intro .mtv-handoff{transition:opacity .12s ease,visibility .12s ease!important}
+}
