@@ -1,0 +1,54 @@
+name: Build local Fluent 3D sports emoji
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-sports-emoji.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert official Microsoft Fluent 3D PNGs to two optimized WebP sizes
+        run: |
+          python -m pip install --disable-pip-version-check Pillow
+          python - <<'PY'
+          import io
+          from pathlib import Path
+          from urllib.request import urlopen
+          from urllib.parse import quote
+          from PIL import Image
+          assets = {
+              'football': ('American football', 'american_football_3d.png'),
+              'basketball': ('Basketball', 'basketball_3d.png'),
+              'soccer': ('Soccer ball', 'soccer_ball_3d.png'),
+              'video-game': ('Video game', 'video_game_3d.png'),
+          }
+          destination = Path('assets/emoji')
+          destination.mkdir(parents=True, exist_ok=True)
+          for stem, (folder, filename) in assets.items():
+              url = 'https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/' + quote(folder) + '/3D/' + filename
+              with urlopen(url, timeout=40) as source:
+                  image = Image.open(io.BytesIO(source.read())).convert('RGBA')
+              for size in (96, 192):
+                  output = destination / f'{stem}-{size}.webp'
+                  image.resize((size, size), Image.Resampling.LANCZOS).save(output, 'WEBP', quality=90, method=6)
+                  print(f'Created {output} ({output.stat().st_size} bytes)')
+          PY
+      - name: Commit local assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/emoji/*.webp
+          if ! git diff --cached --quiet; then
+            git commit -m "Add optimized local Microsoft Fluent 3D WebP sports emoji"
+            git push origin HEAD:main
+          fi
