@@ -287,12 +287,25 @@
       controls.autoRotate = !reducedMotion;
       controls.autoRotateSpeed = .34;
       state.globe.pointOfView({lat: 30, lng: -45, altitude: 2.3}, 0);
-      mount.addEventListener('pointerenter', () => { controls.autoRotate = false; });
-      mount.addEventListener('pointerleave', () => { controls.autoRotate = !reducedMotion; });
-      mount.addEventListener('pointerdown', () => { controls.autoRotate = false; });
+      // Suspend WebGL animation whenever the Home channel is off-screen.
+      let hovered = false;
+      const isHomeActive = () => !window.__portfolioChannelIsActive ||
+        window.__portfolioChannelIsActive('home');
+      const syncChannelPlayback = () => {
+        const active = isHomeActive() && !document.hidden;
+        controls.autoRotate = active && !hovered && !reducedMotion;
+        if (active) state.globe.resumeAnimation?.();
+        else state.globe.pauseAnimation?.();
+      };
+      mount.addEventListener('pointerenter', () => { hovered=true; syncChannelPlayback(); });
+      mount.addEventListener('pointerleave', () => { hovered=false; syncChannelPlayback(); });
+      mount.addEventListener('pointerdown', () => { controls.autoRotate=false; });
+      document.addEventListener('portfolio:channel-change', syncChannelPlayback);
+      document.addEventListener('visibilitychange', syncChannelPlayback);
       const resize = () => state.globe.width(mount.clientWidth).height(mount.clientHeight);
       new ResizeObserver(resize).observe(mount);
       resize();
+      syncChannelPlayback();
       const usa = state.features.find(feature => countryCode(feature) === 840);
       if (usa) selectCountry(usa);
       else {
