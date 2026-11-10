@@ -341,3 +341,119 @@ body.tv-mode #hobbies .hobby-slide.ug-current .photo-carousel-shell {
  body.tv-mode #hobbies .ug-stage {max-height:clamp(185px,34vh,280px)!important}
  body.tv-mode #hobbies .ug-thumbnails {min-height:54px!important}
 }
+
+/* Networking editorial identity — reference: "THE CODE." display treatment.
+   Presentation-only; existing HTML text, albums, and controls are preserved. */
+body.tv-mode #main-content.tv-stage .tv-page > #networking,
+body.tv-mode #networking.tv-gallery-page,
+body.tv-mode #networking.ug-root-ready {
+  background:
+    radial-gradient(ellipse at 82% 2%,rgba(231,187,255,.36),transparent 46%),
+    linear-gradient(125deg,#fff9f1 0%,#fbf1ec 48%,#f8ebf8 100%)!important;
+  color:#33243c!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero {
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  width:100%!important;
+  max-width:1360px!important;
+  padding:clamp(26px,3.3vw,50px) 0 clamp(20px,2.4vw,34px)!important;
+  margin:0 auto clamp(16px,2.2vw,30px)!important;
+  border-bottom:0!important;
+  text-align:left!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero .eyebrow {
+  align-self:flex-start!important;
+  margin:0 0 clamp(14px,1.5vw,24px)!important;
+  padding:0!important;
+  color:#99784f!important;
+  -webkit-text-fill-color:#99784f!important;
+  font:750 clamp(10px,.85vw,12px)/1.35 'Space Grotesk',sans-serif!important;
+  letter-spacing:.21em!important;
+  text-align:left!important;
+  text-transform:uppercase!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero h1,
+body.tv-mode #main-content.tv-stage #networking .page-hero .page-title,
+body.tv-mode #main-content.tv-stage #networking .page-hero h1 * {
+  align-self:stretch!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  font-family:'Space Grotesk','DM Sans',system-ui,sans-serif!important;
+  font-size:clamp(56px,8.6vw,150px)!important;
+  line-height:.9!important;
+  font-weight:900!important;
+  letter-spacing:-.078em!important;
+  text-align:left!important;
+  text-transform:uppercase!important;
+  color:#b687e9!important;
+  -webkit-text-fill-color:transparent!important;
+  background-image:linear-gradient(95deg,#a879db 0%,#c698f8 49%,#e1b4ff 89%)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  text-shadow:none!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero h1 .highlight {
+  color:#a46bd3!important;
+  -webkit-text-fill-color:#a46bd3!important;
+  background:none!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero > p {
+  align-self:flex-start!important;
+  max-width:850px!important;
+  margin:clamp(19px,2.1vw,30px) 0 0!important;
+  color:#65566b!important;
+  -webkit-text-fill-color:#65566b!important;
+  text-align:left!important;
+  font-size:clamp(15px,1.12vw,18px)!important;
+  line-height:1.55!important;
+}
+body.tv-mode #networking .network-carousel-eyebrow {
+  color:#99784f!important;
+  -webkit-text-fill-color:#99784f!important;
+  letter-spacing:.16em!important;
+}
+body.tv-mode #networking .ug-chip-rail button {
+  border-color:rgba(159,110,206,.25)!important;
+  background:rgba(255,255,255,.77)!important;
+  color:#674780!important;
+}
+body.tv-mode #networking .ug-chip-rail button.active,
+body.tv-mode #networking .ug-chip-rail button[aria-selected="true"] {
+  border-color:#b784e5!important;
+  background:#b784e5!important;
+  color:#fff!important;
+}
+body.tv-mode #networking .network-event-slide.ug-current {
+  background:rgba(255,255,255,.87)!important;
+  border:1px solid rgba(182,135,220,.23)!important;
+  box-shadow:0 20px 46px rgba(93,54,122,.11)!important;
+}
+@media(max-width:850px){
+ body.tv-mode #main-content.tv-stage #networking .page-hero {
+   padding:42px 4px 22px!important;
+ }
+ body.tv-mode #main-content.tv-stage #networking .page-hero h1,
+ body.tv-mode #main-content.tv-stage #networking .page-hero .page-title,
+ body.tv-mode #main-content.tv-stage #networking .page-hero h1 * {
+   font-size:clamp(46px,9vw,82px)!important;
+ }
+}
+@media(max-width:550px){
+ body.tv-mode #main-content.tv-stage #networking .page-hero {
+   padding:38px 2px 16px!important;
+ }
+ body.tv-mode #main-content.tv-stage #networking .page-hero h1,
+ body.tv-mode #main-content.tv-stage #networking .page-hero .page-title,
+ body.tv-mode #main-content.tv-stage #networking .page-hero h1 * {
+   font-size:clamp(38px,9.5vw,57px)!important;
+   letter-spacing:-.082em!important;
+ }
+ body.tv-mode #main-content.tv-stage #networking .page-hero > p {
+   font-size:14px!important;
+ }
+}
