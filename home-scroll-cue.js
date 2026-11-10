@@ -67,7 +67,19 @@
   };
   cue.addEventListener('click',()=>jumpTo(1));
   dots.forEach((dot,i)=>dot.addEventListener('click',()=>jumpTo(i)));
-  panel.addEventListener('scroll',schedule,{passive:true});
+  // The 3D globe covers much of Home and OrbitControls intercepts wheel input.
+  // Route wheel gestures over its canvas to Home's own scroll container.
+  const globeMount=document.getElementById('financial-globe');
+  globeMount?.addEventListener('wheel',event=>{
+    if(!isActive() || !event.cancelable)return;
+    const unit=event.deltaMode===1?16:event.deltaMode===2?panel.clientHeight:1;
+    const delta=event.deltaY*unit;
+    if(!delta)return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    panel.scrollTop+=delta;
+  },{capture:true,passive:false});
+    panel.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
   document.addEventListener('portfolio:channel-change',schedule);
 
