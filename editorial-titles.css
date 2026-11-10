@@ -1,0 +1,59 @@
+/* Editorial title refinement: typography ONLY.
+   Preserve original containers, colors, gradients, copy, capitalization,
+   line wrapping, alignment, spacing, and all section behavior. */
+:is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > h1.page-title,
+#skills .sectionhead h2.mk-animated-title,
+#contact .mk-connect-left .page-hero > h1.page-title {
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-size:clamp(42px,5.2vw,88px)!important;
+  font-weight:800!important;
+  line-height:1.01!important;
+  letter-spacing:-.065em!important;
+}
+/* Keep contact proportional to its narrower column. */
+#contact .mk-connect-left .page-hero > h1.page-title {
+  font-size:clamp(36px,3.7vw,60px)!important;
+}
+/* Preserve every original line and gradient treatment. No font-size overrides on inner spans. */
+#portfolio-intro-grid .mk-intro-heading h2 {
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-weight:800!important;
+  letter-spacing:-.065em!important;
+  line-height:1.01!important;
+}
+#home .mk-unified-identity h1.mk-animated-title {
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-weight:800!important;
+  letter-spacing:-.065em!important;
+  line-height:1.03!important;
+}
+@media(max-width:767px) {
+  :is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > h1.page-title,
+  #skills .sectionhead h2.mk-animated-title {
+    font-size:clamp(34px,8vw,54px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.055em!important;
+  }
+  #contact .mk-connect-left .page-hero > h1.page-title {
+    font-size:clamp(32px,7.3vw,46px)!important;
+    line-height:1.05!important;
+  }
+}
+
+/* Match Networking heading scale to Literature, overriding its older giant-title rule. */
+body.tv-mode #main-content.tv-stage #networking .page-hero > h1.page-title,
+body.tv-mode #main-content.tv-stage #networking .page-hero > h1.page-title * {
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-size:clamp(42px,5.2vw,88px)!important;
+  font-weight:800!important;
+  line-height:1.01!important;
+  letter-spacing:-.065em!important;
+}
+@media(max-width:767px){
+  body.tv-mode #main-content.tv-stage #networking .page-hero > h1.page-title,
+  body.tv-mode #main-content.tv-stage #networking .page-hero > h1.page-title * {
+    font-size:clamp(34px,8vw,54px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.055em!important;
+  }
+}
