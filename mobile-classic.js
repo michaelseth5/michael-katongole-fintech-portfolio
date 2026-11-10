@@ -38,9 +38,7 @@
  // The Education block remains the same DOM node; it belongs under Skills on mobile.
  const edu=$('.mk-craft-education');const skills=$('#skills');
  if(edu&&skills){const placeholder=document.createComment('Education original location');edu.before(placeholder);skills.append(edu);window.addEventListener('resize',()=>{if(!mq.matches)placeholder.after(edu);else skills.append(edu);});}
- // Replace the live WebGL mount with a fixed-size static asset on mobile.
- const globe=$('#financial-globe');
- if(globe){globe.removeAttribute('role');globe.removeAttribute('aria-label');globe.replaceChildren(add('img',{className:'mk-mobile-globe-image',src:'assets/mobile-globe.webp',alt:'Static illustration of the international financial globe',width:520,height:520,loading:'eager',decoding:'async'}));}
+ // Mobile hero has no globe or globe-vision display. Desktop markup remains intact.
  // Normal vertical document flow means the existing TV channel static handler never initializes.
  $$('details.project-expand').forEach(detail=>{
    detail.open=false;

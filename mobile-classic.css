@@ -235,3 +235,18 @@ html.mobile-classic :is(.marquee,.marquee-inner,.preview-track,.mk-glow,.mk-reve
   html.mobile-classic body .mk-mobile-chat-sheet[hidden],
   html.mobile-classic body .mk-mobile-voice[hidden] {display:none!important;}
 }
+
+/* Phone only: remove the globe section and its companion globe-vision text.
+   Higher specificity defeats legacy desktop !important layout rules. */
+@media(max-width:767px) {
+ html.mobile-classic body #home.hero.mk-unified-hero > .mk-unified-globe,
+ html.mobile-classic body #home.hero.mk-unified-hero > .mk-unified-globe.globe-wrap:not(:fullscreen),
+ html.mobile-classic body #home.hero.mk-unified-hero > .mk-unified-vision,
+ html.mobile-classic body #home.hero.mk-unified-hero > .mk-unified-gradient,
+ html.mobile-classic body #home.hero.mk-unified-hero > .mk-unified-globe-hint {
+   display:none!important;
+   visibility:hidden!important;
+   width:0!important;height:0!important;min-height:0!important;
+   margin:0!important;padding:0!important;
+ }
+}
