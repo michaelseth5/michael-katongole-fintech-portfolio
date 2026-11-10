@@ -106,7 +106,7 @@ body.tv-mode .tv-hardware .tv-power:focus-visible{outline:2px solid #d7afff;outl
 body.tv-mode .tv-hardware .tv-power:focus-visible .tv-power-light{box-shadow:0 0 12px #6ee7a0}
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home{display:flex!important;flex-direction:column;justify-content:flex-start}
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home>#home{min-height:100%!important}
-body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>section{min-height:100%!important}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>section:not(.mk-footer-quotes){min-height:100%!important}
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>#contact{display:flex!important;align-items:safe center!important}
 @media(max-width:819px){
  body.tv-mode .tv-hardware{inset:5px;border-radius:29px}
@@ -223,3 +223,8 @@ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] .mk-
 .tv-effects-pop{animation:tvEffectsPop .6s ease-out}
 @media(max-width:819px){.tv-effects-control{top:8px;left:9px;gap:7px;padding:4px 7px}.tv-effects-description{font-size:10px}.tv-effects-control .tv-effects-toggle{transform:scale(.8);transform-origin:left center;margin-right:-13px}}
 @media(prefers-reduced-motion:reduce){.tv-effects-track,.tv-effects-knob{transition:none!important}.tv-effects-pop{animation:none!important}}
+
+/* Contact quotes must end at their content, not fill an entire TV viewport. */
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>section.mk-footer-quotes{min-height:0!important;height:max-content!important;max-height:none!important;flex:0 0 auto!important;padding:20px 0 18px!important;align-self:stretch!important}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>section.mk-footer-quotes .mk-footer-quote-stage{min-height:72px!important}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>footer{position:relative!important;margin:0!important;min-height:0!important}
