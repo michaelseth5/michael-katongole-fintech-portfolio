@@ -112,7 +112,7 @@ dialog#mtv-intro::backdrop{background:rgba(5,4,12,.94);backdrop-filter:blur(10px
  transition:opacity .22s ease,visibility .22s ease;
 }
 #mtv-intro.mtv-handoff-active .mtv-handoff{
- opacity:1;visibility:visible;
+ opacity:1;visibility:visible;transition:none!important;
 }
 #mtv-intro .mtv-handoff::before{
  content:"";position:absolute;inset:0;
