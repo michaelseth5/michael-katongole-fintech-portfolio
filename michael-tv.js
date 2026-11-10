@@ -28,7 +28,7 @@
    <div class="mtv-blue" aria-hidden="true"></div>
    <div class="mtv-crt" aria-hidden="true"></div>
    <div class="mtv-video" aria-label="Introduction video"><div class="mtv-video-ratio"><div id="mtv-youtube-player"></div></div></div>
-   <div class="mtv-announcement" aria-live="polite" aria-label="You’re watching the big global FinTech SWE Engineer"><span class="mtv-announcement-kicker">YOU’RE WATCHING</span><strong>THE BIG GLOBAL<br><em>FINTECH SWE ENGINEER</em></strong><span class="mtv-announcement-station">MICHAEL TV · WORLDWIDE</span></div>
+   <div class="mtv-announcement" aria-live="polite" aria-label="You’re watching the next big global FinTech SWE Engineer in real time!"><span class="mtv-announcement-kicker">YOU’RE WATCHING</span><strong>THE NEXT BIG GLOBAL<br><em>FINTECH SWE ENGINEER</em><br><span class="mtv-announcement-live">IN REAL TIME!</span></strong><span class="mtv-announcement-station">MICHAEL TV · WORLDWIDE</span></div>
    <div class="mtv-idle">
     <div class="mtv-title">MICHAEL TV</div>
     <p class="mtv-tagline">The world is changing. I plan to help build what's next.</p>
