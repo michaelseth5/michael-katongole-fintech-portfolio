@@ -159,3 +159,34 @@ dialog#mtv-intro::backdrop{background:rgba(5,4,12,.94);backdrop-filter:blur(10px
 #mtv-intro .mtv-welcome button{cursor:pointer;border:1px solid #e5b9ff;border-radius:99px;padding:.75rem 1.3rem;background:#f5e7ff;color:#241137;font-weight:700}
 #mtv-intro .mtv-welcome-next{position:absolute;right:1.4rem;bottom:1.4rem}
 #mtv-intro.mtv-welcome-active .mtv-video,#mtv-intro.mtv-welcome-active .mtv-handoff,#mtv-intro.mtv-welcome-active .mtv-announcement{visibility:hidden!important}
+
+/* Michael TV introduction: frame the embedded footage as a clean, non-interactive
+   TV picture. The provider owns its iframe UI; these matte bands hide common
+   top-left channel identification and lower-right platform watermark zones. */
+#mtv-intro .mtv-video-ratio {
+  overflow:hidden!important;
+  isolation:isolate;
+  background:#050611;
+}
+#mtv-intro .mtv-video-ratio iframe {
+  left:-9%!important;top:-9%!important;
+  width:118%!important;height:118%!important;
+  max-width:none!important;
+  pointer-events:none!important;
+}
+#mtv-intro .mtv-video-ratio::before,
+#mtv-intro .mtv-video-ratio::after {
+  content:"";position:absolute;left:0;right:0;
+  z-index:3;pointer-events:none;
+  background:#050611;
+}
+#mtv-intro .mtv-video-ratio::before {top:0;height:clamp(44px,7%,92px);}
+#mtv-intro .mtv-video-ratio::after {bottom:0;height:clamp(46px,8%,96px);}
+@media(max-width:819px){
+  #mtv-intro .mtv-video-ratio iframe {
+    left:-11%!important;top:-11%!important;
+    width:122%!important;height:122%!important;
+  }
+  #mtv-intro .mtv-video-ratio::before {height:clamp(25px,7%,48px);}
+  #mtv-intro .mtv-video-ratio::after {height:clamp(25px,8%,48px);}
+}
