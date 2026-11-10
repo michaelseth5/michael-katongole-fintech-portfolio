@@ -8,22 +8,20 @@
 
   const channels = [
     {key:'home', id:'home', label:'Home'},
-    {key:'experience', id:'experience', label:'Experience'},
     {key:'projects', id:'project-details', label:'Projects'},
-    {key:'hobbies', id:'hobbies', label:'Hobbies'},
+    {key:'experience', id:'experience', label:'Experience'},
+    {key:'skills', id:'skills', label:'Skills'},
+    {key:'milestone', id:'achievements', label:'Milestones'},
     {key:'networking', id:'networking', label:'Networking'},
     {key:'reading', id:'listening-reading', label:'Reading'},
-    {key:'milestone', id:'achievements', label:'Milestone'},
-    {key:'skills', id:'skills', label:'Skills'},
+    {key:'hobbies', id:'hobbies', label:'Hobbies'},
     {key:'contact', id:'contact', label:'Contact'}
   ];
   const aliases = new Map(channels.flatMap((entry,i) => [
     [entry.key,i],[entry.id,i]
   ]));
-  aliases.set('achievements',6);
-  aliases.set('listening-reading',5);
-  aliases.set('project-details',2);
-  const found = channels.map(item => document.getElementById(item.id));
+  aliases.set('milestones',4);
+    const found = channels.map(item => document.getElementById(item.id));
   if (found.some(item => !item)) return;
 
   // Preserve the non-nav editorial content inside Home and footer inside Contact.
