@@ -191,6 +191,7 @@
    dialog.classList.add('mtv-playing');
    label.textContent='PLAY ▶';label.classList.remove('mtv-idle-label');
    timecode.hidden=false;skipBtn.hidden=false;
+   skipBtn.focus({preventScroll:true});
    if(!reduced.matches){dialog.classList.add('mtv-tracking')}
    glitchTimer=setTimeout(()=>{
      dialog.classList.remove('mtv-tracking');
@@ -235,10 +236,10 @@
    if(reduced.matches){dialog.classList.add('mtv-leaving');setTimeout(settle,250);return}
    // Exit burst: 300ms like channel flipping. No idle canvas loop.
    const began=performance.now();
+   renderNoise(); // One noise sample: fade the texture without rapid luminance flashing.
    const frame=now=>{
      const elapsed=now-began;
      staticCanvas.style.opacity=String(elapsed<140?Math.min(.9,elapsed/140*.9):Math.max(0,.9*(1-(elapsed-140)/160)));
-     renderNoise();
      if(elapsed<300)staticFrame=requestAnimationFrame(frame);
      else{staticFrame=0;staticCanvas.style.opacity='0';settle();}
    };
