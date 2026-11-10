@@ -1,0 +1,78 @@
+/* Home channel scroll guidance only, within the authentic Michael TV glass. */
+body.tv-mode #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero{
+  height:90%!important;min-height:0!important;max-height:none!important;flex:0 0 90%!important;
+  position:relative!important;
+}
+body.tv-mode #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(40px,8vh,94px);
+  background:linear-gradient(180deg,transparent,rgba(16,11,29,.58) 70%,#170f2a 100%);
+  pointer-events:none;z-index:2;
+}
+body.tv-mode #main-content.tv-stage .tv-page-home > #home .mk-unified-identity{
+  max-height:calc(100% - 50px);overflow:visible;
+}
+body.tv-mode #main-content.tv-stage .tv-home-scroll-cue{
+  position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+  z-index:70;appearance:none;display:flex;flex-direction:column;align-items:center;gap:0;
+  padding:7px 17px 3px;border:0;border-radius:14px;background:rgba(13,11,27,.47);
+  backdrop-filter:blur(8px);color:#6ee7a0;cursor:pointer;
+  font:400 21px/1 "MichaelVT323",ui-monospace,monospace;letter-spacing:.16em;
+  text-shadow:0 0 12px rgba(110,231,160,.62);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .45s ease,visibility .45s ease;
+}
+body.tv-mode #main-content.tv-stage .tv-home-scroll-cue.is-shown{
+  opacity:1;visibility:visible;pointer-events:auto;
+}
+body.tv-mode #main-content.tv-stage .tv-home-scroll-cue:focus-visible{
+  outline:2px solid #baffd2;outline-offset:4px;
+}
+body.tv-mode #main-content.tv-stage .tv-home-scroll-cue .tv-scroll-chevron{
+  display:block;font:400 33px/1 "MichaelVT323",ui-monospace,monospace;
+  animation:tv-home-chevron 1.6s ease-in-out infinite;
+}
+@keyframes tv-home-chevron{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(6px)}
+}
+body.tv-mode #main-content.tv-stage .tv-home-progress{
+  position:absolute;z-index:69;right:13px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+  padding:10px 4px;max-height:65%;background:rgba(14,11,29,.32);border-radius:20px;
+}
+body.tv-mode #main-content.tv-stage .tv-home-progress::before{
+  content:"";position:absolute;top:16px;bottom:16px;left:50%;width:1px;
+  background:linear-gradient(180deg,rgba(175,135,255,.12),rgba(175,135,255,.68),rgba(175,135,255,.12));
+  pointer-events:none;
+}
+body.tv-mode #main-content.tv-stage .tv-home-progress button{
+  position:relative;z-index:1;width:20px;height:20px;padding:0;border:0;border-radius:50%;
+  display:grid;place-items:center;cursor:pointer;background:transparent;
+}
+body.tv-mode #main-content.tv-stage .tv-home-progress button::after{
+  content:"";display:block;width:8px;height:8px;border-radius:50%;
+  border:1px solid #bea5d9;background:#100c1c;box-shadow:0 0 0 3px rgba(16,12,28,.85);
+  transition:background-color .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+body.tv-mode #main-content.tv-stage .tv-home-progress button[aria-current="location"]::after{
+  background:#bd8dff;border-color:#d8b2ff;box-shadow:0 0 0 3px rgba(16,12,28,.92),0 0 13px rgba(177,118,255,.8);
+}
+body.tv-mode #main-content.tv-stage .tv-home-progress button:focus-visible{
+  outline:2px solid #bc9cff;outline-offset:2px;
+}
+body.tv-mode #main-content.tv-stage .tv-home-scroll-cue[hidden],
+body.tv-mode #main-content.tv-stage .tv-home-progress[hidden]{display:none!important}
+@media(max-width:819px){
+ body.tv-mode #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero{
+   height:max(90%,700px)!important;min-height:700px!important;flex:0 0 auto!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-home-scroll-cue{bottom:13px;padding:8px 12px}
+ body.tv-mode #main-content.tv-stage .tv-home-scroll-cue .tv-scroll-word{display:none}
+ body.tv-mode #main-content.tv-stage .tv-home-progress{right:3px;gap:12px;padding:7px 1px}
+ body.tv-mode #main-content.tv-stage .tv-home-progress button{width:22px;height:22px}
+}
+@media(prefers-reduced-motion:reduce){
+ body.tv-mode #main-content.tv-stage .tv-home-scroll-cue .tv-scroll-chevron{animation:none!important}
+ body.tv-mode #main-content.tv-stage .tv-home-progress button::after{transition:none!important}
+ body.tv-mode #main-content.tv-stage .tv-home-scroll-cue{transition:opacity .2s ease,visibility .2s ease!important}
+}
