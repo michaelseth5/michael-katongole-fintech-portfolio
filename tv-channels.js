@@ -249,4 +249,12 @@
     const next=aliases.get(key);
     if(next!==undefined)go(next);
   };
+  // The intro has its own channel static. Hand off directly to Home without a
+  // second transition or a momentary flash of a deep-linked section.
+  window.portfolioEnterHomeFromIntro = () => {
+    if(current!==0 && !busy)setPanel(0);
+    const target='#home';
+    if(location.hash!==target)history.replaceState({channel:'home'},'',target);
+    panels[0]?.scrollTo({top:0,behavior:'instant'});
+  };
 })();
