@@ -150,3 +150,12 @@ dialog#mtv-intro::backdrop{background:rgba(5,4,12,.94);backdrop-filter:blur(10px
  #mtv-intro .mtv-handoff-art{animation:none!important}
  #mtv-intro .mtv-handoff{transition:opacity .12s ease,visibility .12s ease!important}
 }
+
+/* Michael TV personal audio welcome */
+#mtv-intro .mtv-welcome[hidden]{display:none!important}
+#mtv-intro .mtv-welcome{position:absolute;inset:0;z-index:35;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:clamp(1rem,5vw,4rem);text-align:center;color:#fff;background:radial-gradient(ellipse at 45% 35%,#4b2868 0%,#19122f 60%,#090b19 100%)}
+#mtv-intro .mtv-welcome-label{font:700 clamp(.7rem,1.5vw,.95rem)/1.4 system-ui,sans-serif;letter-spacing:.22em;color:#e5b9ff}
+#mtv-intro .mtv-welcome-caption{max-width:760px;font:600 clamp(1.4rem,3.8vw,3.2rem)/1.3 system-ui,sans-serif;text-wrap:balance}
+#mtv-intro .mtv-welcome button{cursor:pointer;border:1px solid #e5b9ff;border-radius:99px;padding:.75rem 1.3rem;background:#f5e7ff;color:#241137;font-weight:700}
+#mtv-intro .mtv-welcome-next{position:absolute;right:1.4rem;bottom:1.4rem}
+#mtv-intro.mtv-welcome-active .mtv-video,#mtv-intro.mtv-welcome-active .mtv-handoff,#mtv-intro.mtv-welcome-active .mtv-announcement{visibility:hidden!important}
