@@ -13,7 +13,7 @@
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let previouslySeen=false;
  try{previouslySeen=sessionStorage.getItem(KEY)==='1'}catch{}
- const unlockVoice=()=>{welcomeVoice.play().then(()=>{welcomeVoice.pause();welcomeVoice.currentTime=0}).catch(()=>{});};
+ // Welcome audio must not start until the video sequence completes.
  const footer=document.querySelector('.mk-footer');
  if(footer && !footer.querySelector('.mtv-replay')){
    const link=document.createElement('a');
@@ -75,7 +75,7 @@
    clearTimeout(maxDeadline);maxDeadline=0;
    welcomePanel.hidden=false;dialog.classList.add('mtv-welcome-active');
    welcomeCaption.textContent='Hey.';
-   playWelcome();
+   welcomeTap.hidden=false; // Explicit tap after VIDEO 2: reliable under browser audio rules.
  };
  welcomeTap.addEventListener('click',playWelcome);
  welcomeNext.addEventListener('click',()=>finish('welcome-skip'));
@@ -189,6 +189,7 @@
    document.getElementById('mtv-youtube-player')?.replaceChildren();
    player=null;
    try{dialog.showModal()}catch{return}
+   window.dispatchEvent(new CustomEvent('michael-tv:intro-open'));
    playBtn.disabled=false;
    playBtn.focus({preventScroll:true});
    bootTimer=setTimeout(()=>{dialog.classList.add('mtv-ready');ensureAPI()},reduced.matches?0:250);
@@ -261,7 +262,7 @@
    if(!active||pending||playerStarted||exiting)return;
    // Sound and YouTube playback only follow this explicit trusted gesture.
    pending=true;playBtn.disabled=true;
-   unlockVoice();
+   // Keep voice silent during both videos; no early playback or silent unlock.
    soundEffects();
    dialog.classList.add('mtv-playing','mtv-announcing');
    setTimeout(()=>{if(active&&!exiting)dialog.classList.remove('mtv-announcing')},reduced.matches?1100:2700);
@@ -309,6 +310,7 @@
      document.getElementById('mtv-youtube-player')?.replaceChildren();
      if(typeof window.portfolioEnterHomeFromIntro==='function')window.portfolioEnterHomeFromIntro();
      else if(location.hash!=='#home')location.hash='home';
+     window.dispatchEvent(new CustomEvent('michael-tv:home-enter',{detail:{reason}}));
      const firstNav=document.querySelector('#apple-navlinks a[href="#home"]');
      (firstNav||lastFocused)?.focus?.({preventScroll:true});
    };

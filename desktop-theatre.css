@@ -1,0 +1,75 @@
+/* Broadway curtains and overhead spotlight: desktop/web only.
+   Purely visual. No pointer capture, text changes, audio or TV transition changes. */
+@media (min-width:768px) {
+  .mk-broadway-scene {
+    position:fixed;inset:0;z-index:2147483000;
+    pointer-events:none;overflow:hidden;isolation:isolate;
+  }
+  .mk-broadway-curtain {
+    position:absolute;top:0;bottom:0;width:52%;
+    background:
+      linear-gradient(90deg,rgba(0,0,0,.28),transparent 13%,rgba(255,255,255,.13) 26%,rgba(0,0,0,.28) 41%,transparent 55%,rgba(255,255,255,.12) 72%,rgba(0,0,0,.38) 95%),
+      repeating-linear-gradient(90deg,#570b22 0%,#a3193c 8%,#4a071d 16%,#8e1031 24%,#330716 31%);
+    border-top:5px solid #bb914a;
+    box-shadow:inset 0 0 80px rgba(0,0,0,.4),0 0 28px rgba(0,0,0,.35);
+    transition:transform 1120ms cubic-bezier(.76,.01,.25,1);
+    will-change:transform;
+  }
+  .mk-broadway-left {
+    left:0;border-right:3px solid #cd8e68;
+    box-shadow:inset -18px 0 30px rgba(19,0,10,.6),9px 0 25px rgba(0,0,0,.24);
+  }
+  .mk-broadway-right {
+    right:0;border-left:3px solid #cd8e68;
+    box-shadow:inset 18px 0 30px rgba(19,0,10,.6),-9px 0 25px rgba(0,0,0,.24);
+  }
+  .mk-broadway-valance {
+    position:absolute;top:0;left:0;right:0;height:clamp(34px,5vh,64px);
+    background:
+      repeating-linear-gradient(90deg,#651025 0 46px,#951631 58px,#520c1c 90px);
+    border-bottom:3px solid #bd8b52;
+    border-radius:0 0 48% 48% / 0 0 50% 50%;
+    box-shadow:0 9px 20px rgba(0,0,0,.33);
+    transition:transform 900ms cubic-bezier(.76,.01,.25,1) 90ms,opacity 600ms ease 200ms;
+    will-change:transform,opacity;
+  }
+  .mk-broadway-scene.is-opening .mk-broadway-left {transform:translate3d(-104%,0,0)}
+  .mk-broadway-scene.is-opening .mk-broadway-right {transform:translate3d(104%,0,0)}
+  .mk-broadway-scene.is-opening .mk-broadway-valance {transform:translate3d(0,-105%,0);opacity:0}
+  .mk-stage-spotlight {
+    --stage-x:50vw;--stage-y:60vh;--stage-height:60vh;
+    position:fixed;inset:0;z-index:1400;
+    pointer-events:none;overflow:hidden;
+    opacity:0;transition:opacity 650ms ease;
+  }
+  .mk-stage-spotlight.is-visible {opacity:1}
+  .mk-stage-beam {
+    position:absolute;top:0;
+    left:calc(var(--stage-x) - 220px);
+    width:440px;height:var(--stage-height);
+    clip-path:polygon(49% 0,51% 0,90% 100%,10% 100%);
+    background:linear-gradient(to bottom,
+      rgba(255,250,228,.12) 0%,rgba(249,226,255,.18) 48%,
+      rgba(238,201,255,.24) 100%);
+    filter:blur(6px);
+    mix-blend-mode:screen;
+  }
+  .mk-stage-pool {
+    position:absolute;
+    left:calc(var(--stage-x) - 110px);
+    top:calc(var(--stage-y) - 40px);
+    width:220px;height:80px;
+    border-radius:50%;
+    background:radial-gradient(ellipse,rgba(247,216,255,.33) 0%,rgba(247,216,255,.13) 42%,transparent 74%);
+    filter:blur(14px);
+    mix-blend-mode:screen;
+  }
+}
+@media(max-width:767px) {
+  .mk-stage-spotlight,.mk-broadway-scene{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .mk-broadway-scene{display:none!important}
+  .mk-stage-spotlight{transition:none!important}
+  .mk-stage-pool{filter:none!important;opacity:.25!important}
+}
