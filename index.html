@@ -2680,7 +2680,140 @@ main{
  .apple-navlinks a{font-size:14.4px!important;padding:14.4px 15.6px!important}
  .apple-nav-indicator{height:43.2px!important}
 }
-</style></head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#achievements">Milestones</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div aria-label="Social profile links" class="mk-socials mk-socials-top" role="group"><a aria-label="Email - Michael Katongole" class="mk-social-link mk-social-email" href="#contact" data-email-action=""><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="mk-social-word">Email</span></a><a aria-label="GitHub - Michael Katongole" class="mk-social-link mk-social-github" href="https://github.com/michaelseth5" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 0S17.73-.35 15 2a13.38 13.38 0 0 0-7 0C5.27-.35 4.09 0 4.09 0A5.07 5.07 0 0 0 4 3.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 17.13V21"></path></svg><span class="mk-social-word">GitHub</span></a><a aria-label="LinkedIn - Michael Katongole" class="mk-social-link mk-social-linkedin" href="https://www.linkedin.com/in/michael-k-65b1a8222/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="20" rx="3" width="20" x="2" y="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7h3v1.3a3 3 0 0 1 5 2.6V17"></path></svg><span class="mk-social-word">LinkedIn</span></a></div></div><div class="mk-unified-globe-hint" aria-hidden="true">Drag to explore · Hover to pause</div></section><aside id="site-preview-notice" aria-label="Website welcome and feedback"><p><strong>Welcome to my website!</strong> It’s still under development and in the testing phase, but I hope you enjoy exploring it. If you have any ideas or recommendations, I’d love to hear them.</p><a href="#contact" data-email-action="subject=Portfolio%20Feedback">Email your feedback ↗</a></aside><div class="mk-purple-section-transition" aria-hidden="true"></div><section class="mk-editorial-intro mk-bento-about" id="portfolio-intro-grid" aria-label="More about Michael Katongole">
+</style>
+<style id="mk-home-bento-desktop-redesign">
+/* Move education into Craft, let the NYC map occupy the entire next row. */
+#portfolio-intro-grid .mk-bento-layout {
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  grid-template-rows:175px minmax(530px,auto) minmax(460px,auto)!important;
+  align-items:stretch!important;
+}
+#portfolio-intro-grid .mk-bento-layout > .mk-bento-mindset {
+  grid-column:span 4!important;grid-row:2!important;
+  height:100%!important;min-height:0!important;
+}
+#portfolio-intro-grid .mk-bento-layout > .mk-bento-memories {
+  grid-column:span 4!important;grid-row:2!important;
+  height:100%!important;min-height:0!important;
+}
+#portfolio-intro-grid .mk-bento-layout > .mk-bento-craft {
+  grid-column:span 4!important;grid-row:2!important;
+  height:100%!important;min-height:0!important;
+  display:flex!important;flex-direction:column!important;
+  padding:23px!important;text-align:center!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education {
+  display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;
+  gap:9px!important;width:100%!important;min-width:0!important;
+  border-top:1px solid rgba(117,89,141,.22)!important;
+  padding:17px 7px 15px!important;
+  margin:13px 0 11px!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education .mk-bento-eyebrow {
+  position:static!important;font:700 9px/1.5 'Space Grotesk',sans-serif!important;
+  color:#796d86!important;letter-spacing:.13em!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education .mk-bento-education-logo {
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  position:static!important;inset:auto!important;
+  width:100%!important;height:auto!important;min-height:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education .mk-bento-education-logo img {
+  width:80px!important;height:80px!important;max-width:80px!important;
+  max-height:80px!important;object-fit:contain!important;display:block!important;
+  filter:none!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education h3 {
+  position:static!important;font:800 clamp(20px,1.65vw,24px)/1.14 'Space Grotesk',sans-serif!important;
+  color:#30263e!important;letter-spacing:-.045em!important;
+  max-width:290px!important;text-align:center!important;
+  margin:0!important;padding:0!important;text-wrap:balance!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education h3 span {
+  color:#9d69c6!important;
+}
+#portfolio-intro-grid .mk-bento-craft > .mk-bento-tech {
+  order:10!important;flex-shrink:0!important;
+  margin:auto -23px -23px!important;
+  border-radius:0 0 19px 19px!important;
+  min-height:35px!important;align-items:center!important;
+}
+#portfolio-intro-grid .mk-bento-craft > a {
+  margin-top:12px!important;margin-bottom:19px!important;
+  align-self:center!important;
+}
+#portfolio-intro-grid .mk-bento-layout > .mk-nyc-map-card {
+  grid-column:1 / -1!important;grid-row:3!important;
+  min-height:480px!important;height:480px!important;
+  align-self:stretch!important;border-radius:20px!important;
+  border:1px solid #ded6e7!important;
+  box-shadow:0 1px 1px rgba(49,34,71,.06),0 12px 24px rgba(40,30,60,.06)!important;
+}
+#portfolio-intro-grid .mk-nyc-map-canvas.mk-nyc-aerial-image {
+  background-position:50% 51%!important;background-size:cover!important;
+}
+#portfolio-intro-grid .mk-nyc-map-heading {
+  top:20px!important;left:20px!important;padding:15px 18px!important;
+}
+#portfolio-intro-grid .mk-nyc-map-footer {
+  left:20px!important;right:20px!important;bottom:20px!important;
+}
+#portfolio-intro-grid .mk-nyc-map-footer span {
+  font-size:10px!important;padding:9px 13px!important;
+}
+body .apple-topbar {
+  top:max(12px,env(safe-area-inset-top))!important;
+  padding-top:2px!important;
+  z-index:1000!important;
+}
+@media (min-width:751px) and (max-width:1023px) {
+ #portfolio-intro-grid .mk-bento-layout {
+   grid-template-rows:auto!important;
+   grid-template-columns:repeat(12,minmax(0,1fr))!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-mindset {
+   grid-column:span 6!important;grid-row:2!important;min-height:500px!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-memories {
+   grid-column:span 6!important;grid-row:2!important;min-height:500px!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-craft {
+   grid-column:1/-1!important;grid-row:3!important;
+   min-height:420px!important;height:auto!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-nyc-map-card {
+   grid-column:1/-1!important;grid-row:4!important;
+   min-height:420px!important;height:420px!important;
+ }
+ #portfolio-intro-grid .mk-bento-craft .mk-craft-education{margin:14px auto!important;max-width:450px!important}
+}
+@media (max-width:750px) {
+ #portfolio-intro-grid .mk-bento-layout {
+   display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+   grid-template-rows:auto!important;gap:12px!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-name {grid-column:1!important;grid-row:1!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-facts {grid-column:1!important;grid-row:2!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-mindset {grid-column:1!important;grid-row:3!important;height:auto!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-memories {grid-column:1!important;grid-row:4!important;min-height:330px!important;height:330px!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-craft {grid-column:1!important;grid-row:5!important;min-height:0!important;height:auto!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-nyc-map-card {
+   grid-column:1!important;grid-row:6!important;
+   min-height:310px!important;height:310px!important;
+ }
+ #portfolio-intro-grid .mk-bento-craft .mk-craft-education h3 {font-size:22px!important;}
+ #portfolio-intro-grid .mk-bento-craft .mk-craft-education .mk-bento-education-logo img {width:76px!important;height:76px!important;}
+ #portfolio-intro-grid .mk-nyc-map-heading {top:10px!important;left:10px!important;padding:9px 11px!important;}
+ #portfolio-intro-grid .mk-nyc-map-footer {bottom:10px!important;left:10px!important;right:10px!important;gap:6px!important;}
+ #portfolio-intro-grid .mk-nyc-map-footer span {font-size:8px!important;padding:7px 8px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+ #portfolio-intro-grid .mk-nyc-radar-sweep,#portfolio-intro-grid .mk-nyc-radar-rings {animation:none!important;}
+}
+</style>
+</head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#achievements">Milestones</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div aria-label="Social profile links" class="mk-socials mk-socials-top" role="group"><a aria-label="Email - Michael Katongole" class="mk-social-link mk-social-email" href="#contact" data-email-action=""><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="mk-social-word">Email</span></a><a aria-label="GitHub - Michael Katongole" class="mk-social-link mk-social-github" href="https://github.com/michaelseth5" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 0S17.73-.35 15 2a13.38 13.38 0 0 0-7 0C5.27-.35 4.09 0 4.09 0A5.07 5.07 0 0 0 4 3.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 17.13V21"></path></svg><span class="mk-social-word">GitHub</span></a><a aria-label="LinkedIn - Michael Katongole" class="mk-social-link mk-social-linkedin" href="https://www.linkedin.com/in/michael-k-65b1a8222/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="20" rx="3" width="20" x="2" y="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7h3v1.3a3 3 0 0 1 5 2.6V17"></path></svg><span class="mk-social-word">LinkedIn</span></a></div></div><div class="mk-unified-globe-hint" aria-hidden="true">Drag to explore · Hover to pause</div></section><aside id="site-preview-notice" aria-label="Website welcome and feedback"><p><strong>Welcome to my website!</strong> It’s still under development and in the testing phase, but I hope you enjoy exploring it. If you have any ideas or recommendations, I’d love to hear them.</p><a href="#contact" data-email-action="subject=Portfolio%20Feedback">Email your feedback ↗</a></aside><div class="mk-purple-section-transition" aria-hidden="true"></div><section class="mk-editorial-intro mk-bento-about" id="portfolio-intro-grid" aria-label="More about Michael Katongole">
 <div class="container">
 <div class="mk-intro-top mk-reveal"><span>● MORE THAN A RESUME</span><span>THE PERSON BEHIND THE WORK / 2026</span></div>
 <div class="mk-intro-heading mk-reveal"><h2 class="mk-animated-title"><span class="mk-title-solid">THE PERSON</span><br/><em class="mk-title-glow">BEHIND THE CODE.</em></h2><div class="mk-intro-aside"><p>I work with financial data, build software projects, and make time for mentorship and exploring new places.</p><a href="#experience">Discover my story ↘</a></div></div>
@@ -2723,14 +2856,15 @@ main{
   <div class="mk-bento-eyebrow">CRAFT</div>
   <h3>Craft<span>.</span></h3><div class="mk-bento-rule"></div>
   <p>Building <strong>reliable software, scalable data platforms, and practical AI solutions</strong> at the intersection of finance and engineering.</p>
-  <div class="mk-bento-tech mk-tech-marquee" role="region" aria-label="Continuously scrolling technology stack: PYTHON, SQL, JAVA, C++, REACT, NEXT.JS, POSTGRESQL, PYTORCH"><div class="mk-tech-marquee-track"><span class="mk-tech-marquee-group"><span class="mk-tech-label">PYTHON</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">SQL</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">JAVA</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">C++</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">REACT</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">NEXT.JS</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">POSTGRESQL</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">PYTORCH</span><span class="mk-tech-spark" aria-hidden="true">✦</span></span><span class="mk-tech-marquee-group" aria-hidden="true"><span class="mk-tech-label">PYTHON</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">SQL</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">JAVA</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">C++</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">REACT</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">NEXT.JS</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">POSTGRESQL</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">PYTORCH</span><span class="mk-tech-spark" aria-hidden="true">✦</span></span></div></div>
+  <div class="mk-craft-education" role="group" aria-label="Education at Northeastern University">
+    <div class="mk-bento-eyebrow">COMPUTER SCIENCE &amp; FINANCE</div>
+    <div class="mk-bento-education-logo"><img src="assets/northeastern-seal.png" alt="Northeastern University red circular seal" decoding="async" loading="lazy"/></div>
+    <h3>Computer Science at Northeastern University<span>.</span></h3>
+  </div>
+
   <p>Whether developing a forecasting pipeline or a full-stack dashboard, I focus on <strong>systems that solve real problems.</strong></p>
   <a href="#project-details">EXPLORE MY PROJECTS ↗</a>
- </article>
- <article class="mk-bento-tile mk-bento-roots mk-bento-education mk-reveal" aria-label="Education at Northeastern University">
-  <div class="mk-bento-eyebrow">COMPUTER SCIENCE &amp; FINANCE</div>
-  <div class="mk-bento-education-logo"><img src="assets/northeastern-seal.png" alt="Northeastern University red circular seal" decoding="async" loading="lazy"/></div>
-  <h3>Computer Science at Northeastern University<span>.</span></h3>
+  <div class="mk-bento-tech mk-tech-marquee" role="region" aria-label="Continuously scrolling technology stack: PYTHON, SQL, JAVA, C++, REACT, NEXT.JS, POSTGRESQL, PYTORCH"><div class="mk-tech-marquee-track"><span class="mk-tech-marquee-group"><span class="mk-tech-label">PYTHON</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">SQL</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">JAVA</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">C++</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">REACT</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">NEXT.JS</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">POSTGRESQL</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">PYTORCH</span><span class="mk-tech-spark" aria-hidden="true">✦</span></span><span class="mk-tech-marquee-group" aria-hidden="true"><span class="mk-tech-label">PYTHON</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">SQL</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">JAVA</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">C++</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">REACT</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">NEXT.JS</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">POSTGRESQL</span><span class="mk-tech-spark" aria-hidden="true">✦</span><span class="mk-tech-label">PYTORCH</span><span class="mk-tech-spark" aria-hidden="true">✦</span></span></div></div>
  </article>
  <article class="mk-bento-tile mk-bento-location mk-nyc-map-card mk-reveal" aria-label="New York City career network map with animated radar">
   <div class="mk-nyc-map-canvas mk-nyc-aerial-image" id="mk-nyc-overview-map" role="img" aria-label="Grayscale aerial overview of Manhattan, Jersey City and Brooklyn with a purple radar scan"></div>
@@ -3314,8 +3448,8 @@ requestAnimationFrame(()=>{
  const previous=card.querySelector('.mk-photo-carousel-prev');
  const next=card.querySelector('.mk-photo-carousel-next');
  const sources=new Map();
- document.querySelectorAll('img[src^="assets/portfolio-photo-"]').forEach(img=>{
-  const source=img.getAttribute('src');
+ document.querySelectorAll('img[src^="assets/portfolio-photo-"], img[data-deferred-src^="assets/portfolio-photo-"]').forEach(img=>{
+  const source=img.getAttribute('src') || img.getAttribute('data-deferred-src');
   const match=source.match(/portfolio-photo-(\d+)\.(?:webp|jpg|jpeg|png)$/i);
   if(!match)return;
   const number=Number(match[1]);
