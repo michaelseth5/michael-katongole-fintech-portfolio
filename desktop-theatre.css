@@ -36,33 +36,65 @@
   .mk-broadway-scene.is-opening .mk-broadway-left {transform:translate3d(-104%,0,0)}
   .mk-broadway-scene.is-opening .mk-broadway-right {transform:translate3d(104%,0,0)}
   .mk-broadway-scene.is-opening .mk-broadway-valance {transform:translate3d(0,-105%,0);opacity:0}
+  /* Stage-blackout is opaque everywhere except the real Listen button position. */
   .mk-stage-spotlight {
-    --stage-x:50vw;--stage-y:60vh;--stage-height:60vh;
-    position:fixed;inset:0;z-index:1400;
-    pointer-events:none;overflow:hidden;
-    opacity:0;transition:opacity 650ms ease;
+    --stage-x:50vw;--stage-y:60vh;
+    --source-x:40vw;--hole-rx:90px;--hole-ry:45px;--beam-radius:100px;
+    position:fixed;inset:0;z-index:2147482000;
+    overflow:hidden;pointer-events:none;
+    opacity:0;contain:layout paint;
   }
-  .mk-stage-spotlight.is-visible {opacity:1}
+  .mk-stage-spotlight.is-running {
+    animation:mk-stage-five-second 5000ms linear both;
+  }
+  .mk-stage-blackout {
+    position:absolute;inset:0;
+    background:rgba(0,0,0,.95);
+    -webkit-mask-image:radial-gradient(
+      ellipse var(--hole-rx) var(--hole-ry) at var(--stage-x) var(--stage-y),
+      transparent 0%,transparent 64%,#000 100%
+    );
+    mask-image:radial-gradient(
+      ellipse var(--hole-rx) var(--hole-ry) at var(--stage-x) var(--stage-y),
+      transparent 0%,transparent 64%,#000 100%
+    );
+  }
+  /* Narrow angled theatrical cone, calculated from the actual button center. */
   .mk-stage-beam {
-    position:absolute;top:0;
-    left:calc(var(--stage-x) - 220px);
-    width:440px;height:var(--stage-height);
-    clip-path:polygon(49% 0,51% 0,90% 100%,10% 100%);
-    background:linear-gradient(to bottom,
-      rgba(255,250,228,.12) 0%,rgba(249,226,255,.18) 48%,
-      rgba(238,201,255,.24) 100%);
-    filter:blur(6px);
+    position:absolute;inset:0;
+    clip-path:polygon(
+      calc(var(--source-x) - 6px) 0px,
+      calc(var(--source-x) + 6px) 0px,
+      calc(var(--stage-x) + var(--beam-radius)) var(--stage-y),
+      calc(var(--stage-x) - var(--beam-radius)) var(--stage-y)
+    );
+    background:linear-gradient(180deg,
+      rgba(255,250,255,.09) 0%,
+      rgba(255,247,255,.15) 48%,
+      rgba(227,183,255,.22) 100%);
     mix-blend-mode:screen;
+    filter:blur(10px);
+    opacity:.7;
   }
   .mk-stage-pool {
     position:absolute;
-    left:calc(var(--stage-x) - 110px);
-    top:calc(var(--stage-y) - 40px);
-    width:220px;height:80px;
+    left:calc(var(--stage-x) - var(--hole-rx));
+    top:calc(var(--stage-y) - var(--hole-ry));
+    width:calc(var(--hole-rx) * 2);
+    height:calc(var(--hole-ry) * 2);
+    background:radial-gradient(ellipse,
+      rgba(255,255,255,.18) 0%,
+      rgba(226,189,255,.08) 48%,
+      transparent 78%);
     border-radius:50%;
-    background:radial-gradient(ellipse,rgba(247,216,255,.33) 0%,rgba(247,216,255,.13) 42%,transparent 74%);
-    filter:blur(14px);
+    filter:blur(9px);
     mix-blend-mode:screen;
+  }
+  @keyframes mk-stage-five-second {
+    0% {opacity:0}
+    10% {opacity:1}
+    80% {opacity:1}
+    100% {opacity:0}
   }
 }
 @media(max-width:767px) {
@@ -70,6 +102,6 @@
 }
 @media(prefers-reduced-motion:reduce){
   .mk-broadway-scene{display:none!important}
-  .mk-stage-spotlight{transition:none!important}
+  .mk-stage-spotlight{display:none!important;animation:none!important}
   .mk-stage-pool{filter:none!important;opacity:.25!important}
 }

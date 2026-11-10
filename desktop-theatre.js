@@ -4,8 +4,12 @@
   if (!matchMedia('(min-width: 768px)').matches ||
       document.documentElement.classList.contains('mobile-classic')) return;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let spotlight = null, scene = null, shown = false, raf = 0;
-  let sceneTimer = 0, lightTimer = 0;
+  const ONCE_KEY = 'michael-tv-spotlight-shown-v2';
+  const CURTAIN_MS = 1200;
+  const LIGHT_MS = 5000;
+  let scene = null, spotlight = null, raf = 0;
+  let curtainTimer = 0, endTimer = 0, fallbackTimer = 0;
+  let started = false, lighting = false;
   const button = () => document.querySelector('#home-welcome-audio .mk-home-welcome-play');
   const homeVisible = () => {
     const home = document.getElementById('home');
@@ -13,72 +17,97 @@
     const page = home.closest('.tv-page');
     return !page || page.classList.contains('is-active');
   };
-  function positionLight() {
+  function alreadyShown() {
+    try { return sessionStorage.getItem(ONCE_KEY) === '1'; } catch { return started; }
+  }
+  function markShown() {
+    try { sessionStorage.setItem(ONCE_KEY,'1'); } catch {}
+  }
+  function updateTarget() {
     raf = 0;
     if (!spotlight) return;
     const target = button();
-    if (!target || !homeVisible()) { spotlight.classList.remove('is-visible'); return; }
-    const rect = target.getBoundingClientRect();
-    if (rect.bottom < 0 || rect.top > innerHeight || rect.width < 1) {
-      spotlight.classList.remove('is-visible'); return;
+    if (!target || !homeVisible()) { stopEffects(); return; }
+    const r = target.getBoundingClientRect();
+    // Never move the actual button; the light follows its real viewport position.
+    if (r.width <= 0 || r.height <= 0 || r.bottom < 0 || r.top > innerHeight) {
+      stopEffects(); return;
     }
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    spotlight.style.setProperty('--stage-x', x + 'px');
-    spotlight.style.setProperty('--stage-y', y + 'px');
-    spotlight.style.setProperty('--stage-height', Math.max(80,y) + 'px');
-    spotlight.classList.add('is-visible');
+    const x = r.left + r.width/2, y = r.top + r.height/2;
+    const cx = Math.max(40,Math.min(innerWidth-40,x-90));
+    const radiusX = r.width/2 + 25;
+    const radiusY = r.height/2 + 19;
+    const radiusBeam = Math.max(65,r.width/2+35);
+    for(const [key,value] of Object.entries({
+      '--stage-x':x+'px','--stage-y':y+'px',
+      '--source-x':cx+'px','--hole-rx':radiusX+'px',
+      '--hole-ry':radiusY+'px','--beam-radius':radiusBeam+'px'
+    })) spotlight.style.setProperty(key,value);
   }
-  const queueLight = () => { if (spotlight && !raf) raf = requestAnimationFrame(positionLight); };
-  function removeScene() {
-    clearTimeout(sceneTimer); sceneTimer = 0;
-    scene?.remove(); scene = null;
+  function queuePosition() {
+    if (spotlight && !raf) raf = requestAnimationFrame(updateTarget);
   }
-  function reset() {
-    removeScene(); clearTimeout(lightTimer); lightTimer = 0;
-    if (raf) cancelAnimationFrame(raf); raf = 0;
-    spotlight?.remove(); spotlight = null; shown = false;
+  function stopEffects() {
+    clearTimeout(curtainTimer);clearTimeout(endTimer);clearTimeout(fallbackTimer);
+    curtainTimer=endTimer=fallbackTimer=0;
+    if (raf) cancelAnimationFrame(raf);raf=0;
+    scene?.remove();scene=null;
+    spotlight?.remove();spotlight=null;lighting=false;
   }
-  function show() {
-    if (shown) return;
-    if (!document.getElementById('home') || !button() || !homeVisible()) return;
-    shown = true;
+  function beginLight() {
+    curtainTimer = 0;
+    if (!started || reduced.matches || !homeVisible()) { stopEffects(); return; }
     spotlight = document.createElement('div');
     spotlight.className = 'mk-stage-spotlight';
-    spotlight.setAttribute('aria-hidden', 'true');
-    spotlight.innerHTML = '<div class="mk-stage-beam"></div><div class="mk-stage-pool"></div>';
+    spotlight.setAttribute('aria-hidden','true');
+    spotlight.innerHTML =
+      '<div class="mk-stage-blackout"></div>' +
+      '<div class="mk-stage-beam"></div>' +
+      '<div class="mk-stage-pool"></div>';
     document.body.append(spotlight);
-    positionLight();
-    // The decorative beam is behind the curtain until the stage is revealed.
-    spotlight.classList.remove('is-visible');
-    if (reduced.matches) { positionLight(); return; }
+    updateTarget();
+    if (!spotlight) return;
+    lighting = true;
+    // The spotlight clock runs for exactly 5000 ms, regardless of curtain timing.
+    spotlight.classList.add('is-running');
+    endTimer = setTimeout(stopEffects,LIGHT_MS);
+  }
+  function show() {
+    if (started || alreadyShown() || !homeVisible() || !button()) return;
+    started = true;
+    markShown();
+    if (reduced.matches) return; // Reduced-motion users see the page directly.
     scene = document.createElement('div');
     scene.className = 'mk-broadway-scene';
     scene.setAttribute('aria-hidden','true');
-    scene.innerHTML = '<div class="mk-broadway-curtain mk-broadway-left"></div><div class="mk-broadway-curtain mk-broadway-right"></div><div class="mk-broadway-valance"></div>';
+    scene.innerHTML =
+      '<div class="mk-broadway-curtain mk-broadway-left"></div>' +
+      '<div class="mk-broadway-curtain mk-broadway-right"></div>' +
+      '<div class="mk-broadway-valance"></div>';
     document.body.append(scene);
     requestAnimationFrame(() => requestAnimationFrame(() => scene?.classList.add('is-opening')));
-    lightTimer = setTimeout(() => { lightTimer = 0; queueLight(); }, 800);
-    sceneTimer = setTimeout(removeScene, 1550);
+    curtainTimer = setTimeout(beginLight,CURTAIN_MS);
+    // Curtain removal must not stop the spotlight.
+    fallbackTimer = setTimeout(()=>{scene?.remove();scene=null;fallbackTimer=0},1550);
   }
-  window.addEventListener('michael-tv:intro-open', reset);
-  window.addEventListener('michael-tv:home-enter', () => {
-    requestAnimationFrame(() => requestAnimationFrame(show));
+  function onIntroOpen() { stopEffects(); } // Do not replay once the visit's light show ran.
+  window.addEventListener('michael-tv:intro-open',onIntroOpen);
+  window.addEventListener('michael-tv:home-enter',()=>{
+    requestAnimationFrame(()=>requestAnimationFrame(show));
   });
-  window.addEventListener('resize', queueLight, {passive:true});
-  window.addEventListener('scroll', queueLight, {passive:true});
-  window.addEventListener('hashchange', () => {
-    queueLight();
-    // Direct links to other channels must not trigger the Home curtain.
-    if (!shown && (location.hash==='#home' || !location.hash))
-      requestAnimationFrame(() => requestAnimationFrame(show));
+  window.addEventListener('resize',queuePosition,{passive:true});
+  window.addEventListener('scroll',queuePosition,{passive:true});
+  window.addEventListener('hashchange',()=>{
+    if (lighting && !homeVisible()) stopEffects();
+    if (!started && !alreadyShown() && (location.hash==='#home' || !location.hash))
+      requestAnimationFrame(()=>requestAnimationFrame(show));
   });
-  // Returning visitors have already completed the intro earlier in this session.
-  let seen = false;
-  try { seen = sessionStorage.getItem('michael-tv-intro-seen-v1') === '1'; } catch {}
-  if (seen) {
-    if (document.readyState === 'loading')
-      document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(show), {once:true});
+  // On a returning page load in the same tab, preserve the original intro rules.
+  let introSeen=false;
+  try { introSeen=sessionStorage.getItem('michael-tv-intro-seen-v1')==='1'; } catch {}
+  if (introSeen && !alreadyShown()) {
+    if(document.readyState==='loading')
+      document.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(show),{once:true});
     else requestAnimationFrame(show);
   }
 })();
