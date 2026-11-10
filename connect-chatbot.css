@@ -72,3 +72,12 @@
   max-width:850px!important;
   text-wrap:pretty;
 }
+
+/* Contact layout outside the television shell also follows content height. */
+#contact{height:auto!important;min-height:0!important;padding-block:56px 48px!important}
+#contact .mk-connect-layout{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important}
+#contact .mk-connect-left{justify-content:flex-start!important}
+#contact .mk-chat-panel{height:auto!important;min-height:0!important;max-height:480px!important}
+#contact .mk-chat-conversation{flex:0 1 auto!important;min-height:0!important;max-height:170px!important;overflow-y:auto!important}
+@media(max-width:850px){#contact{padding-block:40px 32px!important}#contact .mk-connect-layout{grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:440px){#contact{padding-block:32px!important}}
