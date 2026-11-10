@@ -72,6 +72,7 @@
    try{player?.stopVideo?.()}catch{}
    let heard=false;try{heard=sessionStorage.getItem(WELCOME_KEY)==='1'}catch{}
    if(heard){finish('already-heard');return}
+   clearTimeout(maxDeadline);maxDeadline=0;
    welcomePanel.hidden=false;dialog.classList.add('mtv-welcome-active');
    welcomeCaption.textContent='Hey.';
    playWelcome();
