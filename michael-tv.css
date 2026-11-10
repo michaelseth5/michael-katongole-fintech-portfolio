@@ -86,3 +86,13 @@ dialog#mtv-intro::backdrop{background:rgba(5,4,12,.94);backdrop-filter:blur(10px
  #mtv-intro .mtv-crt,#mtv-intro .mtv-glitch,#mtv-intro .mtv-noise{display:none!important}
  #mtv-intro .mtv-blue{opacity:1}
 }
+
+/* A short original station-identification animation when Play is pressed. */
+#mtv-intro .mtv-announcement{position:absolute;inset:0;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,3vh,28px);padding:clamp(20px,5vw,64px);text-align:center;pointer-events:none;opacity:0;visibility:hidden;background:radial-gradient(ellipse at center,rgba(57,32,113,.91),rgba(5,7,22,.96) 74%);color:#fff;transition:opacity .38s ease,visibility .38s ease;}
+#mtv-intro.mtv-announcing .mtv-announcement{opacity:1;visibility:visible;}
+#mtv-intro .mtv-announcement-kicker,#mtv-intro .mtv-announcement-station{font:700 clamp(11px,1.4vw,17px)/1.4 ui-monospace,monospace;letter-spacing:.28em;color:#d2b9ff;}
+#mtv-intro .mtv-announcement strong{display:block;font:800 clamp(29px,5.5vw,86px)/1.06 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.045em;text-shadow:0 0 28px rgba(189,128,253,.38);}
+#mtv-intro .mtv-announcement em{font-style:normal;background:linear-gradient(95deg,#c5acff,#f4a9dc);background-clip:text;-webkit-background-clip:text;color:transparent;}
+#mtv-intro.mtv-announcing .mtv-announcement strong{animation:mtv-station-appear .75s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes mtv-station-appear{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){#mtv-intro.mtv-announcing .mtv-announcement strong{animation:none!important}}
