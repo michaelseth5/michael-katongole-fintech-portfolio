@@ -31,6 +31,8 @@ dialog#mtv-intro::backdrop{background:rgba(5,4,12,.94);backdrop-filter:blur(10px
 #mtv-intro .mtv-video-ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;pointer-events:none}
 #mtv-intro .mtv-idle{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:25px;padding:24px;z-index:4;transition:opacity .2s ease}
 #mtv-intro.mtv-playing .mtv-idle{opacity:0;pointer-events:none;visibility:hidden}
+#mtv-intro .mtv-tagline{max-width:min(82vw,700px);margin:-6px 0 0;font:600 clamp(16px,2vw,24px)/1.45 'DM Sans',Inter,system-ui,sans-serif;letter-spacing:.015em;color:#e6d9ff;text-shadow:0 0 18px rgba(173,118,244,.4)}
+@media(max-width:819px){#mtv-intro .mtv-tagline{max-width:92%;font-size:clamp(15px,4vw,19px)}}
 #mtv-intro .mtv-title{font:800 clamp(54px,9vw,132px)/1 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.07em;color:#f6f2ff;text-shadow:4px 3px 0 #f47cb45c,-3px -2px 0 #70dfff45,0 18px 65px #050c2d}
 #mtv-intro .mtv-play{
   appearance:none;border:1px solid #baffd2;border-radius:999px;
