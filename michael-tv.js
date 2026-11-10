@@ -4,6 +4,7 @@
 (() => {
  const KEY='michael-tv-intro-seen-v1';
  const VID='OT9HsNszYCI';
+ const OUTRO_VIDEO='ISpZC7ebJBo';
  const COUCH_VIDEO='BhUG_YEAmsc';
  const COUCH_DURATION=10;
  const welcomeVoice=new Audio('/audio/welcome.m4a');
@@ -79,7 +80,7 @@
  };
  welcomeTap.addEventListener('click',playWelcome);
  welcomeNext.addEventListener('click',()=>finish('welcome-skip'));
- welcomeVoice.addEventListener('ended',()=>{if(active&&!exiting)finish('welcome-ended')});
+ welcomeVoice.addEventListener('ended',()=>{if(active&&!exiting)startOutro()});
  const screen=dialog.querySelector('.mtv-screen');
  const playBtn=dialog.querySelector('.mtv-play');
  const muteBtn=dialog.querySelector('.mtv-mute');
@@ -93,8 +94,38 @@
  let player=null, audio=null, master=null, muted=false, pending=false, active=false, exiting=false;
  let apiReady=false,apiFailed=false,apiLoading=false,playerStarted=false,trackingFinished=false;
  let clickDeadline=0,maxDeadline=0,timeTicker=0,apiScript=null,glitchTimer=0,bootTimer=0,staticFrame=0,handoffTimer=0,transitionTimer=0;
- let lastFocused=null,showingCouch=true,switching=false,handoffStartedAt=0;
+ let lastFocused=null,showingCouch=true,switching=false,handoffStartedAt=0,playingOutro=false;
  const markSeen=()=>{try{sessionStorage.setItem(KEY,'1')}catch{}};
+ function showOutroFallback(){
+   if(!active||exiting)return;
+   clearTimeout(clickDeadline);clickDeadline=0;
+   dialog.classList.remove('mtv-video-visible');
+   welcomePanel.hidden=false;dialog.classList.add('mtv-welcome-active');
+   welcomeCaption.textContent='The ending could not play automatically.';
+   welcomeTap.hidden=true;
+   let link=welcomePanel.querySelector('.mtv-outro-link');
+   if(!link){link=document.createElement('a');link.className='mtv-outro-link';
+     link.href='https://www.youtube.com/watch?v='+OUTRO_VIDEO;
+     link.target='_blank';link.rel='noopener noreferrer';
+     link.textContent='Watch the ending on YouTube ↗';
+     link.style.cssText='display:inline-block;margin:12px;padding:10px 16px;color:#fff;text-decoration:underline;font-weight:700';
+     welcomePanel.append(link);}
+ }
+ function startOutro(){
+   if(!active||exiting||playingOutro)return;
+   stopWelcome();
+   playingOutro=true;showingCouch=false;switching=false;
+   pending=true;playerStarted=false;trackingFinished=true;
+   dialog.classList.remove('mtv-welcome-active','mtv-handoff-active');
+   dialog.classList.add('mtv-video-visible');
+   label.textContent='VIDEO 3';skipBtn.hidden=false;
+   if(!player?.loadVideoById){showOutroFallback();return;}
+   try{
+     player.loadVideoById({videoId:OUTRO_VIDEO,startSeconds:0});
+     // YouTube may block autoplay or embedding; offer an official link as fallback.
+     clickDeadline=setTimeout(()=>{if(!playerStarted)showOutroFallback()},6500);
+   }catch{showOutroFallback();}
+ }
  const clearRun=()=>{
    clearTimeout(clickDeadline);clearTimeout(maxDeadline);clearTimeout(glitchTimer);clearTimeout(bootTimer);
    clearTimeout(handoffTimer);clearTimeout(transitionTimer);
@@ -180,7 +211,7 @@
  function openIntro(replay=false){
    if(active)return;
    clearRun();
-   active=true;pending=false;exiting=false;playerStarted=false;trackingFinished=false;showingCouch=true;switching=false;handoffStartedAt=0;
+   active=true;pending=false;exiting=false;playerStarted=false;trackingFinished=false;showingCouch=true;switching=false;playingOutro=false;handoffStartedAt=0;
    lastFocused=document.activeElement;
    dialog.className='mtv-boot';welcomePanel.hidden=true;
    label.textContent='VIDEO 1';label.classList.add('mtv-idle-label');
@@ -250,10 +281,10 @@
            }else if(event.data===YT.PlayerState.ENDED){
              // Ignore a late end event from the first clip during the handoff.
              if(switching)return;
-             if(showingCouch)playMainVideo();else startWelcome();
+             if(playingOutro)finish('outro-ended');else if(showingCouch)playMainVideo();else startWelcome();
            }
          },
-         onError:()=>finish('error')
+         onError:()=>playingOutro?showOutroFallback():finish('error')
        }
      });
    }catch{finish('error')}
