@@ -103,6 +103,22 @@
       thumbnails.appendChild(button);
       return button;
     });
+    // Load thumbnail images only as they approach the visible horizontal strip.
+    // This avoids blank cards while retaining lazy loading for long albums.
+    const thumbObserver = 'IntersectionObserver' in window
+      ? new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const img = entry.target.querySelector('img[data-src]');
+            if (img && !img.hasAttribute('src')) img.src = img.dataset.src;
+            thumbObserver.unobserve(entry.target);
+          });
+        }, {root:thumbnails,rootMargin:'0px 160px'})
+      : null;
+    thumbButtons.forEach(button => {
+      if (thumbObserver) thumbObserver.observe(button);
+      else button.querySelector('img').src = button.querySelector('img').dataset.src;
+    });
     const footer = document.createElement('div');footer.className = 'ug-footer';
     const count = document.createElement('span');count.className = 'ug-count';count.setAttribute('aria-live', 'polite');
     const progress = document.createElement('div');progress.className = 'ug-progress';progress.setAttribute('aria-hidden', 'true');
