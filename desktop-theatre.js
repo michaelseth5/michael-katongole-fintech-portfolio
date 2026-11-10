@@ -41,7 +41,7 @@
   }
   function show() {
     if (shown) return;
-    if (!document.getElementById('home') || !button()) return;
+    if (!document.getElementById('home') || !button() || !homeVisible()) return;
     shown = true;
     spotlight = document.createElement('div');
     spotlight.className = 'mk-stage-spotlight';
@@ -62,10 +62,17 @@
     sceneTimer = setTimeout(removeScene, 1550);
   }
   window.addEventListener('michael-tv:intro-open', reset);
-  window.addEventListener('michael-tv:home-enter', show);
+  window.addEventListener('michael-tv:home-enter', () => {
+    requestAnimationFrame(() => requestAnimationFrame(show));
+  });
   window.addEventListener('resize', queueLight, {passive:true});
   window.addEventListener('scroll', queueLight, {passive:true});
-  window.addEventListener('hashchange', queueLight);
+  window.addEventListener('hashchange', () => {
+    queueLight();
+    // Direct links to other channels must not trigger the Home curtain.
+    if (!shown && (location.hash==='#home' || !location.hash))
+      requestAnimationFrame(() => requestAnimationFrame(show));
+  });
   // Returning visitors have already completed the intro earlier in this session.
   let seen = false;
   try { seen = sessionStorage.getItem('michael-tv-intro-seen-v1') === '1'; } catch {}
