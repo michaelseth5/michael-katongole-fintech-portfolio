@@ -31,7 +31,7 @@
   });
   stage.append(cue,progress);
 
-  let permanentlyHidden=false,ready=false,activeIndex=0,revealTimer=0,scrollFrame=0;
+  let ready=false,activeIndex=0,revealTimer=0,scrollFrame=0,wasActive=false;
   const isActive=()=>panel.classList.contains('is-active') && !stage.inert;
   const destinationTop=node=>{
     const top=panel.scrollTop+node.getBoundingClientRect().top-panel.getBoundingClientRect().top;
@@ -45,10 +45,16 @@
   };
   const update=()=>{
     scrollFrame=0;
-    if(panel.scrollTop>80)permanentlyHidden=true;
     const eligible=isActive();
-    cue.classList.toggle('is-shown',eligible && ready && !permanentlyHidden);
-    cue.disabled=!eligible || permanentlyHidden;
+    // Returning to Home is a fresh visit: start at the hero and show the cue again.
+    if(eligible && !wasActive){
+      panel.scrollTop=0;
+      ready=true;
+    }
+    wasActive=eligible;
+    const nearTop=panel.scrollTop<=80;
+    cue.classList.toggle('is-shown',eligible && ready && nearTop);
+    cue.disabled=!eligible || !nearTop;
     progress.hidden=!eligible;
     if(!eligible)return;
     const cutoff=panel.getBoundingClientRect().top+Math.min(220,panel.clientHeight*.35);
@@ -81,7 +87,7 @@
   },{capture:true,passive:false});
     panel.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
-  document.addEventListener('portfolio:channel-change',schedule);
+  document.addEventListener('portfolio:channel-change',()=>requestAnimationFrame(schedule));
 
   document.addEventListener('keydown',e=>{
     if(e.defaultPrevented || !isActive() || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey)return;
@@ -94,7 +100,7 @@
     jumpTo(activeIndex+1);
   });
 
-  // Reveal only once, two seconds after the first page load.
+  // First load reveals after two seconds; every later Home visit reveals immediately.
   revealTimer=setTimeout(()=>{ready=true;schedule()},2000);
   schedule();
 })();
