@@ -1,0 +1,28 @@
+/* Visual only: never changes hit testing or the TV channel transition. */
+.tv-effects-control{gap:10px!important}
+.tv-remote-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;border:0;border-left:1px solid #c5a8ee38;background:none;color:#f4eafd;padding:3px 4px 3px 11px;font:600 12px/1.2 system-ui;white-space:nowrap;cursor:pointer}
+.tv-remote-toggle[hidden]{display:none!important}
+.tv-remote-toggle:focus-visible{outline:3px solid #c6a9ff;outline-offset:3px;border-radius:8px}
+.tv-remote-switch{display:flex;align-items:center;width:36px;height:23px;padding:3px;border-radius:99px;background:#3b354a;transition:background .2s}
+.tv-remote-switch i{width:17px;height:17px;background:#e4deef;border-radius:50%;transition:transform .2s}
+.tv-remote-toggle.is-on .tv-remote-switch{background:#7856bc}
+.tv-remote-toggle.is-on .tv-remote-switch i{transform:translateX(13px);background:#fff}
+#tv-remote-cursor{position:fixed;left:0;top:0;width:40px;height:48px;z-index:2147483647;pointer-events:none;visibility:hidden;opacity:0;will-change:transform;contain:layout style;transition:opacity .13s}
+#tv-remote-cursor.is-visible{visibility:visible;opacity:1}
+#tv-remote-cursor .tv-remote-body{display:block;width:40px;height:48px;position:relative;transform:rotate(20deg);transform-origin:20px 3px;filter:drop-shadow(0 3px 5px #05040cb0);transition:scale .17s cubic-bezier(.2,.8,.2,1),rotate .15s;animation:tv-remote-float 2s ease-in-out infinite}
+#tv-remote-cursor.is-hover .tv-remote-body{scale:1.15}
+#tv-remote-cursor.is-pressed .tv-remote-body{scale:.9;animation:none}
+#tv-remote-cursor.is-dragging .tv-remote-body{rotate:var(--remote-drag,7deg)}
+#tv-remote-cursor .tv-remote-ir{filter:drop-shadow(0 0 1px #ad8deb)}
+#tv-remote-cursor.is-hover .tv-remote-ir{filter:drop-shadow(0 0 5px #c5a8ff)}
+#tv-remote-cursor .tv-remote-label{position:absolute;left:34px;top:7px;padding:4px 7px;border-radius:7px;background:#140d25e8;border:1px solid #a88cdb;color:#f9f4ff;font:700 10px/1.1 ui-monospace,monospace;letter-spacing:.03em;white-space:nowrap;opacity:0;scale:.9;transition:opacity .15s,scale .15s}
+#tv-remote-cursor.is-hover .tv-remote-label{opacity:1;scale:1}
+#tv-remote-cursor .tv-remote-pulse{position:absolute;left:17px;top:0;width:6px;height:6px;border-radius:50%;background:#dac6ff;opacity:0;box-shadow:0 0 10px 5px #aa79ff99;pointer-events:none}
+#tv-remote-cursor.is-pulsing .tv-remote-pulse{animation:tv-remote-beam .25s ease-out both}
+#tv-remote-cursor.is-pulsing .tv-remote-power{filter:brightness(1.8)}
+@keyframes tv-remote-beam{0%{opacity:1;translate:0 0;scale:.8}100%{opacity:0;translate:0 -36px;scale:1.6}}
+@keyframes tv-remote-float{50%{translate:0 1.5px}}
+html.tv-remote-active,html.tv-remote-active body,html.tv-remote-active body *:not(iframe){cursor:none!important}
+@media(max-width:1023px),(pointer:coarse),(prefers-reduced-motion:reduce){#tv-remote-cursor,.tv-remote-toggle{display:none!important}html.tv-remote-active,html.tv-remote-active body,html.tv-remote-active body *{cursor:auto!important}}
+
+#tv-remote-cursor .tv-remote-pulse::after{content:"";position:absolute;left:2px;top:5px;width:2px;height:14px;background:linear-gradient(#c6a5ffaf,transparent);filter:blur(1px)}

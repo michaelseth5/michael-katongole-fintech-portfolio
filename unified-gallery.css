@@ -1,0 +1,289 @@
+/* Hobbies + Networking gallery layout upgrade. Append after existing styles. */
+#hobbies, #networking {
+ --ug-bg:#fff;--ug-ink:#302744;--ug-muted:#655775;--ug-line:rgba(97,68,129,.17);
+ --ug-accent:#7445a2;--ug-radius:22px;
+}
+body.tv-mode #main-content.tv-stage .tv-page > #hobbies,
+body.tv-mode #main-content.tv-stage .tv-page > #networking {
+ padding:clamp(24px,3vw,42px) clamp(14px,3.8vw,52px) 36px!important;
+ min-height:0!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero,
+body.tv-mode #main-content.tv-stage #hobbies .page-hero {
+ padding:0 8px 18px!important;margin:0 auto 18px!important;
+ max-width:1120px!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero {padding-top:20px!important}
+body.tv-mode #main-content.tv-stage #hobbies .page-hero {padding-top:8px!important}
+body.tv-mode #main-content.tv-stage #networking>.container,
+body.tv-mode #main-content.tv-stage #hobbies>.container {
+ width:min(1360px,100%)!important;max-width:1360px!important;
+ margin:0 auto!important;min-width:0!important;
+}
+#hobbies .ug-chip-row,#networking .ug-chip-row {
+ display:flex!important;align-items:center!important;position:relative!important;
+ gap:8px!important;width:100%!important;max-width:100%!important;
+ margin:0 auto 14px!important;min-width:0!important;overflow:hidden!important;
+}
+#hobbies .ug-chip-rail,#networking .ug-chip-rail {
+ flex:1 1 auto!important;min-width:0!important;display:flex!important;
+ gap:8px!important;overflow-x:auto!important;overflow-y:hidden!important;
+ flex-wrap:nowrap!important;scrollbar-width:none!important;
+ scroll-snap-type:x proximity!important;scroll-padding-inline:8px!important;
+ padding:5px!important;mask-image:linear-gradient(90deg,transparent,#000 13px,#000 calc(100% - 13px),transparent)!important;
+}
+#hobbies .ug-chip-rail::-webkit-scrollbar,#networking .ug-chip-rail::-webkit-scrollbar{display:none!important}
+#hobbies .ug-chip-rail button,#networking .ug-chip-rail button{
+ scroll-snap-align:nearest!important;flex:0 0 auto!important;white-space:nowrap!important;
+ min-height:44px!important;border-radius:999px!important;padding:9px 18px!important;
+ font-size:13px!important;line-height:1.2!important;
+}
+#hobbies .ug-chip-scroll,#networking .ug-chip-scroll{
+ flex:0 0 44px!important;width:44px!important;height:44px!important;
+ display:grid!important;place-items:center!important;
+ color:var(--ug-ink)!important;background:rgba(255,255,255,.92)!important;
+ border:1px solid var(--ug-line)!important;border-radius:50%!important;
+ box-shadow:0 5px 12px rgba(54,30,78,.08)!important;cursor:pointer;
+}
+#hobbies .ug-chip-scroll[hidden],#networking .ug-chip-scroll[hidden],
+#hobbies .ug-legacy-chip-arrow,#networking .ug-legacy-chip-arrow {display:none!important}
+#networking .ug-event-number{
+ display:inline-flex;align-items:center;justify-content:center;min-width:62px;
+ color:#664286;background:#fff;border:1px solid #e7d9ee;
+ padding:10px 8px;border-radius:999px;font:700 12px/1 'Space Grotesk',sans-serif;
+}
+/* Hide old track and its duplicated arrows only once the new album is mounted. */
+#hobbies .photo-carousel-shell.ug-ready > .photo-carousel-rail,
+#networking .photo-carousel-shell.ug-ready > .photo-carousel-rail,
+#hobbies .photo-carousel-shell.ug-ready > .photo-carousel-controls,
+#networking .photo-carousel-shell.ug-ready > .photo-carousel-controls,
+#hobbies .photo-carousel-shell.ug-ready > .tv-shared-progress,
+#networking .photo-carousel-shell.ug-ready > .tv-shared-progress {
+ display:none!important;
+}
+#hobbies.ug-root-ready .hobby-carousel-track,
+#networking.ug-root-ready .network-carousel-track {
+ display:block!important;position:relative!important;height:auto!important;
+ max-height:none!important;min-height:0!important;overflow:visible!important;
+ padding:0!important;transform:none!important;scroll-snap-type:none!important;
+ border-top:0!important;
+}
+#hobbies.ug-root-ready .hobby-carousel-track > article,
+#networking.ug-root-ready .network-carousel-track > article {
+ display:none!important;transform:none!important;position:relative!important;
+ width:100%!important;max-width:100%!important;min-width:0!important;
+ height:auto!important;min-height:0!important;margin:0!important;
+ box-sizing:border-box!important;scroll-snap-align:none!important;
+}
+#hobbies.ug-root-ready .hobby-carousel-track > article.ug-current,
+#networking.ug-root-ready .network-carousel-track > article.ug-current {display:block!important;opacity:1!important;visibility:visible!important}
+#hobbies.ug-root-ready .hobby-carousel-track > article.ug-current,
+#networking.ug-root-ready .network-carousel-track > article.ug-current {
+ animation:ug-fade-rise .28s cubic-bezier(.2,.8,.2,1) both!important;
+}
+@keyframes ug-fade-rise{from{opacity:.65;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+body.tv-mode #main-content.tv-stage #hobbies .hobby-slide.ug-current,
+body.tv-mode #main-content.tv-stage #networking .network-event-slide.ug-current {
+ border:1px solid rgba(129,95,166,.17)!important;border-radius:var(--ug-radius)!important;
+ background:var(--ug-bg)!important;box-shadow:0 14px 38px rgba(70,42,104,.1)!important;
+ padding:clamp(18px,2.2vw,30px)!important;overflow:hidden!important;
+}
+#hobbies .hobby-slide.ug-current>.eyebrow,#networking .seo-event-header .eyebrow{
+ margin:0 0 8px!important;font-size:11px!important;letter-spacing:.12em!important;
+}
+#hobbies .hobby-slide.ug-current>h2{margin:0 0 12px!important;font-size:clamp(25px,3vw,39px)!important}
+#hobbies .hobby-slide.ug-current>p{font-size:clamp(14px,1.1vw,16px)!important;line-height:1.55!important;max-width:760px!important;margin:0 auto 9px!important}
+#hobbies .hobby-slide.ug-current .photo-carousel-shell {margin-top:18px!important}
+#networking.ug-root-ready .network-event-slide.ug-current {
+ display:grid!important;grid-template-columns:minmax(220px,.83fr) minmax(0,1.17fr)!important;
+ align-items:center!important;column-gap:clamp(20px,3.2vw,44px)!important;
+ border-top:0!important;
+}
+#networking .network-event-slide.ug-current .seo-event-header {
+ border:0!important;border-top:0!important;border-bottom:0!important;
+ padding:0!important;margin:0!important;min-width:0!important;
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+ gap:14px!important;box-shadow:none!important;text-align:left!important;
+}
+#networking .network-event-slide.ug-current .seo-event-header>div,
+#networking .network-event-slide.ug-current .seo-event-header h2,
+#networking .network-event-slide.ug-current .seo-event-header p {
+ text-align:left!important;max-width:100%!important;margin-inline:0!important;
+}
+#networking .network-event-slide.ug-current .seo-event-header h2{font-size:clamp(25px,2.8vw,39px)!important;line-height:1.13!important}
+#networking .network-event-slide.ug-current .seo-event-header p{font-size:clamp(14px,1.05vw,16px)!important;line-height:1.6!important}
+#networking .network-event-slide.ug-current .seo-event-label{
+ display:inline-flex!important;border-radius:999px!important;padding:9px 12px!important;
+ font-size:11px!important;line-height:1.25!important;white-space:normal!important;
+}
+#networking .network-carousel-meta {display:none!important}
+#networking.ug-root-ready .network-event-slide.ug-current .photo-carousel-shell{min-width:0!important;margin:0!important;padding:0!important}
+/* Shared picture viewer: one framed image at a time. */
+#hobbies .ug-album,#networking .ug-album{width:100%;min-width:0;display:grid;gap:10px}
+#hobbies .ug-stage,#networking .ug-stage{
+ --ug-background:none;
+ position:relative!important;width:100%!important;min-width:0!important;
+ aspect-ratio:3/2!important;max-height:clamp(240px,42vh,520px);
+ overflow:hidden!important;isolation:isolate;
+ border-radius:16px!important;background:#161221!important;
+ touch-action:pan-y!important;user-select:none!important;
+}
+#hobbies .ug-stage::before,#networking .ug-stage::before{
+ content:"";position:absolute;inset:-24px;z-index:-1;
+ background-image:var(--ug-background);background-position:center;
+ background-size:cover;filter:blur(27px) brightness(.42) saturate(.8);
+ transform:scale(1.07);pointer-events:none;
+}
+#hobbies .ug-photo,#networking .ug-photo{
+ display:block!important;position:absolute!important;inset:0!important;
+ width:100%!important;height:100%!important;max-width:none!important;
+ object-fit:cover!important;object-position:center 42%!important;
+ cursor:zoom-in;transition:opacity .24s ease!important;
+}
+#hobbies .ug-stage.is-art .ug-photo,#hobbies .ug-stage.is-portrait .ug-photo,
+#networking .ug-stage.is-portrait .ug-photo{object-fit:contain!important;object-position:center!important}
+#hobbies .ug-caption,#networking .ug-caption{
+ position:absolute;left:0;right:0;bottom:0;z-index:4;
+ padding:26px 70px 14px!important;color:#fff!important;
+ background:linear-gradient(0deg,rgba(8,6,14,.88),rgba(8,6,14,.52) 74%,transparent);
+ min-height:74px;max-height:96px;overflow:hidden;
+ font:500 13px/1.35 'DM Sans',system-ui,sans-serif!important;
+ text-align:center!important;display:-webkit-box!important;-webkit-box-orient:vertical!important;
+ -webkit-line-clamp:2!important;line-clamp:2!important;overflow-wrap:anywhere!important;
+}
+#hobbies .ug-caption *,#networking .ug-caption *{color:#fff!important;font:inherit!important;display:inline!important}
+#hobbies .ug-caption strong,#networking .ug-caption strong{font-weight:750!important}
+#hobbies .ug-stage button,#networking .ug-stage button{
+ position:absolute;z-index:8;width:44px;height:44px;min-height:44px;
+ display:grid;place-items:center;border:1px solid #ffffff75;border-radius:50%;
+ color:#fff;background:rgba(8,7,18,.5);backdrop-filter:blur(9px);font-size:21px;
+ cursor:pointer;box-shadow:0 4px 12px #0004;
+}
+#hobbies .ug-stage .ug-prev,#networking .ug-stage .ug-prev{left:12px;top:50%;transform:translateY(-50%)}
+#hobbies .ug-stage .ug-next,#networking .ug-stage .ug-next{right:12px;top:50%;transform:translateY(-50%)}
+#hobbies .ug-stage .ug-open,#networking .ug-stage .ug-open{top:12px;right:12px;font-size:17px}
+#hobbies .ug-thumbnails,#networking .ug-thumbnails{
+ width:100%;max-width:100%;min-width:0;display:flex;gap:7px;
+ overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;
+ scroll-snap-type:x proximity;padding:3px 2px 7px;
+}
+#hobbies .ug-thumb,#networking .ug-thumb{
+ appearance:none;position:relative;flex:0 0 84px!important;width:84px!important;
+ height:60px!important;min-height:60px!important;padding:0!important;
+ overflow:hidden;border:2px solid transparent!important;border-radius:10px!important;
+ background:#22152f!important;cursor:pointer;scroll-snap-align:center;
+}
+#hobbies .ug-thumb img,#networking .ug-thumb img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+#hobbies .ug-thumb.is-active,#networking .ug-thumb.is-active{border-color:#8655bd!important;box-shadow:0 0 0 2px rgba(134,85,189,.2)!important}
+#hobbies .ug-footer,#networking .ug-footer{
+ display:flex;align-items:center;gap:14px;min-height:26px;margin:0 0 2px;
+ padding:0 2px!important;position:relative!important;clear:both;
+}
+#hobbies .ug-count,#networking .ug-count{
+ flex:0 0 auto;min-width:54px;font:700 12px/1.2 'Space Grotesk',sans-serif;
+ color:var(--ug-ink);font-variant-numeric:tabular-nums;
+}
+#hobbies .ug-progress,#networking .ug-progress{
+ flex:1;min-width:0;height:3px;border-radius:100px;background:rgba(128,92,159,.16);
+ overflow:hidden;position:relative;
+}
+#hobbies .ug-progress>span,#networking .ug-progress>span{
+ position:absolute;inset:0 auto 0 0;height:100%;background:#8b5fb7;
+ border-radius:inherit;transition:width .28s ease;
+}
+#hobbies .ug-stage button:focus-visible,#networking .ug-stage button:focus-visible,
+#hobbies .ug-thumb:focus-visible,#networking .ug-thumb:focus-visible,
+#hobbies .ug-chip-row button:focus-visible,#networking .ug-chip-row button:focus-visible,
+#hobbies .ug-album:focus-visible,#networking .ug-album:focus-visible{
+ outline:3px solid #3e176d!important;outline-offset:3px!important;
+}
+#hobbies .hobby-slide.ug-current.rb-converts-slide,
+#hobbies .hobby-slide.ug-current.mk-food-slide {
+ min-height:450px!important;display:flex!important;flex-direction:column!important;
+ align-items:center;justify-content:center;gap:12px;text-align:center;
+}
+#hobbies .hobby-slide.ug-current.rb-converts-slide>p,
+#hobbies .hobby-slide.ug-current.mk-food-slide>p{max-width:680px!important}
+#hobbies .hobby-slide.ug-current.rb-converts-slide .rb-converts-status{
+ border-radius:999px;padding:10px 18px;border:1px solid #d8b9ec;
+ background:#f3e9fb;color:#69438a;
+}
+@media(max-width:950px){
+ #networking.ug-root-ready .network-event-slide.ug-current{
+  grid-template-columns:minmax(0,1fr)!important;row-gap:18px!important;
+ }
+ #networking .network-event-slide.ug-current .seo-event-header{gap:8px!important}
+}
+@media(max-width:650px){
+ body.tv-mode #main-content.tv-stage .tv-page > #hobbies,
+ body.tv-mode #main-content.tv-stage .tv-page > #networking {padding:20px 12px 24px!important}
+ body.tv-mode #main-content.tv-stage #networking .page-hero{padding-top:38px!important}
+ #hobbies .ug-stage,#networking .ug-stage{aspect-ratio:4/3!important;max-height:330px!important}
+ #hobbies .ug-caption,#networking .ug-caption{padding:27px 50px 12px!important;font-size:12px!important;min-height:72px}
+ #hobbies .ug-stage .ug-prev,#networking .ug-stage .ug-prev{left:5px}
+ #hobbies .ug-stage .ug-next,#networking .ug-stage .ug-next{right:5px}
+ #hobbies .ug-thumb,#networking .ug-thumb{flex-basis:64px!important;width:64px!important;height:50px!important;min-height:50px!important}
+ body.tv-mode #main-content.tv-stage #hobbies .hobby-slide.ug-current,
+ body.tv-mode #main-content.tv-stage #networking .network-event-slide.ug-current{padding:14px!important}
+ #hobbies .hobby-slide.ug-current.rb-converts-slide,
+ #hobbies .hobby-slide.ug-current.mk-food-slide{min-height:350px!important}
+ #hobbies .ug-chip-rail button,#networking .ug-chip-rail button{font-size:12px!important;padding:9px 12px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #hobbies .ug-current,#networking .ug-current{animation:none!important}
+ #hobbies .ug-photo,#networking .ug-photo,#hobbies .ug-progress>span,#networking .ug-progress>span{transition:none!important}
+ #hobbies .ug-chip-rail,#networking .ug-chip-rail{scroll-behavior:auto!important}
+}
+/* Shared accessible lightbox outside the TV channel shell. */
+.ug-lightbox{position:fixed;inset:4vh 4vw;z-index:3000;width:92vw;max-width:1300px;
+ max-height:92dvh;margin:auto;padding:14px;border:1px solid #c5a0e0;
+ border-radius:24px;color:#f5f0fa;background:#120d1b;
+ box-shadow:0 24px 90px #000a;overflow:auto}
+.ug-lightbox::backdrop{background:rgba(3,2,7,.88);backdrop-filter:blur(9px)}
+.ug-lightbox-surface{display:grid;gap:8px}
+.ug-lightbox-picture{height:min(66dvh,780px);display:grid;place-items:center;overflow:auto;background:#100b18;border-radius:16px;cursor:zoom-in}
+.ug-lightbox-picture img{width:100%;height:100%;object-fit:contain;transition:transform .22s ease}
+.ug-lightbox.is-zoomed .ug-lightbox-picture img{transform:scale(1.7);cursor:zoom-out}
+.ug-lightbox-bar{display:flex;align-items:center;justify-content:center;gap:16px}
+.ug-lightbox-bar button,.ug-lightbox-close{min-width:44px;min-height:44px;border:1px solid #665178;border-radius:50%;background:#2a2036;color:#fff;cursor:pointer}
+.ug-lightbox-close{position:absolute;right:18px;top:18px;z-index:5}
+.ug-lightbox-count{font:700 13px 'Space Grotesk',sans-serif;font-variant-numeric:tabular-nums}
+.ug-lightbox-caption{text-align:center;line-height:1.5;padding:6px 16px;max-height:100px;overflow:auto}
+.ug-lightbox :is(button):focus-visible{outline:3px solid #dfadff;outline-offset:3px}
+@media(max-width:650px){.ug-lightbox{inset:1vh 1vw;width:98vw;max-height:98dvh;padding:10px}.ug-lightbox-picture{height:65dvh}}
+@media(prefers-reduced-motion:reduce){.ug-lightbox-picture img{transition:none!important}}
+/* Final alignment overrides: the TV page's existing high-specificity block rule
+   must not collapse the Networking two-column event card. */
+@media(min-width:951px){
+ body.tv-mode #main-content.tv-stage #networking.ug-root-ready .network-carousel-track>.network-event-slide.ug-current{
+  display:grid!important;grid-template-columns:minmax(220px,.82fr) minmax(0,1.18fr)!important;
+  gap:clamp(20px,3vw,48px)!important;align-items:center!important;
+ }
+}
+#hobbies .hobby-slide.ug-current>.eyebrow,
+#hobbies .hobby-slide.ug-current>h2,
+#hobbies .hobby-slide.ug-current>p{text-align:center!important;max-width:760px!important;margin-inline:auto!important}
+#hobbies .ug-caption strong,#networking .ug-caption strong{font-weight:750!important}
+#hobbies .ug-caption strong+span::before,#networking .ug-caption strong+span:not(.seo-photo-index)::before{content:' · ';white-space:pre}
+/* A single, content-preserving placeholder treatment for photo-free albums. */
+#hobbies .hobby-slide.ug-current.rb-converts-slide .rb-converts-mark,
+#hobbies .hobby-slide.ug-current.mk-food-slide .rb-converts-mark{
+ display:grid!important;place-items:center!important;width:70px;height:70px;
+ margin:10px auto!important;border:1px solid rgba(145,98,183,.23);
+ border-radius:20px;background:linear-gradient(135deg,#eee1f9,#f8f4fc);
+ color:#8d59bc;box-shadow:0 12px 30px rgba(91,62,125,.1);
+ animation:ug-placeholder-breathe 4s ease-in-out infinite!important;
+}
+@keyframes ug-placeholder-breathe{50%{transform:translateY(-3px);box-shadow:0 16px 32px rgba(91,62,125,.14)}}
+@media(prefers-reduced-motion:reduce){
+ #hobbies .hobby-slide.ug-current.rb-converts-slide .rb-converts-mark,
+ #hobbies .hobby-slide.ug-current.mk-food-slide .rb-converts-mark{animation:none!important}
+}
+@media(min-width:651px){
+ #hobbies .hobby-slide.ug-current.rb-converts-slide,
+ #hobbies .hobby-slide.ug-current.mk-food-slide{min-height:680px!important}
+}
+@media(max-width:650px){
+ #hobbies .hobby-slide.ug-current.rb-converts-slide,
+ #hobbies .hobby-slide.ug-current.mk-food-slide{min-height:520px!important}
+}
