@@ -2437,7 +2437,8 @@ main{
 .mk-footer-quote blockquote{padding:0;margin:0 0 12px;color:#f0eaf8;font:500 clamp(16px,2vw,23px)/1.5 'Space Grotesk',Arial,sans-serif;letter-spacing:-.025em}
 .mk-footer-quote figcaption{font:600 12px/1.5 Inter,Arial,sans-serif;color:#b49fc7}
 .mk-footer-quote-controls{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:12px}
-.mk-footer-quote-controls button{display:grid;place-items:center;cursor:pointer;border:1px solid rgba(191,155,224,.26);background:rgba(170,120,209,.08);color:#e6daf4;border-radius:50%;width:29px;height:29px;font-size:17px;transition:background .2s,border-color .2s}
+.mk-footer-quote-controls button{display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;border:1px solid rgba(191,155,224,.38);background:rgba(170,120,209,.13);color:#eee6f8;border-radius:999px;min-height:38px;padding:7px 16px;font:600 12px 'Space Grotesk',Arial,sans-serif;transition:background .2s,border-color .2s,transform .2s}
+.mk-footer-quote-controls button:active{transform:scale(.96)}
 .mk-footer-quote-controls button:hover,.mk-footer-quote-controls button:focus-visible{background:rgba(170,120,209,.22);border-color:#c19ce0}
 .mk-footer-quote-count{font:600 11px 'Space Grotesk',Arial,sans-serif;color:#ac99bf;min-width:43px}
 @media(max-width:740px){.mk-footer-quotes{padding:25px 0 29px}.mk-footer-quote-stage{min-height:150px}.mk-footer-quote blockquote{font-size:17px}}
@@ -2455,9 +2456,9 @@ main{
    <figure class="mk-footer-quote" aria-hidden="true"><blockquote>I may not have started with much, but I have the discipline, hunger, and determination to build a successful future.</blockquote><figcaption>— Personal motto</figcaption></figure>
   </div>
   <div class="mk-footer-quote-controls" aria-label="Quote controls">
-   <button type="button" class="mk-footer-quote-prev" aria-label="Previous quote">‹</button>
+   <button type="button" class="mk-footer-quote-prev" aria-label="Previous quote">← Previous</button>
    <span class="mk-footer-quote-count" aria-label="Quote number">01 / 06</span>
-   <button type="button" class="mk-footer-quote-next" aria-label="Next quote">›</button>
+   <button type="button" class="mk-footer-quote-next" aria-label="Next quote">Next →</button>
   </div>
  </div>
 </section>
@@ -2475,13 +2476,9 @@ main{
   count.textContent=String(index+1).padStart(2,'0')+' / '+String(quotes.length).padStart(2,'0');
  }
  function stop(){if(timer!==null){clearInterval(timer);timer=null;}}
- function start(){stop();if(reduced||document.hidden||section.matches(':hover')||section.contains(document.activeElement))return;timer=setInterval(()=>show(index+1),6000);}
+ function start(){stop();if(reduced||document.hidden)return;timer=setInterval(()=>show(index+1),6000);}
  section.querySelector('.mk-footer-quote-prev').addEventListener('click',()=>{show(index-1);start();});
  section.querySelector('.mk-footer-quote-next').addEventListener('click',()=>{show(index+1);start();});
- section.addEventListener('mouseenter',stop);
- section.addEventListener('mouseleave',start);
- section.addEventListener('focusin',stop);
- section.addEventListener('focusout',()=>setTimeout(start,0));
  document.addEventListener('visibilitychange',start);
  start();
 })();
