@@ -51,3 +51,18 @@
 @media(min-width:901px){#listening-reading .lr-podcasts .lr-card>a{padding:16px}#listening-reading .lr-podcasts .lr-art{width:min(100%,185px)}}
 @media(min-width:701px) and (max-width:900px){#listening-reading .lr-podcasts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){#listening-reading .lr-podcasts{grid-template-columns:1fr}}
+
+/* Three-book shelf, including the Good Will Hunting screenplay. */
+#listening-reading .lr-card--goodwill{--lr-accent:154,104,69}
+@media(min-width:1101px){
+ #listening-reading .lr-books{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #listening-reading .lr-books .lr-card>a{gap:14px;padding:16px}
+ #listening-reading .lr-books .lr-art{width:105px;min-width:105px}
+ #listening-reading .lr-books .lr-description{line-height:1.5}
+}
+@media(min-width:701px) and (max-width:1100px){
+ #listening-reading .lr-books{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ #listening-reading .lr-books{grid-template-columns:1fr}
+}
