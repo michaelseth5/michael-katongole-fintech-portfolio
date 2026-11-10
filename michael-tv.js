@@ -28,6 +28,7 @@
    <div class="mtv-blue" aria-hidden="true"></div>
    <div class="mtv-crt" aria-hidden="true"></div>
    <div class="mtv-video" aria-label="Introduction video"><div class="mtv-video-ratio"><div id="mtv-youtube-player"></div></div></div>
+   <div class="mtv-handoff" aria-hidden="true"><div class="mtv-handoff-art"><span class="mtv-handoff-kicker">NOW PLAYING</span><strong>MICHAEL TV</strong><span class="mtv-handoff-detail">TAPE 02 · TRACKING</span></div></div>
    <div class="mtv-announcement" aria-live="polite" aria-label="You’re watching the next big global FinTech SWE Engineer in real time!"><span class="mtv-announcement-kicker">YOU’RE WATCHING</span><strong>THE NEXT BIG GLOBAL<br><em>FINTECH SWE ENGINEER</em><br><span class="mtv-announcement-live">IN REAL TIME!</span></strong><span class="mtv-announcement-station">MICHAEL TV · WORLDWIDE</span></div>
    <div class="mtv-idle">
     <div class="mtv-title">MICHAEL TV</div>
@@ -52,16 +53,18 @@
  const label=dialog.querySelector('.mtv-top-left');
  const timecode=dialog.querySelector('.mtv-time');
  const staticCanvas=dialog.querySelector('.mtv-noise');
+ const handoff=dialog.querySelector('.mtv-handoff');
  const staticCtx=staticCanvas.getContext('2d',{alpha:false});
  const pixels=staticCtx?.createImageData(192,108);
  let player=null, audio=null, master=null, muted=false, pending=false, active=false, exiting=false;
  let apiReady=false,apiFailed=false,apiLoading=false,playerStarted=false,trackingFinished=false;
- let clickDeadline=0,maxDeadline=0,timeTicker=0,apiScript=null,glitchTimer=0,bootTimer=0,staticFrame=0;
- let lastFocused=null,showingCouch=true;
+ let clickDeadline=0,maxDeadline=0,timeTicker=0,apiScript=null,glitchTimer=0,bootTimer=0,staticFrame=0,handoffTimer=0,transitionTimer=0;
+ let lastFocused=null,showingCouch=true,switching=false,handoffStartedAt=0;
  const markSeen=()=>{try{sessionStorage.setItem(KEY,'1')}catch{}};
  const clearRun=()=>{
    clearTimeout(clickDeadline);clearTimeout(maxDeadline);clearTimeout(glitchTimer);clearTimeout(bootTimer);
-   clearInterval(timeTicker);clickDeadline=maxDeadline=glitchTimer=bootTimer=timeTicker=0;
+   clearTimeout(handoffTimer);clearTimeout(transitionTimer);
+   clearInterval(timeTicker);clickDeadline=maxDeadline=glitchTimer=bootTimer=timeTicker=handoffTimer=transitionTimer=0;
    if(staticFrame){cancelAnimationFrame(staticFrame);staticFrame=0}
  };
  const timeString=seconds=>{
@@ -143,7 +146,7 @@
  function openIntro(replay=false){
    if(active)return;
    clearRun();
-   active=true;pending=false;exiting=false;playerStarted=false;trackingFinished=false;showingCouch=true;
+   active=true;pending=false;exiting=false;playerStarted=false;trackingFinished=false;showingCouch=true;switching=false;handoffStartedAt=0;
    lastFocused=document.activeElement;
    dialog.className='mtv-boot';
    label.textContent='VIDEO 1';label.classList.add('mtv-idle-label');
@@ -159,11 +162,28 @@
  function revealVideo(){
    if(!active||exiting||!playerStarted||!trackingFinished)return;
    dialog.classList.add('mtv-video-visible');
-   timeTicker=setInterval(updateTime,250);updateTime();
+   if(!timeTicker)timeTicker=setInterval(updateTime,125);
+   updateTime();
+ }
+ function releaseHandoff(){
+   if(!active||exiting||!switching||!playerStarted)return;
+   const remaining=Math.max(0,(reduced.matches?100:300)-(performance.now()-handoffStartedAt));
+   clearTimeout(transitionTimer);
+   transitionTimer=setTimeout(()=>{
+     if(!active||exiting||!playerStarted)return;
+     switching=false;
+     dialog.classList.remove('mtv-handoff-active');
+     label.textContent='VIDEO 2';
+     revealVideo();
+   },remaining);
  }
  function playMainVideo(){
    if(!active||exiting||!showingCouch||!player)return;
-   showingCouch=false;playerStarted=false;pending=true;
+   showingCouch=false;playerStarted=false;pending=true;switching=true;
+   handoffStartedAt=performance.now();
+   dialog.classList.add('mtv-handoff-active');
+   label.textContent='TRACKING ▶';
+   timecode.textContent=timeString(COUCH_DURATION);
    clearTimeout(clickDeadline);
    clickDeadline=setTimeout(()=>{if(!playerStarted)finish('timeout')},4000);
    try{
@@ -190,9 +210,11 @@
            if(event.data===YT.PlayerState.PLAYING){
              playerStarted=true;pending=false;
              clearTimeout(clickDeadline);clickDeadline=0;
-             // The 25-second limit includes the playback period.
-             revealVideo();
+             // The 25-second limit includes both embedded videos and their handoff.
+             if(switching)releaseHandoff();else revealVideo();
            }else if(event.data===YT.PlayerState.ENDED){
+             // Ignore a late end event from the first clip during the handoff.
+             if(switching)return;
              if(showingCouch)playMainVideo();else finish('ended');
            }
          },
@@ -239,6 +261,7 @@
    if(!active||exiting)return;
    exiting=true;pending=false;
    clearRun();markSeen();
+   dialog.classList.remove('mtv-handoff-active');
    try{player?.stopVideo?.()}catch{}
    const settle=()=>{
      try{player?.destroy?.()}catch{}

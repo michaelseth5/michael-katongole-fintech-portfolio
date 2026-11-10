@@ -22,7 +22,7 @@
  const bottom=document.createElement('div');bottom.className='tv-bezel-bottom';
  const speaker=document.createElement('div');speaker.className='tv-speaker';speaker.setAttribute('aria-hidden','true');
  for(let i=0;i<6;i++)speaker.appendChild(document.createElement('i'));
- const brand=document.createElement('span');brand.className='tv-brand';brand.textContent='MICHAEL TV';
+ const brand=document.createElement('span');brand.className='tv-brand';brand.setAttribute('aria-label','Sony television badge');brand.innerHTML='<img class="tv-sony-wordmark" src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Sony_logo_%28white%29.svg" alt="SONY" width="500" height="92" decoding="async">';
  const controls=document.createElement('div');controls.className='tv-controls';
  const makeButton=(label,content,cls)=>{
    const b=document.createElement('button');b.type='button';b.className='tv-control '+(cls||'');
