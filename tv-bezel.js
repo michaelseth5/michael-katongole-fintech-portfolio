@@ -12,6 +12,8 @@
  bezel.setAttribute('aria-label','Michael TV frame');
  document.body.appendChild(bezel);
  bezel.append(header,host);
+ // Recalculate the channel pill indicator after moving the nav into the bezel.
+ requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
  const glass=document.createElement('div');glass.className='tv-screen-glass';glass.setAttribute('aria-hidden','true');
  const osd=document.createElement('div');osd.className='tv-osd';osd.setAttribute('role','status');osd.setAttribute('aria-live','polite');osd.setAttribute('aria-atomic','true');
  const vol=document.createElement('div');vol.className='tv-volume-osd';vol.setAttribute('role','status');vol.setAttribute('aria-live','polite');
