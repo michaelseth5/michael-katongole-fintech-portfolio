@@ -1,0 +1,130 @@
+/* Michael TV hardware bezel. The original pages, card layouts and routing stay intact. */
+@font-face{font-family:"MichaelVT323";src:url("assets/fonts/VT323-Regular.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
+html.tv-mode body.tv-mode{background:radial-gradient(ellipse at 60% 10%,#362054,#180e2a 70%)!important}
+body.tv-mode .tv-hardware{
+ position:fixed;inset:8px 12px 8px;z-index:1;overflow:hidden;
+ border:1px solid rgba(234,220,255,.24);border-radius:40px;
+ background:linear-gradient(155deg,#221b30,#0d0c16 44%,#161021);
+ box-shadow:inset 0 1px rgba(255,255,255,.25),inset 0 -10px 20px #0006,0 24px 75px rgba(0,0,0,.55),0 0 70px rgba(120,79,193,.12);
+}
+body.tv-mode .tv-hardware::before{content:"";position:absolute;inset:0;border-radius:inherit;border:16px solid rgba(4,4,10,.23);pointer-events:none;z-index:0}
+body.tv-mode .tv-hardware::after{content:"";position:absolute;inset:76px 15px 60px;border-radius:25px;background:#000;box-shadow:inset 0 0 24px #000;pointer-events:none}
+body.tv-mode .tv-hardware > .apple-topbar{
+ position:absolute!important;top:16px!important;left:14px!important;right:14px!important;
+ width:auto!important;height:48px!important;z-index:35!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
+}
+body.tv-mode .tv-hardware .apple-nav{max-width:100%!important}
+body.tv-mode .tv-hardware #apple-navlinks{
+ max-width:calc(100vw - 72px)!important;min-height:43px!important;padding:4px!important;
+ background:rgba(225,219,241,.93)!important;box-shadow:0 4px 14px #0007,inset 0 1px #fff9!important;
+}
+body.tv-mode .tv-hardware #apple-navlinks a{font-size:clamp(10px,.91vw,13px)!important;padding:10px clamp(7px,1vw,15px)!important}
+body.tv-mode .tv-hardware #apple-nav-indicator{top:4px!important;left:0!important;height:calc(100% - 8px)!important}
+body.tv-mode .tv-hardware #main-content.tv-stage{
+ position:absolute!important;inset:76px 16px 60px!important;width:auto!important;height:auto!important;margin:0!important;
+ border-radius:25px!important;border:1px solid rgba(225,214,254,.12)!important;
+ box-shadow:inset 0 0 32px rgba(0,0,0,.72),0 1px 0 rgba(255,255,255,.15)!important;
+ background:#090712!important;
+ transform-origin:50% 50%;transition:transform .3s ease,opacity .3s ease,filter .3s ease;
+ isolation:isolate;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage::before{
+ content:"";position:absolute;inset:0;z-index:55;pointer-events:none;
+ box-shadow:inset 0 0 26px rgba(0,0,0,.65),inset 0 0 100px 16px rgba(0,0,0,.3);
+ border-radius:inherit;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-screen-glass{
+ position:absolute;inset:0;z-index:62;pointer-events:none;
+ background:
+ radial-gradient(ellipse at 50% 48%,transparent 20%,rgba(0,0,0,.06) 48%,rgba(0,0,0,.35) 100%),
+ linear-gradient(138deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.01) 13%,transparent 31%);
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-screen-glass::before{
+ content:"";position:absolute;inset:0;pointer-events:none;opacity:.02;
+ background:repeating-linear-gradient(90deg,rgba(255,61,71,.8) 0 1px,rgba(89,236,139,.8) 1px 2px,rgba(77,124,255,.8) 2px 3px);
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-screen-glass::after{
+ content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+ background:rgba(255,255,255,.8);animation:tv-soft-brightness 7s linear infinite;
+}
+@keyframes tv-soft-brightness{0%,55%,55.2%,100%{opacity:0}55.05%{opacity:.016}55.13%{opacity:.01}}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-scanlines{
+ z-index:63!important;
+ background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,transparent 1px 3px)!important;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-channel-number{display:none!important}
+body.tv-mode .tv-hardware .tv-osd{
+ position:absolute;right:clamp(14px,2.3vw,34px);top:clamp(14px,2vw,28px);z-index:68;
+ pointer-events:none;text-align:right;font-family:"MichaelVT323",ui-monospace,monospace;
+ color:#6ee7a0;text-shadow:0 0 12px #6ee7a0,1px 0 rgba(255,85,85,.65),-1px 0 rgba(84,122,255,.6);
+ opacity:.6;transform-origin:100% 0;transition:opacity .48s ease,transform .55s cubic-bezier(.2,.8,.2,1);
+ filter:drop-shadow(0 0 8px rgba(110,231,160,.3));
+}
+body.tv-mode .tv-hardware .tv-osd strong{display:block;font:400 18px/1 "MichaelVT323",ui-monospace,monospace;letter-spacing:.12em;white-space:nowrap}
+body.tv-mode .tv-hardware .tv-osd span{display:block;font:400 16px/1.25 "MichaelVT323",ui-monospace,monospace;letter-spacing:.07em;opacity:0;max-height:0;overflow:hidden}
+body.tv-mode .tv-hardware .tv-osd.is-expanded{opacity:1;transform:translate(0,0)}
+body.tv-mode .tv-hardware .tv-osd.is-expanded strong{font-size:clamp(40px,5vw,64px)}
+body.tv-mode .tv-hardware .tv-osd.is-expanded span{opacity:1;max-height:35px}
+body.tv-mode .tv-hardware .tv-osd.is-expanded{transition:opacity .12s ease,transform .12s ease}
+body.tv-mode .tv-hardware .tv-volume-osd{
+ position:absolute;left:50%;top:25%;transform:translateX(-50%);z-index:68;
+ opacity:0;pointer-events:none;transition:opacity .18s ease;
+ padding:9px 16px;border:1px solid #80e5a669;border-radius:10px;background:#070d12b8;
+ font:400 clamp(24px,3.2vw,42px)/1.15 "MichaelVT323",monospace;
+ color:#a5ffcb;text-shadow:0 0 10px #6ee7a08a;white-space:nowrap;
+}
+body.tv-mode .tv-hardware .tv-volume-osd.is-visible{opacity:1}
+body.tv-mode .tv-hardware .tv-no-signal{
+ position:absolute;inset:0;z-index:42;display:none;place-items:center;pointer-events:none;
+ background:linear-gradient(90deg,#d9dbdc 0 14.3%,#f4e54a 14.3% 28.6%,#5ce7ee 28.6% 42.9%,#3ecc63 42.9% 57.2%,#ed5ac1 57.2% 71.5%,#ed504f 71.5% 85.8%,#365ce8 85.8% 100%);
+}
+body.tv-mode .tv-hardware .tv-no-signal strong{font:400 clamp(36px,6vw,80px) "MichaelVT323",monospace;color:#fff;text-shadow:0 3px 9px #000,0 0 16px #000;background:#090811b9;padding:7px 23px}
+body.tv-mode .tv-hardware #main-content.tv-stage[data-no-signal="true"]>.tv-no-signal{display:grid}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page{scrollbar-width:thin!important;scrollbar-color:#b28df0 transparent!important}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page::-webkit-scrollbar{width:3px}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page::-webkit-scrollbar-track{background:transparent}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page::-webkit-scrollbar-thumb{background:#b18bea;border-radius:5px}
+body.tv-mode .tv-hardware .tv-bezel-bottom{position:absolute;left:24px;right:24px;bottom:8px;height:42px;z-index:37;display:flex;justify-content:space-between;align-items:center;gap:12px}
+body.tv-mode .tv-hardware .tv-speaker{display:flex;gap:4px;height:20px;align-items:center}
+body.tv-mode .tv-hardware .tv-speaker i{width:2px;height:18px;background:linear-gradient(#080710,#675a7f,#080710);border-radius:2px;box-shadow:1px 0 rgba(255,255,255,.04)}
+body.tv-mode .tv-hardware .tv-brand{position:absolute;left:50%;transform:translateX(-50%);color:#d3c6e6;letter-spacing:.18em;font:700 10px/1.1 ui-monospace,monospace;white-space:nowrap;text-shadow:0 1px #000}
+body.tv-mode .tv-hardware .tv-controls{display:flex;align-items:center;gap:7px;margin-left:auto}
+body.tv-mode .tv-hardware .tv-control{
+ border:1px solid #7d6b9966;border-radius:9px;background:#221b30;color:#e9def8;
+ box-shadow:inset 0 1px #ffffff12,0 2px 6px #0006;
+ height:31px;min-width:32px;padding:0 9px;cursor:pointer;
+ font:600 11px/1 ui-monospace,monospace;
+}
+body.tv-mode .tv-hardware .tv-control:hover{background:#352447;border-color:#b58ae3}
+body.tv-mode .tv-hardware .tv-control:focus-visible{outline:2px solid #d7afff;outline-offset:3px}
+body.tv-mode .tv-hardware .tv-power{width:34px;min-width:34px;border:0;background:transparent;border-radius:50%;cursor:pointer;height:34px;display:grid;place-items:center}
+body.tv-mode .tv-hardware .tv-power-light{display:block;width:9px;height:9px;border-radius:50%;background:#6ee7a0;box-shadow:0 0 9px #6ee7a0,0 0 2px #c5ffe2}
+body.tv-mode .tv-hardware.is-powered-off .tv-power-light{background:#4c395e;box-shadow:inset 0 0 3px #000}
+body.tv-mode .tv-hardware.is-powered-off #main-content.tv-stage{transform:scaleX(.025) scaleY(.005);filter:brightness(3);opacity:0;pointer-events:none!important}
+body.tv-mode .tv-hardware.is-powered-off .tv-osd,body.tv-mode .tv-hardware.is-powered-off .tv-volume-osd{opacity:0!important}
+body.tv-mode .tv-hardware .tv-power:focus-visible{outline:2px solid #d7afff;outline-offset:2px}
+body.tv-mode .tv-hardware .tv-power:focus-visible .tv-power-light{box-shadow:0 0 12px #6ee7a0}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home{display:flex!important;flex-direction:column;justify-content:flex-start}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home>#home{min-height:100%!important}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>section{min-height:100%!important}
+@media(max-width:819px){
+ body.tv-mode .tv-hardware{inset:5px;border-radius:29px}
+ body.tv-mode .tv-hardware::after{inset:72px 8px 55px;border-radius:18px}
+ body.tv-mode .tv-hardware>.apple-topbar{top:11px!important;left:5px!important;right:5px!important}
+ body.tv-mode .tv-hardware #apple-navlinks{max-width:calc(100vw - 34px)!important}
+ body.tv-mode .tv-hardware #main-content.tv-stage{inset:70px 9px 53px!important;border-radius:19px!important}
+ body.tv-mode .tv-hardware .tv-bezel-bottom{left:14px;right:12px;bottom:6px;height:36px}
+ body.tv-mode .tv-hardware .tv-control{height:30px;min-width:28px;padding:0 6px}
+ body.tv-mode .tv-hardware .tv-brand{font-size:8px}
+ body.tv-mode .tv-hardware .tv-speaker{gap:3px}
+ body.tv-mode .tv-hardware .tv-speaker i{height:15px;width:1.5px}
+ body.tv-mode .tv-hardware #main-content.tv-stage .tv-scanlines{background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px)!important}
+ body.tv-mode .tv-hardware #main-content.tv-stage .tv-screen-glass::before{opacity:.008}
+}
+@media(prefers-reduced-motion:reduce){
+ body.tv-mode .tv-hardware #main-content.tv-stage{transition:opacity .25s ease!important;transform:none!important}
+ body.tv-mode .tv-hardware.is-powered-off #main-content.tv-stage{opacity:0!important}
+ body.tv-mode .tv-hardware .tv-osd{transition:opacity .18s ease!important}
+ body.tv-mode .tv-hardware .tv-screen-glass::after{animation:none!important}
+ body.tv-mode .tv-hardware .tv-no-signal{transition:none!important}
+}
