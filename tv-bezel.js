@@ -6,22 +6,45 @@
  if(!host||!header||!host.classList.contains('tv-stage'))return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const TV_EFFECT_KEY='michael-tv-effects-enabled';
+ const effectWrap=document.createElement('div');
+ effectWrap.className='tv-effects-control';
+ const effectLabel=document.createElement('span');
+ effectLabel.className='tv-effects-description';
+ effectLabel.textContent='Retro screen effects';
  const effectButton=document.createElement('button');
  effectButton.type='button';
  effectButton.className='tv-effects-toggle';
+ effectButton.setAttribute('role','switch');
+ effectButton.setAttribute('aria-label','Retro screen effects');
+ effectButton.setAttribute('aria-describedby','tv-effects-help');
+ effectLabel.id='tv-effects-help';
+ const track=document.createElement('span');
+ track.className='tv-effects-track';
+ track.setAttribute('aria-hidden','true');
+ const knob=document.createElement('span');
+ knob.className='tv-effects-knob';
+ knob.setAttribute('aria-hidden','true');
+ effectButton.append(track,knob);
+ effectWrap.append(effectButton,effectLabel);
  const setEffects=enabled=>{
    document.documentElement.classList.toggle('tv-effects-off',!enabled);
-   effectButton.textContent=enabled?'📺 ON':'📺 OFF';
-   effectButton.setAttribute('aria-label',enabled?'Turn TV visual effects off':'Turn TV visual effects on');
-   effectButton.setAttribute('aria-pressed',String(enabled));
-   effectButton.title=enabled?'Disable TV effects':'Enable TV effects';
+   effectButton.setAttribute('aria-checked',String(enabled));
+   effectButton.title=enabled?'Turn retro screen effects off':'Turn retro screen effects on';
    try{localStorage.setItem(TV_EFFECT_KEY,enabled?'1':'0')}catch{}
  };
  let effectsEnabled=true;
  try{effectsEnabled=localStorage.getItem(TV_EFFECT_KEY)!=='0'}catch{}
  setEffects(effectsEnabled);
- effectButton.addEventListener('click',()=>setEffects(effectButton.getAttribute('aria-pressed')!=='true'));
- document.body.appendChild(effectButton);
+ effectButton.addEventListener('click',()=>{
+   const enabled=effectButton.getAttribute('aria-checked')!=='true';
+   setEffects(enabled);
+   if(enabled&&!reduced.matches){
+     effectButton.classList.remove('tv-effects-pop');
+     void effectButton.offsetWidth;
+     effectButton.classList.add('tv-effects-pop');
+   }
+ });
+ document.body.appendChild(effectWrap);
 
  const channelNames=['HOME','PROJECTS','EXPERIENCE','SKILLS','MILESTONES','NETWORKING','READING','HOBBIES','CONTACT'];
  const channelKeys=['home','projects','experience','skills','milestone','networking','reading','hobbies','contact'];
