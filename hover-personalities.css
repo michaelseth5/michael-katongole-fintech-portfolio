@@ -278,3 +278,42 @@ a.mk-hfx:focus-visible,button.mk-hfx:focus-visible,summary:focus-visible,.mk-hfx
   box-shadow:0 0 0 3px rgba(var(--mk-brand-light),.44),
     0 0 35px rgba(var(--mk-brand-light),.25)!important;
 }
+
+/* Networking is a constrained scroll-snap filmstrip, not a floating card stack.
+   Never scale or lift either its event slides or their photo figures: the global
+   1.05 hover scale otherwise clips captions and shifts pictures outside the rail. */
+#networking .network-carousel-track .network-event-slide,
+#networking .network-carousel-track .network-event-slide.mk-hfx,
+#networking .network-event-slide .photo-carousel-rail > figure,
+#networking .network-event-slide .photo-carousel-rail > figure.mk-hfx,
+#networking .network-event-slide .photo-carousel-rail > figure img{
+ transform:none!important;
+ filter:none!important;
+}
+#networking .network-carousel-track .network-event-slide:is(:hover,:focus-within),
+#networking .network-carousel-track .network-event-slide.mk-hfx:is(:hover,:focus-within),
+#networking .network-event-slide .photo-carousel-rail > figure:is(:hover,:focus-within),
+#networking .network-event-slide .photo-carousel-rail > figure.mk-hfx:is(:hover,:focus-within),
+#networking .network-event-slide .photo-carousel-rail > figure:is(:hover,:focus-within) img{
+ transform:none!important;
+ filter:none!important;
+}
+#networking .network-carousel-track .network-event-slide.mk-hfx:is(:hover,:focus-within),
+#networking .network-event-slide .photo-carousel-rail > figure.mk-hfx:is(:hover,:focus-within){
+ box-shadow:none!important;
+ outline:0!important;
+ border-color:transparent!important;
+ z-index:auto!important;
+}
+#networking .network-event-slide .photo-carousel-rail > figure.mk-hfx:is(:hover,:focus-within){
+ border-color:#e9dff0!important;
+ box-shadow:0 5px 16px rgba(53,31,69,.07)!important;
+}
+#networking .network-event-slide .photo-carousel-rail > figure,
+#networking .network-event-slide .photo-carousel-rail > figure img,
+#networking .network-carousel-track .network-event-slide{
+ transition:background-color .2s ease,border-color .2s ease!important;
+}
+#networking .network-event-slide .photo-carousel-rail > figure.mk-hfx::after{
+ box-shadow:none!important;opacity:0!important;pointer-events:none!important;
+}
