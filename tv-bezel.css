@@ -330,3 +330,39 @@ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] > fo
  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] > .mk-footer-quotes {padding:20px 0!important}
  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] > footer {padding:18px 0 22px!important}
 }
+
+/* Contact Memoji: pin to upper-right corner of the existing left card. */
+#contact .mk-connect-left {
+  position:relative!important;
+}
+#contact .mk-connect-left > .mk-contact-avatar {
+  position:absolute!important;
+  top:24px!important;
+  right:24px!important;
+  left:auto!important;
+  bottom:auto!important;
+  z-index:3!important;
+  margin:0!important;
+  width:76px!important;
+  height:76px!important;
+  display:grid!important;
+  place-items:center!important;
+}
+#contact .mk-connect-left > .mk-contact-avatar img {
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  border-radius:50%!important;
+  object-fit:cover!important;
+}
+@media(max-width:600px) {
+  #contact .mk-connect-left > .mk-contact-avatar {
+    top:18px!important;
+    right:18px!important;
+    width:58px!important;
+    height:58px!important;
+  }
+  #contact .mk-connect-left .page-hero > .back {
+    max-width:calc(100% - 75px)!important;
+  }
+}
