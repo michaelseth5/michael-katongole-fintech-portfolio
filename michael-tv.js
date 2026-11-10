@@ -4,6 +4,8 @@
 (() => {
  const KEY='michael-tv-intro-seen-v1';
  const VID='OT9HsNszYCI';
+ const COUCH_VIDEO='BhUG_YEAmsc';
+ const COUCH_DURATION=10;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let previouslySeen=false;
  try{previouslySeen=sessionStorage.getItem(KEY)==='1'}catch{}
@@ -54,7 +56,7 @@
  let player=null, audio=null, master=null, muted=false, pending=false, active=false, exiting=false;
  let apiReady=false,apiFailed=false,apiLoading=false,playerStarted=false,trackingFinished=false;
  let clickDeadline=0,maxDeadline=0,timeTicker=0,apiScript=null,glitchTimer=0,bootTimer=0,staticFrame=0;
- let lastFocused=null;
+ let lastFocused=null,showingCouch=true;
  const markSeen=()=>{try{sessionStorage.setItem(KEY,'1')}catch{}};
  const clearRun=()=>{
    clearTimeout(clickDeadline);clearTimeout(maxDeadline);clearTimeout(glitchTimer);clearTimeout(bootTimer);
@@ -69,7 +71,10 @@
    if(!active||!playerStarted)return;
    try{
      const seconds=player?.getCurrentTime?.();
-     if(Number.isFinite(seconds))timecode.textContent=timeString(seconds);
+     if(Number.isFinite(seconds)){
+       timecode.textContent=timeString(seconds+(showingCouch?0:COUCH_DURATION));
+       if(showingCouch && seconds>=COUCH_DURATION-.12)playMainVideo();
+     }
    }catch{}
  };
  const setMute=(value)=>{
@@ -137,7 +142,7 @@
  function openIntro(replay=false){
    if(active)return;
    clearRun();
-   active=true;pending=false;exiting=false;playerStarted=false;trackingFinished=false;
+   active=true;pending=false;exiting=false;playerStarted=false;trackingFinished=false;showingCouch=true;
    lastFocused=document.activeElement;
    dialog.className='mtv-boot';
    label.textContent='VIDEO 1';label.classList.add('mtv-idle-label');
@@ -155,14 +160,23 @@
    dialog.classList.add('mtv-video-visible');
    timeTicker=setInterval(updateTime,250);updateTime();
  }
+ function playMainVideo(){
+   if(!active||exiting||!showingCouch||!player)return;
+   showingCouch=false;playerStarted=false;pending=true;
+   clearTimeout(clickDeadline);
+   clickDeadline=setTimeout(()=>{if(!playerStarted)finish('timeout')},4000);
+   try{
+     player.loadVideoById({videoId:VID,startSeconds:0});
+   }catch{finish('error')}
+ }
  function createPlayer(){
    if(!active||!pending||exiting||player||!window.YT?.Player)return;
    try{
      player=new YT.Player('mtv-youtube-player',{
        host:'https://www.youtube-nocookie.com',
-       videoId:VID,
+       videoId:COUCH_VIDEO,
        width:'100%',height:'100%',
-       playerVars:{autoplay:1,controls:0,playsinline:1,rel:0,modestbranding:1,disablekb:1,fs:0,iv_load_policy:3,origin:location.origin},
+       playerVars:{autoplay:1,controls:0,playsinline:1,rel:0,modestbranding:1,disablekb:1,fs:0,iv_load_policy:3,origin:location.origin,start:0,end:COUCH_DURATION},
        events:{
          onReady:event=>{
            try{
@@ -177,7 +191,9 @@
              clearTimeout(clickDeadline);clickDeadline=0;
              // The 25-second limit includes the playback period.
              revealVideo();
-           }else if(event.data===YT.PlayerState.ENDED){finish('ended')}
+           }else if(event.data===YT.PlayerState.ENDED){
+             if(showingCouch)playMainVideo();else finish('ended');
+           }
          },
          onError:()=>finish('error')
        }
