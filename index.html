@@ -2281,6 +2281,12 @@ main{
 @media(max-width:900px){.mk-globe-vision{padding:0 16px}.mk-globe-column .globe-wrap{height:420px}}
 @media(max-width:600px){.mk-globe-vision h2{font-size:23px}.mk-globe-vision p{font-size:12px}.mk-globe-column .globe-wrap{height:330px}}
 </style><style>
+/* Desktop hero: align the introduction with the vision heading instead of leaving an empty upper-left quadrant. */
+@media(min-width:901px){
+  #home.hero{align-items:start}
+  #home.hero>.fade{align-self:start;padding-top:clamp(4px,1vw,16px)}
+  #home.hero .mk-globe-column{align-self:start;transform:none}
+}
 /* Cohesive financial globe homepage: typography, spacing, and responsive alignment. */
 #home.hero{grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);align-items:center;gap:clamp(22px,3vw,54px);min-height:680px;padding:clamp(40px,5vw,76px) clamp(28px,4vw,66px);overflow:hidden}
 #home.hero>.fade{width:100%;min-width:0;align-self:center;position:relative;z-index:2}
