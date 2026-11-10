@@ -213,6 +213,8 @@
              // The 25-second limit includes both embedded videos and their handoff.
              if(switching)releaseHandoff();else revealVideo();
            }else if(event.data===YT.PlayerState.ENDED){
+             // Ignore a late end event from the first clip during the handoff.
+             if(switching)return;
              if(showingCouch)playMainVideo();else finish('ended');
            }
          },
