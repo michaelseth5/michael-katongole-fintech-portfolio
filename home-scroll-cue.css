@@ -76,3 +76,16 @@ body.tv-mode #main-content.tv-stage .tv-home-progress[hidden]{display:none!impor
  body.tv-mode #main-content.tv-stage .tv-home-progress button::after{transition:none!important}
  body.tv-mode #main-content.tv-stage .tv-home-scroll-cue{transition:opacity .2s ease,visibility .2s ease!important}
 }
+
+/* Keep the Home channel independently scrollable even with globe/WebGL overlays. */
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home.is-active{
+ display:flex!important;flex-direction:column!important;
+ overflow-y:auto!important;overflow-x:hidden!important;
+ min-height:0!important;overscroll-behavior-y:contain!important;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home>#portfolio-intro-grid{
+ flex:0 0 auto!important;min-height:0!important;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home>#site-preview-notice{
+ flex:0 0 auto!important;
+}
