@@ -223,3 +223,38 @@ body.tv-mode .tv-gallery-page{min-width:0!important}
  body.tv-mode .tv-gallery-page .tv-shared-progress-fill{transition:none!important}
  body.tv-mode .tv-gallery-page .tv-shared-chip-rail button{transition:none!important}
 }
+/* Literature follows the same lavender-pink editorial header system as Hobbies. */
+body.tv-mode #listening-reading.tv-gallery-page{
+ background:linear-gradient(134deg,#eae2fc 0%,#f7e8f5 48%,#fbe9f1 100%)!important;
+ color:#2e2046!important;
+}
+body.tv-mode #listening-reading.tv-gallery-page .mk-literature-hero{
+ text-align:center!important;max-width:100%!important;margin:0 auto 12px!important;
+ padding:0 12px 13px!important;border-bottom:1px solid rgba(119,73,164,.19)!important;
+}
+body.tv-mode #listening-reading.tv-gallery-page .mk-literature-hero .eyebrow{
+ color:#7043a7!important;letter-spacing:.14em!important;margin:0 0 3px!important;
+ font-weight:750!important;font-size:10px!important;display:block!important;
+}
+body.tv-mode #listening-reading.tv-gallery-page .mk-literature-hero h1{
+ font-family:'Space Grotesk','DM Sans',system-ui,sans-serif!important;
+ font-size:clamp(37px,4.6vw,60px)!important;line-height:1.02!important;
+ font-weight:850!important;letter-spacing:-.065em!important;
+ text-align:center!important;text-transform:uppercase!important;
+ color:#271735!important;margin:0 0 6px!important;
+}
+body.tv-mode #listening-reading.tv-gallery-page .mk-literature-hero h1 .mk-title-glow{
+ background:linear-gradient(90deg,#713ba8,#b060bd)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+ -webkit-text-fill-color:transparent!important;color:#8045ad!important;
+}
+body.tv-mode #listening-reading.tv-gallery-page .mk-literature-hero h1 .highlight{
+ color:#8c50bf!important;-webkit-text-fill-color:#8c50bf!important;
+}
+body.tv-mode #listening-reading.tv-gallery-page .mk-literature-hero>p{
+ margin:0 auto!important;color:#544363!important;font-size:clamp(12px,1.05vw,14px)!important;
+ line-height:1.35!important;max-width:950px!important;text-align:center!important;
+}
+@media(max-width:700px){
+ body.tv-mode #listening-reading.tv-gallery-page .mk-literature-hero h1{font-size:35px!important}
+}
