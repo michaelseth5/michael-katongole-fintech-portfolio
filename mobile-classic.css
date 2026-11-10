@@ -92,3 +92,146 @@ html.mobile-classic #home .mk-unified-globe img.mk-mobile-globe-image{border:0!i
 html.mobile-classic :is(.marquee,.marquee-inner,.preview-track,.mk-glow,.mk-reveal,.mk-animated-title,.mk-nyc-map-card,.mk-nyc-radar-sweep,.mk-nyc-radar-rings,.ticker,.globe-wrap)::before,
 html.mobile-classic :is(.marquee,.marquee-inner,.preview-track,.mk-glow,.mk-reveal,.mk-animated-title,.mk-nyc-map-card,.mk-nyc-radar-sweep,.mk-nyc-radar-rings,.ticker,.globe-wrap)::after,
 html.mobile-classic :is(.marquee,.marquee-inner,.preview-track,.mk-glow,.mk-reveal,.mk-animated-title,.mk-nyc-map-card,.mk-nyc-radar-sweep,.mk-nyc-radar-rings,.ticker){animation:none!important;transform:none!important;filter:none!important}
+
+/* Mobile rescue: override higher-specificity legacy desktop hero and TV layout rules.
+   This applies only at widths below 768px, regardless of pointer detection. */
+@media (max-width:767px) {
+  html.mobile-classic body,
+  html.mobile-classic body.tv-mode {
+    width:100%!important;max-width:100%!important;
+    overflow-x:clip!important;background:#faf8fc!important;color:#332a40!important;
+  }
+  html.mobile-classic body #main-content,
+  html.mobile-classic body #main-content.tv-stage {
+    width:100%!important;max-width:100%!important;
+    height:auto!important;min-height:0!important;
+    overflow:visible!important;position:relative!important;
+    inset:auto!important;border:0!important;border-radius:0!important;
+    margin:0!important;padding:calc(64px + env(safe-area-inset-top)) 0 0!important;
+    display:flex!important;flex-direction:column!important;
+    background:transparent!important;transform:none!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero {
+    width:100%!important;max-width:100%!important;
+    height:auto!important;min-height:0!important;max-height:none!important;
+    display:flex!important;flex-direction:column!important;
+    align-items:center!important;justify-content:flex-start!important;
+    padding:36px 18px 44px!important;margin:0!important;gap:20px!important;
+    border:0!important;border-radius:0!important;
+    overflow:visible!important;position:relative!important;
+    background:#f5f0fb!important;text-align:center!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero > .fade.mk-unified-identity {
+    position:relative!important;inset:auto!important;
+    top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+    width:100%!important;max-width:440px!important;
+    min-height:0!important;height:auto!important;
+    display:flex!important;flex-direction:column!important;
+    align-items:center!important;text-align:center!important;
+    margin:0 auto!important;padding:0!important;
+    transform:none!important;animation:none!important;opacity:1!important;
+    visibility:visible!important;filter:none!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .demo-hero-identity {
+    display:flex!important;flex-direction:column!important;gap:14px!important;
+    align-items:center!important;justify-content:center!important;
+    width:100%!important;margin:0!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .demo-hero-identity .hero-headshot {
+    width:108px!important;height:108px!important;aspect-ratio:1!important;
+    display:block!important;object-fit:cover!important;border-radius:20px!important;
+    margin:0 auto!important;max-width:none!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .demo-hero-identity h1 {
+    width:100%!important;max-width:100%!important;
+    margin:0!important;font-size:clamp(30px,8.4vw,42px)!important;
+    line-height:1.12!important;text-align:center!important;
+    letter-spacing:-.055em!important;
+    text-wrap:balance!important;overflow-wrap:anywhere!important;
+    color:#292238!important;-webkit-text-fill-color:#292238!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .demo-hero-identity h1 .mk-title-solid {
+    color:#292238!important;-webkit-text-fill-color:#292238!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .demo-hero-identity h1 .mk-title-glow {
+    color:#8656b6!important;-webkit-text-fill-color:#8656b6!important;
+    background:none!important;filter:none!important;text-shadow:none!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .subtitle,
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-identity > p {
+    width:100%!important;max-width:390px!important;margin:0 auto!important;
+    font-size:16px!important;line-height:1.6!important;
+    color:#51435e!important;-webkit-text-fill-color:#51435e!important;text-align:center!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .actions,
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-socials {
+    display:flex!important;justify-content:center!important;align-items:center!important;
+    flex-wrap:wrap!important;gap:10px!important;margin:0 auto!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen) {
+    position:relative!important;inset:auto!important;
+    left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+    display:block!important;opacity:1!important;
+    width:min(78vw,290px)!important;height:auto!important;
+    min-height:0!important;max-height:none!important;
+    aspect-ratio:1!important;margin:0 auto!important;
+    transform:none!important;animation:none!important;overflow:hidden!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe #financial-globe {
+    display:block!important;width:100%!important;height:auto!important;
+    min-height:0!important;aspect-ratio:1!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe img.mk-mobile-globe-image {
+    display:block!important;width:100%!important;height:100%!important;
+    max-width:100%!important;object-fit:contain!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-vision {
+    position:relative!important;inset:auto!important;
+    left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+    display:block!important;order:6!important;
+    width:100%!important;max-width:390px!important;
+    margin:0 auto!important;padding:0!important;
+    text-align:center!important;transform:none!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-vision h2,
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-vision-kicker {
+    color:#3a2a4d!important;-webkit-text-fill-color:#3a2a4d!important;
+    text-align:center!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-vision h2 span{
+    color:#8756af!important;-webkit-text-fill-color:#8756af!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero :is(.mk-unified-gradient,.mk-unified-globe-hint){
+    display:none!important;
+  }
+  html.mobile-classic body #main-content > :is(#experience,#project-details,#skills,#achievements,#networking,#listening-reading,#hobbies,#contact,#portfolio-intro-grid) {
+    position:relative!important;inset:auto!important;float:none!important;
+    width:100%!important;max-width:100%!important;height:auto!important;
+    min-height:0!important;margin:0!important;
+    padding:44px 18px!important;border-radius:0!important;
+    overflow:visible!important;box-shadow:none!important;
+  }
+  html.mobile-classic body #main-content :is(.timeline,.three,.mk-bento-layout,.mk-connect-layout,.slide-deck-grid) {
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+    min-width:0!important;max-width:100%!important;gap:16px!important;
+  }
+  html.mobile-classic body #main-content :is(.page-hero,.sectionhead) {
+    position:relative!important;inset:auto!important;max-width:100%!important;
+    min-height:0!important;height:auto!important;
+    padding:0!important;margin:0 0 22px!important;
+    text-align:left!important;transform:none!important;
+  }
+  html.mobile-classic body #main-content :is(.page-hero h1,.sectionhead h2) {
+    font-size:clamp(30px,8vw,44px)!important;line-height:1.12!important;
+    max-width:100%!important;overflow-wrap:anywhere!important;
+  }
+  html.mobile-classic body :is(.tv-hardware,.tv-osd,.tv-effects-control,.tv-remote-cursor,.tv-bezel-bottom,.tv-scanlines) {
+    display:none!important;
+  }
+  html.mobile-classic body :is(.mk-reveal,.fade) {
+    opacity:1!important;visibility:visible!important;transform:none!important;
+  }
+  html.mobile-classic body .mk-mobile-menu[hidden],
+  html.mobile-classic body .mk-mobile-chat-sheet[hidden],
+  html.mobile-classic body .mk-mobile-voice[hidden] {display:none!important;}
+}
