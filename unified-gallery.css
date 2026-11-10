@@ -287,3 +287,57 @@ body.tv-mode #main-content.tv-stage #networking .network-event-slide.ug-current 
  #hobbies .hobby-slide.ug-current.rb-converts-slide,
  #hobbies .hobby-slide.ug-current.mk-food-slide{min-height:520px!important}
 }
+/* Networking shares Hobbies' lavender canvas and uses dark, readable card copy. */
+body.tv-mode #main-content.tv-stage .tv-page > #networking,
+body.tv-mode #networking.tv-gallery-page,
+body.tv-mode #networking.ug-root-ready {
+ background:linear-gradient(134deg,#eae2fc 0%,#f7e8f5 48%,#fbe9f1 100%)!important;
+ color:#302744!important;
+}
+body.tv-mode #networking .page-hero h1,
+body.tv-mode #networking .page-hero .page-title {
+ color:#2b203d!important;-webkit-text-fill-color:#2b203d!important;
+}
+body.tv-mode #networking .page-hero h1 .highlight{
+ color:#9357b7!important;-webkit-text-fill-color:#9357b7!important;
+}
+body.tv-mode #networking .page-hero p,
+body.tv-mode #networking .network-carousel-eyebrow {
+ color:#443450!important;
+}
+body.tv-mode #networking .network-event-slide.ug-current .seo-event-header .eyebrow,
+body.tv-mode #networking .network-event-slide.ug-current .seo-event-header .eyebrow * {
+ color:#76518c!important;-webkit-text-fill-color:#76518c!important;
+}
+body.tv-mode #networking .network-event-slide.ug-current .seo-event-header h2,
+body.tv-mode #networking .network-event-slide.ug-current .seo-event-header h2 * {
+ color:#24192f!important;-webkit-text-fill-color:#24192f!important;
+ text-shadow:none!important;
+}
+body.tv-mode #networking .network-event-slide.ug-current .seo-event-header p,
+body.tv-mode #networking .network-event-slide.ug-current .seo-event-header p * {
+ color:#40344d!important;-webkit-text-fill-color:#40344d!important;
+ opacity:1!important;
+}
+body.tv-mode #networking .network-event-slide.ug-current .seo-event-label {
+ color:#563a71!important;-webkit-text-fill-color:#563a71!important;
+ border-color:#a998bd!important;background:#f8f3fc!important;
+}
+/* Fit Hobbies' photo, thumbnail strip, and pager inside the TV screen at common heights. */
+body.tv-mode #hobbies .ug-stage {
+ max-height:clamp(220px,34vh,410px)!important;
+}
+body.tv-mode #hobbies .ug-album {gap:8px!important}
+body.tv-mode #hobbies .ug-thumbnails {
+ min-height:64px!important;padding-bottom:5px!important;
+}
+body.tv-mode #hobbies .ug-footer {
+ min-height:28px!important;margin:0!important;padding:3px 2px 0!important;
+}
+body.tv-mode #hobbies .hobby-slide.ug-current .photo-carousel-shell {
+ margin-top:12px!important;
+}
+@media(max-width:650px){
+ body.tv-mode #hobbies .ug-stage {max-height:clamp(185px,34vh,280px)!important}
+ body.tv-mode #hobbies .ug-thumbnails {min-height:54px!important}
+}
