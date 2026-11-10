@@ -186,3 +186,12 @@ body.tv-mode .tv-hardware #apple-nav-indicator{
   padding:11.5px 9px!important;
  }
 }
+
+/* Visitor-controlled CRT effect switch; TV layout and navigation stay intact. */
+.tv-effects-toggle{position:fixed;top:18px;left:22px;z-index:1000;display:inline-flex;align-items:center;justify-content:center;min-width:86px;min-height:40px;padding:8px 12px;border-radius:999px;border:1px solid rgba(221,195,255,.6);background:rgba(31,19,49,.92);color:#fff;font:700 12px/1 system-ui,sans-serif;letter-spacing:.03em;box-shadow:0 4px 18px #0005;cursor:pointer;backdrop-filter:blur(12px)}
+.tv-effects-toggle:hover{background:#4d316c;transform:translateY(-1px)}
+.tv-effects-toggle:focus-visible{outline:3px solid #d7afff;outline-offset:3px}
+html.tv-effects-off .tv-scanlines,html.tv-effects-off .tv-static,html.tv-effects-off .tv-screen-glass,html.tv-effects-off .tv-noise,html.tv-effects-off .tv-fade-shutter{display:none!important}
+html.tv-effects-off .tv-hardware #main-content.tv-stage::before,html.tv-effects-off .tv-hardware::before{display:none!important}
+html.tv-effects-off .tv-hardware #main-content.tv-stage{box-shadow:none!important}
+@media(max-width:819px){.tv-effects-toggle{top:9px;left:10px;min-width:62px;min-height:34px;padding:6px 8px;font-size:10px}}
