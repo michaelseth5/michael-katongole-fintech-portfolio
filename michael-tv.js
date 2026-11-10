@@ -28,6 +28,7 @@
    <div class="mtv-blue" aria-hidden="true"></div>
    <div class="mtv-crt" aria-hidden="true"></div>
    <div class="mtv-video" aria-label="Introduction video"><div class="mtv-video-ratio"><div id="mtv-youtube-player"></div></div></div>
+   <div class="mtv-announcement" aria-live="polite" aria-label="You’re watching the big global FinTech SWE Engineer"><span class="mtv-announcement-kicker">YOU’RE WATCHING</span><strong>THE BIG GLOBAL<br><em>FINTECH SWE ENGINEER</em></strong><span class="mtv-announcement-station">MICHAEL TV · WORLDWIDE</span></div>
    <div class="mtv-idle">
     <div class="mtv-title">MICHAEL TV</div>
     <p class="mtv-tagline">The world is changing. I plan to help build what's next.</p>
@@ -205,7 +206,8 @@
    // Sound and YouTube playback only follow this explicit trusted gesture.
    pending=true;playBtn.disabled=true;
    soundEffects();
-   dialog.classList.add('mtv-playing');
+   dialog.classList.add('mtv-playing','mtv-announcing');
+   setTimeout(()=>{if(active&&!exiting)dialog.classList.remove('mtv-announcing')},reduced.matches?1100:2700);
    label.textContent='PLAY ▶';label.classList.remove('mtv-idle-label');
    timecode.hidden=false;skipBtn.hidden=false;
    skipBtn.focus({preventScroll:true});
