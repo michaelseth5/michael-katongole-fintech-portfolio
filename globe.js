@@ -282,6 +282,7 @@
           '</b><br>Click to inspect ' + year + ' reported trade')
         .onPolygonClick(selectCountry);
       const controls = state.globe.controls();
+      controls.enableZoom = false; // Wheel movement scrolls Home instead of zooming the globe.
       controls.enableDamping = true;
       controls.dampingFactor = .07;
       controls.autoRotate = !reducedMotion;
