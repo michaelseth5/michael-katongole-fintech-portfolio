@@ -7,10 +7,18 @@
  const OUTRO_VIDEO='ISpZC7ebJBo';
  const COUCH_VIDEO='BhUG_YEAmsc';
  const COUCH_DURATION=10;
- const welcomeVoice=new Audio('/audio/welcome.m4a');
- welcomeVoice.preload='auto';
+ const welcomeVoice=new Audio('/audio/welcome.m4a?v=2');
+ welcomeVoice.preload='none';
  const WELCOME_KEY='michael-tv-welcome-played-v1';
- const captions=[[0,'Hey.'],[1.2,"I'm Michael. Welcome to my website."],[3.7,"Hopefully you think the website's pretty cool. I think it's pretty cool."],[7.7,"Don't spend too much time on here, you know, snooping around."],[11,'But enjoy.']];
+ const captions=[
+  [0,'Hey, I’m Michael. Welcome to my little corner of the internet.'],
+  [6,'I’m a software engineer passionate about software engineering, data science, and AI.'],
+  [14,'Using technology to drive innovation across industries and solve real-world problems.'],
+  [22,'I love working at the intersection of finance and technology.'],
+  [29,'This site reflects the projects I’m building, the experiences I’ve had, and my ambitions.'],
+  [39,'Technology has the power to change finance, and I’m determined to be part of it.'],
+  [47,'Enough about me. Look around, have a little wander, and enjoy the show.']
+ ];
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let previouslySeen=false;
  try{previouslySeen=sessionStorage.getItem(KEY)==='1'}catch{}
@@ -36,7 +44,7 @@
    <div class="mtv-video" aria-label="Introduction video"><div class="mtv-video-ratio"><div id="mtv-youtube-player"></div></div></div>
    <div class="mtv-handoff" aria-hidden="true"><div class="mtv-handoff-art"><span class="mtv-handoff-kicker">NOW PLAYING</span><strong>MICHAEL TV</strong><span class="mtv-handoff-detail">TAPE 02 · TRACKING</span></div></div>
    <div class="mtv-announcement" aria-live="polite" aria-label="You’re watching the next big global FinTech SWE Engineer in real time!"><span class="mtv-announcement-kicker">YOU’RE WATCHING</span><strong>THE NEXT BIG GLOBAL<br><em>FINTECH SWE ENGINEER</em><br><span class="mtv-announcement-live">IN REAL TIME!</span></strong><span class="mtv-announcement-station">MICHAEL TV · WORLDWIDE</span></div>
-   <div class="mtv-welcome" hidden><div class="mtv-welcome-label">A NOTE FROM MICHAEL</div><p class="mtv-welcome-caption" aria-live="polite">Hey.</p><button class="mtv-welcome-tap" type="button" hidden>Tap to hear a welcome ▶</button><button class="mtv-welcome-next" type="button">Enter website ›</button></div>
+   <div class="mtv-welcome" hidden><video class="mtv-speech-video" src="/assets/michael-tv-welcome.mp4" preload="none" playsinline aria-hidden="true"></video><div class="mtv-welcome-label">A NOTE FROM MICHAEL</div><p class="mtv-welcome-caption" aria-live="polite">Hey.</p><button class="mtv-welcome-tap" type="button" hidden>Tap to hear a welcome ▶</button><button class="mtv-welcome-next" type="button">Enter website ›</button></div>
    <div class="mtv-idle">
     <div class="mtv-title">MICHAEL TV</div>
     <p class="mtv-tagline">The world is changing. I plan to help build what's next.</p>
@@ -57,22 +65,43 @@
  const welcomeCaption=dialog.querySelector('.mtv-welcome-caption');
  const welcomeTap=dialog.querySelector('.mtv-welcome-tap');
  const welcomeNext=dialog.querySelector('.mtv-welcome-next');
+ const welcomeVideo=dialog.querySelector('.mtv-speech-video');
+ let activeWelcomeMedia=welcomeVideo;
  let captionTicker=0;
- const stopWelcome=()=>{clearInterval(captionTicker);welcomeVoice.pause();welcomeVoice.currentTime=0;welcomePanel.hidden=true;};
+ const stopWelcome=()=>{
+   clearInterval(captionTicker);
+   for(const media of [welcomeVoice,welcomeVideo]){
+     try{media.pause();media.currentTime=0}catch{}
+   }
+   welcomePanel.hidden=true;
+ };
  const playWelcome=()=>{
-   welcomeVoice.currentTime=0;
-   welcomeVoice.play().then(()=>{
+   // User's uploaded speech video is played inside Michael TV; audio-only is fallback.
+   activeWelcomeMedia=welcomeVideo;
+   const begin=(media)=>{
+     try{media.currentTime=0}catch{}
+     return media.play();
+   };
+   Promise.resolve(begin(welcomeVideo)).catch(()=>{
+     activeWelcomeMedia=welcomeVoice;
+     return begin(welcomeVoice);
+   }).then(()=>{
      try{sessionStorage.setItem(WELCOME_KEY,'1')}catch{}
      welcomeTap.hidden=true;
      clearInterval(captionTicker);
-     captionTicker=setInterval(()=>{for(const [at,line] of captions)if(welcomeVoice.currentTime>=at)welcomeCaption.textContent=line},150);
-   }).catch(()=>{welcomeTap.hidden=false;welcomeCaption.textContent='Tap to hear my welcome.'});
+     captionTicker=setInterval(()=>{
+       for(const [at,line] of captions)
+         if(activeWelcomeMedia.currentTime>=at)welcomeCaption.textContent=line;
+     },200);
+   }).catch(()=>{
+     welcomeTap.hidden=false;
+     welcomeCaption.textContent='Tap to hear my welcome.';
+   });
  };
  const startWelcome=()=>{
    if(!active||exiting)return;
    try{player?.stopVideo?.()}catch{}
-   let heard=false;try{heard=sessionStorage.getItem(WELCOME_KEY)==='1'}catch{}
-   if(heard){finish('already-heard');return}
+   // A deliberate replay includes the whole introduction, including the new speech.
    clearTimeout(maxDeadline);maxDeadline=0;
    welcomePanel.hidden=false;dialog.classList.add('mtv-welcome-active');
    welcomeCaption.textContent='Hey.';
@@ -80,7 +109,13 @@
  };
  welcomeTap.addEventListener('click',playWelcome);
  welcomeNext.addEventListener('click',()=>finish('welcome-skip'));
- welcomeVoice.addEventListener('ended',()=>{if(active&&!exiting)startOutro()});
+ welcomeVoice.addEventListener('ended',()=>{if(active&&!exiting&&activeWelcomeMedia===welcomeVoice)startOutro()});
+ welcomeVideo.addEventListener('ended',()=>{if(active&&!exiting&&activeWelcomeMedia===welcomeVideo)startOutro()});
+ welcomeVideo.addEventListener('error',()=>{
+   if(!active||exiting||welcomePanel.hidden||activeWelcomeMedia!==welcomeVideo)return;
+   activeWelcomeMedia=welcomeVoice;
+   welcomeVoice.play().catch(()=>{welcomeTap.hidden=false});
+ });
  const screen=dialog.querySelector('.mtv-screen');
  const playBtn=dialog.querySelector('.mtv-play');
  const muteBtn=dialog.querySelector('.mtv-mute');

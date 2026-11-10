@@ -65,14 +65,14 @@
   document.body.append(intro);
   const voice=add('div',{className:'mk-mobile-voice',hidden:true});
   voice.setAttribute('role','dialog');voice.setAttribute('aria-label','Welcome recording');
-  voice.innerHTML='<strong>Michael TV</strong><div><button class="mk-mobile-voice-toggle" type="button">Pause</button><button class="mk-mobile-voice-replay" type="button">Replay</button><button class="mk-mobile-voice-close" type="button">Close</button></div><details><summary>Transcript</summary><p>Hey. I\'m Michael. Welcome to my website. Hopefully you think the website\'s pretty cool. I think it\'s pretty cool. Don\'t spend too much time on here, you know, snooping around. But enjoy.</p></details>';
+  voice.innerHTML='<strong>Michael TV</strong><div><button class="mk-mobile-voice-toggle" type="button">Pause</button><button class="mk-mobile-voice-replay" type="button">Replay</button><button class="mk-mobile-voice-close" type="button">Close</button></div><details><summary>Transcript</summary><p>Hey, I\'m Michael. Welcome to my little corner of the internet. I\'m a software engineer passionate about using software engineering, data science, and artificial intelligence to drive innovation across industries and solve real-world problems. I love working at the intersection of finance and technology, building solutions that solve real-world complex problems. This site reflects the projects I\'m building, the experiences I\'ve had, and the ambitions I\'m working towards. I think technology has the power to change finance, and I\'m absolutely determined to be part of that change. But anyway, enough about me. Go have a look around, have a little wander, and enjoy the show.</p></details>';
   document.body.append(voice);
   let audio;
   const finish=()=>{try{sessionStorage.setItem(KEY,'1')}catch{}intro.classList.add('is-leaving');setTimeout(()=>intro.remove(),210);};
   $('.mk-mobile-skip',intro).addEventListener('click',finish);
   $('.mk-mobile-play',intro).addEventListener('click',()=>{
    // Invoke play synchronously from user gesture, never from a timer.
-   audio=new Audio('/audio/welcome.m4a');audio.preload='none';
+   audio=new Audio('/audio/welcome.m4a?v=2');audio.preload='none';
    audio.addEventListener('error',()=>{voice.hidden=true;},{once:true});
    audio.addEventListener('ended',()=>{voice.hidden=true;},{once:true});
    const playback=audio.play();
