@@ -82,3 +82,34 @@ body.tv-mode #main-content.tv-stage .tv-page.is-active.tv-mobile-enter-back{anim
  body.tv-mode #main-content.tv-stage .tv-page:not(.is-active) *{animation-play-state:paused!important}
  body.tv-mode #main-content.tv-stage .tv-static{display:none!important}
 }
+
+/* TV shutter for the reduced-motion crossfade; hidden at rest. */
+body.tv-mode #main-content.tv-stage .tv-fade-shutter{
+ position:absolute;inset:0;z-index:59;background:#0e0b1c;
+ opacity:0;pointer-events:none;
+}
+/* Home uses the underlying 3D globe at 128% card height, clipped by TV bezel. */
+body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen){
+ width:97%!important;height:128%!important;top:-13%!important;right:-14%!important;
+ bottom:auto!important;left:auto!important;
+}
+body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-gradient{
+ background:linear-gradient(90deg,#0e0b1c 18%,rgba(14,11,28,.78) 40%,rgba(14,11,28,.2) 60%,transparent 70%)!important;
+}
+body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-vision{
+ right:5%!important;top:8%!important;
+}
+body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .demo-hero-identity{
+ display:flex!important;align-items:center!important;flex-direction:row!important;
+}
+body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .demo-hero-identity .hero-headshot{
+ box-shadow:0 0 0 6px rgba(179,140,255,.1),0 0 48px rgba(130,78,243,.42),0 22px 58px rgba(0,0,0,.38)!important;
+}
+@media(max-width:819px){
+ body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen){
+  width:165%!important;height:82%!important;top:auto!important;bottom:-26%!important;right:-44%!important;
+ }
+ body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-gradient{
+  background:linear-gradient(180deg,#0e0b1c 18%,rgba(14,11,28,.92) 42%,rgba(14,11,28,.3) 67%,transparent 86%)!important;
+ }
+}
