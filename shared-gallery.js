@@ -117,6 +117,19 @@
      }
      root.querySelectorAll('.photo-carousel-rail').forEach(enhancement);
    });
+   // Number keys select the six Networking events while that TV channel is visible.
+   // Capture at window before the bezel's global 1-9 channel handler.
+   window.addEventListener('keydown',event=>{
+     if(event.defaultPrevented||event.repeat||event.ctrlKey||event.altKey||event.metaKey||event.shiftKey)return;
+     const network=document.getElementById('networking');
+     if(!network?.closest('.tv-page.is-active')||event.target.closest('dialog,input,textarea,select,[contenteditable]'))return;
+     const index=Number(event.key)-1;
+     if(!Number.isInteger(index)||index<0||index>=6)return;
+     const target=network.querySelectorAll('.network-carousel-tabs button')[index];
+     if(!target)return;
+     event.preventDefault();event.stopImmediatePropagation();
+     target.click();
+   },true);
    // Channel moves original DOM nodes. Activate an unseen rail on the new channel.
    document.addEventListener('portfolio:channel-change',()=>{
      pages.forEach(p=>p.root?.querySelectorAll('.photo-carousel-rail').forEach(enhancement));
