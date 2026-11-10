@@ -1,0 +1,163 @@
+/* The Person Behind the Code: unified editorial page-title system.
+   Visual changes only. All authored headings, titles and section anchors remain intact. */
+:root{
+  --editorial-ink:#24222c;
+  --editorial-violet:#aa73db;
+  --editorial-pink:#e0b4ff;
+  --editorial-paper:#fcf9ff;
+}
+/* Main page headers only: smaller card, album, job and project titles retain their hierarchy. */
+:is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero,
+#skills .sectionhead,
+#contact .mk-connect-left .page-hero{
+  position:relative!important;
+  isolation:isolate;
+  width:100%!important;max-width:100%!important;
+  padding:clamp(23px,3vw,44px) clamp(18px,3.3vw,46px)!important;
+  margin:0 auto clamp(20px,3vw,40px)!important;
+  border:1px solid rgba(174,157,192,.24)!important;
+  border-radius:clamp(16px,1.8vw,26px)!important;
+  background:
+    radial-gradient(circle,rgba(136,116,166,.17) .65px,transparent .9px) 0 0/26px 26px,
+    linear-gradient(115deg,#faf8ff 0%,#fcf8fe 48%,#fbf2fb 100%)!important;
+  box-shadow:none!important;
+  text-align:left!important;
+  align-items:flex-start!important;
+}
+:is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero::after,
+#skills .sectionhead::after,
+#contact .mk-connect-left .page-hero::after{display:none!important}
+:is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > :is(.back,.eyebrow,p),
+#contact .mk-connect-left .page-hero > :is(.back,.eyebrow,p),
+#skills .sectionhead :is(.eyebrow,p){
+  color:#58496a!important;
+  -webkit-text-fill-color:#58496a!important;
+  text-align:left!important;margin-left:0!important;margin-right:0!important;
+  align-self:flex-start!important;
+}
+:is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > .eyebrow,
+#contact .mk-connect-left .page-hero > .eyebrow,
+#skills .sectionhead .eyebrow{
+  font:750 clamp(10px,.83vw,12px)/1.3 'Space Grotesk',sans-serif!important;
+  letter-spacing:.19em!important;text-transform:uppercase!important;
+  color:#89669c!important;-webkit-text-fill-color:#89669c!important;
+  margin:0 0 clamp(12px,1.4vw,20px)!important;
+}
+:is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > .back,
+#contact .mk-connect-left .page-hero > .back{
+  color:#5b4b69!important;-webkit-text-fill-color:#5b4b69!important;
+  display:inline-flex!important;align-self:flex-start!important;
+  text-align:left!important;width:max-content!important;
+  margin:0 0 18px!important;
+}
+:is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > h1,
+#skills .sectionhead h2.mk-animated-title,
+#contact .mk-connect-left .page-hero > h1{
+  display:flex!important;flex-wrap:wrap!important;
+  justify-content:flex-start!important;align-items:baseline!important;
+  gap:0!important;
+  width:100%!important;max-width:100%!important;
+  margin:0!important;padding:0!important;
+  font:900 clamp(48px,7.4vw,132px)/.9 'Space Grotesk',system-ui,sans-serif!important;
+  letter-spacing:-.082em!important;text-transform:uppercase!important;
+  text-wrap:balance!important;text-align:left!important;
+  color:var(--editorial-ink)!important;-webkit-text-fill-color:var(--editorial-ink)!important;
+  overflow-wrap:normal!important;word-break:normal!important;
+}
+/* Existing solid and glow spans become the two editorial lines. */
+:is(#experience,#project-details,#achievements,#hobbies) .page-hero .mk-title-solid,
+#skills .sectionhead .mk-title-solid,
+#contact .mk-connect-left .page-hero .mk-title-solid{
+  flex:0 0 100%!important;width:100%!important;
+  color:var(--editorial-ink)!important;
+  -webkit-text-fill-color:var(--editorial-ink)!important;
+  background:none!important;filter:none!important;text-shadow:none!important;
+}
+:is(#experience,#project-details,#achievements,#hobbies,#listening-reading) .page-hero .mk-title-glow,
+#skills .sectionhead .mk-title-glow,
+#contact .mk-connect-left .page-hero .mk-title-glow{
+  color:var(--editorial-violet)!important;
+  background:linear-gradient(92deg,#b77ce8 0%,#dfb6ff 48%,#a16bd1 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  filter:none!important;text-shadow:none!important;
+  font:inherit!important;letter-spacing:inherit!important;text-transform:inherit!important;
+}
+:is(#experience,#project-details,#achievements,#hobbies,#listening-reading,#networking) .page-hero h1 .highlight,
+#contact .mk-connect-left .page-hero h1 .highlight{
+  color:#a76bd5!important;-webkit-text-fill-color:#a76bd5!important;
+  background:none!important;font:inherit!important;letter-spacing:inherit!important;
+}
+/* Single-word headings have no black first phrase in the existing copy. */
+#networking .page-hero > h1,
+#listening-reading .page-hero > h1{
+  background:linear-gradient(92deg,#b77ce8 0%,#dfb6ff 48%,#a16bd1 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+}
+/* Reading's nested span and networking's ending dot stay on the same line. */
+#networking .page-hero h1 .highlight,
+#listening-reading .page-hero h1 .highlight{display:inline!important;}
+:is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > p,
+#contact .mk-connect-left .page-hero > p,
+#skills .sectionhead > p{
+  max-width:900px!important;margin:clamp(14px,1.9vw,24px) 0 0!important;
+  font:500 clamp(15px,1.05vw,18px)/1.6 'DM Sans',system-ui,sans-serif!important;
+  color:#5d5269!important;-webkit-text-fill-color:#5d5269!important;
+  text-align:left!important;
+}
+/* Match the typography of the original reference heading without altering its text. */
+#portfolio-intro-grid .mk-intro-heading h2{
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-weight:900!important;letter-spacing:-.082em!important;
+  line-height:.92!important;text-transform:uppercase!important;
+}
+#portfolio-intro-grid .mk-intro-heading h2 .mk-title-solid{
+  color:var(--editorial-ink)!important;-webkit-text-fill-color:var(--editorial-ink)!important;
+}
+#portfolio-intro-grid .mk-intro-heading h2 .mk-title-glow{
+  background:linear-gradient(90deg,#b478e5,#dfb6ff 48%,#a169d5)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+}
+/* Contact header has a narrower column than the other titles. */
+#contact .mk-connect-left .page-hero > h1{
+  font-size:clamp(42px,4.3vw,76px)!important;
+  letter-spacing:-.076em!important;
+}
+/* Home stays dark to preserve the globe; its title follows the same weight,
+   two-line split and lavender second-line treatment with a readable light first line. */
+#home .mk-unified-identity h1.mk-animated-title{
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-weight:900!important;letter-spacing:-.076em!important;
+  line-height:.98!important;text-transform:uppercase!important;
+}
+#home .mk-unified-identity h1 .mk-title-solid{
+  color:#f8f5ff!important;-webkit-text-fill-color:#f8f5ff!important;
+}
+#home .mk-unified-identity h1 .mk-title-glow{
+  background:linear-gradient(90deg,#b77ce8,#dfb6ff 50%,#a16bd1)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+}
+@media(max-width:767px){
+  :is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero,
+  #skills .sectionhead,#contact .mk-connect-left .page-hero{
+    padding:24px 16px!important;margin-bottom:24px!important;
+    border-radius:18px!important;
+  }
+  :is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > h1,
+  #skills .sectionhead h2.mk-animated-title,
+  #contact .mk-connect-left .page-hero > h1{
+    font-size:clamp(37px,9.5vw,67px)!important;
+    letter-spacing:-.075em!important;line-height:.94!important;
+  }
+  #contact .mk-connect-left .page-hero > h1{font-size:clamp(34px,8.3vw,50px)!important}
+  :is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > p,
+  #contact .mk-connect-left .page-hero > p,
+  #skills .sectionhead > p{font-size:16px!important;line-height:1.6!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  :is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero h1 *,
+  #skills .sectionhead h2 *,#contact .page-hero h1 *{animation:none!important;transition:none!important}
+}
