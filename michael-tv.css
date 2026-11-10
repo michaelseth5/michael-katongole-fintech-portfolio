@@ -96,3 +96,8 @@ dialog#mtv-intro::backdrop{background:rgba(5,4,12,.94);backdrop-filter:blur(10px
 #mtv-intro.mtv-announcing .mtv-announcement strong{animation:mtv-station-appear .75s cubic-bezier(.2,.8,.2,1) both;}
 @keyframes mtv-station-appear{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){#mtv-intro.mtv-announcing .mtv-announcement strong{animation:none!important}}
+
+/* Ensure the longer live announcement remains legible on small TV screens. */
+#mtv-intro .mtv-announcement strong{font-size:clamp(25px,4.7vw,72px);max-width:100%;overflow-wrap:normal;}
+#mtv-intro .mtv-announcement-live{display:inline-block;font-size:.7em;color:#f5eaff;letter-spacing:.015em;}
+@media(max-width:600px){#mtv-intro .mtv-announcement{padding:20px 12px;gap:14px}#mtv-intro .mtv-announcement strong{font-size:clamp(20px,5.8vw,36px);line-height:1.16}#mtv-intro .mtv-announcement-kicker,#mtv-intro .mtv-announcement-station{font-size:10px;letter-spacing:.13em}}
