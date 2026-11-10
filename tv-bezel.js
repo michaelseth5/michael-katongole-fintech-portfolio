@@ -5,6 +5,24 @@
  const header=document.querySelector('header.apple-topbar');
  if(!host||!header||!host.classList.contains('tv-stage'))return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ const TV_EFFECT_KEY='michael-tv-effects-enabled';
+ const effectButton=document.createElement('button');
+ effectButton.type='button';
+ effectButton.className='tv-effects-toggle';
+ const setEffects=enabled=>{
+   document.documentElement.classList.toggle('tv-effects-off',!enabled);
+   effectButton.textContent=enabled?'📺 ON':'📺 OFF';
+   effectButton.setAttribute('aria-label',enabled?'Turn TV visual effects off':'Turn TV visual effects on');
+   effectButton.setAttribute('aria-pressed',String(enabled));
+   effectButton.title=enabled?'Disable TV effects':'Enable TV effects';
+   try{localStorage.setItem(TV_EFFECT_KEY,enabled?'1':'0')}catch{}
+ };
+ let effectsEnabled=true;
+ try{effectsEnabled=localStorage.getItem(TV_EFFECT_KEY)!=='0'}catch{}
+ setEffects(effectsEnabled);
+ effectButton.addEventListener('click',()=>setEffects(effectButton.getAttribute('aria-pressed')!=='true'));
+ document.body.appendChild(effectButton);
+
  const channelNames=['HOME','PROJECTS','EXPERIENCE','SKILLS','MILESTONES','NETWORKING','READING','HOBBIES','CONTACT'];
  const channelKeys=['home','projects','experience','skills','milestone','networking','reading','hobbies','contact'];
  const bezel=document.createElement('div');
