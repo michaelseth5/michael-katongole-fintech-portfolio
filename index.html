@@ -2427,27 +2427,62 @@ main{
  </section>
 </div></section></section></main>
 <style>
-/* Quiet editorial quotation band between the contact section and footer. */
-.mk-footer-quotes{background:linear-gradient(180deg,#1a102a 0%,#1d142c 100%);border-top:1px solid rgba(190,143,241,.14);padding:32px 0 40px;color:#eee8f7}
-.mk-footer-quotes-inner{max-width:1180px;margin:0 auto;padding:0 24px}
-.mk-footer-quotes-kicker{font:700 10px 'Space Grotesk',Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#bda3d6;margin:0 0 19px}
-.mk-footer-quotes-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.mk-footer-quote{margin:0;padding:0 22px 0 0;border-right:1px solid rgba(191,155,224,.22)}
-.mk-footer-quote:last-child{border-right:0}
-.mk-footer-quote blockquote{padding:0;margin:0 0 12px;color:#f0eaf8;font:500 clamp(14px,1.38vw,17px)/1.55 'Space Grotesk',Arial,sans-serif;letter-spacing:-.01em}
-.mk-footer-quote figcaption{font:600 11px/1.5 Inter,Arial,sans-serif;color:#b49fc7}
-@media(max-width:740px){.mk-footer-quotes{padding:26px 0 30px}.mk-footer-quotes-grid{grid-template-columns:1fr;gap:18px}.mk-footer-quote{border-right:0;border-bottom:1px solid rgba(191,155,224,.18);padding:0 0 16px}.mk-footer-quote:last-child{border-bottom:0;padding-bottom:0}}
+/* One-quote-at-a-time carousel, tucked into the gap above the footer. */
+.mk-footer-quotes{background:linear-gradient(180deg,#1a102a 0%,#1d142c 100%);border-top:1px solid rgba(190,143,241,.14);padding:32px 0 35px;color:#eee8f7}
+.mk-footer-quotes-inner{max-width:1180px;margin:0 auto;padding:0 24px;text-align:center}
+.mk-footer-quotes-kicker{font:700 10px 'Space Grotesk',Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#bda3d6;margin:0 0 18px}
+.mk-footer-quote-stage{display:grid;align-items:center;min-height:118px;max-width:900px;margin:0 auto}
+.mk-footer-quote{grid-area:1/1;min-width:0;margin:0;opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .65s ease,transform .65s ease,visibility .65s}
+.mk-footer-quote.is-active{opacity:1;visibility:visible;transform:translateY(0)}
+.mk-footer-quote blockquote{padding:0;margin:0 0 12px;color:#f0eaf8;font:500 clamp(16px,2vw,23px)/1.5 'Space Grotesk',Arial,sans-serif;letter-spacing:-.025em}
+.mk-footer-quote figcaption{font:600 12px/1.5 Inter,Arial,sans-serif;color:#b49fc7}
+.mk-footer-quote-controls{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:12px}
+.mk-footer-quote-controls button{display:grid;place-items:center;cursor:pointer;border:1px solid rgba(191,155,224,.26);background:rgba(170,120,209,.08);color:#e6daf4;border-radius:50%;width:29px;height:29px;font-size:17px;transition:background .2s,border-color .2s}
+.mk-footer-quote-controls button:hover,.mk-footer-quote-controls button:focus-visible{background:rgba(170,120,209,.22);border-color:#c19ce0}
+.mk-footer-quote-count{font:600 11px 'Space Grotesk',Arial,sans-serif;color:#ac99bf;min-width:43px}
+@media(max-width:740px){.mk-footer-quotes{padding:25px 0 29px}.mk-footer-quote-stage{min-height:150px}.mk-footer-quote blockquote{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.mk-footer-quote{transition:none;transform:none}}
 </style>
 <section class="mk-footer-quotes" aria-label="Quotes that inspire me">
  <div class="mk-footer-quotes-inner">
   <p class="mk-footer-quotes-kicker">Words I live by</p>
-  <div class="mk-footer-quotes-grid">
-   <figure class="mk-footer-quote"><blockquote>“The only way to do great work is to love what you do.”</blockquote><figcaption>— Steve Jobs</figcaption></figure>
-   <figure class="mk-footer-quote"><blockquote>“The harder I work, the luckier I get.”</blockquote><figcaption>— Samuel Goldwyn (commonly attributed)</figcaption></figure>
-   <figure class="mk-footer-quote"><blockquote>Focus on what you need to do right now, not on winning the championship.</blockquote><figcaption>— Nick Saban (paraphrased)</figcaption></figure>
+  <div class="mk-footer-quote-stage" id="mk-footer-quote-stage">
+   <figure class="mk-footer-quote is-active"><blockquote>“The only way to do great work is to love what you do.”</blockquote><figcaption>— Steve Jobs</figcaption></figure>
+   <figure class="mk-footer-quote" aria-hidden="true"><blockquote>“The harder I work, the luckier I get.”</blockquote><figcaption>— Samuel Goldwyn (commonly attributed)</figcaption></figure>
+   <figure class="mk-footer-quote" aria-hidden="true"><blockquote>Focus on what you need to do right now, not on winning the championship.</blockquote><figcaption>— Nick Saban (paraphrased)</figcaption></figure>
+  </div>
+  <div class="mk-footer-quote-controls" aria-label="Quote controls">
+   <button type="button" class="mk-footer-quote-prev" aria-label="Previous quote">‹</button>
+   <span class="mk-footer-quote-count" aria-label="Quote number">01 / 03</span>
+   <button type="button" class="mk-footer-quote-next" aria-label="Next quote">›</button>
   </div>
  </div>
 </section>
+<script>
+(()=>{
+ const section=document.querySelector('.mk-footer-quotes');
+ if(!section)return;
+ const quotes=[...section.querySelectorAll('.mk-footer-quote')];
+ const count=section.querySelector('.mk-footer-quote-count');
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let index=0,timer=null;
+ function show(n){
+  index=(n+quotes.length)%quotes.length;
+  quotes.forEach((q,i)=>{const active=i===index;q.classList.toggle('is-active',active);q.setAttribute('aria-hidden',String(!active));});
+  count.textContent=String(index+1).padStart(2,'0')+' / '+String(quotes.length).padStart(2,'0');
+ }
+ function stop(){if(timer!==null){clearInterval(timer);timer=null;}}
+ function start(){stop();if(reduced||document.hidden||section.matches(':hover')||section.contains(document.activeElement))return;timer=setInterval(()=>show(index+1),6000);}
+ section.querySelector('.mk-footer-quote-prev').addEventListener('click',()=>{show(index-1);start();});
+ section.querySelector('.mk-footer-quote-next').addEventListener('click',()=>{show(index+1);start();});
+ section.addEventListener('mouseenter',stop);
+ section.addEventListener('mouseleave',start);
+ section.addEventListener('focusin',stop);
+ section.addEventListener('focusout',()=>setTimeout(start,0));
+ document.addEventListener('visibilitychange',start);
+ start();
+})();
+</script>
 <div class="mk-footer-band"><footer class="container foot mk-footer"><span>© 2026 Michael Seth Katongole</span><div aria-label="Social profile links" class="mk-socials mk-socials-footer" role="group"><a aria-label="Email - Michael Katongole" class="mk-social-link mk-social-email" href="mailto:MichaelKatongole5@gmail.com"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="mk-social-word">Email</span></a><a aria-label="GitHub - Michael Katongole" class="mk-social-link mk-social-github" href="https://github.com/michaelseth5" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 3.77 5.07 5.07 0 0 0 18.91 0S17.73-.35 15 2a13.38 13.38 0 0 0-7 0C5.27-.35 4.09 0 4.09 0A5.07 5.07 0 0 0 4 3.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 17.13V21"></path></svg><span class="mk-social-word">GitHub</span></a><a aria-label="LinkedIn - Michael Katongole" class="mk-social-link mk-social-linkedin" href="https://www.linkedin.com/in/michael-k-65b1a8222/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24"><rect height="20" rx="3" width="20" x="2" y="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7h3v1.3a3 3 0 0 1 5 2.6V17"></path></svg><span class="mk-social-word">LinkedIn</span></a></div><span class="mk-footer-tagline">Built for human connection and financial data.</span></footer></div><dialog aria-label="Presentation viewer" class="deck-viewer" id="deck-viewer"><div class="deck-viewer-head"><strong id="deck-title">Presentation</strong><div class="deck-viewer-actions"><a href="#" id="deck-open" rel="noopener" target="_blank">Open PDF ↗</a><button id="deck-close" type="button">Close ✕</button></div></div><iframe id="deck-frame" loading="lazy" title="Project presentation"></iframe></dialog>
 <script>
 (()=>{
