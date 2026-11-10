@@ -28,6 +28,7 @@
    <div class="mtv-video" aria-label="Introduction video"><div class="mtv-video-ratio"><div id="mtv-youtube-player"></div></div></div>
    <div class="mtv-idle">
     <div class="mtv-title">MICHAEL TV</div>
+    <p class="mtv-tagline">The world is changing. I plan to help build what's next.</p>
     <button class="mtv-play" type="button" aria-label="Play intro">PRESS PLAY ▶</button>
    </div>
    <span class="mtv-top-left mtv-idle-label" aria-live="polite">VIDEO 1</span>
