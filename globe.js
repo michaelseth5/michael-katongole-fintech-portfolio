@@ -57,7 +57,7 @@
   const hero = wrap.closest('.hero');
   if (hero) {
     hero.classList.add('gf-hero-safe-layout');
-    hero.append(panel); // The stats rail is a separate HERO item, outside .globe-wrap.
+    hero.append(panel); // Glass trade statistics remain docked inside the clipped hero card.
   } else {
     // Defensive fallback for a standalone globe embedded outside the homepage hero.
     wrap.insertAdjacentElement('afterend', panel);
@@ -159,19 +159,21 @@
         usd: route.usd, flow: route.flow
       };
     });
-    state.globe.arcsData(arcs)
-      .arcColor(route => route.flow === 'X' ? ['#19ca73', '#82f4b3'] : ['#ff5369', '#ff9b9f'])
-      .arcStroke(route => .22 + 2 * Math.sqrt(route.usd / max))
+    // Preserve each reported trade corridor and overlay a small traveling highlight.
+    const movingDots = reducedMotion ? [] : arcs.map(route => ({...route, movingDot: true}));
+    state.globe.arcsData([...arcs, ...movingDots])
+      .arcColor(route => route.movingDot ? '#f8efff' : (route.flow === 'X' ? ['#19ca73', '#82f4b3'] : ['#ff5369', '#ff9b9f']))
+      .arcStroke(route => route.movingDot ? 2.8 : .22 + 2 * Math.sqrt(route.usd / max))
       .arcAltitudeAutoScale(.33)
-      .arcDashLength(reducedMotion ? 1 : .17)
-      .arcDashGap(reducedMotion ? 0 : .62)
-      .arcDashAnimateTime(reducedMotion ? 0 : 2100)
+      .arcDashLength(route => route.movingDot ? .014 : 1)
+      .arcDashGap(route => route.movingDot ? .986 : 0)
+      .arcDashAnimateTime(route => route.movingDot ? 3300 : 0)
       .arcLabel(route => html(route.source) + ' → ' + html(route.destination) +
         '<br><b>' + money(route.usd) + '</b> · reported ' +
         (route.flow === 'X' ? 'exports' : 'imports') + ' · ' + year +
         '<br>UN Comtrade · USD (merchandise trade)');
     status.textContent = state.message || (
-      'Drag to rotate · scroll to zoom · ' + arcs.length + ' annual corridors');
+      'Drag to explore · hover to pause');
   }
 
   async function getGDP(feature) {
