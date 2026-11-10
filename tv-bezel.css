@@ -160,3 +160,29 @@ body.tv-mode .tv-hardware .tv-sony-wordmark{
  body.tv-mode .tv-hardware .tv-brand{width:49px!important;height:21px!important;padding:4px!important}
  body.tv-mode .tv-hardware .tv-sony-wordmark{width:41px!important}
 }
+
+/* Nav size refinement: 15 percent larger without clipping the TV screen. */
+body.tv-mode .tv-hardware>.apple-topbar{
+ height:55px!important;
+}
+body.tv-mode .tv-hardware #apple-navlinks{
+ min-height:49.5px!important;
+ padding:4.6px!important;
+ max-width:calc(100vw - 50px)!important;
+}
+body.tv-mode .tv-hardware #apple-navlinks a{
+ font-size:clamp(11.5px,1.0465vw,14.95px)!important;
+ padding:11.5px clamp(8.05px,1.15vw,17.25px)!important;
+ white-space:nowrap!important;
+}
+body.tv-mode .tv-hardware #apple-nav-indicator{
+ top:4.6px!important;height:calc(100% - 9.2px)!important;
+}
+@media(max-width:819px){
+ body.tv-mode .tv-hardware>.apple-topbar{height:55px!important}
+ body.tv-mode .tv-hardware #apple-navlinks{max-width:calc(100vw - 22px)!important}
+ body.tv-mode .tv-hardware #apple-navlinks a{
+  font-size:clamp(11.5px,2.6vw,14px)!important;
+  padding:11.5px 9px!important;
+ }
+}
