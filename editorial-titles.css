@@ -161,3 +161,57 @@
   :is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero h1 *,
   #skills .sectionhead h2 *,#contact .page-hero h1 *{animation:none!important;transition:none!important}
 }
+
+/* Priority overrides for pre-existing TV-channel heading rules.
+   Preserve the screenshot's uppercase proportions and line hierarchy. */
+body.tv-mode #main-content.tv-stage :is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > h1,
+body.tv-mode #main-content.tv-stage #skills .sectionhead h2.mk-animated-title,
+body.tv-mode #main-content.tv-stage #contact .mk-connect-left .page-hero > h1{
+  display:flex!important;flex-wrap:wrap!important;align-items:baseline!important;
+  justify-content:flex-start!important;gap:0!important;
+  font-family:'Space Grotesk',system-ui,sans-serif!important;
+  font-size:clamp(48px,7.4vw,132px)!important;
+  font-weight:900!important;line-height:.9!important;letter-spacing:-.082em!important;
+  text-align:left!important;text-transform:uppercase!important;
+  background:none!important;color:#24222c!important;-webkit-text-fill-color:#24222c!important;
+  text-shadow:none!important;filter:none!important;
+}
+body.tv-mode #main-content.tv-stage :is(#experience,#project-details,#achievements,#hobbies) .page-hero > h1 .mk-title-solid,
+body.tv-mode #main-content.tv-stage #skills .sectionhead h2 .mk-title-solid,
+body.tv-mode #main-content.tv-stage #contact .page-hero > h1 .mk-title-solid{
+  display:block!important;flex:0 0 100%!important;
+  color:#24222c!important;-webkit-text-fill-color:#24222c!important;
+  background:none!important;
+}
+body.tv-mode #main-content.tv-stage :is(#experience,#project-details,#achievements,#hobbies,#listening-reading) .page-hero > h1 .mk-title-glow,
+body.tv-mode #main-content.tv-stage #skills .sectionhead h2 .mk-title-glow,
+body.tv-mode #main-content.tv-stage #contact .page-hero > h1 .mk-title-glow{
+  display:inline!important;
+  background:linear-gradient(92deg,#b77ce8 0%,#dfb6ff 48%,#a16bd1 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  color:#b77ce8!important;-webkit-text-fill-color:transparent!important;
+  text-shadow:none!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero > h1,
+body.tv-mode #main-content.tv-stage #listening-reading .page-hero > h1{
+  background:linear-gradient(92deg,#b77ce8,#dfb6ff 48%,#a16bd1)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+}
+body.tv-mode #main-content.tv-stage #networking .page-hero > h1 .highlight,
+body.tv-mode #main-content.tv-stage #listening-reading .page-hero > h1 .highlight{
+  -webkit-text-fill-color:#a76bd5!important;background:none!important;
+}
+body.tv-mode #main-content.tv-stage #contact .mk-connect-left .page-hero > h1 {
+  font-size:clamp(42px,4.3vw,76px)!important;
+}
+@media(max-width:767px){
+  body.tv-mode #main-content.tv-stage :is(#experience,#project-details,#achievements,#hobbies,#networking,#listening-reading) .page-hero > h1,
+  body.tv-mode #main-content.tv-stage #skills .sectionhead h2.mk-animated-title,
+  body.tv-mode #main-content.tv-stage #contact .mk-connect-left .page-hero > h1{
+    font-size:clamp(37px,9.5vw,67px)!important;line-height:.94!important;
+  }
+  body.tv-mode #main-content.tv-stage #contact .mk-connect-left .page-hero > h1 {
+    font-size:clamp(34px,8.3vw,50px)!important;
+  }
+}
