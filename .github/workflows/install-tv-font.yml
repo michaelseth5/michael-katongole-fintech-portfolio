@@ -1,0 +1,39 @@
+name: Self-host VT323 channel display font
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/install-tv-font.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch the open-licensed VT323 font
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import urlopen
+          url = 'https://raw.githubusercontent.com/google/fonts/main/ofl/vt323/VT323-Regular.ttf'
+          target = Path('assets/fonts/VT323-Regular.ttf')
+          target.parent.mkdir(parents=True,exist_ok=True)
+          with urlopen(url,timeout=40) as resource:
+              data=resource.read()
+          assert data.startswith(b'\x00\x01\x00\x00') and len(data)>10000, 'Unexpected font file'
+          target.write_bytes(data)
+          print(f'Created {target} ({len(data)} bytes)')
+          PY
+      - name: Commit the self-hosted font
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/fonts/VT323-Regular.ttf
+          if ! git diff --cached --quiet; then
+            git commit -m "Add self-hosted VT323 font for Michael TV display"
+            git push origin HEAD:main
+          fi
