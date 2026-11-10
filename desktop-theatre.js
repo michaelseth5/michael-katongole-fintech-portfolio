@@ -6,7 +6,7 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const ONCE_KEY = 'michael-tv-spotlight-shown-v2';
   const CURTAIN_MS = 1200;
-  const LIGHT_MS = 5000;
+  const LIGHT_MS = 7000;
   let scene = null, spotlight = null, raf = 0;
   let curtainTimer = 0, endTimer = 0, fallbackTimer = 0;
   let started = false, lighting = false;
@@ -68,7 +68,7 @@
     updateTarget();
     if (!spotlight) return;
     lighting = true;
-    // The spotlight clock runs for exactly 5000 ms, regardless of curtain timing.
+    // The spotlight clock runs for exactly 7000 ms, regardless of curtain timing.
     spotlight.classList.add('is-running');
     endTimer = setTimeout(stopEffects,LIGHT_MS);
   }

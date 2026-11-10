@@ -45,7 +45,7 @@
     opacity:0;contain:layout paint;
   }
   .mk-stage-spotlight.is-running {
-    animation:mk-stage-five-second 5000ms linear both;
+    animation:mk-stage-five-second 7000ms linear both;
   }
   .mk-stage-blackout {
     position:absolute;inset:0;
@@ -92,8 +92,8 @@
   }
   @keyframes mk-stage-five-second {
     0% {opacity:0}
-    10% {opacity:1}
-    80% {opacity:1}
+    7.142857% {opacity:1}
+    57.142857% {opacity:1}
     100% {opacity:0}
   }
 }
