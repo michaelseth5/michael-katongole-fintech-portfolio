@@ -60,7 +60,7 @@ body.tv-mode .tv-hardware .tv-osd{
  opacity:.6;transform-origin:100% 0;transition:opacity .48s ease,transform .55s cubic-bezier(.2,.8,.2,1);
  filter:drop-shadow(0 0 8px rgba(110,231,160,.3));
 }
-body.tv-mode .tv-hardware .tv-osd strong{display:block;font:400 18px/1 "MichaelVT323",ui-monospace,monospace;letter-spacing:.12em;white-space:nowrap}
+body.tv-mode .tv-hardware .tv-osd strong{display:block;font:400 18px/1 "MichaelVT323",ui-monospace,monospace;letter-spacing:.12em;white-space:nowrap;transition:font-size .55s cubic-bezier(.2,.8,.2,1)}
 body.tv-mode .tv-hardware .tv-osd span{display:block;font:400 16px/1.25 "MichaelVT323",ui-monospace,monospace;letter-spacing:.07em;opacity:0;max-height:0;overflow:hidden}
 body.tv-mode .tv-hardware .tv-osd.is-expanded{opacity:1;transform:translate(0,0)}
 body.tv-mode .tv-hardware .tv-osd.is-expanded strong{font-size:clamp(40px,5vw,64px)}
@@ -107,6 +107,7 @@ body.tv-mode .tv-hardware .tv-power:focus-visible .tv-power-light{box-shadow:0 0
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home{display:flex!important;flex-direction:column;justify-content:flex-start}
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home>#home{min-height:100%!important}
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>section{min-height:100%!important}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>#contact{display:flex!important;align-items:safe center!important}
 @media(max-width:819px){
  body.tv-mode .tv-hardware{inset:5px;border-radius:29px}
  body.tv-mode .tv-hardware::after{inset:72px 8px 55px;border-radius:18px}
@@ -125,6 +126,7 @@ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>sect
  body.tv-mode .tv-hardware #main-content.tv-stage{transition:opacity .25s ease!important;transform:none!important}
  body.tv-mode .tv-hardware.is-powered-off #main-content.tv-stage{opacity:0!important}
  body.tv-mode .tv-hardware .tv-osd{transition:opacity .18s ease!important}
+ body.tv-mode .tv-hardware .tv-osd strong{transition:none!important}
  body.tv-mode .tv-hardware .tv-screen-glass::after{animation:none!important}
  body.tv-mode .tv-hardware .tv-no-signal{transition:none!important}
 }
