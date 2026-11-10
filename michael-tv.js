@@ -6,9 +6,14 @@
  const VID='OT9HsNszYCI';
  const COUCH_VIDEO='BhUG_YEAmsc';
  const COUCH_DURATION=10;
+ const welcomeVoice=new Audio('/audio/welcome.m4a');
+ welcomeVoice.preload='auto';
+ const WELCOME_KEY='michael-tv-welcome-played-v1';
+ const captions=[[0,'Hey.'],[1.2,"I'm Michael. Welcome to my website."],[3.7,"Hopefully you think the website's pretty cool. I think it's pretty cool."],[7.7,"Don't spend too much time on here, you know, snooping around."],[11,'But enjoy.']];
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let previouslySeen=false;
  try{previouslySeen=sessionStorage.getItem(KEY)==='1'}catch{}
+ const unlockVoice=()=>{welcomeVoice.play().then(()=>{welcomeVoice.pause();welcomeVoice.currentTime=0}).catch(()=>{});};
  const footer=document.querySelector('.mk-footer');
  if(footer && !footer.querySelector('.mtv-replay')){
    const link=document.createElement('a');
@@ -30,6 +35,7 @@
    <div class="mtv-video" aria-label="Introduction video"><div class="mtv-video-ratio"><div id="mtv-youtube-player"></div></div></div>
    <div class="mtv-handoff" aria-hidden="true"><div class="mtv-handoff-art"><span class="mtv-handoff-kicker">NOW PLAYING</span><strong>MICHAEL TV</strong><span class="mtv-handoff-detail">TAPE 02 · TRACKING</span></div></div>
    <div class="mtv-announcement" aria-live="polite" aria-label="You’re watching the next big global FinTech SWE Engineer in real time!"><span class="mtv-announcement-kicker">YOU’RE WATCHING</span><strong>THE NEXT BIG GLOBAL<br><em>FINTECH SWE ENGINEER</em><br><span class="mtv-announcement-live">IN REAL TIME!</span></strong><span class="mtv-announcement-station">MICHAEL TV · WORLDWIDE</span></div>
+   <div class="mtv-welcome" hidden><div class="mtv-welcome-label">A NOTE FROM MICHAEL</div><p class="mtv-welcome-caption" aria-live="polite">Hey.</p><button class="mtv-welcome-tap" type="button" hidden>Tap to hear a welcome ▶</button><button class="mtv-welcome-next" type="button">Enter website ›</button></div>
    <div class="mtv-idle">
     <div class="mtv-title">MICHAEL TV</div>
     <p class="mtv-tagline">The world is changing. I plan to help build what's next.</p>
@@ -46,6 +52,33 @@
    <canvas class="mtv-noise" width="192" height="108" aria-hidden="true"></canvas>
   </div>`;
  document.body.appendChild(dialog);
+ const welcomePanel=dialog.querySelector('.mtv-welcome');
+ const welcomeCaption=dialog.querySelector('.mtv-welcome-caption');
+ const welcomeTap=dialog.querySelector('.mtv-welcome-tap');
+ const welcomeNext=dialog.querySelector('.mtv-welcome-next');
+ let captionTicker=0;
+ const stopWelcome=()=>{clearInterval(captionTicker);welcomeVoice.pause();welcomeVoice.currentTime=0;welcomePanel.hidden=true;};
+ const playWelcome=()=>{
+   welcomeVoice.currentTime=0;
+   welcomeVoice.play().then(()=>{
+     try{sessionStorage.setItem(WELCOME_KEY,'1')}catch{}
+     welcomeTap.hidden=true;
+     clearInterval(captionTicker);
+     captionTicker=setInterval(()=>{for(const [at,line] of captions)if(welcomeVoice.currentTime>=at)welcomeCaption.textContent=line},150);
+   }).catch(()=>{welcomeTap.hidden=false;welcomeCaption.textContent='Tap to hear my welcome.'});
+ };
+ const startWelcome=()=>{
+   if(!active||exiting)return;
+   try{player?.stopVideo?.()}catch{}
+   let heard=false;try{heard=sessionStorage.getItem(WELCOME_KEY)==='1'}catch{}
+   if(heard){finish('already-heard');return}
+   welcomePanel.hidden=false;dialog.classList.add('mtv-welcome-active');
+   welcomeCaption.textContent='Hey.';
+   playWelcome();
+ };
+ welcomeTap.addEventListener('click',playWelcome);
+ welcomeNext.addEventListener('click',()=>finish('welcome-skip'));
+ welcomeVoice.addEventListener('ended',()=>{if(active&&!exiting)finish('welcome-ended')});
  const screen=dialog.querySelector('.mtv-screen');
  const playBtn=dialog.querySelector('.mtv-play');
  const muteBtn=dialog.querySelector('.mtv-mute');
@@ -148,7 +181,7 @@
    clearRun();
    active=true;pending=false;exiting=false;playerStarted=false;trackingFinished=false;showingCouch=true;switching=false;handoffStartedAt=0;
    lastFocused=document.activeElement;
-   dialog.className='mtv-boot';
+   dialog.className='mtv-boot';welcomePanel.hidden=true;
    label.textContent='VIDEO 1';label.classList.add('mtv-idle-label');
    timecode.hidden=true;timecode.textContent='0:00:00';
    skipBtn.hidden=true;
@@ -215,7 +248,7 @@
            }else if(event.data===YT.PlayerState.ENDED){
              // Ignore a late end event from the first clip during the handoff.
              if(switching)return;
-             if(showingCouch)playMainVideo();else finish('ended');
+             if(showingCouch)playMainVideo();else startWelcome();
            }
          },
          onError:()=>finish('error')
@@ -227,6 +260,7 @@
    if(!active||pending||playerStarted||exiting)return;
    // Sound and YouTube playback only follow this explicit trusted gesture.
    pending=true;playBtn.disabled=true;
+   unlockVoice();
    soundEffects();
    dialog.classList.add('mtv-playing','mtv-announcing');
    setTimeout(()=>{if(active&&!exiting)dialog.classList.remove('mtv-announcing')},reduced.matches?1100:2700);
@@ -259,7 +293,9 @@
  };
  function finish(reason){
    if(!active||exiting)return;
+   if(reason==='ended'){startWelcome();return}
    exiting=true;pending=false;
+   stopWelcome();
    clearRun();markSeen();
    dialog.classList.remove('mtv-handoff-active');
    try{player?.stopVideo?.()}catch{}
