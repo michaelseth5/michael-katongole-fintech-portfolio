@@ -195,3 +195,15 @@ html.tv-effects-off .tv-scanlines,html.tv-effects-off .tv-static,html.tv-effects
 html.tv-effects-off .tv-hardware #main-content.tv-stage::before,html.tv-effects-off .tv-hardware::before{display:none!important}
 html.tv-effects-off .tv-hardware #main-content.tv-stage{box-shadow:none!important}
 @media(max-width:819px){.tv-effects-toggle{top:9px;left:10px;min-width:62px;min-height:34px;padding:6px 8px;font-size:10px}}
+
+/* Keep the closing quotes compact rather than stretching them to a full TV channel. */
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"]>.mk-footer-quotes{
+ min-height:0!important;height:auto!important;max-height:none!important;
+ padding:24px 0 26px!important;margin:0!important;
+ display:block!important;flex:none!important;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] .mk-footer-quote-stage{
+ min-height:76px!important;height:auto!important;margin:0 auto!important;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] .mk-footer-quotes-kicker{margin-bottom:10px!important}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] .mk-footer-quote-controls{margin-top:8px!important}
