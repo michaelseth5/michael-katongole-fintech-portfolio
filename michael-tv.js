@@ -176,7 +176,7 @@
        host:'https://www.youtube-nocookie.com',
        videoId:COUCH_VIDEO,
        width:'100%',height:'100%',
-       playerVars:{autoplay:1,controls:0,playsinline:1,rel:0,modestbranding:1,disablekb:1,fs:0,iv_load_policy:3,origin:location.origin,start:0,end:COUCH_DURATION},
+       playerVars:{autoplay:1,controls:0,playsinline:1,rel:0,modestbranding:1,disablekb:1,fs:0,iv_load_policy:3,origin:location.origin,start:0},
        events:{
          onReady:event=>{
            try{
