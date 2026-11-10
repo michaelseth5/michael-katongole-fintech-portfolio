@@ -1,7 +1,7 @@
 'use strict';
 /* Classic mobile mode. Only loaded at <=767px on a coarse pointer. */
 (() => {
- const mq=matchMedia('(max-width: 767px) and (pointer: coarse)');
+ const mq=matchMedia('(max-width: 767px)');
  if(!mq.matches)return;
  const $=(s,root=document)=>root.querySelector(s), $$=(s,root=document)=>[...root.querySelectorAll(s)];
  const main=$('#main-content'); if(!main)return;
