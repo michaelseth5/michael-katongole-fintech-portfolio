@@ -100,3 +100,37 @@
     transform: none !important;
   }
 }
+
+/* More prominent homepage contact links: readable labels and larger tap targets. */
+#home .mk-socials-top {
+  gap: 14px;
+  margin-top: 24px;
+}
+#home .mk-socials-top .mk-social-link {
+  min-height: 56px;
+  padding: 15px 22px !important;
+  gap: 11px;
+  font-size: 16px !important;
+  font-weight: 700;
+  line-height: 1.2;
+}
+#home .mk-socials-top .mk-social-link svg {
+  width: 23px;
+  height: 23px;
+}
+#home .mk-socials-top .mk-social-link:hover {
+  transform: translateY(-4px);
+}
+@media (max-width: 560px) {
+  #home .mk-socials-top { gap: 9px; }
+  #home .mk-socials-top .mk-social-link {
+    min-height: 48px;
+    padding: 11px 14px !important;
+    gap: 7px;
+    font-size: 14px !important;
+  }
+  #home .mk-socials-top .mk-social-link svg {
+    width: 19px;
+    height: 19px;
+  }
+}
