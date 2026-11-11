@@ -113,3 +113,11 @@ body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .demo-hero-identi
   background:linear-gradient(180deg,#0e0b1c 18%,rgba(14,11,28,.92) 42%,rgba(14,11,28,.3) 67%,transparent 86%)!important;
  }
 }
+
+/* Home-only: blend the welcome/feedback strip with the purple hero.
+   Leave all other channels and the classic mobile layout unchanged. */
+@media (min-width:768px) {
+  body.tv-mode #main-content.tv-stage .tv-page-home {
+    background:linear-gradient(180deg,#171026 0%,#241536 64%,#39234f 100%)!important;
+  }
+}
