@@ -26,7 +26,7 @@
  const mobile=matchMedia('(max-width:767px)');
  const pickerStyle=document.createElement('style');
  pickerStyle.id='mtv-choice-styles';
- pickerStyle.textContent=\`
+ pickerStyle.textContent=`
  #mtv-choice{position:fixed;inset:0;box-sizing:border-box;border:0;padding:0;max-width:none;max-height:none;width:100%;height:100dvh;background:radial-gradient(ellipse 60% 50% at 58% 40%,rgba(105,67,155,.22),transparent 74%),#0d0b14;color:#f9f7fc;overflow:auto;overscroll-behavior:contain;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,sans-serif}
  #mtv-choice::backdrop{background:#0d0b14}
  #mtv-choice *{box-sizing:border-box}
@@ -56,12 +56,12 @@
  @media(max-width:767px){.mtv-choice-inner{max-width:480px;padding:20px 0}.mtv-choice-buttons{grid-template-columns:1fr;gap:15px}.mtv-choice-btn{min-height:154px;padding:24px;gap:18px}.mtv-choice-inner h2{font-size:clamp(33px,8vw,47px)}.mtv-choice-subtitle{margin-bottom:29px}.mtv-choice-btn:hover,.mtv-choice-btn:focus-visible{transform:none}.mtv-choice-bottom{margin-top:27px}.mtv-choice-foot{margin-top:18px}}
  @media(prefers-reduced-motion:reduce){.mtv-choice-btn,.mtv-choice-btn::before{transition:opacity .2s ease!important;transform:none!important}.mtv-choice-btn:hover,.mtv-choice-btn:focus-visible,.mtv-choice-btn:active{transform:none!important}.mtv-choice-leaving .mtv-choice-inner{transition:opacity .2s ease!important;transform:none!important}}
  @media(prefers-reduced-transparency:reduce){#mtv-choice .mtv-choice-btn{background:#262034!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-color:#81718c!important}#mtv-choice .mtv-choice-btn::before{display:none}}
- \`;
+ `;
  document.head.appendChild(pickerStyle);
  const choice=document.createElement('dialog');
  choice.id='mtv-choice';
  choice.setAttribute('aria-labelledby','mtv-choice-title');
- choice.innerHTML=\`<div class="mtv-choice-shell"><div class="mtv-choice-inner">
+ choice.innerHTML=`<div class="mtv-choice-shell"><div class="mtv-choice-inner">
  <div class="mtv-choice-kicker">M I C H A E L&nbsp;&nbsp; T V&nbsp;&nbsp; P R E S E N T S</div>
  <h2 id="mtv-choice-title">Welcome to Michael TV</h2>
  <p class="mtv-choice-subtitle">Choose your experience.</p>
@@ -70,7 +70,7 @@
  <button type="button" class="mtv-choice-btn" data-mtv-choice="instant" aria-label="Instant Michael TV. Skip the introduction and explore right away. Enter Portfolio"><span class="mtv-choice-copy"><strong>Instant Michael TV</strong><small>Skip the introduction and explore right away.</small></span><span class="mtv-choice-cta">Enter Portfolio</span></button>
  </div><div class="mtv-choice-bottom"><label class="mtv-choice-remember"><input type="checkbox" id="mtv-remember-choice">Remember my choice</label></div>
  <p class="mtv-choice-foot">Your choice. Your experience.</p>
- </div></div>\`;
+ </div></div>`;
  document.body.appendChild(choice);
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let previouslySeen=false;
