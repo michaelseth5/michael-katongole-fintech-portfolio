@@ -7,7 +7,7 @@
  const OUTRO_VIDEO='ISpZC7ebJBo';
  const COUCH_VIDEO='BhUG_YEAmsc';
  const COUCH_DURATION=10;
- const welcomeVoice=new Audio('/audio/welcome.m4a?v=2');
+ const welcomeVoice=new Audio();
  welcomeVoice.preload='none';
  const WELCOME_KEY='michael-tv-welcome-played-v1';
  const captions=[
@@ -97,7 +97,7 @@
    <div class="mtv-video" aria-label="Introduction video"><div class="mtv-video-ratio"><div id="mtv-youtube-player"></div></div></div>
    <div class="mtv-handoff" aria-hidden="true"><div class="mtv-handoff-art"><span class="mtv-handoff-kicker">NOW PLAYING</span><strong>MICHAEL TV</strong><span class="mtv-handoff-detail">TAPE 02 · TRACKING</span></div></div>
    <div class="mtv-announcement" aria-live="polite" aria-label="You’re watching the next big global FinTech SWE Engineer in real time!"><span class="mtv-announcement-kicker">YOU’RE WATCHING</span><strong>THE NEXT BIG GLOBAL<br><em>FINTECH SWE ENGINEER</em><br><span class="mtv-announcement-live">IN REAL TIME!</span></strong><span class="mtv-announcement-station">MICHAEL TV · WORLDWIDE</span></div>
-   <div class="mtv-welcome" hidden><video class="mtv-speech-video" src="/assets/michael-tv-welcome.mp4" preload="none" playsinline aria-hidden="true"></video><div class="mtv-welcome-label">A NOTE FROM MICHAEL</div><p class="mtv-welcome-caption" aria-live="polite">Hey.</p><button class="mtv-welcome-tap" type="button" hidden>Tap to hear a welcome ▶</button><button class="mtv-welcome-next" type="button">Enter website ›</button></div>
+   <div class="mtv-welcome" hidden><video class="mtv-speech-video" data-src="/assets/michael-tv-welcome.mp4" preload="none" playsinline aria-hidden="true"></video><div class="mtv-welcome-label">A NOTE FROM MICHAEL</div><p class="mtv-welcome-caption" aria-live="polite">Hey.</p><button class="mtv-welcome-tap" type="button" hidden>Tap to hear a welcome ▶</button><button class="mtv-welcome-next" type="button">Enter website ›</button></div>
    <div class="mtv-idle">
     <div class="mtv-title">MICHAEL TV</div>
     <p class="mtv-tagline">The world is changing. I plan to help build what's next.</p>
@@ -129,6 +129,9 @@
    welcomePanel.hidden=true;
  };
  const playWelcome=()=>{
+   // Allocate media sources only after Cinema mode has been chosen and playback is requested.
+   if(!welcomeVoice.src)welcomeVoice.src='/audio/welcome.m4a?v=2';
+   if(!welcomeVideo.src)welcomeVideo.src=welcomeVideo.dataset.src;
    // User's uploaded speech video is played inside Michael TV; audio-only is fallback.
    activeWelcomeMedia=welcomeVideo;
    const begin=(media)=>{
