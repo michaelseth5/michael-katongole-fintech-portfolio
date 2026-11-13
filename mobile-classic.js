@@ -117,7 +117,7 @@
     setTimeout(()=>{
       choice.remove();
       if(mode==='cinema')showMobileIntro();
-      else {try{sessionStorage.setItem(KEY,'1')}catch{}}
+      else {intro.style.display='none';try{sessionStorage.setItem(KEY,'1')}catch{}}
     },matchMedia('(prefers-reduced-motion:reduce)').matches?170:350);
   };
   choice.addEventListener('click',e=>{const btn=e.target.closest('[data-choice]');if(btn)selectMobile(btn.dataset.choice)});
@@ -130,7 +130,7 @@
   reopen.href='#choose-experience';reopen.textContent='Choose experience';
   reopen.style.cssText='display:inline-block;margin:16px;color:#7651a6;font-weight:600;font-size:13px';
   (document.querySelector('.mk-footer')||document.querySelector('footer'))?.append(reopen);
-  const openChoice=()=>{choice.classList.remove('is-leaving');document.body.append(choice);choice.querySelector('[data-choice]')?.focus({preventScroll:true})};
+  const openChoice=()=>{intro.style.display='none';choice.classList.remove('is-leaving');document.body.append(choice);choice.querySelector('[data-choice]')?.focus({preventScroll:true})};
   reopen.addEventListener('click',e=>{e.preventDefault();openChoice()});
   let stored=null;try{stored=localStorage.getItem(REMEMBER)}catch{}
   if(stored==='cinema')showMobileIntro();
@@ -159,6 +159,17 @@
   });
   $('.mk-mobile-voice-replay',voice).addEventListener('click',()=>{if(!audio)return;audio.currentTime=0;audio.play().catch(()=>{});$('.mk-mobile-voice-toggle',voice).textContent='Pause';});
   $('.mk-mobile-voice-close',voice).addEventListener('click',()=>{audio?.pause();voice.hidden=true;});
-  $('.mk-mobile-play',intro).focus();
+  // Focus follows the selector when visible; otherwise use the graphic-only intro.
+  if(intro.style.display!=='none')$('.mk-mobile-play',intro).focus();
+ }
+ if(seen){
+   const link=add('a',{href:'#choose-experience',textContent:'Choose experience'});
+   link.style.cssText='display:inline-block;margin:16px;color:#7651a6;font-weight:600;font-size:13px';
+   link.addEventListener('click',e=>{
+     e.preventDefault();
+     try{sessionStorage.removeItem(KEY);localStorage.removeItem('michael-tv-remember-choice-v1')}catch{}
+     location.reload();
+   });
+   (document.querySelector('.mk-footer')||document.querySelector('footer'))?.append(link);
  }
 })();
