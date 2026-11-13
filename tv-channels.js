@@ -58,6 +58,11 @@
       const showMilestones=tab==='milestones';
       careerPane.hidden=showMilestones;
       milestones.hidden=!showMilestones;
+      // Fade in the selected panel. Both panels inherit the same Experience background,
+      // so switching never exposes the former light-theme section surface.
+      const activePane=showMilestones?milestones:careerPane;
+      if(changeHash && !matchMedia('(prefers-reduced-motion:reduce)').matches)
+        activePane.animate([{opacity:0},{opacity:1}],{duration:260,easing:'cubic-bezier(.22,1,.36,1)'});
       for(const button of controls){
         const selected=(button.dataset.expTab===tab);
         button.setAttribute('aria-selected',String(selected));
