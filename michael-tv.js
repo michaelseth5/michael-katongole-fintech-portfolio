@@ -20,42 +20,57 @@
   [47,'Enough about me. Look around, have a little wander, and enjoy the show.']
  ];
 
- // Image-free experience picker. Only the first desktop visit shows it.
+
+ // Calm, image-free tvOS-style first-screen selector. No remote assets loaded here.
+ const REMEMBER_KEY='michael-tv-remember-choice-v1';
+ const mobile=matchMedia('(max-width:767px)');
  const pickerStyle=document.createElement('style');
- pickerStyle.textContent=`
- #mtv-choice{border:0;padding:0;max-width:none;max-height:none;width:100vw;height:100dvh;background:#100d19;color:#f5f0fc;overflow:auto}
- #mtv-choice::backdrop{background:#100d19}
- .mtv-choice-shell{box-sizing:border-box;min-height:100%;display:flex;align-items:center;justify-content:center;padding:clamp(22px,5vw,60px);font-family:'DM Sans',system-ui,sans-serif}
- .mtv-choice-inner{width:min(100%,610px);text-align:center}
- .mtv-choice-kicker{font-size:11px;letter-spacing:.24em;color:#b9a1ff;font-weight:700}
- .mtv-choice-inner h2{margin:14px 0 8px;color:#fff;font-size:clamp(36px,6vw,58px);letter-spacing:-.055em;line-height:1.08}
- .mtv-choice-subtitle{margin:0 0 36px;color:#aea4bb;font-size:15px}
- .mtv-choice-buttons{display:grid;gap:14px}
- .mtv-choice-btn{width:100%;min-height:112px;box-sizing:border-box;text-align:left;display:flex;gap:18px;align-items:center;cursor:pointer;border-radius:20px;padding:22px;border:1px solid rgba(195,158,240,.22);background:rgba(255,255,255,.045);color:#fff;transition:border-color .2s,background .2s,transform .2s,box-shadow .2s}
- .mtv-choice-btn:hover{border-color:#a98ade;background:rgba(169,138,222,.13);transform:translateY(-2px);box-shadow:0 12px 36px #0003}
- .mtv-choice-btn:focus-visible{outline:3px solid #d8bfff;outline-offset:4px}
- .mtv-choice-icon{width:48px;height:48px;flex:none;border-radius:14px;background:rgba(185,161,255,.11);display:grid;place-items:center;font-size:24px;color:#d5c2ff}
- .mtv-choice-copy{display:grid;gap:5px;flex:1}
- .mtv-choice-copy strong{font-size:18px;letter-spacing:-.02em}
- .mtv-choice-copy small{font-size:13px;color:#b7adbf;line-height:1.45}
- .mtv-choice-arrow{font-size:23px;color:#bba4e9}
- .mtv-choice-foot{margin-top:32px;color:#85798f;font-size:12px}
- @media(max-width:500px){.mtv-choice-shell{padding:22px}.mtv-choice-btn{padding:17px;gap:12px}.mtv-choice-icon{width:42px;height:42px}.mtv-choice-copy strong{font-size:16px}.mtv-choice-subtitle{margin-bottom:24px}}
- @media(prefers-reduced-motion:reduce){.mtv-choice-btn{transition:none}.mtv-choice-btn:hover{transform:none}}
- `;
+ pickerStyle.id='mtv-choice-styles';
+ pickerStyle.textContent=\`
+ #mtv-choice{position:fixed;inset:0;box-sizing:border-box;border:0;padding:0;max-width:none;max-height:none;width:100%;height:100dvh;background:radial-gradient(ellipse 60% 50% at 58% 40%,rgba(105,67,155,.22),transparent 74%),#0d0b14;color:#f9f7fc;overflow:auto;overscroll-behavior:contain;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,sans-serif}
+ #mtv-choice::backdrop{background:#0d0b14}
+ #mtv-choice *{box-sizing:border-box}
+ .mtv-choice-shell{min-height:100%;display:flex;align-items:center;justify-content:center;padding:max(28px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
+ .mtv-choice-inner{width:min(100%,1000px);text-align:center;padding:clamp(18px,4vw,60px) 0}
+ .mtv-choice-kicker{font-size:clamp(10px,1vw,12px);font-weight:500;letter-spacing:.28em;opacity:.65;color:#e8dafa}
+ .mtv-choice-inner h2{margin:22px auto 10px;max-width:820px;font-size:clamp(36px,5.2vw,66px);font-weight:600;letter-spacing:-.03em;line-height:1.08;text-wrap:balance;color:#fff}
+ .mtv-choice-subtitle{font-size:clamp(15px,1.5vw,18px);margin:0 0 clamp(35px,5vw,65px);font-weight:400;color:#d2c8dd}
+ .mtv-choice-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(15px,2vw,26px);perspective:1200px}
+ .mtv-choice-btn{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:22px;overflow:hidden;min-width:0;min-height:260px;width:100%;padding:clamp(26px,3vw,40px);border:1px solid rgba(237,220,255,.25);border-radius:28px;background:rgba(210,176,255,.075);color:#fff;text-align:left;cursor:pointer;-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);box-shadow:inset 0 1px rgba(255,255,255,.11),0 18px 38px rgba(0,0,0,.24),0 6px 16px rgba(0,0,0,.14);transform:perspective(1100px) translateY(0) scale(1) rotateX(0deg) rotateY(0deg);transition:transform .43s cubic-bezier(.22,1,.36,1),box-shadow .43s cubic-bezier(.22,1,.36,1),opacity .35s cubic-bezier(.22,1,.36,1),background .35s cubic-bezier(.22,1,.36,1)}
+ .mtv-choice-btn::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(370px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.14),transparent 66%);opacity:0;transition:opacity .35s cubic-bezier(.22,1,.36,1)}
+ .mtv-choice-btn:hover::before,.mtv-choice-btn:focus-visible::before{opacity:1}
+ .mtv-choice-buttons:has(.mtv-choice-btn:hover) .mtv-choice-btn:not(:hover),.mtv-choice-buttons:has(.mtv-choice-btn:focus-visible) .mtv-choice-btn:not(:focus-visible){opacity:.66}
+ .mtv-choice-btn:hover,.mtv-choice-btn:focus-visible{transform:perspective(1100px) translateY(-6px) scale(1.04) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));box-shadow:inset 0 1px rgba(255,255,255,.22),0 30px 70px rgba(0,0,0,.4),0 14px 35px rgba(91,49,145,.24);background:rgba(210,176,255,.115)}
+ .mtv-choice-btn:active{transform:scale(.98)!important}
+ .mtv-choice-btn:focus-visible{outline:2px solid #d7b9ff;outline-offset:5px}
+ .mtv-choice-copy{display:grid;gap:14px;align-content:start}
+ .mtv-choice-copy strong{font-size:clamp(20px,2vw,26px);font-weight:600;letter-spacing:-.03em;line-height:1.2}
+ .mtv-choice-copy small{font-size:clamp(14px,1.25vw,16px);font-weight:400;line-height:1.55;color:#dbd0e6}
+ .mtv-choice-cta{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 19px;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:#f5eafc;background:rgba(255,255,255,.09);font-weight:600;font-size:14px}
+ .mtv-choice-bottom{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px 22px;margin-top:clamp(32px,4vw,53px);font-size:14px;color:#d6c8e1}
+ .mtv-choice-remember{display:inline-flex;align-items:center;gap:9px;cursor:pointer}
+ .mtv-choice-remember input{accent-color:#b99af2;width:17px;height:17px}
+ .mtv-choice-foot{margin:25px 0 0;font-size:14px;color:#d0c4dc}
+ #mtv-choice.mtv-choice-leaving .mtv-choice-inner{opacity:0;transform:scale(1.012);transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .45s cubic-bezier(.22,1,.36,1)}
+ #mtv-choice.mtv-choice-leaving .mtv-choice-btn.is-chosen{transform:scale(1.045)}
+ @media(max-width:767px){.mtv-choice-inner{max-width:480px;padding:20px 0}.mtv-choice-buttons{grid-template-columns:1fr;gap:15px}.mtv-choice-btn{min-height:154px;padding:24px;gap:18px}.mtv-choice-inner h2{font-size:clamp(33px,8vw,47px)}.mtv-choice-subtitle{margin-bottom:29px}.mtv-choice-btn:hover,.mtv-choice-btn:focus-visible{transform:none}.mtv-choice-bottom{margin-top:27px}.mtv-choice-foot{margin-top:18px}}
+ @media(prefers-reduced-motion:reduce){.mtv-choice-btn,.mtv-choice-btn::before{transition:opacity .2s ease!important;transform:none!important}.mtv-choice-btn:hover,.mtv-choice-btn:focus-visible,.mtv-choice-btn:active{transform:none!important}.mtv-choice-leaving .mtv-choice-inner{transition:opacity .2s ease!important;transform:none!important}}
+ @media(prefers-reduced-transparency:reduce){#mtv-choice .mtv-choice-btn{background:#262034!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-color:#81718c!important}#mtv-choice .mtv-choice-btn::before{display:none}}
+ \`;
  document.head.appendChild(pickerStyle);
  const choice=document.createElement('dialog');
  choice.id='mtv-choice';
  choice.setAttribute('aria-labelledby','mtv-choice-title');
- choice.innerHTML=`<div class="mtv-choice-shell"><div class="mtv-choice-inner">
- <div class="mtv-choice-kicker">WELCOME TO MICHAEL TV</div>
- <h2 id="mtv-choice-title">Choose your experience</h2>
- <p class="mtv-choice-subtitle">How would you like to explore?</p>
+ choice.innerHTML=\`<div class="mtv-choice-shell"><div class="mtv-choice-inner">
+ <div class="mtv-choice-kicker">M I C H A E L&nbsp;&nbsp; T V&nbsp;&nbsp; P R E S E N T S</div>
+ <h2 id="mtv-choice-title">Welcome to Michael TV</h2>
+ <p class="mtv-choice-subtitle">Choose your experience.</p>
  <div class="mtv-choice-buttons">
- <button type="button" class="mtv-choice-btn" data-mtv-choice="cinema"><span class="mtv-choice-icon" aria-hidden="true">▷</span><span class="mtv-choice-copy"><strong>Cinema Michael TV</strong><small>Watch the complete cinematic introduction and credits.</small></span><span class="mtv-choice-arrow" aria-hidden="true">›</span></button>
- <button type="button" class="mtv-choice-btn" data-mtv-choice="instant"><span class="mtv-choice-icon" aria-hidden="true">↗</span><span class="mtv-choice-copy"><strong>Instant Michael TV</strong><small>Skip the introduction and explore the portfolio now.</small></span><span class="mtv-choice-arrow" aria-hidden="true">›</span></button>
- </div><p class="mtv-choice-foot">The world is changing. I plan to help build what's next.</p>
- </div></div>`;
+ <button type="button" class="mtv-choice-btn" data-mtv-choice="cinema" aria-label="Cinema Michael TV. Full cinematic intro, credits, and the original experience. Full Experience"><span class="mtv-choice-copy"><strong>Cinema Michael TV</strong><small>Full cinematic intro, credits, and the original experience.</small></span><span class="mtv-choice-cta">Full Experience</span></button>
+ <button type="button" class="mtv-choice-btn" data-mtv-choice="instant" aria-label="Instant Michael TV. Skip the introduction and explore right away. Enter Portfolio"><span class="mtv-choice-copy"><strong>Instant Michael TV</strong><small>Skip the introduction and explore right away.</small></span><span class="mtv-choice-cta">Enter Portfolio</span></button>
+ </div><div class="mtv-choice-bottom"><label class="mtv-choice-remember"><input type="checkbox" id="mtv-remember-choice">Remember my choice</label></div>
+ <p class="mtv-choice-foot">Your choice. Your experience.</p>
+ </div></div>\`;
  document.body.appendChild(choice);
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let previouslySeen=false;
@@ -95,7 +110,7 @@
    <div class="mtv-scan" aria-hidden="true"></div>
    <div class="mtv-glitch" aria-hidden="true"></div>
    <p class="mtv-description" id="mtv-intro-description">Intro video. Press Skip to go to the site.</p>
-   <div class="mtv-actions"><button class="mtv-skip" type="button" hidden>Skip intro ›</button></div>
+   <div class="mtv-actions"><button class="mtv-skip" type="button" hidden>Skip Intro</button></div>
    <canvas class="mtv-noise" width="192" height="108" aria-hidden="true"></canvas>
   </div>`;
  document.body.appendChild(dialog);
@@ -296,7 +311,7 @@
    window.dispatchEvent(new CustomEvent('michael-tv:intro-open'));
    playBtn.disabled=false;
    playBtn.focus({preventScroll:true});
-   bootTimer=setTimeout(()=>{dialog.classList.add('mtv-ready');ensureAPI()},reduced.matches?0:250);
+   bootTimer=setTimeout(()=>{dialog.classList.add('mtv-ready')},reduced.matches?0:250);
  }
  function revealVideo(){
    if(!active||exiting||!playerStarted||!trackingFinished)return;
@@ -430,27 +445,88 @@
    };
    staticFrame=requestAnimationFrame(frame);
  }
- // The choice is made before the existing cinematic intro opens.
- // Mobile retains its classic layout and skips the new desktop selector.
- const openPicker=()=>{try{choice.showModal()}catch{openIntro(false)}};
- choice.addEventListener('cancel',event=>{event.preventDefault()});
- choice.addEventListener('click',event=>{
-   const button=event.target.closest('[data-mtv-choice]');
-   if(!button)return;
-   const selected=button.dataset.mtvChoice;
-   choice.close();
-   if(selected==='cinema'){openIntro(false);return}
-   if(selected==='instant'){
-     markSeen();
-     // Instant entry must not trigger the post-cinema spotlight/curtain.
-     try{sessionStorage.setItem('michael-tv-spotlight-shown-v2','1')}catch{}
-     if(typeof window.portfolioEnterHomeFromIntro==='function')window.portfolioEnterHomeFromIntro();
-     window.dispatchEvent(new CustomEvent('michael-tv:home-enter',{detail:{reason:'instant'}}));
-     document.querySelector('#apple-navlinks a[href="#home"]')?.focus?.({preventScroll:true});
-   }
+
+ // Desktop defaults to the selector. A remembered choice is optional and reversible.
+ const footerSelector=document.createElement('a');
+ footerSelector.href='#choose-experience';
+ footerSelector.className='mtv-replay';
+ footerSelector.textContent='Choose experience';
+ footerSelector.setAttribute('aria-label','Return to Michael TV experience selector');
+ (document.querySelector('.mk-footer')||document.querySelector('footer'))?.append(footerSelector);
+ const openPicker=()=>{
+   choice.classList.remove('mtv-choice-leaving');
+   try{choice.showModal()}catch{openIntro(false);return}
+   choice.querySelector('[data-mtv-choice]')?.focus({preventScroll:true});
+ };
+ footerSelector.addEventListener('click',event=>{
+   event.preventDefault();
+   if(dialog.open)finish('skip');
+   else openPicker();
  });
- // Replay keeps the original complete intro without asking a second time.
- if(!previouslySeen && matchMedia('(min-width:768px)').matches &&
-    !document.documentElement.classList.contains('mobile-classic'))openPicker();
- else if(!previouslySeen)openIntro(false);
+ choice.addEventListener('cancel',event=>event.preventDefault());
+ const cards=[...choice.querySelectorAll('[data-mtv-choice]')];
+ const moveFocus=event=>{
+   if(!['ArrowRight','ArrowLeft','ArrowUp','ArrowDown'].includes(event.key))return;
+   event.preventDefault();
+   const index=cards.indexOf(document.activeElement);
+   const step=['ArrowRight','ArrowDown'].includes(event.key)?1:-1;
+   cards[(index+step+cards.length)%cards.length].focus();
+ };
+ choice.addEventListener('keydown',moveFocus);
+ const tiltAllowed=matchMedia('(hover:hover) and (pointer:fine)');
+ let tiltFrame=0;
+ cards.forEach(card=>{
+   card.addEventListener('pointermove',event=>{
+     if(!tiltAllowed.matches||reduced.matches)return;
+     const rect=card.getBoundingClientRect();
+     const x=(event.clientX-rect.left)/rect.width,y=(event.clientY-rect.top)/rect.height;
+     cancelAnimationFrame(tiltFrame);
+     tiltFrame=requestAnimationFrame(()=>{
+       card.style.setProperty('--mx',(x*100)+'%');
+       card.style.setProperty('--my',(y*100)+'%');
+       card.style.setProperty('--rx',((.5-y)*12).toFixed(2)+'deg');
+       card.style.setProperty('--ry',((x-.5)*12).toFixed(2)+'deg');
+     });
+   },{passive:true});
+   card.addEventListener('pointerleave',()=>{
+     card.style.setProperty('--rx','0deg');
+     card.style.setProperty('--ry','0deg');
+   });
+ });
+ const completeInstant=()=>{
+   markSeen();
+   try{sessionStorage.setItem('michael-tv-spotlight-shown-v2','1')}catch{}
+   if(typeof window.portfolioEnterHomeFromIntro==='function')window.portfolioEnterHomeFromIntro();
+   else if(location.hash!=='#home')location.hash='home';
+   window.dispatchEvent(new CustomEvent('michael-tv:home-enter',{detail:{reason:'instant'}}));
+   document.querySelector('#apple-navlinks a[href="#home"]')?.focus?.({preventScroll:true});
+ };
+ const choose=selected=>{
+   const remember=choice.querySelector('#mtv-remember-choice')?.checked;
+   try{
+     if(remember)localStorage.setItem(REMEMBER_KEY,selected);
+     else localStorage.removeItem(REMEMBER_KEY);
+   }catch{}
+   choice.classList.add('mtv-choice-leaving');
+   cards.find(card=>card.dataset.mtvChoice===selected)?.classList.add('is-chosen');
+   const proceed=()=>{
+     if(choice.open)choice.close();
+     cards.forEach(card=>card.classList.remove('is-chosen'));
+     if(selected==='cinema')openIntro(false);
+     else completeInstant();
+   };
+   setTimeout(proceed,reduced.matches?170:420);
+ };
+ cards.forEach(card=>card.addEventListener('click',()=>{
+   if(typeof navigator.vibrate==='function' && mobile.matches)navigator.vibrate(10);
+   choose(card.dataset.mtvChoice);
+ }));
+ let remembered=null;
+ try{remembered=localStorage.getItem(REMEMBER_KEY)}catch{}
+ if(remembered!=='cinema'&&remembered!=='instant')remembered=null;
+ if(!previouslySeen){
+   if(remembered==='cinema')openIntro(false);
+   else if(remembered==='instant')completeInstant();
+   else openPicker();
+ }
 })();
