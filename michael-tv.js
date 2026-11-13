@@ -19,6 +19,44 @@
   [39,'Technology has the power to change finance, and I’m determined to be part of it.'],
   [47,'Enough about me. Look around, have a little wander, and enjoy the show.']
  ];
+
+ // Image-free experience picker. Only the first desktop visit shows it.
+ const pickerStyle=document.createElement('style');
+ pickerStyle.textContent=`
+ #mtv-choice{border:0;padding:0;max-width:none;max-height:none;width:100vw;height:100dvh;background:#100d19;color:#f5f0fc;overflow:auto}
+ #mtv-choice::backdrop{background:#100d19}
+ .mtv-choice-shell{box-sizing:border-box;min-height:100%;display:flex;align-items:center;justify-content:center;padding:clamp(22px,5vw,60px);font-family:'DM Sans',system-ui,sans-serif}
+ .mtv-choice-inner{width:min(100%,610px);text-align:center}
+ .mtv-choice-kicker{font-size:11px;letter-spacing:.24em;color:#b9a1ff;font-weight:700}
+ .mtv-choice-inner h2{margin:14px 0 8px;color:#fff;font-size:clamp(36px,6vw,58px);letter-spacing:-.055em;line-height:1.08}
+ .mtv-choice-subtitle{margin:0 0 36px;color:#aea4bb;font-size:15px}
+ .mtv-choice-buttons{display:grid;gap:14px}
+ .mtv-choice-btn{width:100%;min-height:112px;box-sizing:border-box;text-align:left;display:flex;gap:18px;align-items:center;cursor:pointer;border-radius:20px;padding:22px;border:1px solid rgba(195,158,240,.22);background:rgba(255,255,255,.045);color:#fff;transition:border-color .2s,background .2s,transform .2s,box-shadow .2s}
+ .mtv-choice-btn:hover{border-color:#a98ade;background:rgba(169,138,222,.13);transform:translateY(-2px);box-shadow:0 12px 36px #0003}
+ .mtv-choice-btn:focus-visible{outline:3px solid #d8bfff;outline-offset:4px}
+ .mtv-choice-icon{width:48px;height:48px;flex:none;border-radius:14px;background:rgba(185,161,255,.11);display:grid;place-items:center;font-size:24px;color:#d5c2ff}
+ .mtv-choice-copy{display:grid;gap:5px;flex:1}
+ .mtv-choice-copy strong{font-size:18px;letter-spacing:-.02em}
+ .mtv-choice-copy small{font-size:13px;color:#b7adbf;line-height:1.45}
+ .mtv-choice-arrow{font-size:23px;color:#bba4e9}
+ .mtv-choice-foot{margin-top:32px;color:#85798f;font-size:12px}
+ @media(max-width:500px){.mtv-choice-shell{padding:22px}.mtv-choice-btn{padding:17px;gap:12px}.mtv-choice-icon{width:42px;height:42px}.mtv-choice-copy strong{font-size:16px}.mtv-choice-subtitle{margin-bottom:24px}}
+ @media(prefers-reduced-motion:reduce){.mtv-choice-btn{transition:none}.mtv-choice-btn:hover{transform:none}}
+ `;
+ document.head.appendChild(pickerStyle);
+ const choice=document.createElement('dialog');
+ choice.id='mtv-choice';
+ choice.setAttribute('aria-labelledby','mtv-choice-title');
+ choice.innerHTML=`<div class="mtv-choice-shell"><div class="mtv-choice-inner">
+ <div class="mtv-choice-kicker">WELCOME TO MICHAEL TV</div>
+ <h2 id="mtv-choice-title">Choose your experience</h2>
+ <p class="mtv-choice-subtitle">How would you like to explore?</p>
+ <div class="mtv-choice-buttons">
+ <button type="button" class="mtv-choice-btn" data-mtv-choice="cinema"><span class="mtv-choice-icon" aria-hidden="true">▷</span><span class="mtv-choice-copy"><strong>Cinema Michael TV</strong><small>Watch the complete cinematic introduction and credits.</small></span><span class="mtv-choice-arrow" aria-hidden="true">›</span></button>
+ <button type="button" class="mtv-choice-btn" data-mtv-choice="instant"><span class="mtv-choice-icon" aria-hidden="true">↗</span><span class="mtv-choice-copy"><strong>Instant Michael TV</strong><small>Skip the introduction and explore the portfolio now.</small></span><span class="mtv-choice-arrow" aria-hidden="true">›</span></button>
+ </div><p class="mtv-choice-foot">The world is changing. I plan to help build what's next.</p>
+ </div></div>`;
+ document.body.appendChild(choice);
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let previouslySeen=false;
  try{previouslySeen=sessionStorage.getItem(KEY)==='1'}catch{}
@@ -251,7 +289,7 @@
    dialog.className='mtv-boot';welcomePanel.hidden=true;
    label.textContent='VIDEO 1';label.classList.add('mtv-idle-label');
    timecode.hidden=true;timecode.textContent='0:00:00';
-   skipBtn.hidden=true;
+   skipBtn.hidden=false; // Visitors can skip even before pressing Play.
    document.getElementById('mtv-youtube-player')?.replaceChildren();
    player=null;
    try{dialog.showModal()}catch{return}
@@ -392,6 +430,27 @@
    };
    staticFrame=requestAnimationFrame(frame);
  }
- // Normal first visit. Replay bypasses session restriction only on explicit click.
- if(!previouslySeen)openIntro(false);
+ // The choice is made before the existing cinematic intro opens.
+ // Mobile retains its classic layout and skips the new desktop selector.
+ const openPicker=()=>{try{choice.showModal()}catch{openIntro(false)}};
+ choice.addEventListener('cancel',event=>{event.preventDefault()});
+ choice.addEventListener('click',event=>{
+   const button=event.target.closest('[data-mtv-choice]');
+   if(!button)return;
+   const selected=button.dataset.mtvChoice;
+   choice.close();
+   if(selected==='cinema'){openIntro(false);return}
+   if(selected==='instant'){
+     markSeen();
+     // Instant entry must not trigger the post-cinema spotlight/curtain.
+     try{sessionStorage.setItem('michael-tv-spotlight-shown-v2','1')}catch{}
+     if(typeof window.portfolioEnterHomeFromIntro==='function')window.portfolioEnterHomeFromIntro();
+     window.dispatchEvent(new CustomEvent('michael-tv:home-enter',{detail:{reason:'instant'}}));
+     document.querySelector('#apple-navlinks a[href="#home"]')?.focus?.({preventScroll:true});
+   }
+ });
+ // Replay keeps the original complete intro without asking a second time.
+ if(!previouslySeen && matchMedia('(min-width:768px)').matches &&
+    !document.documentElement.classList.contains('mobile-classic'))openPicker();
+ else if(!previouslySeen)openIntro(false);
 })();
