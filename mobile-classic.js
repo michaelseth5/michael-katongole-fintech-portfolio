@@ -84,7 +84,7 @@
   choice.setAttribute('aria-modal','true');
   choice.setAttribute('aria-labelledby','mtv-mobile-choice-title');
   const style=document.createElement('style');
-  style.textContent=\`
+  style.textContent=`
   #mtv-mobile-choice{position:fixed;inset:0;z-index:2147483646;overflow-y:auto;min-height:100dvh;background:radial-gradient(ellipse at 52% 32%,rgba(105,67,155,.22),transparent 65%),#0d0b14;color:#faf7ff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,sans-serif}
   #mtv-mobile-choice *{box-sizing:border-box}
   #mtv-mobile-choice .mtv-m-inner{min-height:100dvh;padding:calc(36px + env(safe-area-inset-top)) calc(22px + env(safe-area-inset-right)) calc(30px + env(safe-area-inset-bottom)) calc(22px + env(safe-area-inset-left));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;max-width:520px;margin:auto}
@@ -104,9 +104,9 @@
   #mtv-mobile-choice.is-leaving{opacity:0;transition:opacity .35s cubic-bezier(.22,1,.36,1);pointer-events:none}
   @media(prefers-reduced-motion:reduce){#mtv-mobile-choice .mtv-m-card{transition:none!important;transform:none!important}#mtv-mobile-choice.is-leaving{transition:opacity .17s ease}}
   @media(prefers-reduced-transparency:reduce){#mtv-mobile-choice .mtv-m-card{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#262034!important;border-color:#81718c!important}}
-  \`;
+  `;
   document.head.append(style);
-  choice.innerHTML=\`<div class="mtv-m-inner"><div class="mtv-m-eyebrow">M I C H A E L&nbsp; T V&nbsp; P R E S E N T S</div><h2 id="mtv-mobile-choice-title">Welcome to Michael TV</h2><p class="mtv-m-subtitle">Choose your experience.</p><div class="mtv-m-cards"><button type="button" class="mtv-m-card" data-choice="cinema"><strong>Cinema Michael TV</strong><span>Full cinematic intro, credits, and the original experience.</span><em>Full Experience</em></button><button type="button" class="mtv-m-card" data-choice="instant"><strong>Instant Michael TV</strong><span>Skip the introduction and explore right away.</span><em>Enter Portfolio</em></button></div><label class="mtv-m-remember"><input type="checkbox" id="mtv-m-remember">Remember my choice</label><p class="mtv-m-footer">Your choice. Your experience.</p></div>\`;
+  choice.innerHTML=`<div class="mtv-m-inner"><div class="mtv-m-eyebrow">M I C H A E L&nbsp; T V&nbsp; P R E S E N T S</div><h2 id="mtv-mobile-choice-title">Welcome to Michael TV</h2><p class="mtv-m-subtitle">Choose your experience.</p><div class="mtv-m-cards"><button type="button" class="mtv-m-card" data-choice="cinema"><strong>Cinema Michael TV</strong><span>Full cinematic intro, credits, and the original experience.</span><em>Full Experience</em></button><button type="button" class="mtv-m-card" data-choice="instant"><strong>Instant Michael TV</strong><span>Skip the introduction and explore right away.</span><em>Enter Portfolio</em></button></div><label class="mtv-m-remember"><input type="checkbox" id="mtv-m-remember">Remember my choice</label><p class="mtv-m-footer">Your choice. Your experience.</p></div>`;
   const REMEMBER='michael-tv-remember-choice-v1';
   const showMobileIntro=()=>{intro.style.display='';$('.mk-mobile-play',intro)?.focus({preventScroll:true});};
   const selectMobile=mode=>{
