@@ -3256,6 +3256,101 @@ body .apple-topbar {
 #project-details #project-1 .sw-dots button[aria-current="step"]{background:#d8b8ff;box-shadow:0 0 0 2px #4c296f}
 @media(max-width:680px){#project-details #project-1 .sw-slide{min-height:440px}#project-details #project-1 .sw-viewport{min-height:440px}#project-details #project-1 .sw-body{max-height:360px;overflow-y:auto}#project-details #project-1 .sw-slide.sw-intro .sw-body{max-height:650px}#project-details #project-1 .sw-primary-image img{height:260px}#project-details #project-1 .sw-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}#project-details #project-1 .sw-thumb img{height:76px}#project-details #project-1 .sw-nav button,#project-details #project-1 .sw-nav a{font-size:12px;padding:9px 12px}}
 @media(prefers-reduced-motion:reduce){#project-details #project-1 .sw-slide.sw-enter-next,#project-details #project-1 .sw-slide.sw-enter-prev{animation:sw-fade .12s linear both}#project-details #project-1 .sw-progress>span{transition:none}@keyframes sw-fade{from{opacity:.4}to{opacity:1}}}
+</style><style id="walkthrough-four-project-fullwidth">
+/* Four original cards remain, but are stacked so expanded walkthroughs use the full card width. */
+#project-details .selected-projects-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:24px!important;width:100%;max-width:100%;min-width:0}
+#project-details .selected-projects-grid>.project-block{display:grid!important;grid-template-columns:minmax(0,45%) minmax(0,55%)!important;gap:0!important;width:100%;min-width:0;align-items:stretch!important;overflow:hidden}
+#project-details .selected-projects-grid>.project-block>.fp-frame{grid-column:1;grid-row:1;width:100%;height:320px;border-radius:16px 0 0 16px;min-width:0}
+#project-details .selected-projects-grid>.project-block>div:nth-child(2){grid-column:2;grid-row:1;min-width:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left}
+#project-details .selected-projects-grid>.project-block>.walk-details{grid-column:1 / -1;grid-row:2;display:block;width:100%;max-width:100%;margin:0!important;border-radius:0!important;min-width:0}
+#project-details .selected-projects-grid>.project-block>.walk-details[open]{overflow:visible}
+#project-details .selected-projects-grid>.project-block>.walk-details>summary{min-height:47px}
+#project-details .walk-details .case-box{background:#171023!important;color:#eee5fa!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important}
+#project-details .walk-details .actions{display:none!important}
+#project-details .walk-root{position:relative;width:100%;min-width:0;color:#f5efff;background:#171023}
+#project-details .walk-viewport{min-height:570px;overflow:hidden}
+#project-details .walk-slide{display:flex;flex-direction:column;min-height:570px;padding:clamp(20px,3.1vw,42px);width:100%;min-width:0;background:#171023}
+#project-details .walk-slide[hidden]{display:none!important}
+#project-details .walk-slide.walk-from-right{animation:walk-in-right .35s ease both}
+#project-details .walk-slide.walk-from-left{animation:walk-in-left .35s ease both}
+@keyframes walk-in-right{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+@keyframes walk-in-left{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+#project-details .walk-head{display:flex;justify-content:space-between;align-items:center;width:100%;gap:14px}
+#project-details .walk-kicker{font:800 12px/1.4 inherit;letter-spacing:.16em;text-transform:uppercase;color:#d4b0ff!important}
+#project-details .walk-count{font:700 14px/1.4 ui-monospace,monospace;color:#e8d9f5!important}
+#project-details .walk-track{width:100%;height:4px;background:#3a2e4a;border-radius:40px;overflow:hidden;margin:15px 0 27px}
+#project-details .walk-fill{display:block;height:100%;width:0;background:linear-gradient(90deg,#9e6df6,#e1c3ff);transition:width .35s ease}
+#project-details .walk-heading{font-size:clamp(34px,3.35vw,48px)!important;line-height:1.09!important;letter-spacing:-.025em;color:#fff!important;margin:0 0 24px!important;text-align:left!important;outline:none}
+#project-details .walk-main{display:grid;grid-template-columns:minmax(0,45%) minmax(0,55%);gap:clamp(20px,3vw,45px);flex:1;min-width:0;align-items:stretch}
+#project-details .walk-copy{min-width:0;text-align:left;align-self:start}
+#project-details .walk-copy .project-framework-item{padding:0!important;margin:0!important;border:0!important;background:transparent!important}
+#project-details .walk-copy .project-framework-label{display:none}
+#project-details .walk-copy .project-framework-item p{font-size:clamp(17px,1.45vw,20px)!important;line-height:1.65!important;color:#efe6f7!important;text-align:left!important;max-width:60ch;margin:0!important}
+#project-details .walk-visual{display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:16px;min-width:0;min-height:290px;background:linear-gradient(155deg,#251538,#221c3b);border:1px solid #584075;border-radius:15px;padding:clamp(18px,2.5vw,30px);overflow:hidden}
+#project-details .walk-visual-caption{color:#dcc6f7;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+#project-details .walk-visual-image{display:block;padding:8px;width:100%;min-width:0;background:#0e0a17;border:1px solid #70538f;border-radius:12px;cursor:zoom-in}
+#project-details .walk-visual-image img{display:block;max-width:100%;width:100%;height:clamp(210px,26vw,350px);object-fit:contain}
+#project-details .walk-visual-note,#project-details .walk-caveat{color:#e1d4ef!important;font-size:13px!important;line-height:1.6!important;text-align:left!important;margin:0!important}
+#project-details .walk-caveat{border-left:2px solid #b89aea;padding-left:13px}
+#project-details .walk-chips,#project-details .walk-roles{display:flex;flex-wrap:wrap;gap:9px}
+#project-details .walk-chip{display:inline-flex;align-items:center;padding:9px 12px;background:#352347;color:#f4eaff;border:1px solid #715a87;border-radius:10px;font-size:12px;font-weight:700;line-height:1.3}
+#project-details .walk-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px}
+#project-details .walk-flow-step{flex:1 1 110px;text-align:center;border:1px solid #77559f;background:#332249;border-radius:11px;color:#fff;padding:13px 8px;font-size:12px;font-weight:700;overflow-wrap:anywhere}
+#project-details .walk-flow-arrow{font-size:17px;color:#d0a9ff;font-weight:700}
+#project-details .walk-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#project-details .walk-stat{display:flex;flex-direction:column;gap:7px;min-width:0;padding:20px 15px;background:#321f49;border:1px solid #7b5f9e;border-radius:13px}
+#project-details .walk-stat strong{font-size:clamp(26px,3vw,42px);line-height:1.08;color:#fff;letter-spacing:-.03em}
+#project-details .walk-stat span{font-size:12px;line-height:1.45;color:#e4d7ef}
+#project-details .walk-choices-title{font-size:15px;color:#e8c6ff}
+#project-details .walk-checklist{padding:0;margin:0;list-style:none;display:flex;flex-direction:column;gap:13px}
+#project-details .walk-checklist li{display:flex;align-items:flex-start;gap:12px;color:#f1e8f9;font-size:15px;line-height:1.55}
+#project-details .walk-check{color:#cba2ff;font-weight:900}
+#project-details .walk-context-frame{width:100%;max-width:100%;height:280px!important;border-radius:15px!important}
+#project-details .walk-lede,#project-details .walk-stack{font-size:16px!important;line-height:1.55!important;text-align:left!important;color:#e9dff7!important;margin:0 0 16px!important}
+#project-details .walk-preview-main{display:block;width:100%;padding:10px;border:1px solid #634b80;border-radius:13px;background:#110b1c;cursor:zoom-in}
+#project-details .walk-preview-main img{width:100%;height:clamp(250px,29vw,420px);object-fit:contain;display:block}
+#project-details .walk-preview-caption{color:#e6d9f5!important;font-size:13px!important;margin:8px 0 13px!important}
+#project-details .walk-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#project-details .walk-thumb{display:flex;flex-direction:column;gap:5px;text-align:left;color:#f1e8f9;background:#25162f;border:1px solid #644982;border-radius:8px;padding:7px;min-width:0;cursor:pointer}
+#project-details .walk-thumb[aria-pressed="true"]{border-color:#d2b4ff}
+#project-details .walk-thumb img{width:100%;height:75px;object-fit:contain;background:#110b1e;border-radius:5px}
+#project-details .walk-thumb span{font-size:11px;line-height:1.3;color:#ded1eb}
+#project-details .walk-footer{display:grid;grid-template-columns:minmax(125px,1fr) auto minmax(125px,1fr);align-items:center;gap:16px;margin-top:auto;padding-top:24px;width:100%;min-width:0}
+#project-details .walk-btn,#project-details .walk-overview{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:11px 17px;border:1px solid #a07bca;border-radius:10px;background:#44305e;color:#fff!important;font-family:inherit;font-size:13px;font-weight:750;text-decoration:none;cursor:pointer}
+#project-details .walk-btn:disabled{visibility:hidden}
+#project-details .walk-next{background:#7345c4;justify-self:end}
+#project-details .walk-back{justify-self:start}
+#project-details .walk-dots{display:flex;align-items:center;justify-content:center;gap:9px}
+#project-details .walk-dot{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:#66547e;cursor:pointer}
+#project-details .walk-dot[aria-current="step"]{background:#ddbaff;box-shadow:0 0 0 2px #a776e5}
+#project-details .walk-overview{grid-column:1 / -1;justify-self:center;margin-top:3px}
+#project-details .walk-root :is(button,a):focus-visible{outline:3px solid #e0bfff;outline-offset:3px}
+@media(max-width:680px){
+ #project-details .selected-projects-grid>.project-block{grid-template-columns:minmax(0,1fr)!important}
+ #project-details .selected-projects-grid>.project-block>.fp-frame{grid-column:1;grid-row:1;height:260px!important;border-radius:16px 16px 0 0}
+ #project-details .selected-projects-grid>.project-block>div:nth-child(2){grid-column:1;grid-row:2}
+ #project-details .selected-projects-grid>.project-block>.walk-details{grid-column:1;grid-row:3}
+ #project-details .walk-slide{min-height:640px;padding:22px 16px}
+ #project-details .walk-main{display:flex;flex-direction:column-reverse;gap:18px}
+ #project-details .walk-visual{min-height:220px;height:220px;padding:15px;overflow:auto;flex:none}
+ #project-details .walk-visual-image img{height:125px}
+ #project-details .walk-copy{max-height:250px;overflow:auto;flex:1}
+ #project-details .walk-heading{font-size:32px!important}
+ #project-details .walk-copy .project-framework-item p{font-size:16px!important;line-height:1.6!important}
+ #project-details .walk-stat{padding:12px}
+ #project-details .walk-stat strong{font-size:24px}
+ #project-details .walk-context-frame{height:170px!important}
+ #project-details .walk-footer{grid-template-columns:auto minmax(0,1fr) auto;gap:9px}
+ #project-details .walk-btn{padding:9px 10px;font-size:11px}
+ #project-details .walk-dots{gap:6px}
+ #project-details .walk-dot{width:8px;height:8px}
+ #project-details .walk-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){
+ #project-details .walk-slide.walk-from-left,#project-details .walk-slide.walk-from-right{animation:walk-fade .12s linear both}
+ #project-details .walk-fill{transition:none}
+ @keyframes walk-fade{from{opacity:.5}to{opacity:1}}
+}
 </style></head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div class="mk-home-welcome" id="home-welcome-audio" role="region" aria-label="Michael TV welcome audio">
  <div class="mk-home-welcome-head"><span class="mk-home-welcome-icon" aria-hidden="true">♫</span><span class="mk-home-welcome-name">A note from Michael</span></div>
  <div class="mk-home-welcome-actions">
@@ -4405,115 +4500,172 @@ requestAnimationFrame(()=>{
 })();
 </script><dialog id="fp-case-lightbox" aria-label="Project screenshot viewer"><div class="fp-lightbox-shell"><button type="button" class="fp-close" aria-label="Close image viewer">×</button><button type="button" class="fp-prev" aria-label="Previous screenshot">‹</button><img class="fp-lightbox-image" alt="" src=""><button type="button" class="fp-next" aria-label="Next screenshot">›</button><span class="fp-counter" aria-live="polite"></span></div></dialog>
 <script id="synapse-inline-walkthrough-init">
-(()=>{"use strict";
-/* Data-driven: adding another project later requires only an entry in this configuration. */
-const configs=[{
- id:"synapse",cardId:"project-1",
- screens:[
-  {title:"Organization chart",caption:"An organization chart displaying team roles and task status."},
-  {title:"Team collaboration hub",caption:"The team collaboration interface with its member and chat panels."},
-  {title:"Real-time coordination",caption:"A coordination screen showing updates across teams."},
-  {title:"Additional application view",caption:"An additional application view from the Synapse project."}
- ]
-}];
-const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
-configs.forEach(cfg=>{
- const card=document.getElementById(cfg.cardId);
- const details=card?.querySelector(".synapse-slide-details");
- const originalBox=details?.querySelector(".case-box");
- if(!card||!details||!originalBox)return;
- const originalGallery=originalBox.querySelector("[data-case-gallery]");
- const sourceFigures=[...(originalGallery?.querySelectorAll("figure")||[])];
- const sections=[...originalBox.querySelectorAll(":scope > .project-framework-item")];
+(()=>{
+"use strict";
+const specs=[
+ {id:"project-1",name:"Synapse Solution",kind:"synapse",
+  chips:["Next.js 14","React 18","TypeScript","Tailwind CSS","Recharts","WebSockets/SSE","Zustand"],
+  flow:["WebSockets/SSE live events","Zustand shared state","Interactive UI"],
+  roles:["Frontend","Shared state","Real-time alerts","Scenario-planning interface"],
+  stats:[["14","Users"],["10%","Reduced decision latency"],["3","Executive teams"]],
+  optim:["Role-based permissions","Automated testing for live events and cross-department scenarios","Latency and alert reliability instrumentation"]},
+ {id:"project-2",name:"DemandSync",kind:"demandsync",
+  chips:["Python","Flask","PostgreSQL","REST APIs","dbt","ETL","pytest","XGBoost"],
+  flow:["150,000+ transactions","ETL pipelines","dbt transformations","XGBoost forecasts","REST API endpoints"],
+  roles:["Backend architecture","Transactional processing","Transformations and validation","REST endpoints","Forecasting workflow"],
+  stats:[["150,000+","Transactions"],["10%","Lower retrieval latency"],["99.8%","Pipeline reliability"],["12%","Anomalies caught"],["5.2%","MAPE across 3 SKUs"],["9%","Reported overstock reduction"]],
+  choices:["PostgreSQL for structured transactional data","Flask for a straightforward backend","dbt and pytest for repeatable transformations and quality checks"],
+  caveat:"XGBoost depends on the quality and representativeness of training data.",
+  optim:["Forecast-drift monitoring","Scheduled retraining","Stronger API performance tests","Live inventory and procurement integrations"]},
+ {id:"project-3",name:"Financial Disclosure Data Pipeline",kind:"financial",
+  chips:["Python","SQL","ETL","APIs","SEC 10-K filings","Data validation"],
+  flow:["SEC 10-K filings","Crawl and ingest","Clean and structure","SQL / ETL","Schema and data-quality checks"],
+  roles:["Filing ingestion","Transformation","Validation","Structured financial data"],
+  stats:[["800+","Filings"],["500,000+","Data points"],["50+","Earnings metrics"],["3","Earnings trends"],["4%","Revenue growth shifts"],["6%","Malformed records identified"]],
+  choices:["Automated extraction and validation over manual spreadsheet processing"],
+  caveat:"Irregular filing layouts and changing disclosure formats may still need additional parsing rules.",
+  optim:["Incremental filing updates","Exception handling for unusual disclosures","Data-lineage tracking","Confidence indicators"]},
+ {id:"project-4",name:"Oil Geo Signal Engine",kind:"oil",
+  chips:["Python","XGBoost","Random Forest","Scikit-learn","Pandas","NumPy","yfinance","Llama 3.3 70B","Streamlit","Plotly"],
+  flow:["Historical market data","90+ engineered features","Llama 3.3 70B news scoring","XGBoost / Random Forest","66% confidence threshold"],
+  roles:["Data preparation","Feature engineering","Model research","AI-assisted news analysis","GeoOil Intel dashboard","Monday Alpha dashboard"],
+  stats:[["~100,000","Raw daily records"],["890","Monday observations"],["90+","Signals"],["69%","Reported high-confidence accuracy"]],
+  caveat:"Reported evaluation, not guaranteed future performance.",
+  choices:["Confidence threshold reduces coverage","Historical relationships can change across market regimes"],
+  optim:["Walk-forward validation","Feature-drift monitoring","Make model confidence easier to inspect","Make data provenance easier to inspect"]}
+];
+const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pick=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;};
+const decorate=(node,content)=>{node.append(content);return node;};
+const list=(items,cls)=>{const wrap=pick("div",cls);items.forEach(t=>wrap.append(pick("span","walk-chip",t)));return wrap;};
+function showLightbox(images,i,origin){if(window.fpOpenLightbox)window.fpOpenLightbox(images,i,origin);}
+function buildVisual(cfg,step,source,slide){
+ const visual=pick("div","walk-visual");visual.setAttribute("aria-label","Project visual summary");
+ const visualHeading=pick("div","walk-visual-caption",step===1?"Project context":step===2?"System and implementation":step===3?"My responsibilities":step===4?"Results in the case study":step===5?"Design decisions and limitations":"Potential improvements");
+ visual.append(visualHeading);
+ if(cfg.kind==="synapse"&&step===1&&source.length>1){
+  const img=source.find(x=>x.title.toLowerCase().includes("collaboration"))||source[1];
+  const button=pick("button","walk-visual-image");button.type="button";button.setAttribute("aria-label","Open team collaboration screenshot");
+  const image=pick("img");Object.assign(image,{src:img.src,alt:img.alt,width:img.width,height:img.height,loading:"lazy"});button.append(image);
+  button.addEventListener("click",()=>showLightbox([img],0,button));visual.append(button,pick("p","walk-visual-note","Team collaboration hub"));
+ }else if(cfg.kind==="synapse"&&step===2&&source.length){
+  const img=source[0],button=pick("button","walk-visual-image");button.type="button";button.setAttribute("aria-label","Open organization chart screenshot");
+  const image=pick("img");Object.assign(image,{src:img.src,alt:img.alt,width:img.width,height:img.height,loading:"lazy"});button.append(image);
+  button.addEventListener("click",()=>showLightbox([img],0,button));visual.append(button,list(cfg.chips,"walk-chips"));
+ }else if(step===1){
+  const frame=slide.closest(".project-block")?.querySelector(":scope > .fp-frame");
+  if(frame){const cloned=frame.cloneNode(true);cloned.classList.add("walk-context-frame");visual.append(cloned);}
+  if(!frame)visual.append(pick("p","walk-visual-note","Project overview"));
+ }else if(step===2){
+  const flow=pick("div","walk-flow");cfg.flow.forEach((t,i)=>{flow.append(pick("div","walk-flow-step",t));if(i<cfg.flow.length-1)flow.append(pick("span","walk-flow-arrow","→"));});
+  visual.append(flow,list(cfg.chips,"walk-chips"));
+ }else if(step===3){
+  visual.append(list(cfg.roles,"walk-roles"));
+  if(cfg.kind==="synapse")visual.append(pick("p","walk-visual-note","An integrations screenshot has not been verified, so this step uses responsibilities from the case study."));
+ }else if(step===4){
+  const stats=pick("div","walk-stat-grid");cfg.stats.forEach(([amount,label])=>{const box=pick("div","walk-stat");box.append(pick("strong",null,amount),pick("span",null,label));stats.append(box);});visual.append(stats);
+  if(cfg.kind==="oil")visual.append(pick("p","walk-caveat",cfg.caveat));
+ }else if(step===5){
+  if(cfg.kind==="synapse"){const flow=pick("div","walk-flow");cfg.flow.forEach((t,i)=>{flow.append(pick("div","walk-flow-step",t));if(i<cfg.flow.length-1)flow.append(pick("span","walk-flow-arrow","→"));});visual.append(flow);}
+  else{visual.append(pick("strong","walk-choices-title","Chose"));visual.append(list(cfg.choices||[],"walk-roles"));visual.append(pick("strong","walk-choices-title","Tradeoff / Limitation"));visual.append(pick("p","walk-caveat",cfg.caveat||(cfg.kind==="oil"?"Market regimes and news-scoring models can produce uncertain signals.":"")));}
+ }else if(step===6){
+  const checklist=pick("ul","walk-checklist");cfg.optim.forEach(t=>{const li=pick("li");li.append(pick("span","walk-check","✓"),document.createTextNode(t));checklist.append(li);});visual.append(checklist);
+ }
+ return visual;
+}
+specs.forEach(cfg=>{
+ const card=document.getElementById(cfg.id);
+ const details=card?.querySelector(".project-expand");
+ const oldBox=details?.querySelector(":scope > .case-box");
+ if(!card||!details||!oldBox)return;
+ const sections=[...oldBox.querySelectorAll(":scope > .project-framework-item")];
  if(sections.length!==6)return;
- const oneLiner=card.querySelector("h2")?.nextElementSibling?.textContent||"";
+ details.classList.add("walk-details");
+ // Move the toggle to a full-width row in the original project card. Text is not modified.
+ card.append(details);
+ const figureNodes=[...oldBox.querySelectorAll(".fp-case-gallery figure")];
+ const screenshots=figureNodes.map((node,i)=>{const image=node.querySelector("img");if(!image)return null;return {
+  src:image.getAttribute("src"),alt:image.alt,width:Number(image.getAttribute("width"))||1200,height:Number(image.getAttribute("height"))||800,
+  title:node.querySelector("figcaption")?.textContent||("Screenshot "+(i+1))
+ };}).filter(Boolean);
+ const root=pick("div","walk-root");root.tabIndex=0;root.setAttribute("role","region");root.setAttribute("aria-label",cfg.name+" technical walkthrough");
+ const viewport=pick("div","walk-viewport");root.append(viewport);
+ const slides=[];let active=0,touchStart=null;
+ const subtitle=card.querySelector("h2")?.nextElementSibling?.textContent||"";
  const stack=card.querySelector("h2")?.nextElementSibling?.nextElementSibling?.textContent||"";
- const images=sourceFigures.map((fig,i)=>{
-  const image=fig.querySelector("img");
-  return image?{src:image.getAttribute("src"),alt:image.alt,w:parseInt(image.getAttribute("width"),10)||1200,h:parseInt(image.getAttribute("height"),10)||800,...cfg.screens[i]}:null;
- }).filter(Boolean);
- const root=document.createElement("div");root.className="sw-root";root.tabIndex=0;root.setAttribute("aria-label","Synapse technical slide walkthrough");root.setAttribute("role","region");
- const viewport=document.createElement("div");viewport.className="sw-viewport";root.append(viewport);
- const slides=[];
- function el(tag,cls,txt){const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined)x.textContent=txt;return x;}
- function addSlide(title,index,isIntro){
-  const slide=el("section","sw-slide"+(isIntro?" sw-intro":""));
-  slide.dataset.step=String(index);
-  const head=el("div","sw-head");
-  head.append(el("span","sw-kicker","Technical Walkthrough"),el("span","sw-count",isIntro?"Overview":" "+index+" / 6"));
+ function makeSlide(step,title){
+  const slide=pick("section","walk-slide");slide.dataset.slide=step;
+  const head=pick("div","walk-head");
+  head.append(pick("span","walk-kicker","Technical Walkthrough"),pick("span","walk-count",step?step+" / 6":"Overview"));
   head.lastElementChild.setAttribute("aria-live","polite");
-  const prog=el("div","sw-progress");prog.setAttribute("role","progressbar");prog.setAttribute("aria-label","Technical walkthrough progress");const fill=el("span");prog.append(fill);
-  const h=el("h3","sw-slide-heading",title);h.tabIndex=-1;
-  const body=el("div","sw-body");
-  slide.append(head,prog,h,body);
-  const nav=el("nav","sw-nav");nav.setAttribute("aria-label","Slide controls");
-  if(index>0){const back=el("button","sw-back","← Back");back.type="button";back.addEventListener("click",()=>show(index-1,-1));nav.append(back);}
-  else nav.append(el("span","sw-overview"));
-  if(index<6){const next=el("button","sw-next",index===0?"Start technical walkthrough →":"Next →");next.type="button";next.addEventListener("click",()=>show(index+1,1));nav.append(next);}
-  else {const next=el("a","sw-next","Discuss project ↗");next.href="#contact";nav.append(next);const overview=el("button","sw-overview","Back to overview");overview.type="button";overview.addEventListener("click",()=>show(0,-1));nav.append(overview);}
-  slide.append(nav);
-  const dots=el("div","sw-dots");dots.setAttribute("aria-label","Walkthrough position");
-  for(let i=0;i<=6;i++){const dot=el("button");dot.type="button";dot.setAttribute("aria-label",i===0?"Go to overview":"Go to technical step "+i);dot.addEventListener("click",()=>show(i,i>active?1:-1));dots.append(dot);}
-  slide.append(dots);
-  viewport.append(slide);slides.push({slide,body,h,head,prog,dots});return body;
+  const track=pick("div","walk-track");const fill=pick("span","walk-fill");track.append(fill);
+  track.setAttribute("role","progressbar");track.setAttribute("aria-label","Technical walkthrough progress");track.setAttribute("aria-valuemin","0");track.setAttribute("aria-valuemax","6");
+  const heading=pick("h3","walk-heading",title);heading.tabIndex=-1;
+  const grid=pick("div","walk-main");const body=pick("div","walk-copy");grid.append(body);
+  const footer=pick("nav","walk-footer");footer.setAttribute("aria-label","Slide controls");
+  const previous=pick("button","walk-btn walk-back","← Back");previous.type="button";
+  previous.addEventListener("click",()=>go(step-1,-1));if(step===0){previous.disabled=true;previous.setAttribute("aria-hidden","true");}
+  const dots=pick("div","walk-dots");dots.setAttribute("aria-label","Select a slide");
+  for(let n=0;n<=6;n++){const dot=pick("button","walk-dot");dot.type="button";dot.setAttribute("aria-label",n===0?"Overview":"Step "+n);dot.addEventListener("click",()=>go(n,n>=active?1:-1));dots.append(dot);}
+  const next=step===6?pick("a","walk-btn walk-next","Discuss project ↗"):pick("button","walk-btn walk-next",step===0?"Start technical walkthrough →":"Next →");
+  if(step===6){next.href="#contact";}else{next.type="button";next.addEventListener("click",()=>go(step+1,1));}
+  footer.append(previous,dots,next);
+  if(step===6){const overview=pick("button","walk-overview","Back to overview");overview.type="button";overview.addEventListener("click",()=>go(0,-1));footer.append(overview);}
+  slide.append(head,track,heading,grid,footer);viewport.append(slide);
+  slides.push({slide,heading,track,fill,dots,grid,body});return slides.at(-1);
  }
- const intro=addSlide("Synapse Solution — Overview",0,true);
- intro.append(el("p","sw-intro-lede",oneLiner),el("p","sw-intro-stack",stack));
- if(images.length){
-  let current=0;
-  const big=el("button","sw-primary-image");big.type="button";big.setAttribute("aria-label","Open selected Synapse screenshot full size");
-  const bigImg=el("img");bigImg.loading="lazy";bigImg.decoding="async";big.append(bigImg);
-  const caption=el("p","sw-image-caption");
-  const thumbs=el("div","sw-thumbs");thumbs.setAttribute("role","group");thumbs.setAttribute("aria-label","Choose Synapse screenshot");
-  const thumbButtons=images.map((info,i)=>{
-   const b=el("button","sw-thumb");b.type="button";
-   const img=el("img");img.src=info.src;img.alt=info.alt;img.width=info.w;img.height=info.h;img.loading="lazy";img.decoding="async";
-   b.append(img,el("span",null,info.title||"Screenshot "+(i+1)));
-   b.setAttribute("aria-label","Show "+(info.title||"screenshot "+(i+1)));
-   b.addEventListener("click",()=>selectImage(i));
-   thumbs.append(b);return b;
+ const intro=makeSlide(0,cfg.name+" — Overview");
+ intro.body.append(pick("p","walk-lede",subtitle),pick("p","walk-stack",stack));
+ if(cfg.kind==="synapse"&&screenshots.length){
+  let selected=0;
+  const mainBtn=pick("button","walk-preview-main");mainBtn.type="button";mainBtn.setAttribute("aria-label","Open selected screenshot in lightbox");
+  const image=pick("img");image.loading="lazy";image.decoding="async";mainBtn.append(image);
+  const caption=pick("p","walk-preview-caption");
+  const strip=pick("div","walk-thumbs");strip.setAttribute("aria-label","Choose a screenshot");
+  const thumbs=screenshots.map((entry,index)=>{
+   const button=pick("button","walk-thumb");button.type="button";button.setAttribute("aria-label","Show "+entry.title);
+   const im=pick("img");Object.assign(im,{src:entry.src,alt:entry.alt,width:entry.width,height:entry.height,loading:"lazy"});button.append(im,pick("span",null,entry.title));strip.append(button);
+   button.addEventListener("click",()=>select(index));return button;
   });
-  function selectImage(i){current=i;const info=images[i];bigImg.src=info.src;bigImg.alt=info.alt;bigImg.width=info.w;bigImg.height=info.h;caption.textContent=info.caption||info.title;thumbButtons.forEach((b,k)=>b.setAttribute("aria-pressed",String(k===i)));}
-  big.addEventListener("click",()=>window.fpOpenLightbox?.(images,current,big));
-  intro.append(big,caption,thumbs);selectImage(0);
+  function select(i){selected=i;const item=screenshots[i];Object.assign(image,{src:item.src,alt:item.alt,width:item.width,height:item.height});caption.textContent=item.title;thumbs.forEach((b,n)=>b.setAttribute("aria-pressed",String(n===i)));}
+  mainBtn.addEventListener("click",()=>showLightbox(screenshots,selected,mainBtn));
+  intro.body.append(mainBtn,caption,strip);select(0);
  }else{
-  const existing=card.querySelector(".fp-frame");if(existing)intro.append(existing.cloneNode(true));
+  const preview=card.querySelector(":scope > .fp-frame");if(preview){const dup=preview.cloneNode(true);dup.classList.add("walk-context-frame");intro.body.append(dup);}
  }
- sections.forEach((section,i)=>{
-  const heading=section.querySelector(".project-framework-label h3")?.textContent||"Technical step "+(i+1);
-  const body=addSlide(heading,i+1,false);
-  body.append(section); // moves original, verbatim case study copy
- });
- originalBox.replaceChildren(root);
- if(originalGallery)originalGallery.remove();
- let active=0,touchX=null;
- function show(i,direction){
-  if(i<0||i>=slides.length)return;
-  active=i;
-  slides.forEach((x,n)=>{
-   const showing=n===i;
-   x.slide.hidden=!showing;
-   x.slide.classList.remove("sw-enter-next","sw-enter-prev");
-   x.prog.firstElementChild.style.width=((i/6)*100)+"%";
-   x.prog.setAttribute("aria-valuenow",String(i));x.prog.setAttribute("aria-valuemin","0");x.prog.setAttribute("aria-valuemax","6");
-   [...x.dots.children].forEach((d,k)=>{if(k===i)d.setAttribute("aria-current","step");else d.removeAttribute("aria-current");});
-   if(showing){
-    const count=x.head.querySelector(".sw-count");count.textContent=i===0?"Overview":i+" / 6";
-    if(direction){void x.slide.offsetWidth;x.slide.classList.add(direction>0?"sw-enter-next":"sw-enter-prev");}
-   }
+ for(let i=0;i<6;i++){
+  const step=i+1,section=sections[i],title=section.querySelector(".project-framework-label h3")?.textContent||"Technical step";
+  const slide=makeSlide(step,title);
+  slide.body.append(section); // unmodified copy and step elements
+  slide.grid.append(buildVisual(cfg,step,screenshots,slide.slide));
+ }
+ // Replace content only after the six original sections have been transferred.
+ oldBox.replaceChildren(root);
+ function go(step,direction=0){
+  if(step<0||step>6)return;
+  active=step;
+  slides.forEach((entry,n)=>{
+   const isActive=n===step;
+   entry.slide.hidden=!isActive;
+   entry.slide.classList.remove("walk-from-left","walk-from-right");
+   entry.fill.style.width=(step/6*100)+"%";
+   entry.track.setAttribute("aria-valuenow",String(step));
+   [...entry.dots.children].forEach((dot,i)=>{if(i===step)dot.setAttribute("aria-current","step");else dot.removeAttribute("aria-current");});
+   if(isActive&&direction){void entry.slide.offsetWidth;entry.slide.classList.add(direction>0?"walk-from-right":"walk-from-left");}
   });
-  if(direction)slides[i].h.focus({preventScroll:true});
+  if(direction)slides[step].heading.focus({preventScroll:true});
  }
- root.addEventListener("keydown",e=>{
-  if(!details.open||e.altKey||e.ctrlKey||e.metaKey||e.target.closest(".sw-thumbs"))return;
-  if(e.key==="ArrowRight"){e.preventDefault();show(Math.min(6,active+1),1);}
-  if(e.key==="ArrowLeft"){e.preventDefault();show(Math.max(0,active-1),-1);}
-  if(e.key==="Escape"){e.preventDefault();details.open=false;details.querySelector("summary")?.focus();}
+ root.addEventListener("keydown",event=>{
+  if(!details.open||event.altKey||event.ctrlKey||event.metaKey)return;
+  if(event.key==="Escape"){event.preventDefault();details.open=false;details.querySelector("summary")?.focus();return;}
+  if(event.target.closest(".walk-thumb,.walk-thumbs"))return;
+  if(event.key==="ArrowRight"){event.preventDefault();go(Math.min(6,active+1),1);}
+  if(event.key==="ArrowLeft"){event.preventDefault();go(Math.max(0,active-1),-1);}
  });
- root.addEventListener("touchstart",e=>{if(e.touches.length===1)touchX=e.touches[0].clientX;},{passive:true});
- root.addEventListener("touchend",e=>{if(touchX===null||!details.open)return;const delta=e.changedTouches[0].clientX-touchX;touchX=null;if(Math.abs(delta)<65)return;show(Math.max(0,Math.min(6,active+(delta<0?1:-1))),delta<0?1:-1);},{passive:true});
- details.addEventListener("toggle",()=>{if(!details.open)show(0,0);});
- show(0,0);
+ root.addEventListener("touchstart",event=>{if(event.touches.length===1)touchStart=event.touches[0].clientX;},{passive:true});
+ root.addEventListener("touchend",event=>{if(touchStart===null||!details.open)return;const delta=event.changedTouches[0].clientX-touchStart;touchStart=null;if(Math.abs(delta)<70)return;go(Math.max(0,Math.min(6,active+(delta<0?1:-1))),delta<0?1:-1);},{passive:true});
+ details.addEventListener("toggle",()=>{if(!details.open)go(0);});
+ go(0);
 });
 })();
 </script>
