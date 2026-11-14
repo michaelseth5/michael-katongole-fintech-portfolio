@@ -3383,6 +3383,18 @@ body .apple-topbar {
 #project-details .walk-intro-media{min-width:0;align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:10px}
 #project-details .walk-intro-media .walk-context-frame{width:100%;height:320px!important}
 @media(max-width:680px){#project-details .walk-intro-media{order:-1;max-height:300px;overflow:auto}#project-details .walk-intro-media .walk-context-frame{height:210px!important}}
+
+/* Real project images in place of empty visual cards, with native button navigation. */
+#project-details .walk-image-carousel{display:flex;flex-direction:column;width:100%;min-width:0;gap:11px;flex:1;justify-content:center}
+#project-details .walk-carousel-main{display:flex;align-items:center;justify-content:center;width:100%;min-width:0;padding:10px;background:#110b1c;border:1px solid #735a8e;border-radius:13px;cursor:zoom-in;flex:1;min-height:210px}
+#project-details .walk-carousel-main img{display:block;width:100%;height:clamp(210px,26vw,360px);max-width:100%;object-fit:contain;object-position:center;border-radius:7px}
+#project-details .walk-carousel-caption{color:#e6d9f5!important;font-size:13px!important;line-height:1.55!important;text-align:center!important;margin:0!important}
+#project-details .walk-carousel-controls{display:flex;justify-content:space-between;align-items:center;gap:9px}
+#project-details .walk-carousel-controls button{background:#463059;color:#f8f1ff;border:1px solid #9d75c1;border-radius:8px;padding:8px 12px;font:700 12px/1.4 inherit;cursor:pointer}
+#project-details .walk-carousel-controls button:disabled{opacity:.45;cursor:default}
+#project-details .walk-carousel-count{font:700 12px/1.4 ui-monospace,monospace;color:#d7c2ef;white-space:nowrap}
+#project-details .walk-carousel-main:focus-visible,#project-details .walk-carousel-controls button:focus-visible{outline:3px solid #d6b9ff;outline-offset:3px}
+@media(max-width:680px){#project-details .walk-carousel-main{min-height:120px}#project-details .walk-carousel-main img{height:135px}#project-details .walk-carousel-controls button{padding:6px 9px;font-size:11px}#project-details .walk-image-carousel{gap:6px}}
 </style><style id="mk-homepage-title-case">
 /* Capitalize displayed homepage words only, without changing copy or case-study pages. */
 #home :is(h1,h2,h3,h4,p,.subtitle,.eyebrow,.eyebrowline,.mk-vision-kicker,.mk-home-welcome-name,.mk-social-word,.btn,summary),
@@ -4583,8 +4595,48 @@ const pick=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.class
 const decorate=(node,content)=>{node.append(content);return node;};
 const list=(items,cls)=>{const wrap=pick("div",cls);items.forEach(t=>wrap.append(pick("span","walk-chip",t)));return wrap;};
 function showLightbox(images,i,origin){if(window.fpOpenLightbox)window.fpOpenLightbox(images,i,origin);}
+function buildImageCarousel(items,label){
+ if(!items.length)return null;
+ let at=0;
+ const root=pick("div","walk-image-carousel");
+ root.setAttribute("role","group");root.setAttribute("aria-label",label+" screenshot carousel");
+ const frame=pick("button","walk-carousel-main");frame.type="button";
+ frame.setAttribute("aria-label","Open project image full size");
+ const img=pick("img");img.loading="lazy";img.decoding="async";frame.append(img);
+ const controls=pick("div","walk-carousel-controls");
+ const prev=pick("button","walk-carousel-prev","← Previous");prev.type="button";
+ const counter=pick("span","walk-carousel-count");counter.setAttribute("aria-live","polite");
+ const next=pick("button","walk-carousel-next","Next →");next.type="button";
+ controls.append(prev,counter,next);
+ const caption=pick("p","walk-carousel-caption");
+ function select(i){
+  at=(i+items.length)%items.length;
+  const data=items[at];img.src=data.src;img.alt=data.alt;
+  img.width=data.width||1200;img.height=data.height||800;
+  caption.textContent=data.title||data.alt;
+  counter.textContent=(at+1)+" / "+items.length;
+  prev.disabled=next.disabled=items.length<2;
+ }
+ prev.addEventListener("click",()=>select(at-1));
+ next.addEventListener("click",()=>select(at+1));
+ frame.addEventListener("click",()=>showLightbox(items,at,frame));
+ root.append(frame,caption);
+ if(items.length>1)root.append(controls);
+ select(0);
+ return root;
+}
 function buildVisual(cfg,step,source,slide){
  const visual=pick("div","walk-visual");visual.setAttribute("aria-label","Project visual summary");
+ if(step===1){
+  let candidates=source;
+  if(cfg.kind==="financial"&&!candidates.length){
+   const header=slide.closest(".project-block")?.querySelector(":scope > .fp-frame .fp-main img");
+   if(header)candidates=[{src:header.getAttribute("src"),alt:header.alt,width:800,height:1120,title:"SEC Form 10-K filing cover"}];
+  }
+  const gallery=buildImageCarousel(candidates,cfg.name);
+  if(gallery){visual.append(pick("div","walk-visual-caption","Project Images"),gallery);return visual;}
+ }
+
  const visualHeading=pick("div","walk-visual-caption",step===1?"Project context":step===2?"System and implementation":step===3?"My responsibilities":step===4?"Results in the case study":step===5?"Design decisions and limitations":"Potential improvements");
  visual.append(visualHeading);
  if(cfg.kind==="synapse"&&step===1&&source.length>1){
