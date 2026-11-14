@@ -3070,6 +3070,23 @@ body .apple-topbar {
 #projects.fp-motion .fp-card.fp-in{opacity:1;transform:none}
 @media(max-width:560px){#projects .fp-frame{border-width:8px;border-radius:32px}#projects .fp-card-link{border-radius:32px}#projects .fp-back-r{display:none}#projects .fp-back-l{width:52%}#projects .fp-main{width:84%}#projects .fp-row{align-items:flex-start}#projects .fp-star{padding:8px 11px;font-size:12px}#projects .fp-tags li{padding:8px 11px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){#projects .fp-card,#projects .fp-frame,#projects .fp-win{transition:none!important}#projects.fp-motion .fp-card{opacity:1!important;transform:none!important}}
+
+/* Explicit background and high-contrast text: protects against homepage theme overrides. */
+#home #projects.fp{
+  background-color:#140e23!important;
+  background-image:radial-gradient(ellipse at 50% 0%,rgba(75,40,117,.38),transparent 65%),radial-gradient(rgba(167,159,196,.13) 1px,transparent 1px)!important;
+  background-size:auto,28px 28px!important;
+  color:#f7f2ff!important;
+  isolation:isolate;
+}
+#home #projects.fp .fp-eyebrow{color:#d9bbff!important;opacity:1!important}
+#home #projects.fp .fp-title{color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;opacity:1!important;text-shadow:0 1px 14px rgba(160,106,237,.22)}
+#home #projects.fp .fp-sub{color:#e2d8f1!important;opacity:1!important}
+#home #projects.fp .fp-label,#home #projects.fp .fp-label b,#home #projects.fp .fp-label span{color:#ded0f1!important;opacity:1!important}
+#home #projects.fp .fp-name{color:#fff!important;-webkit-text-fill-color:#fff!important;opacity:1!important}
+#home #projects.fp .fp-tags li{color:#e9e1f5!important}
+#home #projects.fp .fp-more{color:#e7caff!important}
+#home #projects.fp .fp-desc{color:#fff!important;opacity:1!important}
 </style>
 <style id="mk-skills-sphere-upgrade">
 /* Dark-purple Skills only. Older site-wide page and sphere styles remain untouched. */
