@@ -366,3 +366,74 @@ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="8"] > fo
     max-width:calc(100% - 75px)!important;
   }
 }
+
+/* Contact channel compact layout - no changes to other channels. */
+body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"]>#contact,
+body.tv-mode #main-content.tv-stage .tv-page[data-channel="8"]>#contact,
+#contact{
+  min-height:0!important;height:auto!important;max-height:none!important;
+  padding:48px 24px!important;margin:0!important;display:block!important;
+}
+#contact>.container{width:min(1180px,100%)!important;max-width:1180px!important;margin:0 auto!important;padding:0!important}
+#contact .mk-connect-layout{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:24px!important;align-items:stretch!important;min-height:0!important}
+#contact .mk-connect-left{min-height:0!important;max-height:none!important;padding:24px!important;gap:16px!important;justify-content:center!important;overflow:visible}
+#contact .mk-connect-left .page-hero{margin:0!important;padding:0!important;max-width:100%!important;align-items:flex-start!important;text-align:left!important}
+#contact .mk-connect-left .page-hero>*{text-align:left!important;align-self:flex-start!important;margin-inline:0!important}
+#contact .mk-connect-left .page-hero>.back{font-size:12px!important}
+#contact .mk-connect-left .page-hero>.eyebrow{margin-top:12px!important}
+#contact .mk-connect-left .page-hero>h1{font-size:clamp(32px,3.3vw,48px)!important;line-height:1.08!important;margin:8px 0 12px!important}
+#contact .mk-connect-left .page-hero>p{font-size:14px!important;line-height:1.5!important;max-width:60ch!important;margin:0!important}
+#contact .mk-connect-links{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin:4px 0 0!important}
+#contact .mk-connect-links .mk-connect-link{min-height:42px!important;padding:9px 14px!important;gap:14px!important;flex:0 0 auto!important;border-radius:12px!important;font-size:14px!important}
+#contact .mk-connect-links .mk-connect-link span:last-child{font-size:17px!important}
+#contact .mk-chat-panel{height:380px!important;min-height:0!important;max-height:380px!important;align-self:start!important;display:flex!important;flex-direction:column!important;padding:16px 18px!important;border-radius:20px!important;overflow:hidden!important}
+#contact .mk-chat-title{font-size:21px!important}
+#contact .mk-chat-beta{font-size:10px!important;padding:2px 6px!important;margin-left:4px!important}
+#contact .mk-chat-subtitle{font-size:12px!important;margin-top:2px!important}
+#contact .mk-chat-conversation{flex:1 1 auto!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overscroll-behavior:contain!important;margin:10px 0!important;gap:7px!important;padding:2px 4px 2px 0!important}
+#contact .mk-chat-message{font-size:14px!important;line-height:1.5!important;padding:9px 11px!important}
+#contact .mk-chat-chips{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;gap:6px!important;margin:0 0 8px!important;scrollbar-width:thin;flex:0 0 auto!important;padding-bottom:4px!important}
+#contact .mk-chat-chips button{white-space:nowrap!important;flex:0 0 auto!important;min-height:40px!important;padding:8px 11px!important;font-size:11px!important}
+#contact .mk-chat-form{min-height:44px!important;padding:2px 4px!important;flex:0 0 auto!important}
+#contact .mk-chat-form input{font-size:14px!important;padding:8px 10px!important}
+#contact .mk-chat-form button{width:40px!important;min-width:40px!important;height:40px!important}
+#contact .mk-chat-disclaimer{font-size:10px!important;line-height:1.3!important;margin:6px 0 0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;flex:0 0 auto!important}
+body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"]>.mk-footer-band,
+body.tv-mode #main-content.tv-stage .tv-page[data-channel="8"]>.mk-footer-band,
+.mk-footer-band{min-height:0!important;height:auto!important;background:#160e25!important}
+.mk-footer-band .mk-footer{display:grid!important;grid-template-columns:1fr auto!important;grid-template-rows:auto auto!important;align-items:center!important;gap:0 14px!important;padding:9px 24px!important;width:min(1180px,100%)!important;min-height:0!important;height:auto!important;margin:auto!important;font-size:12px!important}
+.mk-footer .mk-socials-footer{display:flex!important;gap:8px!important;justify-content:flex-end!important;align-items:center!important;flex-wrap:wrap!important}
+.mk-footer .mk-socials-footer .mk-social-link{min-height:40px!important;padding:7px 10px!important;gap:5px!important}
+.mk-footer .mk-footer-tagline{grid-column:1/-1!important;font-size:11px!important;color:#ada0bd!important;line-height:1.4!important}
+body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"]>.mk-footer-quotes,
+body.tv-mode #main-content.tv-stage .tv-page[data-channel="8"]>.mk-footer-quotes,
+.mk-footer-quotes{min-height:0!important;height:auto!important;max-height:none!important;margin:0!important;padding:10px 0!important}
+.mk-footer-quotes-inner{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:10px!important;max-width:1180px!important;padding:0 24px!important}
+.mk-footer-quotes-kicker{margin:0!important;font-size:10px!important;white-space:nowrap!important}
+.mk-footer-quote-stage{min-height:0!important;height:auto!important;min-width:0!important;max-width:none!important;margin:0!important}
+.mk-footer-quote blockquote{font-size:clamp(14px,1.1vw,16px)!important;line-height:1.35!important;margin:0!important}
+.mk-footer-quote figcaption{font-size:11px!important;line-height:1.35!important}
+.mk-footer-quote-controls{display:flex!important;align-items:center!important;gap:5px!important;white-space:nowrap!important;margin:0!important}
+.mk-footer-quote-controls button{min-height:40px!important;padding:5px 9px!important;font-size:11px!important}
+.mk-footer-quote-count{min-width:40px!important;text-align:center!important}
+@media(max-width:850px){
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"]>#contact,
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="8"]>#contact,
+ #contact{padding:32px 16px!important}
+ #contact .mk-connect-layout{grid-template-columns:minmax(0,1fr)!important;gap:16px!important}
+ #contact .mk-connect-left{padding:18px!important}
+ #contact .mk-chat-panel{height:320px!important;max-height:320px!important;padding:14px!important}
+ .mk-footer-quotes-inner{grid-template-columns:minmax(0,1fr)!important;text-align:center!important;gap:4px!important;padding:0 12px!important}
+ .mk-footer-quote-stage{min-height:55px!important}
+ .mk-footer-quote-controls{justify-content:center!important}
+ .mk-footer-band .mk-footer{grid-template-columns:1fr!important;gap:4px!important;padding:10px 16px!important}
+ .mk-footer .mk-socials-footer{justify-content:flex-start!important}
+ .mk-footer .mk-footer-tagline{grid-column:1!important}
+}
+@media(max-width:440px){
+ #contact .mk-connect-links{gap:6px!important}
+ #contact .mk-connect-links .mk-connect-link{font-size:12px!important;padding:8px 10px!important}
+ #contact .mk-chat-disclaimer{font-size:9px!important}
+ .mk-footer-quote blockquote{font-size:14px!important}
+}
+@media(prefers-reduced-motion:reduce){#contact .mk-connect-link,#contact .mk-chat-chips button,.mk-footer-quote{transition:none!important}}
