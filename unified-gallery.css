@@ -457,3 +457,24 @@ body.tv-mode #networking .network-event-slide.ug-current {
    font-size:14px!important;
  }
 }
+
+/* Mentorship album: show every photograph in full, including wide and tall shots. */
+#hobbies .mentorship-showcase .ug-stage {
+ background:#20172e!important;
+}
+#hobbies .mentorship-showcase .ug-stage .ug-photo {
+ object-fit:contain!important;
+ object-position:center center!important;
+}
+#hobbies .mentorship-showcase .ug-thumb {
+ background:#20172e!important;
+}
+#hobbies .mentorship-showcase .ug-thumb img {
+ object-fit:contain!important;
+ object-position:center center!important;
+}
+#hobbies .mentorship-showcase .photo-carousel-rail .mentorship-shot img {
+ object-fit:contain!important;
+ object-position:center center!important;
+ background:#20172e!important;
+}
