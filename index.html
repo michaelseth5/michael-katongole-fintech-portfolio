@@ -3613,7 +3613,7 @@ body .apple-topbar {
    if(!drag){
     yaw+=velocityX;pitch=clamp(pitch+velocityY,-1.15,1.15);
     velocityX*=Math.pow(.91,dt/16);velocityY*=Math.pow(.91,dt/16);
-    if(!hovered&&now>stopUntil)yaw+=dt*.000075;
+    if(!hovered&&now>stopUntil)yaw+=dt*.00011;
    }
    draw();raf=requestAnimationFrame(tick);
   }else{draw();raf=0;}
