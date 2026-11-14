@@ -29,7 +29,8 @@
     progress.appendChild(dot);
     return dot;
   });
-  stage.append(cue,progress);
+  home.append(cue); // Keep SCROLL at the bottom of the hero, before the welcome notice.
+  stage.append(progress);
 
   let ready=false,activeIndex=0,revealTimer=0,scrollFrame=0,wasActive=false;
   const isActive=()=>panel.classList.contains('is-active') && !stage.inert;
