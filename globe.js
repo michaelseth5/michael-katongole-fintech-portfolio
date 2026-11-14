@@ -159,15 +159,22 @@
         usd: route.usd, flow: route.flow
       };
     });
-    // Preserve each reported trade corridor and overlay a small traveling highlight.
-    const movingDots = reducedMotion ? [] : arcs.map(route => ({...route, movingDot: true}));
-    state.globe.arcsData([...arcs, ...movingDots])
-      .arcColor(route => route.movingDot ? '#f8efff' : (route.flow === 'X' ? ['#19ca73', '#82f4b3'] : ['#ff5369', '#ff9b9f']))
-      .arcStroke(route => route.movingDot ? 2.8 : .22 + 2 * Math.sqrt(route.usd / max))
-      .arcAltitudeAutoScale(.33)
-      .arcDashLength(route => route.movingDot ? .014 : 1)
-      .arcDashGap(route => route.movingDot ? .986 : 0)
-      .arcDashAnimateTime(route => route.movingDot ? 3300 : 0)
+    // Thin, fading routes and small circular endpoints replace thick strokes and square traveling markers.
+    const endpoints = arcs.flatMap(route => [
+      {lat:route.startLat,lng:route.startLng,flow:route.flow},
+      {lat:route.endLat,lng:route.endLng,flow:route.flow}
+    ]);
+    state.globe.pointsData(endpoints)
+      .pointLat('lat').pointLng('lng').pointAltitude(.012)
+      .pointRadius(.12).pointResolution(12)
+      .pointColor(dot => dot.flow === 'X' ? 'rgba(91,206,147,.8)' : 'rgba(220,109,126,.8)');
+    state.globe.arcsData(arcs)
+      .arcColor(route => route.flow === 'X'
+        ? ['rgba(91,206,147,0)','rgba(91,206,147,.78)','rgba(91,206,147,0)']
+        : ['rgba(220,109,126,0)','rgba(220,109,126,.78)','rgba(220,109,126,0)'])
+      .arcStroke(route => .10 + .88 * Math.sqrt(route.usd / max))
+      .arcAltitudeAutoScale(.25)
+      .arcDashLength(1).arcDashGap(0).arcDashAnimateTime(0)
       .arcLabel(route => html(route.source) + ' → ' + html(route.destination) +
         '<br><b>' + money(route.usd) + '</b> · reported ' +
         (route.flow === 'X' ? 'exports' : 'imports') + ' · ' + year +
@@ -270,30 +277,37 @@
       });
       if (state.countryByCode.has(840))
         state.countryByCode.set(842, state.countryByCode.get(840));
-      state.globe = Globe()(mount)
+      state.globe = Globe({rendererConfig:{alpha:true,antialias:true}})(mount)
         .backgroundColor('rgba(0,0,0,0)')
-        .showAtmosphere(true).atmosphereColor('#7759bf').atmosphereAltitude(.18)
+        .showAtmosphere(true).atmosphereColor('#505985').atmosphereAltitude(.09)
         .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
         .polygonsData(state.features).polygonAltitude(.009)
-        .polygonCapColor('rgba(46,36,88,.14)')
-        .polygonSideColor('rgba(35,27,70,.11)')
-        .polygonStrokeColor('#a886e5')
+        .polygonCapColor('rgba(46,36,88,.09)')
+        .polygonSideColor('rgba(35,27,70,.07)')
+        .polygonStrokeColor('rgba(130,118,171,.45)')
         .polygonLabel(feature => '<b>' + html(countryName(feature)) +
           '</b><br>Click to inspect ' + year + ' reported trade')
         .onPolygonClick(selectCountry);
+      // Globe.gl exposes its Three.js renderer; preserve alpha and cap GPU pixel density.
+      const renderer = state.globe.renderer();
+      renderer.setClearColor(0x000000,0);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1,2));
+      const material = state.globe.globeMaterial();
+      if (material && material.color) material.color.set('#a2a3b8');
       const controls = state.globe.controls();
       controls.enableZoom = false; // Wheel movement scrolls Home instead of zooming the globe.
       controls.enableDamping = true;
       controls.dampingFactor = .07;
       controls.autoRotate = !reducedMotion;
-      controls.autoRotateSpeed = .34;
-      state.globe.pointOfView({lat: 30, lng: -45, altitude: 2.3}, 0);
+      controls.autoRotateSpeed = .19;
+      state.globe.pointOfView({lat: 30, lng: -45, altitude: 2.75}, 0);
       // Suspend WebGL animation whenever the Home channel is off-screen.
       let hovered = false;
+      let heroInView = true;
       const isHomeActive = () => !window.__portfolioChannelIsActive ||
         window.__portfolioChannelIsActive('home');
       const syncChannelPlayback = () => {
-        const active = isHomeActive() && !document.hidden;
+        const active = isHomeActive() && heroInView && !document.hidden;
         controls.autoRotate = active && !hovered && !reducedMotion;
         if (active) state.globe.resumeAnimation?.();
         else state.globe.pauseAnimation?.();
@@ -303,6 +317,13 @@
       mount.addEventListener('pointerdown', () => { controls.autoRotate=false; });
       document.addEventListener('portfolio:channel-change', syncChannelPlayback);
       document.addEventListener('visibilitychange', syncChannelPlayback);
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          heroInView = entries.some(entry => entry.isIntersecting);
+          syncChannelPlayback();
+        }, {threshold:.02});
+        observer.observe(hero || wrap);
+      }
       const resize = () => state.globe.width(mount.clientWidth).height(mount.clientHeight);
       new ResizeObserver(resize).observe(mount);
       resize();
