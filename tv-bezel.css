@@ -552,3 +552,66 @@ body.tv-mode #main-content.tv-stage .tv-page[data-channel="8"]>.mk-footer-quotes
   padding:10px 8px!important;margin:0!important;
  }
 }
+
+/* Larger, longer Contact cards on desktop; preserve chat interaction and compact quote/footer. */
+@media(min-width:851px){
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] #contact > .container,
+ #contact > .container{
+  width:min(1460px,100%)!important;
+  max-width:1460px!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-connect-layout,
+ #contact .mk-connect-layout{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  gap:18px!important;
+  align-items:stretch!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-connect-left,
+ #contact .mk-connect-left{
+  min-height:500px!important;
+  padding:clamp(28px,3vw,44px)!important;
+  gap:22px!important;
+  justify-content:center!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-chat-panel,
+ #contact .mk-chat-panel{
+  height:500px!important;
+  min-height:500px!important;
+  max-height:500px!important;
+  padding:clamp(22px,2.4vw,34px)!important;
+  align-self:stretch!important;
+ }
+ #contact .mk-connect-left .page-hero>h1{
+  font-size:clamp(45px,4.1vw,68px)!important;
+  line-height:1.08!important;
+ }
+ #contact .mk-connect-left .page-hero>p{
+  font-size:clamp(16px,1.15vw,18px)!important;
+  line-height:1.6!important;
+  max-width:60ch!important;
+ }
+ #contact .mk-connect-links{gap:12px!important;margin-top:12px!important}
+ #contact .mk-connect-links .mk-connect-link{
+  min-height:54px!important;
+  padding:13px 18px!important;
+  font-size:16px!important;
+  gap:15px!important;
+ }
+ #contact .mk-chat-title{font-size:clamp(23px,1.85vw,29px)!important}
+ #contact .mk-chat-subtitle{font-size:14px!important}
+ #contact .mk-chat-conversation{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  margin:15px 0!important;
+ }
+ #contact .mk-chat-message{font-size:15px!important;line-height:1.55!important}
+ #contact .mk-chat-chips button{font-size:13px!important;min-height:42px!important}
+ #contact .mk-chat-form input{font-size:15px!important}
+ #contact .mk-chat-disclaimer{font-size:11px!important}
+}
+@media(min-width:851px) and (max-width:1050px){
+ #contact .mk-connect-left .page-hero>h1{font-size:43px!important}
+ #contact .mk-connect-links .mk-connect-link{font-size:14px!important;padding:11px 13px!important}
+}
