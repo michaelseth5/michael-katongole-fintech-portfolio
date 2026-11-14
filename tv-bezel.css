@@ -684,3 +684,27 @@ body.tv-mode #main-content.tv-stage .tv-page[data-channel="8"]>.mk-footer-quotes
   min-height:390px!important;
  }
 }
+
+/* Contact-only: 2-inch clearance between TV navigation and contact cards. */
+@media (min-width:851px) {
+ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] > section#contact.section,
+ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] > section:not(#home):not(#portfolio-intro-grid)#contact {
+  padding-top:2in!important; /* 192 CSS pixels */
+  flex:0 0 auto!important;
+  height:auto!important;
+  min-height:0!important;
+ }
+ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] #contact > .container,
+ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-connect-layout {
+  height:auto!important;
+ }
+ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-connect-left {
+  min-height:500px!important;
+  height:auto!important;
+ }
+ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-chat-panel {
+  height:500px!important;
+  min-height:500px!important;
+  max-height:500px!important;
+ }
+}
