@@ -3548,6 +3548,28 @@ html.mobile-classic #home>.mk-globe-explainer{display:block!important;position:r
 html.mobile-classic #home>.mk-globe-explainer strong{color:#fff!important}
 html.mobile-classic #home>.mk-globe-explainer p{color:#fff!important;font-size:14px!important;line-height:1.6!important}
 html.mobile-classic #home>.mk-globe-explainer small{color:#ece4fa!important}
+
+/* Familiar LinkedIn button style, limited to Contact. */
+#contact .mk-connect-links .mk-linkedin-button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:9px!important;color:#fff!important;background:#0a66c2!important;
+  border:1px solid #0a66c2!important;box-shadow:none!important;
+  font-weight:700!important;text-decoration:none!important;
+}
+#contact .mk-connect-links .mk-linkedin-button:hover{
+  background:#004182!important;border-color:#004182!important;
+  box-shadow:0 4px 16px rgba(10,102,194,.28)!important;
+}
+#contact .mk-connect-links .mk-linkedin-button:focus-visible{
+  outline:3px solid #fff!important;outline-offset:3px!important;
+}
+#contact .mk-connect-links .mk-linkedin-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:21px;height:21px;flex:0 0 21px;border-radius:3px;
+  background:#fff;color:#0a66c2;font:bold 16px/1 Arial,sans-serif;
+  letter-spacing:-.08em;padding-right:1px;
+}
+@media(prefers-reduced-motion:reduce){#contact .mk-connect-links .mk-linkedin-button{transition:none!important}}
 </style><link rel="stylesheet" href="home-globe-polish.css?v=2"/></head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><aside class="mk-globe-explainer" aria-label="What this globe shows"><strong>WHAT THE GLOBE SHOWS</strong><p>Explore 2024 global goods trade by country. Green lines represent exports and red lines represent imports. Select a country to see its trade totals, balance, and GDP.</p><small>Annual reported data - not live. Some figures may be incomplete.</small></aside><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2><p class="mk-vision-market-statement">I study financial markets to understand how the world moves - and to build the next great FinTech application.</p></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div class="mk-home-welcome" id="home-welcome-audio" role="region" aria-label="Michael TV welcome audio">
  <div class="mk-home-welcome-head"><span class="mk-home-welcome-icon" aria-hidden="true">♫</span><span class="mk-home-welcome-name">A note from Michael</span></div>
  <div class="mk-home-welcome-actions">
@@ -3699,7 +3721,7 @@ html.mobile-classic #home>.mk-globe-explainer small{color:#ece4fa!important}
   <div class="page-hero"><a class="back" href="#home">← Back to home</a><div class="eyebrow" style="margin-top:28px">About / Contact</div><h1 class="page-title mk-animated-title"><span class="mk-title-solid">Let’s</span> <span class="mk-title-glow">connect</span><span class="highlight">.</span></h1><p>Interested in software engineering, FinTech, backend infrastructure, and AI-powered systems. Available to connect about projects, engineering, and opportunities.</p></div>
   <div class="mk-connect-links" aria-label="Contact Michael">
    <a class="mk-connect-link" href="#contact" data-email-action=""><span>Email Me</span><span aria-hidden="true">↗</span></a>
-   <a class="mk-connect-link" href="https://www.linkedin.com/in/michael-k-65b1a8222/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
+   <a class="mk-connect-link mk-linkedin-button" href="https://www.linkedin.com/in/michael-k-65b1a8222/" target="_blank" rel="noopener noreferrer" aria-label="View LinkedIn profile (opens in new tab)"><span class="mk-linkedin-mark" aria-hidden="true">in</span><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
    <a class="mk-connect-link" href="https://github.com/michaelseth5" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a>
    
   </div>
