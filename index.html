@@ -3092,7 +3092,37 @@ body .apple-topbar {
 #home .mk-featured-demand-preview{top:110px}
 @media(max-width:600px){#home .mk-featured-frame{padding-top:46px}#home .mk-featured-browser-bar{height:29px;padding:0 11px;gap:6px}#home .mk-featured-traffic-light{width:10px;height:10px}#home .mk-featured-mockups{top:126px}#home .mk-featured-demand-preview{top:126px}}
 </style>
-</head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div class="mk-home-welcome" id="home-welcome-audio" role="region" aria-label="Michael TV welcome audio">
+<style id="mk-skills-sphere-upgrade">
+/* Dark-purple Skills only. Older site-wide page and sphere styles remain untouched. */
+#skills{background:radial-gradient(ellipse at 82% 17%,rgba(74,44,125,.33),transparent 46%),linear-gradient(135deg,#120c20,#1d1330 56%,#100c1c)!important;position:relative;color:#f7f1ff!important}
+#skills::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(192,167,228,.23) .7px,transparent .7px);background-size:25px 25px;opacity:.38}
+#skills>.container{position:relative;z-index:1}
+#skills .sectionhead .eyebrow{color:#b6a3cc!important;letter-spacing:.22em}
+#skills .sectionhead h2,#skills .sectionhead .mk-title-solid{color:#f7f1ff!important;-webkit-text-fill-color:#f7f1ff!important}
+#skills .sectionhead .mk-title-glow{background:linear-gradient(105deg,#b99bff,#e7a2e9)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+#skills .sectionhead p{color:#bbb0cc!important}
+#skills .mk-skills-orbit{height:555px;min-height:0;width:min(100%,850px);margin:24px auto 12px!important;background:transparent!important;border:none!important;border-radius:0!important;box-shadow:none!important;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+#skills .mk-skills-orbit.mk-skills-dragging{cursor:grabbing}
+#skills .mk-skills-orbit::before{display:none!important}
+#skills .mk-skills-orbit canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#skills #mk-skills-logos{position:absolute;inset:0;pointer-events:none}
+#skills #mk-skills-visual .mk-skill-particle{position:absolute;display:flex;align-items:center;justify-content:center;gap:4px;min-width:0;width:60px;height:74px;padding:0;border:0;background:none!important;cursor:pointer;pointer-events:auto;transform-origin:center;will-change:transform,opacity;filter:none}
+#skills #mk-skills-visual .mk-skill-particle .mk-icon{display:grid;place-items:center;width:51px;height:51px;border-radius:13px;background:rgba(250,249,255,.96)!important;border:1px solid rgba(255,255,255,.67);box-shadow:0 6px 21px rgba(0,0,0,.18)!important;transition:background .18s,box-shadow .18s}
+#skills #mk-skills-visual .mk-skill-particle img{width:34px;height:34px;object-fit:contain;display:block;pointer-events:none}
+#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{position:absolute;top:61px;left:50%;transform:translateX(-50%);background:rgba(22,17,36,.86)!important;border:1px solid rgba(170,139,212,.2)!important;border-radius:5px;color:#e2d8f2!important;letter-spacing:.09em;font:700 10px/1.5 ui-monospace,Consolas,monospace;white-space:nowrap;padding:3px 7px;opacity:0;visibility:hidden;transition:opacity .18s}
+#skills #mk-skills-visual .mk-skill-particle:hover .mk-logo-text,#skills #mk-skills-visual .mk-skill-particle:focus-visible .mk-logo-text,#skills #mk-skills-visual .mk-skill-particle.mk-skill-selected .mk-logo-text{visibility:visible;opacity:1}
+#skills #mk-skills-visual .mk-skill-particle:hover .mk-icon,#skills #mk-skills-visual .mk-skill-particle:focus-visible .mk-icon{box-shadow:0 0 0 3px rgba(180,131,252,.5),0 10px 28px rgba(34,18,62,.5)!important}
+#skills #mk-skills-visual .mk-skills-status{position:absolute;bottom:5px;background:rgba(28,19,47,.85)!important;border-color:rgba(150,126,201,.3)!important;color:#cab8e6!important}
+#skills .mk-skills-legend{color:#b6a9ca!important}
+#skills .three{margin-top:24px!important}
+#skills .three .large-panel{background:rgba(36,26,57,.65)!important;border-color:rgba(180,145,220,.18)!important;box-shadow:none!important}
+#skills .three .large-panel .eyebrow{color:#c7a9ed!important}
+#skills .three .large-panel .skill{background:rgba(91,65,126,.25)!important;color:#e3d8f0!important;border-color:rgba(202,167,233,.20)!important}
+#skills .three .large-panel .skill:hover{background:rgba(142,90,185,.38)!important;color:#fff!important}
+@media(max-width:700px){#skills .mk-skills-orbit{height:420px!important}#skills #mk-skills-visual .mk-skill-particle{width:51px;height:64px}#skills #mk-skills-visual .mk-skill-particle .mk-icon{width:43px;height:43px}#skills #mk-skills-visual .mk-skill-particle img{width:29px;height:29px}#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{top:50px;font-size:9px}}
+@media(max-width:450px){#skills .mk-skills-orbit{height:350px!important}#skills #mk-skills-visual .mk-skill-particle{width:43px;height:55px}#skills #mk-skills-visual .mk-skill-particle .mk-icon{width:37px;height:37px}#skills #mk-skills-visual .mk-skill-particle img{width:25px;height:25px}#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{top:43px}}
+@media(prefers-reduced-motion:reduce){#skills *,#skills *::before,#skills *::after{animation:none!important;transition:none!important}}
+</style></head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div class="mk-home-welcome" id="home-welcome-audio" role="region" aria-label="Michael TV welcome audio">
  <div class="mk-home-welcome-head"><span class="mk-home-welcome-icon" aria-hidden="true">♫</span><span class="mk-home-welcome-name">A note from Michael</span></div>
  <div class="mk-home-welcome-actions">
  <button type="button" class="mk-home-welcome-play" aria-label="Play welcome recording" aria-pressed="false">▶ Listen</button>
@@ -3292,7 +3322,7 @@ body .apple-topbar {
   </div>
  </div>
 </section>
-<section aria-label="Achievements" class="section" id="achievements"><section class="container"><div class="page-hero"><a class="back" href="#home">← Back to home</a><div class="eyebrow" style="margin-top:28px">Milestones / Community</div><h1 class="page-title mk-animated-title"><span class="mk-title-solid">Teamwork makes</span> <span class="mk-title-glow">the dream work</span><span class="highlight">.</span></h1><p>Founding ColorStack UTD, mentoring students, and building spaces where more people belong in tech.</p></div><div class="simple-list"><article class="demo-milestone"><div class="demo-milestone-art"><img alt="ColorStack UTD logo" class="preview-logo" loading="lazy" src="assets/portfolio-photo-71.webp"/></div><div class="demo-milestone-body"><div class="eyebrow">01 / Milestone</div><h2>Founder &amp; President - ColorStack UTD</h2><p>Founded and scaled a technical student organization to 65+ members; organized engineering workshops and collaborative programming.</p></div></article><article class="demo-milestone"><div class="demo-milestone-art"><img alt="Top Achievers Foundation logo" class="preview-logo" loading="lazy" src="assets/portfolio-photo-72.webp"/></div><div class="demo-milestone-body"><div class="eyebrow">02 / Milestone</div><h2>Top Achievers Foundation - STEM Mentor</h2><p>Mentored 14 Plano ISD students in STEM, coding, and mathematics.</p></div></article><article class="dev-milestone" aria-labelledby="dev-title"><div class="dev-heading"><div><h2 id="dev-title">Programs &amp; Affiliations</h2><p>Fellowships, professional communities, and programs I’ve joined while building my career in technology and finance.</p></div></div><div class="dev-carousel" aria-label="Professional development programs"><ul class="dev-track"><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/colorstack-uploaded.webp" alt="ColorStack logo" loading="lazy" decoding="async"/></div><h3>ColorStack</h3><p class="dev-meta">2025–Present · UTD President</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/nsbe.svg" alt="National Society of Black Engineers logo" loading="lazy" decoding="async"/></div><h3>National Society of Black Engineers (NSBE)</h3><p class="dev-meta">Student member · Engineering community</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/bcg-uploaded.webp" alt="Boston Consulting Group logo" loading="lazy" decoding="async"/></div><h3>Boston Consulting Group (BCG)</h3><p class="dev-meta">Professional development program</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/mckinsey-forward-uploaded.webp" alt="McKinsey Forward Program logo" loading="lazy" decoding="async"/></div><h3>McKinsey Forward Program</h3><p class="dev-meta">Forward program · Professional learning</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/seo-uploaded.webp" alt="Seizing Every Opportunity logo" loading="lazy" decoding="async"/></div><h3>SEO Career Fellow</h3><p class="dev-meta">2026–Present · Success Scholar</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/mlt-uploaded.webp" alt="Management Leadership for Tomorrow logo" loading="lazy" decoding="async"/></div><h3>Management Leadership for Tomorrow (MLT) Fellow</h3><p class="dev-meta">2025–Present · Data Engineering Fellow</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/bloomberg.svg" alt="Bloomberg logo" loading="lazy" decoding="async"/></div><h3>Bloomberg Decoded: Data</h3><p class="dev-meta">2026 · Decoded: Data</p></li><li class="dev-program dev-ai-society"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/ais-utd-logo.webp" alt="Artificial Intelligence Society logo" loading="lazy" decoding="async"/></div><h3>Artificial Intelligence Society UTD</h3><p class="dev-meta">UT Dallas · Student community</p></li></ul></div></article></div></section></section><section class="section" id="skills"><div class="container"><div class="sectionhead"><div><div class="eyebrow">TECH STACK</div><h2 class="mk-animated-title"><span class="mk-title-solid">My</span> <span class="mk-title-glow">Skills</span></h2></div><p>Technologies represented in my experience and project work.</p></div><div aria-label="Pale animated wireframe sphere surrounded by tech logos" class="mk-skills-orbit" id="mk-skills-visual"><canvas aria-hidden="true" id="mk-skills-wireframe"></canvas><div aria-hidden="true" id="mk-skills-logos"></div></div><p class="mk-skills-legend">A visual map of tools across software engineering, data, and AI</p><div class="three"><div class="large-panel"><div class="eyebrow">Languages &amp; frontend</div><div class="skills"><span class="skill skill-featured" title="Highlighted skill">Python</span><span class="skill skill-featured" title="Highlighted skill">SQL</span><span class="skill skill-featured" title="Highlighted skill">Java</span><span class="skill skill-featured" title="Highlighted skill">C++</span><span class="skill">JavaScript</span><span class="skill">TypeScript</span><span class="skill skill-featured" title="Highlighted skill">React</span><span class="skill">Next.js</span><span class="skill">Tailwind CSS</span></div></div><div class="large-panel"><div class="eyebrow">Backend &amp; data</div><div class="skills"><span class="skill">FastAPI</span><span class="skill">Flask</span><span class="skill">Node.js</span><span class="skill">REST APIs</span><span class="skill skill-featured" title="Highlighted skill">PostgreSQL</span><span class="skill">dbt</span><span class="skill">Docker</span><span class="skill">AWS</span></div></div><div class="large-panel"><div class="eyebrow">ML &amp; engineering</div><div class="skills"><span class="skill skill-featured" title="Highlighted skill">Pandas</span><span class="skill">scikit-learn</span><span class="skill skill-featured" title="Highlighted skill">PyTorch</span><span class="skill">Streamlit</span><span class="skill">Git</span><span class="skill">pytest</span><span class="skill">GitHub Actions</span><span class="skill">Jira</span></div></div></div></div></section><section aria-label="About &amp; contact" class="section" id="contact"><section class="container"><div class="mk-connect-layout">
+<section aria-label="Achievements" class="section" id="achievements"><section class="container"><div class="page-hero"><a class="back" href="#home">← Back to home</a><div class="eyebrow" style="margin-top:28px">Milestones / Community</div><h1 class="page-title mk-animated-title"><span class="mk-title-solid">Teamwork makes</span> <span class="mk-title-glow">the dream work</span><span class="highlight">.</span></h1><p>Founding ColorStack UTD, mentoring students, and building spaces where more people belong in tech.</p></div><div class="simple-list"><article class="demo-milestone"><div class="demo-milestone-art"><img alt="ColorStack UTD logo" class="preview-logo" loading="lazy" src="assets/portfolio-photo-71.webp"/></div><div class="demo-milestone-body"><div class="eyebrow">01 / Milestone</div><h2>Founder &amp; President - ColorStack UTD</h2><p>Founded and scaled a technical student organization to 65+ members; organized engineering workshops and collaborative programming.</p></div></article><article class="demo-milestone"><div class="demo-milestone-art"><img alt="Top Achievers Foundation logo" class="preview-logo" loading="lazy" src="assets/portfolio-photo-72.webp"/></div><div class="demo-milestone-body"><div class="eyebrow">02 / Milestone</div><h2>Top Achievers Foundation - STEM Mentor</h2><p>Mentored 14 Plano ISD students in STEM, coding, and mathematics.</p></div></article><article class="dev-milestone" aria-labelledby="dev-title"><div class="dev-heading"><div><h2 id="dev-title">Programs &amp; Affiliations</h2><p>Fellowships, professional communities, and programs I’ve joined while building my career in technology and finance.</p></div></div><div class="dev-carousel" aria-label="Professional development programs"><ul class="dev-track"><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/colorstack-uploaded.webp" alt="ColorStack logo" loading="lazy" decoding="async"/></div><h3>ColorStack</h3><p class="dev-meta">2025–Present · UTD President</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/nsbe.svg" alt="National Society of Black Engineers logo" loading="lazy" decoding="async"/></div><h3>National Society of Black Engineers (NSBE)</h3><p class="dev-meta">Student member · Engineering community</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/bcg-uploaded.webp" alt="Boston Consulting Group logo" loading="lazy" decoding="async"/></div><h3>Boston Consulting Group (BCG)</h3><p class="dev-meta">Professional development program</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/mckinsey-forward-uploaded.webp" alt="McKinsey Forward Program logo" loading="lazy" decoding="async"/></div><h3>McKinsey Forward Program</h3><p class="dev-meta">Forward program · Professional learning</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/seo-uploaded.webp" alt="Seizing Every Opportunity logo" loading="lazy" decoding="async"/></div><h3>SEO Career Fellow</h3><p class="dev-meta">2026–Present · Success Scholar</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/mlt-uploaded.webp" alt="Management Leadership for Tomorrow logo" loading="lazy" decoding="async"/></div><h3>Management Leadership for Tomorrow (MLT) Fellow</h3><p class="dev-meta">2025–Present · Data Engineering Fellow</p></li><li class="dev-program"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/bloomberg.svg" alt="Bloomberg logo" loading="lazy" decoding="async"/></div><h3>Bloomberg Decoded: Data</h3><p class="dev-meta">2026 · Decoded: Data</p></li><li class="dev-program dev-ai-society"><div class="dev-logo-frame"><img class="dev-logo" src="assets/affiliations/ais-utd-logo.webp" alt="Artificial Intelligence Society logo" loading="lazy" decoding="async"/></div><h3>Artificial Intelligence Society UTD</h3><p class="dev-meta">UT Dallas · Student community</p></li></ul></div></article></div></section></section><section class="section" id="skills"><div class="container"><div class="sectionhead"><div><div class="eyebrow">TECH STACK</div><h2 class="mk-animated-title"><span class="mk-title-solid">My</span> <span class="mk-title-glow">Skills</span></h2></div><p>Technologies represented in my experience and project work.</p></div><div class="mk-skills-orbit" id="mk-skills-visual"><canvas aria-hidden="true" id="mk-skills-wireframe"></canvas><div aria-hidden="true" id="mk-skills-logos"></div></div><p class="mk-skills-legend">A visual map of tools across software engineering, data, and AI</p><div class="three"><div class="large-panel"><div class="eyebrow">Languages &amp; frontend</div><div class="skills"><span class="skill skill-featured" title="Highlighted skill">Python</span><span class="skill skill-featured" title="Highlighted skill">SQL</span><span class="skill skill-featured" title="Highlighted skill">Java</span><span class="skill skill-featured" title="Highlighted skill">C++</span><span class="skill">JavaScript</span><span class="skill">TypeScript</span><span class="skill skill-featured" title="Highlighted skill">React</span><span class="skill">Next.js</span><span class="skill">Tailwind CSS</span></div></div><div class="large-panel"><div class="eyebrow">Backend &amp; data</div><div class="skills"><span class="skill">FastAPI</span><span class="skill">Flask</span><span class="skill">Node.js</span><span class="skill">REST APIs</span><span class="skill skill-featured" title="Highlighted skill">PostgreSQL</span><span class="skill">dbt</span><span class="skill">Docker</span><span class="skill">AWS</span></div></div><div class="large-panel"><div class="eyebrow">ML &amp; engineering</div><div class="skills"><span class="skill skill-featured" title="Highlighted skill">Pandas</span><span class="skill">scikit-learn</span><span class="skill skill-featured" title="Highlighted skill">PyTorch</span><span class="skill">Streamlit</span><span class="skill">Git</span><span class="skill">pytest</span><span class="skill">GitHub Actions</span><span class="skill">Jira</span><span class="skill">GitHub</span><span class="skill">Figma</span><span class="skill">Vercel</span></div></div></div></div></section><section aria-label="About &amp; contact" class="section" id="contact"><section class="container"><div class="mk-connect-layout">
  <div class="mk-connect-left">
   <div class="page-hero"><a class="back" href="#home">← Back to home</a><div class="eyebrow" style="margin-top:28px">About / Contact</div><h1 class="page-title mk-animated-title"><span class="mk-title-solid">Let’s</span> <span class="mk-title-glow">connect</span><span class="highlight">.</span></h1><p>Interested in software engineering, FinTech, backend infrastructure, and AI-powered systems. Available to connect about projects, engineering, and opportunities.</p></div>
   <div class="mk-connect-heading">
@@ -3385,50 +3415,212 @@ body .apple-topbar {
  start();
 })();
 </script>
-<script>
+<script id="mk-skills-sphere-v2">
 (() => {
-const host=document.getElementById('mk-skills-visual'),canvas=document.getElementById('mk-skills-wireframe'),layer=document.getElementById('mk-skills-logos');
-if(!host||!canvas||!layer)return;const ctx=canvas.getContext('2d'),DEG=Math.PI/180;
-const logos=[
-['Python','Py','#3477a5','#ffdc51',26,-65],['React','⚛','#f2fcff','#1cafd8',-10,40],
-['Java','J','#fff4eb','#dc6d3e',33,12],['C++','C++','#e8f3ff','#3676b5',-42,12],
-['PostgreSQL','🐘','#f7fbff','#336791',-35,144],['Git','◆','#f24e1e','#fff',-57,245],
-['TypeScript','TS','#3178c6','#fff',45,90],['JavaScript','JS','#f7df1e','#181818',8,188],
-['Next.js','N','#1b1b1b','#fff',-12,283],['Docker','🐳','#e5f6ff','#2496ed',-55,342],
-['Tailwind','≈','#f0fcff','#38bdf8',-5,355],['FastAPI','⚡','#f5fffd','#05998b',55,260],
-['PyTorch','◉','#fff7ef','#ee4c2c',62,185],['Node.js','⬡','#f7fff2','#539e43',4,118]];
-let w=0,h=0,dpr=1,rotation=.65,last=0,tilt=-.22,dragging=false,dragPointer=null,dragX=0,dragY=0,dragMoved=false,pausedUntil=0;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const items=logos.map(([name,symbol,bg,fg,lat,lon])=>{
-let d=document.createElement('button');d.type='button';d.className='mk-skill-particle';d.setAttribute('aria-label','Explore '+name);d.title=name;
-let i=document.createElement('div');i.className='mk-icon';i.textContent=symbol;i.style.setProperty('--bg-logo',bg);i.style.setProperty('--fg-logo',fg);
-let l=document.createElement('span');l.className='mk-logo-text';l.textContent=name;d.append(i,l);layer.append(d);d.addEventListener('click',()=>{if(dragMoved)return;items.forEach(o=>o.d.classList.toggle('mk-skill-selected',o.d===d));status.textContent=name+' · Technology in my toolkit';});return{d,lat:lat*DEG,lon:lon*DEG};
-});
-const point=(a,b)=>({x:Math.cos(a)*Math.cos(b),y:Math.sin(a),z:Math.cos(a)*Math.sin(b)});
-function size(){let q=host.getBoundingClientRect();w=q.width;h=q.height;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
-addEventListener('resize',size);size();
-const status=document.createElement('div');status.className='mk-skills-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.textContent='Drag to rotate · Select a technology';host.append(status);
-host.setAttribute('role','group');host.setAttribute('aria-label','Interactive technology globe. Drag to rotate or select a technology.');
-host.addEventListener('pointerdown',e=>{if(e.button!==0)return;dragging=true;dragPointer=e.pointerId;dragX=e.clientX;dragY=e.clientY;dragMoved=false;pausedUntil=performance.now()+1600});
-host.addEventListener('pointermove',e=>{if(!dragging||e.pointerId!==dragPointer)return;let dx=e.clientX-dragX,dy=e.clientY-dragY;if(Math.abs(dx)+Math.abs(dy)>2&&!dragMoved){dragMoved=true;host.setPointerCapture(e.pointerId);host.classList.add('mk-skills-dragging')}if(!dragMoved)return;rotation+=dx*.008;tilt=Math.max(-1.05,Math.min(1.05,tilt+dy*.004));dragX=e.clientX;dragY=e.clientY;pausedUntil=performance.now()+1600;if(reduce)draw(0)});
-const release=e=>{if(e.pointerId!==dragPointer)return;dragging=false;dragPointer=null;host.classList.remove('mk-skills-dragging');pausedUntil=performance.now()+1300;if(dragMoved)setTimeout(()=>dragMoved=false,0)};
-host.addEventListener('pointerup',release);host.addEventListener('pointercancel',release);
-host.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();if(e.key==='ArrowLeft')rotation-=.16;if(e.key==='ArrowRight')rotation+=.16;if(e.key==='ArrowUp')tilt=Math.max(-1.05,tilt-.12);if(e.key==='ArrowDown')tilt=Math.min(1.05,tilt+.12);pausedUntil=performance.now()+2500;if(reduce)draw(0)});
-host.tabIndex=0;
-function draw(now){
-if(!w||!h)return;if(!reduce&&last&&!dragging&&now>pausedUntil)rotation+=Math.min(70,now-last)*.00012;last=now;
-let r=Math.min(w*.31,h*.405,213),cx=w*.5,cy=h*.5,ca=Math.cos(rotation),sa=Math.sin(rotation),cb=Math.cos(tilt),sb=Math.sin(tilt);
-function project(p){let x=p.x*ca-p.z*sa,z0=p.x*sa+p.z*ca,y=p.y*cb-z0*sb,z=p.y*sb+z0*cb;return{x:cx+x*r,y:cy-y*r,z};}
-ctx.clearRect(0,0,w,h);
-let g=ctx.createRadialGradient(cx-r*.18,cy-r*.25,r*.08,cx,cy,r*1.2);g.addColorStop(0,'rgba(225,229,252,.35)');g.addColorStop(.65,'rgba(235,238,254,.1)');g.addColorStop(1,'rgba(245,247,255,0)');
-ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,r*1.3,0,Math.PI*2);ctx.fill();
-function line(samples,a){let prev=null;for(const p of samples){let q=project(p);if(prev){ctx.beginPath();ctx.moveTo(prev.x,prev.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=(q.z+prev.z<0?'rgba(171,183,218,'+(a*.42)+')':'rgba(158,174,215,'+a+')');ctx.lineWidth=.7;ctx.stroke()}prev=q}}
-for(let k=-7;k<=7;k++){let lat=k/8*Math.PI/2,pts=[];for(let j=0;j<=82;j++)pts.push(point(lat,2*Math.PI*j/82));line(pts,.36)}
-for(let k=0;k<22;k++){let lon=k*Math.PI/11,pts=[];for(let j=0;j<=60;j++)pts.push(point(-Math.PI/2+j*Math.PI/60,lon));line(pts,.33)}
-for(let k=0;k<12;k++){let pts=[];for(let j=0;j<=130;j++){let lat=-Math.PI/2+j*Math.PI/130;pts.push(point(lat,k*Math.PI/6+lat*.72))}line(pts,.16)}
-ctx.strokeStyle='rgba(151,170,211,.23)';ctx.beginPath();ctx.arc(cx,cy,r,0,2*Math.PI);ctx.stroke();
-for(const o of items){let p=project(point(o.lat,o.lon)),depth=(p.z+1)/2;o.d.style.left=p.x+'px';o.d.style.top=p.y+'px';o.d.style.opacity=.22+.78*depth;o.d.style.zIndex=depth>.5?'3':'1';o.d.style.transform='translate(-50%,-50%) scale('+(.68+.47*depth)+')'}
-if(!reduce)requestAnimationFrame(draw)}
-if(reduce)draw(0);else requestAnimationFrame(draw);
+ "use strict";
+ const host=document.getElementById("mk-skills-visual");
+ const canvas=document.getElementById("mk-skills-wireframe");
+ const layer=document.getElementById("mk-skills-logos");
+ if(!host||!canvas||!layer)return;
+ const ctx=canvas.getContext("2d",{alpha:true});
+ if(!ctx)return;
+ const names=[
+  ["Python","python"],["SQL","mysql"],["Java","java"],["C++","cplusplus"],
+  ["JavaScript","javascript"],["TypeScript","typescript"],["React","react"],
+  ["Next.js","nextjs"],["Tailwind CSS","tailwindcss"],["FastAPI","fastapi"],
+  ["Flask","flask"],["Node.js","nodejs"],["PostgreSQL","postgresql"],
+  ["Docker","docker"],["AWS","aws"],["Pandas","pandas"],
+  ["scikit-learn","scikitlearn"],["PyTorch","pytorch"],["Streamlit","streamlit"],
+  ["Git","git"],["GitHub","github"],["GitHub Actions","githubactions"],
+  ["Jira","jira"],["pytest","pytest"],["Figma","figma"],["Vercel","vercel"]
+ ];
+ // Only authentic files are used. SQL and dbt remain in the readable skills list.
+ const logos=names.filter(x=>x[1]!=="mysql");
+ const count=logos.length, goldenAngle=Math.PI*(3-Math.sqrt(5));
+ const points=logos.map((_,i)=>{
+   const y=1-(i+.5)*2/count,rad=Math.sqrt(Math.max(0,1-y*y)),theta=i*goldenAngle;
+   return {x:Math.cos(theta)*rad,y,z:Math.sin(theta)*rad};
+ });
+ const buttons=logos.map(([name,file],i)=>{
+   const button=document.createElement("button");
+   button.type="button";button.className="mk-skill-particle";
+   button.setAttribute("aria-label",name);button.title=name;
+   const plate=document.createElement("span");plate.className="mk-icon";
+   const img=document.createElement("img");
+   img.alt=name;img.src="assets/skills/"+file+".svg";
+   img.width=34;img.height=34;img.decoding="async";img.loading=i<9?"eager":"lazy";
+   plate.appendChild(img);
+   const label=document.createElement("span");label.className="mk-logo-text";label.textContent=name;
+   button.append(plate,label);
+   layer.appendChild(button);
+   return button;
+ });
+ const reduced=matchMedia("(prefers-reduced-motion: reduce)");
+ let width=0,height=0,dpr=1;
+ let yaw=.48,pitch=-.24,velocityX=0,velocityY=0;
+ let drag=null,hovered=false,visible=true,selected=null,last=0,stopUntil=0,raf=0;
+ const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+ const vnorm=v=>{const l=Math.hypot(v.x,v.y,v.z)||1;return{x:v.x/l,y:v.y/l,z:v.z/l}};
+ // Generate an icosphere and subdivide twice to create triangular wireframe edges.
+ const phi=(1+Math.sqrt(5))/2;
+ const vertices=[
+  [-1,phi,0],[1,phi,0],[-1,-phi,0],[1,-phi,0],
+  [0,-1,phi],[0,1,phi],[0,-1,-phi],[0,1,-phi],
+  [phi,0,-1],[phi,0,1],[-phi,0,-1],[-phi,0,1]
+ ].map(v=>vnorm({x:v[0],y:v[1],z:v[2]}));
+ let faces=[
+  [0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],
+  [1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],
+  [3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],
+  [4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]
+ ];
+ for(let pass=0;pass<2;pass++){
+  const cache=new Map(),next=[];
+  function midpoint(a,b){
+   const k=Math.min(a,b)+":"+Math.max(a,b);
+   if(cache.has(k))return cache.get(k);
+   const u=vertices[a],v=vertices[b],p=vnorm({x:u.x+v.x,y:u.y+v.y,z:u.z+v.z});
+   const id=vertices.push(p)-1;cache.set(k,id);return id;
+  }
+  for(const [a,b,c] of faces){
+   const ab=midpoint(a,b),bc=midpoint(b,c),ca=midpoint(c,a);
+   next.push([a,ab,ca],[b,bc,ab],[c,ca,bc],[ab,bc,ca]);
+  }
+  faces=next;
+ }
+ const edges=[];
+ const used=new Set();
+ for(const [a,b,c] of faces)for(const [u,v] of [[a,b],[b,c],[c,a]]){
+  const k=Math.min(u,v)+":"+Math.max(u,v);
+  if(!used.has(k)){used.add(k);edges.push([u,v]);}
+ }
+ const status=document.createElement("div");
+ status.className="mk-skills-status";
+ status.setAttribute("role","status");
+ status.setAttribute("aria-live","polite");
+ status.textContent="Drag horizontally to rotate · Select an icon";
+ host.appendChild(status);
+ host.setAttribute("role","group");
+ host.setAttribute("aria-label","Interactive sphere of software technology logos. Drag horizontally or use arrow keys to rotate.");
+ host.tabIndex=0;
+ function resize(){
+  const box=host.getBoundingClientRect();
+  width=box.width;height=box.height;dpr=Math.min(devicePixelRatio||1,2);
+  canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);draw();
+ }
+ function radius(){return Math.min(width*.39,height*.39,242);}
+ function rotate(p){
+  const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch);
+  const x=p.x*cy-p.z*sy,z0=p.x*sy+p.z*cy;
+  return{x,y:p.y*cx-z0*sx,z:p.y*sx+z0*cx};
+ }
+ function project(p){
+  const q=rotate(p),r=radius(),perspective=1+.12*q.z;
+  return{x:width/2+q.x*r*perspective,y:height/2-q.y*r*perspective,z:q.z};
+ }
+ function draw(){
+  if(!width||!height)return;
+  const r=radius(),cx=width/2,cy=height/2;
+  ctx.clearRect(0,0,width,height);
+  const glow=ctx.createRadialGradient(cx,cy,r*.08,cx,cy,r*1.3);
+  glow.addColorStop(0,"rgba(120,93,210,.09)");
+  glow.addColorStop(.68,"rgba(106,78,213,.035)");
+  glow.addColorStop(1,"rgba(79,57,180,0)");
+  ctx.fillStyle=glow;ctx.beginPath();ctx.arc(cx,cy,r*1.3,0,Math.PI*2);ctx.fill();
+  // Separate front and back to retain a believable translucent mesh.
+  const projected=vertices.map(project);
+  for(const [a,b] of edges){
+    const u=projected[a],v=projected[b],front=(u.z+v.z)/2>0;
+    ctx.strokeStyle=front?"rgba(168,144,244,.20)":"rgba(133,111,207,.07)";
+    ctx.lineWidth=front?.65:.5;
+    ctx.beginPath();ctx.moveTo(u.x,u.y);ctx.lineTo(v.x,v.y);ctx.stroke();
+  }
+  ctx.strokeStyle="rgba(183,157,243,.22)";ctx.lineWidth=.75;
+  ctx.beginPath();ctx.arc(cx,cy,r,0,2*Math.PI);ctx.stroke();
+  points.forEach((p,i)=>{
+   const q=project(p),depth=(q.z+1)*.5,button=buttons[i];
+   const scale=.58+.53*depth;
+   button.style.left=q.x+"px";button.style.top=q.y+"px";
+   button.style.opacity=String(.16+.84*depth);
+   button.style.zIndex=String(2+Math.floor(depth*100));
+   button.style.transform="translate(-50%, -50%) scale("+scale.toFixed(3)+")";
+   button.style.filter=depth<.4?"blur("+((.4-depth)*2.2).toFixed(2)+"px)":"none";
+  });
+ }
+ function tick(now){
+  if(!visible){raf=0;return;}
+  const dt=Math.min(48,last?now-last:16);last=now;
+  if(!reduced.matches){
+   if(!drag){
+    yaw+=velocityX;pitch=clamp(pitch+velocityY,-1.15,1.15);
+    velocityX*=Math.pow(.91,dt/16);velocityY*=Math.pow(.91,dt/16);
+    if(!hovered&&now>stopUntil)yaw+=dt*.000075;
+   }
+   draw();raf=requestAnimationFrame(tick);
+  }else{draw();raf=0;}
+ }
+ function start(){if(!visible||raf)return;last=0;raf=requestAnimationFrame(tick);}
+ host.addEventListener("pointerdown",e=>{
+  if(e.button!==0||e.target.closest("button")&&e.pointerType==="mouse")return;
+  drag={id:e.pointerId,x:e.clientX,y:e.clientY,moved:false};
+  velocityX=0;velocityY=0;stopUntil=performance.now()+1200;
+ });
+ host.addEventListener("pointermove",e=>{
+  if(!drag||drag.id!==e.pointerId)return;
+  const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+  if(!drag.moved&&Math.abs(dx)+Math.abs(dy)>6){
+   if(Math.abs(dy)>Math.abs(dx)*1.5&&e.pointerType==="touch"){drag=null;return;}
+   drag.moved=true;host.setPointerCapture(e.pointerId);host.classList.add("mk-skills-dragging");
+  }
+  if(drag&&drag.moved){
+   yaw+=dx*.007;pitch=clamp(pitch+dy*.0035,-1.15,1.15);
+   velocityX=dx*.0035;velocityY=dy*.00175;draw();
+  }
+  if(drag){drag.x=e.clientX;drag.y=e.clientY;}
+ });
+ function release(e){
+  if(!drag||drag.id!==e.pointerId)return;
+  const didMove=drag.moved;drag=null;
+  host.classList.remove("mk-skills-dragging");stopUntil=performance.now()+1050;
+  if(didMove)host.dataset.dragged="true";
+  setTimeout(()=>{delete host.dataset.dragged;},0);
+ }
+ host.addEventListener("pointerup",release);host.addEventListener("pointercancel",release);
+ host.addEventListener("mouseenter",()=>{hovered=true;});
+ host.addEventListener("mouseleave",()=>{hovered=false;stopUntil=performance.now()+350;});
+ host.addEventListener("keydown",e=>{
+  if(!["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key))return;
+  e.preventDefault();
+  const d=e.key==="ArrowLeft" ? -.14 : e.key==="ArrowRight" ? .14 : 0;
+  yaw+=d;
+  if(e.key==="ArrowUp")pitch=clamp(pitch-.12,-1.15,1.15);
+  if(e.key==="ArrowDown")pitch=clamp(pitch+.12,-1.15,1.15);
+  stopUntil=performance.now()+1700;draw();
+ });
+ buttons.forEach((button,i)=>{
+  button.addEventListener("mouseenter",()=>{hovered=true;});
+  button.addEventListener("focus",()=>{hovered=true;});
+  button.addEventListener("blur",()=>{hovered=false;});
+  button.addEventListener("click",()=>{
+   if(host.dataset.dragged)return;
+   buttons.forEach(b=>b.classList.remove("mk-skill-selected"));
+   selected=button;button.classList.add("mk-skill-selected");
+   status.textContent=logos[i][0]+" · Technology in my toolkit";
+  });
+ });
+ const io=new IntersectionObserver(es=>{
+  visible=es[0].isIntersecting;
+  if(visible)start();
+  else if(raf){cancelAnimationFrame(raf);raf=0;}
+ },{threshold:.05});
+ io.observe(host);
+ const ro=new ResizeObserver(resize);ro.observe(host);
+ reduced.addEventListener("change",()=>{if(reduced.matches&&raf){cancelAnimationFrame(raf);raf=0;draw();}else start();});
+ document.addEventListener("visibilitychange",()=>{
+  if(document.hidden){if(raf)cancelAnimationFrame(raf);raf=0;}else start();
+ });
+ resize();start();
 })();
 </script><script>(()=>{const root=document.querySelector('.mk-editorial-intro');if(!root)return;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;const items=[...root.querySelectorAll('.mk-reveal')];items.forEach((e,i)=>e.style.setProperty('--reveal-delay',Math.min(i,7)*70+'ms'));if(reduce||!('IntersectionObserver' in window)){items.forEach(e=>e.classList.add('mk-visible'));return;}const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('mk-visible');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px 70px 0px'});items.forEach(e=>io.observe(e));if(!matchMedia('(pointer:fine)').matches)return;root.querySelectorAll('[data-tilt]').forEach(card=>{card.addEventListener('pointermove',e=>{if(!card.classList.contains('mk-visible'))return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform='perspective(1000px) rotateY('+(x*2.6)+'deg) rotateX('+(-y*2.6)+'deg) translateY(-3px)';});card.addEventListener('pointerleave',()=>card.style.transform='')})})();</script><script>
 document.addEventListener('DOMContentLoaded', function(){
