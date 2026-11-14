@@ -98,7 +98,7 @@
   ].filter(Boolean);
   const finalExtras = [
     document.querySelector('.mk-footer-quotes'),
-    document.querySelector('footer')
+    document.querySelector('.mk-footer-band') || document.querySelector('footer')
   ].filter(Boolean);
   const activeFromHash = () => {
     const raw = decodeURIComponent(location.hash.replace(/^#/, '')).toLowerCase();
