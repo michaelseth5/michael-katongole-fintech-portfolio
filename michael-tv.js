@@ -518,5 +518,10 @@
    if(typeof navigator.vibrate==='function' && mobile.matches)navigator.vibrate(10);
    choose(card.dataset.mtvChoice);
  }));
- if(!previouslySeen)openPicker();
+ // The opening selector must not cover the green Sony startup slate.
+ if(!previouslySeen){
+   if(window.__sonyBootComplete === false)
+     document.addEventListener('sony:startup-complete', openPicker, {once:true});
+   else openPicker();
+ }
 })();
