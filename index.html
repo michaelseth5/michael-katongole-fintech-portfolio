@@ -3276,7 +3276,7 @@ body .apple-topbar {
 @keyframes walk-in-right{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
 @keyframes walk-in-left{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
 #project-details .walk-head{display:flex;justify-content:space-between;align-items:center;width:100%;gap:14px}
-#project-details .walk-kicker{font:800 12px/1.4 inherit;letter-spacing:.16em;text-transform:uppercase;color:#d4b0ff!important}
+#project-details .walk-kicker{font-size:12px;font-weight:800;line-height:1.4;font-family:inherit;letter-spacing:.16em;text-transform:uppercase;color:#d4b0ff!important}
 #project-details .walk-count{font:700 14px/1.4 ui-monospace,monospace;color:#e8d9f5!important}
 #project-details .walk-track{width:100%;height:4px;background:#3a2e4a;border-radius:40px;overflow:hidden;margin:15px 0 27px}
 #project-details .walk-fill{display:block;height:100%;width:0;background:linear-gradient(90deg,#9e6df6,#e1c3ff);transition:width .35s ease}
@@ -3351,6 +3351,10 @@ body .apple-topbar {
  #project-details .walk-fill{transition:none}
  @keyframes walk-fade{from{opacity:.5}to{opacity:1}}
 }
+
+#project-details .walk-intro-media{min-width:0;align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:10px}
+#project-details .walk-intro-media .walk-context-frame{width:100%;height:320px!important}
+@media(max-width:680px){#project-details .walk-intro-media{order:-1;max-height:300px;overflow:auto}#project-details .walk-intro-media .walk-context-frame{height:210px!important}}
 </style></head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div class="mk-home-welcome" id="home-welcome-audio" role="region" aria-label="Michael TV welcome audio">
  <div class="mk-home-welcome-head"><span class="mk-home-welcome-icon" aria-hidden="true">♫</span><span class="mk-home-welcome-name">A note from Michael</span></div>
  <div class="mk-home-welcome-actions">
@@ -4584,10 +4588,11 @@ specs.forEach(cfg=>{
  // Move the toggle to a full-width row in the original project card. Text is not modified.
  card.append(details);
  const figureNodes=[...oldBox.querySelectorAll(".fp-case-gallery figure")];
- const screenshots=figureNodes.map((node,i)=>{const image=node.querySelector("img");if(!image)return null;return {
+ let screenshots=figureNodes.map((node,i)=>{const image=node.querySelector("img");if(!image)return null;return {
   src:image.getAttribute("src"),alt:image.alt,width:Number(image.getAttribute("width"))||1200,height:Number(image.getAttribute("height"))||800,
   title:node.querySelector("figcaption")?.textContent||("Screenshot "+(i+1))
  };}).filter(Boolean);
+ if(cfg.kind==="synapse")screenshots=screenshots.filter(item=>!item.title.toLowerCase().includes("coordination"));
  const root=pick("div","walk-root");root.tabIndex=0;root.setAttribute("role","region");root.setAttribute("aria-label",cfg.name+" technical walkthrough");
  const viewport=pick("div","walk-viewport");root.append(viewport);
  const slides=[];let active=0,touchStart=null;
@@ -4616,6 +4621,7 @@ specs.forEach(cfg=>{
  }
  const intro=makeSlide(0,cfg.name+" — Overview");
  intro.body.append(pick("p","walk-lede",subtitle),pick("p","walk-stack",stack));
+ const introMedia=pick("div","walk-intro-media");intro.grid.append(introMedia);
  if(cfg.kind==="synapse"&&screenshots.length){
   let selected=0;
   const mainBtn=pick("button","walk-preview-main");mainBtn.type="button";mainBtn.setAttribute("aria-label","Open selected screenshot in lightbox");
@@ -4629,9 +4635,9 @@ specs.forEach(cfg=>{
   });
   function select(i){selected=i;const item=screenshots[i];Object.assign(image,{src:item.src,alt:item.alt,width:item.width,height:item.height});caption.textContent=item.title;thumbs.forEach((b,n)=>b.setAttribute("aria-pressed",String(n===i)));}
   mainBtn.addEventListener("click",()=>showLightbox(screenshots,selected,mainBtn));
-  intro.body.append(mainBtn,caption,strip);select(0);
+  introMedia.append(mainBtn,caption,strip);select(0);
  }else{
-  const preview=card.querySelector(":scope > .fp-frame");if(preview){const dup=preview.cloneNode(true);dup.classList.add("walk-context-frame");intro.body.append(dup);}
+  const preview=card.querySelector(":scope > .fp-frame");if(preview){const dup=preview.cloneNode(true);dup.classList.add("walk-context-frame");introMedia.append(dup);}
  }
  for(let i=0;i<6;i++){
   const step=i+1,section=sections[i],title=section.querySelector(".project-framework-label h3")?.textContent||"Technical step";
