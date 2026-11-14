@@ -3072,6 +3072,15 @@ body .apple-topbar {
 @media(prefers-reduced-motion:reduce){#projects .fp-card,#projects .fp-frame,#projects .fp-win{transition:none!important}#projects.fp-motion .fp-card{opacity:1!important;transform:none!important}}
 
 /* Homepage featured-project typography: explicit contrast against a dark plum surface. */
+/* Make the purple Featured Projects surface full-bleed even though the section sits inside a narrower editorial container. */
+#projects.fp{
+ width:100vw!important;
+ max-width:none!important;
+ left:50%;
+ transform:translateX(-50%);
+ margin:0!important;
+}
+
 #projects.fp{
  background-color:#150e25!important;
  background-image:radial-gradient(ellipse at 50% 0%,rgba(89,49,139,.31),transparent 63%),radial-gradient(rgba(177,151,218,.14) 1px,transparent 1px)!important;
