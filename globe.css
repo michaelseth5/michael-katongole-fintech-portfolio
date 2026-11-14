@@ -259,3 +259,11 @@
 @media (prefers-reduced-motion: reduce) {
   #financial-globe *, .gf-panel *, .gf-hud * { transition: none !important; }
 }
+
+/* Readable explanation in the globe's upper-left trade label. */
+.gf-hud{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:min(355px,calc(100% - 70px));max-width:calc(100% - 70px);padding:12px 14px;background:rgba(9,11,25,.94);border:1px solid rgba(225,230,255,.32);border-radius:10px;box-shadow:0 8px 25px rgba(0,0,0,.3)}
+.gf-hud-title{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.gf-hud strong{color:#fff;font-size:12px;letter-spacing:.04em}
+.gf-hud small{color:#e3e6ef;font-size:11px}
+.gf-hud .gf-hud-description{margin:0;color:#fff;font:500 13px/1.6 'DM Sans',sans-serif;letter-spacing:0;text-shadow:0 1px 4px rgba(0,0,0,.75)}
+@media(max-width:600px){.gf-hud{width:min(290px,calc(100% - 65px));padding:10px 11px;gap:6px}.gf-hud .gf-hud-description{font-size:11px;line-height:1.45}}
