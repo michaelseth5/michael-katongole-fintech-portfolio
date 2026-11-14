@@ -3390,7 +3390,7 @@ body .apple-topbar {
 #project-details .walk-carousel-main img{display:block;width:100%;height:clamp(210px,26vw,360px);max-width:100%;object-fit:contain;object-position:center;border-radius:7px}
 #project-details .walk-carousel-caption{color:#e6d9f5!important;font-size:13px!important;line-height:1.55!important;text-align:center!important;margin:0!important}
 #project-details .walk-carousel-controls{display:flex;justify-content:space-between;align-items:center;gap:9px}
-#project-details .walk-carousel-controls button{background:#463059;color:#f8f1ff;border:1px solid #9d75c1;border-radius:8px;padding:8px 12px;font:700 12px/1.4 inherit;cursor:pointer}
+#project-details .walk-carousel-controls button{background:#463059;color:#f8f1ff;border:1px solid #9d75c1;border-radius:8px;padding:8px 12px;font-family:inherit;font-size:12px;font-weight:700;line-height:1.4;cursor:pointer}
 #project-details .walk-carousel-controls button:disabled{opacity:.45;cursor:default}
 #project-details .walk-carousel-count{font:700 12px/1.4 ui-monospace,monospace;color:#d7c2ef;white-space:nowrap}
 #project-details .walk-carousel-main:focus-visible,#project-details .walk-carousel-controls button:focus-visible{outline:3px solid #d6b9ff;outline-offset:3px}
@@ -4630,7 +4630,7 @@ function buildVisual(cfg,step,source,slide){
  if(step===1){
   let candidates=source;
   if(cfg.kind==="financial"&&!candidates.length){
-   const header=slide.closest(".project-block")?.querySelector(":scope > .fp-frame .fp-main img");
+   const header=document.getElementById(cfg.id)?.querySelector(":scope > .fp-frame .fp-main img");
    if(header)candidates=[{src:header.getAttribute("src"),alt:header.alt,width:800,height:1120,title:"SEC Form 10-K filing cover"}];
   }
   const gallery=buildImageCarousel(candidates,cfg.name);
