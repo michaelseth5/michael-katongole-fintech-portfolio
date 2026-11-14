@@ -516,3 +516,39 @@ body.tv-mode #main-content.tv-stage .tv-page[data-channel="8"]>.mk-footer-quotes
     flex:0 0 auto!important;
   }
 }
+
+/* CH 08 quote strip: override the older high-specificity full-screen section rule. */
+@media(min-width:768px){
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] > section:not(#home):not(#portfolio-intro-grid).mk-footer-quotes{
+  box-sizing:border-box!important;
+  display:block!important;
+  flex:0 0 auto!important;
+  min-height:0!important;
+  height:auto!important;
+  max-height:112px!important;
+  padding:10px 18px!important;
+  margin:0!important;
+  overflow:hidden!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] > section:not(#home):not(#portfolio-intro-grid).mk-footer-quotes .mk-footer-quotes-inner{
+  display:grid!important;
+  grid-template-columns:110px minmax(0,1fr) auto!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:0 12px!important;
+  align-items:center!important;
+  gap:12px!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] > section:not(#home):not(#portfolio-intro-grid).mk-footer-quotes .mk-footer-quote-stage{
+  min-height:0!important;height:auto!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] > section:not(#home):not(#portfolio-intro-grid).mk-footer-quotes .mk-footer-quote-controls{
+  margin:0!important;
+ }
+}
+@media(max-width:767px){
+ body.tv-mode #main-content.tv-stage .tv-page[data-channel="7"] > section:not(#home):not(#portfolio-intro-grid).mk-footer-quotes{
+  min-height:0!important;height:auto!important;max-height:150px!important;
+  padding:10px 8px!important;margin:0!important;
+ }
+}
