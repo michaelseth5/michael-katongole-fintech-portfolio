@@ -34,7 +34,7 @@
 
   const hud = document.createElement('div');
   hud.className = 'gf-hud';
-  hud.innerHTML = '<strong>INTERNATIONAL TRADE</strong><small>2024 · REPORTED DATA</small>';
+  hud.innerHTML = '<div class="gf-hud-title"><strong>INTERNATIONAL TRADE</strong><small>2024 - REPORTED DATA</small></div><p class="gf-hud-description">Explore global goods trade by country. Green lines show exports and red lines show imports. Select a country to view reported trade totals, trade balance, and GDP. Figures are annual, not live, and may be incomplete.</p>';
   const panel = document.createElement('aside');
   panel.className = 'gf-panel';
   panel.setAttribute('aria-label', 'Selected country trade statistics');
