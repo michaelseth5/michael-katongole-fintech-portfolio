@@ -3025,72 +3025,45 @@ body .apple-topbar {
 </style>
 
 <style id="mk-featured-projects-style">
-/* Compact homepage project teaser; scoped to avoid changing other pages. */
-#home .mk-featured-projects{position:relative;z-index:2;box-sizing:border-box;width:100%;max-width:900px;margin:84px auto 30px;padding:0 16px;color:#f4efff;font-family:inherit}
-#home .mk-featured-projects *{box-sizing:border-box}
-#home .mk-featured-heading{text-align:center;margin:0 auto 30px}
-#home .mk-featured-eyebrow{display:block;color:#bca2df;letter-spacing:.24em;font:700 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;margin-bottom:11px}
-#home .mk-featured-heading h2{font-size:clamp(28px,4vw,42px);line-height:1.13;color:#f8f4ff;letter-spacing:-.035em;font-weight:750;margin:0}
-#home .mk-featured-heading p{font-size:clamp(12px,1.5vw,14px);line-height:1.6;color:#bcb0d3;margin:12px 0 0}
-#home .mk-featured-card{position:relative;border:1px solid rgba(181,155,226,.27);border-radius:22px;background:linear-gradient(145deg,rgba(23,17,39,.92),rgba(14,13,26,.96));box-shadow:0 16px 40px rgba(2,0,10,.14);padding:22px 22px 18px;text-align:left;overflow:hidden}
-#home .mk-featured-card-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:6px}
-#home .mk-featured-number{color:#bcb1d1;font:600 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.115em}
-#home .mk-featured-number span{color:#77698d;letter-spacing:-.08em;margin:0 10px}
-#home .mk-featured-star{display:inline-flex;align-items:center;gap:7px;min-height:35px;padding:6px 13px;border-radius:10px;border:1px solid rgba(176,128,225,.3);background:rgba(105,50,156,.32);color:#ede0ff;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;transition:background-color .18s ease}
-#home .mk-featured-star:hover{background:rgba(123,66,175,.52);color:#fff}
-#home .mk-featured-main-link{display:block;text-decoration:none;color:inherit;outline-offset:5px}
-#home .mk-featured-main-link h3{font-size:clamp(25px,3.2vw,35px);letter-spacing:-.035em;line-height:1.15;color:#faf8ff;margin:0 0 18px;font-weight:750}
-#home .mk-featured-arrow{font-size:.48em;color:#b49bc9;vertical-align:middle;display:inline-block;transition:transform .2s ease}
-#home .mk-featured-frame{position:relative;height:310px;padding:22px 24px 0;overflow:hidden;border-radius:24px;border:7px solid #090b14;background:linear-gradient(120deg,#392063 0%,#43247f 49%,#25296c 100%);box-shadow:inset 0 0 0 1px rgba(209,186,255,.2);transition:transform .24s ease}
-#home .mk-featured-frame>p{position:relative;z-index:4;font-weight:650;font-size:clamp(13px,1.7vw,17px);line-height:1.45;letter-spacing:-.01em;text-align:center;color:#fff;max-width:620px;margin:0 auto 15px}
-#home .mk-featured-mockups{position:absolute;inset:88px 0 0;overflow:hidden;pointer-events:none}
-#home .mk-featured-shot{position:absolute;display:block;object-fit:cover;object-position:top center;height:auto;border:4px solid #232236;border-radius:13px 13px 0 0;background:#f5f4f9;box-shadow:0 8px 22px rgba(4,4,15,.25);transition:transform .24s ease}
-#home .mk-featured-shot-left{width:43%;left:3%;top:56px;opacity:.82;filter:saturate(.78)}
-#home .mk-featured-shot-right{width:35%;right:3%;top:53px;opacity:.78;filter:saturate(.76)}
-#home .mk-featured-shot-center{width:64%;left:18%;top:16px;z-index:3}
-#home .mk-featured-main-link:hover .mk-featured-frame{transform:translateY(-3px)}
-#home .mk-featured-main-link:hover .mk-featured-shot-center{transform:scale(1.015)}
-#home .mk-featured-main-link:hover .mk-featured-arrow{transform:translate(2px,-2px)}
-#home .mk-featured-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-#home .mk-featured-tags span{padding:7px 10px;border:1px solid rgba(188,176,206,.15);border-radius:999px;background:rgba(255,255,255,.045);color:#c9c1d7;font:750 10px/1.1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em}
-#home .mk-featured-all{display:block;width:max-content;max-width:100%;margin:23px auto 0;color:#c8a9f4;text-decoration:underline;text-decoration-color:rgba(200,169,244,.4);text-underline-offset:5px;font-size:13px;font-weight:600}
+/* Featured project previews: self-contained, responsive, non-overlapping. */
+#home .mk-featured-projects{position:relative;z-index:2;box-sizing:border-box;width:min(100%,960px);margin:76px auto 36px;padding:0 clamp(12px,2vw,24px);color:#f7f2ff;font-family:inherit}
+#home .mk-featured-projects *,#home .mk-featured-projects *::before,#home .mk-featured-projects *::after{box-sizing:border-box}
+#home .mk-featured-heading{text-align:center;max-width:620px;margin:0 auto 34px}
+#home .mk-featured-eyebrow{display:block;margin-bottom:10px;color:#c7acd9;font:700 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.23em}
+#home .mk-featured-heading h2{color:#f7f2ff;font-size:clamp(28px,4vw,43px);font-weight:780;letter-spacing:-.045em;line-height:1.15;margin:0}
+#home .mk-featured-heading p{font-size:14px;line-height:1.6;color:#bcb0cc;margin:12px 0 0}
+#home .mk-featured-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+#home .mk-featured-card{min-width:0;display:flex;flex-direction:column;gap:0;margin:0!important;padding:20px;border:1px solid rgba(182,151,223,.28);border-radius:20px;background:linear-gradient(145deg,rgba(32,23,51,.98),rgba(19,16,33,.98));box-shadow:0 16px 40px rgba(0,0,0,.16);overflow:hidden}
+#home .mk-featured-card-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:0 0 14px}
+#home .mk-featured-number{font:700 10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.065em;color:#c6b4dc;white-space:normal}
+#home .mk-featured-number span{margin:0 6px;color:#9277ab}
+#home .mk-featured-star{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:none;min-height:32px;padding:6px 10px;background:rgba(104,68,149,.3);border:1px solid rgba(194,160,231,.3);border-radius:8px;color:#f0e2ff;text-decoration:none;font-size:11px;font-weight:700;white-space:nowrap}
+#home .mk-featured-star:hover{background:rgba(137,89,184,.5);color:#fff}
+#home .mk-featured-main-link{display:flex;flex-direction:column;flex:1;gap:0;min-width:0;text-decoration:none;color:inherit;outline-offset:5px}
+#home .mk-featured-main-link h3{font-size:clamp(22px,2.6vw,29px);line-height:1.2;font-weight:760;letter-spacing:-.035em;color:#fff;margin:0 0 8px}
+#home .mk-featured-arrow{display:inline-block;vertical-align:middle;font-size:16px;color:#c9a7ed;transition:transform .2s ease}
+#home .mk-featured-description{color:#bcb2cc;font-size:13px;line-height:1.6;margin:0 0 18px;min-height:42px}
+#home .mk-featured-frame{position:relative;min-width:0;width:100%;height:auto;padding:0!important;border:1px solid rgba(198,186,221,.24);border-radius:13px;overflow:hidden;background:#f6f4fa;box-shadow:0 12px 27px rgba(0,0,0,.23);transform:none;transition:box-shadow .2s ease,border-color .2s ease}
+#home .mk-featured-browser-bar{position:relative;inset:auto;display:flex;align-items:center;gap:7px;height:33px;padding:0 13px;background:#24212e;border-bottom:1px solid rgba(255,255,255,.09);border-radius:0;z-index:1;pointer-events:none}
+#home .mk-featured-traffic-light{width:10px;height:10px;border-radius:50%;flex:0 0 10px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.13)}
+#home .mk-featured-close{background:#ff6059}
+#home .mk-featured-minimize{background:#ffbc2e}
+#home .mk-featured-expand{background:#29c840}
+#home .mk-featured-window-title{margin:auto;padding-right:48px;min-width:0;color:#b9b2c7;font:600 10px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.035em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#home .mk-featured-viewport{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#f6f4fa;isolation:isolate}
+#home .mk-featured-viewport img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;transform:none;filter:none;opacity:1}
+#home .mk-featured-demand .mk-featured-viewport{background:#f9f8fc}
+#home .mk-featured-demand .mk-featured-viewport img{object-fit:contain;object-position:top center;background:#faf9fb}
+#home .mk-featured-card:hover .mk-featured-frame,#home .mk-featured-card:focus-within .mk-featured-frame{border-color:rgba(206,158,249,.55);box-shadow:0 16px 34px rgba(0,0,0,.27)}
+#home .mk-featured-card:hover .mk-featured-arrow{transform:translate(2px,-2px)}
+#home .mk-featured-tags{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 0;padding:0;align-content:flex-start}
+#home .mk-featured-tags span{display:inline-flex;align-items:center;padding:7px 9px;border:1px solid rgba(190,170,213,.22);border-radius:99px;background:rgba(255,255,255,.045);color:#d2c5e2;font:700 10px/1.1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.03em}
+#home .mk-featured-all{display:block;max-width:max-content;margin:24px auto 0;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(209,166,241,.5);font-size:13px;font-weight:650;color:#d4b2fc}
 #home .mk-featured-all:hover{color:#fff}
-#home .mk-featured-projects a:focus-visible{outline:2px solid #d5b0ff;outline-offset:4px}
-@media(max-width:600px){
- #home .mk-featured-projects{padding:0 12px;margin:50px auto 16px}
- #home .mk-featured-card{padding:16px 14px 14px;border-radius:18px}
- #home .mk-featured-heading{margin-bottom:22px}
- #home .mk-featured-frame{height:282px;padding:18px 12px 0;border-width:6px;border-radius:19px}
- #home .mk-featured-frame>p{font-size:13px;max-width:320px}
- #home .mk-featured-mockups{top:102px}
- #home .mk-featured-shot-center{width:82%;left:9%;top:17px}
- #home .mk-featured-shot-left{width:50%;left:-16%;top:65px}
- #home .mk-featured-shot-right{display:none}
- #home .mk-featured-card-head{align-items:flex-start}
- #home .mk-featured-star{min-height:33px;padding:6px 10px}
-}
-@media(prefers-reduced-motion:reduce){
- #home .mk-featured-projects *,#home .mk-featured-projects *::before,#home .mk-featured-projects *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-}
-
-#home .mk-featured-card+.mk-featured-card{margin-top:27px}
-#home .mk-featured-demand .mk-featured-frame{background:linear-gradient(120deg,#3c224f 0%,#34245c 55%,#242650 100%)}
-#home .mk-featured-demand-preview{position:absolute;left:50%;top:83px;width:min(77%,530px);height:300px;overflow:hidden;transform:translateX(-50%);border:4px solid #242132;border-bottom:0;border-radius:13px 13px 0 0;box-shadow:0 14px 32px rgba(5,2,17,.4);background:#fff}
-#home .mk-featured-demand-preview img{display:block;width:100%;height:auto;object-fit:contain;object-position:top center;transition:transform .24s ease}
-#home .mk-featured-demand .mk-featured-main-link:hover .mk-featured-demand-preview img{transform:scale(1.015);transform-origin:top center}
-@media(max-width:600px){#home .mk-featured-card+.mk-featured-card{margin-top:20px}#home .mk-featured-demand-preview{top:105px;width:91%;height:250px;border-width:3px}}
-@media(prefers-reduced-motion:reduce){#home .mk-featured-demand-preview img{transition:none!important}}
-
-/* Project preview window chrome: CSS-only macOS traffic lights, not screenshot edits. */
-#home .mk-featured-frame{padding-top:52px}
-#home .mk-featured-browser-bar{position:absolute;inset:0 0 auto;display:flex;align-items:center;gap:7px;height:32px;padding:0 14px;background:#1d1d23;border-bottom:1px solid rgba(255,255,255,.10);border-radius:15px 15px 0 0;z-index:5;pointer-events:none}
-#home .mk-featured-traffic-light{width:11px;height:11px;flex:none;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
-#home .mk-featured-close{background:#ff5f57}
-#home .mk-featured-minimize{background:#febc2e}
-#home .mk-featured-expand{background:#28c840}
-#home .mk-featured-mockups{top:110px}
-#home .mk-featured-demand-preview{top:110px}
-@media(max-width:600px){#home .mk-featured-frame{padding-top:46px}#home .mk-featured-browser-bar{height:29px;padding:0 11px;gap:6px}#home .mk-featured-traffic-light{width:10px;height:10px}#home .mk-featured-mockups{top:126px}#home .mk-featured-demand-preview{top:126px}}
+#home .mk-featured-projects a:focus-visible{outline:2px solid #d8aeff;outline-offset:4px}
+@media(max-width:760px){#home .mk-featured-grid{grid-template-columns:minmax(0,1fr);gap:16px}#home .mk-featured-projects{max-width:570px;margin:55px auto 25px}#home .mk-featured-description{min-height:0}#home .mk-featured-viewport{aspect-ratio:16/9}}
+@media(max-width:410px){#home .mk-featured-card{padding:15px;border-radius:16px}#home .mk-featured-heading p{font-size:12px}#home .mk-featured-number{font-size:9px}#home .mk-featured-star{font-size:10px;padding:5px 8px}}
+@media(prefers-reduced-motion:reduce){#home .mk-featured-projects *,#home .mk-featured-projects *::before,#home .mk-featured-projects *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 <style id="mk-skills-sphere-upgrade">
 /* Dark-purple Skills only. Older site-wide page and sphere styles remain untouched. */
@@ -3234,58 +3207,44 @@ body .apple-topbar {
 </div>
 
 <section class="mk-featured-projects" id="projects" aria-labelledby="mk-featured-title">
-  <div class="mk-featured-heading mk-featured-reveal">
+  <div class="mk-featured-heading">
     <span class="mk-featured-eyebrow">PORTFOLIO</span>
     <h2 id="mk-featured-title">Featured Projects</h2>
     <p>A quick look at what I've built. Open any card for the full case study.</p>
   </div>
-  <article class="mk-featured-card mk-featured-reveal" aria-label="Featured project: Synapse Solution">
+  <div class="mk-featured-grid">
+  <article class="mk-featured-card " aria-label="Featured project: Synapse Solution">
     <div class="mk-featured-card-head">
       <span class="mk-featured-number">01 <span aria-hidden="true">────</span> AI &amp; FULL STACK</span>
-      <a class="mk-featured-star" href="https://github.com/michaelseth5/synapse-solution" target="_blank" rel="noopener noreferrer" aria-label="View Synapse Solution on GitHub">
-        <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Star
-      </a>
+      <a class="mk-featured-star" href="https://github.com/michaelseth5/synapse-solution" target="_blank" rel="noopener noreferrer" aria-label="View Synapse Solution on GitHub">GitHub ↗</a>
     </div>
-    <a class="mk-featured-main-link" href="#project-details" aria-label="Explore Synapse Solution full case study on the Projects page">
-      <h3>Synapse Solution <span aria-hidden="true" class="mk-featured-arrow">↗</span></h3>
+    <a class="mk-featured-main-link" href="#project-details" aria-label="View Synapse Solution in Projects">
+      <h3>Synapse Solution <span class="mk-featured-arrow" aria-hidden="true">↗</span></h3>
+      <p class="mk-featured-description">Real-time agentic AI dashboard connecting Finance, Sales and Operations.</p>
       <div class="mk-featured-frame">
-        <div class="mk-featured-browser-bar" aria-hidden="true"><span class="mk-featured-traffic-light mk-featured-close"></span><span class="mk-featured-traffic-light mk-featured-minimize"></span><span class="mk-featured-traffic-light mk-featured-expand"></span></div>
-        <p>Real-time agentic AI dashboard connecting Finance, Sales and Operations.</p>
-        <div class="mk-featured-mockups" aria-label="Synapse Solution application screenshots">
-          <img class="mk-featured-shot mk-featured-shot-left" src="https://github.com/user-attachments/assets/e1d89b1c-f612-4b6e-9c17-3836a0f751b4" alt="Synapse Team Collaboration Hub showing chat, members and activity" loading="lazy" decoding="async" width="1500" height="1062"/>
-          <img class="mk-featured-shot mk-featured-shot-right" src="https://github.com/user-attachments/assets/c48f08e0-5d31-4490-8cfa-cd2eba509b22" alt="Synapse real-time coordination and restaurant opening results" loading="lazy" decoding="async" width="664" height="1252"/>
-          <img class="mk-featured-shot mk-featured-shot-center" src="https://github.com/user-attachments/assets/d012c05a-1715-4e35-be5a-47b0cda3fc02" alt="Synapse Interactive Organization Chart with people, tasks and dependencies" loading="lazy" decoding="async" width="1600" height="1033"/>
-        </div>
+        <div class="mk-featured-browser-bar" aria-hidden="true"><span class="mk-featured-traffic-light mk-featured-close"></span><span class="mk-featured-traffic-light mk-featured-minimize"></span><span class="mk-featured-traffic-light mk-featured-expand"></span><span class="mk-featured-window-title">Synapse Solution</span></div>
+        <div class="mk-featured-viewport"><img src="https://github.com/user-attachments/assets/e1d89b1c-f612-4b6e-9c17-3836a0f751b4" alt="Original Synapse Solution collaboration dashboard showing the team workspace" width="1200" height="800" loading="lazy" decoding="async"></div>
       </div>
-      <div class="mk-featured-tags" aria-label="Technologies used">
-        <span>NEXT.JS</span><span>REACT</span><span>TYPESCRIPT</span><span>TAILWIND</span><span>SSE</span>
-      </div>
+      <div class="mk-featured-tags" aria-label="Technologies used"><span>NEXT.JS</span><span>REACT</span><span>TYPESCRIPT</span><span>TAILWIND</span><span>SSE</span></div>
     </a>
   </article>
-  <article class="mk-featured-card mk-featured-demand mk-featured-reveal" aria-label="Featured project: DemandSync">
+  <article class="mk-featured-card mk-featured-demand" aria-label="Featured project: DemandSync">
     <div class="mk-featured-card-head">
       <span class="mk-featured-number">02 <span aria-hidden="true">────</span> DATA ENGINEERING &amp; ML</span>
-      <a class="mk-featured-star" href="https://github.com/michaelseth5/DemandSync" target="_blank" rel="noopener noreferrer" aria-label="View DemandSync repository on GitHub">
-        <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Star
-      </a>
+      <a class="mk-featured-star" href="https://github.com/michaelseth5/DemandSync" target="_blank" rel="noopener noreferrer" aria-label="View DemandSync on GitHub">GitHub ↗</a>
     </div>
-    <a class="mk-featured-main-link" href="#project-details" aria-label="Explore the DemandSync case study">
-      <h3>DemandSync <span aria-hidden="true" class="mk-featured-arrow">↗</span></h3>
+    <a class="mk-featured-main-link" href="#project-details" aria-label="View DemandSync in Projects">
+      <h3>DemandSync <span class="mk-featured-arrow" aria-hidden="true">↗</span></h3>
+      <p class="mk-featured-description">Forecast demand, monitor inventory, and make smarter purchasing decisions.</p>
       <div class="mk-featured-frame">
-        <div class="mk-featured-browser-bar" aria-hidden="true"><span class="mk-featured-traffic-light mk-featured-close"></span><span class="mk-featured-traffic-light mk-featured-minimize"></span><span class="mk-featured-traffic-light mk-featured-expand"></span></div>
-        <p>Forecast demand, monitor inventory, and make smarter purchasing decisions.</p>
-        <div class="mk-featured-demand-preview">
-          <img src="https://github.com/user-attachments/assets/5db82b8b-13e1-4eca-ae45-0436063b2c16"
-               alt="Original DemandSync restaurant operations dashboard with orange navigation, stock KPIs and forecast chart"
-               loading="lazy" decoding="async" width="987" height="1119"/>
-        </div>
+        <div class="mk-featured-browser-bar" aria-hidden="true"><span class="mk-featured-traffic-light mk-featured-close"></span><span class="mk-featured-traffic-light mk-featured-minimize"></span><span class="mk-featured-traffic-light mk-featured-expand"></span><span class="mk-featured-window-title">DemandSync</span></div>
+        <div class="mk-featured-viewport"><img src="https://github.com/user-attachments/assets/5db82b8b-13e1-4eca-ae45-0436063b2c16" alt="Original DemandSync orange restaurant operations dashboard" width="1200" height="800" loading="lazy" decoding="async"></div>
       </div>
-      <div class="mk-featured-tags" aria-label="DemandSync technologies">
-        <span>PYTHON</span><span>FASTAPI</span><span>POSTGRESQL</span><span>DBT</span><span>XGBOOST</span>
-      </div>
+      <div class="mk-featured-tags" aria-label="Technologies used"><span>PYTHON</span><span>FASTAPI</span><span>POSTGRESQL</span><span>DBT</span><span>XGBOOST</span></div>
     </a>
   </article>
-  <a class="mk-featured-all" href="#project-details">Explore all projects <span aria-hidden="true">→</span></a>
+  </div>
+  <a class="mk-featured-all" href="#project-details">Explore all projects →</a>
 </section>
 
 </div>
