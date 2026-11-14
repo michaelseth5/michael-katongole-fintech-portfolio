@@ -22,7 +22,6 @@
 
 
  // Calm, image-free tvOS-style first-screen selector. No remote assets loaded here.
- const REMEMBER_KEY='michael-tv-remember-choice-v1';
  const mobile=matchMedia('(max-width:767px)');
  const pickerStyle=document.createElement('style');
  pickerStyle.id='mtv-choice-styles';
@@ -68,7 +67,7 @@
  <div class="mtv-choice-buttons">
  <button type="button" class="mtv-choice-btn" data-mtv-choice="cinema" aria-label="Cinema Michael TV. Full cinematic intro, credits, and the original experience. Full Experience"><span class="mtv-choice-copy"><strong>Cinema Michael TV</strong><small>Full cinematic intro, credits, and the original experience.</small></span><span class="mtv-choice-cta">Full Experience</span></button>
  <button type="button" class="mtv-choice-btn" data-mtv-choice="instant" aria-label="Instant Michael TV. Skip the introduction and explore right away. Enter Portfolio"><span class="mtv-choice-copy"><strong>Instant Michael TV</strong><small>Skip the introduction and explore right away.</small></span><span class="mtv-choice-cta">Enter Portfolio</span></button>
- </div><div class="mtv-choice-bottom"><label class="mtv-choice-remember"><input type="checkbox" id="mtv-remember-choice">Remember my choice</label></div>
+ </div>
  <p class="mtv-choice-foot">Your choice. Your experience.</p>
  </div></div>`;
  document.body.appendChild(choice);
@@ -505,11 +504,6 @@
    document.querySelector('#apple-navlinks a[href="#home"]')?.focus?.({preventScroll:true});
  };
  const choose=selected=>{
-   const remember=choice.querySelector('#mtv-remember-choice')?.checked;
-   try{
-     if(remember)localStorage.setItem(REMEMBER_KEY,selected);
-     else localStorage.removeItem(REMEMBER_KEY);
-   }catch{}
    choice.classList.add('mtv-choice-leaving');
    cards.find(card=>card.dataset.mtvChoice===selected)?.classList.add('is-chosen');
    const proceed=()=>{
@@ -524,12 +518,5 @@
    if(typeof navigator.vibrate==='function' && mobile.matches)navigator.vibrate(10);
    choose(card.dataset.mtvChoice);
  }));
- let remembered=null;
- try{remembered=localStorage.getItem(REMEMBER_KEY)}catch{}
- if(remembered!=='cinema'&&remembered!=='instant')remembered=null;
- if(!previouslySeen){
-   if(remembered==='cinema')openIntro(false);
-   else if(remembered==='instant')completeInstant();
-   else openPicker();
- }
+ if(!previouslySeen)openPicker();
 })();
