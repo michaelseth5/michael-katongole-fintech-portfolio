@@ -3123,46 +3123,41 @@ body .apple-topbar {
 @media(max-width:450px){#skills .mk-skills-orbit{height:350px!important}#skills #mk-skills-visual .mk-skill-particle{width:43px;height:55px}#skills #mk-skills-visual .mk-skill-particle .mk-icon{width:37px;height:37px}#skills #mk-skills-visual .mk-skill-particle img{width:25px;height:25px}#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{top:43px}}
 @media(prefers-reduced-motion:reduce){#skills *,#skills *::before,#skills *::after{animation:none!important;transition:none!important}}
 
-/* Per-logo ambient glow. RGB palette follows each logo; visual only, not an interactive control. */
+/* Hover-only, vivid brand halo; no idle glow. */
 #skills #mk-skills-visual .mk-skill-particle{
   --skill-glow-rgb:174,138,238;
-  --skill-glow-strength:1;
 }
 #skills #mk-skills-visual .mk-skill-particle .mk-icon{
   position:relative;
   isolation:isolate;
   overflow:visible;
-  box-shadow:
-    0 0 12px rgba(var(--skill-glow-rgb),calc(.22 * var(--skill-glow-strength))),
-    0 0 30px rgba(var(--skill-glow-rgb),calc(.30 * var(--skill-glow-strength))),
-    0 0 52px rgba(var(--skill-glow-rgb),calc(.12 * var(--skill-glow-strength))),
-    0 7px 18px rgba(0,0,0,.24)!important;
-  transition:box-shadow .25s ease,background-color .25s ease;
+  box-shadow:0 5px 15px rgba(0,0,0,.20)!important;
+  transition:box-shadow .22s ease,transform .22s ease;
 }
 #skills #mk-skills-visual .mk-skill-particle .mk-icon::before{
   content:"";
   position:absolute;
   z-index:-1;
-  inset:-17px;
+  inset:-28px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(var(--skill-glow-rgb),calc(.30 * var(--skill-glow-strength))) 0%,rgba(var(--skill-glow-rgb),calc(.12 * var(--skill-glow-strength))) 35%,transparent 72%);
-  filter:blur(10px);
+  background:radial-gradient(circle,rgba(var(--skill-glow-rgb),.70) 0%,rgba(var(--skill-glow-rgb),.36) 34%,rgba(var(--skill-glow-rgb),.13) 57%,transparent 76%);
+  filter:blur(15px);
+  opacity:0;
   pointer-events:none;
-  transition:filter .22s ease,transform .22s ease;
+  transform:scale(.74);
+  transition:opacity .2s ease,transform .22s ease;
 }
-#skills #mk-skills-visual .mk-skill-particle:hover .mk-icon,
-#skills #mk-skills-visual .mk-skill-particle:focus-visible .mk-icon,
-#skills #mk-skills-visual .mk-skill-particle.mk-skill-selected .mk-icon{
+#skills #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon{
   box-shadow:
-    0 0 0 2px rgba(var(--skill-glow-rgb),.56),
-    0 0 21px rgba(var(--skill-glow-rgb),.66),
-    0 0 48px rgba(var(--skill-glow-rgb),.42),
-    0 0 78px rgba(var(--skill-glow-rgb),.2)!important;
+    0 0 0 2px rgba(var(--skill-glow-rgb),.85),
+    0 0 22px rgba(var(--skill-glow-rgb),.95),
+    0 0 48px rgba(var(--skill-glow-rgb),.75),
+    0 0 86px rgba(var(--skill-glow-rgb),.48)!important;
+  transform:scale(1.09);
 }
-#skills #mk-skills-visual .mk-skill-particle:hover .mk-icon::before,
-#skills #mk-skills-visual .mk-skill-particle:focus-visible .mk-icon::before{
+#skills #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon::before{
+  opacity:1;
   transform:scale(1.16);
-  filter:blur(13px);
 }
 @media(prefers-reduced-motion:reduce){
   #skills #mk-skills-visual .mk-skill-particle .mk-icon,
@@ -3600,7 +3595,7 @@ body .apple-topbar {
    const scale=.58+.53*depth;
    button.style.left=q.x+"px";button.style.top=q.y+"px";
    button.style.opacity=String(.16+.84*depth);
-   button.style.setProperty("--skill-glow-strength",(0.32+depth*.68).toFixed(3));
+
    button.style.zIndex=String(2+Math.floor(depth*100));
    button.style.transform="translate(-50%, -50%) scale("+scale.toFixed(3)+")";
    button.style.filter=depth<.4?"blur("+((.4-depth)*2.2).toFixed(2)+"px)":"none";
@@ -3613,7 +3608,7 @@ body .apple-topbar {
    if(!drag){
     yaw+=velocityX;pitch=clamp(pitch+velocityY,-1.15,1.15);
     velocityX*=Math.pow(.91,dt/16);velocityY*=Math.pow(.91,dt/16);
-    if(!hovered&&now>stopUntil)yaw+=dt*.00011;
+    if(!hovered&&now>stopUntil)yaw+=dt*.00022;
    }
    draw();raf=requestAnimationFrame(tick);
   }else{draw();raf=0;}
