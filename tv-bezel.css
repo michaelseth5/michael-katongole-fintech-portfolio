@@ -437,3 +437,82 @@ body.tv-mode #main-content.tv-stage .tv-page[data-channel="8"]>.mk-footer-quotes
  .mk-footer-quote blockquote{font-size:14px!important}
 }
 @media(prefers-reduced-motion:reduce){#contact .mk-connect-link,#contact .mk-chat-chips button,.mk-footer-quote{transition:none!important}}
+
+/* Contact is channel index 7 (visible as CH 08). Keep its content contiguous. */
+@media (min-width: 768px) {
+  body.tv-mode .tv-hardware #main-content.tv-stage > .tv-page[data-channel="7"].is-active {
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    align-content:flex-start!important;
+    gap:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    padding:0!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] > section#contact.section,
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] > section:not(#home):not(#portfolio-intro-grid)#contact {
+    display:block!important;
+    flex:0 0 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    padding:22px 24px 14px!important;
+    margin:0!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] > section.mk-footer-quotes {
+    display:block!important;
+    position:relative!important;
+    flex:0 0 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    padding:9px 0!important;
+    margin:0!important;
+    align-self:stretch!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] > .mk-footer-band {
+    position:relative!important;
+    display:block!important;
+    flex:0 0 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    padding:0!important;
+    margin:0!important;
+    align-self:stretch!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-connect-layout {
+    min-height:0!important;
+    max-height:none!important;
+    gap:16px!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-connect-left {
+    min-height:0!important;
+    padding:20px!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] #contact .mk-chat-panel {
+    height:360px!important;
+    min-height:0!important;
+    max-height:360px!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] .mk-footer-quotes-inner {
+    min-height:0!important;height:auto!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] .mk-footer-quote-stage {
+    min-height:0!important;height:auto!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] .mk-footer-band .mk-footer {
+    min-height:0!important;height:auto!important;
+    padding:8px 20px!important;
+    margin:0 auto!important;
+  }
+}
+@media (max-width:767px) {
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] > section#contact.section,
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page[data-channel="7"] > section.mk-footer-quotes {
+    min-height:0!important;height:auto!important;max-height:none!important;
+    flex:0 0 auto!important;
+  }
+}
