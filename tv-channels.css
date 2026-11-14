@@ -121,3 +121,15 @@ body.tv-mode #main-content.tv-stage #home.hero.mk-unified-hero .demo-hero-identi
     background:linear-gradient(180deg,#171026 0%,#241536 64%,#39234f 100%)!important;
   }
 }
+
+/* Home TV: remove the empty light-colored strip below Featured Projects. */
+@media (min-width:820px) {
+  body.tv-mode #main-content.tv-stage .tv-page-home > #portfolio-intro-grid {
+    padding-bottom:0!important;
+    margin-bottom:0!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page-home > #portfolio-intro-grid > .container {
+    padding-bottom:0!important;
+    margin-bottom:0!important;
+  }
+}
