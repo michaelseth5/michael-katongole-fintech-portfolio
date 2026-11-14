@@ -3072,6 +3072,14 @@ body .apple-topbar {
 @media(prefers-reduced-motion:reduce){
  #home .mk-featured-projects *,#home .mk-featured-projects *::before,#home .mk-featured-projects *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+#home .mk-featured-card+.mk-featured-card{margin-top:27px}
+#home .mk-featured-demand .mk-featured-frame{background:linear-gradient(120deg,#3c224f 0%,#34245c 55%,#242650 100%)}
+#home .mk-featured-demand-preview{position:absolute;left:50%;top:83px;width:min(77%,530px);height:300px;overflow:hidden;transform:translateX(-50%);border:4px solid #242132;border-bottom:0;border-radius:13px 13px 0 0;box-shadow:0 14px 32px rgba(5,2,17,.4);background:#fff}
+#home .mk-featured-demand-preview img{display:block;width:100%;height:auto;object-fit:contain;object-position:top center;transition:transform .24s ease}
+#home .mk-featured-demand .mk-featured-main-link:hover .mk-featured-demand-preview img{transform:scale(1.015);transform-origin:top center}
+@media(max-width:600px){#home .mk-featured-card+.mk-featured-card{margin-top:20px}#home .mk-featured-demand-preview{top:105px;width:91%;height:250px;border-width:3px}}
+@media(prefers-reduced-motion:reduce){#home .mk-featured-demand-preview img{transition:none!important}}
 </style>
 </head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div class="mk-home-welcome" id="home-welcome-audio" role="region" aria-label="Michael TV welcome audio">
  <div class="mk-home-welcome-head"><span class="mk-home-welcome-icon" aria-hidden="true">♫</span><span class="mk-home-welcome-name">A note from Michael</span></div>
@@ -3168,6 +3176,28 @@ body .apple-topbar {
       </div>
       <div class="mk-featured-tags" aria-label="Technologies used">
         <span>NEXT.JS</span><span>REACT</span><span>TYPESCRIPT</span><span>TAILWIND</span><span>SSE</span>
+      </div>
+    </a>
+  </article>
+  <article class="mk-featured-card mk-featured-demand mk-featured-reveal" aria-label="Featured project: DemandSync">
+    <div class="mk-featured-card-head">
+      <span class="mk-featured-number">02 <span aria-hidden="true">────</span> DATA ENGINEERING &amp; ML</span>
+      <a class="mk-featured-star" href="https://github.com/michaelseth5/DemandSync" target="_blank" rel="noopener noreferrer" aria-label="View DemandSync repository on GitHub">
+        <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Star
+      </a>
+    </div>
+    <a class="mk-featured-main-link" href="#project-details" aria-label="Explore the DemandSync case study">
+      <h3>DemandSync <span aria-hidden="true" class="mk-featured-arrow">↗</span></h3>
+      <div class="mk-featured-frame">
+        <p>Forecast demand, monitor inventory, and make smarter purchasing decisions.</p>
+        <div class="mk-featured-demand-preview">
+          <img src="https://github.com/user-attachments/assets/5db82b8b-13e1-4eca-ae45-0436063b2c16"
+               alt="Original DemandSync restaurant operations dashboard with orange navigation, stock KPIs and forecast chart"
+               loading="lazy" decoding="async" width="987" height="1119"/>
+        </div>
+      </div>
+      <div class="mk-featured-tags" aria-label="DemandSync technologies">
+        <span>PYTHON</span><span>FASTAPI</span><span>POSTGRESQL</span><span>DBT</span><span>XGBOOST</span>
       </div>
     </a>
   </article>
