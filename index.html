@@ -3199,6 +3199,22 @@ body .apple-topbar {
 @media(prefers-reduced-motion:reduce){#project-details .fp-case-thumb img{transition:none!important}#project-details .fp-case-thumb:hover img{transform:none!important}}
 </style><style id="synapse-inline-walkthrough-styles">
 /* Synapse expands beneath its card, without changing the other three cards. */
+/* Site-wide light card rules have !important overrides; restore dark walkthrough contrast. */
+#project-details #project-1>.synapse-slide-details{background:#181023!important;border-color:#534066!important;color:#f5ecff!important}
+#project-details #project-1>.synapse-slide-details>summary{background:#20152c!important;color:#f0e6ff!important}
+#project-details #project-1>.synapse-slide-details .case-box,
+#project-details #project-1>.synapse-slide-details .sw-root,
+#project-details #project-1>.synapse-slide-details .sw-slide,
+#project-details #project-1>.synapse-slide-details .sw-body{background:#181023!important;color:#f5ecff!important}
+#project-details #project-1>.synapse-slide-details h3.sw-slide-heading{color:#fff!important}
+#project-details #project-1>.synapse-slide-details p.sw-intro-lede{color:#ece3f9!important}
+#project-details #project-1>.synapse-slide-details p.sw-intro-stack{color:#cebce7!important}
+#project-details #project-1>.synapse-slide-details p.sw-image-caption{color:#e6d6f7!important}
+#project-details #project-1>.synapse-slide-details .sw-body .project-framework-item{background:transparent!important;color:#f4e9ff!important}
+#project-details #project-1>.synapse-slide-details .sw-body .project-framework-item p{color:#e5d9f1!important}
+#project-details #project-1>.synapse-slide-details .sw-thumb span{color:#e6daf2!important}
+#project-details #project-1>.synapse-slide-details .sw-head span{color:#d9baff!important}
+
 #project-details #project-1>.synapse-slide-details{grid-column:1 / -1;min-width:0;width:100%;margin:14px 0 0;align-self:stretch}
 #project-details #project-1 .synapse-slide-details>.case-box{padding:0!important;margin:0!important;border-radius:0!important;background:transparent!important;border:0!important}
 #project-details #project-1 .synapse-slide-details .actions{display:none!important}
@@ -3232,7 +3248,7 @@ body .apple-topbar {
 #project-details #project-1 .sw-thumb img{display:block;width:100%;height:85px;object-fit:contain;background:#0c0815;border-radius:6px}
 #project-details #project-1 .sw-thumb span{display:block;padding:5px 3px 1px;font-size:10px;line-height:1.35}
 #project-details #project-1 .sw-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;flex-wrap:wrap}
-#project-details #project-1 .sw-nav button,#project-details #project-1 .sw-nav a{display:inline-flex;justify-content:center;align-items:center;min-height:40px;border:1px solid #78629c;border-radius:9px;background:#37234f;color:#fff!important;text-decoration:none;padding:10px 16px;font:700 13px/1.3 inherit;cursor:pointer}
+#project-details #project-1 .sw-nav button,#project-details #project-1 .sw-nav a{display:inline-flex;justify-content:center;align-items:center;min-height:40px;border:1px solid #78629c;border-radius:9px;background:#37234f;color:#fff!important;text-decoration:none;padding:10px 16px;font-size:13px;font-weight:700;line-height:1.3;font-family:inherit;cursor:pointer}
 #project-details #project-1 .sw-nav .sw-next{background:#6e40c2;border-color:#9468e2}
 #project-details #project-1 .sw-overview{margin-right:auto}
 #project-details #project-1 .sw-dots{display:flex;justify-content:center;gap:8px;margin-top:15px}
