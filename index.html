@@ -3065,20 +3065,33 @@ body .apple-topbar {
 @media(max-width:410px){#home .mk-featured-card{padding:15px;border-radius:16px}#home .mk-featured-heading p{font-size:12px}#home .mk-featured-number{font-size:9px}#home .mk-featured-star{font-size:10px;padding:5px 8px}}
 @media(prefers-reduced-motion:reduce){#home .mk-featured-projects *,#home .mk-featured-projects *::before,#home .mk-featured-projects *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
-/* Screenshot tabs: no overlap; full screenshot is contained rather than cropped. */
+
+/* Full-width portfolio windows with layered, selectable multi-screen previews. */
+#home .mk-featured-grid{grid-template-columns:minmax(0,1fr);gap:38px}
+#home .mk-featured-projects{max-width:1050px}
+#home .mk-featured-card{padding:22px 22px 24px}
+#home .mk-featured-main-link{display:block}
 #home .mk-featured-title-link{color:inherit;text-decoration:none}
-#home .mk-featured-title-link:hover{color:#f4d9ff}
-#home .mk-featured-gallery{min-width:0;background:#171321}
-#home .mk-featured-gallery-stage{height:240px;width:100%;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,#211a2d,#11101c)}
-#home .mk-featured-gallery-image{display:block;max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;object-position:center;filter:none;opacity:1}
-#home .mk-featured-gallery-thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:8px;background:#1a1623;border-top:1px solid rgba(255,255,255,.09)}
-#home .mk-featured-gallery-thumb{min-width:0;display:flex;flex-direction:column;gap:5px;align-items:center;padding:5px;border:1px solid #ffffff2a;border-radius:7px;background:#2b2337;color:#d4c1e8;cursor:pointer;font:600 10px/1.25 ui-monospace,Consolas,monospace}
-#home .mk-featured-gallery-thumb img{display:block;width:100%;height:56px;object-fit:contain;object-position:center;border-radius:4px;background:#15111e}
-#home .mk-featured-gallery-thumb span{max-width:100%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
-#home .mk-featured-gallery-thumb:hover,#home .mk-featured-gallery-thumb:focus-visible{background:#473353;border-color:#cb98fa}
-#home .mk-featured-gallery-thumb.is-active{background:#4b355c;border-color:#c69aef;box-shadow:inset 0 0 0 1px #c69aef55;color:#fff}
-@media(max-width:760px){#home .mk-featured-gallery-stage{height:clamp(210px,55vw,320px)}#home .mk-featured-gallery-thumb img{height:65px}}
-@media(max-width:410px){#home .mk-featured-gallery-stage{height:220px}#home .mk-featured-gallery-thumbs{gap:5px;padding:6px}#home .mk-featured-gallery-thumb img{height:48px}#home .mk-featured-gallery-thumb{font-size:9px}}
+#home .mk-featured-title-link:hover{color:#eedbff}
+#home .mk-featured-main-link h3{font-size:clamp(28px,3.2vw,38px);margin-bottom:12px}
+#home .mk-featured-description{min-height:0;margin:0 0 20px;font-size:clamp(14px,1.6vw,18px);line-height:1.5;color:#f5edf9;font-weight:600}
+#home .mk-featured-frame{border:7px solid #0e0d15;border-radius:30px;overflow:hidden;background:#251642;box-shadow:0 0 0 1px rgba(198,166,239,.28)}
+#home .mk-featured-browser-bar{background:#12111a;border-radius:0;height:34px}
+#home .mk-featured-gallery{position:relative;overflow:hidden;background:linear-gradient(115deg,#473289,#2a386d 70%,#232954)}
+#home .mk-featured-gallery--demand{background:linear-gradient(120deg,#843f2e,#5a3052 55%,#302c64)}
+#home .mk-featured-gallery-stage{position:relative;overflow:hidden;height:clamp(410px,51vw,590px);width:100%;background:transparent;display:block}
+#home .mk-featured-screen{position:absolute;display:block;overflow:hidden;padding:0;background:#f9f8fc;border:5px solid #141320;border-radius:19px 19px 0 0;box-shadow:0 20px 46px rgba(0,0,0,.38);cursor:pointer;transition:left .32s ease,right .32s ease,top .32s ease,width .32s ease,transform .32s ease,filter .32s ease,opacity .32s ease;outline-offset:3px;height:81%;top:28%}
+#home .mk-featured-screen img{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;opacity:1;filter:none}
+#home .mk-featured-screen-left{left:6%;width:43%;z-index:1;filter:brightness(.68);transform:rotate(-2deg)}
+#home .mk-featured-screen-right{right:6%;width:43%;z-index:1;filter:brightness(.68);transform:rotate(2deg)}
+#home .mk-featured-screen-center{left:27%;top:9%;height:100%;width:46%;z-index:3;filter:none;transform:none}
+#home .mk-featured-screen:hover:not(.mk-featured-screen-center),#home .mk-featured-screen:focus-visible:not(.mk-featured-screen-center){filter:brightness(.94)}
+#home .mk-featured-screen:focus-visible{outline:3px solid #e2b6ff}
+#home .mk-featured-gallery-hint{position:absolute;bottom:10px;left:50%;z-index:5;transform:translateX(-50%);margin:0;padding:6px 11px;border-radius:99px;background:rgba(14,11,26,.78);color:#f4eaff;white-space:nowrap;font-size:11px;pointer-events:none}
+#home .mk-featured-tags{margin:20px 0 0}
+@media(max-width:760px){#home .mk-featured-grid{gap:22px}#home .mk-featured-frame{border-width:5px;border-radius:23px}#home .mk-featured-gallery-stage{height:clamp(290px,65vw,430px)}#home .mk-featured-screen{border-width:3px;border-radius:12px 12px 0 0}#home .mk-featured-screen-left{left:1%;width:47%}#home .mk-featured-screen-right{right:1%;width:47%}#home .mk-featured-screen-center{left:23%;width:54%;top:9%}}
+@media(max-width:410px){#home .mk-featured-gallery-stage{height:260px}#home .mk-featured-screen-center{left:21%;width:58%}#home .mk-featured-gallery-hint{font-size:9px;bottom:7px}}
+@media(prefers-reduced-motion:reduce){#home .mk-featured-screen{transition:none!important}}
 </style>
 <style id="mk-skills-sphere-upgrade">
 /* Dark-purple Skills only. Older site-wide page and sphere styles remain untouched. */
@@ -3228,13 +3241,7 @@ body .apple-topbar {
 <p class="mk-featured-description">Real-time agentic AI dashboard connecting Finance, Sales and Operations.</p>
 <div class="mk-featured-frame">
 <div class="mk-featured-browser-bar" aria-hidden="true"><span class="mk-featured-traffic-light mk-featured-close"></span><span class="mk-featured-traffic-light mk-featured-minimize"></span><span class="mk-featured-traffic-light mk-featured-expand"></span><span class="mk-featured-window-title">Synapse Solution</span></div>
-<div class="mk-featured-gallery" data-project-gallery="synapse" aria-label="Synapse Solution screenshots">
-<div class="mk-featured-gallery-stage"><img class="mk-featured-gallery-image" src="https://github.com/user-attachments/assets/e1d89b1c-f612-4b6e-9c17-3836a0f751b4" alt="Synapse team collaboration hub" decoding="async" loading="lazy"></div>
-<div class="mk-featured-gallery-thumbs" role="group" aria-label="Choose screenshot">
-<button type="button" class="mk-featured-gallery-thumb is-active" aria-pressed="true" aria-label="Show Collaboration screenshot" data-preview-src="https://github.com/user-attachments/assets/e1d89b1c-f612-4b6e-9c17-3836a0f751b4" data-preview-alt="Synapse team collaboration hub"><img src="https://github.com/user-attachments/assets/e1d89b1c-f612-4b6e-9c17-3836a0f751b4" alt="" decoding="async" loading="lazy"><span>Collaboration</span></button>
-<button type="button" class="mk-featured-gallery-thumb" aria-pressed="false" aria-label="Show Coordination screenshot" data-preview-src="https://github.com/user-attachments/assets/c48f08e0-5d31-4490-8cfa-cd2eba509b22" data-preview-alt="Synapse live coordination screen"><img src="https://github.com/user-attachments/assets/c48f08e0-5d31-4490-8cfa-cd2eba509b22" alt="" decoding="async" loading="lazy"><span>Coordination</span></button>
-<button type="button" class="mk-featured-gallery-thumb" aria-pressed="false" aria-label="Show Org chart screenshot" data-preview-src="https://github.com/user-attachments/assets/d012c05a-1715-4e35-be5a-47b0cda3fc02" data-preview-alt="Synapse interactive organization chart"><img src="https://github.com/user-attachments/assets/d012c05a-1715-4e35-be5a-47b0cda3fc02" alt="" decoding="async" loading="lazy"><span>Org chart</span></button>
-</div></div></div>
+<div class="mk-featured-gallery mk-featured-gallery--synapse" data-project-gallery="synapse" aria-label="Synapse Solution screenshot previews"><div class="mk-featured-gallery-stage"><button class="mk-featured-screen mk-featured-screen-left" type="button" data-screen-index="0" aria-label="Bring Collaboration hub to the front" aria-pressed="false" title="Collaboration hub"><img src="https://github.com/user-attachments/assets/e1d89b1c-f612-4b6e-9c17-3836a0f751b4" alt="Collaboration hub screenshot from Synapse Solution" loading="lazy" decoding="async"></button><button class="mk-featured-screen mk-featured-screen-right" type="button" data-screen-index="1" aria-label="Bring Coordination dashboard to the front" aria-pressed="false" title="Coordination dashboard"><img src="https://github.com/user-attachments/assets/c48f08e0-5d31-4490-8cfa-cd2eba509b22" alt="Coordination dashboard screenshot from Synapse Solution" loading="lazy" decoding="async"></button><button class="mk-featured-screen mk-featured-screen-center" type="button" data-screen-index="2" aria-label="Bring Organization chart to the front" aria-pressed="true" title="Organization chart"><img src="https://github.com/user-attachments/assets/d012c05a-1715-4e35-be5a-47b0cda3fc02" alt="Organization chart screenshot from Synapse Solution" loading="lazy" decoding="async"></button></div><p class="mk-featured-gallery-hint">Select a screenshot to bring it forward</p></div></div></div>
 <div class="mk-featured-tags" aria-label="Technologies used"><span>NEXT.JS</span><span>REACT</span><span>TYPESCRIPT</span><span>TAILWIND</span><span>SSE</span></div>
 </div></article>
 <article class="mk-featured-card mk-featured-demand" aria-label="Featured project: DemandSync">
@@ -3244,13 +3251,7 @@ body .apple-topbar {
 <p class="mk-featured-description">Forecast demand, monitor inventory, and make smarter purchasing decisions.</p>
 <div class="mk-featured-frame">
 <div class="mk-featured-browser-bar" aria-hidden="true"><span class="mk-featured-traffic-light mk-featured-close"></span><span class="mk-featured-traffic-light mk-featured-minimize"></span><span class="mk-featured-traffic-light mk-featured-expand"></span><span class="mk-featured-window-title">DemandSync</span></div>
-<div class="mk-featured-gallery" data-project-gallery="demand" aria-label="DemandSync screenshots">
-<div class="mk-featured-gallery-stage"><img class="mk-featured-gallery-image" src="https://github.com/user-attachments/assets/5db82b8b-13e1-4eca-ae45-0436063b2c16" alt="Original DemandSync orange dashboard" decoding="async" loading="lazy"></div>
-<div class="mk-featured-gallery-thumbs" role="group" aria-label="Choose screenshot">
-<button type="button" class="mk-featured-gallery-thumb is-active" aria-pressed="true" aria-label="Show Dashboard screenshot" data-preview-src="https://github.com/user-attachments/assets/5db82b8b-13e1-4eca-ae45-0436063b2c16" data-preview-alt="Original DemandSync orange dashboard"><img src="https://github.com/user-attachments/assets/5db82b8b-13e1-4eca-ae45-0436063b2c16" alt="" decoding="async" loading="lazy"><span>Dashboard</span></button>
-<button type="button" class="mk-featured-gallery-thumb" aria-pressed="false" aria-label="Show Inventory screenshot" data-preview-src="https://github.com/user-attachments/assets/0d87ff38-b7d4-4a7f-a559-da28d77ddcc1" data-preview-alt="Original DemandSync inventory presentation screen"><img src="https://github.com/user-attachments/assets/0d87ff38-b7d4-4a7f-a559-da28d77ddcc1" alt="" decoding="async" loading="lazy"><span>Inventory</span></button>
-<button type="button" class="mk-featured-gallery-thumb" aria-pressed="false" aria-label="Show Procurement screenshot" data-preview-src="https://github.com/user-attachments/assets/39b431f1-5aea-4065-ad05-4b62e6ae5123" data-preview-alt="Original DemandSync procurement presentation screen"><img src="https://github.com/user-attachments/assets/39b431f1-5aea-4065-ad05-4b62e6ae5123" alt="" decoding="async" loading="lazy"><span>Procurement</span></button>
-</div></div></div>
+<div class="mk-featured-gallery mk-featured-gallery--demand" data-project-gallery="demand" aria-label="DemandSync screenshot previews"><div class="mk-featured-gallery-stage"><button class="mk-featured-screen mk-featured-screen-left" type="button" data-screen-index="0" aria-label="Bring Demand dashboard to the front" aria-pressed="false" title="Demand dashboard"><img src="https://github.com/user-attachments/assets/5db82b8b-13e1-4eca-ae45-0436063b2c16" alt="Demand dashboard screenshot from DemandSync" loading="lazy" decoding="async"></button><button class="mk-featured-screen mk-featured-screen-right" type="button" data-screen-index="1" aria-label="Bring Inventory dashboard to the front" aria-pressed="false" title="Inventory dashboard"><img src="https://github.com/user-attachments/assets/0d87ff38-b7d4-4a7f-a559-da28d77ddcc1" alt="Inventory dashboard screenshot from DemandSync" loading="lazy" decoding="async"></button><button class="mk-featured-screen mk-featured-screen-center" type="button" data-screen-index="2" aria-label="Bring Procurement dashboard to the front" aria-pressed="true" title="Procurement dashboard"><img src="https://github.com/user-attachments/assets/39b431f1-5aea-4065-ad05-4b62e6ae5123" alt="Procurement dashboard screenshot from DemandSync" loading="lazy" decoding="async"></button></div><p class="mk-featured-gallery-hint">Select a screenshot to bring it forward</p></div></div></div>
 <div class="mk-featured-tags" aria-label="Technologies used"><span>PYTHON</span><span>FASTAPI</span><span>POSTGRESQL</span><span>DBT</span><span>XGBOOST</span></div>
 </div></article></div><a class="mk-featured-all" href="#project-details">Explore all projects →</a></section>
 
@@ -4329,12 +4330,16 @@ requestAnimationFrame(()=>{
 })();
 </script><script id="mk-featured-gallery-init">
 (()=>{document.querySelectorAll("#home [data-project-gallery]").forEach(gallery=>{
-const main=gallery.querySelector(".mk-featured-gallery-image");
-const buttons=[...gallery.querySelectorAll(".mk-featured-gallery-thumb")];
-buttons.forEach(btn=>btn.addEventListener("click",()=>{
-if(!btn.dataset.previewSrc)return;
-main.src=btn.dataset.previewSrc;main.alt=btn.dataset.previewAlt||"Project screenshot";
-buttons.forEach(b=>{const active=b===btn;b.classList.toggle("is-active",active);b.setAttribute("aria-pressed",String(active));});
-}));
+const screens=[...gallery.querySelectorAll(".mk-featured-screen")];
+function activate(index){
+screens.forEach((screen,i)=>{
+const position=i===index?"center":i===(index+1)%screens.length?"right":"left";
+screen.classList.remove("mk-featured-screen-left","mk-featured-screen-center","mk-featured-screen-right");
+screen.classList.add("mk-featured-screen-"+position);
+screen.setAttribute("aria-pressed",String(i===index));
+});
+}
+screens.forEach((screen,i)=>screen.addEventListener("click",()=>activate(i)));
+activate(2);
 });})();
 </script></body></html>
