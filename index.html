@@ -3122,6 +3122,52 @@ body .apple-topbar {
 @media(max-width:700px){#skills .mk-skills-orbit{height:420px!important}#skills #mk-skills-visual .mk-skill-particle{width:51px;height:64px}#skills #mk-skills-visual .mk-skill-particle .mk-icon{width:43px;height:43px}#skills #mk-skills-visual .mk-skill-particle img{width:29px;height:29px}#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{top:50px;font-size:9px}}
 @media(max-width:450px){#skills .mk-skills-orbit{height:350px!important}#skills #mk-skills-visual .mk-skill-particle{width:43px;height:55px}#skills #mk-skills-visual .mk-skill-particle .mk-icon{width:37px;height:37px}#skills #mk-skills-visual .mk-skill-particle img{width:25px;height:25px}#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{top:43px}}
 @media(prefers-reduced-motion:reduce){#skills *,#skills *::before,#skills *::after{animation:none!important;transition:none!important}}
+
+/* Per-logo ambient glow. RGB palette follows each logo; visual only, not an interactive control. */
+#skills #mk-skills-visual .mk-skill-particle{
+  --skill-glow-rgb:174,138,238;
+  --skill-glow-strength:1;
+}
+#skills #mk-skills-visual .mk-skill-particle .mk-icon{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  box-shadow:
+    0 0 12px rgba(var(--skill-glow-rgb),calc(.22 * var(--skill-glow-strength))),
+    0 0 30px rgba(var(--skill-glow-rgb),calc(.30 * var(--skill-glow-strength))),
+    0 0 52px rgba(var(--skill-glow-rgb),calc(.12 * var(--skill-glow-strength))),
+    0 7px 18px rgba(0,0,0,.24)!important;
+  transition:box-shadow .25s ease,background-color .25s ease;
+}
+#skills #mk-skills-visual .mk-skill-particle .mk-icon::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-17px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(var(--skill-glow-rgb),calc(.30 * var(--skill-glow-strength))) 0%,rgba(var(--skill-glow-rgb),calc(.12 * var(--skill-glow-strength))) 35%,transparent 72%);
+  filter:blur(10px);
+  pointer-events:none;
+  transition:filter .22s ease,transform .22s ease;
+}
+#skills #mk-skills-visual .mk-skill-particle:hover .mk-icon,
+#skills #mk-skills-visual .mk-skill-particle:focus-visible .mk-icon,
+#skills #mk-skills-visual .mk-skill-particle.mk-skill-selected .mk-icon{
+  box-shadow:
+    0 0 0 2px rgba(var(--skill-glow-rgb),.56),
+    0 0 21px rgba(var(--skill-glow-rgb),.66),
+    0 0 48px rgba(var(--skill-glow-rgb),.42),
+    0 0 78px rgba(var(--skill-glow-rgb),.2)!important;
+}
+#skills #mk-skills-visual .mk-skill-particle:hover .mk-icon::before,
+#skills #mk-skills-visual .mk-skill-particle:focus-visible .mk-icon::before{
+  transform:scale(1.16);
+  filter:blur(13px);
+}
+@media(prefers-reduced-motion:reduce){
+  #skills #mk-skills-visual .mk-skill-particle .mk-icon,
+  #skills #mk-skills-visual .mk-skill-particle .mk-icon::before{transition:none!important}
+}
 </style></head><body><a class="mk-skip-link" href="#main-content">Skip to main content</a><header class="topbar apple-topbar"><nav aria-label="Main navigation" class="apple-nav"><div class="apple-navlinks" id="apple-navlinks"><span aria-hidden="true" class="apple-nav-indicator" id="apple-nav-indicator"></span><a aria-current="page" class="active" href="#home">Home</a><a href="#project-details">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#networking">Networking</a><a href="#reading">Literature</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a></div></nav></header><main id="main-content" tabindex="-1"><section class="container hero mk-unified-hero" id="home"><div class="mk-unified-globe globe-wrap"><div id="financial-globe" role="application" aria-label="Interactive world financial trade globe"></div></div><div class="mk-unified-gradient" aria-hidden="true"></div><div class="mk-unified-vision" aria-labelledby="global-finance-vision-title"><span class="mk-vision-kicker">THE VISION BEHIND THE GLOBE</span><h2 id="global-finance-vision-title">Engineering The Infrastructure Behind <span>Tomorrow's Financial World.</span></h2></div><div class="fade mk-unified-identity"><div class="eyebrowline"><span class="signal"></span><span class="eyebrow">Software Engineering × Artificial Intelligence</span></div><div class="demo-hero-identity"><img alt="Michael Katongole headshot" class="hero-headshot" src="assets/portfolio-photo-01.webp"/><h1 class="mk-animated-title"><span class="mk-title-solid">Hi, I'm</span><br/><span class="mk-title-glow">Michael Katongole.</span></h1></div><div class="subtitle">Software Engineer <span class="highlight">/</span> Backend, Full Stack, Data &amp; AI</div><p>I build reliable applications, financial data pipelines, and intelligent products using Python, SQL, Java, C++, and modern web technologies.</p><div class="actions"><a class="btn primary" href="#project-details">Explore my work ↗</a></div><div class="mk-home-welcome" id="home-welcome-audio" role="region" aria-label="Michael TV welcome audio">
  <div class="mk-home-welcome-head"><span class="mk-home-welcome-icon" aria-hidden="true">♫</span><span class="mk-home-welcome-name">A note from Michael</span></div>
  <div class="mk-home-welcome-actions">
@@ -3441,10 +3487,21 @@ body .apple-topbar {
    const y=1-(i+.5)*2/count,rad=Math.sqrt(Math.max(0,1-y*y)),theta=i*goldenAngle;
    return {x:Math.cos(theta)*rad,y,z:Math.sin(theta)*rad};
  });
+ const logoGlow={
+  python:"68,145,216",java:"231,117,72",cplusplus:"72,132,226",
+  javascript:"246,218,72",typescript:"72,144,235",react:"80,212,242",
+  nextjs:"190,180,225",tailwindcss:"73,206,224",fastapi:"45,192,158",
+  flask:"196,176,223",nodejs:"113,192,91",postgresql:"86,143,209",
+  docker:"72,169,238",aws:"247,164,67",pandas:"157,122,226",
+  scikitlearn:"242,157,81",pytorch:"239,110,73",streamlit:"241,99,118",
+  git:"240,106,77",github:"188,172,235",githubactions:"87,155,240",
+  jira:"90,141,236",pytest:"87,177,132",figma:"214,117,186",vercel:"187,170,224"
+ };
  const buttons=logos.map(([name,file],i)=>{
    const button=document.createElement("button");
    button.type="button";button.className="mk-skill-particle";
    button.setAttribute("aria-label",name);button.title=name;
+   button.style.setProperty("--skill-glow-rgb",logoGlow[file]||"174,138,238");
    const plate=document.createElement("span");plate.className="mk-icon";
    const img=document.createElement("img");
    img.alt=name;img.src="assets/skills/"+file+".svg";
@@ -3543,6 +3600,7 @@ body .apple-topbar {
    const scale=.58+.53*depth;
    button.style.left=q.x+"px";button.style.top=q.y+"px";
    button.style.opacity=String(.16+.84*depth);
+   button.style.setProperty("--skill-glow-strength",(0.32+depth*.68).toFixed(3));
    button.style.zIndex=String(2+Math.floor(depth*100));
    button.style.transform="translate(-50%, -50%) scale("+scale.toFixed(3)+")";
    button.style.filter=depth<.4?"blur("+((.4-depth)*2.2).toFixed(2)+"px)":"none";
