@@ -452,7 +452,7 @@
   }
   body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home .tv-home-progress {
     position:absolute!important;
-    right:3px!important;
+    right:clamp(14px,1vw,22px)!important;
     left:auto!important;
     top:50%!important;
     transform:translateY(-50%)!important;
