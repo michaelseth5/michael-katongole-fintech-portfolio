@@ -4750,7 +4750,15 @@ const specs=[
   stats:[["~100,000","Raw daily records"],["890","Monday observations"],["90+","Signals"],["69%","Reported high-confidence accuracy"]],
   caveat:"Reported evaluation, not guaranteed future performance.",
   choices:["Confidence threshold reduces coverage","Historical relationships can change across market regimes"],
-  optim:["Walk-forward validation","Feature-drift monitoring","Make model confidence easier to inspect","Make data provenance easier to inspect"]}
+  optim:["Walk-forward validation","Feature-drift monitoring","Make model confidence easier to inspect","Make data provenance easier to inspect"]},
+ {repo:"https://github.com/michaelseth5/Colorstack-Fintech-Workshop",id:"project-colorstack-fintech",name:"ColorStack FinTech Workshop",kind:"colorstack",
+  chips:["Python","Flask","yfinance","React 18","Vite","Recharts","REST APIs","Flask-CORS"],
+  flow:["Ticker search in React","Flask REST API","yfinance market data","Normalized JSON quotes and history","Recharts market dashboard"],
+  roles:["Full-stack dashboard","Flask market-data endpoints","React stock-search interface","Historical chart visualization","Watchlist and fundamentals display"],
+  stats:[["3","Stock-data endpoints"],["7","Chart ranges in dashboard"],["12","Maximum news items per request"],["6","Fundamental metric fields"]],
+  choices:["Flask and REST APIs keep the frontend/backend integration approachable","yfinance simplifies access to financial data for workshops","React components separate the watchlist, chart, and statistics views"],
+  caveat:"Data availability and latency depend on yfinance. Buy/Sell are interface controls, not integrated brokerage execution; workshop mode uses a demo user.",
+  optim:["Cache commonly requested stock data","Add request-rate limits and API tests","Show quote timestamps and data-delay notices","Add authentication before production use"]}
 ];
 const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const pick=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;};
