@@ -5110,44 +5110,73 @@ index=i;opener=button;display(index);dialog.showModal();close.focus();
 }));
 });
 })();
-</script><style id="mk-experience-no-hover-shade-v3">
-/* Restore the original opaque white Experience cards in ALL pointer/focus states.
-   Do not let hover personality gradients or opacity effects turn them transparent. */
+</script><style id="mk-experience-solid-brand-hover-v4">
+/* Opaque white surfaces always, including while lifted. */
 #experience .timeline > article.job,
 #experience .timeline > article.job.demo-entry,
 #experience .timeline > article.job.mk-hfx,
 #experience .timeline > article.job:is(:hover,:focus-within),
-#experience .timeline > article.job.mk-hfx:is(:hover,:focus-within),
-#experience .timeline > article.job.demo-entry:is(:hover,:focus-within) {
+#experience .timeline > article.job.mk-hfx:is(:hover,:focus-within) {
   background:#fff!important;
   background-color:#fff!important;
   background-image:none!important;
   opacity:1!important;
-  backdrop-filter:none!important;
   -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
   mix-blend-mode:normal!important;
   filter:none!important;
-  box-shadow:none!important;
-  transform:none!important;
-  outline:none!important;
-  border-color:#e0d7ec!important;
   color:#30283a!important;
 }
-#experience .timeline > article.job::before,
-#experience .timeline > article.job::after,
-#experience .timeline > article.job:is(:hover,:focus-within)::before,
-#experience .timeline > article.job:is(:hover,:focus-within)::after {
-  opacity:0!important;
-  box-shadow:none!important;
-  background:none!important;
-  filter:none!important;
-  pointer-events:none!important;
+#experience .timeline > article.job {
+  --employer-glow:122,87,185;
+  --employer-accent:167,125,225;
+  transition:transform 260ms cubic-bezier(.2,.82,.25,1), box-shadow 260ms ease, border-color 260ms ease!important;
+  will-change:auto;
 }
-#experience .timeline > article.job:is(:hover,:focus-within) .demo-entry-art,
-#experience .timeline > article.job:is(:hover,:focus-within) .demo-entry-body,
-#experience .timeline > article.job:is(:hover,:focus-within) .entry-art{
-  opacity:1!important;
-  filter:none!important;
+#experience .timeline > article.job:nth-child(1){--employer-glow:24,170,92;--employer-accent:31,177,95}
+#experience .timeline > article.job:nth-child(2){--employer-glow:147,65,225;--employer-accent:159,79,234}
+#experience .timeline > article.job:nth-child(3){--employer-glow:31,112,235;--employer-accent:34,123,242}
+#experience .timeline > article.job:nth-child(4){--employer-glow:255,255,255;--employer-accent:245,245,255}
+/* The old transparency patch disabled this glow pseudo-element; restore it. */
+#experience .timeline > article.job::after {
+  background:none!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  box-shadow:0 0 40px 15px rgba(var(--employer-glow),.27)!important;
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  #experience .timeline > article.job:hover,
+  #experience .timeline > article.job.mk-hfx:hover,
+  #experience .timeline > article.job.demo-entry:hover {
+    transform:translate3d(0,-13px,0) scale(1.025)!important;
+    border-color:rgba(var(--employer-accent),.95)!important;
+    box-shadow:
+      0 0 0 2px rgba(var(--employer-glow),.50),
+      0 0 22px 4px rgba(var(--employer-glow),.49),
+      0 0 68px 14px rgba(var(--employer-glow),.36),
+      0 25px 48px -10px rgba(22,19,39,.28)!important;
+    z-index:15!important;
+  }
+  #experience .timeline > article.job:hover::after {
+    opacity:1!important;
+  }
+  /* Bloombergs white signature glow needs a darker contrast ring on white. */
+  #experience .timeline > article.job:nth-child(4):hover {
+    box-shadow:
+      0 0 0 3px rgba(55,58,78,.72),
+      0 0 0 8px rgba(255,255,255,.97),
+      0 0 38px 16px rgba(255,255,255,.96),
+      0 0 85px 30px rgba(227,229,255,.8),
+      0 25px 48px -10px rgba(22,19,39,.28)!important;
+  }
+}
+#experience .timeline > article.job:is(:focus-within) {
+  border-color:rgba(var(--employer-accent),.95)!important;
+  box-shadow:0 0 0 3px rgba(var(--employer-glow),.3),0 0 30px rgba(var(--employer-glow),.25)!important;
+}
+@media(prefers-reduced-motion:reduce) {
+  #experience .timeline > article.job,
+  #experience .timeline > article.job:hover {transform:none!important;transition:none!important}
 }
 </style>
 </body></html>
