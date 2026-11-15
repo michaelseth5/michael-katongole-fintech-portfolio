@@ -11,7 +11,7 @@
   const stage = document.createElement('div');
   stage.className = 'gf-stage';
   const year = 2024;
-  const topConnections = 14; // 14 bright routes, only the 8 strongest get pulses.
+  const topConnections = 25; // 25 routes: one core and one pulse each (50 arc objects max).
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const state = {
     globe: null, features: [], countryByCode: new Map(), selected: null,
@@ -183,11 +183,11 @@
         usd: route.usd, flow: route.flow
       };
     });
-    // 14 bright routes plus 8 animated pulses: 22 arc instances, down from 60.
-    // A translucent edge on the core itself replaces the separate glow geometry.
+    // At most two arc objects per connection: a semi-transparent wider core
+    // and one short traveling pulse. No separate glow geometry.
     const routeLayers = [
       ...arcs.map(route => ({...route, layer:'core'})),
-      ...(!reducedMotion ? arcs.slice(0,8).map(route => ({...route, layer:'pulse'})) : [])
+      ...(!reducedMotion ? arcs.map(route => ({...route, layer:'pulse'})) : [])
     ];
     const endpoints = arcs.flatMap(route => [
       {lat:route.startLat,lng:route.startLng,flow:route.flow},
@@ -198,7 +198,7 @@
       .pointRadius(.17).pointResolution(10)
       .pointColor(dot => dot.flow === 'X' ? '#34f5a1' : '#ff4d6d');
     const stroke = route => {
-      const core = 1.15 + 1.45 * Math.sqrt(route.usd / max);
+      const core = 1.4 + 1.75 * Math.sqrt(route.usd / max);
       return core * strokeTierScale *
         (route.layer === 'pulse' ? 1.12 : 1);
     };
@@ -208,7 +208,7 @@
         const rgb = route.flow === 'X' ? '52,245,161' : '255,77,109';
         return route.layer === 'pulse'
           ? 'rgba(' + rgb + ',1)'
-          : ['rgba(' + rgb + ',.55)','rgba(' + rgb + ',1)','rgba(' + rgb + ',.68)'];
+          : ['rgba(' + rgb + ',.65)','rgba(' + rgb + ',.9)','rgba(' + rgb + ',.68)'];
       })
       .arcStroke(stroke)
       .arcAltitude(.205)
