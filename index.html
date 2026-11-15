@@ -297,6 +297,9 @@ html{scroll-padding-top:110px}body{font-family:-apple-system,BlinkMacSystemFont,
 #hobbies .hobby-carousel-dots button{border:1px solid #4b4f64;background:#141826;color:#d4d6e6;border-radius:999px;padding:9px 14px;font:600 12px/1.2 'Inter',sans-serif;cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
 #hobbies .hobby-carousel-dots button:hover{transform:translateY(-1px);border-color:#8b92b4}
 #hobbies .hobby-carousel-dots button.active{background:#ece9ff;color:#161920;border-color:#ece9ff}
+#hobbies .hobby-slide.hob-enter{animation:hob-card-enter .3s ease-out both}
+@keyframes hob-card-enter{from{opacity:.78;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#hobbies .hobby-slide.hob-enter{animation:none!important}}
 #hobbies .hobby-carousel-track{display:flex!important;flex-wrap:nowrap!important;gap:0!important;overflow:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory}
 #hobbies .hobby-carousel-track > article{flex:0 0 100%;min-width:100%;scroll-snap-align:start;box-sizing:border-box}
 #hobbies .hobby-carousel-track > article + article{margin-left:0}
@@ -5209,7 +5212,12 @@ document.addEventListener('DOMContentLoaded',()=>{
  root.querySelectorAll('.photo-carousel-rail').forEach(rail=>rail.addEventListener('keydown',e=>{
    if(e.key==='ArrowLeft'||e.key==='ArrowRight')e.stopPropagation();
  }));
- let frame=0;
+ let frame=0, lastActive=-1;
+ root.addEventListener('click',e=>{
+   if(!e.target.closest('.hobby-carousel-btn,.hobby-carousel-dots'))return;
+   const chosen=[...tabs.querySelectorAll('button')].findIndex(b=>b.getAttribute('aria-selected')==='true');
+   if(chosen>=0&&slides[chosen]){slides[chosen].classList.remove('hob-enter');void slides[chosen].offsetWidth;slides[chosen].classList.add('hob-enter');}
+ });
  track.addEventListener('scroll',()=>{
    cancelAnimationFrame(frame);
    frame=requestAnimationFrame(()=>{
