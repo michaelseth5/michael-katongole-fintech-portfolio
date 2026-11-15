@@ -3,7 +3,55 @@
 (() => {
   const stage=document.querySelector('#main-content.tv-stage');
   const panel=stage?.querySelector('.tv-page-home');
-  if(!stage || !panel)return;
+  if(!stage || !panel){
+    // Classic mobile has document scrolling rather than a TV scroll panel.
+    if(!document.documentElement.classList.contains('mobile-classic'))return;
+    const mobileLandmarks=[
+      document.getElementById('home'),
+      document.querySelector('.mk-bento-mindset'),
+      document.querySelector('.mk-bento-craft'),
+      document.querySelector('.mk-nyc-map-card')
+    ];
+    if(mobileLandmarks.some(node=>!node))return;
+    const mobileNav=document.createElement('nav');
+    mobileNav.className='tv-home-section-buttons tv-home-section-buttons-mobile';
+    mobileNav.setAttribute('aria-label','Home section scrolling');
+    const button=(label,symbol)=>{
+      const el=document.createElement('button');
+      el.type='button';
+      el.className='tv-home-section-button';
+      el.setAttribute('aria-label',label);
+      el.innerHTML='<span aria-hidden="true">'+symbol+'</span>';
+      mobileNav.append(el);
+      return el;
+    };
+    const up=button('Scroll up one section','⌃');
+    const down=button('Scroll down one section','⌄');
+    document.body.append(mobileNav);
+    let current=0,pending=0;
+    const updateMobile=()=>{
+      pending=0;
+      const cutoff=Math.min(220,innerHeight*.35);
+      current=0;
+      for(let i=1;i<mobileLandmarks.length;i++){
+        if(mobileLandmarks[i].getBoundingClientRect().top<=cutoff)current=i;
+      }
+      up.disabled=current===0;
+      down.disabled=current>=mobileLandmarks.length-1;
+    };
+    const jumpMobile=offset=>{
+      const target=mobileLandmarks[Math.min(mobileLandmarks.length-1,Math.max(0,current+offset))];
+      window.scrollTo({top:target.getBoundingClientRect().top+scrollY-16,
+        behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    };
+    up.addEventListener('click',()=>jumpMobile(-1));
+    down.addEventListener('click',()=>jumpMobile(1));
+    const scheduleMobile=()=>{if(!pending)pending=requestAnimationFrame(updateMobile)};
+    addEventListener('scroll',scheduleMobile,{passive:true});
+    addEventListener('resize',scheduleMobile,{passive:true});
+    scheduleMobile();
+    return;
+  }
   const home=document.getElementById('home');
   const landmarks=[
     {label:'Hero',node:home},
@@ -31,6 +79,22 @@
   });
   home.append(cue); // Keep SCROLL at the bottom of the hero, before the welcome notice.
   stage.append(progress);
+  const sectionButtons=document.createElement('nav');
+  sectionButtons.className='tv-home-section-buttons';
+  sectionButtons.setAttribute('aria-label','Home section scrolling');
+  const makeSectionButton=(direction,label,symbol)=>{
+    const button=document.createElement('button');
+    button.type='button';
+    button.className='tv-home-section-button tv-home-section-'+direction;
+    button.setAttribute('aria-label',label);
+    button.title=label;
+    button.innerHTML='<span aria-hidden="true">'+symbol+'</span>';
+    sectionButtons.append(button);
+    return button;
+  };
+  const scrollUp=makeSectionButton('up','Scroll up one section','⌃');
+  const scrollDown=makeSectionButton('down','Scroll down one section','⌄');
+  stage.append(sectionButtons);
 
   let ready=false,activeIndex=0,revealTimer=0,scrollFrame=0,wasActive=false;
   const isActive=()=>panel.classList.contains('is-active') && !stage.inert;
@@ -57,13 +121,20 @@
     cue.classList.toggle('is-shown',eligible && ready && nearTop);
     cue.disabled=!eligible || !nearTop;
     progress.hidden=!eligible;
-    if(!eligible)return;
+    sectionButtons.hidden=!eligible;
+    if(!eligible){
+      scrollUp.disabled=true;
+      scrollDown.disabled=true;
+      return;
+    }
     const cutoff=panel.getBoundingClientRect().top+Math.min(220,panel.clientHeight*.35);
     let selected=0;
     for(let i=1;i<landmarks.length;i++){
       if(landmarks[i].node.getBoundingClientRect().top<=cutoff)selected=i;
     }
     activeIndex=selected;
+    scrollUp.disabled=selected===0;
+    scrollDown.disabled=selected>=landmarks.length-1;
     dots.forEach((dot,i)=>{
       if(i===selected)dot.setAttribute('aria-current','location');
       else dot.removeAttribute('aria-current');
@@ -73,20 +144,12 @@
     if(!scrollFrame)scrollFrame=requestAnimationFrame(update);
   };
   cue.addEventListener('click',()=>jumpTo(1));
+  scrollUp.addEventListener('click',()=>jumpTo(Math.max(0,activeIndex-1)));
+  scrollDown.addEventListener('click',()=>jumpTo(Math.min(landmarks.length-1,activeIndex+1)));
   dots.forEach((dot,i)=>dot.addEventListener('click',()=>jumpTo(i)));
-  // The 3D globe covers much of Home and OrbitControls intercepts wheel input.
-  // Route wheel gestures over its canvas to Home's own scroll container.
-  const globeMount=document.getElementById('financial-globe');
-  globeMount?.addEventListener('wheel',event=>{
-    if(!isActive() || !event.cancelable)return;
-    const unit=event.deltaMode===1?16:event.deltaMode===2?panel.clientHeight:1;
-    const delta=event.deltaY*unit;
-    if(!delta)return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    panel.scrollTop+=delta;
-  },{capture:true,passive:false});
-    panel.addEventListener('scroll',schedule,{passive:true});
+  // Let native wheel events scroll the Home panel from every descendant,
+  // including the globe. Globe.js alone handles Ctrl/Cmd-wheel pinch zoom.
+  panel.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
   document.addEventListener('portfolio:channel-change',()=>requestAnimationFrame(schedule));
 
