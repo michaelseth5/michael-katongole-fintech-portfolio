@@ -18,7 +18,7 @@
     min-height:min(790px,calc(100dvh - 160px))!important;
     margin:0 auto!important;
     padding:clamp(22px,3dvh,52px) clamp(20px,3vw,62px) clamp(48px,5dvh,74px)!important;
-    overflow:hidden!important;
+    overflow:visible!important;
     border-radius:30px!important;
     background:radial-gradient(ellipse at 73% 44%,rgba(85,48,151,.36),transparent 60%),
       linear-gradient(122deg,#100b20,#171027 68%,#0c0b1a)!important;
@@ -31,7 +31,7 @@
     flex:0 0 100%!important;
     border:0!important;
     border-radius:0!important;
-    padding:clamp(16px,2.6dvh,38px) clamp(23px,3vw,76px) clamp(47px,5dvh,72px)!important;
+    padding:clamp(40px,5dvh,70px) clamp(32px,3vw,76px) clamp(55px,6dvh,78px)!important;
   }
   #home.hero.mk-unified-hero .mk-unified-gradient {
     position:absolute!important;
@@ -53,7 +53,7 @@
     gap:clamp(8px,1.25dvh,18px)!important;
     width:100%!important;
     max-width:none!important;
-    max-height:100%!important;
+    max-height:none!important;
     min-width:0!important;
     min-height:0!important;
     padding:0!important;
@@ -62,14 +62,29 @@
     animation:none!important;
     opacity:1!important;
     z-index:2!important;
-    overflow-x:hidden;
-    overflow-y:auto;
+    overflow:visible!important;
     scrollbar-width:thin;
   }
   #home.hero.mk-unified-hero .eyebrowline {
-    margin:0!important;
+    position:static;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:clamp(6px,.65vw,12px);
+    min-width:0;
     max-width:100%;
+    margin:0 0 clamp(8px,1.1dvh,16px)!important;
     font-size:clamp(9px,.8vw,12px);
+    letter-spacing:clamp(.025em,.06vw,.12em);
+    white-space:normal;
+    overflow:visible;
+  }
+  #home.hero.mk-unified-hero .eyebrowline .eyebrow {
+    font-size:clamp(9px,.8vw,12px);
+    line-height:1.45;
+    letter-spacing:clamp(.025em,.06vw,.12em);
+    white-space:normal;
+    overflow-wrap:break-word;
   }
   #home.hero.mk-unified-hero .demo-hero-identity,
   body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity {
@@ -86,7 +101,8 @@
     width:clamp(94px,8vw,160px)!important;
     height:clamp(114px,9.7vw,190px)!important;
     flex:0 0 auto!important;
-    object-fit:cover!important;
+    object-fit:contain!important;
+    object-position:center!important;
     border-radius:clamp(16px,1.35vw,25px)!important;
     border:1px solid rgba(198,163,255,.56)!important;
     box-shadow:0 0 0 5px rgba(179,140,255,.08),0 0 35px rgba(134,91,233,.32),
@@ -115,19 +131,21 @@
     margin:0!important;
     color:#d1c9de!important;
   }
-  /* Existing vision headline and statement move directly below the bio.
-     Two restrained lines each, without a separate absolute-positioned text block. */
+  /* Vision remains normal flow under the bio. Do not truncate its copy. */
   #home.hero.mk-unified-hero .mk-unified-vision,
   body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision {
-    position:relative!important;
+    position:static!important;
     inset:auto!important;
     width:100%!important;
-    max-width:61ch!important;
+    max-width:min(560px,100%)!important;
+    min-width:0;
     padding:0!important;
     margin:0!important;
     text-align:left!important;
     z-index:auto!important;
     transform:none!important;
+    clip-path:none;
+    overflow:visible!important;
     pointer-events:auto!important;
     order:0!important;
   }
@@ -140,30 +158,32 @@
   }
   #home.hero.mk-unified-hero .mk-unified-vision h2,
   body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision h2 {
-    font-size:clamp(11px,1vw,15px)!important;
-    line-height:1.35!important;
+    font-size:clamp(18px,1.6vw,26px)!important;
+    line-height:1.18!important;
     font-weight:650!important;
     color:#cfc0e7!important;
     letter-spacing:-.018em!important;
     text-shadow:none!important;
     margin:0!important;
-    display:-webkit-box;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:2;
-    overflow:hidden;
+    display:block;
+    -webkit-line-clamp:unset;
+    overflow:visible!important;
+    white-space:normal;
+    overflow-wrap:break-word;
   }
   #home.hero.mk-unified-hero .mk-unified-vision h2 span {color:#c6a4f4!important}
   #home.hero.mk-unified-hero .mk-vision-market-statement,
   body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-vision-market-statement {
     margin:3px 0 0!important;
-    font-size:clamp(11px,.88vw,13px)!important;
-    line-height:1.36!important;
+    font-size:clamp(12px,.9vw,14px)!important;
+    line-height:1.4!important;
     color:#ad9bc7!important;
     text-align:left!important;
-    display:-webkit-box;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:2;
-    overflow:hidden;
+    display:block;
+    -webkit-line-clamp:unset;
+    overflow:visible!important;
+    white-space:normal;
+    overflow-wrap:break-word;
   }
   /* A single action row; the original audio handlers and transcript remain in the DOM. */
   #home.hero.mk-unified-hero .mk-hero-action-group {
@@ -309,12 +329,13 @@
     flex:0 0 auto!important;
     inset:auto!important;
     left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
-    width:min(100%,calc(100dvh - 235px),1020px)!important;
+    width:min(92%,calc(100dvh - 290px),900px)!important;
     height:auto!important;
     min-height:0!important;max-height:none!important;
     aspect-ratio:1!important;
     margin:0 auto!important;
-    padding:0!important;
+    padding:4%!important;
+    box-sizing:border-box!important;
     z-index:1!important;
     opacity:1!important;
     transform:none!important;
@@ -470,7 +491,7 @@
   }
   #home.hero.mk-unified-hero .demo-hero-identity h1 {font-size:clamp(27px,2.7vw,44px)!important}
   #home.hero.mk-unified-hero .mk-home-right > .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    width:min(100%,calc(100dvh - 220px),1020px)!important;
+    width:min(92%,calc(100dvh - 270px),900px)!important;
   }
 }
 /* Mobile classic: single column and existing local static globe. No Sony/TV UI. */
