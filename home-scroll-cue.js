@@ -147,8 +147,17 @@
   scrollUp.addEventListener('click',()=>jumpTo(Math.max(0,activeIndex-1)));
   scrollDown.addEventListener('click',()=>jumpTo(Math.min(landmarks.length-1,activeIndex+1)));
   dots.forEach((dot,i)=>dot.addEventListener('click',()=>jumpTo(i)));
-  // Let native wheel events scroll the Home panel from every descendant,
-  // including the globe. Globe.js alone handles Ctrl/Cmd-wheel pinch zoom.
+  // Let native wheel events scroll Home from the globe and all ordinary elements.
+  // The small independently scrollable country-stats card is the one exception:
+  // forward its wheel delta unchanged to Home, rather than trapping it in the card.
+  // Globe.js alone owns modifier-wheel pinch zoom over the canvas.
+  panel.addEventListener('wheel',event=>{
+    if(!isActive() || event.ctrlKey || event.metaKey || !event.cancelable)return;
+    if(!event.target.closest('.gf-panel'))return;
+    const unit=event.deltaMode===1?16:event.deltaMode===2?panel.clientHeight:1;
+    event.preventDefault();
+    panel.scrollTop+=event.deltaY*unit;
+  },{passive:false});
   panel.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
   document.addEventListener('portfolio:channel-change',()=>requestAnimationFrame(schedule));
