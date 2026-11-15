@@ -149,3 +149,87 @@
 @media(prefers-reduced-motion:reduce) {
   body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-globe.globe-wrap {animation:none !important}
 }
+
+/* Home globe composition and route visibility repair (Nov 2026).
+   Keep WebGL's natural camera projection: resize the actual mount rather than scaling its canvas. */
+@media (min-width: 901px) {
+  #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen) {
+    top: 13% !important;
+    left: 20% !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 68% !important;
+    height: 73% !important;
+    max-height: 73% !important;
+    overflow: visible !important;
+  }
+  #home.hero.mk-unified-hero .gf-stage {
+    overflow: visible !important;
+  }
+  #home.hero.mk-unified-hero .mk-unified-vision {
+    left: 5% !important;
+    right: auto !important;
+    top: 5.5% !important;
+    width: min(43%, 455px) !important;
+    text-align: left !important;
+  }
+  #home.hero.mk-unified-hero .mk-vision-market-statement {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    text-align: left !important;
+  }
+  #home.hero.mk-unified-hero>.fade.mk-unified-identity {
+    left: 4% !important;
+  }
+  /* Keep the floating trade statistics inside the right edge. */
+  #home.hero.mk-unified-hero.gf-hero-safe-layout>.gf-panel {
+    right: 3% !important;
+  }
+  /* Do not obscure the arcs with the globe's own HUD. */
+  #home.hero.mk-unified-hero .gf-hud {
+    top: 13% !important;
+    left: 12% !important;
+  }
+}
+/* In the TV/cinema presentation, preserve the dedicated side-by-side arrangement. */
+@media (min-width: 901px) {
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen) {
+    left: auto !important;
+    right: 1% !important;
+    top: 11% !important;
+    width: 54% !important;
+    height: 73% !important;
+    max-height: 73% !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-vision {
+    left: 4% !important;
+    right: auto !important;
+    top: 3% !important;
+    width: 44% !important;
+    max-width: 520px !important;
+    text-align: left !important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-vision-market-statement {
+    text-align: left !important;
+  }
+}
+/* Compact desktop/tablet widths need space between the text and the trade controls. */
+@media (min-width: 768px) and (max-width: 900px) {
+  #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen) {
+    left: 6% !important;
+    right: auto !important;
+    width: 88% !important;
+    bottom: 2% !important;
+    height: 47% !important;
+    overflow: visible !important;
+  }
+  #home.hero.mk-unified-hero .gf-stage { overflow: visible !important; }
+  #home.hero.mk-unified-hero .mk-unified-vision {
+    left: 6% !important;
+    right: auto !important;
+    text-align: left !important;
+    width: 75% !important;
+  }
+}
