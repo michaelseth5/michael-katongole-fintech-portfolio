@@ -3,10 +3,10 @@ body.tv-mode #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero{
   height:90%!important;min-height:0!important;max-height:none!important;flex:0 0 90%!important;
   position:relative!important;
 }
+/* The former full-width translucent scroll fade painted over Home content.
+   The separate SCROLL button provides guidance without a covering band. */
 body.tv-mode #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(40px,8vh,94px);
-  background:linear-gradient(180deg,transparent,rgba(16,11,29,.58) 70%,#170f2a 100%);
-  pointer-events:none;z-index:2;
+  content:none;
 }
 body.tv-mode #main-content.tv-stage .tv-page-home > #home .mk-unified-identity{
   max-height:calc(100% - 50px);overflow:visible;
