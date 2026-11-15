@@ -202,6 +202,14 @@
       .pointLat('lat').pointLng('lng').pointAltitude(.016)
       .pointRadius(.17).pointResolution(12)
       .pointColor(dot => dot.flow === 'X' ? '#34f5a1' : '#ff4d6d');
+    // Compensate for camera distance so arcs remain readable when zoomed out.
+    state.arcStrokeForZoom = route => {
+      const core = 1.05 + 1.55 * Math.sqrt(route.usd / max);
+      const zoomCompensation = Math.max(1, 1 / getZoomScale());
+      const width = core * zoomCompensation;
+      return route.layer === 'glow' ? width * 2.5 :
+        route.layer === 'pulse' ? width * 1.22 : width;
+    };
     state.globe.arcsData(arcsWithLayers)
       .arcColor(route => {
         const rgb = route.flow === 'X' ? '52,245,161' : '255,77,109';
@@ -209,10 +217,7 @@
         if (route.layer === 'pulse') return 'rgba(' + rgb + ',1)';
         return ['rgba(' + rgb + ',.72)','rgba(' + rgb + ',1)','rgba(' + rgb + ',.82)'];
       })
-      .arcStroke(route => {
-        const core = 1.05 + 1.55 * Math.sqrt(route.usd / max);
-        return route.layer === 'glow' ? core * 2.5 : route.layer === 'pulse' ? core * 1.22 : core;
-      })
+.arcStroke(state.arcStrokeForZoom)
       .arcAltitude(route => route.layer === 'glow' ? .205 : route.layer === 'pulse' ? .211 : .208)
       .arcDashLength(route => route.layer === 'pulse' && !reducedMotion ? .075 : 1)
       .arcDashGap(route => route.layer === 'pulse' && !reducedMotion ? 1 : 0)
@@ -443,10 +448,20 @@
   // Track the requested target, not the in-flight animated camera position,
   // so successive wheel / pinch gestures accumulate smoothly.
   let targetZoomScale = 1;
+  let strokeUpdateScheduled = false;
   const getZoomScale = () => targetZoomScale;
+  function scheduleStrokeUpdate() {
+    if (strokeUpdateScheduled || !state.arcStrokeForZoom) return;
+    strokeUpdateScheduled = true;
+    requestAnimationFrame(() => {
+      strokeUpdateScheduled = false;
+      state.globe?.arcStroke(state.arcStrokeForZoom);
+    });
+  }
   function setZoomScale(scale, duration=280) {
     if (!state.globe) return;
     targetZoomScale = clampZoom(scale);
+    scheduleStrokeUpdate();
     const pov = state.globe.pointOfView();
     const altitude = (1 + defaultView.altitude) / targetZoomScale - 1;
     state.globe.pointOfView({lat:pov.lat,lng:pov.lng,altitude}, reducedMotion ? 0 : duration);
@@ -456,6 +471,7 @@
   zoomReset.addEventListener('click', () => {
     if (!state.globe) return;
     targetZoomScale = 1;
+    scheduleStrokeUpdate();
     state.globe.pointOfView(defaultView, reducedMotion ? 0 : 550);
   });
 
