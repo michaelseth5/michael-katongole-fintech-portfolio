@@ -92,6 +92,8 @@
  dialog.innerHTML=`
   <div class="mtv-screen">
    <div class="mtv-blue" aria-hidden="true"></div>
+   <div class="mtv-spotlights" aria-hidden="true"><span></span><span></span></div>
+   <div class="mtv-curtains" aria-hidden="true"><span class="mtv-curtain-left"></span><span class="mtv-curtain-right"></span></div>
    <div class="mtv-crt" aria-hidden="true"></div>
    <div class="mtv-video" aria-label="Introduction video"><div class="mtv-video-ratio"><div id="mtv-youtube-player"></div></div></div>
    <div class="mtv-handoff" aria-hidden="true"><div class="mtv-handoff-art"><span class="mtv-handoff-kicker">NOW PLAYING</span><strong>MICHAEL TV</strong><span class="mtv-handoff-detail">TAPE 02 · TRACKING</span></div></div>
@@ -303,7 +305,7 @@
    clearRun();
    active=true;pending=false;exiting=false;playerStarted=false;trackingFinished=false;showingCouch=true;switching=false;playingOutro=false;handoffStartedAt=0;
    lastFocused=document.activeElement;
-   dialog.className='mtv-boot';welcomePanel.hidden=true;
+   dialog.className='mtv-boot mtv-curtain-opening';welcomePanel.hidden=true;
    label.textContent='VIDEO 1';label.classList.add('mtv-idle-label');
    timecode.hidden=true;timecode.textContent='0:00:00';
    skipBtn.hidden=false; // Visitors can skip even before pressing Play.
@@ -313,7 +315,7 @@
    window.dispatchEvent(new CustomEvent('michael-tv:intro-open'));
    playBtn.disabled=false;
    playBtn.focus({preventScroll:true});
-   bootTimer=setTimeout(()=>{dialog.classList.add('mtv-ready')},reduced.matches?0:250);
+   bootTimer=setTimeout(()=>{dialog.classList.add('mtv-ready');dialog.classList.remove('mtv-curtain-opening')},reduced.matches?0:1300);
  }
  function revealVideo(){
    if(!active||exiting||!playerStarted||!trackingFinished)return;
