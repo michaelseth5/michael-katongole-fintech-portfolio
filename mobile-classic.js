@@ -50,8 +50,55 @@
  // The Education block remains the same DOM node; it belongs under Skills on mobile.
  const edu=$('.mk-craft-education');const skills=$('#skills');
  if(edu&&skills){const placeholder=document.createComment('Education original location');edu.before(placeholder);skills.append(edu);window.addEventListener('resize',()=>{if(!mq.matches)placeholder.after(edu);else skills.append(edu);});}
- // Mobile hero has no globe or globe-vision display. Desktop markup remains intact.
- // Normal vertical document flow means the existing TV channel static handler never initializes.
+ // Static globe remains an image on mobile: zoom affects only the image, never
+ // initializes WebGL, Sony hardware, or the desktop globe controls.
+ const staticGlobe=$('#home .mk-unified-globe.globe-wrap');
+ if(staticGlobe){
+   const visual=add('div',{className:'mk-mobile-globe-visual'});
+   visual.setAttribute('role','img');
+   visual.setAttribute('aria-label','Static Earth globe');
+   staticGlobe.append(visual);
+   const mobileZoom=add('div',{className:'mk-mobile-globe-zoom'});
+   mobileZoom.setAttribute('role','group');
+   mobileZoom.setAttribute('aria-label','Static globe zoom');
+   const makeZoom=(symbol,label)=> {
+     const button=add('button',{type:'button',textContent:symbol});
+     button.setAttribute('aria-label',label);
+     return button;
+   };
+   const plus=makeZoom('+','Zoom in on globe');
+   const minus=makeZoom('−','Zoom out from globe');
+   const reset=makeZoom('↺','Reset globe zoom');
+   mobileZoom.append(minus,reset,plus);
+   staticGlobe.after(mobileZoom);
+   let zoom=1;
+   const changeZoom=value=>{
+     zoom=Math.min(3,Math.max(.6,value));
+     visual.style.setProperty('--mk-mobile-zoom',String(zoom));
+   };
+   plus.addEventListener('click',()=>changeZoom(zoom*1.3));
+   minus.addEventListener('click',()=>changeZoom(zoom/1.3));
+   reset.addEventListener('click',()=>changeZoom(1));
+   let lastDistance=null;
+   const pinchDistance=touches=>Math.hypot(
+     touches[0].clientX-touches[1].clientX,
+     touches[0].clientY-touches[1].clientY
+   );
+   staticGlobe.addEventListener('touchstart',e=>{
+     if(e.touches.length===2) lastDistance=pinchDistance(e.touches);
+   },{passive:true});
+   staticGlobe.addEventListener('touchmove',e=>{
+     if(e.touches.length!==2){lastDistance=null;return;}
+     e.preventDefault();
+     const next=pinchDistance(e.touches);
+     if(lastDistance) changeZoom(zoom*next/lastDistance);
+     lastDistance=next;
+   },{passive:false});
+   staticGlobe.addEventListener('touchend',e=>{
+     if(e.touches.length!==2)lastDistance=null;
+   });
+ }
+
  $$('details.project-expand').forEach(detail=>{
    detail.open=false;
    detail.addEventListener('toggle',()=>{if(!detail.open)return;$$('details.project-expand').forEach(other=>{if(other!==detail)other.open=false;});});
