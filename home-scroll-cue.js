@@ -153,15 +153,21 @@
   window.addEventListener('resize',schedule,{passive:true});
   document.addEventListener('portfolio:channel-change',()=>requestAnimationFrame(schedule));
 
+  // In TV mode the document itself cannot scroll. Preserve familiar keyboard
+  // scrolling without hijacking input fields, links, or custom controls.
   document.addEventListener('keydown',e=>{
-    if(e.defaultPrevented || !isActive() || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey)return;
-    if(e.key!=='ArrowDown' && e.key!=='PageDown')return;
+    if(e.defaultPrevented || !isActive() || e.altKey || e.ctrlKey || e.metaKey)return;
     if(e.target.closest('input,textarea,select,[contenteditable="true"],[role="slider"],dialog,.photo-carousel-rail,.hobby-carousel-track'))return;
-    // Do not hijack vertical scrolling when a control within Home already handles it.
-    if(e.target.closest('button,[role="button"],a') && e.target!==cue && !progress.contains(e.target))return;
-    if(activeIndex>=landmarks.length-1)return;
+    if(e.target.closest('button,[role="button"],a,summary'))return;
+    const pageStep=Math.max(80,panel.clientHeight*.85);
+    let amount=0;
+    if(e.key==='ArrowDown')amount=48;
+    else if(e.key==='ArrowUp')amount=-48;
+    else if(e.key==='PageDown' || (e.key===' ' && !e.shiftKey))amount=pageStep;
+    else if(e.key==='PageUp' || (e.key===' ' && e.shiftKey))amount=-pageStep;
+    else return;
     e.preventDefault();
-    jumpTo(activeIndex+1);
+    panel.scrollBy({top:amount,behavior:reduced.matches?'instant':'smooth'});
   });
 
   // First load reveals after two seconds; every later Home visit reveals immediately.
