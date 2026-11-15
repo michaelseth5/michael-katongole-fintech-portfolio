@@ -89,3 +89,105 @@ body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home>#portfolio-intro-
 body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home>#site-preview-notice{
  flex:0 0 auto!important;
 }
+
+
+/* Persistent Home landmark controls. Separate from the hero SCROLL cue and
+   right-edge channel progress dots; neither blocks wheel or the globe. */
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-buttons {
+  position:absolute;
+  right:clamp(48px,4.3vw,78px);
+  bottom:clamp(16px,2.6dvh,34px);
+  z-index:74;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(7px,.9dvh,12px);
+  padding:0;
+  background:none;
+  pointer-events:none;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-buttons[hidden] {
+  display:none!important;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-button {
+  display:grid;
+  place-items:center;
+  width:44px;
+  min-width:44px;
+  height:44px;
+  min-height:44px;
+  padding:0;
+  border:1px solid rgba(196,163,242,.45);
+  border-radius:50%;
+  color:#d7b9ff;
+  background:rgba(27,17,48,.9);
+  box-shadow:0 7px 20px rgba(10,6,24,.28);
+  font:600 29px/1 'Space Grotesk',sans-serif;
+  cursor:pointer;
+  pointer-events:auto;
+  transition:transform .18s ease,background-color .18s ease,border-color .18s ease,opacity .18s ease;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-button span {
+  transform:translateY(-2px);
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-button:hover:not(:disabled) {
+  transform:translateY(-2px);
+  background:rgba(51,32,78,.96);
+  border-color:#c5a0fc;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-button:focus-visible {
+  outline:2px solid #d7b9ff;
+  outline-offset:3px;
+}
+body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-button:disabled {
+  opacity:.3;
+  cursor:not-allowed;
+  pointer-events:none;
+}
+@media (min-width:768px) and (max-width:1439px) {
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-buttons {
+    right:clamp(40px,4vw,55px);
+    bottom:clamp(10px,1.7dvh,22px);
+  }
+}
+@media (max-width:767px) {
+  html.mobile-classic .tv-home-section-buttons-mobile {
+    position:fixed;
+    z-index:40;
+    bottom:max(18px,env(safe-area-inset-bottom));
+    right:max(14px,env(safe-area-inset-right));
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    pointer-events:none;
+  }
+  html.mobile-classic .tv-home-section-buttons-mobile .tv-home-section-button {
+    display:grid;
+    place-items:center;
+    width:44px;
+    height:44px;
+    min-width:44px;
+    min-height:44px;
+    padding:0;
+    border:1px solid rgba(173,129,217,.42);
+    border-radius:50%;
+    background:#271638;
+    color:#d7b9ff;
+    box-shadow:0 6px 16px rgba(21,12,33,.19);
+    font:600 28px/1 'Space Grotesk',sans-serif;
+    pointer-events:auto;
+    touch-action:manipulation;
+  }
+  html.mobile-classic .tv-home-section-buttons-mobile .tv-home-section-button:disabled {
+    opacity:.25;
+    pointer-events:none;
+  }
+  html.mobile-classic .tv-home-section-buttons-mobile .tv-home-section-button:focus-visible {
+    outline:2px solid #9d70cf;
+    outline-offset:3px;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-home-section-button {
+    transition:none;
+  }
+}
