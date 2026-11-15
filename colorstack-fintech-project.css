@@ -1,0 +1,39 @@
+/* ColorStack FinTech Workshop project — scoped to its own portfolio card. */
+#project-details #project-colorstack-fintech .cs-fintech-frame{
+  background:linear-gradient(135deg,#32204f 0%,#302354 42%,#162b50 100%);
+  border-color:rgba(170,128,237,.55);
+}
+#project-details #project-colorstack-fintech .cs-fintech-frame .fp-desc{
+  text-transform:none;
+  max-width:36ch;
+}
+#project-details #project-colorstack-fintech .fp-stage{
+  margin-top:14px;
+}
+#project-details #project-colorstack-fintech .fp-stage .fp-main{
+  left:50%;
+  width:min(96%,780px);
+  max-width:100%;
+  transform:translateX(-50%);
+}
+#project-details #project-colorstack-fintech .fp-stage .fp-main img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  object-position:top center;
+  background:#f9fbff;
+}
+#project-details #project-colorstack-fintech .fp-case-gallery{
+  grid-template-columns:minmax(0,1fr);
+}
+#project-details #project-colorstack-fintech .fp-case-thumb img{
+  width:100%;
+  height:auto;
+  max-height:360px;
+  object-fit:contain;
+}
+@media(max-width:680px){
+  #project-details #project-colorstack-fintech .cs-fintech-frame{height:270px}
+  #project-details #project-colorstack-fintech .fp-stage .fp-main{width:100%}
+}
