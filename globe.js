@@ -51,7 +51,25 @@
   fullscreen.setAttribute('aria-label', 'Expand interactive globe');
   fullscreen.title = 'Expand interactive globe';
   fullscreen.textContent = '⤢';
-  stage.append(mount, hud, status, fullscreen);
+  // Visible zoom controls also work for keyboard users and trackpad-free devices.
+  const zoomControls = document.createElement('div');
+  zoomControls.className = 'gf-zoom-controls';
+  zoomControls.setAttribute('role', 'group');
+  zoomControls.setAttribute('aria-label', 'Globe zoom');
+  const zoomIn = document.createElement('button');
+  zoomIn.type = 'button';
+  zoomIn.className = 'gf-zoom-button';
+  zoomIn.textContent = '+';
+  zoomIn.setAttribute('aria-label', 'Zoom in on globe');
+  zoomIn.title = 'Zoom in';
+  const zoomOut = document.createElement('button');
+  zoomOut.type = 'button';
+  zoomOut.className = 'gf-zoom-button';
+  zoomOut.textContent = '−';
+  zoomOut.setAttribute('aria-label', 'Zoom out from globe');
+  zoomOut.title = 'Zoom out';
+  zoomControls.append(zoomIn, zoomOut);
+  stage.append(mount, hud, status, fullscreen, zoomControls);
   shell.append(stage);
   wrap.append(shell);
   const hero = wrap.closest('.hero');
@@ -296,7 +314,10 @@
       const material = state.globe.globeMaterial();
       if (material && material.color) material.color.set('#a2a3b8');
       const controls = state.globe.controls();
-      controls.enableZoom = false; // Wheel movement scrolls Home instead of zooming the globe.
+      controls.enableZoom = true; // Scroll/trackpad wheel and pinch-to-zoom on the globe.
+      controls.zoomSpeed = .65;
+      controls.minDistance = 140; // Keep the camera outside the sphere.
+      controls.maxDistance = 720; // Keep the globe visible when zooming out.
       controls.enableDamping = true;
       controls.dampingFactor = .07;
       controls.autoRotate = !reducedMotion;
@@ -349,6 +370,15 @@
       mount.innerHTML = '<div class="gf-fallback">Globe unavailable. Your portfolio remains accessible.</div>';
     }
   }
+
+  function zoomBy(factor) {
+    if (!state.globe) return;
+    const pov = state.globe.pointOfView();
+    const altitude = Math.min(6.2, Math.max(.45, (pov.altitude || 2.65) * factor));
+    state.globe.pointOfView({lat:pov.lat, lng:pov.lng, altitude}, 300);
+  }
+  zoomIn.addEventListener('click', () => zoomBy(.75));
+  zoomOut.addEventListener('click', () => zoomBy(1.33));
 
   fullscreen.addEventListener('click', async () => {
     try {
