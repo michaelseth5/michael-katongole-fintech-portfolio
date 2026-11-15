@@ -1,743 +1,676 @@
-/* Home-only 3D globe refinements: TV frame, copy, and other channels untouched. */
-@media (min-width: 768px) {
-  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero {
-    height: min(100%, calc(100dvh - 140px)) !important;
-    min-height: 0 !important; max-height: none !important;
-    flex: 0 0 auto !important; margin: 0 !important; padding: 0 !important;
-    border: 0 !important; border-radius: 0 !important;
-    background: radial-gradient(ellipse at 72% 46%,rgba(66,48,108,.28),transparent 56%),linear-gradient(120deg,#100b20,#171027 70%,#0c0b1a) !important;
-    overflow: hidden !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero::after {
-    background: linear-gradient(180deg,transparent 0%,rgba(19,12,34,.08) 70%,rgba(19,12,34,.25) 100%) !important;
-    height: 45px !important;
-  }
+/* Home hero layout · unified two-column design
+   Sole owner of Home hero positioning, replacing the older !important override layers.
+   No changes to Sony frame, other channels, profile copy or globe rendering. */
 
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .gf-shell,
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .gf-stage,
-  body.tv-mode .tv-hardware #main-content.tv-stage #home #financial-globe,
-  body.tv-mode .tv-hardware #main-content.tv-stage #home #financial-globe canvas {
-    background: transparent !important; background-color: transparent !important;
-    border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
-    width: 100% !important; height: 100% !important;
-  }
-  body.tv-mode .tv-hardware 
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-gradient {
-    background: linear-gradient(90deg,rgba(16,11,28,.45) 0%,rgba(16,11,28,.10) 47%,transparent 76%) !important;
-    border: none !important;pointer-events: none !important;
-  }
-  /* Left column is guaranteed to remain clear of the globe. */
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity {
-    left: 4% !important;top: 51% !important;
-    transform: translateY(-50%) !important; width: 48% !important;
-    max-height: 93% !important; z-index: 5 !important;
-    margin: 0 !important; opacity: 1 !important;animation: none !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity {
-    gap: clamp(11px,1.2vw,20px) !important; margin-bottom: 12px !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity .hero-headshot {
-    width:clamp(98px,9vw,145px) !important;height:clamp(120px,11vw,175px) !important;flex:0 0 auto !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity h1 {
-    font-size: clamp(31px,3.5vw,57px) !important;line-height:1.06 !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .subtitle { font-size:clamp(15px,1.5vw,21px) !important;line-height:1.35 !important; }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade > p {font-size:clamp(13px,1.08vw,16px) !important;line-height:1.5 !important;margin:10px 0 0 !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .actions {margin:14px 0 8px !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .actions .btn.primary {min-height:44px !important;padding:10px 18px !important}
-  /* Headline lives in the reserved region at the top, never across the globe's center. */
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision {
-    position:absolute !important;left:auto !important;right:3% !important;
-    top:1% !important;bottom:auto !important;width:32% !important;
-    max-width:420px !important;text-align:right !important;z-index:6 !important;
-    background:transparent !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision h2 {
-    font-size:clamp(17px,1.6vw,25px) !important;line-height:1.16 !important;
-    text-shadow:0 2px 15px rgba(13,9,27,.85) !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-vision-market-statement {font-size:12px !important;line-height:1.4 !important;margin:5px 0 0 !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-globe-explainer {
-    position:absolute !important;left:48% !important;top:auto !important;bottom:9% !important;
-    right:auto !important;width:min(255px,25%) !important;
-    padding:10px 12px !important;z-index:7 !important;
-    background:rgba(16,12,31,.65) !important;border:1px solid rgba(224,207,255,.32) !important;
-    box-shadow:0 10px 30px rgba(0,0,0,.18) !important;
-    backdrop-filter:blur(12px) !important;-webkit-backdrop-filter:blur(12px) !important;
-    border-radius:12px !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-globe-explainer strong{font-size:11px !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-globe-explainer p {font-size:12px !important;line-height:1.42 !important;margin:5px 0 !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-globe-explainer small {font-size:10px !important;line-height:1.3 !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.gf-hero-safe-layout > .gf-panel {
-    position:absolute !important;right:1.7% !important;bottom:5% !important;left:auto !important;top:auto !important;
-    width:min(230px,21%) !important;max-width:230px !important;max-height:225px !important;
-    padding:10px 12px !important;border:1px solid rgba(224,207,255,.3) !important;
-    background:rgba(16,12,31,.64) !important;backdrop-filter:blur(12px) !important;
-    -webkit-backdrop-filter:blur(12px) !important;border-radius:12px !important;
-    z-index:8 !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .gf-expand {
-    top:auto !important;bottom:2% !important;right:1.5% !important;
-    width:28px !important;height:28px !important;z-index:9 !important;
-    background:rgba(19,15,36,.58) !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #site-preview-notice {
-    margin-top:30px !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .gf-hud {display:none !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-globe-hint {display:none !important}
-  /* The SCROLL control now belongs to the hero, not the welcome banner below. */
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .tv-home-scroll-cue {
-    position:absolute !important;left:50% !important;bottom:5px !important;
-    transform:translateX(-50%) !important;z-index:30 !important;
-  }
-}
-@media (min-width:768px) and (max-width:1150px) {
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity {width:51% !important;left:3% !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity .hero-headshot {width:100px !important;height:126px !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity h1 {font-size:clamp(29px,3.6vw,42px) !important}
-
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision {width:38% !important;top:1% !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision h2{font-size:17px !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-globe-explainer {width:190px !important;left:50% !important;bottom:6% !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.gf-hero-safe-layout > .gf-panel {width:185px !important;bottom:3% !important;right:2% !important;max-height:178px !important}
-}
-@media (min-width:768px) and (max-height:780px) {
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity .hero-headshot {width:99px !important;height:125px !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity h1 {font-size:clamp(30px,3.3vw,48px) !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-vision-market-statement {display:block !important;font-size:11px !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity {max-height:98% !important}
-}
-@media (max-width:767px) {
-  /* Mobile classic remains a simple static page without TV effects or interactive WebGL. */
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap {
-    position:relative !important;inset:auto !important;order:1 !important;
-    width:min(60vw,300px) !important;height:60vw !important;max-height:300px !important;
-    margin:0 auto 10px !important;border:0 !important;border-radius:50% !important;
-    background-image:radial-gradient(circle at 34% 30%,rgba(28,32,62,.05) 20%,rgba(9,12,30,.25) 55%,rgba(8,9,25,.92) 100%),url('https://unpkg.com/three-globe/example/img/earth-night.jpg') !important;
-    background-size:100% 100%,185% 100% !important;background-position:center,47% center !important;
-    background-repeat:no-repeat !important;
-    box-shadow:inset -14px -18px 40px rgba(0,0,0,.56),0 0 25px rgba(102,103,180,.13) !important;
-    overflow:hidden !important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap::before {
-    content:"";position:absolute;inset:0;border-radius:50%;
-    background:radial-gradient(circle at 32% 24%,rgba(139,155,208,.22),transparent 55%);
-    pointer-events:none;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero > .fade.mk-unified-identity {order:2 !important}
-  html.mobile-classic body #home.hero.mk-unified-hero > .mk-unified-vision {order:3 !important}
-  html.mobile-classic body #home.hero.mk-unified-hero > .mk-globe-explainer {order:4 !important}
-  html.mobile-classic body #home.hero.mk-unified-hero > .gf-panel {display:none !important}
-  html.mobile-classic body #home.hero.mk-unified-hero {overflow:visible !important}
-}
-@media(prefers-reduced-motion:reduce) {
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-globe.globe-wrap {animation:none !important}
-}
-
-/* Home globe composition and route visibility repair (Nov 2026).
-   Keep WebGL's natural camera projection: resize the actual mount rather than scaling its canvas. */
-@media (min-width: 901px) {
-
-  
-  #home.hero.mk-unified-hero .mk-unified-vision {
-    left: 5% !important;
-    right: auto !important;
-    top: 5.5% !important;
-    width: min(43%, 455px) !important;
-    text-align: left !important;
-  }
-  #home.hero.mk-unified-hero .mk-vision-market-statement {
-    margin-left: 0 !important;
-    margin-right: auto !important;
-    text-align: left !important;
-  }
-  #home.hero.mk-unified-hero>.fade.mk-unified-identity {
-    left: 4% !important;
-  }
-  /* Keep the floating trade statistics inside the right edge. */
-  #home.hero.mk-unified-hero.gf-hero-safe-layout>.gf-panel {
-    right: 3% !important;
-  }
-  /* Do not obscure the arcs with the globe's own HUD. */
-  #home.hero.mk-unified-hero .gf-hud {
-    top: 13% !important;
-    left: 12% !important;
-  }
-}
-/* In the TV/cinema presentation, preserve the dedicated side-by-side arrangement. */
-@media (min-width: 901px) {
-
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-vision {
-    left: 4% !important;
-    right: auto !important;
-    top: 3% !important;
-    width: 44% !important;
-    max-width: 520px !important;
-    text-align: left !important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-vision-market-statement {
-    text-align: left !important;
-  }
-}
-/* Compact desktop/tablet widths need space between the text and the trade controls. */
-@media (min-width: 768px) and (max-width: 900px) {
-
-  
-  #home.hero.mk-unified-hero .mk-unified-vision {
-    left: 6% !important;
-    right: auto !important;
-    text-align: left !important;
-    width: 75% !important;
-  }
-}
-
-
-/* Responsive hero layout repair. Leave all colors, copy, and Sony hardware alone.
-   Vision and identity occupy explicit grid rows instead of competing absolute positions. */
 @media (min-width:768px) {
-  #home.hero.mk-unified-hero {
-    display:grid!important;
-    grid-template-columns:minmax(0, 49%) minmax(0, 51%)!important;
-    grid-template-rows:max-content max-content!important;
-    align-content:start!important;
-    column-gap:0!important;
-    row-gap:clamp(8px,1.2dvh,18px)!important;
+  #home.hero.mk-unified-hero,
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero {
+    position:relative!important;
+    isolation:isolate;
     box-sizing:border-box!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,48fr) minmax(0,52fr)!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:clamp(12px,1.6vw,32px)!important;
+    width:min(1600px,calc(100% - 24px))!important;
     height:auto!important;
-    min-height:clamp(620px,86dvh,950px)!important;
-    padding:clamp(20px,2.3dvh,34px) clamp(20px,3.3%,54px) clamp(40px,4dvh,55px)!important;
-    overflow:visible!important;
+    min-height:min(790px,calc(100dvh - 160px))!important;
+    margin:0 auto!important;
+    padding:clamp(22px,3dvh,52px) clamp(20px,3vw,62px) clamp(48px,5dvh,74px)!important;
+    overflow:hidden!important;
+    border-radius:30px!important;
+    background:radial-gradient(ellipse at 73% 44%,rgba(85,48,151,.36),transparent 60%),
+      linear-gradient(122deg,#100b20,#171027 68%,#0c0b1a)!important;
   }
-  #home.hero.mk-unified-hero > .mk-unified-vision {
-    grid-column:1!important;grid-row:1!important;
-    position:relative!important;
-    inset:auto!important;
-    top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
-    width:100%!important;max-width:100%!important;
-    margin:0!important;
-    transform:none!important;
-    text-align:left!important;
-    z-index:6!important;
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero {
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:100%!important;
+    flex:0 0 100%!important;
+    border:0!important;
+    border-radius:0!important;
+    padding:clamp(16px,2.6dvh,38px) clamp(23px,3vw,76px) clamp(47px,5dvh,72px)!important;
+  }
+  #home.hero.mk-unified-hero .mk-unified-gradient {
+    position:absolute!important;
+    inset:0!important;
     pointer-events:none!important;
+    background:linear-gradient(90deg,rgba(16,11,28,.25),transparent 52%)!important;
+    z-index:0!important;
   }
-  #home.hero.mk-unified-hero > .mk-unified-vision h2 {
-    font-size:clamp(17px,1.45vw,25px)!important;
-    line-height:1.17!important;
-  }
-  #home.hero.mk-unified-hero .mk-vision-market-statement {
-    font-size:clamp(11px,.87vw,14px)!important;
-    line-height:1.4!important;
-    margin:clamp(3px,.6dvh,8px) 0 0!important;
-    text-align:left!important;
-  }
-  #home.hero.mk-unified-hero > .fade.mk-unified-identity {
-    grid-column:1!important;grid-row:2!important;
+  #home.hero.mk-unified-hero > .fade.mk-unified-identity,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero > .fade.mk-unified-identity {
     position:relative!important;
-    inset:auto!important;
-    top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;
+    grid-column:1!important;
+    grid-row:1!important;
+    left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
     display:flex!important;
     flex-direction:column!important;
     align-items:flex-start!important;
-    gap:clamp(5px,.9dvh,11px)!important;
+    justify-content:center!important;
+    gap:clamp(8px,1.25dvh,18px)!important;
     width:100%!important;
-    max-width:100%!important;
-    max-height:none!important;
+    max-width:none!important;
+    max-height:100%!important;
     min-width:0!important;
-    margin:0!important;
+    min-height:0!important;
     padding:0!important;
+    margin:0!important;
     transform:none!important;
-    opacity:1!important;
     animation:none!important;
-    z-index:6!important;
+    opacity:1!important;
+    z-index:2!important;
+    overflow-x:hidden;
+    overflow-y:auto;
+    scrollbar-width:thin;
   }
   #home.hero.mk-unified-hero .eyebrowline {
     margin:0!important;
+    max-width:100%;
+    font-size:clamp(9px,.8vw,12px);
   }
-  #home.hero.mk-unified-hero .demo-hero-identity {
-    display:flex!important;
-    align-items:center!important;
-    gap:clamp(10px,1.3vw,20px)!important;
-    margin:0!important;
-    min-width:0!important;
-  }
-  #home.hero.mk-unified-hero .demo-hero-identity .hero-headshot {
-    width:clamp(92px,8.5vw,145px)!important;
-    height:clamp(110px,10.5vw,175px)!important;
-    flex:0 0 auto!important;
-  }
-  #home.hero.mk-unified-hero .demo-hero-identity h1 {
-    font-size:clamp(28px,3.25vw,57px)!important;
-    line-height:1.05!important;
-    min-width:0!important;
-  }
-  #home.hero.mk-unified-hero .subtitle {
-    font-size:clamp(14px,1.2vw,21px)!important;
-    line-height:1.32!important;
-    margin:0!important;
-  }
-  #home.hero.mk-unified-hero > .fade.mk-unified-identity > p {
-    font-size:clamp(12px,.93vw,16px)!important;
-    line-height:1.42!important;
-    margin:0!important;
-  }
-  #home.hero.mk-unified-hero .actions {
-    margin:clamp(2px,.45dvh,7px) 0 0!important;
-  }
-  #home.hero.mk-unified-hero .mk-home-welcome {
-    width:min(100%,410px)!important;
-    margin:clamp(4px,.7dvh,10px) 0 0!important;
-    padding:clamp(10px,1dvh,14px) clamp(12px,1vw,16px)!important;
-    flex:0 0 auto!important;
-  }
-  #home.hero.mk-unified-hero .mk-socials.mk-socials-top {
-    display:flex!important;
-    flex-wrap:wrap!important;
-    align-items:center!important;
-    justify-content:flex-start!important;
-    gap:clamp(6px,.75vw,12px)!important;
-    margin:clamp(5px,1dvh,12px) 0 0!important;
-    flex:0 0 auto!important;
-  }
-
-  #home.hero.mk-unified-hero > .mk-globe-explainer {
-    left:52%!important;right:auto!important;
-    top:auto!important;bottom:14%!important;
-    width:min(230px,21%)!important;
-    max-width:21%!important;
-    box-sizing:border-box!important;
-    z-index:8!important;
-  }
-  #home.hero.mk-unified-hero.gf-hero-safe-layout > .gf-panel {
-    left:auto!important;right:2%!important;top:auto!important;bottom:14%!important;
-    width:min(230px,21%)!important;max-width:21%!important;
-    box-sizing:border-box!important;
-    z-index:8!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero {
-    display:grid!important;
-    grid-template-columns:minmax(0, 49%) minmax(0, 51%)!important;
-    grid-template-rows:max-content max-content!important;
-    row-gap:clamp(6px,1dvh,13px)!important;
-    align-content:start!important;
-    box-sizing:border-box!important;
-    height:min(100%,calc(100dvh - 140px))!important;
-    min-height:0!important;
-    max-height:100%!important;
-    padding:clamp(14px,2dvh,24px) clamp(18px,3%,46px) 52px!important;
-    overflow-x:hidden!important;
-    overflow-y:auto!important;
-    overscroll-behavior:contain;
-    scrollbar-gutter:stable;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-unified-vision {
-    grid-column:1!important;grid-row:1!important;
-    position:relative!important;
-    inset:auto!important;
-    width:100%!important;max-width:100%!important;
-    margin:0!important;
-    text-align:left!important;
-    transform:none!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity {
-    grid-column:1!important;grid-row:2!important;
-    position:relative!important;
-    inset:auto!important;
-    top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
-    display:flex!important;flex-direction:column!important;align-items:flex-start!important;
-    gap:clamp(4px,.7dvh,8px)!important;
-    width:100%!important;max-width:100%!important;max-height:none!important;
-    padding:0!important;margin:0!important;
-    transform:none!important;animation:none!important;opacity:1!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision h2 {
-    font-size:clamp(17px,1.45vw,24px)!important;
-    line-height:1.15!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-vision-market-statement {
-    font-size:clamp(11px,.83vw,13px)!important;
-    line-height:1.34!important;
-    margin:4px 0 0!important;
-    text-align:left!important;
-  }
+  #home.hero.mk-unified-hero .demo-hero-identity,
   body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity {
-    gap:clamp(10px,1.2vw,17px)!important;
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    gap:clamp(12px,1.5vw,24px)!important;
+    margin:0!important;
+    width:100%;
+    min-width:0!important;
+  }
+  #home.hero.mk-unified-hero .demo-hero-identity .hero-headshot,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity .hero-headshot {
+    width:clamp(94px,8vw,160px)!important;
+    height:clamp(114px,9.7vw,190px)!important;
+    flex:0 0 auto!important;
+    object-fit:cover!important;
+    border-radius:clamp(16px,1.35vw,25px)!important;
+    border:1px solid rgba(198,163,255,.56)!important;
+    box-shadow:0 0 0 5px rgba(179,140,255,.08),0 0 35px rgba(134,91,233,.32),
+      0 18px 45px rgba(0,0,0,.32)!important;
+  }
+  #home.hero.mk-unified-hero .demo-hero-identity h1,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity h1 {
+    font-size:clamp(29px,3.1vw,59px)!important;
+    line-height:1.065!important;
+    letter-spacing:-.055em!important;
+    min-width:0!important;
     margin:0!important;
   }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity .hero-headshot {
-    width:clamp(84px,7.2vw,127px)!important;
-    height:clamp(100px,8.5vw,155px)!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity h1 {
-    font-size:clamp(27px,3.15vw,53px)!important;
-  }
+  #home.hero.mk-unified-hero .subtitle,
   body.tv-mode .tv-hardware #main-content.tv-stage #home .subtitle {
-    font-size:clamp(13px,1.15vw,19px)!important;
-    line-height:1.3!important;
+    font-size:clamp(13px,1.17vw,20px)!important;
+    line-height:1.36!important;
     margin:0!important;
+    max-width:100%!important;
   }
+  #home.hero.mk-unified-hero > .fade.mk-unified-identity > p,
   body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity > p {
-    font-size:clamp(11px,.86vw,15px)!important;
-    line-height:1.35!important;
+    font-size:clamp(12px,.99vw,16px)!important;
+    line-height:1.48!important;
+    max-width:61ch!important;
     margin:0!important;
+    color:#d1c9de!important;
   }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .actions {
-    margin:clamp(2px,.5dvh,7px) 0 0!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-home-welcome {
-    margin:clamp(4px,.7dvh,8px) 0 0!important;
-    padding:clamp(8px,1dvh,12px) clamp(10px,1vw,16px)!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-socials.mk-socials-top {
-    margin:clamp(5px,.8dvh,10px) 0 0!important;
-    gap:clamp(5px,.65vw,10px)!important;
-    flex-wrap:wrap!important;
-  }
-
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-globe-explainer {
-    left:52%!important;right:auto!important;top:auto!important;
-    bottom:15%!important;width:min(225px,21%)!important;
-    max-width:21%!important;
-    padding:10px 12px!important;
-    box-sizing:border-box!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.gf-hero-safe-layout > .gf-panel {
-    left:auto!important;right:2%!important;top:auto!important;
-    bottom:15%!important;width:min(225px,21%)!important;max-width:21%!important;
-    box-sizing:border-box!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .tv-home-scroll-cue {
-    position:sticky!important;
-    grid-column:2!important;
-    grid-row:3!important;
-    justify-self:center!important;
-    align-self:end!important;
-    left:auto!important;right:auto!important;bottom:auto!important;
-    margin:clamp(8px,1dvh,12px) 0 0!important;
+  /* Existing vision headline and statement move directly below the bio.
+     Two restrained lines each, without a separate absolute-positioned text block. */
+  #home.hero.mk-unified-hero .mk-unified-vision,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision {
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    max-width:61ch!important;
+    padding:0!important;
+    margin:0!important;
+    text-align:left!important;
+    z-index:auto!important;
     transform:none!important;
-    z-index:15!important;
+    pointer-events:auto!important;
+    order:0!important;
   }
-}
-@media (min-width:768px) and (max-height:780px) {
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity {
-    gap:4px!important;
+  #home.hero.mk-unified-hero .mk-vision-kicker {
+    position:absolute!important;
+    width:1px!important;height:1px!important;
+    padding:0!important;margin:-1px!important;
+    clip-path:inset(50%)!important;overflow:hidden!important;
+    white-space:nowrap!important;
   }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity .hero-headshot {
-    width:clamp(78px,6.6vw,100px)!important;
-    height:clamp(97px,8.1vw,124px)!important;
+  #home.hero.mk-unified-hero .mk-unified-vision h2,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision h2 {
+    font-size:clamp(11px,1vw,15px)!important;
+    line-height:1.35!important;
+    font-weight:650!important;
+    color:#cfc0e7!important;
+    letter-spacing:-.018em!important;
+    text-shadow:none!important;
+    margin:0!important;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
   }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity h1 {
-    font-size:clamp(27px,3vw,46px)!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-home-welcome {
+  #home.hero.mk-unified-hero .mk-unified-vision h2 span {color:#c6a4f4!important}
+  #home.hero.mk-unified-hero .mk-vision-market-statement,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-vision-market-statement {
     margin:3px 0 0!important;
+    font-size:clamp(11px,.88vw,13px)!important;
+    line-height:1.36!important;
+    color:#ad9bc7!important;
+    text-align:left!important;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
   }
+  /* A single action row; the original audio handlers and transcript remain in the DOM. */
+  #home.hero.mk-unified-hero .mk-hero-action-group {
+    display:flex!important;
+    flex-wrap:wrap;
+    align-items:center;
+    align-content:start;
+    column-gap:clamp(8px,.9vw,16px);
+    row-gap:clamp(6px,.65dvh,10px);
+    width:100%;
+  }
+  #home.hero.mk-unified-hero .mk-hero-action-group .actions,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-hero-action-group .actions {
+    display:flex!important;
+    flex:0 0 auto;
+    margin:0!important;
+    padding:0!important;
+  }
+  #home.hero.mk-unified-hero .mk-hero-action-group .btn.primary,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-hero-action-group .btn.primary {
+    display:inline-flex!important;
+    align-items:center;
+    min-height:clamp(36px,3.5dvh,45px)!important;
+    padding:8px clamp(12px,1vw,18px)!important;
+    font-size:clamp(11px,.87vw,14px)!important;
+    white-space:nowrap;
+  }
+  #home.hero.mk-unified-hero .mk-home-welcome,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-home-welcome {
+    display:contents!important;
+  }
+  #home.hero.mk-unified-hero .mk-home-welcome-head {
+    position:absolute!important;
+    width:1px!important;height:1px!important;
+    clip-path:inset(50%)!important;
+    overflow:hidden!important;
+  }
+  #home.hero.mk-unified-hero .mk-home-welcome-actions {
+    display:flex!important;
+    align-items:center!important;
+    flex-wrap:nowrap!important;
+    gap:6px!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  #home.hero.mk-unified-hero .mk-home-welcome-actions button {
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:clamp(36px,3.5dvh,45px)!important;
+    width:auto!important;
+    padding:8px clamp(11px,.9vw,15px)!important;
+    margin:0!important;
+    border-radius:999px!important;
+    font-size:clamp(11px,.85vw,13px)!important;
+    white-space:nowrap;
+  }
+  #home.hero.mk-unified-hero .mk-home-welcome-status {max-width:90px;font-size:10px}
+  #home.hero.mk-unified-hero .mk-home-welcome-transcript {
+    flex:1 0 100%!important;
+    margin:0!important;
+    max-width:100%;
+  }
+  #home.hero.mk-unified-hero .mk-home-welcome-transcript summary {
+    display:inline-block;
+    margin:0!important;
+    font-size:11px!important;
+    color:#c8a9f4!important;
+    cursor:pointer;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  #home.hero.mk-unified-hero .mk-home-welcome-transcript p {
+    max-width:60ch;
+    max-height:120px;
+    overflow-y:auto;
+    padding:8px 0;
+    font-size:12px;
+    line-height:1.5;
+  }
+  #home.hero.mk-unified-hero .mk-socials.mk-socials-top,
   body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-socials.mk-socials-top {
-    margin:4px 0 0!important;
+    display:flex!important;
+    justify-content:flex-start!important;
+    flex-wrap:wrap!important;
+    align-items:center!important;
+    gap:clamp(7px,.8vw,12px)!important;
+    margin:0!important;
+    width:100%;
+  }
+  #home.hero.mk-unified-hero .mk-socials-top .mk-social-link {
+    width:clamp(36px,3.25vw,43px)!important;
+    height:clamp(36px,3.25vw,43px)!important;
+    min-height:36px!important;
+    padding:8px!important;
+    gap:0!important;
+    display:inline-flex!important;
+    align-items:center!important;justify-content:center!important;
+    background:rgba(26,20,42,.84)!important;
+    border-radius:50%!important;
+    backdrop-filter:none!important;
+  }
+  #home.hero.mk-unified-hero .mk-socials-top .mk-social-link svg {
+    width:clamp(17px,1.2vw,20px)!important;
+    height:clamp(17px,1.2vw,20px)!important;
+  }
+  #home.hero.mk-unified-hero .mk-social-word {display:none!important}
+  /* Globe is the visual focus of the right half, independently sized by both
+     column width and stage height. No CSS canvas scaling or fixed-height globe. */
+  #home.hero.mk-unified-hero .mk-home-right,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-home-right {
+    position:relative!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    grid-column:2!important;
+    grid-row:1!important;
+    align-self:center!important;
+    justify-self:stretch!important;
+    gap:clamp(8px,1.1dvh,15px);
+    min-width:0!important;min-height:0!important;
+    width:100%!important;
+    height:100%!important;
+    padding:0!important;
+    margin:0!important;
+    z-index:2!important;
+  }
+  #home.hero.mk-unified-hero .mk-home-right::before {
+    content:"";
+    position:absolute;
+    width:92%;aspect-ratio:1;
+    top:49%;left:50%;
+    transform:translate(-50%,-54%);
+    background:radial-gradient(circle,rgba(117,72,218,.25),transparent 68%);
+    pointer-events:none;
+    z-index:0;
+  }
+  #home.hero.mk-unified-hero .mk-home-right > .mk-unified-globe.globe-wrap:not(:fullscreen),
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-home-right > .mk-unified-globe.globe-wrap:not(:fullscreen) {
+    position:relative!important;
+    display:block!important;
+    flex:0 0 auto!important;
+    inset:auto!important;
+    left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+    width:min(100%,calc(100dvh - 235px),1020px)!important;
+    height:auto!important;
+    min-height:0!important;max-height:none!important;
+    aspect-ratio:1!important;
+    margin:0 auto!important;
+    padding:0!important;
+    z-index:1!important;
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+    overflow:visible!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
+  }
+  #home.hero.mk-unified-hero .mk-home-right .gf-shell,
+  #home.hero.mk-unified-hero .mk-home-right .gf-stage,
+  #home.hero.mk-unified-hero .mk-home-right #financial-globe {
+    width:100%!important;height:100%!important;
+    min-width:0!important;min-height:0!important;
+    background:transparent!important;
+    border:0!important;border-radius:0!important;
+    box-shadow:none!important;
+  }
+  #home.hero.mk-unified-hero .mk-home-right .gf-stage {overflow:visible!important}
+  #home.hero.mk-unified-hero .gf-hud,
+  #home.hero.mk-unified-hero .gf-status {display:none!important}
+  #home.hero.mk-unified-hero .mk-home-right .gf-zoom-controls,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-home-right .gf-zoom-controls {
+    position:absolute!important;
+    top:50%!important;
+    bottom:auto!important;
+    left:auto!important;
+    right:clamp(3px,.7vw,12px)!important;
+    transform:translateY(-50%)!important;
+    display:flex!important;flex-direction:column!important;
+    align-items:center!important;
+    gap:6px!important;
+    z-index:20!important;
+    pointer-events:auto!important;
+  }
+  #home.hero.mk-unified-hero .gf-zoom-button {
+    width:clamp(30px,2.5vw,36px)!important;
+    height:clamp(30px,2.5vw,36px)!important;
+    min-width:30px!important;
+    padding:0!important;
+    border-radius:11px!important;
+    font-size:clamp(17px,1.4vw,21px)!important;
+    backdrop-filter:none!important;
+    background:rgba(24,17,42,.84)!important;
+    border:1px solid rgba(196,178,229,.5)!important;
+    box-shadow:0 4px 14px rgba(0,0,0,.2)!important;
+  }
+  #home.hero.mk-unified-hero .gf-expand {
+    position:absolute!important;
+    top:5%!important;left:5%!important;
+    right:auto!important;bottom:auto!important;
+    z-index:18!important;
+    backdrop-filter:none!important;
+  }
+  #home.hero.mk-unified-hero .mk-home-globe-caption {
+    position:relative!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:4px!important;
+    width:100%;
+    min-height:0;
+    text-align:center;
+    z-index:4!important;
+    pointer-events:none;
+  }
+  #home.hero.mk-unified-hero .mk-home-globe-caption-line {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(8px,1.25vw,22px);
+    font:600 clamp(11px,.92vw,14px)/1.4 'DM Sans',sans-serif;
+    color:#e8ddf8;
+  }
+  #home.hero.mk-unified-hero .mk-home-legend {display:flex;align-items:center;gap:8px}
+  #home.hero.mk-unified-hero .mk-legend-chip {
+    display:inline-flex;align-items:center;gap:5px;
+    padding:3px 7px;
+    border:1px solid rgba(211,188,250,.24);
+    border-radius:999px;
+    background:rgba(23,16,39,.8);
+    color:#e6deef;
+    font-size:clamp(10px,.72vw,12px);
+  }
+  #home.hero.mk-unified-hero .mk-legend-dot {display:inline-block;width:7px;height:7px;border-radius:50%}
+  #home.hero.mk-unified-hero .mk-legend-export {background:#34f5a1;box-shadow:0 0 7px #34f5a1}
+  #home.hero.mk-unified-hero .mk-legend-import {background:#ff4d6d;box-shadow:0 0 7px #ff4d6d}
+  #home.hero.mk-unified-hero .mk-home-caption-hint {
+    color:#ad9dc5;
+    font:500 clamp(10px,.8vw,12px)/1.35 'DM Sans',sans-serif;
+  }
+  #home.hero.mk-unified-hero .mk-home-right > .gf-panel,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-home-right > .gf-panel {
+    position:absolute!important;
+    right:clamp(8px,1vw,24px)!important;
+    bottom:clamp(62px,10%,110px)!important;
+    left:auto!important;top:auto!important;
+    width:min(220px,44%)!important;
+    max-width:220px!important;
+    min-width:0!important;
+    height:auto!important;max-height:min(48%,245px)!important;
+    margin:0!important;
+    padding:clamp(10px,.8vw,14px)!important;
+    overflow:auto!important;
+    z-index:12!important;
+    border:1px solid rgba(204,171,255,.27)!important;
+    border-radius:14px!important;
+    background:rgba(22,15,40,.88)!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    box-shadow:0 12px 30px rgba(4,2,12,.26)!important;
+    scrollbar-width:thin;
+  }
+  #home.hero.mk-unified-hero .gf-panel h3 {font-size:clamp(11px,.92vw,14px)!important}
+  #home.hero.mk-unified-hero .gf-panel .gf-teaser-gdp strong {
+    font-size:clamp(14px,1.3vw,18px)!important;
+  }
+  #home.hero.mk-unified-hero .gf-panel .gf-teaser-source {
+    font-size:clamp(9px,.7vw,10px)!important;
+  }
+  /* The Scroll button belongs to the hero bottom center, not the trade column. */
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero > .tv-home-scroll-cue {
+    position:absolute!important;
+    left:50%!important;right:auto!important;
+    top:auto!important;bottom:clamp(3px,.75dvh,12px)!important;
+    transform:translateX(-50%)!important;
+    margin:0!important;
+    z-index:35!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home .tv-home-progress {
+    position:absolute!important;
+    right:3px!important;
+    left:auto!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    z-index:34!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
   }
 }
-/* Keep mobile-classic behavior and static globe, but restore the intended reading order.
-   No new TV controls, WebGL, or animated backgrounds on mobile. */
-@media (max-width:767px) {
+/* On shorter laptop stages, prioritize text legibility and available sphere height. */
+@media(min-width:768px) and (max-height:780px) {
+  #home.hero.mk-unified-hero > .fade.mk-unified-identity {gap:clamp(5px,.85dvh,9px)!important}
+  #home.hero.mk-unified-hero .demo-hero-identity .hero-headshot {
+    width:clamp(82px,7.2vw,112px)!important;
+    height:clamp(96px,8.2vw,128px)!important;
+  }
+  #home.hero.mk-unified-hero .demo-hero-identity h1 {font-size:clamp(27px,2.7vw,44px)!important}
+  #home.hero.mk-unified-hero .mk-home-right > .mk-unified-globe.globe-wrap:not(:fullscreen) {
+    width:min(100%,calc(100dvh - 220px),1020px)!important;
+  }
+}
+/* Mobile classic: single column and existing local static globe. No Sony/TV UI. */
+@media(max-width:767px) {
   html.mobile-classic body #home.hero.mk-unified-hero {
     display:flex!important;
     flex-direction:column!important;
     align-items:center!important;
-    justify-content:flex-start!important;
-    gap:clamp(12px,2dvh,20px)!important;
+    gap:clamp(12px,2dvh,22px)!important;
     width:calc(100% - 24px)!important;
     height:auto!important;
-    min-height:min(100dvh,680px)!important;
+    min-height:0!important;
     max-height:none!important;
-    padding:clamp(18px,3dvh,32px) clamp(14px,4vw,24px)!important;
+    padding:clamp(20px,3dvh,30px) clamp(12px,4vw,24px)!important;
+    margin:clamp(22px,4dvh,40px) auto!important;
     overflow:visible!important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero > .mk-unified-vision {
-    order:1!important;
-    position:relative!important;
-    inset:auto!important;
-    width:100%!important;max-width:450px!important;
-    margin:0!important;
-    text-align:center!important;
+    border-radius:24px!important;
   }
   html.mobile-classic body #home.hero.mk-unified-hero > .fade.mk-unified-identity {
-    order:2!important;
     position:relative!important;
     inset:auto!important;
     display:flex!important;
     flex-direction:column!important;
     align-items:center!important;
-    text-align:center!important;
-    gap:clamp(8px,1.4dvh,14px)!important;
-    width:100%!important;max-width:450px!important;
+    gap:clamp(10px,1.5dvh,17px)!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:440px!important;
+    max-height:none!important;
     margin:0!important;
     transform:none!important;
     animation:none!important;
+    order:1!important;
+    text-align:center!important;
   }
-  html.mobile-classic body #home.hero.mk-unified-hero .demo-hero-identity {
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-vision {
+    order:0!important;
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    text-align:center!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-vision-kicker {display:none!important}
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-vision h2 {
+    font-size:clamp(14px,4vw,18px)!important;line-height:1.35!important;
+    color:#c7ace8!important;
+    margin:0!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-vision-market-statement {
+    font-size:clamp(12px,3.3vw,14px)!important;
+    line-height:1.42!important;
+    color:#c7ace8!important;
+    margin:5px 0 0!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-hero-action-group {
     display:flex!important;
     flex-direction:column!important;
     align-items:center!important;
-    gap:clamp(8px,1.5dvh,13px)!important;
-    margin:0!important;
+    gap:8px!important;
+    width:100%!important;
   }
-  html.mobile-classic body #home.hero.mk-unified-hero .demo-hero-identity .hero-headshot {
-    width:clamp(92px,26vw,136px)!important;
-    height:clamp(115px,34vw,174px)!important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero .demo-hero-identity h1 {
-    font-size:clamp(28px,7.6vw,44px)!important;
-    line-height:1.08!important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero .actions {
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-hero-action-group .actions {
+    display:flex!important;justify-content:center!important;
     margin:0!important;
   }
   html.mobile-classic body #home.hero.mk-unified-hero .mk-home-welcome {
     width:100%!important;max-width:420px!important;
-    margin:0 auto!important;
+    margin:0!important;
+    padding:0!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:6px!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-welcome-head {
+    font-size:11px!important;
+    margin:0!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-welcome-actions {
+    display:flex!important;
+    justify-content:center!important;
+    gap:8px!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-welcome-transcript summary {
+    color:#8a5fbb!important;
+    font-size:12px!important;
   }
   html.mobile-classic body #home.hero.mk-unified-hero .mk-socials.mk-socials-top {
     display:flex!important;
-    flex-wrap:wrap!important;
     justify-content:center!important;
-    gap:clamp(6px,2vw,12px)!important;
-    margin:clamp(4px,1dvh,12px) auto 0!important;
+    gap:clamp(8px,2vw,14px)!important;
+    flex-wrap:wrap!important;
+    margin:0!important;
   }
-  html.mobile-classic body #home.hero.mk-unified-hero > .mk-unified-globe.globe-wrap {
-    order:3!important;
-    margin:clamp(6px,1dvh,12px) auto 0!important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero > .mk-globe-explainer {
-    order:4!important;
-    margin:0 auto!important;
-  }
-}
-
-
-/* Globe-only zoom controls and route legend. Other hero/TV layout untouched. */
-@media (min-width:768px) {
-  #home.hero.mk-unified-hero .mk-unified-globe .gf-zoom-controls {
-    position:absolute!important;
-    top:auto!important;
-    right:clamp(12px,4%,34px)!important;
-    bottom:clamp(8px,2%,18px)!important;
-    left:auto!important;
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-right {
+    position:relative!important;
     display:flex!important;
-    flex-direction:row!important;
-    gap:6px!important;
+    flex-direction:column!important;
     align-items:center!important;
-    z-index:25!important;
-    pointer-events:auto!important;
+    gap:10px!important;
+    width:100%!important;
+    max-width:440px!important;
+    height:auto!important;
+    padding:0!important;
+    margin:0 auto!important;
+    order:2!important;
   }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .gf-zoom-controls {
-    position:absolute!important;
-    top:auto!important;
-    bottom:clamp(9px,3%,24px)!important;
-    right:clamp(9px,4%,34px)!important;
-    flex-direction:row!important;
-    z-index:25!important;
-  }
-  #home.hero.mk-unified-hero .gf-route-legend {
-    position:absolute;
-    left:clamp(12px,3%,30px);
-    bottom:clamp(8px,2%,18px);
-    z-index:24;
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:clamp(8px,1.2vw,18px);
-    padding:6px 9px;
-    border-radius:9px;
-    background:rgba(14,12,29,.68);
-    border:1px solid rgba(212,191,255,.24);
-    color:#e9e4f6;
-    font:600 10px/1.3 'DM Sans',sans-serif;
-    pointer-events:none;
-  }
-  #home.hero.mk-unified-hero .gf-route-legend > span {display:inline-flex;align-items:center;gap:6px}
-  #home.hero.mk-unified-hero .gf-route-swatch {
-    width:7px;height:7px;display:inline-block;border-radius:50%;
-    box-shadow:0 0 7px currentColor;
-  }
-  #home.hero.mk-unified-hero .gf-route-exports {background:#34f5a1;color:#34f5a1}
-  #home.hero.mk-unified-hero .gf-route-imports {background:#ff4d6d;color:#ff4d6d}
-  #home.hero.mk-unified-hero .gf-zoom-button {
-    width:32px;
-    height:32px;
-    min-width:32px;
-    font-size:20px;
-    line-height:1;
-  }
-  #home.hero.mk-unified-hero .gf-zoom-reset{font-size:21px}
-  #home.hero.mk-unified-hero #financial-globe canvas {touch-action:none!important}
-}
-@media(max-width:767px) {
-  /* Preserve the existing static Earth texture; only the inner visual is scaled. */
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap {
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-right > .mk-unified-globe.globe-wrap {
+    order:0!important;
+    position:relative!important;
+    inset:auto!important;
+    display:block!important;
+    width:min(70vw,300px)!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:1!important;
+    margin:0 auto!important;
+    border-radius:50%!important;
     overflow:hidden!important;
-    touch-action:pan-y!important;
-    background-image:none!important;
+    background:transparent!important;
   }
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe .mk-mobile-globe-visual {
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-right .mk-mobile-globe-visual {
     position:absolute!important;
     inset:0!important;
-    width:100%!important;
-    height:100%!important;
-    border-radius:50%!important;
-    background-image:
-      radial-gradient(circle at 34% 30%,rgba(28,32,62,.05) 20%,rgba(9,12,30,.25) 55%,rgba(8,9,25,.92) 100%),
-      url('https://unpkg.com/three-globe/example/img/earth-night.jpg')!important;
-    background-size:100% 100%,185% 100%!important;
-    background-position:center,47% center!important;
-    background-repeat:no-repeat!important;
-    box-shadow:inset -14px -18px 40px rgba(0,0,0,.56)!important;
-    transform:scale(var(--mk-mobile-zoom,1))!important;
-    transform-origin:center!important;
-    transition:transform .28s cubic-bezier(.2,.82,.25,1)!important;
-    will-change:transform;
-    pointer-events:none!important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-mobile-globe-zoom {
-    order:3!important;
-    display:flex!important;
-    justify-content:center!important;
-    align-items:center!important;
-    gap:8px!important;
-    width:100%!important;
-    margin:0 auto 4px!important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-mobile-globe-zoom button {
-    width:40px!important;
-    height:38px!important;
-    border-radius:10px!important;
-    border:1px solid rgba(113,86,156,.55)!important;
-    color:#e9e4f6!important;
-    background:#201831!important;
-    font-size:22px!important;
-    font-weight:700!important;
-    display:grid!important;
-    place-items:center!important;
-    cursor:pointer!important;
-    touch-action:manipulation!important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-mobile-globe-zoom button:focus-visible {
-    outline:2px solid #ad8cdc!important;
-    outline-offset:2px!important;
-  }
-  @media(prefers-reduced-motion:reduce){
-    html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe .mk-mobile-globe-visual{transition:none!important}
-  }
-}
-
-
-
-/* Single desktop globe placement: the same grid for TV and normal Home.
-   Keeps authored left-column flow and puts globe / cards in disjoint cells. */
-@media (min-width:768px) {
-  #home.hero.mk-unified-hero,
-  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero {
-    grid-template-columns:minmax(0,49%) minmax(0,25.5%) minmax(0,25.5%)!important;
-    grid-template-rows:max-content max-content max-content max-content!important;
-    column-gap:0!important;
-    row-gap:clamp(8px,1.3dvh,16px)!important;
-  }
-  #home.hero.mk-unified-hero > .mk-unified-globe.globe-wrap:not(:fullscreen),
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero > .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    position:relative!important;
-    grid-column:2 / 4!important;
-    grid-row:1 / 3!important;
-    place-self:start center!important;
-    inset:auto!important;
-    top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
-    width:min(94%,calc((100dvh - 140px) * .72))!important;
-    height:auto!important;
-    min-height:0!important;max-height:none!important;
-    aspect-ratio:1!important;
-    transform:none!important;
-    animation:none!important;
-    margin:0!important;
-    overflow:visible!important;
-    opacity:1!important;
-    z-index:2!important;
-    border:0!important;
-    -webkit-mask-image:none!important;mask-image:none!important;
-  }
-  #home.hero.mk-unified-hero > .mk-unified-globe .gf-shell,
-  #home.hero.mk-unified-hero > .mk-unified-globe .gf-stage,
-  #home.hero.mk-unified-hero > .mk-unified-globe #financial-globe {
     width:100%!important;height:100%!important;
-    min-height:0!important;
-  }
-  #home.hero.mk-unified-hero > .mk-unified-globe .gf-stage {
-    overflow:visible!important;
-  }
-  #home.hero.mk-unified-hero > .mk-globe-explainer,
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero > .mk-globe-explainer {
-    position:relative!important;
-    grid-column:2!important;grid-row:3!important;
-    justify-self:stretch!important;align-self:start!important;
-    inset:auto!important;
-    width:calc(100% - clamp(3px,.6vw,9px))!important;
-    max-width:100%!important;
-    max-height:none!important;
-    margin:0!important;
-    padding:clamp(9px,.85vw,14px)!important;
-    box-sizing:border-box!important;
-    z-index:8!important;
-  }
-  #home.hero.mk-unified-hero.gf-hero-safe-layout > .gf-panel,
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero.gf-hero-safe-layout > .gf-panel {
-    position:relative!important;
-    grid-column:3!important;grid-row:3!important;
-    justify-self:stretch!important;align-self:start!important;
-    inset:auto!important;
-    width:calc(100% - clamp(3px,.6vw,9px))!important;
-    max-width:100%!important;max-height:none!important;
-    height:auto!important;
-    margin:0 0 0 auto!important;
-    box-sizing:border-box!important;
-    z-index:8!important;
-  }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .tv-home-scroll-cue {
-    position:relative!important;
-    grid-column:2 / 4!important;grid-row:4!important;
-    justify-self:center!important;align-self:start!important;
-    inset:auto!important;
-    margin:clamp(3px,.5dvh,10px) 0 0!important;
-    transform:none!important;
-    z-index:10!important;
-  }
-  /* A solid translucent backing, no GPU-expensive backdrop blur on the globe overlay. */
-  #home.hero.mk-unified-hero > .mk-globe-explainer,
-  #home.hero.mk-unified-hero > .gf-panel,
-  #home.hero.mk-unified-hero .gf-hud,
-  #home.hero.mk-unified-hero .gf-route-legend,
-  #home.hero.mk-unified-hero .gf-zoom-button,
-  #home.hero.mk-unified-hero .mk-home-welcome,
-  #home.hero.mk-unified-hero .mk-social-link {
-    -webkit-backdrop-filter:none!important;
-    backdrop-filter:none!important;
-  }
-}
-/* Mobile remains a single static globe; no WebGL or new TV visuals. */
-@media (max-width:767px) {
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe .mk-mobile-globe-visual {
+    border-radius:50%!important;
     background-image:url('assets/mobile-globe.webp')!important;
     background-size:cover!important;
     background-position:center!important;
+    background-repeat:no-repeat!important;
     box-shadow:none!important;
-  }
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap {
-    aspect-ratio:1!important;
-    height:auto!important;
-    max-height:none!important;
-    min-height:0!important;
-    width:min(70vw,300px)!important;
-    overflow:hidden!important;
+    transform:scale(var(--mk-mobile-zoom,1))!important;
+    transition:transform .28s cubic-bezier(.2,.82,.25,1)!important;
+    pointer-events:none!important;
   }
   html.mobile-classic body #home.hero.mk-unified-hero .mk-mobile-globe-visual.is-pinching {
     transition:none!important;
   }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-mobile-globe-zoom {
+    order:1!important;
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:8px!important;
+    margin:0 auto!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-mobile-globe-zoom button {
+    width:38px!important;height:36px!important;
+    border-radius:10px!important;
+    border:1px solid #8f6dc1!important;
+    background:#251638!important;
+    color:#f4eaff!important;
+    font-size:21px!important;
+    font-weight:700!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-globe-caption {
+    order:2!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:6px!important;
+    width:100%!important;
+    text-align:center!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-globe-caption-line {
+    display:flex!important;flex-wrap:wrap!important;
+    justify-content:center!important;align-items:center!important;
+    gap:8px!important;
+    color:#d5c3ee!important;
+    font-size:12px!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-legend {
+    display:flex!important;
+    gap:8px!important;
+    align-items:center!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-legend-chip {
+    display:inline-flex!important;align-items:center!important;gap:5px!important;
+    padding:4px 8px!important;
+    border-radius:999px!important;
+    border:1px solid #6b538b!important;
+    color:#e9dcf9!important;
+    background:#28183e!important;
+    font-size:11px!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-legend-dot {
+    display:inline-block!important;
+    width:7px!important;height:7px!important;border-radius:50%!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-legend-export{background:#34f5a1!important}
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-legend-import{background:#ff4d6d!important}
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-caption-hint {
+    font-size:11px!important;color:#bda3dc!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-right > .gf-panel {display:none!important}
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-home-right #financial-globe {display:none!important}
 }
