@@ -5098,4 +5098,26 @@ index=i;opener=button;display(index);dialog.showModal();close.focus();
 }));
 });
 })();
-</script></body></html>
+</script><style id="mk-experience-no-hover-shade-v2">
+/* No shading, glow, overlay, or lift when hovering an Experience card. */
+#experience .timeline > article.job:hover,
+#experience .timeline > article.job:focus-within {
+  background:var(--mk-exp-card-surface,linear-gradient(145deg,#fdfbff,#eee9f8))!important;
+  background-image:var(--mk-exp-card-surface,linear-gradient(145deg,#fdfbff,#eee9f8))!important;
+  filter:none!important;
+  box-shadow:var(--mk-exp-card-shadow,0 4px 20px rgba(61,42,83,.05))!important;
+  transform:none!important;
+  outline:none!important;
+  border-color:var(--mk-exp-card-border,#e0d7ec)!important;
+}
+#experience .timeline > article.job:hover::before,
+#experience .timeline > article.job:hover::after {
+  opacity:0!important;box-shadow:none!important;filter:none!important;
+}
+#experience .timeline > article.job:hover .demo-entry-art,
+#experience .timeline > article.job:hover .demo-entry-body,
+#experience .timeline > article.job:hover .entry-art {
+  filter:none!important;box-shadow:none!important;
+}
+</style>
+</body></html>
