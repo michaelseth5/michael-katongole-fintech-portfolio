@@ -440,18 +440,22 @@
 
   const defaultView = {lat:30, lng:-45, altitude:2.65};
   const clampZoom = scale => Math.max(.6, Math.min(3, scale));
-  const getZoomScale = () => !state.globe ? 1 :
-    clampZoom((1 + defaultView.altitude) / (1 + state.globe.pointOfView().altitude));
+  // Track the requested target, not the in-flight animated camera position,
+  // so successive wheel / pinch gestures accumulate smoothly.
+  let targetZoomScale = 1;
+  const getZoomScale = () => targetZoomScale;
   function setZoomScale(scale, duration=280) {
     if (!state.globe) return;
+    targetZoomScale = clampZoom(scale);
     const pov = state.globe.pointOfView();
-    const altitude = (1 + defaultView.altitude) / clampZoom(scale) - 1;
+    const altitude = (1 + defaultView.altitude) / targetZoomScale - 1;
     state.globe.pointOfView({lat:pov.lat,lng:pov.lng,altitude}, reducedMotion ? 0 : duration);
   }
   zoomIn.addEventListener('click', () => setZoomScale(getZoomScale() * 1.3));
   zoomOut.addEventListener('click', () => setZoomScale(getZoomScale() / 1.3));
   zoomReset.addEventListener('click', () => {
     if (!state.globe) return;
+    targetZoomScale = 1;
     state.globe.pointOfView(defaultView, reducedMotion ? 0 : 550);
   });
 
