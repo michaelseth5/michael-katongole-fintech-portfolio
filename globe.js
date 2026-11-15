@@ -11,7 +11,7 @@
   const stage = document.createElement('div');
   stage.className = 'gf-stage';
   const year = 2024;
-  const topConnections = 25;
+  const topConnections = 20; // 20 routes × 3 layers = 60 lightweight arc instances.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const state = {
     globe: null, features: [], countryByCode: new Map(), selected: null,
@@ -68,8 +68,18 @@
   zoomOut.textContent = '−';
   zoomOut.setAttribute('aria-label', 'Zoom out from globe');
   zoomOut.title = 'Zoom out';
-  zoomControls.append(zoomIn, zoomOut);
-  stage.append(mount, hud, status, fullscreen, zoomControls);
+  const zoomReset = document.createElement('button');
+  zoomReset.type = 'button';
+  zoomReset.className = 'gf-zoom-button gf-zoom-reset';
+  zoomReset.textContent = '↺';
+  zoomReset.setAttribute('aria-label', 'Reset globe zoom and rotation');
+  zoomReset.title = 'Reset globe view';
+  zoomControls.append(zoomIn, zoomOut, zoomReset);
+  const legend = document.createElement('div');
+  legend.className = 'gf-route-legend';
+  legend.setAttribute('aria-label', 'Trade route legend');
+  legend.innerHTML = '<span><i class="gf-route-swatch gf-route-exports"></i>Exports</span><span><i class="gf-route-swatch gf-route-imports"></i>Imports</span>';
+  stage.append(mount, hud, status, fullscreen, zoomControls, legend);
   shell.append(stage);
   wrap.append(shell);
   const hero = wrap.closest('.hero');
@@ -177,22 +187,37 @@
         usd: route.usd, flow: route.flow
       };
     });
-    // Thin, fading routes and small circular endpoints replace thick strokes and square traveling markers.
+    // Three inexpensive instances per route: wide translucent glow, bright core, and
+    // a short animated pulse. Capped at 20 bilateral routes for smooth rendering.
+    const arcsWithLayers = arcs.flatMap(route => [
+      {...route, layer:'glow'},
+      {...route, layer:'core'},
+      {...route, layer:'pulse'}
+    ]);
     const endpoints = arcs.flatMap(route => [
       {lat:route.startLat,lng:route.startLng,flow:route.flow},
       {lat:route.endLat,lng:route.endLng,flow:route.flow}
     ]);
     state.globe.pointsData(endpoints)
-      .pointLat('lat').pointLng('lng').pointAltitude(.012)
-      .pointRadius(.15).pointResolution(12)
-      .pointColor(dot => dot.flow === 'X' ? 'rgba(69,230,155,.95)' : 'rgba(249,112,135,.95)');
-    state.globe.arcsData(arcs)
-      .arcColor(route => route.flow === 'X'
-        ? ['rgba(69,230,155,.18)','rgba(69,230,155,.96)','rgba(69,230,155,.28)']
-        : ['rgba(249,112,135,.18)','rgba(249,112,135,.96)','rgba(249,112,135,.28)'])
-      .arcStroke(route => .45 + .85 * Math.sqrt(route.usd / max))
-      .arcAltitudeAutoScale(.16)
-      .arcDashLength(1).arcDashGap(0).arcDashAnimateTime(0)
+      .pointLat('lat').pointLng('lng').pointAltitude(.016)
+      .pointRadius(.17).pointResolution(12)
+      .pointColor(dot => dot.flow === 'X' ? '#34f5a1' : '#ff4d6d');
+    state.globe.arcsData(arcsWithLayers)
+      .arcColor(route => {
+        const rgb = route.flow === 'X' ? '52,245,161' : '255,77,109';
+        if (route.layer === 'glow') return 'rgba(' + rgb + ',.19)';
+        if (route.layer === 'pulse') return 'rgba(' + rgb + ',1)';
+        return ['rgba(' + rgb + ',.72)','rgba(' + rgb + ',1)','rgba(' + rgb + ',.82)'];
+      })
+      .arcStroke(route => {
+        const core = 1.05 + 1.55 * Math.sqrt(route.usd / max);
+        return route.layer === 'glow' ? core * 2.5 : route.layer === 'pulse' ? core * 1.22 : core;
+      })
+      .arcAltitude(route => route.layer === 'glow' ? .205 : route.layer === 'pulse' ? .211 : .208)
+      .arcDashLength(route => route.layer === 'pulse' && !reducedMotion ? .075 : 1)
+      .arcDashGap(route => route.layer === 'pulse' && !reducedMotion ? 1 : 0)
+      .arcDashInitialGap(route => route.layer === 'pulse' ? Math.random() : 0)
+      .arcDashAnimateTime(route => route.layer === 'pulse' && !reducedMotion ? 2400 : 0)
       .arcLabel(route => html(route.source) + ' → ' + html(route.destination) +
         '<br><b>' + money(route.usd) + '</b> · reported ' +
         (route.flow === 'X' ? 'exports' : 'imports') + ' · ' + year +
@@ -267,7 +292,10 @@
     state.gdp = null;
     state.gdpYear = null;
     // Keep the whole sphere and its elevated routes inside the visible stage.
-    state.globe.pointOfView(Object.assign(centroid(feature), {altitude: 2.65}), 950);
+    const currentZoom = getZoomScale();
+    state.globe.pointOfView(Object.assign(centroid(feature), {
+      altitude: Math.max(.2, (1 + defaultView.altitude) / currentZoom - 1)
+    }), 950);
     showPanel();
     if (!Number.isInteger(countryCode(feature)) || countryCode(feature) < 1) {
       ++state.tradeSeq;
@@ -314,15 +342,16 @@
       const material = state.globe.globeMaterial();
       if (material && material.color) material.color.set('#a2a3b8');
       const controls = state.globe.controls();
-      controls.enableZoom = true; // Scroll/trackpad wheel and pinch-to-zoom on the globe.
-      controls.zoomSpeed = .65;
-      controls.minDistance = 140; // Keep the camera outside the sphere.
-      controls.maxDistance = 720; // Keep the globe visible when zooming out.
+      // Wheel is managed in our non-passive capture handler: OrbitControls' default
+      // wheel listener must not leak page scrolling or TV channel switching.
+      controls.enableZoom = false;
+      controls.minDistance = 115;
+      controls.maxDistance = 950;
       controls.enableDamping = true;
       controls.dampingFactor = .07;
       controls.autoRotate = !reducedMotion;
       controls.autoRotateSpeed = .19;
-      state.globe.pointOfView({lat: 30, lng: -45, altitude: 2.75}, 0);
+      state.globe.pointOfView(defaultView, 0);
       // Suspend WebGL animation whenever the Home channel is off-screen.
       let hovered = false;
       let heroInView = true;
@@ -337,6 +366,44 @@
       mount.addEventListener('pointerenter', () => { hovered=true; syncChannelPlayback(); });
       mount.addEventListener('pointerleave', () => { hovered=false; syncChannelPlayback(); });
       mount.addEventListener('pointerdown', () => { controls.autoRotate=false; });
+      // Capture before TV channel wheel handlers, but only for an event over
+      // the actual globe canvas. Preventing default avoids page/channel motion.
+      window.addEventListener('wheel', event => {
+        if (!mount.contains(event.target)) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        hovered = true;
+        controls.autoRotate = false;
+        const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 120 : 1);
+        setZoomScale(getZoomScale() * Math.exp(-delta * .0012), 220);
+      }, {capture:true, passive:false});
+      // Touch pinch changes only zoom, while single-pointer drags still rotate.
+      let pinchDistance = null;
+      const activeTouches = new Map();
+      const distance = () => {
+        const points = [...activeTouches.values()];
+        return Math.hypot(points[0].x-points[1].x, points[0].y-points[1].y);
+      };
+      mount.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'touch') return;
+        activeTouches.set(e.pointerId, {x:e.clientX,y:e.clientY});
+        if (activeTouches.size === 2) pinchDistance = distance();
+      });
+      mount.addEventListener('pointermove', e => {
+        if (!activeTouches.has(e.pointerId)) return;
+        activeTouches.set(e.pointerId, {x:e.clientX,y:e.clientY});
+        if (activeTouches.size !== 2) return;
+        const next = distance();
+        if (pinchDistance && next > 0) setZoomScale(getZoomScale() * next / pinchDistance, 0);
+        pinchDistance = next;
+        e.preventDefault();
+      }, {passive:false});
+      const endPinch = e => {
+        activeTouches.delete(e.pointerId);
+        if (activeTouches.size !== 2) pinchDistance = null;
+      };
+      mount.addEventListener('pointerup', endPinch);
+      mount.addEventListener('pointercancel', endPinch);
       document.addEventListener('portfolio:channel-change', syncChannelPlayback);
       document.addEventListener('visibilitychange', syncChannelPlayback);
       if ('IntersectionObserver' in window) {
@@ -371,14 +438,22 @@
     }
   }
 
-  function zoomBy(factor) {
+  const defaultView = {lat:30, lng:-45, altitude:2.65};
+  const clampZoom = scale => Math.max(.6, Math.min(3, scale));
+  const getZoomScale = () => !state.globe ? 1 :
+    clampZoom((1 + defaultView.altitude) / (1 + state.globe.pointOfView().altitude));
+  function setZoomScale(scale, duration=280) {
     if (!state.globe) return;
     const pov = state.globe.pointOfView();
-    const altitude = Math.min(6.2, Math.max(.45, (pov.altitude || 2.65) * factor));
-    state.globe.pointOfView({lat:pov.lat, lng:pov.lng, altitude}, 300);
+    const altitude = (1 + defaultView.altitude) / clampZoom(scale) - 1;
+    state.globe.pointOfView({lat:pov.lat,lng:pov.lng,altitude}, reducedMotion ? 0 : duration);
   }
-  zoomIn.addEventListener('click', () => zoomBy(.75));
-  zoomOut.addEventListener('click', () => zoomBy(1.33));
+  zoomIn.addEventListener('click', () => setZoomScale(getZoomScale() * 1.3));
+  zoomOut.addEventListener('click', () => setZoomScale(getZoomScale() / 1.3));
+  zoomReset.addEventListener('click', () => {
+    if (!state.globe) return;
+    state.globe.pointOfView(defaultView, reducedMotion ? 0 : 550);
+  });
 
   fullscreen.addEventListener('click', async () => {
     try {
