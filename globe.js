@@ -363,12 +363,14 @@
       mount.addEventListener('pointerenter', () => { hovered=true; syncChannelPlayback(); });
       mount.addEventListener('pointerleave', () => { hovered=false; syncChannelPlayback(); });
       mount.addEventListener('pointerdown', () => { controls.autoRotate=false; });
-      // Capture before TV channel wheel handlers, but only for an event over
-      // the actual globe canvas. Preventing default avoids page/channel motion.
+      // Plain wheel/trackpad gestures are native Home scrolling, even on canvas.
+      // Only Ctrl/Cmd + wheel (including trackpad pinch, which sends ctrlKey)
+      // zooms the globe. OrbitControls.enableZoom stays disabled.
       let wheelDelta = 0;
       let wheelFrame = 0;
       const wheelHandler = event => {
-        if (!mount.contains(event.target)) return;
+        if (!mount.contains(event.target) || !(event.ctrlKey || event.metaKey)) return;
+        if (!event.cancelable) return;
         event.preventDefault();
         event.stopImmediatePropagation();
         hovered = true;
@@ -380,7 +382,6 @@
           wheelFrame = 0;
           const delta = Math.max(-360, Math.min(360, wheelDelta));
           wheelDelta = 0;
-          // Immediate camera update, no overlapping 220ms tweens on each wheel event.
           setZoomScale(getZoomScale() * Math.exp(-delta * .0012), 0);
         });
       };
