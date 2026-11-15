@@ -11,7 +11,7 @@
   const stage = document.createElement('div');
   stage.className = 'gf-stage';
   const year = 2024;
-  const topConnections = 20; // 20 routes × 3 layers = 60 lightweight arc instances.
+  const topConnections = 14; // 14 bright routes, only the 8 strongest get pulses.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const state = {
     globe: null, features: [], countryByCode: new Map(), selected: null,
@@ -187,42 +187,39 @@
         usd: route.usd, flow: route.flow
       };
     });
-    // Three inexpensive instances per route: wide translucent glow, bright core, and
-    // a short animated pulse. Capped at 20 bilateral routes for smooth rendering.
-    const arcsWithLayers = arcs.flatMap(route => [
-      {...route, layer:'glow'},
-      {...route, layer:'core'},
-      {...route, layer:'pulse'}
-    ]);
+    // 14 bright routes plus 8 animated pulses: 22 arc instances, down from 60.
+    // A translucent edge on the core itself replaces the separate glow geometry.
+    const routeLayers = [
+      ...arcs.map(route => ({...route, layer:'core'})),
+      ...(!reducedMotion ? arcs.slice(0,8).map(route => ({...route, layer:'pulse'})) : [])
+    ];
     const endpoints = arcs.flatMap(route => [
       {lat:route.startLat,lng:route.startLng,flow:route.flow},
       {lat:route.endLat,lng:route.endLng,flow:route.flow}
     ]);
     state.globe.pointsData(endpoints)
       .pointLat('lat').pointLng('lng').pointAltitude(.016)
-      .pointRadius(.17).pointResolution(12)
+      .pointRadius(.17).pointResolution(10)
       .pointColor(dot => dot.flow === 'X' ? '#34f5a1' : '#ff4d6d');
-    // Compensate for camera distance so arcs remain readable when zoomed out.
-    state.arcStrokeForZoom = route => {
-      const core = 1.05 + 1.55 * Math.sqrt(route.usd / max);
-      const zoomCompensation = Math.max(1, 1 / getZoomScale());
-      const width = core * zoomCompensation;
-      return route.layer === 'glow' ? width * 2.5 :
-        route.layer === 'pulse' ? width * 1.22 : width;
+    const stroke = route => {
+      const core = 1.15 + 1.45 * Math.sqrt(route.usd / max);
+      return core * strokeTierScale *
+        (route.layer === 'pulse' ? 1.12 : 1);
     };
-    state.globe.arcsData(arcsWithLayers)
+    state.arcStrokeForZoom = stroke;
+    state.globe.arcsData(routeLayers)
       .arcColor(route => {
         const rgb = route.flow === 'X' ? '52,245,161' : '255,77,109';
-        if (route.layer === 'glow') return 'rgba(' + rgb + ',.19)';
-        if (route.layer === 'pulse') return 'rgba(' + rgb + ',1)';
-        return ['rgba(' + rgb + ',.72)','rgba(' + rgb + ',1)','rgba(' + rgb + ',.82)'];
+        return route.layer === 'pulse'
+          ? 'rgba(' + rgb + ',1)'
+          : ['rgba(' + rgb + ',.55)','rgba(' + rgb + ',1)','rgba(' + rgb + ',.68)'];
       })
-.arcStroke(state.arcStrokeForZoom)
-      .arcAltitude(route => route.layer === 'glow' ? .205 : route.layer === 'pulse' ? .211 : .208)
-      .arcDashLength(route => route.layer === 'pulse' && !reducedMotion ? .075 : 1)
-      .arcDashGap(route => route.layer === 'pulse' && !reducedMotion ? 1 : 0)
+      .arcStroke(stroke)
+      .arcAltitude(.205)
+      .arcDashLength(route => route.layer === 'pulse' ? .07 : 1)
+      .arcDashGap(route => route.layer === 'pulse' ? 1 : 0)
       .arcDashInitialGap(route => route.layer === 'pulse' ? Math.random() : 0)
-      .arcDashAnimateTime(route => route.layer === 'pulse' && !reducedMotion ? 2400 : 0)
+      .arcDashAnimateTime(route => route.layer === 'pulse' ? 2700 : 0)
       .arcLabel(route => html(route.source) + ' → ' + html(route.destination) +
         '<br><b>' + money(route.usd) + '</b> · reported ' +
         (route.flow === 'X' ? 'exports' : 'imports') + ' · ' + year +
@@ -333,9 +330,8 @@
         .backgroundColor('rgba(0,0,0,0)')
         .showAtmosphere(true).atmosphereColor('#505985').atmosphereAltitude(.09)
         .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
-        .polygonsData(state.features).polygonAltitude(.009)
+        .polygonsData(state.features).polygonAltitude(0)
         .polygonCapColor('rgba(46,36,88,.09)')
-        .polygonSideColor('rgba(35,27,70,.07)')
         .polygonStrokeColor('rgba(130,118,171,.45)')
         .polygonLabel(feature => '<b>' + html(countryName(feature)) +
           '</b><br>Click to inspect ' + year + ' reported trade')
@@ -343,7 +339,7 @@
       // Globe.gl exposes its Three.js renderer; preserve alpha and cap GPU pixel density.
       const renderer = state.globe.renderer();
       renderer.setClearColor(0x000000,0);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1,2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1,1.5));
       const material = state.globe.globeMaterial();
       if (material && material.color) material.color.set('#a2a3b8');
       const controls = state.globe.controls();
@@ -373,15 +369,31 @@
       mount.addEventListener('pointerdown', () => { controls.autoRotate=false; });
       // Capture before TV channel wheel handlers, but only for an event over
       // the actual globe canvas. Preventing default avoids page/channel motion.
-      window.addEventListener('wheel', event => {
+      let wheelDelta = 0;
+      let wheelFrame = 0;
+      const wheelHandler = event => {
         if (!mount.contains(event.target)) return;
         event.preventDefault();
         event.stopImmediatePropagation();
         hovered = true;
         controls.autoRotate = false;
-        const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 120 : 1);
-        setZoomScale(getZoomScale() * Math.exp(-delta * .0012), 220);
-      }, {capture:true, passive:false});
+        wheelDelta += event.deltaY *
+          (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 120 : 1);
+        if (wheelFrame) return;
+        wheelFrame = requestAnimationFrame(() => {
+          wheelFrame = 0;
+          const delta = Math.max(-360, Math.min(360, wheelDelta));
+          wheelDelta = 0;
+          // Immediate camera update, no overlapping 220ms tweens on each wheel event.
+          setZoomScale(getZoomScale() * Math.exp(-delta * .0012), 0);
+        });
+      };
+      window.addEventListener('wheel', wheelHandler, {capture:true, passive:false});
+      window.addEventListener('pagehide', e => {
+        if (e.persisted) return;
+        window.removeEventListener('wheel', wheelHandler, true);
+        cancelAnimationFrame(wheelFrame);
+      }, {once:true});
       // Touch pinch changes only zoom, while single-pointer drags still rotate.
       let pinchDistance = null;
       const activeTouches = new Map();
@@ -427,8 +439,19 @@
         lastWidth = width; lastHeight = height;
         state.globe.width(width).height(height);
       };
-      if ('ResizeObserver' in window) new ResizeObserver(resize).observe(mount);
-      window.addEventListener('resize', resize, {passive: true});
+      if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(resize);
+        observer.observe(mount);
+        window.addEventListener('pagehide', e => {
+          if (e.persisted) return; // Keep BFCache restores functional.
+          observer.disconnect();
+          state.globe?.pauseAnimation?.();
+          state.globe?._destructor?.();
+        }, {once:true});
+      } else {
+        // Only for browsers without ResizeObserver.
+        window.addEventListener('resize', resize, {passive:true});
+      }
       resize();
       syncChannelPlayback();
       const usa = state.features.find(feature => countryCode(feature) === 840);
@@ -448,20 +471,21 @@
   // Track the requested target, not the in-flight animated camera position,
   // so successive wheel / pinch gestures accumulate smoothly.
   let targetZoomScale = 1;
-  let strokeUpdateScheduled = false;
+  let strokeTier = 1;
+  let strokeTierScale = 1;
   const getZoomScale = () => targetZoomScale;
-  function scheduleStrokeUpdate() {
-    if (strokeUpdateScheduled || !state.arcStrokeForZoom) return;
-    strokeUpdateScheduled = true;
-    requestAnimationFrame(() => {
-      strokeUpdateScheduled = false;
-      state.globe?.arcStroke(state.arcStrokeForZoom);
-    });
+  function updateStrokeTier() {
+    // Mesh rebuilds only on three coarse zoom bands, not on every scroll tick.
+    const nextTier = targetZoomScale < .85 ? 0 : targetZoomScale > 1.45 ? 2 : 1;
+    if (nextTier === strokeTier) return;
+    strokeTier = nextTier;
+    strokeTierScale = [1.45,1,1][strokeTier];
+    if (state.arcStrokeForZoom) state.globe.arcStroke(state.arcStrokeForZoom);
   }
   function setZoomScale(scale, duration=280) {
     if (!state.globe) return;
     targetZoomScale = clampZoom(scale);
-    scheduleStrokeUpdate();
+    updateStrokeTier();
     const pov = state.globe.pointOfView();
     const altitude = (1 + defaultView.altitude) / targetZoomScale - 1;
     state.globe.pointOfView({lat:pov.lat,lng:pov.lng,altitude}, reducedMotion ? 0 : duration);
@@ -471,7 +495,7 @@
   zoomReset.addEventListener('click', () => {
     if (!state.globe) return;
     targetZoomScale = 1;
-    scheduleStrokeUpdate();
+    updateStrokeTier();
     state.globe.pointOfView(defaultView, reducedMotion ? 0 : 550);
   });
 
