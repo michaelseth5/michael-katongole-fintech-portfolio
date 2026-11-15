@@ -12,18 +12,7 @@
     background: linear-gradient(180deg,transparent 0%,rgba(19,12,34,.08) 70%,rgba(19,12,34,.25) 100%) !important;
     height: 45px !important;
   }
-  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #home .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    position: absolute !important;
-    left: auto !important; right: 0 !important; bottom: auto !important;
-    top: 4% !important; width: min(57%, 760px) !important; height: 82% !important;
-    max-height: 82% !important; min-height: 0 !important;
-    opacity: 1 !important; transform: none !important; animation: none !important;
-    z-index: 1 !important; border: none !important; border-radius: 0 !important;
-    background: transparent !important; box-shadow: none !important;
-    overflow: visible !important;
-    -webkit-mask-image: radial-gradient(ellipse 68% 69% at 50% 50%,#000 65%,transparent 100%) !important;
-    mask-image: radial-gradient(ellipse 68% 69% at 50% 50%,#000 65%,transparent 100%) !important;
-  }
+
   body.tv-mode .tv-hardware #main-content.tv-stage #home .gf-shell,
   body.tv-mode .tv-hardware #main-content.tv-stage #home .gf-stage,
   body.tv-mode .tv-hardware #main-content.tv-stage #home #financial-globe,
@@ -32,7 +21,7 @@
     border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
     width: 100% !important; height: 100% !important;
   }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .gf-stage { overflow: visible !important; }
+  body.tv-mode .tv-hardware 
   body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-gradient {
     background: linear-gradient(90deg,rgba(16,11,28,.45) 0%,rgba(16,11,28,.10) 47%,transparent 76%) !important;
     border: none !important;pointer-events: none !important;
@@ -109,9 +98,7 @@
   body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity {width:51% !important;left:3% !important}
   body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity .hero-headshot {width:100px !important;height:126px !important}
   body.tv-mode .tv-hardware #main-content.tv-stage #home .demo-hero-identity h1 {font-size:clamp(29px,3.6vw,42px) !important}
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    width:56% !important;height:74% !important;top:11% !important;right:-1% !important
-  }
+
   body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision {width:38% !important;top:1% !important}
   body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-vision h2{font-size:17px !important}
   body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-globe-explainer {width:190px !important;left:50% !important;bottom:6% !important}
@@ -153,19 +140,8 @@
 /* Home globe composition and route visibility repair (Nov 2026).
    Keep WebGL's natural camera projection: resize the actual mount rather than scaling its canvas. */
 @media (min-width: 901px) {
-  #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    top: 13% !important;
-    left: 20% !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 68% !important;
-    height: 73% !important;
-    max-height: 73% !important;
-    overflow: visible !important;
-  }
-  #home.hero.mk-unified-hero .gf-stage {
-    overflow: visible !important;
-  }
+
+  
   #home.hero.mk-unified-hero .mk-unified-vision {
     left: 5% !important;
     right: auto !important;
@@ -193,16 +169,7 @@
 }
 /* In the TV/cinema presentation, preserve the dedicated side-by-side arrangement. */
 @media (min-width: 901px) {
-  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    left: auto !important;
-    right: 1% !important;
-    top: 11% !important;
-    width: 54% !important;
-    height: 73% !important;
-    max-height: 73% !important;
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
+
   body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero .mk-unified-vision {
     left: 4% !important;
     right: auto !important;
@@ -217,15 +184,8 @@
 }
 /* Compact desktop/tablet widths need space between the text and the trade controls. */
 @media (min-width: 768px) and (max-width: 900px) {
-  #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    left: 6% !important;
-    right: auto !important;
-    width: 88% !important;
-    bottom: 2% !important;
-    height: 47% !important;
-    overflow: visible !important;
-  }
-  #home.hero.mk-unified-hero .gf-stage { overflow: visible !important; }
+
+  
   #home.hero.mk-unified-hero .mk-unified-vision {
     left: 6% !important;
     right: auto !important;
@@ -341,12 +301,7 @@
     margin:clamp(5px,1dvh,12px) 0 0!important;
     flex:0 0 auto!important;
   }
-  #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    left:auto!important;right:1%!important;
-    top:13%!important;bottom:auto!important;
-    width:50%!important;height:64%!important;max-height:64%!important;
-    overflow:visible!important;
-  }
+
   #home.hero.mk-unified-hero > .mk-globe-explainer {
     left:52%!important;right:auto!important;
     top:auto!important;bottom:14%!important;
@@ -440,11 +395,7 @@
     gap:clamp(5px,.65vw,10px)!important;
     flex-wrap:wrap!important;
   }
-  body.tv-mode .tv-hardware #main-content.tv-stage #home .mk-unified-globe.globe-wrap:not(:fullscreen) {
-    top:12%!important;right:1%!important;left:auto!important;
-    width:49%!important;height:61%!important;max-height:61%!important;
-    transform:none!important;
-  }
+
   body.tv-mode .tv-hardware #main-content.tv-stage #home > .mk-globe-explainer {
     left:52%!important;right:auto!important;top:auto!important;
     bottom:15%!important;width:min(225px,21%)!important;
@@ -677,5 +628,116 @@
   }
   @media(prefers-reduced-motion:reduce){
     html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe .mk-mobile-globe-visual{transition:none!important}
+  }
+}
+
+
+
+/* Single desktop globe placement: the same grid for TV and normal Home.
+   Keeps authored left-column flow and puts globe / cards in disjoint cells. */
+@media (min-width:768px) {
+  #home.hero.mk-unified-hero,
+  body.tv-mode .tv-hardware #main-content.tv-stage .tv-page-home > #home.hero.mk-unified-hero {
+    grid-template-columns:minmax(0,49%) minmax(0,25.5%) minmax(0,25.5%)!important;
+    grid-template-rows:max-content max-content max-content max-content!important;
+    column-gap:0!important;
+    row-gap:clamp(8px,1.3dvh,16px)!important;
+  }
+  #home.hero.mk-unified-hero > .mk-unified-globe.globe-wrap:not(:fullscreen),
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero > .mk-unified-globe.globe-wrap:not(:fullscreen) {
+    position:relative!important;
+    grid-column:2 / 4!important;
+    grid-row:1 / 3!important;
+    place-self:start center!important;
+    inset:auto!important;
+    top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+    width:min(94%,calc((100dvh - 140px) * .72))!important;
+    height:auto!important;
+    min-height:0!important;max-height:none!important;
+    aspect-ratio:1!important;
+    transform:none!important;
+    animation:none!important;
+    margin:0!important;
+    overflow:visible!important;
+    opacity:1!important;
+    z-index:2!important;
+    border:0!important;
+    -webkit-mask-image:none!important;mask-image:none!important;
+  }
+  #home.hero.mk-unified-hero > .mk-unified-globe .gf-shell,
+  #home.hero.mk-unified-hero > .mk-unified-globe .gf-stage,
+  #home.hero.mk-unified-hero > .mk-unified-globe #financial-globe {
+    width:100%!important;height:100%!important;
+    min-height:0!important;
+  }
+  #home.hero.mk-unified-hero > .mk-unified-globe .gf-stage {
+    overflow:visible!important;
+  }
+  #home.hero.mk-unified-hero > .mk-globe-explainer,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero > .mk-globe-explainer {
+    position:relative!important;
+    grid-column:2!important;grid-row:3!important;
+    justify-self:stretch!important;align-self:start!important;
+    inset:auto!important;
+    width:calc(100% - clamp(3px,.6vw,9px))!important;
+    max-width:100%!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:clamp(9px,.85vw,14px)!important;
+    box-sizing:border-box!important;
+    z-index:8!important;
+  }
+  #home.hero.mk-unified-hero.gf-hero-safe-layout > .gf-panel,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home.hero.mk-unified-hero.gf-hero-safe-layout > .gf-panel {
+    position:relative!important;
+    grid-column:3!important;grid-row:3!important;
+    justify-self:stretch!important;align-self:start!important;
+    inset:auto!important;
+    width:calc(100% - clamp(3px,.6vw,9px))!important;
+    max-width:100%!important;max-height:none!important;
+    height:auto!important;
+    margin:0 0 0 auto!important;
+    box-sizing:border-box!important;
+    z-index:8!important;
+  }
+  body.tv-mode .tv-hardware #main-content.tv-stage #home > .tv-home-scroll-cue {
+    position:relative!important;
+    grid-column:2 / 4!important;grid-row:4!important;
+    justify-self:center!important;align-self:start!important;
+    inset:auto!important;
+    margin:clamp(3px,.5dvh,10px) 0 0!important;
+    transform:none!important;
+    z-index:10!important;
+  }
+  /* A solid translucent backing, no GPU-expensive backdrop blur on the globe overlay. */
+  #home.hero.mk-unified-hero > .mk-globe-explainer,
+  #home.hero.mk-unified-hero > .gf-panel,
+  #home.hero.mk-unified-hero .gf-hud,
+  #home.hero.mk-unified-hero .gf-route-legend,
+  #home.hero.mk-unified-hero .gf-zoom-button,
+  #home.hero.mk-unified-hero .mk-home-welcome,
+  #home.hero.mk-unified-hero .mk-social-link {
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+}
+/* Mobile remains a single static globe; no WebGL or new TV visuals. */
+@media (max-width:767px) {
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe .mk-mobile-globe-visual {
+    background-image:url('assets/mobile-globe.webp')!important;
+    background-size:cover!important;
+    background-position:center!important;
+    box-shadow:none!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-globe.globe-wrap {
+    aspect-ratio:1!important;
+    height:auto!important;
+    max-height:none!important;
+    min-height:0!important;
+    width:min(70vw,300px)!important;
+    overflow:hidden!important;
+  }
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-mobile-globe-visual.is-pinching {
+    transition:none!important;
   }
 }
