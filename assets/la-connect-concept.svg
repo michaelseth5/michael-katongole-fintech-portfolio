@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">LA Connect — sustainable transport concept for the 2028 Los Angeles Games</title>
+<desc id="desc">Conceptual diagram connecting rail hubs, feeder buses, trip planning and payment, and real-time information. This is a proposed network model, not an official transit map.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#28174b"/><stop offset=".56" stop-color="#1b1740"/><stop offset="1" stop-color="#111c3d"/></linearGradient><linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#b18cff"/><stop offset="1" stop-color="#4fdaca"/></linearGradient><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<rect width="1200" height="720" rx="30" fill="url(#bg)"/>
+<g opacity=".11" stroke="#c8b8fc"><path d="M0 90H1200M0 180H1200M0 270H1200M0 360H1200M0 450H1200M0 540H1200M0 630H1200M100 0V720M200 0V720M300 0V720M400 0V720M500 0V720M600 0V720M700 0V720M800 0V720M900 0V720M1000 0V720M1100 0V720"/></g>
+<text x="70" y="83" fill="#c8b0ff" font-family="Arial,sans-serif" font-size="23" font-weight="700" letter-spacing="4">AUTODESK MOCK CASE STUDY · LA28</text>
+<text x="70" y="168" fill="#fff" font-family="Arial,sans-serif" font-size="84" font-weight="800">LA Connect</text>
+<text x="72" y="215" fill="#cfc6ec" font-family="Arial,sans-serif" font-size="27">One journey across rail, feeder bus, and trip planning</text>
+<g opacity=".46" fill="none" stroke="#a88cff" stroke-width="22" filter="url(#glow)"><path d="M142 465Q342 285 560 395T1040 390"/></g>
+<path d="M142 465Q342 285 560 395T1040 390" fill="none" stroke="url(#line)" stroke-width="12" stroke-linecap="round"/>
+<path d="M213 550Q337 570 410 455M715 420Q810 515 990 540" fill="none" stroke="#59ddbe" stroke-width="7" stroke-dasharray="15 14" stroke-linecap="round"/>
+<g fill="#24133f" stroke="#ddcaff" stroke-width="7"><circle cx="142" cy="465" r="18"/><circle cx="410" cy="360" r="18"/><circle cx="715" cy="415" r="18"/><circle cx="1040" cy="390" r="18"/></g>
+<g fill="#fff" font-family="Arial,sans-serif" font-weight="700" font-size="24"><text x="75" y="432">Rail hub</text><text x="330" y="324">Rail connection</text><text x="620" y="382">Downtown link</text><text x="975" y="354">Rail hub</text></g>
+<g fill="#9af4da" font-family="Arial,sans-serif" font-size="23" font-weight="700"><text x="147" y="591">Feeder buses</text><text x="908" y="583">Feeder buses</text></g>
+<rect x="335" y="587" width="530" height="74" rx="18" fill="#342052" stroke="#9469d8" stroke-width="2"/>
+<text x="600" y="616" fill="#f7f2ff" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700">ONE APP · PLAN + PAY + PERKS</text>
+<text x="600" y="644" fill="#d7c7f5" text-anchor="middle" font-family="Arial,sans-serif" font-size="18">Transit · traffic · permits · events (proposed API inputs)</text>
+</svg>
