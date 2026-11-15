@@ -1,0 +1,38 @@
+/* LA Connect — scoped portfolio preview; inherits shared technical walkthrough design. */
+#project-details #project-la-connect .la-connect-frame{
+  background:linear-gradient(135deg,#2b1c4d 0%,#302254 52%,#132846 100%);
+  border-color:rgba(172,135,234,.56);
+}
+#project-details #project-la-connect .la-connect-frame .fp-desc{
+  text-transform:none;
+  max-width:40ch;
+}
+#project-details #project-la-connect .fp-stage .fp-main{
+  width:min(94%,820px);
+  max-width:100%;
+}
+#project-details #project-la-connect .fp-stage .fp-main img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  object-fit:contain;
+  background:#201838;
+}
+#project-details #project-la-connect .fp-case-gallery{
+  grid-template-columns:minmax(0,1fr);
+}
+#project-details #project-la-connect .fp-case-thumb img{
+  width:100%;
+  height:auto;
+  max-height:360px;
+  object-fit:contain;
+}
+#project-details #project-la-connect .repo-project-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+@media(max-width:680px){
+  #project-details #project-la-connect .fp-stage .fp-main{width:100%}
+}
