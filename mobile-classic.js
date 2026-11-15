@@ -71,10 +71,15 @@
    const reset=makeZoom('↺','Reset globe zoom');
    mobileZoom.append(minus,reset,plus);
    staticGlobe.after(mobileZoom);
-   let zoom=1;
+   let zoom=1, pinchFrame=0, pendingZoom=1;
    const changeZoom=value=>{
      zoom=Math.min(3,Math.max(.6,value));
-     visual.style.setProperty('--mk-mobile-zoom',String(zoom));
+     pendingZoom=zoom;
+     if(pinchFrame)return;
+     pinchFrame=requestAnimationFrame(()=>{
+       pinchFrame=0;
+       visual.style.setProperty('--mk-mobile-zoom',String(pendingZoom));
+     });
    };
    plus.addEventListener('click',()=>changeZoom(zoom*1.3));
    minus.addEventListener('click',()=>changeZoom(zoom/1.3));
@@ -85,18 +90,26 @@
      touches[0].clientY-touches[1].clientY
    );
    staticGlobe.addEventListener('touchstart',e=>{
-     if(e.touches.length===2) lastDistance=pinchDistance(e.touches);
+     if(e.touches.length===2){
+       lastDistance=pinchDistance(e.touches);
+       visual.classList.add('is-pinching'); // No transition while fingers move.
+     }
    },{passive:true});
    staticGlobe.addEventListener('touchmove',e=>{
      if(e.touches.length!==2){lastDistance=null;return;}
      e.preventDefault();
      const next=pinchDistance(e.touches);
-     if(lastDistance) changeZoom(zoom*next/lastDistance);
+     if(lastDistance)changeZoom(zoom*next/lastDistance);
      lastDistance=next;
    },{passive:false});
-   staticGlobe.addEventListener('touchend',e=>{
-     if(e.touches.length!==2)lastDistance=null;
-   });
+   const endPinch=e=>{
+     if(e.touches.length!==2){
+       lastDistance=null;
+       visual.classList.remove('is-pinching');
+     }
+   };
+   staticGlobe.addEventListener('touchend',endPinch);
+   staticGlobe.addEventListener('touchcancel',endPinch);
  }
 
  $$('details.project-expand').forEach(detail=>{
