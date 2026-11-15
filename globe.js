@@ -75,17 +75,15 @@
   zoomReset.setAttribute('aria-label', 'Reset globe zoom and rotation');
   zoomReset.title = 'Reset globe view';
   zoomControls.append(zoomIn, zoomOut, zoomReset);
-  const legend = document.createElement('div');
-  legend.className = 'gf-route-legend';
-  legend.setAttribute('aria-label', 'Trade route legend');
-  legend.innerHTML = '<span><i class="gf-route-swatch gf-route-exports"></i>Exports</span><span><i class="gf-route-swatch gf-route-imports"></i>Imports</span>';
-  stage.append(mount, hud, status, fullscreen, zoomControls, legend);
+  // One compact caption/legend is authored below the globe in the Home markup.
+  stage.append(mount, hud, status, fullscreen, zoomControls);
   shell.append(stage);
   wrap.append(shell);
   const hero = wrap.closest('.hero');
   if (hero) {
     hero.classList.add('gf-hero-safe-layout');
-    hero.append(panel); // Glass trade statistics remain docked inside the clipped hero card.
+    (hero.querySelector('.mk-home-right') || hero).append(panel);
+    // Keep the country card docked to the globe visual, not a separate hero layer.
   } else {
     // Defensive fallback for a standalone globe embedded outside the homepage hero.
     wrap.insertAdjacentElement('afterend', panel);
@@ -157,9 +155,7 @@
       content += '<p class="gf-teaser-state" role="status">' +
         html(state.message || 'Loading trade records…') + '</p>';
     }
-    content += '<p class="gf-teaser-source">UN Comtrade · public preview' +
-      (state.gdpYear ? ' | GDP: World Bank ' + state.gdpYear : '') +
-      ' · Trade values may be incomplete.</p>';
+    content += '<p class="gf-teaser-source" title="UN Comtrade · World Bank">Annual data, not live. May be incomplete.</p>';
     panel.innerHTML = content;
     if (globe) {
       const highlight = validTrade
