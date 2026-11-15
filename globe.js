@@ -166,14 +166,14 @@
     ]);
     state.globe.pointsData(endpoints)
       .pointLat('lat').pointLng('lng').pointAltitude(.012)
-      .pointRadius(.12).pointResolution(12)
-      .pointColor(dot => dot.flow === 'X' ? 'rgba(91,206,147,.8)' : 'rgba(220,109,126,.8)');
+      .pointRadius(.15).pointResolution(12)
+      .pointColor(dot => dot.flow === 'X' ? 'rgba(69,230,155,.95)' : 'rgba(249,112,135,.95)');
     state.globe.arcsData(arcs)
       .arcColor(route => route.flow === 'X'
-        ? ['rgba(91,206,147,0)','rgba(91,206,147,.78)','rgba(91,206,147,0)']
-        : ['rgba(220,109,126,0)','rgba(220,109,126,.78)','rgba(220,109,126,0)'])
-      .arcStroke(route => .10 + .88 * Math.sqrt(route.usd / max))
-      .arcAltitudeAutoScale(.25)
+        ? ['rgba(69,230,155,.18)','rgba(69,230,155,.96)','rgba(69,230,155,.28)']
+        : ['rgba(249,112,135,.18)','rgba(249,112,135,.96)','rgba(249,112,135,.28)'])
+      .arcStroke(route => .45 + .85 * Math.sqrt(route.usd / max))
+      .arcAltitudeAutoScale(.16)
       .arcDashLength(1).arcDashGap(0).arcDashAnimateTime(0)
       .arcLabel(route => html(route.source) + ' → ' + html(route.destination) +
         '<br><b>' + money(route.usd) + '</b> · reported ' +
@@ -248,7 +248,8 @@
     state.message = '';
     state.gdp = null;
     state.gdpYear = null;
-    state.globe.pointOfView(Object.assign(centroid(feature), {altitude: 1.72}), 950);
+    // Keep the whole sphere and its elevated routes inside the visible stage.
+    state.globe.pointOfView(Object.assign(centroid(feature), {altitude: 2.65}), 950);
     showPanel();
     if (!Number.isInteger(countryCode(feature)) || countryCode(feature) < 1) {
       ++state.tradeSeq;
@@ -324,8 +325,17 @@
         }, {threshold:.02});
         observer.observe(hero || wrap);
       }
-      const resize = () => state.globe.width(mount.clientWidth).height(mount.clientHeight);
-      new ResizeObserver(resize).observe(mount);
+      // Globe.gl sizes its renderer from the actual mount; don't CSS-scale the canvas.
+      let lastWidth = 0, lastHeight = 0;
+      const resize = () => {
+        const width = Math.round(mount.getBoundingClientRect().width);
+        const height = Math.round(mount.getBoundingClientRect().height);
+        if (width < 1 || height < 1 || (width === lastWidth && height === lastHeight)) return;
+        lastWidth = width; lastHeight = height;
+        state.globe.width(width).height(height);
+      };
+      if ('ResizeObserver' in window) new ResizeObserver(resize).observe(mount);
+      window.addEventListener('resize', resize, {passive: true});
       resize();
       syncChannelPlayback();
       const usa = state.features.find(feature => countryCode(feature) === 840);
