@@ -7325,4 +7325,69 @@ body.tv-mode #main-content.tv-stage .tv-page:has(> #contact){
     max-height:none!important;
   }
 }
+
+/* Contact chat: show ~2–4 Q&A exchanges while pinning composer to the card bottom.
+   Whole TV page can scroll on short screens; only message history scrolls inside card. */
+@media(min-width:881px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-layout{
+    height:clamp(630px,76dvh,790px)!important;
+    min-height:630px!important;
+    max-height:none!important;
+    align-items:stretch!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact #mk-portfolio-chat{
+    min-height:0!important;
+    max-height:100%!important;
+    height:100%!important;
+  }
+}
+@media(min-width:768px) and (max-width:880px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact #mk-portfolio-chat{
+    height:680px!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
+}
+#contact.section #mk-portfolio-chat.mk-chat-panel{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-head{
+  flex:0 0 auto!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-conversation{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  height:0!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  margin:14px 0 10px!important;
+  padding:5px 10px 5px 0!important;
+  scrollbar-width:thin;
+  scrollbar-color:#ab8bc8 transparent;
+}
+#contact.section #mk-portfolio-chat .mk-chat-chips{
+  flex:0 0 auto!important;
+  margin-top:auto!important;
+  margin-bottom:10px!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-form{
+  flex:0 0 auto!important;
+  margin-top:0!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-disclaimer{
+  flex:0 0 auto!important;
+  margin-top:8px!important;
+}
+@media(max-width:767px){
+  #contact.section #mk-portfolio-chat.mk-chat-panel{
+    height:clamp(580px,78dvh,740px)!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
+}
 </style></body></html>
