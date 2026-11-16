@@ -5472,7 +5472,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 #hobbies #beyond-code-editorial .bc-heading p,
 #hobbies #beyond-code-editorial .bc-copy p{color:var(--hob-body)!important}
 #hobbies #beyond-code-editorial .bc-stories{
- display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ justify-content:center!important;width:100%!important;max-width:960px!important;
+ margin-inline:auto!important;box-sizing:border-box;
  overflow:visible!important;gap:12px!important;padding:4px 2px 8px!important;
 }
 #hobbies #beyond-code-editorial .bc-story{
@@ -5492,11 +5494,11 @@ document.addEventListener('DOMContentLoaded',()=>{
  padding:0 2px!important;text-align:left!important;
 }
 #hobbies #beyond-code-editorial .bc-copy h3{
- font-size:clamp(15px,1.3vw,19px)!important;line-height:1.22!important;
+ font-size:clamp(16.5px,1.43vw,21px)!important;line-height:1.22!important;
  margin:5px 0 6px!important;
 }
 #hobbies #beyond-code-editorial .bc-copy p{
- font-size:clamp(12px,.95vw,13px)!important;line-height:1.52!important;
+ font-size:clamp(12.6px,1vw,13.65px)!important;line-height:1.52!important;
  max-width:none!important;max-height:none!important;height:auto!important;
  overflow:visible!important;scrollbar-width:auto!important;margin:0!important;
 }
@@ -5529,15 +5531,17 @@ document.addEventListener('DOMContentLoaded',()=>{
  outline:3px solid var(--hob-accent);outline-offset:3px;border-radius:7px;
 }
 @media(max-width:1100px){
- #hobbies #beyond-code-editorial .bc-stories{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #hobbies #beyond-code-editorial .bc-stories{grid-template-columns:repeat(2,minmax(0,1fr))!important;max-width:100%!important}
+ #hobbies #beyond-code-editorial .bc-story:last-child{grid-column:1/-1;width:calc(50% - 6px)!important;justify-self:center}
  #hobbies #beyond-code-editorial .bc-collage{aspect-ratio:1.9!important}
 }
 @media(max-width:620px){
  #hobbies #beyond-code-editorial .bc-stories{grid-template-columns:minmax(0,1fr)!important}
+ #hobbies #beyond-code-editorial .bc-story:last-child{grid-column:auto;width:100%!important}
  #hobbies #beyond-code-editorial .bc-story{padding:14px!important}
  #hobbies #beyond-code-editorial .bc-collage{aspect-ratio:2!important;max-height:190px!important}
- #hobbies #beyond-code-editorial .bc-copy h3{font-size:17px!important}
- #hobbies #beyond-code-editorial .bc-copy p{font-size:13px!important}
+ #hobbies #beyond-code-editorial .bc-copy h3{font-size:18.7px!important}
+ #hobbies #beyond-code-editorial .bc-copy p{font-size:13.65px!important}
 }
 #mk-hobby-lightbox{position:fixed;inset:0;z-index:2147483000;
  display:grid;place-items:center;padding:clamp(10px,3vw,30px);
