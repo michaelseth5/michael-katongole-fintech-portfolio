@@ -4193,9 +4193,11 @@ body .apple-topbar {
   const box=host.getBoundingClientRect();
   width=box.width;height=box.height;dpr=Math.min(devicePixelRatio||1,2);
   canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
-  ctx.setTransform(dpr,0,0,dpr,0,0);draw();
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  host.style.setProperty("--mk-sphere-size",(radius()*2).toFixed(1)+"px");
+  draw();
  }
- function radius(){return Math.min(width*.35,height*.405,256);}
+ function radius(){return Math.min(width*.42,height*.405,256);}
  function rotate(p){
   const cy=Math.cos(yaw),sy=Math.sin(yaw),cx=Math.cos(pitch),sx=Math.sin(pitch);
   const x=p.x*cy-p.z*sy,z0=p.x*sy+p.z*cy;
@@ -4207,22 +4209,7 @@ body .apple-topbar {
  }
  function draw(){
   if(!width||!height)return;
-  const r=radius(),cx=width/2,cy=height/2;
-  ctx.clearRect(0,0,width,height);
-
-  // Premium solid lavender sphere. The same canvas already used by the orbit.
-  const halo=ctx.createRadialGradient(cx,cy,r*.55,cx,cy,r*1.32);
-  halo.addColorStop(0,"rgba(164,113,229,.20)");
-  halo.addColorStop(.78,"rgba(163,111,227,.12)");
-  halo.addColorStop(1,"rgba(163,111,227,0)");
-  ctx.fillStyle=halo;ctx.beginPath();ctx.arc(cx,cy,r*1.32,0,Math.PI*2);ctx.fill();
-  const body=ctx.createRadialGradient(cx-r*.37,cy-r*.38,r*.04,cx+r*.20,cy+r*.18,r*1.15);
-  body.addColorStop(0,"rgba(196,176,224,.94)");
-  body.addColorStop(.38,"rgba(153,118,199,.91)");
-  body.addColorStop(.72,"rgba(91,58,140,.90)");
-  body.addColorStop(1,"rgba(58,35,98,.92)");
-  ctx.fillStyle=body;ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fill();
-  ctx.strokeStyle="rgba(223,205,251,.84)";ctx.lineWidth=1.5;ctx.stroke();
+  // The sphere body is a static, high-contrast CSS layer; this loop moves icon tiles only.
   points.forEach((p,i)=>{
    const q=project(p),depth=(q.z+1)*.5,button=buttons[i];
    const scale=.64+.55*depth;
@@ -6319,5 +6306,63 @@ body .mk-footer-band .mk-socials-footer .mk-social-link:is(:hover,:focus-visible
 }
 @media(prefers-reduced-motion:reduce){
   #skills.section #mk-skills-visual .mk-skill-particle .mk-icon{transition:none!important}
+}
+
+/* Skills sphere visibility hotfix: explicit CSS body, not a faint canvas fill.
+   Uses the measured JS orbit diameter to keep the sphere exactly behind the icons. */
+#skills.section #mk-skills-visual.mk-skills-orbit{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:visible!important;
+}
+#skills.section #mk-skills-visual.mk-skills-orbit::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  width:var(--mk-sphere-size,510px)!important;
+  height:var(--mk-sphere-size,510px)!important;
+  max-width:none!important;
+  max-height:none!important;
+  aspect-ratio:1!important;
+  border-radius:50%!important;
+  z-index:2!important;
+  opacity:1!important;
+  pointer-events:none!important;
+  background:radial-gradient(circle at 29% 24%,
+    #dac8f2 0%,
+    #c4b0e0 20%,
+    #9a73ce 43%,
+    #5b3a8c 73%,
+    #3a2362 100%)!important;
+  border:2px solid rgba(237,216,255,.88)!important;
+  box-shadow:
+    inset -22px -30px 44px rgba(28,11,54,.30),
+    inset 14px 19px 36px rgba(250,240,255,.18),
+    0 0 0 8px rgba(203,161,251,.07),
+    0 0 62px rgba(162,106,235,.43),
+    0 24px 70px rgba(25,11,48,.35)!important;
+  filter:none!important;
+}
+#skills.section #mk-skills-visual #mk-skills-wireframe{
+  display:none!important;
+}
+#skills.section #mk-skills-visual #mk-skills-logos{
+  position:absolute!important;
+  inset:0!important;
+  z-index:auto!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle{
+  isolation:auto!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon{
+  background:rgba(251,245,255,.26)!important;
+  border-color:rgba(255,245,255,.73)!important;
+  box-shadow:0 7px 20px rgba(21,9,47,.27),inset 0 1px 2px rgba(255,255,255,.22)!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is([data-skill-file="nextjs"],[data-skill-file="github"],[data-skill-file="vercel"],[data-skill-file="flask"]) .mk-icon{
+  background:rgba(255,255,255,.93)!important;
 }
 </style></body></html>
