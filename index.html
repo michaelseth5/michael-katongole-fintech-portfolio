@@ -5856,4 +5856,40 @@ body.hob-lightbox-open{overflow:hidden!important}
 #projects.fp .fp-title{color:#fff!important;-webkit-text-fill-color:#fff!important}
 #projects.fp .fp-sub{color:#e3d9f1!important;-webkit-text-fill-color:#e3d9f1!important}
 #projects.fp .fp-eyebrow{color:#d7c5eb!important;-webkit-text-fill-color:#d7c5eb!important}
+/* Let’s Connect: soft, very-light lavender background; preserve layout and chat functionality. */
+#contact{
+  --section-accent:#8658b4;
+  color:#3d2b50!important;
+  background-color:#f6f0ff!important;
+  background-image:
+    radial-gradient(ellipse at 10% 12%,rgba(223,202,251,.48),transparent 48%),
+    radial-gradient(ellipse at 94% 84%,rgba(230,210,253,.34),transparent 50%),
+    linear-gradient(145deg,#fcfaff 0%,#f7f0ff 54%,#efe4fc 100%)!important;
+  border-top:1px solid #e4d5f3!important;
+}
+#contact::before{background:none!important}
+#contact .mk-connect-left{
+  background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(243,231,254,.86))!important;
+  border:1px solid #decaf1!important;
+  box-shadow:0 12px 34px rgba(97,61,139,.08)!important;
+}
+#contact .page-hero,#contact .page-hero h1,#contact .page-hero h1 .mk-title-solid{
+  color:#432c5b!important;
+}
+#contact .page-hero h1 .mk-title-glow{
+  color:transparent!important;-webkit-text-fill-color:transparent!important;
+  background-image:linear-gradient(90deg,#8350ae,#b072d6,#8955b5)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+}
+#contact .page-hero .highlight{color:#9e6bc8!important}
+#contact .page-hero .eyebrow,#contact .page-hero .back{
+  color:#7945a4!important;
+}
+#contact .page-hero p,#contact .mk-connect-left p{
+  color:#59446b!important;
+}
+#contact .page-hero::after{
+  background:linear-gradient(90deg,#ceb5e5,#eee0fa,transparent 95%)!important;
+}
+/* The Ask Michael panel stays dark so its existing chat labels remain readable. */
 </style></body></html>
