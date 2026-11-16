@@ -5763,6 +5763,45 @@ body.hob-lightbox-open{overflow:hidden!important}
 #experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab){background:var(--portfolio-literature-card)!important;color:var(--portfolio-accent)!important;border:1px solid var(--portfolio-border)!important}
 #experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab):is([aria-selected="true"],.active):not(:disabled){background:var(--portfolio-accent-fill)!important;color:var(--portfolio-ink)!important;border-color:var(--portfolio-accent)!important}
 #experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab):hover{border-color:var(--portfolio-accent)!important}
+/* The desktop Experience switch is built by tv-channels.js. Restyle its surface only. */
+#experience .mk-exp-tabs{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ gap:5px!important;padding:5px!important;
+ background:var(--portfolio-literature-card)!important;
+ border:1px solid var(--portfolio-border)!important;
+ border-radius:999px!important;
+ box-shadow:var(--portfolio-card-shadow)!important;
+ backdrop-filter:blur(12px)!important;
+ -webkit-backdrop-filter:blur(12px)!important;
+}
+#experience .mk-exp-tabs button[role="tab"]{
+ color:var(--portfolio-accent)!important;
+ background:transparent!important;
+ border:1px solid transparent!important;
+ border-radius:999px!important;
+ opacity:1!important;
+ box-shadow:none!important;
+ font-weight:700!important;
+ transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease!important;
+}
+#experience .mk-exp-tabs button[role="tab"]:hover:not([aria-selected="true"]){
+ background:var(--portfolio-lavender-end)!important;
+ border-color:var(--portfolio-border)!important;
+ color:var(--portfolio-heading)!important;
+}
+#experience .mk-exp-tabs button[role="tab"][aria-selected="true"]{
+ color:var(--portfolio-ink)!important;
+ background:var(--portfolio-accent-fill)!important;
+ border-color:var(--portfolio-accent-fill)!important;
+ box-shadow:var(--portfolio-card-hover-shadow)!important;
+}
+#experience .mk-exp-tabs button[role="tab"]:focus-visible{
+ outline:3px solid var(--portfolio-accent)!important;
+ outline-offset:2px!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #experience .mk-exp-tabs button[role="tab"]{transition:none!important}
+}
 #experience #achievements.mk-exp-milestones{background:transparent!important;color:var(--portfolio-ink)!important}
 #experience #achievements .page-hero h1,#experience #achievements .page-hero h1 .mk-title-solid{
  color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;
