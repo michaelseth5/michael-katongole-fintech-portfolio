@@ -7199,17 +7199,69 @@ body.tv-mode #main-content.tv-stage .tv-page:has(> #contact){
  }
 }
 
-/* Ask Michael: pin composer to bottom and maximize message history viewport. */
+/* Contact layout repair: the TV page can scroll, quotes stay in normal flow,
+   and the chat transcript scrolls inside a bounded panel. */
+@media(min-width:768px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact){
+    display:block!important;
+    height:100%!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior-y:contain;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section{
+    display:block!important;
+    flex:none!important;
+    height:auto!important;
+    max-height:none!important;
+    min-height:0!important;
+    overflow:visible!important;
+    padding:clamp(18px,2.8vh,32px) clamp(16px,3vw,48px)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact > .container{
+    height:auto!important;
+    max-height:none!important;
+    width:min(1240px,100%)!important;
+    margin:0 auto!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-layout{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    align-items:stretch!important;
+    gap:clamp(12px,1.6vw,24px)!important;
+    height:clamp(420px,55dvh,590px)!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-left,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact #mk-portfolio-chat{
+    box-sizing:border-box!important;
+    height:100%!important;
+    max-height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    align-self:stretch!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+    position:relative!important;
+    inset:auto!important;
+    bottom:auto!important;
+    left:auto!important;
+    right:auto!important;
+    z-index:auto!important;
+    flex:none!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    overflow:visible!important;
+  }
+}
 #contact.section #mk-portfolio-chat.mk-chat-panel{
   display:flex!important;
   flex-direction:column!important;
-  align-self:stretch!important;
   justify-content:flex-start!important;
-  height:100%!important;
-  min-height:clamp(390px,46vh,590px)!important;
-  max-height:none!important;
   min-width:0!important;
-  overflow:hidden!important;
+  min-height:0!important;
   box-sizing:border-box!important;
 }
 #contact.section #mk-portfolio-chat .mk-chat-head{
@@ -7219,20 +7271,20 @@ body.tv-mode #main-content.tv-stage .tv-page:has(> #contact){
   display:flex!important;
   flex-direction:column!important;
   flex:1 1 0%!important;
-  min-height:150px!important;
+  min-height:0!important;
   max-height:none!important;
   height:auto!important;
   overflow-y:auto!important;
   overflow-x:hidden!important;
   overscroll-behavior:contain;
-  margin:14px 0 12px!important;
-  padding:6px 8px 6px 0!important;
+  margin:12px 0!important;
+  padding:5px 8px 5px 0!important;
   scrollbar-width:thin;
   scrollbar-color:#a37dc5 transparent;
 }
 #contact.section #mk-portfolio-chat .mk-chat-chips{
   flex:0 0 auto!important;
-  margin-top:auto!important;
+  margin-top:0!important;
   margin-bottom:10px!important;
 }
 #contact.section #mk-portfolio-chat .mk-chat-form{
@@ -7242,37 +7294,35 @@ body.tv-mode #main-content.tv-stage .tv-page:has(> #contact){
 }
 #contact.section #mk-portfolio-chat .mk-chat-disclaimer{
   flex:0 0 auto!important;
-  margin-top:9px!important;
+  margin-top:8px!important;
 }
-@media(min-width:768px){
- body.tv-mode #main-content.tv-stage .tv-page.is-active #contact #mk-portfolio-chat.mk-chat-panel{
-   height:100%!important;
-   min-height:0!important;
-   max-height:none!important;
-   overflow:hidden!important;
- }
- body.tv-mode #main-content.tv-stage .tv-page.is-active #contact #mk-portfolio-chat .mk-chat-conversation{
-   flex:1 1 0%!important;
-   min-height:120px!important;
-   max-height:none!important;
-   height:auto!important;
-   overflow-y:auto!important;
-   margin:12px 0 10px!important;
- }
- body.tv-mode #main-content.tv-stage .tv-page.is-active #contact #mk-portfolio-chat .mk-chat-chips{
-   margin-top:auto!important;
- }
+@media(min-width:768px) and (max-width:880px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-layout{
+    grid-template-columns:minmax(0,1fr)!important;
+    height:auto!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-left,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact #mk-portfolio-chat{
+    height:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact #mk-portfolio-chat{
+    height:480px!important;
+    overflow:hidden!important;
+  }
 }
 @media(max-width:767px){
- #contact.section #mk-portfolio-chat.mk-chat-panel{
-   height:auto!important;
-   min-height:480px!important;
-   max-height:none!important;
- }
- #contact.section #mk-portfolio-chat .mk-chat-conversation{
-   flex:1 1 auto!important;
-   min-height:210px!important;
-   max-height:50dvh!important;
- }
+  #contact.section #mk-portfolio-chat.mk-chat-panel{
+    height:480px!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:hidden!important;
+  }
+  #contact.section #mk-portfolio-chat .mk-chat-conversation{
+    flex:1 1 0%!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
 }
 </style></body></html>
