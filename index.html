@@ -7075,4 +7075,127 @@ body.tv-mode #main-content.tv-stage .tv-page:has(> #contact){
     margin:0!important;
   }
 }
+
+/* Enlarged Favorite Quotes: ~20pt (26.7 CSS px) at wide desktop sizes.
+   Quote 6 stays legible and the TV reserves actual space for the larger strip. */
+.mk-footer-quotes{
+  box-sizing:border-box!important;
+  padding:clamp(18px,2vw,27px) clamp(16px,3vw,45px)!important;
+}
+.mk-footer-quotes .mk-footer-quotes-inner{
+  box-sizing:border-box!important;
+  max-width:1480px!important;
+  gap:clamp(15px,2vw,34px)!important;
+}
+.mk-footer-quotes .mk-footer-quote-stage{
+  min-height:128px!important;
+  align-items:center!important;
+}
+.mk-footer-quotes .mk-footer-quote blockquote{
+  font-size:clamp(19px,1.4vw,27px)!important;
+  line-height:1.28!important;
+  font-weight:500!important;
+  overflow-wrap:normal!important;
+  text-wrap:balance!important;
+}
+.mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote{
+  font-size:clamp(18px,1.28vw,25px)!important;
+  line-height:1.28!important;
+}
+.mk-footer-quotes .mk-footer-quote figcaption{
+  font-size:clamp(12px,.78vw,14px)!important;
+  line-height:1.4!important;
+  margin-top:7px!important;
+}
+.mk-footer-quotes .mk-footer-quote-controls{
+  flex-shrink:0!important;
+  gap:10px!important;
+}
+.mk-footer-quotes .mk-footer-quote-controls button{
+  min-height:38px!important;
+  padding:7px 12px!important;
+  font-size:12px!important;
+}
+@media(min-width:1021px) and (min-height:690px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+    min-height:176px!important;
+    padding:16px 24px!important;
+    overflow:visible!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section{
+    height:calc(100% - 176px)!important;
+    max-height:calc(100% - 176px)!important;
+    padding-block:clamp(10px,1.5vh,22px)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quotes-inner{
+    grid-template-columns:minmax(150px,190px) minmax(0,1fr) auto!important;
+    gap:clamp(12px,2vw,28px)!important;
+    width:100%!important;
+    max-width:1480px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote-stage{
+    min-height:132px!important;
+    max-height:none!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote blockquote{
+    font-size:clamp(19px,1.4vw,27px)!important;
+    line-height:1.22!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote:nth-child(6) blockquote{
+    font-size:clamp(18px,1.28vw,25px)!important;
+    line-height:1.2!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote figcaption{
+    font-size:clamp(12px,.78vw,14px)!important;
+    line-height:1.3!important;
+  }
+}
+@media(min-width:768px) and (max-width:1200px){
+  .mk-footer-quotes .mk-footer-quotes-inner{
+    grid-template-columns:minmax(110px,150px) minmax(0,1fr) auto!important;
+    gap:12px!important;
+  }
+  .mk-footer-quotes .mk-footer-quote blockquote,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote blockquote{
+    font-size:clamp(17px,1.7vw,22px)!important;
+  }
+  .mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote:nth-child(6) blockquote{
+    font-size:clamp(16px,1.5vw,20px)!important;
+  }
+}
+@media(min-width:768px) and (max-height:760px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact){
+   overflow-y:auto!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section{
+   min-height:355px!important;
+   height:auto!important;
+   max-height:none!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+   position:relative!important;
+   inset:auto!important;
+   min-height:150px!important;
+ }
+}
+@media(max-width:767px){
+ .mk-footer-quotes{
+   padding:20px 16px!important;
+ }
+ .mk-footer-quotes .mk-footer-quote-stage{
+   min-height:130px!important;
+ }
+ .mk-footer-quotes .mk-footer-quote blockquote{
+   font-size:clamp(18px,4.3vw,24px)!important;
+   line-height:1.3!important;
+ }
+ .mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote{
+   font-size:clamp(17px,4vw,22px)!important;
+   line-height:1.28!important;
+ }
+ .mk-footer-quotes .mk-footer-quote figcaption{
+   font-size:12px!important;
+ }
+}
 </style></body></html>
