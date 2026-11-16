@@ -5679,4 +5679,121 @@ body.hob-lightbox-open{overflow:hidden!important}
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
-</script></body></html>
+</script><style id="mk-light-theme-projects-experience-skills">
+/* Shared design tokens lifted verbatim from #hobbies and #listening-reading. */
+:root{
+ --portfolio-cream:#fff9fa;--portfolio-blush:#f9ebf0;
+ --portfolio-lavender:#fbf6fc;--portfolio-lavender-end:#f3eafa;
+ --portfolio-ink:#292631;--portfolio-heading:#392945;
+ --portfolio-body:#51425c;--portfolio-secondary:#6a556f;
+ --portfolio-accent:#70419a;--portfolio-accent-fill:#ab7bdb;
+ --portfolio-border:#d9c5e5;--portfolio-card:#fffdfef0;
+ --portfolio-literature-ink:#2d2739;--portfolio-literature-body:#63596d;
+ --portfolio-literature-border:rgba(118,93,149,.17);
+ --portfolio-literature-card:rgba(255,255,255,.76);
+ --portfolio-card-radius:20px;
+ --portfolio-card-shadow:0 5px 22px rgba(63,45,84,.045);
+ --portfolio-card-hover-shadow:0 8px 28px #482d6512;
+ --portfolio-surface:radial-gradient(ellipse at 94% 8%,rgba(241,205,217,.55),transparent 46%),radial-gradient(ellipse at 2% 91%,rgba(246,220,208,.40),transparent 48%),linear-gradient(140deg,#fff9fa 0%,#f9ebf0 100%);
+ --portfolio-literature-surface:radial-gradient(ellipse at 7% 8%,rgba(219,194,234,.36),transparent 44%),linear-gradient(145deg,#fbf6fc 0%,#f3eafa 100%);
+}
+/* Repoint the two established reference surfaces at the same tokens; appearance unchanged. */
+#hobbies{background:var(--portfolio-surface)!important;color:var(--portfolio-ink)!important}
+#hobbies #beyond-code-editorial .bc-story{background:var(--portfolio-card)!important;border-color:var(--portfolio-border)!important}
+#listening-reading{background:var(--portfolio-literature-surface)!important;color:var(--portfolio-literature-ink)!important}
+#listening-reading .lr-card{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-literature-border)!important;border-radius:var(--portfolio-card-radius)!important;box-shadow:var(--portfolio-card-shadow)!important}
+/* Target only these three sections; TV stage/transitions and scripts remain intact. */
+#projects.fp,#experience.section,#skills.section{
+ background:var(--portfolio-surface)!important;
+ background-color:var(--portfolio-cream)!important;
+ background-image:var(--portfolio-surface)!important;
+ color:var(--portfolio-ink)!important;
+ border-top:1px solid var(--portfolio-border)!important;
+ border-bottom:1px solid var(--portfolio-border)!important;
+ box-sizing:border-box;
+}
+#projects.fp{--fp-ink:var(--portfolio-ink);--fp-muted:var(--portfolio-secondary);--fp-line:var(--portfolio-border);--fp-pill:var(--portfolio-literature-card);--fp-bezel:var(--portfolio-border);--fp-accent:var(--portfolio-accent);padding-top:clamp(54px,6vw,86px)!important;padding-bottom:clamp(66px,7vw,100px)!important}
+#experience.section,#skills.section{padding-top:clamp(54px,6vw,86px)!important;padding-bottom:clamp(66px,7vw,100px)!important}
+#projects.fp::before,#experience.section::before,#skills.section::before{background:none!important;box-shadow:none!important}
+#projects.fp .fp-eyebrow,#projects.fp .fp-label,#projects.fp .fp-label b,#projects.fp .fp-label span{color:var(--portfolio-accent)!important;-webkit-text-fill-color:var(--portfolio-accent)!important}
+#projects.fp .fp-title,#projects.fp .fp-name{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;text-shadow:none!important}
+#projects.fp .fp-sub{color:var(--portfolio-body)!important;-webkit-text-fill-color:var(--portfolio-body)!important}
+#projects.fp .fp-card{background:var(--portfolio-card)!important;border:1px solid var(--portfolio-border)!important;border-radius:var(--portfolio-card-radius)!important;box-shadow:var(--portfolio-card-shadow)!important;padding:clamp(18px,2.5vw,28px)!important}
+#projects.fp .fp-card:hover,#projects.fp .fp-card:focus-within{border-color:var(--portfolio-accent-fill)!important;box-shadow:var(--portfolio-card-hover-shadow)!important}
+#projects.fp .fp-star{color:var(--portfolio-accent)!important;background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important}
+#projects.fp .fp-star:hover,#projects.fp .fp-star:focus-visible{background:var(--portfolio-lavender-end)!important;border-color:var(--portfolio-accent)!important;color:var(--portfolio-heading)!important}
+#projects.fp .fp-frame{border-color:var(--portfolio-border)!important;box-shadow:var(--portfolio-card-shadow)!important}
+#projects.fp .fp-g1,#projects.fp .fp-g2,#projects.fp .fp-g3{background:linear-gradient(145deg,#fffefe,#f5eef8)!important}
+#projects.fp .fp-desc{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important}
+#projects.fp .fp-win{box-shadow:0 8px 28px #482d6512!important;border:1px solid var(--portfolio-border)!important}
+#projects.fp .fp-tags li{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important}
+#projects.fp .fp-more{color:var(--portfolio-accent)!important;-webkit-text-fill-color:var(--portfolio-accent)!important;border-bottom-color:var(--portfolio-border)!important}
+#projects.fp .fp-more:hover{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;border-bottom-color:var(--portfolio-accent)!important}
+/* Experience: keep job/education/milestone markup, timelines and hover interactions. */
+#experience .page-hero,#experience .page-hero h1,#experience .page-hero h1 .mk-title-solid{color:var(--portfolio-ink)!important;-webkit-text-fill-color:var(--portfolio-ink)!important}
+#experience .page-hero .eyebrow,#experience .page-hero .back,#experience .timeline .date{color:var(--portfolio-accent)!important}
+#experience .page-hero p,#experience .timeline .muted,#experience .timeline .job p,#experience .timeline .job li{color:var(--portfolio-body)!important}
+#experience .timeline .job,#experience .timeline .demo-entry,#experience .preview-school,
+#experience #achievements .simple-list article.demo-milestone,#experience #achievements .simple-list article.dev-milestone,
+#experience #achievements .dev-track>.dev-program{
+ background:var(--portfolio-card)!important;background-image:none!important;
+ border:1px solid var(--portfolio-border)!important;border-radius:var(--portfolio-card-radius)!important;
+ color:var(--portfolio-heading)!important;box-shadow:var(--portfolio-card-shadow)!important;
+}
+#experience .timeline > article.job.demo-entry,
+#experience .timeline > article.job.demo-entry:hover,#experience .timeline > article.job.demo-entry:focus-within{background:var(--portfolio-card)!important;background-image:none!important}
+#experience .timeline h2,#experience .preview-education h2,#experience .preview-school h3,
+#experience #achievements :is(.simple-list,.dev-heading,.dev-track) :is(h2,h3){color:var(--portfolio-heading)!important}
+#experience .preview-school p,#experience #achievements :is(.simple-list,.dev-heading,.dev-track) p,
+#experience #achievements .dev-meta{color:var(--portfolio-body)!important}
+#experience .timeline::before,#experience .timeline .job::before,
+#experience #achievements .timeline::before{border-color:var(--portfolio-border)!important;background-color:var(--portfolio-border)!important}
+#experience :is(.tabs,.tab-list,[role="tablist"]){border-color:var(--portfolio-border)!important}
+#experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab){background:var(--portfolio-literature-card)!important;color:var(--portfolio-accent)!important;border:1px solid var(--portfolio-border)!important}
+#experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab):is([aria-selected="true"],.active):not(:disabled){background:var(--portfolio-accent-fill)!important;color:var(--portfolio-ink)!important;border-color:var(--portfolio-accent)!important}
+#experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab):hover{border-color:var(--portfolio-accent)!important}
+#experience #achievements.mk-exp-milestones{background:transparent!important;color:var(--portfolio-ink)!important}
+#experience #achievements .page-hero h1,#experience #achievements .page-hero h1 .mk-title-solid{
+ color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;
+}
+#experience #achievements .page-hero h1 .mk-title-glow{
+ background-image:linear-gradient(105deg,#7547ad 10%,#af69de 36%,#6f46ad 52%,#cf97e9 72%,#8d60c0 94%)!important;
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+}
+#experience #achievements .page-hero :is(.eyebrow,.back){color:var(--portfolio-accent)!important}
+#experience #achievements .page-hero p{color:var(--portfolio-body)!important}
+#experience #achievements .page-hero .highlight{color:var(--portfolio-accent)!important;-webkit-text-fill-color:var(--portfolio-accent)!important}
+/* Skills: intact 3D orbit, accessible tool labels, six category colors and filters. */
+#skills.section .sectionhead :is(.eyebrow,p),#skills .mk-skills-legend{color:var(--portfolio-body)!important}
+#skills.section .sectionhead .mk-title-solid{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;background:none!important}
+#skills.section .sectionhead .mk-title-glow{
+ background-image:linear-gradient(105deg,#7547ad 10%,#af69de 36%,#6f46ad 52%,#cf97e9 72%,#8d60c0 94%)!important;
+ background-clip:text!important;-webkit-background-clip:text!important;
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+}
+#skills.section .three>.mk-skill-category-card,
+#skills.section .three>.large-panel{background:var(--portfolio-card)!important;background-image:none!important;border-color:var(--portfolio-border)!important;border-radius:var(--portfolio-card-radius)!important;box-shadow:var(--portfolio-card-shadow)!important;color:var(--portfolio-heading)!important}
+#skills.section .three>.mk-skill-category-card:is(:hover,:focus-visible){border-color:var(--portfolio-accent-fill)!important;box-shadow:var(--portfolio-card-hover-shadow)!important}
+#skills.section .three .large-panel .eyebrow{color:var(--portfolio-accent)!important}
+#skills.section .three .large-panel .skill{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;border-color:var(--portfolio-border)!important;background:var(--portfolio-lavender-end)!important}
+#skills.section .three .large-panel .skill:is(:hover,:focus-visible){background:var(--portfolio-lavender)!important;border-color:var(--portfolio-accent)!important;color:var(--portfolio-ink)!important}
+#skills.section .mk-skills-category-legend button{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-heading)!important}
+#skills.section .mk-skills-category-legend button:is(:hover,[aria-pressed="true"]){background:var(--portfolio-lavender-end)!important;border-color:var(--portfolio-accent)!important;color:var(--portfolio-ink)!important}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;box-shadow:var(--portfolio-card-shadow)!important}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-logo-text{background:var(--portfolio-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-ink)!important;-webkit-text-fill-color:var(--portfolio-ink)!important;text-shadow:none!important}
+#skills.section #mk-skills-visual .mk-skills-status{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-body)!important}
+#skills.section #mk-skills-visual canvas{opacity:.6}
+#projects.fp :is(a,button):focus-visible,#experience :is(a,button,[role="tab"]):focus-visible,
+#skills :is(a,button,.mk-skill-category-card):focus-visible{outline:3px solid var(--portfolio-accent)!important;outline-offset:3px}
+@media(max-width:767px){
+ #projects.fp{padding-inline:clamp(12px,4vw,20px)!important}
+ #projects.fp .fp-card{padding:clamp(14px,4vw,20px)!important}
+ #experience.section,#skills.section{padding-block:clamp(42px,8vw,66px)!important}
+ #experience .timeline .job,#experience .preview-school{min-width:0}
+ #skills.section .three{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){#skills.section .three{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){
+ #projects.fp .fp-card,#projects.fp .fp-frame,#skills.section .mk-skill-category-card{transition:none!important}
+}
+</style></body></html>
