@@ -90,15 +90,14 @@
   const found = channels.map(item => document.getElementById(item.id));
   if (found.some(item => !item)) return;
 
-  // Preserve the non-nav editorial content inside Home and footer inside Contact.
+  // Preserve the non-nav editorial content inside Home and quotes inside Contact.
   const homeExtras = [
     document.getElementById('site-preview-notice'),
     document.querySelector('.mk-purple-section-transition'),
     document.getElementById('portfolio-intro-grid')
   ].filter(Boolean);
   const finalExtras = [
-    document.querySelector('.mk-footer-quotes'),
-    document.querySelector('.mk-footer-band') || document.querySelector('footer')
+    document.querySelector('.mk-footer-quotes')
   ].filter(Boolean);
   const activeFromHash = () => {
     const raw = decodeURIComponent(location.hash.replace(/^#/, '')).toLowerCase();
