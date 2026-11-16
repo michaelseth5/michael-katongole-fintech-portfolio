@@ -6496,4 +6496,53 @@ body .mk-footer-band .mk-socials-footer .mk-social-link:is(:hover,:focus-visible
 @media(max-width:450px){
   #skills.section #mk-skills-visual .mk-skill-particle img{width:25px!important;height:25px!important}
 }
+
+/* Skills icon hover halo: bright brand-colored bloom, like reference screenshot.
+   Scoped to an icon's hover/focus state; no additional animation loops. */
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:visible!important;
+  transition:transform .22s ease,filter .22s ease!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+  inset:-34px!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,
+    rgba(var(--skill-glow-rgb),.78) 0%,
+    rgba(var(--skill-glow-rgb),.54) 26%,
+    rgba(var(--skill-glow-rgb),.24) 51%,
+    rgba(var(--skill-glow-rgb),0) 76%)!important;
+  filter:blur(14px)!important;
+  opacity:0!important;
+  transform:scale(.68)!important;
+  transition:opacity .24s ease,transform .28s ease!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon::before{
+  opacity:1!important;
+  transform:scale(1.12)!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon{
+  transform:scale(1.17)!important;
+  filter:drop-shadow(0 0 9px rgba(var(--skill-glow-rgb),.9))
+         drop-shadow(0 0 21px rgba(var(--skill-glow-rgb),.63))!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border:0!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) img{
+  filter:drop-shadow(0 0 5px rgba(var(--skill-glow-rgb),.55))!important;
+}
+@media(prefers-reduced-motion:reduce){
+  #skills.section #mk-skills-visual .mk-skill-particle .mk-icon,
+  #skills.section #mk-skills-visual .mk-skill-particle .mk-icon::before{
+    transition:none!important;
+  }
+}
 </style></body></html>
