@@ -5290,4 +5290,231 @@ document.addEventListener('DOMContentLoaded',()=>{
  track.style.scrollBehavior=reduce?'auto':'smooth';
  root.querySelectorAll('img').forEach(img=>{img.loading='lazy';img.decoding='async'});
 });
+</script>
+<style id="mk-hobbies-restoration-lightbox-css">
+/* Original pre-restyle colors are retained literally from the historical #hobbies rule. */
+#hobbies{
+ --hob-title:#292631;--hob-body:#51425c;--hob-heading:#392945;
+ --hob-accent:#70419a;--hob-lavender:#ab7bdb;--hob-card:#fffdfef0;
+ --hob-border:#d9c5e5;--hob-mute:#6a556f;
+ color:var(--hob-title)!important;
+ background:
+ radial-gradient(ellipse at 94% 8%,rgba(241,205,217,.55),transparent 46%),
+ radial-gradient(ellipse at 2% 91%,rgba(246,220,208,.40),transparent 48%),
+ linear-gradient(140deg,#fff9fa 0%,#f9ebf0 100%)!important;
+ overflow-x:clip;
+}
+#hobbies .page-hero h1,#hobbies .page-hero h1 .mk-title-solid{color:var(--hob-title)!important}
+#hobbies .page-hero .eyebrow,#hobbies .hobby-slide .eyebrow,
+#hobbies #beyond-code-editorial .bc-num{color:var(--hob-accent)!important}
+#hobbies .page-hero p,#hobbies .hobby-carousel-track>.hobby-slide>p,
+#hobbies .hobby-carousel-track>.hobby-slide>.art-showcase-desc,
+#hobbies .hobby-carousel-track>.hobby-slide>.travel-gallery-intro,
+#hobbies .hobby-carousel-track>.hobby-slide>.mentorship-extra-copy{color:var(--hob-body)!important}
+#hobbies #beyond-code-editorial{color:var(--hob-title)!important;background:#ffffffb8!important;border:1px solid var(--hob-border)!important;box-shadow:0 8px 28px #482d6512}
+#hobbies #beyond-code-editorial .bc-heading h2,
+#hobbies #beyond-code-editorial .bc-copy h3{color:var(--hob-heading)!important;text-shadow:none!important}
+#hobbies #beyond-code-editorial .bc-heading p,
+#hobbies #beyond-code-editorial .bc-copy p{color:var(--hob-body)!important}
+#hobbies #beyond-code-editorial .bc-stories{
+ display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ overflow:visible!important;gap:12px!important;padding:4px 2px 8px!important;
+}
+#hobbies #beyond-code-editorial .bc-story{
+ display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ min-width:0!important;width:auto!important;gap:12px!important;
+ padding:13px!important;border:1px solid var(--hob-border)!important;
+ border-radius:17px!important;background:var(--hob-card)!important;
+ box-shadow:0 6px 18px #4d306015;
+}
+#hobbies #beyond-code-editorial .bc-collage{
+ flex:none!important;width:100%!important;max-width:none!important;
+ min-width:0!important;height:auto!important;aspect-ratio:1.6!important;
+ order:0!important;margin:0 auto!important;
+}
+#hobbies #beyond-code-editorial .bc-copy{
+ flex:0 0 auto!important;order:1!important;min-width:0!important;
+ padding:0 2px!important;text-align:left!important;
+}
+#hobbies #beyond-code-editorial .bc-copy h3{
+ font-size:clamp(15px,1.3vw,19px)!important;line-height:1.22!important;
+ margin:5px 0 6px!important;
+}
+#hobbies #beyond-code-editorial .bc-copy p{
+ font-size:clamp(12px,.95vw,13px)!important;line-height:1.52!important;
+ max-width:none!important;max-height:none!important;height:auto!important;
+ overflow:visible!important;scrollbar-width:auto!important;margin:0!important;
+}
+#hobbies #beyond-code-editorial .bc-num{font-size:10px!important}
+#hobbies #beyond-code-editorial .bc-tile{border-color:#f6e9fa!important}
+#hobbies .hobby-carousel-track>.hobby-slide{
+ color:var(--hob-title)!important;background:linear-gradient(145deg,#fffefe,#f5eef8)!important;
+ border-color:var(--hob-border)!important;box-shadow:0 9px 24px #59387717!important;
+}
+#hobbies .hobby-slide h2{color:var(--hob-heading)!important}
+#hobbies .hobby-carousel-dots button{color:var(--hob-accent)!important;background:#fff9!important;border-color:#b59ac9!important}
+#hobbies .hobby-carousel-dots button.active,#hobbies .hobby-carousel-dots button[aria-selected="true"]{
+ background:var(--hob-lavender)!important;color:#1a1126!important;border-color:#7951a5!important;
+}
+#hobbies .hobby-carousel-btn,#hobbies .photo-carousel-arrow{
+ background:#fff9!important;color:var(--hob-accent)!important;border-color:#bfa3d1!important;
+}
+#hobbies .photo-carousel-status{color:var(--hob-accent)!important}
+#hobbies .photo-carousel-shell .photo-carousel-rail>figure{background:#fff!important;border-color:#d7c4e2!important}
+#hobbies .sports-emoji-card{background:#fffdfedc!important;border-color:var(--hob-border)!important}
+#hobbies .rb-converts-slide{background:linear-gradient(145deg,#fffefe,#f4edf8)!important}
+#hobbies .rb-converts-slide p{color:var(--hob-body)!important}
+#hobbies .rb-converts-slide .rb-converts-status{color:var(--hob-accent)!important;background:#ede2f5!important;border-color:#bfa3d1!important}
+#hobbies #beyond-code-editorial .bc-tile img,
+#hobbies .hobby-carousel-track img{cursor:zoom-in;transition:transform .2s ease}
+#hobbies #beyond-code-editorial .bc-tile:hover img,
+#hobbies .photo-carousel-rail figure:hover img,
+#hobbies .sports-emoji-card:hover img{transform:scale(1.045)}
+#hobbies .hobby-carousel-track img:focus-visible,#hobbies #beyond-code-editorial img:focus-visible{
+ outline:3px solid var(--hob-accent);outline-offset:3px;border-radius:7px;
+}
+@media(max-width:1100px){
+ #hobbies #beyond-code-editorial .bc-stories{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #hobbies #beyond-code-editorial .bc-collage{aspect-ratio:1.9!important}
+}
+@media(max-width:620px){
+ #hobbies #beyond-code-editorial .bc-stories{grid-template-columns:minmax(0,1fr)!important}
+ #hobbies #beyond-code-editorial .bc-story{padding:14px!important}
+ #hobbies #beyond-code-editorial .bc-collage{aspect-ratio:2!important;max-height:190px!important}
+ #hobbies #beyond-code-editorial .bc-copy h3{font-size:17px!important}
+ #hobbies #beyond-code-editorial .bc-copy p{font-size:13px!important}
+}
+#mk-hobby-lightbox{position:fixed;inset:0;z-index:2147483000;
+ display:grid;place-items:center;padding:clamp(10px,3vw,30px);
+ background:#090610eb;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);
+ opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
+#mk-hobby-lightbox.is-open{opacity:1;visibility:visible;pointer-events:auto}
+#mk-hobby-lightbox .hob-lb-panel{position:relative;width:min(100%,1100px);height:min(92svh,900px);
+ display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;min-width:0;
+ border:1px solid #ffffff38;border-radius:20px;background:#130e1be8;
+ box-shadow:0 30px 70px #0009;padding:48px 48px 24px;outline:none}
+#mk-hobby-lightbox .hob-lb-image{display:block;max-width:100%;max-height:calc(100% - 86px);width:auto;height:auto;object-fit:contain;border-radius:8px}
+#mk-hobby-lightbox .hob-lb-caption{color:#eee4f7;text-align:center;font-size:clamp(12px,1.5vw,16px);line-height:1.45;max-width:90%;overflow-wrap:anywhere}
+#mk-hobby-lightbox .hob-lb-counter{color:#d2b3f7;font:700 12px/1.2 system-ui,sans-serif;letter-spacing:.04em}
+#mk-hobby-lightbox button{position:absolute;display:grid;place-items:center;width:42px;height:42px;
+ border:1px solid #ffffff61;background:#22162ded;color:#fff;border-radius:50%;
+ font-size:23px;cursor:pointer;touch-action:manipulation}
+#mk-hobby-lightbox button:focus-visible{outline:3px solid #d7b0ff;outline-offset:3px}
+#mk-hobby-lightbox .hob-lb-close{top:8px;right:8px;font-size:25px}
+#mk-hobby-lightbox .hob-lb-prev{left:6px;top:50%;transform:translateY(-50%)}
+#mk-hobby-lightbox .hob-lb-next{right:6px;top:50%;transform:translateY(-50%)}
+body.hob-lightbox-open{overflow:hidden!important}
+@media(max-width:620px){
+ #mk-hobby-lightbox{padding:5px}
+ #mk-hobby-lightbox .hob-lb-panel{height:min(96svh,950px);padding:48px 26px 22px;border-radius:14px}
+ #mk-hobby-lightbox .hob-lb-caption{font-size:13px}
+ #mk-hobby-lightbox button{width:35px;height:35px;font-size:20px}
+ #mk-hobby-lightbox .hob-lb-prev{left:1px}#mk-hobby-lightbox .hob-lb-next{right:1px}
+}
+@media(prefers-reduced-motion:reduce){
+ #mk-hobby-lightbox,#hobbies #beyond-code-editorial .bc-tile img,
+ #hobbies .hobby-carousel-track img{transition:none!important}
+ #hobbies #beyond-code-editorial .bc-tile:hover img,
+ #hobbies .photo-carousel-rail figure:hover img,
+ #hobbies .sports-emoji-card:hover img{transform:none!important}
+}
+</style>
+<script id="mk-hobbies-accessible-lightbox">
+(()=>{
+ const init=()=>{
+  const root=document.getElementById('hobbies');if(!root)return;
+  const slides=[...root.querySelectorAll('.hobby-carousel-track>.hobby-slide')];
+  const overview=[...root.querySelectorAll('#beyond-code-editorial .bc-story')];
+  const mapping=[1,2,0,3];
+  const getSrc=img=>img.dataset.fullSrc||img.dataset.deferredSrc||img.getAttribute('src')||img.currentSrc||'';
+  const label=img=>{
+   const figure=img.closest('figure'), caption=figure?.querySelector('figcaption');
+   const sports=img.closest('.sports-emoji-card')?.querySelector('.sports-emoji-label');
+   return caption?.innerText?.trim()||sports?.innerText?.trim()||img.getAttribute('alt')||'';
+  };
+  const itemsFor=slide=>[...slide.querySelectorAll('.photo-carousel-rail img,.sports-emoji-grid img')].map(img=>({src:getSrc(img),caption:label(img)})).filter(it=>it.src);
+  const groups=slides.map(itemsFor);
+  const box=document.createElement('div');box.id='mk-hobby-lightbox';
+  box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');
+  box.setAttribute('aria-label','Hobbies photo viewer');
+  box.setAttribute('aria-hidden','true');
+  box.innerHTML='<div class="hob-lb-panel" tabindex="-1"><button class="hob-lb-close" type="button" aria-label="Close photo viewer">×</button><button class="hob-lb-prev" type="button" aria-label="Previous photo">‹</button><img class="hob-lb-image" alt="" decoding="async" loading="lazy"><button class="hob-lb-next" type="button" aria-label="Next photo">›</button><div class="hob-lb-caption" aria-live="polite"></div><div class="hob-lb-counter" aria-live="polite"></div></div>';
+  document.body.appendChild(box);
+  const panel=box.querySelector('.hob-lb-panel'),picture=box.querySelector('.hob-lb-image');
+  const caption=box.querySelector('.hob-lb-caption'),counter=box.querySelector('.hob-lb-counter');
+  const prev=box.querySelector('.hob-lb-prev'),next=box.querySelector('.hob-lb-next'),close=box.querySelector('.hob-lb-close');
+  let selected=[],idx=0,opener=null,wasOverflow='',touch=null;
+  function draw(){
+   if(!selected.length)return;
+   const item=selected[idx];picture.alt=item.caption;
+   // Use original local asset, not rendered thumbnail/currentSrc.
+   picture.src=item.src;caption.textContent=item.caption;counter.textContent=(idx+1)+' / '+selected.length;
+   prev.disabled=next.disabled=selected.length<2;
+  }
+  function move(delta){if(!selected.length)return;idx=(idx+delta+selected.length)%selected.length;draw()}
+  function open(group,index,from){
+   if(!group.length)return;
+   opener=from;selected=group;idx=Math.max(0,Math.min(group.length-1,index));
+   wasOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
+   document.body.classList.add('hob-lightbox-open');
+   box.classList.add('is-open');box.setAttribute('aria-hidden','false');
+   draw();close.focus({preventScroll:true});
+  }
+  function hide(){
+   if(!box.classList.contains('is-open'))return;
+   box.classList.remove('is-open');box.setAttribute('aria-hidden','true');
+   document.body.classList.remove('hob-lightbox-open');document.body.style.overflow=wasOverflow;
+   picture.removeAttribute('src');selected=[];
+   if(opener?.isConnected)opener.focus({preventScroll:true});
+   opener=null;
+  }
+  // Delegate so deferred image loading and all existing carousel logic remain unchanged.
+  root.addEventListener('click',e=>{
+   const img=e.target.closest('img');if(!img||!root.contains(img))return;
+   const ov=img.closest('#beyond-code-editorial .bc-story');
+   const slide=img.closest('.hobby-carousel-track>.hobby-slide');
+   if(ov){
+    const cat=mapping[overview.indexOf(ov)],group=groups[cat]||[];
+    const match=group.findIndex(x=>x.src===getSrc(img));
+    open(group.length?group:[{src:getSrc(img),caption:label(img)}],match>=0?match:0,img);
+   }else if(slide){
+    const group=groups[slides.indexOf(slide)]||[],index=group.findIndex(x=>x.src===getSrc(img));
+    open(group,index>=0?index:0,img);
+   }
+  });
+  root.querySelectorAll('#beyond-code-editorial img,.photo-carousel-rail img,.sports-emoji-grid img').forEach(img=>{
+   img.tabIndex=0;img.setAttribute('role','button');
+   img.setAttribute('aria-label','Enlarge '+label(img));
+   img.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();img.click();}
+   });
+  });
+  close.addEventListener('click',hide);prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+  box.addEventListener('click',e=>{if(e.target===box)hide()});
+  document.addEventListener('keydown',e=>{
+   if(!box.classList.contains('is-open'))return;
+   if(e.key==='Escape'){e.preventDefault();hide();return}
+   if(e.key==='ArrowLeft'){e.preventDefault();move(-1);return}
+   if(e.key==='ArrowRight'){e.preventDefault();move(1);return}
+   if(e.key==='Tab'){
+    const buttons=[close,prev,next].filter(b=>!b.disabled);
+    const current=buttons.indexOf(document.activeElement);
+    if(e.shiftKey&&current<=0){e.preventDefault();buttons[buttons.length-1].focus()}
+    else if(!e.shiftKey&&current===buttons.length-1){e.preventDefault();buttons[0].focus()}
+    else if(current<0){e.preventDefault();buttons[0].focus()}
+   }
+  },true);
+  panel.addEventListener('touchstart',e=>{
+   if(e.touches.length===1)touch={x:e.touches[0].clientX,y:e.touches[0].clientY};
+  },{passive:true});
+  panel.addEventListener('touchend',e=>{
+   if(!touch||!e.changedTouches.length)return;
+   const dx=e.changedTouches[0].clientX-touch.x,dy=e.changedTouches[0].clientY-touch.y;
+   if(Math.abs(dy)>85&&dy>0&&Math.abs(dy)>Math.abs(dx)*1.15)hide();
+   else if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.15)move(dx<0?1:-1);
+   touch=null;
+  },{passive:true});
+ };
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
 </script></body></html>
