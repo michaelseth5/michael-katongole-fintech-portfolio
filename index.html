@@ -5742,6 +5742,8 @@ body.hob-lightbox-open{overflow:hidden!important}
 }
 #experience .timeline > article.job.demo-entry,
 #experience .timeline > article.job.demo-entry:hover,#experience .timeline > article.job.demo-entry:focus-within{background:var(--portfolio-card)!important;background-image:none!important}
+#experience .timeline > article.job.demo-entry:hover{transform:translateY(-5px)!important;border-color:var(--portfolio-accent-fill)!important;box-shadow:var(--portfolio-card-hover-shadow)!important}
+#experience .timeline > article.job.demo-entry:focus-within{box-shadow:0 0 0 3px var(--portfolio-border)!important}
 #experience .timeline h2,#experience .preview-education h2,#experience .preview-school h3,
 #experience #achievements :is(.simple-list,.dev-heading,.dev-track) :is(h2,h3){color:var(--portfolio-heading)!important}
 #experience .preview-school p,#experience #achievements :is(.simple-list,.dev-heading,.dev-track) p,
@@ -5765,7 +5767,7 @@ body.hob-lightbox-open{overflow:hidden!important}
 #experience #achievements .page-hero .highlight{color:var(--portfolio-accent)!important;-webkit-text-fill-color:var(--portfolio-accent)!important}
 /* Skills: intact 3D orbit, accessible tool labels, six category colors and filters. */
 #skills.section .sectionhead :is(.eyebrow,p),#skills .mk-skills-legend{color:var(--portfolio-body)!important}
-#skills.section .sectionhead .mk-title-solid{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;background:none!important}
+#skills.section .sectionhead .mk-title-solid,
 #skills.section .sectionhead .mk-title-glow{
  background-image:linear-gradient(105deg,#7547ad 10%,#af69de 36%,#6f46ad 52%,#cf97e9 72%,#8d60c0 94%)!important;
  background-clip:text!important;-webkit-background-clip:text!important;
