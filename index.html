@@ -6908,4 +6908,109 @@ body.tv-mode #main-content.tv-stage .tv-page:has(> #contact){
 #contact.section #mk-portfolio-chat .mk-chat-form:focus-within{
   outline:2px solid #a779c9!important;
 }
+
+/* Favorite Quotes: miniature Let's Connect purple gradient + fluid text sizing.
+   The sixth, longer quote wraps fully rather than clipping in the TV quote strip. */
+.mk-footer-quotes .mk-footer-quotes-kicker{
+  display:inline-block!important;
+  width:max-content!important;
+  max-width:100%!important;
+  margin:0!important;
+  font-family:'Space Grotesk',Arial,sans-serif!important;
+  font-size:clamp(9px,.78vw,12px)!important;
+  line-height:1.3!important;
+  font-weight:800!important;
+  letter-spacing:.085em!important;
+  text-transform:uppercase!important;
+  background:linear-gradient(95deg,#7242a7 0%,#9454bd 48%,#b761ae 100%)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  white-space:normal!important;
+  overflow-wrap:break-word!important;
+}
+.mk-footer-quotes .mk-footer-quotes-inner{
+  min-width:0!important;
+}
+.mk-footer-quotes .mk-footer-quote-stage{
+  min-width:0!important;
+  width:100%!important;
+}
+.mk-footer-quotes .mk-footer-quote{
+  min-width:0!important;
+  max-width:100%!important;
+}
+.mk-footer-quotes .mk-footer-quote blockquote{
+  max-width:100%!important;
+  font-size:clamp(11px,1.12vw,16px)!important;
+  line-height:1.35!important;
+  font-weight:500!important;
+  letter-spacing:-.01em!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  text-wrap:pretty;
+}
+.mk-footer-quotes .mk-footer-quote figcaption{
+  font-size:clamp(9px,.83vw,11px)!important;
+  line-height:1.3!important;
+  white-space:normal!important;
+}
+.mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote{
+  font-size:clamp(10px,1vw,14px)!important;
+  line-height:1.3!important;
+}
+@media(min-width:768px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quotes{
+   min-height:0!important;
+   overflow:visible!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quotes-inner{
+   grid-template-columns:minmax(112px,auto) minmax(0,1fr) auto!important;
+   gap:clamp(8px,1vw,16px)!important;
+   min-width:0!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote-stage{
+   min-height:clamp(44px,6vh,70px)!important;
+   height:auto!important;
+   max-width:none!important;
+   min-width:0!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote blockquote{
+   font-size:clamp(10px,.85vw,13px)!important;
+   line-height:1.25!important;
+   overflow-wrap:break-word!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote:nth-child(6) blockquote{
+   font-size:clamp(9px,.78vw,11px)!important;
+   line-height:1.25!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote figcaption{
+   font-size:clamp(9px,.7vw,10px)!important;
+ }
+}
+@media(max-width:767px){
+ .mk-footer-quotes .mk-footer-quotes-inner{
+   display:flex!important;
+   flex-direction:column!important;
+   align-items:center!important;
+   gap:12px!important;
+   padding-inline:16px!important;
+ }
+ .mk-footer-quotes .mk-footer-quote-stage{
+   max-width:100%!important;
+   min-height:95px!important;
+ }
+ .mk-footer-quotes .mk-footer-quote blockquote{
+   font-size:clamp(12px,3.2vw,15px)!important;
+   line-height:1.35!important;
+ }
+ .mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote{
+   font-size:clamp(11px,3vw,14px)!important;
+ }
+ .mk-footer-quotes .mk-footer-quote-controls{
+   flex-wrap:wrap!important;
+   justify-content:center!important;
+ }
+}
 </style></body></html>
