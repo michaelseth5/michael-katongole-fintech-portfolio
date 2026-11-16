@@ -5697,6 +5697,10 @@ body.hob-lightbox-open{overflow:hidden!important}
  --portfolio-surface:radial-gradient(ellipse at 94% 8%,rgba(241,205,217,.55),transparent 46%),radial-gradient(ellipse at 2% 91%,rgba(246,220,208,.40),transparent 48%),linear-gradient(140deg,#fff9fa 0%,#f9ebf0 100%);
  --portfolio-literature-surface:radial-gradient(ellipse at 7% 8%,rgba(219,194,234,.36),transparent 44%),linear-gradient(145deg,#fbf6fc 0%,#f3eafa 100%);
  --portfolio-purple-gradient:radial-gradient(ellipse at 88% 12%,rgba(171,123,219,.18),transparent 48%),linear-gradient(135deg,#e4deeb 0%,#f3eafa 48%,#d9c5e5 100%);
+ /* Related pastel-purple compositions; all stops reuse Hobbies/Literature colors. */
+ --portfolio-projects-gradient:linear-gradient(90deg,#d9c5e5 0%,#f3eafa 48%,#e4deeb 100%);
+ --portfolio-experience-gradient:linear-gradient(145deg,#e4deeb 0%,#fbf6fc 45%,#d9c5e5 100%);
+ --portfolio-skills-gradient:radial-gradient(ellipse at 78% 18%,rgba(171,123,219,.18),transparent 50%),linear-gradient(180deg,#f3eafa 0%,#d9c5e5 65%,#e4deeb 100%);
 }
 /* Repoint the two established reference surfaces at the same tokens; appearance unchanged. */
 #hobbies{background:var(--portfolio-surface)!important;color:var(--portfolio-ink)!important}
@@ -5713,6 +5717,10 @@ body.hob-lightbox-open{overflow:hidden!important}
  border-bottom:1px solid var(--portfolio-border)!important;
  box-sizing:border-box;
 }
+/* A horizontal sweep, diagonal lavender fade and radial/vertical wash respectively. */
+#projects.fp{background:var(--portfolio-projects-gradient)!important;background-image:var(--portfolio-projects-gradient)!important}
+#experience.section{background:var(--portfolio-experience-gradient)!important;background-image:var(--portfolio-experience-gradient)!important}
+#skills.section{background:var(--portfolio-skills-gradient)!important;background-image:var(--portfolio-skills-gradient)!important}
 #projects.fp{--fp-ink:var(--portfolio-ink);--fp-muted:var(--portfolio-secondary);--fp-line:var(--portfolio-border);--fp-pill:var(--portfolio-literature-card);--fp-bezel:var(--portfolio-border);--fp-accent:var(--portfolio-accent);padding-top:clamp(54px,6vw,86px)!important;padding-bottom:clamp(66px,7vw,100px)!important}
 #experience.section,#skills.section{padding-top:clamp(54px,6vw,86px)!important;padding-bottom:clamp(66px,7vw,100px)!important}
 #projects.fp::before,#experience.section::before,#skills.section::before{background:none!important;box-shadow:none!important}
