@@ -4243,11 +4243,11 @@ body .apple-topbar {
   const projected=vertices.map(project);
   for(const [a,b] of edges){
     const u=projected[a],v=projected[b],front=(u.z+v.z)/2>0;
-    ctx.strokeStyle=front?"rgba(168,144,244,.20)":"rgba(133,111,207,.07)";
-    ctx.lineWidth=front?.65:.5;
+    ctx.strokeStyle=front?"rgba(82,40,142,.58)":"rgba(100,65,159,.24)";
+    ctx.lineWidth=front?1.15:.8;
     ctx.beginPath();ctx.moveTo(u.x,u.y);ctx.lineTo(v.x,v.y);ctx.stroke();
   }
-  ctx.strokeStyle="rgba(183,157,243,.22)";ctx.lineWidth=.75;
+  ctx.strokeStyle="rgba(81,38,140,.70)";ctx.lineWidth=1.6;
   ctx.beginPath();ctx.arc(cx,cy,r,0,2*Math.PI);ctx.stroke();
   points.forEach((p,i)=>{
    const q=project(p),depth=(q.z+1)*.5,button=buttons[i];
@@ -5832,7 +5832,7 @@ body.hob-lightbox-open{overflow:hidden!important}
 #skills.section #mk-skills-visual .mk-skill-particle .mk-icon{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;box-shadow:var(--portfolio-card-shadow)!important}
 #skills.section #mk-skills-visual .mk-skill-particle .mk-logo-text{background:var(--portfolio-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-ink)!important;-webkit-text-fill-color:var(--portfolio-ink)!important;text-shadow:none!important}
 #skills.section #mk-skills-visual .mk-skills-status{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-body)!important}
-#skills.section #mk-skills-visual canvas{opacity:.6}
+#skills.section #mk-skills-visual canvas{opacity:1!important}
 #projects.fp :is(a,button):focus-visible,#experience :is(a,button,[role="tab"]):focus-visible,
 #skills :is(a,button,.mk-skill-category-card):focus-visible{outline:3px solid var(--portfolio-accent)!important;outline-offset:3px}
 @media(max-width:767px){
