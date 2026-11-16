@@ -7013,4 +7013,66 @@ body.tv-mode #main-content.tv-stage .tv-page:has(> #contact){
    justify-content:center!important;
  }
 }
+
+/* Contact TV: dock the quote strip at the actual bottom of the screen.
+   The empty lavender block beneath the quotes was unused channel height. */
+@media(min-width:1021px) and (min-height:690px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact){
+    position:absolute!important;
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0!important;
+    height:100%!important;
+    overflow:hidden!important;
+    background:linear-gradient(180deg,#fffaff 0%,#f4eafb 55%,#e9daf5 100%)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section{
+    flex:1 1 auto!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    height:calc(100% - 72px)!important;
+    min-height:0!important;
+    max-height:calc(100% - 72px)!important;
+    margin:0!important;
+    padding:clamp(20px,3vh,45px) clamp(18px,4vw,56px)!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section > .container{
+    width:min(1240px,100%)!important;
+    max-height:100%!important;
+    min-width:0!important;
+    margin:auto!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-layout{
+    width:100%!important;
+    max-width:none!important;
+    min-height:clamp(330px,46vh,500px)!important;
+    max-height:100%!important;
+    align-items:stretch!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    width:100%!important;
+    margin:0!important;
+    z-index:3!important;
+    min-height:0!important;
+    background:linear-gradient(180deg,#ebdcf6,#e8d6f1)!important;
+    border-top:1px solid rgba(144,103,173,.18)!important;
+  }
+}
+/* On smaller / shorter displays, preserve normal content flow and access to long quotes. */
+@media(min-width:768px) and (max-width:1020px),
+       (min-width:768px) and (max-height:689px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+    position:relative!important;
+    inset:auto!important;
+    margin:0!important;
+  }
+}
 </style></body></html>
