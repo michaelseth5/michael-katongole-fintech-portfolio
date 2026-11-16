@@ -6051,4 +6051,63 @@ body.hob-lightbox-open{overflow:hidden!important}
   background:linear-gradient(150deg,rgba(44,29,73,.94),rgba(26,19,48,.97))!important;
   border-color:rgba(174,130,220,.55)!important;
 }
+
+/* Let’s Connect screenshot polish: reduce the TV-stage dead space and finish the light theme. */
+@media(min-width:851px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active > #contact.section{
+   min-height:0!important;
+   padding-top:clamp(28px,3.1vw,50px)!important;
+   padding-bottom:clamp(18px,2vw,28px)!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active > #contact.section > .container{
+   padding-top:0!important;
+ }
+}
+#contact.section .mk-connect-layout{
+ align-items:stretch!important;
+}
+#contact.section .mk-connect-left{
+ justify-content:center!important;
+}
+#contact.section .mk-chat-panel{
+ box-shadow:0 14px 34px rgba(66,40,101,.15)!important;
+}
+/* Quotes and footer belong to the Contact page; bridge the abrupt dark band. */
+.mk-footer-quotes{
+ background:linear-gradient(180deg,#e9daf5 0%,#e8d8f4 100%)!important;
+ border-top:1px solid rgba(144,103,173,.20)!important;
+ color:#382748!important;
+}
+.mk-footer-quotes .mk-footer-quotes-kicker,
+.mk-footer-quotes .mk-footer-quote figcaption,
+.mk-footer-quotes .mk-footer-quote-count{color:#725581!important}
+.mk-footer-quotes .mk-footer-quote blockquote{color:#392746!important}
+.mk-footer-quotes .mk-footer-quote-controls button{
+ background:rgba(255,255,255,.73)!important;
+ border-color:#c7a7db!important;
+ color:#513365!important;
+}
+.mk-footer-quotes .mk-footer-quote-controls button:is(:hover,:focus-visible){
+ background:#fff!important;
+ border-color:#9968bc!important;
+}
+.mk-footer-band{
+ background:linear-gradient(180deg,#e8d8f4 0%,#eee3f7 100%)!important;
+ border-top:1px solid rgba(144,103,173,.19)!important;
+ color:#503865!important;
+}
+.mk-footer-band .mk-footer,
+.mk-footer-band .mk-footer-tagline{color:#503865!important}
+.mk-footer-band .mk-socials-footer .mk-social-link{
+ color:#513365!important;
+ background:rgba(255,255,255,.65)!important;
+ border-color:#cbb0e0!important;
+}
+.mk-footer-band .mk-socials-footer .mk-social-link:is(:hover,:focus-visible){
+ background:#fff!important;
+ border-color:#9863c1!important;
+}
+@media(max-width:850px){
+ #contact.section{padding-top:clamp(25px,5vw,42px)!important}
+}
 </style></body></html>
