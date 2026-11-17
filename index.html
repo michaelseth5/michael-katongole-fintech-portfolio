@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><script>/* Run after viewport meta so phones report actual CSS width; before all styles and desktop scripts. */
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><script id="mk-start-at-top">
+/* Do not reopen at the last saved scroll position. Keep later navigation intact. */
+(()=> {
+  if ('scrollRestoration' in history) history.scrollRestoration='manual';
+  let finished=false;
+  const reset=()=>{
+    if(finished)return;
+    const scroll=document.scrollingElement || document.documentElement;
+    const previous=document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior='auto';
+    scroll.scrollTop=0;
+    window.scrollTo(0,0);
+    const active=document.querySelector('#main-content .tv-page.is-active');
+    if(active)active.scrollTop=0;
+    document.documentElement.style.scrollBehavior=previous;
+  };
+  window.addEventListener('pageshow',()=>{
+    reset();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{reset();finished=true}));
+  },{once:true});
+  window.addEventListener('load',reset,{once:true});
+})();
+</script><script>/* Run after viewport meta so phones report actual CSS width; before all styles and desktop scripts. */
 (()=>{if(matchMedia('(max-width: 767px)').matches)document.documentElement.classList.add('mobile-classic')})();</script><script id="sony-startup-controller">
 /* Pre-paint 2-second startup slate. Does not depend on remote assets. */
 (() => {
