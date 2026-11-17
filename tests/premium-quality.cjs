@@ -67,7 +67,8 @@ const server=http.createServer((req,res)=>{
    for(let i=1;i<routes.length;i++){
     if(mobile){await page.locator('.mk-mobile-menu-button').click();await page.locator('.mk-mobile-menu a').filter({hasText:new RegExp('^'+(routes[i]==='reading'?'Literature':routes[i][0].toUpperCase()+routes[i].slice(1))+'$')}).click();}
     else await page.locator('#apple-navlinks a').nth(i).click();
-    await page.waitForTimeout(550);
+    await page.locator('#'+ids[i]).waitFor({state:'visible',timeout:15000});
+    if(!mobile)await page.locator('#main-content[data-channel-busy=false]').waitFor({timeout:15000});
     assert.equal(await page.locator('#'+ids[i]).isVisible(),true,'Route '+routes[i]+' at '+width);
     const size=await page.evaluate(mobile=>{
      const node=mobile?document.documentElement:document.querySelector('.tv-page.is-active');return{content:node.scrollWidth,width:node.clientWidth};

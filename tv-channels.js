@@ -95,7 +95,8 @@
   const indicator=document.getElementById('apple-nav-indicator');
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const mobile=matchMedia('(max-width:819px)');
-  let current=startIndex, busy=false, pendingAnchor=null;
+  let current=startIndex, busy=false, pendingAnchor=null, queued=null;
+  host.dataset.channelBusy='false';
   window.__portfolioChannelIsActive = key => channels[current].key===key;
   const emitChange = () => {
     document.dispatchEvent(new CustomEvent('portfolio:channel-change',{
@@ -151,19 +152,22 @@
     ctx.putImageData(noiseImage,0,0);
   };
   function go(index,options={}){
-    if(busy || index<0 || index>=channels.length || index===current)return;
+    if(index<0 || index>=channels.length)return;
+    if(busy){queued={index,options};return;}
+    if(index===current)return;
     const previous=current;
-    busy=true;
+    busy=true;host.dataset.channelBusy='true';
     if(options.push !== false){
       history.pushState({channel:channels[index].key},'','#'+channels[index].key);
     }
     const finish=()=>{
       noiseCanvas.style.opacity='0';
       fadeShutter.style.opacity='0';
-      busy=false;
+      busy=false;host.dataset.channelBusy='false';
       document.dispatchEvent(new CustomEvent('portfolio:channel-settled',{
         detail:{key:channels[current].key,index:current}
       }));
+      if(queued){const next=queued;queued=null;go(next.index,next.options);}
     };
     if(mobile.matches){
       setPanel(index);
