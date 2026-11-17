@@ -63,6 +63,7 @@
     setExperienceTab(['#achievements','#milestone','#milestones'].includes(location.hash.toLowerCase())?'milestones':'career');
     window.addEventListener('hashchange',syncTabFromHash);
     window.addEventListener('popstate',syncTabFromHash);
+    document.addEventListener('portfolio:mobile-page-change',syncTabFromHash);
   }
 
 })();

@@ -95,7 +95,7 @@
   const indicator=document.getElementById('apple-nav-indicator');
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const mobile=matchMedia('(max-width:819px)');
-  let current=startIndex, busy=false;
+  let current=startIndex, busy=false, pendingAnchor=null;
   window.__portfolioChannelIsActive = key => channels[current].key===key;
   const emitChange = () => {
     document.dispatchEvent(new CustomEvent('portfolio:channel-change',{
@@ -131,6 +131,10 @@
     active.inert=false;
     updateNav();
     emitChange();
+    if(pendingAnchor && active.contains(pendingAnchor)) {
+      const target=pendingAnchor;pendingAnchor=null;
+      requestAnimationFrame(()=>active.scrollTo({top:active.scrollTop+target.getBoundingClientRect().top-active.getBoundingClientRect().top-24,behavior:'instant'}));
+    }
     if(announce)announcer.textContent=channels[current].label+' page, channel '+(current+1);
   };
   panels[current].classList.add('is-active');
@@ -214,6 +218,16 @@
     if(index<0)return;
     event.preventDefault();
     event.stopImmediatePropagation();
+    const raw=decodeURIComponent(link.hash.slice(1));
+    const target=document.getElementById(raw);
+    const isSection=target && target!==found[index];
+    if(isSection){
+      if(index===current){
+        panels[current].scrollTo({top:panels[current].scrollTop+target.getBoundingClientRect().top-panels[current].getBoundingClientRect().top-24,behavior:reduced.matches?'instant':'smooth'});
+        return;
+      }
+      pendingAnchor=target;
+    }
     go(index);
   },true);
 
@@ -230,7 +244,7 @@
     if(event.defaultPrevented||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
     if(!['ArrowLeft','ArrowRight'].includes(event.key))return;
     const target=event.target;
-    if(target.closest('input, textarea, select, [contenteditable="true"], [role="slider"], .photo-carousel-rail, .hobby-carousel-track, .mk-carousel, .deck-viewer'))return;
+    if(target.closest('button,a,summary,dialog,input,textarea,select,[contenteditable="true"],[role="slider"],[role="tablist"],.mk-skills-orbit,.ug-album,.photo-carousel-rail,.hobby-carousel-track,.mk-carousel,.deck-viewer'))return;
     event.preventDefault();
     go((current+(event.key==='ArrowRight'?1:channels.length-1))%channels.length);
   });

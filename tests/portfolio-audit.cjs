@@ -32,7 +32,7 @@ assert.ok(!html.includes('Market quotes · Connecting to source…'),'Market loa
 assert.match(html,/COMPUTER SCIENCE &amp; FINANCE/,'Education tile needs accurate emphasis');
 assert.match(html,/Computer Science at Northeastern University/,'Use requested Northeastern wording');
 assert.ok(!/MSCS|M\.S\. Computer Science|MS Align|Computer Science \(Align\)/i.test(html),'No graduate-program labels on public page');
-assert.match(html,/B\.S\. Finance \(FinTech\)/,'Finance undergraduate program should remain distinct');
+assert.match(html,/Finance \+ Computer Science at UT Dallas/,'Preserve current authored undergraduate education copy');
 console.log('PASS: document landmarks, unique ids, script structure, unlisted headers, factual copy, and source assets');
 
 const premium=fs.readFileSync(path.resolve(__dirname,'../premium.css'),'utf8');

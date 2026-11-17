@@ -1,0 +1,7 @@
+/* Presentation pages share the portfolio palette, without altering slide content. */
+:root {--bg:#100c18;--panel:#23192f;--line:#ffffff24;--text:#f7f4fb;--muted:#c2b7ce;--accent:#c6b0eb}
+body{font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(150deg,#160f22,#281a38)}
+.top{background:#160f22ed}.slide{background:linear-gradient(145deg,#281d35,#191221);border-color:var(--line);box-shadow:0 14px 40px #0003;border-radius:24px}.stat{background:#ffffff08}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+@media(max-width:767px){a{min-height:44px;display:inline-flex;align-items:center}.stat-grid{grid-template-columns:1fr}.slide{min-height:0}.wrap{padding-inline:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}

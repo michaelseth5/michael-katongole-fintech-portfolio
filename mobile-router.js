@@ -107,10 +107,13 @@
     const link=event.target.closest('a[href^="#"]');
     if(!link)return;
     const hash=decodeURIComponent(link.hash.slice(1)).toLowerCase();
-    if(!Object.prototype.hasOwnProperty.call(paths,hash))return;
+    const target=document.getElementById(hash);
+    const owner=target?.closest('[data-mk-mobile-page]')?.dataset.mkMobilePage;
+    if(!Object.prototype.hasOwnProperty.call(paths,hash)&&!owner)return;
     event.preventDefault();
     event.stopImmediatePropagation();
-    navigate(hash,{focus:link!==brand});
+    navigate(paths[hash]?hash:owner,{focus:link!==brand});
+    if(target && target!==pages.get(paths[hash]||owner))requestAnimationFrame(()=>target.scrollIntoView({block:'start',behavior:'instant'}));
   },true);
   addEventListener('popstate',()=>{
     const key=decodeURIComponent(location.hash.slice(1)).toLowerCase();

@@ -360,4 +360,16 @@
  :root body.tv-mode .tv-remote-toggle {width:65px!important}
 }
 @media(max-width:767px){:root body .tv-experience-button {display:none!important}}
+
+:root body #project-details .fp-frame {background:linear-gradient(145deg,#59416e,#312242)!important}
+:root body #home .mk-home-welcome-transcript summary {min-height:44px!important}
+:root body #home .mk-hero-action-group .mk-home-welcome {min-height:90px!important}
+@media(max-width:767px){
+ :root body a {min-height:44px!important}
+ :root body a:not(.fp-card-link) {display:inline-flex;align-items:center}
+ :root body button {min-width:44px!important;min-height:44px!important}
+ :root body .walk-footer,:root body .walk-dots {flex-wrap:wrap!important;max-width:100%!important}
+ :root body #skills .sectionhead {text-align:left!important;align-items:start!important}
+ :root body .mk-footer-nav {display:flex!important}
+}
 }
