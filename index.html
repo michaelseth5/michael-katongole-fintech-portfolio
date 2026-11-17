@@ -7440,4 +7440,93 @@ body.tv-mode #main-content.tv-stage .tv-page.is-active #contact.section #mk-port
   transition:none!important;
  }
 }
-</style></body></html>
+</style>
+<!-- Layered navigation and scroll entrances: global, reduced-motion aware -->
+<style id="mk-layered-entrance-styles">
+/* Independent translate keeps card hover transforms, 3D effects and layout intact. */
+#main-content [data-mk-layer-reveal]{
+  opacity:0;
+  translate:0 -22px;
+  transition:
+    opacity .65s cubic-bezier(.22,1,.36,1),
+    translate .72s cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--mk-layer-delay,0ms);
+}
+#main-content [data-mk-layer-reveal].mk-layer-visible{
+  opacity:1;
+  translate:0 0;
+}
+@media(prefers-reduced-motion:reduce){
+  #main-content [data-mk-layer-reveal]{
+    opacity:1!important;
+    translate:none!important;
+    transition:none!important;
+  }
+}
+</style>
+<script id="mk-layered-entrance-script">
+(()=>{
+  'use strict';
+  const main=document.getElementById('main-content');
+  if(!main)return;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(reduce.matches || !('IntersectionObserver' in window))return;
+  const selectors=[
+    '.page-hero',
+    '.mk-intro-top',
+    '.mk-intro-heading',
+    '.section-heading',
+    '.timeline > article',
+    '.selected-projects-grid > *',
+    '.project-block',
+    '.dev-heading',
+    '.dev-track > .dev-program',
+    '.simple-list > article',
+    '.large-panel',
+    '.mk-connect-layout > .mk-connect-left',
+    '.mk-connect-layout > .mk-chat-panel',
+    '#beyond-code-editorial .bc-story',
+    '.network-event-slide',
+    '.mk-craft-education',
+    '.hobbies-carousel-wrap'
+  ].join(',');
+  const tracked=new WeakSet();
+  let order=0;
+  const io=new IntersectionObserver(entries=>{
+    const visible=entries.filter(e=>e.isIntersecting)
+      .sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);
+    visible.forEach((entry,i)=>{
+      entry.target.style.setProperty('--mk-layer-delay',Math.min(i,4)*85+'ms');
+      entry.target.classList.add('mk-layer-visible');
+      io.unobserve(entry.target);
+    });
+  },{threshold:0.07,rootMargin:'0px 0px 70px 0px'});
+  function scan(){
+    main.querySelectorAll(selectors).forEach(el=>{
+      if(tracked.has(el))return;
+      if(el.closest('[hidden],dialog,[aria-hidden="true"]'))return;
+      tracked.add(el);
+      el.setAttribute('data-mk-layer-reveal','');
+      io.observe(el);
+    });
+  }
+  scan();
+  /* TV navigation moves sections into new page wrappers; watch for those changes. */
+  let scheduled=false;
+  const mo=new MutationObserver(records=>{
+    if(!records.some(r=>r.addedNodes.length))return;
+    if(scheduled)return;
+    scheduled=true;
+    requestAnimationFrame(()=>{scheduled=false;scan()});
+  });
+  mo.observe(main,{childList:true,subtree:true});
+  reduce.addEventListener('change',e=>{
+    if(!e.matches)return;
+    io.disconnect();mo.disconnect();
+    main.querySelectorAll('[data-mk-layer-reveal]').forEach(el=>{
+      el.classList.add('mk-layer-visible');
+    });
+  });
+})();
+</script>
+</body></html>
