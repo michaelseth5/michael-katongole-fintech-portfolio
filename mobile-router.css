@@ -1,0 +1,52 @@
+/* Mobile page router: exactly one portfolio page in the viewport at a time. */
+@media(max-width:767px){
+  html.mobile-classic{scroll-padding-top:calc(72px + env(safe-area-inset-top));}
+  html.mobile-classic:not(.mk-mobile-ready) #main-content{visibility:hidden!important}
+  html.mobile-classic body.mk-mobile-route-active #main-content > [data-mk-mobile-page]:not([data-mk-active]){
+    display:none!important;visibility:hidden!important;pointer-events:none!important;
+  }
+  html.mobile-classic body.mk-mobile-route-active #main-content > [data-mk-mobile-page][data-mk-active]{
+    display:block!important;visibility:visible!important;pointer-events:auto!important;
+  }
+  html.mobile-classic body.mk-mobile-route-active #main-content > #home[data-mk-active]{
+    display:flex!important;
+  }
+  html.mobile-classic body.mk-mobile-route-active #main-content > .mk-site-footer[data-mk-active]{
+    display:block!important;
+  }
+  html.mobile-classic body.mk-mobile-route-active #main-content > [data-mk-mobile-page]{
+    order:initial!important;
+    scroll-margin-top:calc(72px + env(safe-area-inset-top));
+  }
+  html.mobile-classic body.mk-mobile-route-active .mk-mobile-topbar{
+    z-index:9000!important;
+  }
+  html.mobile-classic body.mk-mobile-route-active .mk-mobile-menu{
+    z-index:8999!important;
+  }
+  html.mobile-classic body.mk-mobile-route-active .mk-mobile-menu a[aria-current="page"]{
+    color:#f6ebff!important;
+    background:#493060!important;
+    border-radius:9px;
+    padding-inline:12px!important;
+  }
+  html.mobile-classic body.mk-mobile-route-active #main-content{
+    min-height:calc(100dvh - 64px - env(safe-area-inset-top))!important;
+  }
+  html.mobile-classic.mk-mobile-route-switching,
+  html.mobile-classic.mk-mobile-route-switching body{
+    scroll-behavior:auto!important;
+  }
+  html.mobile-classic body.mk-mobile-route-active #main-content > [data-mk-mobile-page][data-mk-active]:not(#home){
+    animation:mk-mobile-page-enter .24s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes mk-mobile-page-enter{
+    from{opacity:.93;translate:0 9px}
+    to{opacity:1;translate:0 0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html.mobile-classic body.mk-mobile-route-active #main-content > [data-mk-mobile-page]{
+      animation:none!important;translate:none!important;
+    }
+  }
+}
