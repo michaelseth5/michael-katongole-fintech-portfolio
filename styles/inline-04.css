@@ -1,0 +1,21 @@
+
+#skills{background:radial-gradient(ellipse at 10% 85%,#eaf0ff 0%,transparent 45%),radial-gradient(ellipse at 88% 15%,#fff1f6 0%,transparent 45%),#fafbff;color:#222430;position:relative;overflow:hidden}
+#skills:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#adb3cc73 .7px,transparent .7px);background-size:25px 25px;opacity:.35;pointer-events:none}
+#skills>.container{position:relative}
+#skills .page-hero{text-align:center;margin:0 auto 20px}
+#skills .page-hero .eyebrow{color:#656578}
+#skills .page-hero h2{font-size:clamp(44px,6.7vw,78px);font-weight:800;letter-spacing:-.07em;color:#1e202a}
+#skills .page-hero h2 .highlight{background:linear-gradient(105deg,#6c5fe3,#c1429d);background-clip:text;-webkit-background-clip:text;color:transparent}
+#skills .page-hero p{color:#747787;max-width:580px;margin:12px auto 0}
+.mk-skills-orbit{display:block;width:min(740px,100%);height:520px;min-height:unset;margin:25px auto 10px;position:relative;overflow:visible;isolation:isolate;background:transparent!important;border:0!important;border-radius:0!important}
+.mk-skills-orbit:before{display:none!important}
+.mk-skills-orbit canvas{width:100%;height:100%;display:block}
+.mk-skill-particle{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transform:translate(-50%,-50%);pointer-events:none;min-width:55px;z-index:2}
+.mk-skill-particle .mk-icon{width:43px;height:43px;display:grid;place-items:center;font-family:Arial,sans-serif;font-weight:800;font-size:21px;border-radius:9px;text-shadow:none;box-shadow:0 3px 10px #43507122;background:var(--bg-logo);color:var(--fg-logo)}
+.mk-skill-particle .mk-logo-text{font:700 10px 'Space Grotesk',Arial,sans-serif;letter-spacing:.05em;color:#51566a;background:#ffffffad;padding:2px 5px;border-radius:3px;text-transform:uppercase}
+.mk-skills-legend{text-align:center;color:#7b7e8f;font:11px 'Space Grotesk',Arial,sans-serif;margin:0 auto 28px}
+#skills .skills-bottom-grid article{background:#ffffffbb!important;border:1px solid #dadce8!important;border-radius:11px}
+#skills .skills-bottom-grid h3{color:#202431}
+#skills .skills-bottom-grid p{color:#696c79}
+@media(max-width:750px){.mk-skills-orbit{height:440px}.mk-skill-particle .mk-icon{width:32px;height:32px;font-size:15px}.mk-skill-particle .mk-logo-text{font-size:9px}}
+@media(max-width:500px){.mk-skills-orbit{height:355px}.mk-skill-particle .mk-icon{width:27px;height:27px;font-size:13px}.mk-skill-particle .mk-logo-text{font-size:8px}}

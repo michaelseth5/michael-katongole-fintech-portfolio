@@ -19,7 +19,7 @@ assert.ok(vercel.headers.some(x=>x.headers.some(y=>y.key==='X-Robots-Tag'&&y.val
 assert.ok(netlify.includes('X-Robots-Tag = "noindex'),'Netlify noindex header missing');
 assert.ok(fs.existsSync(path.resolve(__dirname,'../globe.js')),'Globe JS missing');
 assert.ok(fs.existsSync(path.resolve(__dirname,'../ux.css')),'UX styling missing');
-assert.ok(html.includes('href="hobbies-caption.css"'),'Hobbies black-caption stylesheet must load');
+assert.ok(fs.readFileSync(path.resolve(__dirname,'../styles/manifest.json'),'utf8').includes('hobbies-caption.css'),'Hobbies caption CSS remains in ordered bundle');
 const hobbiesCaptionCss=fs.readFileSync(path.resolve(__dirname,'../hobbies-caption.css'),'utf8');
 assert.match(hobbiesCaptionCss,/#hobbies \.art-photo-card figcaption strong/,'Art caption titles should be styled');
 assert.match(hobbiesCaptionCss,/color: #111 !important/,'Art captions retain high-contrast treatment');

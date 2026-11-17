@@ -1,0 +1,10 @@
+
+/* Swift and stable active tab motion; transform stays GPU-friendly. */
+#apple-nav-indicator{
+ transition:transform 340ms ease-out,width 340ms ease-out!important;
+ will-change:transform,width;
+}
+#apple-navlinks a{transition:color 120ms ease,transform 120ms ease!important}
+@media(prefers-reduced-motion:reduce){
+ #apple-nav-indicator,#apple-navlinks a{transition:none!important}
+}

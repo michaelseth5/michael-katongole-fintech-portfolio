@@ -1,0 +1,10 @@
+
+/* Classic NYC map treatment: let the street map breathe. */
+#portfolio-intro-grid .mk-nyc-map-heading{background:rgba(255,255,255,.89)!important;box-shadow:0 4px 20px rgba(38,27,55,.10)!important}
+#portfolio-intro-grid .mk-nyc-radar-rings{opacity:.42!important}
+#portfolio-intro-grid .mk-nyc-radar-sweep{
+ width:14%!important;
+ background:linear-gradient(90deg,transparent,rgba(137,80,206,.035) 50%,rgba(127,70,190,.16) 94%,rgba(128,71,205,.46) 98%,transparent)!important;
+}
+#portfolio-intro-grid .mk-nyc-map-fallback{height:100%;display:flex;flex-direction:column;justify-content:center;text-align:center;color:#5e4a72;font:800 18px 'Space Grotesk',sans-serif;letter-spacing:.04em;padding:65px 24px 10px}
+#portfolio-intro-grid .mk-nyc-map-fallback small{font-size:11px;line-height:1.6;font-weight:500;letter-spacing:0}

@@ -1,0 +1,17 @@
+
+/* Rotating quotes close the contact page after the footer links. */
+.mk-footer-quotes{background:linear-gradient(180deg,#1a102a 0%,#1d142c 100%);border-top:1px solid rgba(190,143,241,.14);padding:32px 0 35px;color:#eee8f7}
+.mk-footer-quotes-inner{max-width:1180px;margin:0 auto;padding:0 24px;text-align:center}
+.mk-footer-quotes-kicker{font:700 10px 'Space Grotesk',Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#bda3d6;margin:0 0 18px}
+.mk-footer-quote-stage{display:grid;align-items:center;min-height:118px;max-width:900px;margin:0 auto}
+.mk-footer-quote{grid-area:1/1;min-width:0;margin:0;opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .65s ease,transform .65s ease,visibility .65s}
+.mk-footer-quote.is-active{opacity:1;visibility:visible;transform:translateY(0)}
+.mk-footer-quote blockquote{padding:0;margin:0 0 12px;color:#f0eaf8;font:500 clamp(16px,2vw,23px)/1.5 'Space Grotesk',Arial,sans-serif;letter-spacing:-.025em}
+.mk-footer-quote figcaption{font:600 12px/1.5 Inter,Arial,sans-serif;color:#b49fc7}
+.mk-footer-quote-controls{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:12px}
+.mk-footer-quote-controls button{display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;border:1px solid rgba(191,155,224,.38);background:rgba(170,120,209,.13);color:#eee6f8;border-radius:999px;min-height:38px;padding:7px 16px;font:600 12px 'Space Grotesk',Arial,sans-serif;transition:background .2s,border-color .2s,transform .2s}
+.mk-footer-quote-controls button:active{transform:scale(.96)}
+.mk-footer-quote-controls button:hover,.mk-footer-quote-controls button:focus-visible{background:rgba(170,120,209,.22);border-color:#c19ce0}
+.mk-footer-quote-count{font:600 11px 'Space Grotesk',Arial,sans-serif;color:#ac99bf;min-width:43px}
+@media(max-width:740px){.mk-footer-quotes{padding:25px 0 29px}.mk-footer-quote-stage{min-height:150px}.mk-footer-quote blockquote{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.mk-footer-quote{transition:none;transform:none}}

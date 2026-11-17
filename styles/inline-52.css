@@ -1,0 +1,18 @@
+
+/* High-detail aerial NYC reference image with fixed camera and subdued radar. */
+#portfolio-intro-grid .mk-nyc-map-canvas.mk-nyc-aerial-image{
+ position:absolute!important;
+ inset:0!important;
+ width:100%!important;height:100%!important;
+ transform:none!important;
+ background:#bfc2c6 url('assets/nyc-aerial-reference.webp') center 51% / cover no-repeat!important;
+ box-shadow:none!important;
+ filter:none!important;
+}
+#portfolio-intro-grid .mk-nyc-map-card::before{background:linear-gradient(100deg,rgba(16,19,28,.08),transparent 45%,rgba(18,23,31,.06))!important}
+#portfolio-intro-grid .mk-nyc-map-heading{background:rgba(250,249,252,.92)!important}
+#portfolio-intro-grid .mk-nyc-radar-rings{opacity:.22!important}
+#portfolio-intro-grid .mk-nyc-radar-sweep{width:13%!important;opacity:.63!important}
+@media(max-width:750px){
+ #portfolio-intro-grid .mk-nyc-map-canvas.mk-nyc-aerial-image{background-position:center 50%!important}
+}

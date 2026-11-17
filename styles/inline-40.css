@@ -1,0 +1,107 @@
+
+/* Cohesive purple-and-white sectional palette | November 2026
+   Alternate soft lavender with dark plum, preserving original card surfaces. */
+:root{
+ --mk-lavender-50:#fbfaff;
+ --mk-lavender-100:#f2edfc;
+ --mk-lavender-200:#e6dbf5;
+ --mk-purple-ink:#291f42;
+ --mk-purple-accent:#9f76dd;
+}
+/* Distinctive dark hero area without changing its layout or anchored navigation. */
+#home{
+ background:
+ radial-gradient(ellipse at 83% 30%,rgba(173,121,237,.19),transparent 52%),
+ radial-gradient(ellipse at 8% 87%,rgba(121,94,212,.14),transparent 50%),
+ linear-gradient(135deg,#0e1123 0%,#17132b 58%,#211638 100%)!important;
+ border:1px solid rgba(181,153,238,.16);
+ border-radius:24px;
+ padding-left:clamp(18px,3vw,42px)!important;
+ padding-right:clamp(18px,3vw,42px)!important;
+ box-shadow:inset 0 0 80px rgba(108,65,172,.06);
+}
+/* Experience: pale violet background with original dark, readable job cards. */
+#experience{
+ background:
+ radial-gradient(ellipse at 8% 3%,rgba(211,191,246,.78),transparent 47%),
+ radial-gradient(ellipse at 90% 80%,rgba(231,215,255,.8),transparent 49%),
+ linear-gradient(145deg,#fbfaff 0%,#ede6f9 100%)!important;
+ color:var(--mk-purple-ink)!important;
+ border-top:1px solid #e1d5f3!important;
+ border-bottom:1px solid #d8cceb!important;
+}
+#experience .page-hero h1,#experience .page-hero .page-title{color:#2a213e!important}
+#experience .page-hero p{color:#615573!important}
+#experience .page-hero .eyebrow,#experience .page-hero .back{color:#7853ac!important}
+#experience .page-hero .highlight{color:#a368c8!important}
+#experience .note{color:#5c5273!important;background:rgba(255,255,255,.64)!important;border-color:#d9c9ec!important}
+#experience .timeline .job{color:#eeeaf8}
+#experience .timeline .job p,#experience .timeline .job li{color:#c9c8d9}
+/* Projects: deep purple slate, creating contrast with Experience and Skills. */
+#project-details{
+ background:
+ radial-gradient(ellipse at 90% 12%,rgba(124,79,196,.3),transparent 50%),
+ radial-gradient(ellipse at 8% 85%,rgba(84,76,154,.2),transparent 55%),
+ linear-gradient(165deg,#151024 0%,#111627 55%,#1a1230 100%)!important;
+ border-top:1px solid #3b2b5c!important;
+ border-bottom:1px solid #41315c!important;
+}
+#project-details .selected-projects-grid>.project-block{box-shadow:0 12px 30px rgba(7,6,20,.16)}
+/* Skills: airy white-lavender with a restrained lavender glow. */
+#skills{
+ background:
+ radial-gradient(ellipse at 90% 10%,rgba(226,205,253,.76),transparent 48%),
+ radial-gradient(ellipse at 9% 88%,rgba(219,223,252,.55),transparent 45%),
+ linear-gradient(125deg,#fff 0%,#f8f5ff 58%,#eeeafa 100%)!important;
+ border-bottom:1px solid #ded5ed!important;
+}
+#skills .sectionhead .eyebrow{color:#7351a5!important}
+#skills .sectionhead h2{color:#2d2545!important}
+#skills .sectionhead h2 .highlight{color:#9b6bd4!important}
+#skills .sectionhead p{color:#5f5771!important}
+/* Hobbies: aubergine violet, with brighter accents and existing photo cards. */
+#hobbies{
+ background:
+ radial-gradient(ellipse at 5% 10%,rgba(158,108,211,.29),transparent 46%),
+ radial-gradient(ellipse at 93% 80%,rgba(112,86,190,.29),transparent 50%),
+ linear-gradient(150deg,#21152f 0%,#1a1931 54%,#251936 100%)!important;
+ border-top:1px solid #4c365f!important;
+ border-bottom:1px solid #594268!important;
+}
+#hobbies .page-hero .back,#hobbies .page-hero .eyebrow{color:#d4b5ff!important}
+#hobbies .page-hero h1{color:#f8f5ff!important}
+#hobbies .page-hero .highlight{color:#d2a5f3!important}
+#hobbies .page-hero p{color:#dad0e8!important}
+/* Milestone: lilac white, paired with existing dark milestone cards. */
+#achievements{
+ background:
+ radial-gradient(ellipse at 6% 9%,rgba(210,185,243,.66),transparent 48%),
+ radial-gradient(ellipse at 93% 89%,rgba(210,208,255,.64),transparent 48%),
+ linear-gradient(130deg,#faf7ff 0%,#eee9fa 100%)!important;
+ color:#2d2444!important;
+ border-top:1px solid #e0d2f2!important;
+ border-bottom:1px solid #d6c8e9!important;
+}
+#achievements .page-hero h1{color:#2a2141!important}
+#achievements .page-hero .highlight{color:#9b69d2!important}
+#achievements .page-hero .back,#achievements .page-hero .eyebrow{color:#7751ab!important}
+#achievements .page-hero p{color:#5f5571!important}
+#achievements .dev-heading h2{color:#312541!important}
+#achievements .dev-heading p{color:#655873!important}
+#achievements .simple-list article{box-shadow:0 10px 24px rgba(54,36,92,.08)}
+/* Contact: rich royal-plum close to the site, retaining light text and dark panel. */
+#contact{
+ background:
+ radial-gradient(ellipse at 85% 17%,rgba(159,116,226,.29),transparent 48%),
+ radial-gradient(ellipse at 8% 93%,rgba(97,87,195,.23),transparent 48%),
+ linear-gradient(145deg,#181026 0%,#241737 63%,#101423 100%)!important;
+ border-top:1px solid #50406d!important;
+}
+#contact .page-hero .back,#contact .page-hero .eyebrow{color:#cfb0fd!important}
+#contact .page-hero h1{color:#fff!important}
+#contact .page-hero .highlight{color:#d7b1fa!important}
+#contact .page-hero p{color:#d1c4df!important}
+#contact .contact-single .large-panel{border-color:#6e558d!important;box-shadow:0 16px 40px rgba(7,6,22,.2)}
+@media(max-width:700px){
+ #home{border-radius:16px;padding-left:15px!important;padding-right:15px!important}
+}

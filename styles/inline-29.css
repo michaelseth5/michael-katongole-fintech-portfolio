@@ -1,0 +1,4 @@
+/* Continuous, gentle horizontal motion for Programs & Affiliations */
+#achievements .dev-carousel{scroll-snap-type:none!important;scroll-behavior:auto!important}
+#achievements .dev-track .dev-program{scroll-snap-align:none!important}
+@media(prefers-reduced-motion:reduce){#achievements .dev-carousel{scroll-behavior:auto!important}}

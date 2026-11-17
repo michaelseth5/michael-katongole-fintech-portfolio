@@ -1,0 +1,192 @@
+
+/* Three restrained accents, existing authentic brand-colored SVGs and a full gradient title. */
+#skills{
+ --skills-violet:#8b5cf6;
+ --skills-cyan:#22d3ee;
+ --skills-pink:#ec4899;
+ background:radial-gradient(ellipse 54% 48% at 44% 30%,rgba(139,92,246,.15),transparent 76%),radial-gradient(ellipse 43% 44% at 61% 44%,rgba(236,72,153,.13),transparent 79%),linear-gradient(135deg,#120c20,#1d1330 56%,#100c1c)!important;
+}
+#skills .sectionhead h2,#skills .sectionhead .mk-title-solid,#skills .sectionhead .mk-title-glow{
+ background:linear-gradient(95deg,#ad8bff 0%,#d6a9ff 48%,#f199ca 100%)!important;
+ background-clip:text!important;-webkit-background-clip:text!important;
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+}
+#skills .three .large-panel:nth-child(1),#skills .three .large-panel:nth-child(5){--skill-cat-rgb:139,92,246;--skill-cat:#b8a0ff}
+#skills .three .large-panel:nth-child(2),#skills .three .large-panel:nth-child(6){--skill-cat-rgb:34,211,238;--skill-cat:#71eaff}
+#skills .three .large-panel:nth-child(3){--skill-cat-rgb:236,72,153;--skill-cat:#ff9acb}
+#skills .three .large-panel:nth-child(4){--skill-cat-rgb:139,92,246;--skill-cat:#b8a0ff}
+#skills .three .large-panel .eyebrow{color:var(--skill-cat,#d3b9f7)!important;display:flex;gap:9px;align-items:center}
+#skills .three .large-panel .eyebrow::before{content:"";display:inline-block;flex:none;width:7px;height:7px;border-radius:50%;background:rgb(var(--skill-cat-rgb,139,92,246))}
+#skills .three .large-panel .skill{background:rgba(var(--skill-cat-rgb,139,92,246),.1)!important;border:1px solid rgba(var(--skill-cat-rgb,139,92,246),.4)!important;color:#f1eafc!important;transition:background .2s ease,box-shadow .2s ease,border-color .2s ease}
+#skills .three .large-panel .skill:hover,#skills .three .large-panel .skill:focus-visible{background:rgba(var(--skill-cat-rgb,139,92,246),.2)!important;border-color:rgba(var(--skill-cat-rgb,139,92,246),.72)!important;box-shadow:0 0 18px rgba(var(--skill-cat-rgb,139,92,246),.26)}
+#skills .mk-skills-category-legend{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;margin:9px auto 22px;max-width:850px}
+#skills .mk-skills-category-legend button{--category-color:#8b5cf6;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:rgba(30,20,49,.9);border:1px solid rgba(218,195,250,.3);border-radius:999px;color:#f2eafa;padding:10px 14px;min-height:42px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;transition:background .2s,border-color .2s,box-shadow .2s}
+#skills .mk-skills-category-legend button[data-skill-category="backend"]{--category-color:#22d3ee}
+#skills .mk-skills-category-legend button[data-skill-category="ml"]{--category-color:#ec4899}
+#skills .mk-skills-category-legend .mk-skill-cat-dot{display:inline-block;width:9px;height:9px;flex:none;border-radius:50%;background:var(--category-color)}
+#skills .mk-skills-category-legend button:hover,#skills .mk-skills-category-legend button[aria-pressed="true"]{border-color:var(--category-color);background:rgba(61,39,86,.9);box-shadow:0 0 15px rgba(139,92,246,.12)}
+#skills .mk-skills-category-legend button:focus-visible{outline:3px solid #e8d0ff;outline-offset:3px}
+#skills #mk-skills-visual .mk-skill-particle .mk-icon{background:rgba(250,249,255,.97)!important}
+#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{color:rgb(var(--skill-glow-rgb))!important;-webkit-text-fill-color:rgb(var(--skill-glow-rgb))!important;background:#130d22!important;border-color:rgba(var(--skill-glow-rgb),.55)!important;text-shadow:0 0 8px rgba(var(--skill-glow-rgb),.3)}
+#skills #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon{transform:scale(1.15)}
+#skills #mk-skills-visual .mk-skill-particle:focus-visible{outline:3px solid #e9d1ff;outline-offset:5px;border-radius:13px}
+#skills #mk-skills-visual .mk-skill-particle.mk-skill-category-dim{pointer-events:auto}
+@media(max-width:600px){#skills .mk-skills-category-legend{gap:7px}#skills .mk-skills-category-legend button{padding:8px 11px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){#skills .three .large-panel .skill,#skills .mk-skills-category-legend button,#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{transition:none!important;animation:none!important}}
+
+/* Six independently themed skill cards; variables control all accents. */
+#skills{--skill-violet:#8b5cf6;--skill-cyan:#22d3ee;--skill-pink:#ec4899;--skill-emerald:#34d399;--skill-amber:#fbbf24;--skill-blue:#3b82f6}
+#skills .mk-skill-category-card:nth-child(1),#skills .mk-skills-category-legend [data-skill-category="frontend"]{--accent:var(--skill-violet);--accent-rgb:139,92,246;--accent-light:#c4b5fd}
+#skills .mk-skill-category-card:nth-child(2),#skills .mk-skills-category-legend [data-skill-category="backend"]{--accent:var(--skill-cyan);--accent-rgb:34,211,238;--accent-light:#a5f3fc}
+#skills .mk-skill-category-card:nth-child(3),#skills .mk-skills-category-legend [data-skill-category="ml"]{--accent:var(--skill-pink);--accent-rgb:236,72,153;--accent-light:#f9a8d4}
+#skills .mk-skill-category-card:nth-child(4),#skills .mk-skills-category-legend [data-skill-category="finance"]{--accent:var(--skill-emerald);--accent-rgb:52,211,153;--accent-light:#a7f3d0}
+#skills .mk-skill-category-card:nth-child(5),#skills .mk-skills-category-legend [data-skill-category="product"]{--accent:var(--skill-amber);--accent-rgb:251,191,36;--accent-light:#fde68a}
+#skills .mk-skill-category-card:nth-child(6),#skills .mk-skills-category-legend [data-skill-category="analytics"]{--accent:var(--skill-blue);--accent-rgb:59,130,246;--accent-light:#bfdbfe}
+#skills .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:17px}
+#skills .three>.mk-skill-category-card{height:100%;min-width:0;display:flex;flex-direction:column;align-items:stretch;transform:none!important;border:1px solid rgba(var(--accent-rgb),.3)!important;background:linear-gradient(rgba(var(--accent-rgb),.06),rgba(var(--accent-rgb),.06)),#151022!important;box-shadow:none!important;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,opacity .2s ease}
+#skills .three>.mk-skill-category-card:is(:hover,:focus-visible){transform:translateY(-3px)!important;border-color:var(--accent)!important;box-shadow:0 6px 25px rgba(var(--accent-rgb),.35)!important}
+#skills .three>.mk-skill-category-card:focus-visible{outline:3px solid var(--accent)!important;outline-offset:4px}
+#skills .mk-skill-category-card .eyebrow{color:var(--accent-light)!important}
+#skills .mk-skill-category-card .eyebrow:before{background:var(--accent)!important;box-shadow:0 0 10px rgba(var(--accent-rgb),.35)}
+#skills .mk-skill-category-card .skills{display:flex;justify-content:flex-start;align-content:flex-start;text-align:left;gap:9px}
+#skills .mk-skill-category-card .skill{background:rgba(var(--accent-rgb),.12)!important;border:1px solid rgba(var(--accent-rgb),.4)!important;color:var(--accent-light)!important}
+#skills .mk-skill-category-card .skill:hover{box-shadow:0 0 16px rgba(var(--accent-rgb),.35)!important;background:rgba(var(--accent-rgb),.2)!important}
+#skills .mk-skill-category-card.mk-skill-category-dimmed{opacity:.33;filter:saturate(.55)}
+#skills .mk-skills-category-legend{display:flex;flex-wrap:wrap;gap:9px;max-width:none}
+#skills .mk-skills-category-legend button{--category-color:var(--accent);flex:none;border-color:rgba(var(--accent-rgb),.35);color:#f5f0fb}
+#skills .mk-skills-category-legend .mk-skill-cat-dot{background:var(--accent)}
+#skills .mk-skills-category-legend button:is(:hover,[aria-pressed="true"]){border-color:var(--accent);box-shadow:0 0 16px rgba(var(--accent-rgb),.35)}
+#skills .mk-skills-category-legend button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+#skills:has(.mk-skills-category-legend button[aria-pressed="true"]) .mk-skill-category-card:not(.mk-skill-category-dimmed){border-color:var(--accent)!important;box-shadow:0 0 22px rgba(var(--accent-rgb),.35)!important}
+@media(max-width:900px){#skills .three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){#skills .three{grid-template-columns:1fr}#skills .mk-skills-category-legend{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:thin;padding:5px 4px 12px;overscroll-behavior-x:contain}}
+@media(prefers-reduced-motion:reduce){#skills .three>.mk-skill-category-card,#skills .mk-skill-category-card .skill,#skills .mk-skills-category-legend button{transition:none!important}}
+.mk-colorstack-link{color:#bca5ff;text-decoration:underline;text-decoration-color:#bca5ff88;text-underline-offset:4px}.mk-colorstack-link:hover{color:#e2d8ff;text-decoration-color:currentColor}.mk-colorstack-link:focus-visible{outline:3px solid #bca5ff;outline-offset:4px;border-radius:3px}
+
+#home .mk-vision-market-statement{max-width:570px;margin:16px 0 0;color:#e4dcf7;font-size:clamp(13px,1.25vw,17px);line-height:1.65;letter-spacing:.005em;text-shadow:0 2px 12px #08071199}
+
+/* Oil Geo Signal Engine: project-specific emerald glow */
+#project-4{position:relative;isolation:isolate;border-radius:18px;transition:box-shadow .25s ease,background-color .25s ease}
+#project-4::before{content:"";position:absolute;inset:-2px;border:1px solid rgba(52,211,153,.3);border-radius:20px;box-shadow:0 0 22px rgba(52,211,153,.18),inset 0 0 18px rgba(52,211,153,.035);pointer-events:none;z-index:-1;transition:border-color .25s ease,box-shadow .25s ease}
+#project-4 .fp-frame{border-color:rgba(52,211,153,.38)!important;box-shadow:0 0 28px rgba(52,211,153,.12)!important;transition:border-color .25s ease,box-shadow .25s ease}
+#project-4 h2{text-shadow:0 0 17px rgba(52,211,153,.23)}
+#project-4:hover::before,#project-4:focus-within::before{border-color:rgba(52,211,153,.75);box-shadow:0 0 36px rgba(52,211,153,.34),inset 0 0 26px rgba(52,211,153,.07)}
+#project-4:hover .fp-frame,#project-4:focus-within .fp-frame{border-color:rgba(52,211,153,.72)!important;box-shadow:0 0 42px rgba(52,211,153,.26)!important}
+@media(prefers-reduced-motion:reduce){#project-4,#project-4::before,#project-4 .fp-frame{transition:none!important}}
+
+/* Familiar LinkedIn button style, limited to Contact. */
+#contact .mk-connect-links .mk-linkedin-button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:9px!important;color:#fff!important;background:#0a66c2!important;
+  border:1px solid #0a66c2!important;box-shadow:none!important;
+  font-weight:700!important;text-decoration:none!important;
+}
+#contact .mk-connect-links .mk-linkedin-button:hover{
+  background:#004182!important;border-color:#004182!important;
+  box-shadow:0 4px 16px rgba(10,102,194,.28)!important;
+}
+#contact .mk-connect-links .mk-linkedin-button:focus-visible{
+  outline:3px solid #fff!important;outline-offset:3px!important;
+}
+#contact .mk-connect-links .mk-linkedin-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:21px;height:21px;flex:0 0 21px;border-radius:3px;
+  background:#fff;color:#0a66c2;font:bold 16px/1 Arial,sans-serif;
+  letter-spacing:-.08em;padding-right:1px;
+}
+@media(prefers-reduced-motion:reduce){#contact .mk-connect-links .mk-linkedin-button{transition:none!important}}
+
+/* Higher contrast, obvious action affordance for project Technical Walkthrough controls. */
+#project-details .project-expand{
+  border:1px solid rgba(193,153,255,.72)!important;
+  border-radius:14px!important;
+  background:#291b43!important;
+  box-shadow:0 0 0 1px rgba(173,123,255,.12),0 6px 19px rgba(14,8,28,.25)!important;
+  overflow:hidden!important;
+}
+#project-details .project-expand > summary{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  min-height:62px!important;
+  padding:16px 20px!important;
+  background:linear-gradient(100deg,#392253,#34204e)!important;
+  color:#fff!important;
+  font-size:clamp(15px,1.1vw,18px)!important;
+  font-weight:800!important;
+  letter-spacing:.012em!important;
+  line-height:1.35!important;
+  cursor:pointer!important;
+  transition:background .2s ease,box-shadow .2s ease!important;
+}
+#project-details .project-expand > summary > span:first-child{
+  color:#fff!important;
+  text-shadow:0 1px 8px rgba(204,175,255,.24)!important;
+}
+#project-details .project-expand > summary .project-expand-icon{
+  display:inline-grid!important;
+  place-items:center!important;
+  flex:0 0 34px!important;
+  width:34px!important;
+  height:34px!important;
+  border-radius:10px!important;
+  background:#9b68e5!important;
+  border:1px solid #c9a8ff!important;
+  color:#fff!important;
+  font-size:24px!important;
+  font-weight:650!important;
+  box-shadow:0 0 15px rgba(167,107,242,.25)!important;
+}
+#project-details .project-expand > summary:hover,
+#project-details .project-expand > summary:focus-visible{
+  background:linear-gradient(100deg,#4d2a70,#40265d)!important;
+  box-shadow:inset 0 0 0 1px rgba(203,167,255,.65)!important;
+}
+#project-details .project-expand > summary:focus-visible{
+  outline:3px solid #d3b2ff!important;
+  outline-offset:-3px!important;
+}
+#project-details .project-expand[open] > summary{
+  background:#432861!important;
+  border-bottom:1px solid #8e60c7!important;
+}
+@media(prefers-reduced-motion:reduce){
+  #project-details .project-expand > summary{transition:none!important}
+}
+
+/* Contact-only Gmail and GitHub recognizable brand buttons. */
+#contact .mk-connect-links .mk-gmail-button,
+#contact .mk-connect-links .mk-github-button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:10px!important;font-weight:700!important;text-decoration:none!important;
+}
+#contact .mk-connect-links .mk-gmail-button{
+  color:#292633!important;background:#fff!important;border:1px solid #dedbe7!important;
+  box-shadow:0 3px 12px rgba(0,0,0,.10)!important;
+}
+#contact .mk-connect-links .mk-gmail-button:hover{
+  background:#f3f4f7!important;border-color:#fff!important;
+  box-shadow:0 5px 20px rgba(255,255,255,.15)!important;
+}
+#contact .mk-connect-links .mk-github-button{
+  color:#fff!important;background:#24292f!important;border:1px solid #58606b!important;
+  box-shadow:0 3px 12px rgba(0,0,0,.15)!important;
+}
+#contact .mk-connect-links .mk-github-button:hover{
+  background:#353c45!important;border-color:#a8b0ba!important;
+  box-shadow:0 6px 20px rgba(0,0,0,.27)!important;
+}
+#contact .mk-connect-links .mk-contact-brand-icon{
+  display:block!important;width:24px!important;height:24px!important;
+  flex:0 0 24px!important;
+}
+#contact .mk-connect-links .mk-gmail-button:focus-visible,
+#contact .mk-connect-links .mk-github-button:focus-visible{
+  outline:3px solid #cbb4ff!important;outline-offset:3px!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #contact .mk-connect-links .mk-gmail-button,
+ #contact .mk-connect-links .mk-github-button{transition:none!important}
+}
+

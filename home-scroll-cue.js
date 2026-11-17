@@ -31,6 +31,9 @@
     let current=0,pending=0;
     const updateMobile=()=>{
       pending=0;
+      const home=document.getElementById('home');
+      mobileNav.hidden=!home?.hasAttribute('data-mk-active');
+      if(mobileNav.hidden)return;
       const cutoff=Math.min(220,innerHeight*.35);
       current=0;
       for(let i=1;i<mobileLandmarks.length;i++){
@@ -49,6 +52,7 @@
     const scheduleMobile=()=>{if(!pending)pending=requestAnimationFrame(updateMobile)};
     addEventListener('scroll',scheduleMobile,{passive:true});
     addEventListener('resize',scheduleMobile,{passive:true});
+    document.addEventListener('portfolio:mobile-page-change',scheduleMobile);
     scheduleMobile();
     return;
   }

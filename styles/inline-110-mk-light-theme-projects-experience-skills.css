@@ -1,0 +1,1741 @@
+
+/* Shared design tokens lifted verbatim from #hobbies and #listening-reading. */
+:root{
+ --portfolio-cream:#fff9fa;--portfolio-blush:#f9ebf0;
+ --portfolio-lavender:#fbf6fc;--portfolio-lavender-end:#f3eafa;
+ --portfolio-ink:#292631;--portfolio-heading:#392945;
+ --portfolio-body:#51425c;--portfolio-secondary:#6a556f;
+ --portfolio-accent:#70419a;--portfolio-accent-fill:#ab7bdb;
+ --portfolio-border:#d9c5e5;--portfolio-card:#fffdfef0;
+ --portfolio-literature-ink:#2d2739;--portfolio-literature-body:#63596d;
+ --portfolio-literature-border:rgba(118,93,149,.17);
+ --portfolio-literature-card:rgba(255,255,255,.76);
+ --portfolio-card-radius:20px;
+ --portfolio-card-shadow:0 5px 22px rgba(63,45,84,.045);
+ --portfolio-card-hover-shadow:0 8px 28px #482d6512;
+ --portfolio-surface:radial-gradient(ellipse at 94% 8%,rgba(241,205,217,.55),transparent 46%),radial-gradient(ellipse at 2% 91%,rgba(246,220,208,.40),transparent 48%),linear-gradient(140deg,#fff9fa 0%,#f9ebf0 100%);
+ --portfolio-literature-surface:radial-gradient(ellipse at 7% 8%,rgba(219,194,234,.36),transparent 44%),linear-gradient(145deg,#fbf6fc 0%,#f3eafa 100%);
+ --portfolio-purple-gradient:radial-gradient(ellipse at 88% 12%,rgba(171,123,219,.18),transparent 48%),linear-gradient(135deg,#e4deeb 0%,#f3eafa 48%,#d9c5e5 100%);
+ /* Related pastel-purple compositions; all stops reuse Hobbies/Literature colors. */
+ --portfolio-projects-gradient:linear-gradient(90deg,#d9c5e5 0%,#f3eafa 48%,#e4deeb 100%);
+ --portfolio-experience-gradient:linear-gradient(145deg,#e4deeb 0%,#fbf6fc 45%,#d9c5e5 100%);
+ --portfolio-skills-gradient:radial-gradient(ellipse at 78% 18%,rgba(171,123,219,.18),transparent 50%),linear-gradient(180deg,#f3eafa 0%,#d9c5e5 65%,#e4deeb 100%);
+}
+/* Repoint the two established reference surfaces at the same tokens; appearance unchanged. */
+#hobbies{background:var(--portfolio-surface)!important;color:var(--portfolio-ink)!important}
+#hobbies #beyond-code-editorial .bc-story{background:var(--portfolio-card)!important;border-color:var(--portfolio-border)!important}
+#listening-reading{background:var(--portfolio-literature-surface)!important;color:var(--portfolio-literature-ink)!important}
+#listening-reading .lr-card{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-literature-border)!important;border-radius:var(--portfolio-card-radius)!important;box-shadow:var(--portfolio-card-shadow)!important}
+/* Target only these three sections; TV stage/transitions and scripts remain intact. */
+#projects.fp,#experience.section,#skills.section{
+ background:var(--portfolio-purple-gradient)!important;
+ background-color:var(--portfolio-lavender-end)!important;
+ background-image:var(--portfolio-purple-gradient)!important;
+ color:var(--portfolio-ink)!important;
+ border-top:1px solid var(--portfolio-border)!important;
+ border-bottom:1px solid var(--portfolio-border)!important;
+ box-sizing:border-box;
+}
+/* A horizontal sweep, diagonal lavender fade and radial/vertical wash respectively. */
+#projects.fp{background:var(--portfolio-projects-gradient)!important;background-image:var(--portfolio-projects-gradient)!important}
+#experience.section{background:var(--portfolio-experience-gradient)!important;background-image:var(--portfolio-experience-gradient)!important}
+#skills.section{background:var(--portfolio-skills-gradient)!important;background-image:var(--portfolio-skills-gradient)!important}
+#projects.fp{--fp-ink:var(--portfolio-ink);--fp-muted:var(--portfolio-secondary);--fp-line:var(--portfolio-border);--fp-pill:var(--portfolio-literature-card);--fp-bezel:var(--portfolio-border);--fp-accent:var(--portfolio-accent);padding-top:clamp(54px,6vw,86px)!important;padding-bottom:clamp(66px,7vw,100px)!important}
+#experience.section,#skills.section{padding-top:clamp(54px,6vw,86px)!important;padding-bottom:clamp(66px,7vw,100px)!important}
+#projects.fp::before,#experience.section::before,#skills.section::before{background:none!important;box-shadow:none!important}
+#projects.fp .fp-eyebrow,#projects.fp .fp-label,#projects.fp .fp-label b,#projects.fp .fp-label span{color:var(--portfolio-accent)!important;-webkit-text-fill-color:var(--portfolio-accent)!important}
+#projects.fp .fp-title,#projects.fp .fp-name{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;text-shadow:none!important}
+#projects.fp .fp-sub{color:var(--portfolio-body)!important;-webkit-text-fill-color:var(--portfolio-body)!important}
+#projects.fp .fp-card{background:var(--portfolio-card)!important;border:1px solid var(--portfolio-border)!important;border-radius:var(--portfolio-card-radius)!important;box-shadow:var(--portfolio-card-shadow)!important;padding:clamp(18px,2.5vw,28px)!important}
+#projects.fp .fp-card:hover,#projects.fp .fp-card:focus-within{border-color:var(--portfolio-accent-fill)!important;box-shadow:var(--portfolio-card-hover-shadow)!important}
+#projects.fp .fp-star{color:var(--portfolio-accent)!important;background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important}
+#projects.fp .fp-star:hover,#projects.fp .fp-star:focus-visible{background:var(--portfolio-lavender-end)!important;border-color:var(--portfolio-accent)!important;color:var(--portfolio-heading)!important}
+#projects.fp .fp-frame{border-color:var(--portfolio-border)!important;box-shadow:var(--portfolio-card-shadow)!important}
+#projects.fp .fp-g1,#projects.fp .fp-g2,#projects.fp .fp-g3{background:linear-gradient(145deg,#fffefe,#f5eef8)!important}
+#projects.fp .fp-desc{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important}
+#projects.fp .fp-win{box-shadow:0 8px 28px #482d6512!important;border:1px solid var(--portfolio-border)!important}
+#projects.fp .fp-tags li{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important}
+#projects.fp .fp-more{color:var(--portfolio-accent)!important;-webkit-text-fill-color:var(--portfolio-accent)!important;border-bottom-color:var(--portfolio-border)!important}
+#projects.fp .fp-more:hover{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;border-bottom-color:var(--portfolio-accent)!important}
+/* Experience: keep job/education/milestone markup, timelines and hover interactions. */
+#experience .page-hero,#experience .page-hero h1,#experience .page-hero h1 .mk-title-solid{color:var(--portfolio-ink)!important;-webkit-text-fill-color:var(--portfolio-ink)!important}
+#experience .page-hero .eyebrow,#experience .page-hero .back,#experience .timeline .date{color:var(--portfolio-accent)!important}
+#experience .page-hero p,#experience .timeline .muted,#experience .timeline .job p,#experience .timeline .job li{color:var(--portfolio-body)!important}
+#experience .timeline .job,#experience .timeline .demo-entry,#experience .preview-school,
+#experience #achievements .simple-list article.demo-milestone,#experience #achievements .simple-list article.dev-milestone,
+#experience #achievements .dev-track>.dev-program{
+ background:var(--portfolio-card)!important;background-image:none!important;
+ border:1px solid var(--portfolio-border)!important;border-radius:var(--portfolio-card-radius)!important;
+ color:var(--portfolio-heading)!important;box-shadow:var(--portfolio-card-shadow)!important;
+}
+#experience .timeline > article.job.demo-entry,
+#experience .timeline > article.job.demo-entry:hover,#experience .timeline > article.job.demo-entry:focus-within{background:var(--portfolio-card)!important;background-image:none!important}
+#experience .timeline > article.job.demo-entry:hover{transform:translateY(-5px)!important;border-color:var(--portfolio-accent-fill)!important;box-shadow:var(--portfolio-card-hover-shadow)!important}
+#experience .timeline > article.job.demo-entry:focus-within{box-shadow:0 0 0 3px var(--portfolio-border)!important}
+#experience .timeline h2,#experience .preview-education h2,#experience .preview-school h3,
+#experience #achievements :is(.simple-list,.dev-heading,.dev-track) :is(h2,h3){color:var(--portfolio-heading)!important}
+#experience .preview-school p,#experience #achievements :is(.simple-list,.dev-heading,.dev-track) p,
+#experience #achievements .dev-meta{color:var(--portfolio-body)!important}
+#experience .timeline::before,#experience .timeline .job::before,
+#experience #achievements .timeline::before{border-color:var(--portfolio-border)!important;background-color:var(--portfolio-border)!important}
+#experience :is(.tabs,.tab-list,[role="tablist"]){border-color:var(--portfolio-border)!important}
+#experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab){background:var(--portfolio-literature-card)!important;color:var(--portfolio-accent)!important;border:1px solid var(--portfolio-border)!important}
+#experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab):is([aria-selected="true"],.active):not(:disabled){background:var(--portfolio-accent-fill)!important;color:var(--portfolio-ink)!important;border-color:var(--portfolio-accent)!important}
+#experience :is(button[role="tab"],.tab-btn,.tab-button,.experience-tab):hover{border-color:var(--portfolio-accent)!important}
+/* The desktop Experience switch is built by tv-channels.js. Restyle its surface only. */
+#experience .mk-exp-tabs{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ gap:5px!important;padding:5px!important;
+ background:var(--portfolio-literature-card)!important;
+ border:1px solid var(--portfolio-border)!important;
+ border-radius:999px!important;
+ box-shadow:var(--portfolio-card-shadow)!important;
+ backdrop-filter:blur(12px)!important;
+ -webkit-backdrop-filter:blur(12px)!important;
+}
+#experience .mk-exp-tabs button[role="tab"]{
+ color:var(--portfolio-accent)!important;
+ background:transparent!important;
+ border:1px solid transparent!important;
+ border-radius:999px!important;
+ opacity:1!important;
+ box-shadow:none!important;
+ font-weight:700!important;
+ transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease!important;
+}
+#experience .mk-exp-tabs button[role="tab"]:hover:not([aria-selected="true"]){
+ background:var(--portfolio-lavender-end)!important;
+ border-color:var(--portfolio-border)!important;
+ color:var(--portfolio-heading)!important;
+}
+#experience .mk-exp-tabs button[role="tab"][aria-selected="true"]{
+ color:var(--portfolio-ink)!important;
+ background:var(--portfolio-accent-fill)!important;
+ border-color:var(--portfolio-accent-fill)!important;
+ box-shadow:var(--portfolio-card-hover-shadow)!important;
+}
+#experience .mk-exp-tabs button[role="tab"]:focus-visible{
+ outline:3px solid var(--portfolio-accent)!important;
+ outline-offset:2px!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #experience .mk-exp-tabs button[role="tab"]{transition:none!important}
+}
+#experience #achievements.mk-exp-milestones{background:transparent!important;color:var(--portfolio-ink)!important}
+#experience #achievements .page-hero h1,#experience #achievements .page-hero h1 .mk-title-solid{
+ color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;
+}
+#experience #achievements .page-hero h1 .mk-title-glow{
+ background-image:linear-gradient(105deg,#7547ad 10%,#af69de 36%,#6f46ad 52%,#cf97e9 72%,#8d60c0 94%)!important;
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+}
+#experience #achievements .page-hero :is(.eyebrow,.back){color:var(--portfolio-accent)!important}
+#experience #achievements .page-hero p{color:var(--portfolio-body)!important}
+#experience #achievements .page-hero .highlight{color:var(--portfolio-accent)!important;-webkit-text-fill-color:var(--portfolio-accent)!important}
+/* Skills: intact 3D orbit, accessible tool labels, six category colors and filters. */
+#skills.section .sectionhead :is(.eyebrow,p),#skills .mk-skills-legend{color:var(--portfolio-body)!important}
+#skills.section .sectionhead .mk-title-solid,
+#skills.section .sectionhead .mk-title-glow{
+ background-image:linear-gradient(105deg,#7547ad 10%,#af69de 36%,#6f46ad 52%,#cf97e9 72%,#8d60c0 94%)!important;
+ background-clip:text!important;-webkit-background-clip:text!important;
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+}
+#skills.section .three>.mk-skill-category-card,
+#skills.section .three>.large-panel{background:var(--portfolio-card)!important;background-image:none!important;border-color:var(--portfolio-border)!important;border-radius:var(--portfolio-card-radius)!important;box-shadow:var(--portfolio-card-shadow)!important;color:var(--portfolio-heading)!important}
+#skills.section .three>.mk-skill-category-card:is(:hover,:focus-visible){border-color:var(--portfolio-accent-fill)!important;box-shadow:var(--portfolio-card-hover-shadow)!important}
+#skills.section .three .large-panel .eyebrow{color:var(--portfolio-accent)!important}
+#skills.section .three .large-panel .skill{color:var(--portfolio-heading)!important;-webkit-text-fill-color:var(--portfolio-heading)!important;border-color:var(--portfolio-border)!important;background:var(--portfolio-lavender-end)!important}
+#skills.section .three .large-panel .skill:is(:hover,:focus-visible){background:var(--portfolio-lavender)!important;border-color:var(--portfolio-accent)!important;color:var(--portfolio-ink)!important}
+#skills.section .mk-skills-category-legend button{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-heading)!important}
+#skills.section .mk-skills-category-legend button:is(:hover,[aria-pressed="true"]){background:var(--portfolio-lavender-end)!important;border-color:var(--portfolio-accent)!important;color:var(--portfolio-ink)!important}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;box-shadow:var(--portfolio-card-shadow)!important}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-logo-text{background:var(--portfolio-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-ink)!important;-webkit-text-fill-color:var(--portfolio-ink)!important;text-shadow:none!important}
+#skills.section #mk-skills-visual .mk-skills-status{background:var(--portfolio-literature-card)!important;border-color:var(--portfolio-border)!important;color:var(--portfolio-body)!important}
+#skills.section #mk-skills-visual canvas{opacity:1!important}
+#projects.fp :is(a,button):focus-visible,#experience :is(a,button,[role="tab"]):focus-visible,
+#skills :is(a,button,.mk-skill-category-card):focus-visible{outline:3px solid var(--portfolio-accent)!important;outline-offset:3px}
+@media(max-width:767px){
+ #projects.fp{padding-inline:clamp(12px,4vw,20px)!important}
+ #projects.fp .fp-card{padding:clamp(14px,4vw,20px)!important}
+ #experience.section,#skills.section{padding-block:clamp(42px,8vw,66px)!important}
+ #experience .timeline .job,#experience .preview-school{min-width:0}
+ #skills.section .three{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){#skills.section .three{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){
+ #projects.fp .fp-card,#projects.fp .fp-frame,#skills.section .mk-skill-category-card{transition:none!important}
+}
+/* Restore Featured Projects' November 15 dark-purple backdrop without changing project cards. */
+#projects.fp{
+  background-color:#150e25!important;
+  background-image:radial-gradient(ellipse at 50% 0%,rgba(89,49,139,.31),transparent 63%),radial-gradient(rgba(177,151,218,.14) 1px,transparent 1px)!important;
+  background-size:auto,28px 28px!important;
+  color:#f7f2ff!important;
+}
+#projects.fp .fp-title{color:#fff!important;-webkit-text-fill-color:#fff!important}
+#projects.fp .fp-sub{color:#e3d9f1!important;-webkit-text-fill-color:#e3d9f1!important}
+#projects.fp .fp-eyebrow{color:#d7c5eb!important;-webkit-text-fill-color:#d7c5eb!important}
+
+/* Skills dark-theme restoration based on pre-light-theme commit c4741ed.
+   Vertical dusty-purple fade; no other sections or animation logic changed. */
+#skills.section{
+  --section-accent:#c4a3f5;
+  color:#f7f1ff!important;
+  /* Override the earlier light-theme background shorthand, not just its image. */
+  background:linear-gradient(to bottom,
+    #120c20 0%,
+    #21162f 32%,
+    #352a45 69%,
+    #4a4154 100%)!important;
+  background-color:#120c20!important;
+  background-image:linear-gradient(to bottom,#120c20 0%,#21162f 32%,#352a45 69%,#4a4154 100%)!important;
+  background-repeat:no-repeat!important;
+  background-size:100% 100%!important;
+  border-top:1px solid rgba(125,97,156,.12)!important;
+  border-bottom:1px solid rgba(159,141,180,.12)!important;
+}
+#skills.section::before{
+  /* Remove the competing dotted/radial overlay; let the vertical fade show. */
+  background:none!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  opacity:0!important;
+}
+#skills.section .sectionhead .eyebrow{
+  color:#d5c0ee!important;-webkit-text-fill-color:#d5c0ee!important;
+}
+#skills.section .sectionhead h2,
+#skills.section .sectionhead h2 .mk-title-solid,
+#skills.section .sectionhead h2 .mk-title-glow{
+  background:linear-gradient(95deg,#ad8bff 0%,#d6a9ff 48%,#f199ca 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  color:transparent!important;-webkit-text-fill-color:transparent!important;
+  text-shadow:none!important;
+}
+#skills.section .sectionhead p,
+#skills.section .mk-skills-legend{
+  color:#eee2fb!important;-webkit-text-fill-color:#eee2fb!important;
+}
+#skills.section .mk-skills-orbit{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+#skills.section .mk-skills-orbit::after{display:none!important}
+#skills.section #mk-skills-visual canvas{
+  opacity:1!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon{
+  background:rgba(188,159,223,.18)!important;
+  border:1px solid rgba(207,178,242,.30)!important;
+  border-radius:13px!important;
+  box-shadow:0 5px 15px rgba(0,0,0,.20)!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle img{
+  filter:drop-shadow(0 1px 2px rgba(255,255,255,.18));
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon{
+  transform:scale(1.15);
+  box-shadow:0 0 0 2px rgba(190,151,252,.55),0 8px 22px rgba(37,19,60,.35)!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-logo-text{
+  color:rgb(var(--skill-glow-rgb))!important;
+  -webkit-text-fill-color:rgb(var(--skill-glow-rgb))!important;
+  background:#130d22!important;
+  border:1px solid rgba(var(--skill-glow-rgb),.55)!important;
+  text-shadow:0 0 8px rgba(var(--skill-glow-rgb),.3)!important;
+  box-shadow:none!important;
+}
+#skills.section #mk-skills-visual .mk-skills-status{
+  color:#e5d2f9!important;
+  background:rgba(28,19,47,.88)!important;
+  border-color:rgba(178,151,225,.42)!important;
+}
+#skills.section .three .large-panel{
+  background:rgba(36,26,57,.65)!important;
+  border:1px solid rgba(180,145,220,.22)!important;
+  box-shadow:none!important;
+}
+#skills.section .three .large-panel .eyebrow{
+  color:var(--skill-cat,#d3b9f7)!important;
+  -webkit-text-fill-color:var(--skill-cat,#d3b9f7)!important;
+}
+#skills.section .three .large-panel .skill{
+  background:rgba(var(--skill-cat-rgb,139,92,246),.12)!important;
+  border:1px solid rgba(var(--skill-cat-rgb,139,92,246),.40)!important;
+  color:#f1eafc!important;
+  -webkit-text-fill-color:#f1eafc!important;
+}
+#skills.section .three .large-panel .skill:is(:hover,:focus-visible){
+  background:rgba(var(--skill-cat-rgb,139,92,246),.23)!important;
+  border-color:rgba(var(--skill-cat-rgb,139,92,246),.72)!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+}
+#skills.section .mk-skills-category-legend button{
+  background:rgba(30,20,49,.90)!important;
+  color:#f2eafa!important;
+  border-color:rgba(218,195,250,.3)!important;
+}
+#skills.section .mk-skills-category-legend button:is(:hover,[aria-pressed="true"]){
+  background:rgba(61,39,86,.90)!important;
+  border-color:var(--accent,var(--category-color,#8b5cf6))!important;
+  color:#fff!important;
+}
+@media(prefers-reduced-motion:reduce){
+  #skills.section #mk-skills-visual .mk-skill-particle .mk-icon{transition:none!important}
+}
+/* Education heading contrast on the light Experience section only. */
+#experience #education.preview-education > .eyebrow{
+  color:#70419a!important;
+  -webkit-text-fill-color:#70419a!important;
+  opacity:1!important;
+}
+#experience #education.preview-education > h2{
+  color:#392945!important;
+  -webkit-text-fill-color:#392945!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+#experience #education.preview-education > h2 > span{
+  color:#8754b0!important;
+  -webkit-text-fill-color:#8754b0!important;
+}
+
+/* Light lavender gradient for Let's Connect only; preserve its layout and chat behavior. */
+#contact.section{
+  --section-accent:#8a57b5;
+  color:#3a294c!important;
+  background:linear-gradient(180deg,#fffaff 0%,#f4eafb 50%,#e9daf5 100%)!important;
+  background-image:linear-gradient(180deg,#fffaff 0%,#f4eafb 50%,#e9daf5 100%)!important;
+  background-color:#f4eafb!important;
+  background-repeat:no-repeat!important;
+  background-size:100% 100%!important;
+  border-top:1px solid rgba(182,148,209,.32)!important;
+}
+#contact.section::before{background:none!important;background-image:none!important;opacity:0!important}
+#contact.section .mk-connect-left{
+  background:linear-gradient(150deg,rgba(255,255,255,.94),rgba(245,234,253,.92))!important;
+  border:1px solid #d9c2e8!important;
+  box-shadow:0 12px 32px rgba(79,49,107,.10)!important;
+}
+#contact.section .page-hero,
+#contact.section .page-hero h1,
+#contact.section .page-hero h1 .mk-title-solid{
+  color:#392746!important;
+  -webkit-text-fill-color:#392746!important;
+}
+#contact.section .page-hero h1 .mk-title-glow{
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  background-image:linear-gradient(90deg,#7948a7,#af77d6)!important;
+  background-clip:text!important;-webkit-background-clip:text!important;
+}
+#contact.section .page-hero .highlight{color:#8d5bb9!important;-webkit-text-fill-color:#8d5bb9!important}
+#contact.section .page-hero .eyebrow,
+#contact.section .page-hero .back{
+  color:#7743a0!important;-webkit-text-fill-color:#7743a0!important;
+}
+#contact.section .page-hero p,
+#contact.section .mk-connect-left p{
+  color:#594766!important;-webkit-text-fill-color:#594766!important;
+}
+#contact.section .page-hero::after{
+  background:linear-gradient(90deg,#be9cda,#e8d8f5,transparent 95%)!important;
+}
+#contact.section .mk-connect-links .mk-connect-link{
+  background:rgba(255,255,255,.88)!important;
+  color:#3b284e!important;
+  border-color:#cfb5e1!important;
+  box-shadow:0 4px 14px rgba(81,48,109,.07)!important;
+}
+#contact.section .mk-connect-links .mk-connect-link:hover{
+  background:#fff!important;
+  border-color:#a56acb!important;
+  box-shadow:0 10px 24px rgba(99,56,145,.16)!important;
+}
+#contact.section .mk-connect-links .mk-connect-link span:last-child{color:#7743a0!important}
+#contact.section .mk-connect-links .mk-linkedin-mark{background:#0a66c2!important;color:#fff!important}
+#contact.section .mk-chat-panel{
+  background:linear-gradient(150deg,rgba(44,29,73,.94),rgba(26,19,48,.97))!important;
+  border-color:rgba(174,130,220,.55)!important;
+}
+
+/* Let’s Connect screenshot polish: reduce the TV-stage dead space and finish the light theme. */
+@media(min-width:851px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active > #contact.section{
+   min-height:0!important;
+   padding-top:clamp(28px,3.1vw,50px)!important;
+   padding-bottom:clamp(18px,2vw,28px)!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active > #contact.section > .container{
+   padding-top:0!important;
+ }
+}
+#contact.section .mk-connect-layout{
+ align-items:stretch!important;
+}
+#contact.section .mk-connect-left{
+ justify-content:center!important;
+}
+#contact.section .mk-chat-panel{
+ box-shadow:0 14px 34px rgba(66,40,101,.15)!important;
+}
+/* Quotes and footer belong to the Contact page; bridge the abrupt dark band. */
+.mk-footer-quotes{
+ background:linear-gradient(180deg,#e9daf5 0%,#e8d8f4 100%)!important;
+ border-top:1px solid rgba(144,103,173,.20)!important;
+ color:#382748!important;
+}
+.mk-footer-quotes .mk-footer-quotes-kicker,
+.mk-footer-quotes .mk-footer-quote figcaption,
+.mk-footer-quotes .mk-footer-quote-count{color:#725581!important}
+.mk-footer-quotes .mk-footer-quote blockquote{color:#392746!important}
+.mk-footer-quotes .mk-footer-quote-controls button{
+ background:rgba(255,255,255,.73)!important;
+ border-color:#c7a7db!important;
+ color:#513365!important;
+}
+.mk-footer-quotes .mk-footer-quote-controls button:is(:hover,:focus-visible){
+ background:#fff!important;
+ border-color:#9968bc!important;
+}
+.mk-footer-band{
+ background:linear-gradient(180deg,#e8d8f4 0%,#eee3f7 100%)!important;
+ border-top:1px solid rgba(144,103,173,.19)!important;
+ color:#503865!important;
+}
+.mk-footer-band .mk-footer,
+.mk-footer-band .mk-footer-tagline{color:#503865!important}
+.mk-footer-band .mk-socials-footer .mk-social-link{
+ color:#513365!important;
+ background:rgba(255,255,255,.65)!important;
+ border-color:#cbb0e0!important;
+}
+.mk-footer-band .mk-socials-footer .mk-social-link:is(:hover,:focus-visible){
+ background:#fff!important;
+ border-color:#9863c1!important;
+}
+@media(max-width:850px){
+ #contact.section{padding-top:clamp(25px,5vw,42px)!important}
+}
+
+/* Contact screenshot correction: compact the Q&A flow rather than stretching an empty chat log. */
+#contact.section #mk-portfolio-chat.mk-chat-panel{
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  justify-content:flex-start!important;
+  gap:0!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-conversation{
+  flex:0 1 auto!important;
+  min-height:0!important;
+  max-height:230px!important;
+  overflow-y:auto!important;
+  margin:16px 0 20px!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-chips{
+  margin-top:0!important;
+  margin-bottom:14px!important;
+  flex-shrink:0!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-form{
+  margin-top:0!important;
+  flex-shrink:0!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-disclaimer{
+  margin-top:9px!important;
+  color:#cbbce0!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-message{
+  color:#fff8ff!important;
+  border:1px solid rgba(224,206,248,.10)!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-head{
+  flex-shrink:0!important;
+}
+@media(min-width:851px){
+ #contact.section .mk-connect-layout > .mk-chat-panel{
+   height:auto!important;
+   min-height:0!important;
+   max-height:none!important;
+ }
+}
+/* Let’s Connect footer: explicit higher-specificity light background and readable controls. */
+body .mk-footer-band,
+body.tv-mode .mk-footer-band,
+body.tv-mode .tv-page .mk-footer-band{
+  background:#eee2f7!important;
+  background-image:linear-gradient(180deg,#e8d8f4 0%,#eee3f7 100%)!important;
+  border-top:1px solid #cfb9df!important;
+  color:#3c2b4c!important;
+}
+body .mk-footer-band footer.mk-footer,
+body.tv-mode .mk-footer-band footer.mk-footer{
+  background:transparent!important;
+  color:#3c2b4c!important;
+  display:grid!important;
+  grid-template-columns:minmax(175px,1fr) auto minmax(175px,1fr)!important;
+  align-items:center!important;
+  gap:18px!important;
+  padding:18px 0 20px!important;
+  min-height:76px!important;
+  text-align:left!important;
+}
+body .mk-footer-band .mk-footer > span:first-child,
+body .mk-footer-band .mk-footer-tagline{
+  color:#513b61!important;
+  opacity:1!important;
+  -webkit-text-fill-color:#513b61!important;
+  font-weight:600!important;
+}
+body .mk-footer-band .mk-footer-tagline{text-align:right!important}
+body .mk-footer-band .mk-socials-footer{
+  justify-content:center!important;
+  gap:8px!important;
+}
+body .mk-footer-band .mk-socials-footer .mk-social-link{
+  background:#fff9ff!important;
+  border:1px solid #c9addf!important;
+  color:#49305b!important;
+  -webkit-text-fill-color:#49305b!important;
+  opacity:1!important;
+}
+body .mk-footer-band .mk-socials-footer .mk-social-link svg{
+  color:#49305b!important;
+  stroke:#49305b!important;
+}
+body .mk-footer-band .mk-socials-footer .mk-social-link .mk-social-word{
+  color:#49305b!important;
+  -webkit-text-fill-color:#49305b!important;
+}
+body .mk-footer-band .mk-socials-footer .mk-social-link:is(:hover,:focus-visible){
+  background:#fff!important;
+  border-color:#9254bd!important;
+}
+@media(max-width:850px){
+ body .mk-footer-band footer.mk-footer,
+ body.tv-mode .mk-footer-band footer.mk-footer{
+   display:flex!important;
+   flex-wrap:wrap!important;
+   flex-direction:column!important;
+   gap:12px!important;
+   justify-content:center!important;
+   padding:19px 0 22px!important;
+   text-align:center!important;
+ }
+ body .mk-footer-band .mk-footer-tagline{text-align:center!important}
+}
+
+/* Skills sphere, polished solid globe treatment inspired by the requested reference. */
+#skills.section #mk-skills-visual.mk-skills-orbit{
+  width:min(100%,850px)!important;
+  height:640px!important;
+  overflow:visible!important;
+  isolation:isolate;
+  position:relative;
+  margin:16px auto 2px!important;
+  background:transparent!important;
+}
+#skills.section #mk-skills-visual #mk-skills-wireframe{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  z-index:2;
+  pointer-events:none;
+  opacity:1!important;
+}
+#skills.section #mk-skills-visual #mk-skills-logos{
+  position:absolute;
+  inset:0;
+  z-index:auto;
+  pointer-events:none;
+}
+#skills.section #mk-skills-visual .mk-skill-particle{
+  pointer-events:auto;
+  filter:none!important;
+  overflow:visible;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon{
+  position:relative;
+  width:51px;height:51px;
+  border-radius:12px!important;
+  background:rgba(255,255,255,.23)!important;
+  border:1px solid rgba(245,232,255,.62)!important;
+  box-shadow:0 6px 19px rgba(33,15,66,.24),inset 0 1px rgba(255,255,255,.23)!important;
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+}
+#skills.section #mk-skills-visual .mk-skill-particle[data-skill-file="nextjs"] .mk-icon,
+#skills.section #mk-skills-visual .mk-skill-particle[data-skill-file="github"] .mk-icon,
+#skills.section #mk-skills-visual .mk-skill-particle[data-skill-file="vercel"] .mk-icon,
+#skills.section #mk-skills-visual .mk-skill-particle[data-skill-file="flask"] .mk-icon{
+  background:rgba(255,255,255,.88)!important;
+  border-color:rgba(255,255,255,.94)!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle img{
+  filter:none!important;
+  opacity:1!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible,.mk-skill-selected) .mk-icon{
+  transform:scale(1.13);
+  border-color:#f3dcff!important;
+  box-shadow:0 0 0 2px rgba(236,209,255,.68),0 0 23px rgba(191,140,255,.62)!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-logo-text{
+  display:none!important; /* Keep the name beneath the sphere, not floating over icons. */
+}
+#skills.section #mk-skills-visual .mk-skills-status{
+  position:absolute;
+  left:50%;bottom:0;
+  z-index:8;
+  width:max-content;
+  max-width:calc(100% - 20px);
+  transform:translateX(-50%);
+  padding:9px 16px;
+  border-radius:999px;
+  color:#f1e4ff!important;
+  background:rgba(31,17,52,.83)!important;
+  border:1px solid rgba(212,182,245,.65)!important;
+  box-shadow:0 6px 23px rgba(18,9,35,.25)!important;
+  font:600 12px/1.4 'Space Grotesk',Arial,sans-serif;
+  text-align:center;
+  white-space:normal;
+}
+#skills.section .mk-selected-skill-name{
+  margin:4px auto 4px;
+  padding:5px 12px;
+  width:max-content;max-width:95%;
+  text-align:center;
+  font:700 14px/1.5 'Space Grotesk',Arial,sans-serif;
+  color:#f2deff;
+  background:rgba(136,93,185,.21);
+  border:1px solid rgba(214,172,255,.33);
+  border-radius:999px;
+}
+#skills.section .mk-selected-skill-name[hidden]{display:none!important}
+#skills.section .mk-skills-legend{
+  margin-top:12px!important;
+  text-align:center!important;
+  color:#e2d3f5!important;
+  font-weight:400!important;
+}
+#skills.section .sectionhead h2,
+#skills.section .sectionhead h2 .mk-title-solid,
+#skills.section .sectionhead h2 .mk-title-glow{
+  background:linear-gradient(95deg,#ad8bff 0%,#d6a9ff 48%,#f199ca 100%)!important;
+  background-clip:text!important;-webkit-background-clip:text!important;
+  color:transparent!important;-webkit-text-fill-color:transparent!important;
+}
+@media(max-width:700px){
+  #skills.section #mk-skills-visual.mk-skills-orbit{height:460px!important;margin:8px auto 0!important}
+  #skills.section #mk-skills-visual .mk-skill-particle .mk-icon{width:43px;height:43px}
+  #skills.section #mk-skills-visual .mk-skill-particle img{width:29px;height:29px}
+  #skills.section #mk-skills-visual .mk-skills-status{font-size:11px}
+}
+@media(max-width:450px){
+  #skills.section #mk-skills-visual.mk-skills-orbit{height:410px!important}
+  #skills.section #mk-skills-visual .mk-skill-particle .mk-icon{width:37px;height:37px}
+  #skills.section #mk-skills-visual .mk-skill-particle img{width:25px;height:25px}
+}
+@media(prefers-reduced-motion:reduce){
+  #skills.section #mk-skills-visual .mk-skill-particle .mk-icon{transition:none!important}
+}
+
+/* Skills sphere visibility hotfix: explicit CSS body, not a faint canvas fill.
+   Uses the measured JS orbit diameter to keep the sphere exactly behind the icons. */
+#skills.section #mk-skills-visual.mk-skills-orbit{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:visible!important;
+}
+#skills.section #mk-skills-visual.mk-skills-orbit::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  width:var(--mk-sphere-size,510px)!important;
+  height:var(--mk-sphere-size,510px)!important;
+  max-width:none!important;
+  max-height:none!important;
+  aspect-ratio:1!important;
+  border-radius:50%!important;
+  z-index:2!important;
+  opacity:1!important;
+  pointer-events:none!important;
+  background:radial-gradient(circle at 29% 24%,
+    #dac8f2 0%,
+    #c4b0e0 20%,
+    #9a73ce 43%,
+    #5b3a8c 73%,
+    #3a2362 100%)!important;
+  border:2px solid rgba(237,216,255,.88)!important;
+  box-shadow:
+    inset -22px -30px 44px rgba(28,11,54,.30),
+    inset 14px 19px 36px rgba(250,240,255,.18),
+    0 0 0 8px rgba(203,161,251,.07),
+    0 0 62px rgba(162,106,235,.43),
+    0 24px 70px rgba(25,11,48,.35)!important;
+  filter:none!important;
+}
+#skills.section #mk-skills-visual #mk-skills-wireframe{
+  display:none!important;
+}
+#skills.section #mk-skills-visual #mk-skills-logos{
+  position:absolute!important;
+  inset:0!important;
+  z-index:auto!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle{
+  isolation:auto!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon{
+  background:rgba(251,245,255,.26)!important;
+  border-color:rgba(255,245,255,.73)!important;
+  box-shadow:0 7px 20px rgba(21,9,47,.27),inset 0 1px 2px rgba(255,255,255,.22)!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is([data-skill-file="nextjs"],[data-skill-file="github"],[data-skill-file="vercel"],[data-skill-file="flask"]) .mk-icon{
+  background:rgba(255,255,255,.93)!important;
+}
+
+/* Reference image match: midnight-plum, understated globe mesh, exposed brand logos. */
+#skills.section #mk-skills-visual.mk-skills-orbit{
+  background:transparent!important;
+  isolation:isolate!important;
+}
+#skills.section #mk-skills-visual.mk-skills-orbit::before,
+#skills.section #mk-skills-visual.mk-skills-orbit::after{
+  display:none!important;
+  content:none!important;
+  background:none!important;
+  box-shadow:none!important;
+  border:0!important;
+}
+#skills.section #mk-skills-visual #mk-skills-wireframe{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  opacity:1!important;
+  pointer-events:none!important;
+}
+#skills.section #mk-skills-visual #mk-skills-logos{
+  position:absolute!important;
+  inset:0!important;
+  z-index:2!important;
+  pointer-events:none!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle{
+  pointer-events:auto!important;
+  overflow:visible!important;
+  background:none!important;
+  border:0!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon,
+#skills.section #mk-skills-visual .mk-skill-particle[data-skill-file] .mk-icon,
+#skills.section #mk-skills-visual .mk-skill-particle:is([data-skill-file="nextjs"],[data-skill-file="github"],[data-skill-file="vercel"],[data-skill-file="flask"]) .mk-icon{
+  background:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  border-radius:0!important;
+  overflow:visible!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon::before,
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon::after{
+  content:none!important;display:none!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle img{
+  width:38px!important;height:38px!important;
+  object-fit:contain!important;
+  filter:drop-shadow(0 2px 4px rgba(3,1,12,.28))!important;
+  opacity:1!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible,.mk-skill-selected) .mk-icon{
+  transform:scale(1.12);
+  box-shadow:none!important;
+  border:0!important;
+  filter:drop-shadow(0 0 13px rgba(var(--skill-glow-rgb),.5))!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-logo-text{
+  display:block!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  padding:2px 5px!important;
+  background:rgba(18,13,35,.46)!important;
+  border:0!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  color:#b7a8d1!important;
+  -webkit-text-fill-color:#b7a8d1!important;
+  font:700 10px/1.4 'Space Grotesk',Arial,sans-serif!important;
+  letter-spacing:.08em!important;
+  transition:opacity .18s ease;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible,.mk-skill-selected) .mk-logo-text,
+#skills.section #mk-skills-visual .mk-skill-particle[data-skill-file="react"] .mk-logo-text{
+  visibility:visible!important;
+  opacity:1!important;
+}
+#skills.section #mk-skills-visual .mk-skills-status{
+  color:#d5c2e8!important;
+  background:rgba(25,17,43,.75)!important;
+  border-color:rgba(160,133,194,.35)!important;
+  box-shadow:none!important;
+}
+@media(max-width:700px){
+  #skills.section #mk-skills-visual .mk-skill-particle img{width:30px!important;height:30px!important}
+}
+@media(max-width:450px){
+  #skills.section #mk-skills-visual .mk-skill-particle img{width:25px!important;height:25px!important}
+}
+
+/* Skills icon hover halo: bright brand-colored bloom, like reference screenshot.
+   Scoped to an icon's hover/focus state; no additional animation loops. */
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:visible!important;
+  transition:transform .22s ease,filter .22s ease!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle .mk-icon::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+  inset:-34px!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,
+    rgba(var(--skill-glow-rgb),.78) 0%,
+    rgba(var(--skill-glow-rgb),.54) 26%,
+    rgba(var(--skill-glow-rgb),.24) 51%,
+    rgba(var(--skill-glow-rgb),0) 76%)!important;
+  filter:blur(14px)!important;
+  opacity:0!important;
+  transform:scale(.68)!important;
+  transition:opacity .24s ease,transform .28s ease!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon::before{
+  opacity:1!important;
+  transform:scale(1.12)!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon{
+  transform:scale(1.17)!important;
+  filter:drop-shadow(0 0 9px rgba(var(--skill-glow-rgb),.9))
+         drop-shadow(0 0 21px rgba(var(--skill-glow-rgb),.63))!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border:0!important;
+}
+#skills.section #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) img{
+  filter:drop-shadow(0 0 5px rgba(var(--skill-glow-rgb),.55))!important;
+}
+@media(prefers-reduced-motion:reduce){
+  #skills.section #mk-skills-visual .mk-skill-particle .mk-icon,
+  #skills.section #mk-skills-visual .mk-skill-particle .mk-icon::before{
+    transition:none!important;
+  }
+}
+
+/* Single-screen Contact TV channel: no full-height Contact section pushing quotes/footer offscreen.
+   Chat transcript alone scrolls after a visitor asks many questions. */
+@media(min-width:768px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact){
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:stretch!important;
+    overflow:hidden!important;
+    min-height:0!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) > #contact.section{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:clamp(10px,2.1vh,22px) clamp(16px,3vw,42px)!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    overflow:hidden!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) > #contact > section.container{
+    width:min(1240px,100%)!important;
+    max-width:1240px!important;
+    min-height:0!important;
+    max-height:100%!important;
+    padding:0!important;
+    margin:auto!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .mk-connect-layout{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:clamp(12px,1.6vw,22px)!important;
+    align-items:stretch!important;
+    width:100%!important;
+    min-height:0!important;
+    max-height:min(100%,490px)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .mk-connect-layout > .mk-connect-left,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .mk-connect-layout > .mk-chat-panel{
+    height:auto!important;
+    max-height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .mk-connect-left{
+    padding:clamp(18px,2vw,27px)!important;
+    justify-content:center!important;
+    gap:10px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .page-hero{
+    padding:0 0 10px!important;
+    margin:0 0 8px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .page-hero > .eyebrow{
+    margin-top:12px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .page-hero h1{
+    font-size:clamp(29px,3.35vw,49px)!important;
+    line-height:1.05!important;
+    margin-block:10px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .page-hero p{
+    font-size:clamp(12px,1.15vw,15px)!important;
+    line-height:1.53!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .mk-connect-links{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:8px!important;
+    margin-top:2px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .mk-connect-link{
+    min-height:43px!important;
+    padding:9px 12px!important;
+    font-size:13px!important;
+    gap:8px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact #mk-portfolio-chat{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+    gap:0!important;
+    padding:clamp(15px,1.8vw,24px)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #mk-portfolio-chat .mk-chat-conversation{
+    flex:0 1 auto!important;
+    max-height:clamp(70px,14vh,140px)!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    margin:12px 0!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #mk-portfolio-chat .mk-chat-message{
+    padding:10px 13px!important;
+    font-size:clamp(12px,1.1vw,14px)!important;
+    line-height:1.45!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #mk-portfolio-chat .mk-chat-chips{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    overflow:visible!important;
+    gap:6px!important;
+    margin:0 0 10px!important;
+    max-height:none!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #mk-portfolio-chat .mk-chat-chips button{
+    padding:7px 10px!important;
+    font-size:11px!important;
+    min-height:32px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #mk-portfolio-chat .mk-chat-form{
+    min-height:44px!important;
+    margin:0!important;
+    padding:3px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #mk-portfolio-chat .mk-chat-form input{
+    min-width:0!important;
+    padding:7px 9px!important;
+    font-size:12px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #mk-portfolio-chat .mk-chat-disclaimer{
+    margin-top:7px!important;
+    font-size:10px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) > .mk-footer-quotes{
+    flex:0 0 auto!important;
+    width:100%!important;
+    padding:8px 15px!important;
+    background:#e8d8f4!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-quotes-inner{
+    max-width:1240px!important;
+    display:grid!important;
+    grid-template-columns:auto minmax(0,1fr) auto!important;
+    gap:16px!important;
+    align-items:center!important;
+    text-align:center!important;
+    padding:0 12px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-quotes-kicker{
+    margin:0!important;
+    font-size:9px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-quote-stage{
+    min-height:36px!important;
+    max-width:none!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-quote blockquote{
+    margin:0!important;
+    font-size:clamp(11px,1vw,13px)!important;
+    line-height:1.2!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-quote figcaption{
+    font-size:10px!important;
+    line-height:1.2!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-quote-controls{
+    margin:0!important;
+    gap:6px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-quote-controls button{
+    min-height:32px!important;
+    padding:6px 9px!important;
+    font-size:10px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) > .mk-footer-band{
+    flex:0 0 auto!important;
+    background:#eee3f7!important;
+    border-top:1px solid #d3bce6!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-band footer.mk-footer{
+    width:min(1240px,calc(100% - 40px))!important;
+    min-height:0!important;
+    display:flex!important;
+    flex-wrap:wrap!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+    gap:12px!important;
+    padding:11px 0!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-band .mk-footer,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-band .mk-footer-tagline,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-band .mk-footer>span:first-child{
+    color:#4e345f!important;
+    -webkit-text-fill-color:#4e345f!important;
+    font-size:11px!important;
+    opacity:1!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) .mk-footer-band .mk-social-link{
+    min-height:34px!important;
+    padding:7px 10px!important;
+  }
+}
+@media(min-width:768px) and (max-height:730px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) > #contact.section{
+   padding-block:7px!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .mk-connect-left{
+   padding:14px!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #contact .page-hero p{
+   font-size:12px!important;
+   line-height:1.38!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(#contact) #mk-portfolio-chat .mk-chat-conversation{
+   max-height:75px!important;
+ }
+}
+
+/* Contact channel: footer removed; the content fills the TV screen instead of leaving a black strip. */
+body.tv-mode #main-content.tv-stage .tv-page:has(> #contact){
+  background:linear-gradient(180deg,#fffaff 0%,#f4eafb 55%,#e9daf5 100%)!important;
+}
+@media(min-width:1021px) and (min-height:690px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact){
+    display:flex!important;
+    flex-direction:column!important;
+    overflow:hidden!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active > #contact.section{
+    display:flex!important;
+    flex:1 1 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    justify-content:center!important;
+    align-items:center!important;
+    overflow:visible!important;
+    padding:clamp(16px,2.6vh,30px) clamp(16px,3vw,44px)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active > #contact > .container{
+    width:min(1240px,100%)!important;
+    max-height:100%!important;
+    margin:auto!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active > .mk-footer-quotes{
+    flex:0 0 auto!important;
+    margin-top:0!important;
+  }
+}
+/* When the TV screen is narrower or shorter, allow natural vertical scrolling;
+   never crop the contact links, chat actions, or quotes. */
+@media(min-width:768px) and (max-width:1020px),
+       (min-width:768px) and (max-height:689px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact){
+    display:block!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active > #contact.section{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+    padding:clamp(18px,3vw,36px) clamp(14px,2.5vw,30px)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active #contact .mk-connect-layout{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    max-height:none!important;
+    gap:14px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active #contact .mk-connect-layout > .mk-connect-left,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active #contact .mk-connect-layout > .mk-chat-panel{
+    min-height:0!important;
+    height:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active #contact #mk-portfolio-chat .mk-chat-conversation{
+    max-height:180px!important;
+    overflow-y:auto!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active > .mk-footer-quotes{
+    width:100%!important;
+  }
+}
+@media(min-width:768px) and (max-width:880px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active #contact .mk-connect-layout{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+}
+/* Mobile classic mode stacks both cards, keeps every chat button reachable,
+   and does not add extra decorative footer space. */
+@media(max-width:767px){
+  html.mobile-classic #contact .mk-connect-layout{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:16px!important;
+  }
+  html.mobile-classic #contact .mk-connect-left,
+  html.mobile-classic #contact .mk-chat-panel{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  html.mobile-classic #contact .mk-chat-chips{flex-wrap:wrap!important;overflow:visible!important}
+  html.mobile-classic #contact .mk-connect-links{
+    display:flex!important;flex-wrap:wrap!important;gap:10px!important
+  }
+}
+
+/* Ask Michael mirrors the adjacent Let's Connect card: identical pale-lavender finish. */
+#contact.section #mk-portfolio-chat.mk-chat-panel{
+  background:linear-gradient(150deg,rgba(255,255,255,.94),rgba(245,234,253,.92))!important;
+  background-color:#faf4ff!important;
+  border:1px solid #d9c2e8!important;
+  border-radius:26px!important;
+  box-shadow:0 12px 32px rgba(79,49,107,.10)!important;
+  color:#392746!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-title{
+  color:#392746!important;
+  -webkit-text-fill-color:#392746!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-beta{
+  background:linear-gradient(125deg,#9566bf,#b784d5)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-subtitle,
+#contact.section #mk-portfolio-chat .mk-chat-disclaimer{
+  color:#594766!important;-webkit-text-fill-color:#594766!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-message{
+  background:rgba(238,225,248,.66)!important;
+  border:1px solid #dec8ed!important;
+  color:#493458!important;-webkit-text-fill-color:#493458!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-message[data-role="visitor"]{
+  background:#e8d6f3!important;
+  border-color:#cbaee0!important;
+  color:#392746!important;-webkit-text-fill-color:#392746!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-message a{color:#71439d!important}
+#contact.section #mk-portfolio-chat .mk-chat-chips button{
+  background:rgba(255,255,255,.90)!important;
+  color:#513365!important;-webkit-text-fill-color:#513365!important;
+  border:1px solid #cfb5e1!important;
+  box-shadow:0 4px 14px rgba(81,48,109,.07)!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-chips button:is(:hover,:focus-visible){
+  background:#fff!important;
+  border-color:#a56acb!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-form{
+  background:rgba(255,255,255,.92)!important;
+  border:1px solid #cfb5e1!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-form input{
+  color:#392746!important;-webkit-text-fill-color:#392746!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-form input::placeholder{
+  color:#806d8b!important;-webkit-text-fill-color:#806d8b!important;
+  opacity:1!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-form button{
+  background:linear-gradient(140deg,#a46dcf,#8653b2)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-form:focus-within{
+  outline:2px solid #a779c9!important;
+}
+
+/* Favorite Quotes: miniature Let's Connect purple gradient + fluid text sizing.
+   The sixth, longer quote wraps fully rather than clipping in the TV quote strip. */
+.mk-footer-quotes .mk-footer-quotes-kicker{
+  display:inline-block!important;
+  width:max-content!important;
+  max-width:100%!important;
+  margin:0!important;
+  font-family:'Space Grotesk',Arial,sans-serif!important;
+  font-size:clamp(9px,.78vw,12px)!important;
+  line-height:1.3!important;
+  font-weight:800!important;
+  letter-spacing:.085em!important;
+  text-transform:uppercase!important;
+  background:linear-gradient(95deg,#7242a7 0%,#9454bd 48%,#b761ae 100%)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  white-space:normal!important;
+  overflow-wrap:break-word!important;
+}
+.mk-footer-quotes .mk-footer-quotes-inner{
+  min-width:0!important;
+}
+.mk-footer-quotes .mk-footer-quote-stage{
+  min-width:0!important;
+  width:100%!important;
+}
+.mk-footer-quotes .mk-footer-quote{
+  min-width:0!important;
+  max-width:100%!important;
+}
+.mk-footer-quotes .mk-footer-quote blockquote{
+  max-width:100%!important;
+  font-size:clamp(11px,1.12vw,16px)!important;
+  line-height:1.35!important;
+  font-weight:500!important;
+  letter-spacing:-.01em!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  text-wrap:pretty;
+}
+.mk-footer-quotes .mk-footer-quote figcaption{
+  font-size:clamp(9px,.83vw,11px)!important;
+  line-height:1.3!important;
+  white-space:normal!important;
+}
+.mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote{
+  font-size:clamp(10px,1vw,14px)!important;
+  line-height:1.3!important;
+}
+@media(min-width:768px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quotes{
+   min-height:0!important;
+   overflow:visible!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quotes-inner{
+   grid-template-columns:minmax(112px,auto) minmax(0,1fr) auto!important;
+   gap:clamp(8px,1vw,16px)!important;
+   min-width:0!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote-stage{
+   min-height:clamp(44px,6vh,70px)!important;
+   height:auto!important;
+   max-width:none!important;
+   min-width:0!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote blockquote{
+   font-size:clamp(10px,.85vw,13px)!important;
+   line-height:1.25!important;
+   overflow-wrap:break-word!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote:nth-child(6) blockquote{
+   font-size:clamp(9px,.78vw,11px)!important;
+   line-height:1.25!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote figcaption{
+   font-size:clamp(9px,.7vw,10px)!important;
+ }
+}
+@media(max-width:767px){
+ .mk-footer-quotes .mk-footer-quotes-inner{
+   display:flex!important;
+   flex-direction:column!important;
+   align-items:center!important;
+   gap:12px!important;
+   padding-inline:16px!important;
+ }
+ .mk-footer-quotes .mk-footer-quote-stage{
+   max-width:100%!important;
+   min-height:95px!important;
+ }
+ .mk-footer-quotes .mk-footer-quote blockquote{
+   font-size:clamp(12px,3.2vw,15px)!important;
+   line-height:1.35!important;
+ }
+ .mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote{
+   font-size:clamp(11px,3vw,14px)!important;
+ }
+ .mk-footer-quotes .mk-footer-quote-controls{
+   flex-wrap:wrap!important;
+   justify-content:center!important;
+ }
+}
+
+/* Contact TV: dock the quote strip at the actual bottom of the screen.
+   The empty lavender block beneath the quotes was unused channel height. */
+@media(min-width:1021px) and (min-height:690px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact){
+    position:absolute!important;
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0!important;
+    height:100%!important;
+    overflow:hidden!important;
+    background:linear-gradient(180deg,#fffaff 0%,#f4eafb 55%,#e9daf5 100%)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section{
+    flex:1 1 auto!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    height:calc(100% - 72px)!important;
+    min-height:0!important;
+    max-height:calc(100% - 72px)!important;
+    margin:0!important;
+    padding:clamp(20px,3vh,45px) clamp(18px,4vw,56px)!important;
+    overflow:visible!important;
+    box-sizing:border-box!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section > .container{
+    width:min(1240px,100%)!important;
+    max-height:100%!important;
+    min-width:0!important;
+    margin:auto!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-layout{
+    width:100%!important;
+    max-width:none!important;
+    min-height:clamp(330px,46vh,500px)!important;
+    max-height:100%!important;
+    align-items:stretch!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    width:100%!important;
+    margin:0!important;
+    z-index:3!important;
+    min-height:0!important;
+    background:linear-gradient(180deg,#ebdcf6,#e8d6f1)!important;
+    border-top:1px solid rgba(144,103,173,.18)!important;
+  }
+}
+/* On smaller / shorter displays, preserve normal content flow and access to long quotes. */
+@media(min-width:768px) and (max-width:1020px),
+       (min-width:768px) and (max-height:689px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+    position:relative!important;
+    inset:auto!important;
+    margin:0!important;
+  }
+}
+
+/* Enlarged Favorite Quotes: ~20pt (26.7 CSS px) at wide desktop sizes.
+   Quote 6 stays legible and the TV reserves actual space for the larger strip. */
+.mk-footer-quotes{
+  box-sizing:border-box!important;
+  padding:clamp(18px,2vw,27px) clamp(16px,3vw,45px)!important;
+}
+.mk-footer-quotes .mk-footer-quotes-inner{
+  box-sizing:border-box!important;
+  max-width:1480px!important;
+  gap:clamp(15px,2vw,34px)!important;
+}
+.mk-footer-quotes .mk-footer-quote-stage{
+  min-height:128px!important;
+  align-items:center!important;
+}
+.mk-footer-quotes .mk-footer-quote blockquote{
+  font-size:clamp(19px,1.4vw,27px)!important;
+  line-height:1.28!important;
+  font-weight:500!important;
+  overflow-wrap:normal!important;
+  text-wrap:balance!important;
+}
+.mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote{
+  font-size:clamp(18px,1.28vw,25px)!important;
+  line-height:1.28!important;
+}
+.mk-footer-quotes .mk-footer-quote figcaption{
+  font-size:clamp(12px,.78vw,14px)!important;
+  line-height:1.4!important;
+  margin-top:7px!important;
+}
+.mk-footer-quotes .mk-footer-quote-controls{
+  flex-shrink:0!important;
+  gap:10px!important;
+}
+.mk-footer-quotes .mk-footer-quote-controls button{
+  min-height:38px!important;
+  padding:7px 12px!important;
+  font-size:12px!important;
+}
+@media(min-width:1021px) and (min-height:690px){
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+    min-height:176px!important;
+    padding:16px 24px!important;
+    overflow:visible!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section{
+    height:calc(100% - 176px)!important;
+    max-height:calc(100% - 176px)!important;
+    padding-block:clamp(10px,1.5vh,22px)!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quotes-inner{
+    grid-template-columns:minmax(150px,190px) minmax(0,1fr) auto!important;
+    gap:clamp(12px,2vw,28px)!important;
+    width:100%!important;
+    max-width:1480px!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote-stage{
+    min-height:132px!important;
+    max-height:none!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote blockquote{
+    font-size:clamp(19px,1.4vw,27px)!important;
+    line-height:1.22!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote:nth-child(6) blockquote{
+    font-size:clamp(18px,1.28vw,25px)!important;
+    line-height:1.2!important;
+  }
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote figcaption{
+    font-size:clamp(12px,.78vw,14px)!important;
+    line-height:1.3!important;
+  }
+}
+@media(min-width:768px) and (max-width:1200px){
+  .mk-footer-quotes .mk-footer-quotes-inner{
+    grid-template-columns:minmax(110px,150px) minmax(0,1fr) auto!important;
+    gap:12px!important;
+  }
+  .mk-footer-quotes .mk-footer-quote blockquote,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote blockquote{
+    font-size:clamp(17px,1.7vw,22px)!important;
+  }
+  .mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote,
+  body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) .mk-footer-quote:nth-child(6) blockquote{
+    font-size:clamp(16px,1.5vw,20px)!important;
+  }
+}
+@media(min-width:768px) and (max-height:760px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact){
+   overflow-y:auto!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section{
+   min-height:355px!important;
+   height:auto!important;
+   max-height:none!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+   position:relative!important;
+   inset:auto!important;
+   min-height:150px!important;
+ }
+}
+@media(max-width:767px){
+ .mk-footer-quotes{
+   padding:20px 16px!important;
+ }
+ .mk-footer-quotes .mk-footer-quote-stage{
+   min-height:130px!important;
+ }
+ .mk-footer-quotes .mk-footer-quote blockquote{
+   font-size:clamp(18px,4.3vw,24px)!important;
+   line-height:1.3!important;
+ }
+ .mk-footer-quotes .mk-footer-quote:nth-child(6) blockquote{
+   font-size:clamp(17px,4vw,22px)!important;
+   line-height:1.28!important;
+ }
+ .mk-footer-quotes .mk-footer-quote figcaption{
+   font-size:12px!important;
+ }
+}
+
+/* Contact layout - single authoritative override replacing conflicting chat-height patches.
+   TV page scrolls as needed; cards never grow with the message count. */
+@media(min-width:768px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact){
+   display:block!important;
+   height:100%!important;
+   min-height:0!important;
+   overflow-y:auto!important;
+   overflow-x:hidden!important;
+   overscroll-behavior-y:contain;
+   background:linear-gradient(180deg,#fffaff,#f4eafb 55%,#e9daf5)!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact.section{
+   display:block!important;
+   width:100%!important;
+   height:auto!important;
+   min-height:0!important;
+   max-height:none!important;
+   padding:clamp(18px,2.6vh,34px) clamp(18px,3vw,48px)!important;
+   margin:0!important;
+   overflow:visible!important;
+   box-sizing:border-box!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > #contact > .container{
+   display:block!important;
+   width:100%!important;
+   max-width:1320px!important;
+   min-height:0!important;
+   max-height:none!important;
+   margin:0 auto!important;
+   padding:0!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-layout{
+   display:grid!important;
+   grid-template-columns:repeat(2,minmax(0,1fr))!important;
+   gap:clamp(14px,1.7vw,24px)!important;
+   width:100%!important;
+   height:clamp(460px,61dvh,565px)!important;
+   min-height:0!important;
+   max-height:none!important;
+   align-items:stretch!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-left,
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact #mk-portfolio-chat{
+   display:flex!important;
+   flex-direction:column!important;
+   min-width:0!important;
+   min-height:0!important;
+   height:100%!important;
+   max-height:100%!important;
+   box-sizing:border-box!important;
+   align-self:stretch!important;
+   overflow:hidden!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-left{
+   justify-content:center!important;
+   padding:clamp(20px,2.5vw,36px)!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) > .mk-footer-quotes{
+   position:relative!important;
+   inset:auto!important;
+   z-index:auto!important;
+   flex:none!important;
+   margin:0!important;
+   width:100%!important;
+   min-height:0!important;
+   height:auto!important;
+   overflow:visible!important;
+ }
+}
+#contact.section #mk-portfolio-chat.mk-chat-panel{
+ display:flex!important;
+ flex-direction:column!important;
+ justify-content:flex-start!important;
+ min-width:0!important;
+ min-height:0!important;
+ box-sizing:border-box!important;
+ overflow:hidden!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-head{flex:0 0 auto!important}
+#contact.section #mk-portfolio-chat .mk-chat-conversation,
+body.tv-mode #main-content.tv-stage .tv-page.is-active #contact.section #mk-portfolio-chat.mk-chat-panel .mk-chat-conversation{
+ display:flex!important;
+ flex-direction:column!important;
+ flex:1 1 auto!important;
+ height:auto!important;
+ min-height:0!important;
+ max-height:none!important;
+ overflow-y:auto!important;
+ overflow-x:hidden!important;
+ overscroll-behavior:contain;
+ margin:12px 0 10px!important;
+ padding:6px 9px 6px 0!important;
+ scrollbar-width:thin;
+ scrollbar-color:#ab8bc8 transparent;
+}
+#contact.section #mk-portfolio-chat .mk-chat-chips,
+body.tv-mode #main-content.tv-stage .tv-page.is-active #contact.section #mk-portfolio-chat .mk-chat-chips{
+ flex:0 0 auto!important;
+ margin-top:0!important;
+ margin-bottom:10px!important;
+ flex-wrap:wrap!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-form,
+body.tv-mode #main-content.tv-stage .tv-page.is-active #contact.section #mk-portfolio-chat .mk-chat-form{
+ flex:0 0 auto!important;
+ margin-top:0!important;
+ margin-bottom:0!important;
+}
+#contact.section #mk-portfolio-chat .mk-chat-disclaimer{
+ flex:0 0 auto!important;
+ margin-top:8px!important;
+}
+@media(min-width:768px) and (max-width:880px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-layout{
+   grid-template-columns:minmax(0,1fr)!important;
+   height:auto!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-left{
+   height:auto!important;
+   max-height:none!important;
+   min-height:260px!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact #mk-portfolio-chat{
+   height:520px!important;
+   max-height:none!important;
+ }
+}
+@media(max-width:767px){
+ #contact.section .mk-connect-layout{
+   grid-template-columns:minmax(0,1fr)!important;
+   gap:16px!important;
+ }
+ #contact.section #mk-portfolio-chat.mk-chat-panel{
+   height:clamp(480px,70dvh,600px)!important;
+   min-height:0!important;
+   max-height:none!important;
+ }
+ #contact.section #mk-portfolio-chat .mk-chat-conversation{
+   flex:1 1 auto!important;
+   height:auto!important;
+   min-height:0!important;
+   max-height:none!important;
+ }
+}
+
+/* GitHub-only refinements: borderless art photos and higher, fuller Connect panel. */
+/* Art card: photographs fill their own shapes, without colored backing mats. */
+#hobbies #beyond-code-editorial .bc-story:last-child .bc-tile{
+  background:transparent!important;
+  background-image:none!important;
+  padding:0!important;
+  border:1px solid rgba(255,255,255,.82)!important;
+  border-radius:9px!important;
+  overflow:hidden!important;
+  box-shadow:0 11px 23px rgba(38,26,47,.24)!important;
+}
+#hobbies #beyond-code-editorial .bc-story:last-child .bc-tile img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  padding:0!important;
+  margin:0!important;
+  filter:none!important;
+  background:transparent!important;
+}
+/* Pull the contact content toward the top of its card, without fixed offsets. */
+#contact.section .mk-connect-left{
+  justify-content:flex-start!important;
+  gap:clamp(16px,2.1vh,26px)!important;
+}
+#contact.section .mk-connect-left .page-hero{
+  padding-top:0!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+#contact.section .mk-connect-left .page-hero .eyebrow{
+  margin-top:clamp(12px,2vh,22px)!important;
+}
+#contact.section .mk-connect-left .page-hero h1{
+  font-size:clamp(40px,4.9vw,76px)!important;
+  line-height:1.04!important;
+  letter-spacing:-.055em!important;
+  margin:clamp(12px,1.8vh,20px) 0!important;
+  max-width:100%!important;
+  overflow-wrap:normal!important;
+}
+#contact.section .mk-connect-left .page-hero p{
+  font-size:clamp(14px,1.28vw,18px)!important;
+  line-height:1.6!important;
+  max-width:54ch!important;
+}
+#contact.section .mk-connect-left .mk-connect-links{
+  margin-top:clamp(6px,1.1vh,14px)!important;
+}
+@media(min-width:768px){
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .mk-connect-left{
+   justify-content:flex-start!important;
+   padding:clamp(22px,2.9vw,42px)!important;
+ }
+ body.tv-mode #main-content.tv-stage .tv-page.is-active:has(> #contact) #contact .page-hero h1{
+   font-size:clamp(39px,4.5vw,68px)!important;
+ }
+}
+@media(max-width:767px){
+ #contact.section .mk-connect-left{justify-content:flex-start!important}
+ #contact.section .mk-connect-left .page-hero h1{
+   font-size:clamp(35px,9vw,54px)!important;
+   overflow-wrap:break-word!important;
+ }
+}
+
+/* Programs & Affiliations: 60% resting brightness, full hover brightness, 80% more lift than previous. */
+#achievements .dev-track > .dev-program{
+  transform:translateY(0)!important;
+  transition:transform .26s ease, border-color .26s ease, box-shadow .26s ease!important;
+}
+#achievements .dev-track > .dev-program:hover{
+  transform:translateY(-7.2px)!important;
+}
+#achievements .dev-track > .dev-program .dev-logo{
+  filter:brightness(.6)!important;
+  opacity:1!important;
+  transition:filter .26s ease!important;
+}
+#achievements .dev-track > .dev-program:hover .dev-logo,
+#achievements .dev-track > .dev-program:focus-within .dev-logo{
+  filter:brightness(1)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #achievements .dev-track > .dev-program{
+  transition:none!important;
+ }
+ #achievements .dev-track > .dev-program:hover{
+  transform:none!important;
+ }
+ #achievements .dev-track > .dev-program .dev-logo{
+  transition:none!important;
+ }
+}

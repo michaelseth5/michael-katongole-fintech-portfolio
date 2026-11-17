@@ -1,0 +1,75 @@
+
+/* 2026-11: production-visible brand glows.
+   Independent of JS .mk-hfx classes and loaded AFTER every existing theme style.
+   Use a clear thick outline and large external halos (not subtle inset shadow). */
+#experience .timeline > article.job,
+#experience #education > article.preview-school,
+#project-details #project-1,
+#project-details #project-2,
+#project-details .slide-deck-grid > a.slide-deck-tile {
+  --mk-neon:158,91,222;
+  position:relative!important;
+  overflow:visible!important;
+  isolation:isolate;
+  transition:transform 220ms cubic-bezier(.2,.9,.25,1),
+    outline-color 220ms ease,box-shadow 220ms ease,border-color 220ms ease!important;
+}
+#experience .timeline > article.job:nth-child(1){--mk-neon:19,225,100} /* Fidelity */
+#experience .timeline > article.job:nth-child(2){--mk-neon:179,61,255} /* Accenture */
+#experience .timeline > article.job:nth-child(3){--mk-neon:17,130,255} /* Citi */
+#experience .timeline > article.job:nth-child(4){--mk-neon:255,255,255} /* Bloomberg */
+#experience #education > article.preview-school:nth-of-type(1){--mk-neon:250,37,65} /* Northeastern */
+#experience #education > article.preview-school:nth-of-type(2){--mk-neon:255,133,15} /* UTD */
+#project-details #project-1,
+#project-details .slide-deck-grid > a.slide-deck-tile:nth-child(1){--mk-neon:18,115,255} /* IBM */
+#project-details #project-2,
+#project-details .slide-deck-grid > a.slide-deck-tile:nth-child(2){--mk-neon:255,132,0} /* DemandSync */
+
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ #experience .timeline > article.job:hover,
+ #experience #education > article.preview-school:hover,
+ #project-details #project-1:hover,
+ #project-details #project-2:hover,
+ #project-details .slide-deck-grid > a.slide-deck-tile:hover{
+   /* Deliberately emphatic, but not the unusable 455px of a literal 35x lift. */
+   transform:translate3d(0,-23px,0) scale(1.055)!important;
+   outline:5px solid rgb(var(--mk-neon))!important;
+   outline-offset:5px!important;
+   border-color:rgb(var(--mk-neon))!important;
+   box-shadow:
+     0 0 0 5px rgba(var(--mk-neon),.95),
+     0 0 0 12px rgba(var(--mk-neon),.38),
+     0 0 35px 16px rgba(var(--mk-neon),.85),
+     0 0 95px 34px rgba(var(--mk-neon),.67),
+     0 28px 50px 4px rgba(12,9,32,.30)!important;
+   z-index:99!important;
+ }
+ /* White glow needs contrasting perimeter to read on the white card/background. */
+ #experience .timeline > article.job:nth-child(4):hover{
+   outline-color:#fff!important;
+   box-shadow:
+     0 0 0 4px rgba(40,43,65,.85),
+     0 0 0 10px #fff,
+     0 0 42px 20px rgba(255,255,255,1),
+     0 0 105px 40px rgba(226,231,255,.93),
+     0 30px 55px rgba(13,13,35,.35)!important;
+ }
+}
+/* A nonanimated focus highlight provides similar visibility for keyboard users. */
+#experience .timeline > article.job:focus-within,
+#experience #education > article.preview-school:focus-within,
+#project-details #project-1:focus-within,
+#project-details #project-2:focus-within,
+#project-details .slide-deck-grid > a.slide-deck-tile:focus-visible{
+ outline:4px solid rgb(var(--mk-neon))!important;
+ outline-offset:4px!important;
+ border-color:rgb(var(--mk-neon))!important;
+ box-shadow:0 0 0 9px rgba(var(--mk-neon),.25),0 0 35px rgba(var(--mk-neon),.4)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #experience .timeline > article.job,
+ #experience #education > article.preview-school,
+ #project-details #project-1,
+ #project-details #project-2,
+ #project-details .slide-deck-grid > a.slide-deck-tile{transition:none!important}
+}

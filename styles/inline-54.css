@@ -1,0 +1,98 @@
+
+/* ============================================================
+   SECTION COLOR RHYTHM · unique but cohesive editorial palettes
+   All sections share ink typography, violet-family highlights,
+   lavender borders, airy cards, and soft atmospheric gradients.
+   ============================================================ */
+#home{
+ --section-accent:#9869c7;
+ background:
+ radial-gradient(ellipse at 89% 10%,rgba(209,177,239,.43),transparent 42%),
+ radial-gradient(ellipse at 10% 90%,rgba(219,203,244,.36),transparent 49%),
+ linear-gradient(135deg,#f9f6ff 0%,#f0eafb 100%)!important;
+}
+#experience{
+ --section-accent:#6889c1;
+ background:
+ radial-gradient(ellipse at 95% 12%,rgba(183,204,237,.56),transparent 44%),
+ radial-gradient(ellipse at 3% 84%,rgba(212,223,242,.65),transparent 50%),
+ linear-gradient(142deg,#f7faff 0%,#eaf1fc 100%)!important;
+}
+#project-details{
+ --section-accent:#8572c4;
+ background:
+ radial-gradient(ellipse at 88% 5%,rgba(203,196,244,.48),transparent 46%),
+ radial-gradient(ellipse at 7% 94%,rgba(204,213,241,.44),transparent 48%),
+ linear-gradient(135deg,#f6f5ff 0%,#eae9fa 100%)!important;
+}
+#skills{
+ --section-accent:#5a9b9a;
+ background:
+ radial-gradient(ellipse at 8% 10%,rgba(178,226,217,.45),transparent 43%),
+ radial-gradient(ellipse at 91% 85%,rgba(208,233,228,.56),transparent 48%),
+ linear-gradient(135deg,#f6fcfa 0%,#eaf6f3 100%)!important;
+}
+#hobbies{
+ --section-accent:#ba7896;
+ background:
+ radial-gradient(ellipse at 94% 8%,rgba(241,205,217,.55),transparent 46%),
+ radial-gradient(ellipse at 2% 91%,rgba(246,220,208,.40),transparent 48%),
+ linear-gradient(140deg,#fff9fa 0%,#f9ebf0 100%)!important;
+}
+#achievements{
+ --section-accent:#a4875d;
+ background:
+ radial-gradient(ellipse at 88% 6%,rgba(241,222,185,.51),transparent 45%),
+ radial-gradient(ellipse at 10% 88%,rgba(235,225,202,.49),transparent 47%),
+ linear-gradient(135deg,#fffdf7 0%,#f7f0e2 100%)!important;
+}
+#contact{
+ --section-accent:#9566a5;
+ background:
+ radial-gradient(ellipse at 6% 13%,rgba(213,193,226,.54),transparent 47%),
+ radial-gradient(ellipse at 93% 85%,rgba(220,195,222,.54),transparent 47%),
+ linear-gradient(140deg,#fbf7fc 0%,#eee3f1 100%)!important;
+}
+/* Give the existing tiles a restrained tint derived from their section. */
+#experience .timeline .job,#experience .timeline .demo-entry{
+ background:linear-gradient(135deg,#ffffffec,#f0f5ffed)!important;
+ border-color:#dce5f1!important;
+}
+#project-details .project-block,#project-details .slide-deck-shelf,
+#project-details .slide-deck-tile{
+ background:linear-gradient(140deg,#ffffffef,#f0effaec)!important;
+ border-color:#ddd9ed!important;
+}
+#skills .large-panel{
+ background:linear-gradient(140deg,#ffffffec,#eef9f5ee)!important;
+ border-color:#d8e9e4!important;
+}
+#hobbies .hobby-slide{
+ background:linear-gradient(140deg,#fffefd,#fcf2f5)!important;
+ border-color:#eadde4!important;
+}
+#achievements .demo-milestone,#achievements .dev-milestone{
+ background:linear-gradient(140deg,#fffefb,#fbf5ea)!important;
+ border-color:#e9e0cf!important;
+}
+#contact .contact-single>.large-panel{
+ background:linear-gradient(140deg,#ffffffef,#f5edf7)!important;
+ border-color:#e5d8eb!important;
+}
+/* Section-specific underline and eyebrow, but consistent styling. */
+#experience .page-hero .eyebrow,#experience .timeline .job .date{color:#6889c1!important}
+#project-details .page-hero .eyebrow,#project-details .project-block .eyebrow{color:#8572c4!important}
+#skills .sectionhead .eyebrow,#skills .large-panel .eyebrow{color:#508e8f!important}
+#hobbies .page-hero .eyebrow,#hobbies .hobby-slide .eyebrow{color:#b57296!important}
+#achievements .page-hero .eyebrow,#achievements .demo-milestone .eyebrow{color:#9e8159!important}
+#contact .page-hero .eyebrow,#contact .large-panel .eyebrow{color:#966baa!important}
+#experience .page-hero::after{background:linear-gradient(90deg,#a2bddc,#d8e7f8,transparent 95%)!important}
+#project-details .page-hero::after{background:linear-gradient(90deg,#b1a6db,#e0ddf5,transparent 95%)!important}
+#skills .sectionhead::after{background:linear-gradient(90deg,#a0d1c6,#e1f1eb,transparent 95%)!important}
+#hobbies .page-hero::after{background:linear-gradient(90deg,#e4b1ca,#f6e5ed,transparent 95%)!important}
+#achievements .page-hero::after{background:linear-gradient(90deg,#dec69c,#f5eada,transparent 95%)!important}
+#contact .page-hero::after{background:linear-gradient(90deg,#c7a9d3,#eee0f1,transparent 95%)!important}
+/* Unifying inset border at each transition creates a seamless color journey. */
+#experience,#project-details,#skills,#hobbies,#achievements,#contact{
+ border-top:1px solid rgba(132,112,159,.12)!important;
+}

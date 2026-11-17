@@ -1,0 +1,34 @@
+
+/* Larger, more cinematic Good Moments photo viewer with uncropped image scaling. */
+@media(min-width:951px){
+ #portfolio-intro-grid .mk-ed-interest{grid-column:span 4!important}
+ #portfolio-intro-grid .mk-ed-gallery.mk-photo-carousel{grid-column:span 8!important;min-height:390px!important}
+}
+@media(min-width:681px) and (max-width:950px){
+ #portfolio-intro-grid .mk-ed-interest{grid-column:span 4!important}
+ #portfolio-intro-grid .mk-ed-gallery.mk-photo-carousel{grid-column:span 8!important;min-height:340px!important}
+}
+@media(max-width:680px){
+ #portfolio-intro-grid .mk-ed-gallery.mk-photo-carousel{min-height:285px!important}
+}
+@media(max-width:420px){
+ #portfolio-intro-grid .mk-ed-gallery.mk-photo-carousel{min-height:300px!important}
+}
+#portfolio-intro-grid .mk-photo-carousel-stage{
+ inset:8px 8px 10px!important;
+ background:transparent!important;
+ border-radius:12px;
+ overflow:hidden;
+}
+#portfolio-intro-grid .mk-photo-carousel-stage img{
+ width:100%!important;height:100%!important;
+ object-fit:contain!important;
+ object-position:center!important;
+ transform:none!important;
+}
+#portfolio-intro-grid .mk-photo-carousel{
+ background:#111624!important;
+}
+#portfolio-intro-grid .mk-photo-carousel-shade{
+ background:linear-gradient(180deg,rgba(10,11,22,.58),transparent 23%,transparent 67%,rgba(10,11,22,.67))!important;
+}

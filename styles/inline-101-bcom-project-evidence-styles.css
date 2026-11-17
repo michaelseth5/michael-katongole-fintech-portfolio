@@ -1,0 +1,10 @@
+
+#project-details .bcom-screenshot-gallery{display:flex;gap:12px;max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;overscroll-behavior-x:contain;padding:4px 2px 13px;margin:9px 0 19px}
+#project-details .bcom-screenshot{display:flex;flex:0 0 min(86%,330px);flex-direction:column;min-width:0;overflow:hidden;border:1px solid rgba(138,96,187,.23);border-radius:15px;scroll-snap-align:start;background:#f6f1fa;color:#4e375e;text-decoration:none;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+#project-details .bcom-screenshot:hover{border-color:#9971c6;transform:translateY(-2px);box-shadow:0 8px 20px #4b2d681c}
+#project-details .bcom-screenshot:focus-visible{outline:3px solid #9564c3;outline-offset:3px}
+#project-details .bcom-screenshot img{width:100%;aspect-ratio:16/9;display:block;object-fit:contain;background:#fff}
+#project-details .bcom-screenshot span{padding:9px 12px;font:650 11px/1.35 'Space Grotesk',sans-serif}
+#project-details .bcom-pdf-download{display:inline-flex;align-items:center;padding:12px 5px;color:#6e4395;font-weight:700;font-size:12px;text-underline-offset:3px}
+@media(max-width:520px){#project-details .bcom-screenshot{flex-basis:95%}#project-details .bcom-screenshot-gallery{gap:9px}}
+@media(prefers-reduced-motion:reduce){#project-details .bcom-screenshot{transition:none!important}#project-details .bcom-screenshot:hover{transform:none}}

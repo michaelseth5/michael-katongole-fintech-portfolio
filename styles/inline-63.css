@@ -1,0 +1,78 @@
+
+/* Compact Experience quadrant layout - Education intentionally untouched. */
+@media (min-width: 760px) {
+  #experience .timeline {
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:18px!important;
+    align-items:stretch;
+  }
+}
+#experience .timeline .job.demo-entry {
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  align-content:start;
+  gap:13px!important;
+  padding:20px 22px!important;
+  min-width:0;
+  height:100%;
+  border-radius:18px!important;
+}
+#experience .timeline .job.demo-entry .demo-entry-art {
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  width:fit-content;
+  min-width:126px;
+  max-width:190px!important;
+  min-height:66px!important;
+  height:66px!important;
+  padding:8px 13px!important;
+  margin:0!important;
+  border-radius:12px!important;
+}
+#experience .timeline .job.demo-entry .demo-entry-art img {
+  max-width:155px!important;
+  max-height:49px!important;
+  height:auto!important;
+  width:auto!important;
+  object-fit:contain!important;
+}
+#experience .timeline .job.demo-entry .demo-entry-body {
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+  min-width:0;
+}
+#experience .timeline .job.demo-entry .demo-entry-body h2 {
+  font-size:clamp(17px,1.55vw,21px)!important;
+  line-height:1.27!important;
+  margin:3px 0 6px!important;
+}
+#experience .timeline .job.demo-entry .date {
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+#experience .timeline .job.demo-entry .demo-entry-body p,
+#experience .timeline .job.demo-entry .demo-entry-body li {
+  font-size:13px!important;
+  line-height:1.48!important;
+}
+#experience .timeline .job.demo-entry .demo-entry-body p {margin:0 0 7px!important}
+#experience .timeline .job.demo-entry ul {
+  margin:0!important;
+  padding-left:19px!important;
+}
+#experience .timeline .job.demo-entry li {margin:0 0 5px!important}
+#experience .timeline .job.demo-entry li:last-child {margin-bottom:0!important}
+#experience .timeline .job.demo-entry:hover {
+  transform:translateY(-5px)!important;
+  box-shadow:0 12px 28px rgba(92,60,150,.15),0 0 22px rgba(151,110,210,.10)!important;
+}
+@media (max-width:759px) {
+  #experience .timeline {display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+  #experience .timeline .job.demo-entry {padding:18px!important}
+}
+@media (prefers-reduced-motion:reduce) {
+  #experience .timeline .job.demo-entry:hover {transform:none!important}
+}

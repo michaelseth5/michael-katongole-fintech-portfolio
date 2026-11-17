@@ -1,0 +1,6 @@
+/* Keep arrows accessible at the bottom right without the old text heading. */
+#portfolio-intro-grid .mk-photo-carousel-bottom{justify-content:flex-end!important}
+#portfolio-intro-grid .mk-photo-carousel-stage img{transition:opacity .65s ease!important}
+@media(prefers-reduced-motion:reduce){
+ #portfolio-intro-grid .mk-photo-carousel-stage img{transition:none!important}
+}

@@ -1,0 +1,12 @@
+
+/* Capitalize displayed homepage words only, without changing copy or case-study pages. */
+#home :is(h1,h2,h3,h4,p,.subtitle,.eyebrow,.eyebrowline,.mk-vision-kicker,.mk-home-welcome-name,.mk-social-word,.btn,summary),
+#portfolio-intro-grid :is(h1,h2,h3,h4,p,.eyebrow,.mk-bento-title,.mk-nyc-map-footer,.mk-nyc-map-timezone,.mk-nyc-map-coordinates),
+#projects.fp :is(.fp-eyebrow,.fp-title,.fp-sub,.fp-label,.fp-name,.fp-desc,.fp-star,.fp-more){
+ text-transform:capitalize;
+}
+/* Preserve the verbatim welcome transcript, technical stack names and uppercase UI tags. */
+#home .mk-home-welcome-transcript p,
+#projects.fp .fp-tags,
+#home :is(code,pre,kbd),
+#portfolio-intro-grid :is(code,pre,kbd){text-transform:none}

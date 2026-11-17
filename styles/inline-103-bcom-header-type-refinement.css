@@ -1,0 +1,63 @@
+
+/* Readable BCOM intro: opaque pale-lavender surface, strong text contrast, and responsive type. */
+#project-details #business-communication-assignment .bcom-project-header{
+  text-align:left;
+  margin:0 0 28px;
+  padding:clamp(20px,3vw,32px);
+  border:1px solid rgba(139,92,175,.24);
+  border-radius:20px;
+  background:#faf7fd;
+  box-shadow:0 7px 25px rgba(53,32,82,.055);
+}
+#project-details #business-communication-assignment .bcom-project-header .eyebrow{
+  display:block;
+  margin:0 0 12px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(12px,1vw,14px);
+  font-weight:750;
+  line-height:1.55;
+  letter-spacing:.085em;
+  text-transform:uppercase;
+  color:#68418a;
+  opacity:1;
+}
+#project-details #business-communication-assignment .bcom-project-header h2{
+  max-width:900px;
+  margin:0 0 15px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(32px,3.7vw,48px);
+  font-weight:750;
+  letter-spacing:-.035em;
+  line-height:1.18;
+  text-wrap:balance;
+  color:#251c30;
+  opacity:1;
+}
+#project-details #business-communication-assignment .bcom-project-header h2 .highlight{
+  color:#704193;
+}
+#project-details #business-communication-assignment .bcom-project-header>p{
+  max-width:760px;
+  margin:0;
+  font-family:'DM Sans',sans-serif;
+  font-size:clamp(15px,1.15vw,17px);
+  font-weight:500;
+  line-height:1.7;
+  letter-spacing:0;
+  color:#493b54;
+  opacity:1;
+  text-wrap:pretty;
+}
+@media(max-width:600px){
+ #project-details #business-communication-assignment .bcom-project-header{
+   padding:20px 18px;
+   margin-bottom:22px;
+   border-radius:16px;
+ }
+ #project-details #business-communication-assignment .bcom-project-header h2{
+   font-size:clamp(30px,8vw,39px);
+ }
+ #project-details #business-communication-assignment .bcom-project-header .eyebrow{
+   letter-spacing:.055em;
+ }
+}

@@ -1,0 +1,71 @@
+
+/* Dark-purple Skills only. Older site-wide page and sphere styles remain untouched. */
+#skills{background:radial-gradient(ellipse at 82% 17%,rgba(74,44,125,.33),transparent 46%),linear-gradient(135deg,#120c20,#1d1330 56%,#100c1c)!important;position:relative;color:#f7f1ff!important}
+#skills::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(192,167,228,.23) .7px,transparent .7px);background-size:25px 25px;opacity:.38}
+#skills>.container{position:relative;z-index:1}
+#skills .sectionhead .eyebrow{color:#b6a3cc!important;letter-spacing:.22em}
+#skills .sectionhead h2,#skills .sectionhead .mk-title-solid{color:#f7f1ff!important;-webkit-text-fill-color:#f7f1ff!important}
+#skills .sectionhead .mk-title-glow{background:linear-gradient(105deg,#b99bff,#e7a2e9)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+#skills .sectionhead p{color:#bbb0cc!important}
+#skills .mk-skills-orbit{height:555px;min-height:0;width:min(100%,850px);margin:24px auto 12px!important;background:transparent!important;border:none!important;border-radius:0!important;box-shadow:none!important;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+#skills .mk-skills-orbit.mk-skills-dragging{cursor:grabbing}
+#skills .mk-skills-orbit::before{display:none!important}
+#skills .mk-skills-orbit canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#skills #mk-skills-logos{position:absolute;inset:0;pointer-events:none}
+#skills #mk-skills-visual .mk-skill-particle{position:absolute;display:flex;align-items:center;justify-content:center;gap:4px;min-width:0;width:60px;height:74px;padding:0;border:0;background:none!important;cursor:pointer;pointer-events:auto;transform-origin:center;will-change:transform,opacity;filter:none}
+#skills #mk-skills-visual .mk-skill-particle .mk-icon{display:grid;place-items:center;width:51px;height:51px;border-radius:13px;background:rgba(250,249,255,.96)!important;border:1px solid rgba(255,255,255,.67);box-shadow:0 6px 21px rgba(0,0,0,.18)!important;transition:background .18s,box-shadow .18s}
+#skills #mk-skills-visual .mk-skill-particle img{width:34px;height:34px;object-fit:contain;display:block;pointer-events:none}
+#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{position:absolute;top:61px;left:50%;transform:translateX(-50%);background:rgba(22,17,36,.86)!important;border:1px solid rgba(170,139,212,.2)!important;border-radius:5px;color:#e2d8f2!important;letter-spacing:.09em;font:700 10px/1.5 ui-monospace,Consolas,monospace;white-space:nowrap;padding:3px 7px;opacity:0;visibility:hidden;transition:opacity .18s}
+#skills #mk-skills-visual .mk-skill-particle:hover .mk-logo-text,#skills #mk-skills-visual .mk-skill-particle:focus-visible .mk-logo-text,#skills #mk-skills-visual .mk-skill-particle.mk-skill-selected .mk-logo-text{visibility:visible;opacity:1}
+#skills #mk-skills-visual .mk-skill-particle:hover .mk-icon,#skills #mk-skills-visual .mk-skill-particle:focus-visible .mk-icon{box-shadow:0 0 0 3px rgba(180,131,252,.5),0 10px 28px rgba(34,18,62,.5)!important}
+#skills #mk-skills-visual .mk-skills-status{position:absolute;bottom:5px;background:rgba(28,19,47,.85)!important;border-color:rgba(150,126,201,.3)!important;color:#cab8e6!important}
+#skills .mk-skills-legend{color:#b6a9ca!important}
+#skills .three{margin-top:24px!important}
+#skills .three .large-panel{background:rgba(36,26,57,.65)!important;border-color:rgba(180,145,220,.18)!important;box-shadow:none!important}
+#skills .three .large-panel .eyebrow{color:#c7a9ed!important}
+#skills .three .large-panel .skill{background:rgba(91,65,126,.25)!important;color:#e3d8f0!important;border-color:rgba(202,167,233,.20)!important}
+#skills .three .large-panel .skill:hover{background:rgba(142,90,185,.38)!important;color:#fff!important}
+@media(max-width:700px){#skills .mk-skills-orbit{height:420px!important}#skills #mk-skills-visual .mk-skill-particle{width:51px;height:64px}#skills #mk-skills-visual .mk-skill-particle .mk-icon{width:43px;height:43px}#skills #mk-skills-visual .mk-skill-particle img{width:29px;height:29px}#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{top:50px;font-size:9px}}
+@media(max-width:450px){#skills .mk-skills-orbit{height:350px!important}#skills #mk-skills-visual .mk-skill-particle{width:43px;height:55px}#skills #mk-skills-visual .mk-skill-particle .mk-icon{width:37px;height:37px}#skills #mk-skills-visual .mk-skill-particle img{width:25px;height:25px}#skills #mk-skills-visual .mk-skill-particle .mk-logo-text{top:43px}}
+@media(prefers-reduced-motion:reduce){#skills *,#skills *::before,#skills *::after{animation:none!important;transition:none!important}}
+
+/* Hover-only, vivid brand halo; no idle glow. */
+#skills #mk-skills-visual .mk-skill-particle{
+  --skill-glow-rgb:174,138,238;
+}
+#skills #mk-skills-visual .mk-skill-particle .mk-icon{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  box-shadow:0 5px 15px rgba(0,0,0,.20)!important;
+  transition:box-shadow .22s ease,transform .22s ease;
+}
+#skills #mk-skills-visual .mk-skill-particle .mk-icon::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-28px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(var(--skill-glow-rgb),.70) 0%,rgba(var(--skill-glow-rgb),.36) 34%,rgba(var(--skill-glow-rgb),.13) 57%,transparent 76%);
+  filter:blur(15px);
+  opacity:0;
+  pointer-events:none;
+  transform:scale(.74);
+  transition:opacity .2s ease,transform .22s ease;
+}
+#skills #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon{
+  box-shadow:
+    0 0 0 2px rgba(var(--skill-glow-rgb),.85),
+    0 0 22px rgba(var(--skill-glow-rgb),.95),
+    0 0 48px rgba(var(--skill-glow-rgb),.75),
+    0 0 86px rgba(var(--skill-glow-rgb),.48)!important;
+  transform:scale(1.09);
+}
+#skills #mk-skills-visual .mk-skill-particle:is(:hover,:focus-visible) .mk-icon::before{
+  opacity:1;
+  transform:scale(1.16);
+}
+@media(prefers-reduced-motion:reduce){
+  #skills #mk-skills-visual .mk-skill-particle .mk-icon,
+  #skills #mk-skills-visual .mk-skill-particle .mk-icon::before{transition:none!important}
+}

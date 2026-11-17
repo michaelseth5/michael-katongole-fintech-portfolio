@@ -1,0 +1,11 @@
+
+.project-block{align-items:start!important}
+.project-block .case-box{padding:0!important;margin-top:24px;background:transparent!important;border:1px solid #ffffff24;overflow:hidden;border-radius:11px}
+.project-framework-item{padding:19px 21px;border-bottom:1px solid #ffffff15;background:#171b2a70}
+.project-framework-item:nth-child(even){background:#111521af}
+.project-framework-item:last-child{border-bottom:0}
+.project-framework-label{display:flex;gap:11px;align-items:center;margin-bottom:8px}
+.project-framework-label h3{font:700 15px 'Space Grotesk',sans-serif;color:#e8e8f6;margin:0}
+.project-framework-num{font:700 10px 'Space Grotesk',sans-serif;color:#ac9be2;border:1px solid #9680cc55;border-radius:5px;padding:5px 6px}
+.project-framework-item p{font:13px/1.7 Inter,Arial,sans-serif;color:#b9b9ce;margin:0}
+@media(max-width:600px){.project-framework-item{padding:16px}.project-framework-item p{font-size:12.5px}}

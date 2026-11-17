@@ -1,0 +1,14 @@
+
+/* Center the Hobbies card copy consistently, with readable line lengths. */
+#hobbies .hobby-carousel-track > .hobby-slide > .eyebrow,
+#hobbies .hobby-carousel-track > .hobby-slide > .networking-hobby-kicker,
+#hobbies .hobby-carousel-track > .hobby-slide > h2 { text-align:center; margin-left:auto; margin-right:auto; }
+#hobbies .hobby-carousel-track > .hobby-slide > p,
+#hobbies .hobby-carousel-track > .hobby-slide > .art-showcase-desc,
+#hobbies .hobby-carousel-track > .hobby-slide > .travel-gallery-intro,
+#hobbies .hobby-carousel-track > .hobby-slide > .mentorship-extra-copy { max-width:780px; width:100%; margin:8px auto 0!important; text-align:center; line-height:1.6; }
+#hobbies .hobby-carousel-track > .hobby-slide > h2 { margin-top:6px; margin-bottom:12px; }
+#hobbies .hobby-carousel-track > .hobby-slide > .photo-carousel-shell { margin-top:24px; }
+#hobbies .art-photo-card figcaption, #hobbies .travel-photo-card figcaption, #hobbies .mentorship-shot figcaption { text-align:left; }
+#hobbies #networking .seo-photo figcaption { display:none!important; }
+@media(max-width:700px){ #hobbies .hobby-carousel-track > .hobby-slide > p,#hobbies .hobby-carousel-track > .hobby-slide > .art-showcase-desc,#hobbies .hobby-carousel-track > .hobby-slide > .travel-gallery-intro { max-width:100%; padding-inline:8px; } }

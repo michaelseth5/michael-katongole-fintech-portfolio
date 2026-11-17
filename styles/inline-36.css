@@ -1,0 +1,6 @@
+
+/* Wide gallery photos remain entirely visible instead of being cropped. */
+#portfolio-intro-grid .mk-photo-carousel-stage{background:#171b28!important}
+#portfolio-intro-grid .mk-photo-carousel-stage img{
+ object-fit:contain!important;object-position:center!important;
+}

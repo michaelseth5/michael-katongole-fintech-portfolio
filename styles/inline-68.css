@@ -1,0 +1,17 @@
+
+/* NYC coordinates: understated geolocation caption, matching radar map typography. */
+#portfolio-intro-grid .mk-nyc-map-heading .mk-nyc-map-coordinates{
+  margin-top:8px;
+  color:#625c71;
+  font:600 clamp(10px,1vw,12px)/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.045em;
+  white-space:nowrap;
+}
+#portfolio-intro-grid .mk-nyc-map-heading .mk-nyc-map-timezone{
+  color:#8d57c0;
+  font:750 10px/1.5 'Space Grotesk',Arial,sans-serif;
+  letter-spacing:.07em;
+}
+@media(max-width:420px){
+ #portfolio-intro-grid .mk-nyc-map-heading .mk-nyc-map-coordinates{font-size:10px}
+}

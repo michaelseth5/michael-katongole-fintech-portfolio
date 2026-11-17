@@ -1,0 +1,7 @@
+
+/* Two-image event gallery: large images retain their full composition */
+#networking .bofa-networking-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#networking .bofa-networking-grid .seo-photo{grid-column:auto;min-width:0}
+#networking .bofa-networking-grid img{width:100%;height:clamp(225px,28vw,370px);object-fit:cover;object-position:center 35%;display:block}
+#networking .bofa-networking-grid .seo-photo figcaption{min-height:48px}
+@media(max-width:640px){#networking .bofa-networking-grid{grid-template-columns:1fr}#networking .bofa-networking-grid img{height:auto;aspect-ratio:4/3;object-fit:cover}}

@@ -1,0 +1,33 @@
+
+/* Consistent centered hierarchy: navigation link, eyebrow, heading, subtitle. */
+#experience .page-hero,
+#project-details .page-hero,
+#hobbies .page-hero,
+#networking .page-hero,
+#listening-reading .page-hero,
+#achievements .page-hero,
+#contact .page-hero,
+#skills .sectionhead {
+  text-align:center!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+:is(#experience,#project-details,#hobbies,#networking,#listening-reading,#achievements,#contact) .page-hero > .back,
+:is(#experience,#project-details,#hobbies,#networking,#listening-reading,#achievements,#contact) .page-hero > .eyebrow{
+  display:table!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  text-align:center!important;
+}
+:is(#experience,#project-details,#hobbies,#networking,#listening-reading,#achievements,#contact) .page-hero > :is(h1,h2,p),
+#skills .sectionhead > :is(h1,h2,p){
+  text-align:center!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+:is(#experience,#project-details,#hobbies,#networking,#listening-reading,#achievements,#contact) .page-hero > p{
+  max-width:800px!important;
+}
+#skills .sectionhead{justify-content:center!important;align-items:center!important;flex-direction:column!important}
+#skills .sectionhead > div{width:100%;text-align:center!important}
+#skills .sectionhead .eyebrow{display:block!important;text-align:center!important}

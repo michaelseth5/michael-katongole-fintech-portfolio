@@ -1,0 +1,63 @@
+
+/* Keep all three education elements inside the card at every TV viewport size. */
+#portfolio-intro-grid .mk-bento-layout .mk-bento-education{
+ box-sizing:border-box!important;
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ grid-template-rows:min-content minmax(90px,1fr) min-content!important;
+ gap:clamp(12px,2.2vw,22px)!important;
+ align-content:stretch!important;
+ justify-items:center!important;
+ min-width:0!important;
+ min-height:340px!important;
+ height:100%!important;
+ overflow:hidden!important;
+ padding:clamp(23px,3vw,36px) clamp(20px,3vw,34px)!important;
+ text-align:center!important;
+}
+#portfolio-intro-grid .mk-bento-education .mk-bento-eyebrow{
+ position:relative!important;inset:auto!important;
+ justify-self:center!important;align-self:start!important;
+ max-width:100%!important;
+ font-size:clamp(10px,1vw,12px)!important;
+ line-height:1.35!important;letter-spacing:.14em!important;
+ text-align:center!important;
+}
+#portfolio-intro-grid .mk-bento-education .mk-bento-education-logo{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ align-self:center!important;
+ min-height:0!important;height:100%!important;width:100%!important;
+ position:relative!important;inset:auto!important;
+}
+#portfolio-intro-grid .mk-bento-education .mk-bento-education-logo img{
+ display:block!important;
+ width:auto!important;height:auto!important;
+ max-width:min(100%,150px)!important;
+ max-height:clamp(95px,16vh,145px)!important;
+ object-fit:contain!important;
+}
+#portfolio-intro-grid .mk-bento-education h3{
+ position:relative!important;inset:auto!important;
+ justify-self:center!important;align-self:end!important;
+ display:block!important;
+ max-width:min(100%,570px)!important;
+ width:auto!important;
+ margin:0!important;padding:0!important;
+ font:800 clamp(20px,2.05vw,30px)/1.18 'Space Grotesk',sans-serif!important;
+ letter-spacing:-.045em!important;
+ text-align:center!important;text-wrap:balance!important;
+ overflow-wrap:normal!important;hyphens:none!important;
+}
+@media(max-width:750px){
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-education{
+  min-height:320px!important;height:auto!important;
+  padding:24px 20px!important;
+  grid-template-rows:min-content minmax(92px,1fr) min-content!important;
+ }
+ #portfolio-intro-grid .mk-bento-education h3{
+  font-size:clamp(19px,5vw,26px)!important;
+ }
+ #portfolio-intro-grid .mk-bento-education .mk-bento-education-logo img{
+  max-height:112px!important;
+ }
+}

@@ -1,0 +1,429 @@
+[
+  {
+    "path": "styles/fonts.css"
+  },
+  {
+    "path": "styles/inline-01.css"
+  },
+  {
+    "path": "styles/inline-02.css"
+  },
+  {
+    "path": "styles/inline-03.css"
+  },
+  {
+    "path": "styles/inline-04.css"
+  },
+  {
+    "path": "styles/inline-05.css"
+  },
+  {
+    "path": "styles/inline-06.css"
+  },
+  {
+    "path": "styles/inline-07.css"
+  },
+  {
+    "path": "styles/inline-08.css"
+  },
+  {
+    "path": "styles/inline-09.css"
+  },
+  {
+    "path": "styles/inline-10.css"
+  },
+  {
+    "path": "styles/inline-11.css"
+  },
+  {
+    "path": "styles/inline-12.css"
+  },
+  {
+    "path": "styles/inline-13.css"
+  },
+  {
+    "path": "styles/inline-14.css"
+  },
+  {
+    "path": "styles/inline-15.css"
+  },
+  {
+    "path": "styles/inline-16.css"
+  },
+  {
+    "path": "styles/inline-17.css"
+  },
+  {
+    "path": "styles/inline-18.css"
+  },
+  {
+    "path": "styles/inline-19.css"
+  },
+  {
+    "path": "styles/inline-20.css"
+  },
+  {
+    "path": "styles/inline-21.css"
+  },
+  {
+    "path": "styles/inline-22.css"
+  },
+  {
+    "path": "styles/inline-23.css"
+  },
+  {
+    "path": "styles/inline-24.css"
+  },
+  {
+    "path": "styles/inline-25.css"
+  },
+  {
+    "path": "styles/inline-26.css"
+  },
+  {
+    "path": "styles/inline-27.css"
+  },
+  {
+    "path": "styles/inline-28.css"
+  },
+  {
+    "path": "styles/inline-29.css"
+  },
+  {
+    "path": "styles/inline-30.css"
+  },
+  {
+    "path": "styles/inline-31.css"
+  },
+  {
+    "path": "styles/inline-32.css"
+  },
+  {
+    "path": "styles/inline-33.css"
+  },
+  {
+    "path": "styles/inline-34.css"
+  },
+  {
+    "path": "styles/inline-35.css"
+  },
+  {
+    "path": "styles/inline-36.css"
+  },
+  {
+    "path": "styles/inline-37.css"
+  },
+  {
+    "path": "styles/inline-38.css"
+  },
+  {
+    "path": "styles/inline-39.css"
+  },
+  {
+    "path": "styles/inline-40.css"
+  },
+  {
+    "path": "styles/inline-41.css"
+  },
+  {
+    "path": "styles/inline-42.css"
+  },
+  {
+    "path": "styles/inline-43.css"
+  },
+  {
+    "path": "styles/inline-44.css"
+  },
+  {
+    "path": "styles/inline-45.css"
+  },
+  {
+    "path": "styles/inline-46.css"
+  },
+  {
+    "path": "styles/inline-47.css"
+  },
+  {
+    "path": "styles/inline-48.css"
+  },
+  {
+    "path": "styles/inline-49.css"
+  },
+  {
+    "path": "styles/inline-50.css"
+  },
+  {
+    "path": "styles/inline-51.css"
+  },
+  {
+    "path": "styles/inline-52.css"
+  },
+  {
+    "path": "styles/inline-53.css"
+  },
+  {
+    "path": "styles/inline-54.css"
+  },
+  {
+    "path": "styles/inline-55.css"
+  },
+  {
+    "path": "styles/inline-56.css"
+  },
+  {
+    "path": "styles/inline-57.css"
+  },
+  {
+    "path": "styles/inline-58.css"
+  },
+  {
+    "path": "styles/inline-59.css"
+  },
+  {
+    "path": "styles/inline-60.css"
+  },
+  {
+    "path": "styles/inline-61.css"
+  },
+  {
+    "path": "styles/inline-62.css"
+  },
+  {
+    "path": "globe.css"
+  },
+  {
+    "path": "ux.css"
+  },
+  {
+    "path": "polish.css"
+  },
+  {
+    "path": "homepage-fixes.css"
+  },
+  {
+    "path": "globe-teaser.css"
+  },
+  {
+    "path": "hero-legibility.css"
+  },
+  {
+    "path": "hobbies-caption.css"
+  },
+  {
+    "path": "styles/inline-63.css"
+  },
+  {
+    "path": "styles/inline-64.css"
+  },
+  {
+    "path": "styles/inline-65.css"
+  },
+  {
+    "path": "hover-personalities.css"
+  },
+  {
+    "path": "listening-reading.css"
+  },
+  {
+    "path": "centered-ui-mindset.css"
+  },
+  {
+    "path": "networking-presentation.css"
+  },
+  {
+    "path": "styles/inline-66.css"
+  },
+  {
+    "path": "connect-chatbot.css"
+  },
+  {
+    "path": "styles/inline-67.css"
+  },
+  {
+    "path": "styles/inline-68.css"
+  },
+  {
+    "path": "styles/inline-69.css"
+  },
+  {
+    "path": "styles/inline-70-mk-brand-glow-v3.css"
+  },
+  {
+    "path": "styles/inline-71-mk-center-section-header-v1.css"
+  },
+  {
+    "path": "styles/inline-72-welcome-purple-gap.css"
+  },
+  {
+    "path": "styles/inline-73-hero-scale-2026.css"
+  },
+  {
+    "path": "styles/inline-74-apple-market-hover-glow.css"
+  },
+  {
+    "path": "styles/inline-75.css"
+  },
+  {
+    "path": "styles/inline-76.css"
+  },
+  {
+    "path": "tv-channels.css"
+  },
+  {
+    "path": "sports-emoji.css"
+  },
+  {
+    "path": "michael-tv.css"
+  },
+  {
+    "path": "tv-bezel.css"
+  },
+  {
+    "path": "home-scroll-cue.css"
+  },
+  {
+    "path": "styles/inline-77-mk-featured-skills.css"
+  },
+  {
+    "path": "styles/inline-78-mk-project-food-placeholder-style.css"
+  },
+  {
+    "path": "shared-gallery.css"
+  },
+  {
+    "path": "unified-gallery.css"
+  },
+  {
+    "path": "tv-remote-cursor.css"
+  },
+  {
+    "path": "styles/inline-79-mk-northeastern-card-fit.css"
+  },
+  {
+    "path": "styles/inline-80.css"
+  },
+  {
+    "path": "styles/inline-81-mk-affiliations-grid-redesign.css"
+  },
+  {
+    "path": "styles/inline-82-mk-bento-no-collision-fix.css"
+  },
+  {
+    "path": "styles/inline-83-mk-nav-20-percent-larger.css"
+  },
+  {
+    "path": "styles/inline-84-mk-home-bento-desktop-redesign.css"
+  },
+  {
+    "path": "styles/inline-85-mk-financial-disclosure-white-glow.css"
+  },
+  {
+    "path": "styles/inline-86-mk-flat-experience-equal-contact-v1.css"
+  },
+  {
+    "path": "mobile-classic.css"
+  },
+  {
+    "path": "mobile-audit.css"
+  },
+  {
+    "path": "mobile-router.css"
+  },
+  {
+    "path": "editorial-titles.css"
+  },
+  {
+    "path": "desktop-theatre.css",
+    "media": "(min-width: 768px)"
+  },
+  {
+    "path": "styles/inline-87.css"
+  },
+  {
+    "path": "styles/inline-88-mk-experience-milestone-dark-unification.css"
+  },
+  {
+    "path": "styles/inline-89-mk-featured-projects-style.css"
+  },
+  {
+    "path": "styles/inline-90-mk-skills-sphere-upgrade.css"
+  },
+  {
+    "path": "styles/inline-91-fp-shared-project-details.css"
+  },
+  {
+    "path": "styles/inline-92-synapse-inline-walkthrough-styles.css"
+  },
+  {
+    "path": "styles/inline-93-walkthrough-four-project-fullwidth.css"
+  },
+  {
+    "path": "styles/inline-94-mk-homepage-title-case.css"
+  },
+  {
+    "path": "styles/inline-95-project-repo-actions-v1.css"
+  },
+  {
+    "path": "styles/inline-96-mk-skills-category-color-system.css"
+  },
+  {
+    "path": "home-globe-polish.css"
+  },
+  {
+    "path": "styles/inline-97-mk-experience-hover-repaired-v5.css"
+  },
+  {
+    "path": "colorstack-fintech-project.css"
+  },
+  {
+    "path": "la-connect-project.css"
+  },
+  {
+    "path": "styles/inline-98-mk-project-uniform-glow.css"
+  },
+  {
+    "path": "styles/inline-99-beyond-code-editorial-styles.css"
+  },
+  {
+    "path": "styles/inline-100-bcom-project-styles.css"
+  },
+  {
+    "path": "styles/inline-101-bcom-project-evidence-styles.css"
+  },
+  {
+    "path": "styles/inline-102-bcom-refined-original-palette.css"
+  },
+  {
+    "path": "styles/inline-103-bcom-header-type-refinement.css"
+  },
+  {
+    "path": "scroll-flow.css"
+  },
+  {
+    "path": "site-footer.css"
+  },
+  {
+    "path": "styles/inline-104.css"
+  },
+  {
+    "path": "styles/inline-105-mobile-clarity-v1.css"
+  },
+  {
+    "path": "styles/inline-106-mk-portfolio-quality.css"
+  },
+  {
+    "path": "styles/inline-107-mk-home-welcome-audio-styles.css"
+  },
+  {
+    "path": "styles/inline-108-mk-hobbies-viewport-layout-v2.css"
+  },
+  {
+    "path": "styles/inline-109-mk-hobbies-restoration-lightbox-css.css"
+  },
+  {
+    "path": "styles/inline-110-mk-light-theme-projects-experience-skills.css"
+  },
+  {
+    "path": "premium.css"
+  }
+]

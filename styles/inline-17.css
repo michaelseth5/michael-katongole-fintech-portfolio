@@ -1,0 +1,7 @@
+
+#project-2 .ds-team-feature{margin:22px 0 26px;border:1px solid rgba(187,190,213,.26);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,#1c2133,#10131c);box-shadow:0 14px 38px rgba(0,0,0,.18)}
+#project-2 .ds-team-feature img{display:block;width:100%;height:auto;max-height:420px;object-fit:cover;object-position:center 42%}
+#project-2 .ds-team-feature figcaption{padding:18px 22px 21px;display:grid;gap:7px}
+#project-2 .ds-team-feature strong{font-size:18px;letter-spacing:-.03em;color:#f5f5ff}
+#project-2 .ds-team-feature span{font-size:13px;line-height:1.55;color:#c4c7d8}
+@media(max-width:700px){#project-2 .ds-team-feature img{max-height:310px}#project-2 .ds-team-feature figcaption{padding:16px}}

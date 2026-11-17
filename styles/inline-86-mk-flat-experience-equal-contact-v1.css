@@ -1,0 +1,49 @@
+
+/* Experience cards: solid unshaded surfaces; retain each card's existing neon hover/focus border. */
+#experience .timeline > article.job,
+#experience .timeline > article.job.demo-entry,
+#experience .timeline .job,
+#experience .timeline .demo-entry {
+  background:#fff!important;
+  background-image:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  color:#30283a!important;
+  box-shadow:none!important;
+}
+#experience .timeline > article.job .demo-entry-body,
+#experience .timeline > article.job .demo-entry-body p,
+#experience .timeline > article.job .demo-entry-body li {
+  color:#45394e!important;
+}
+/* Match the two Contact cards in desktop grid, letting the chat messages scroll internally. */
+@media(min-width:851px){
+  body.tv-mode #main-content.tv-stage #contact .mk-connect-layout,
+  #contact .mk-connect-layout {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    align-items:stretch!important;
+  }
+  body.tv-mode #main-content.tv-stage #contact .mk-connect-layout > .mk-connect-left,
+  body.tv-mode #main-content.tv-stage #contact .mk-connect-layout > .mk-chat-panel,
+  #contact .mk-connect-layout > .mk-connect-left,
+  #contact .mk-connect-layout > .mk-chat-panel {
+    box-sizing:border-box!important;
+    align-self:stretch!important;
+    min-height:0!important;
+    max-height:none!important;
+    height:100%!important;
+  }
+  #contact .mk-connect-layout > .mk-chat-panel{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+  }
+  #contact .mk-chat-panel .mk-chat-conversation{
+    flex:1 1 auto!important;
+    min-height:120px!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+  }
+  #contact .mk-chat-panel .mk-chat-form{margin-top:auto!important}
+}

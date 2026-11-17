@@ -1,0 +1,26 @@
+
+#home .mk-home-welcome {
+ box-sizing:border-box;position:relative;z-index:5;
+ width:min(100%,410px);margin:16px 0 8px;padding:14px 16px;
+ border:1px solid rgba(183,155,240,.35);border-radius:18px;
+ background:rgba(14,12,29,.87);color:#f7f1ff;
+ box-shadow:0 8px 24px rgba(5,4,15,.14);
+ font:500 13px/1.45 'DM Sans',system-ui,sans-serif;
+}
+#home .mk-home-welcome-head {display:flex;align-items:center;gap:10px;margin-bottom:10px;font-weight:750;letter-spacing:.02em}
+#home .mk-home-welcome-icon {display:grid;place-items:center;width:30px;height:30px;border-radius:9px;color:#dec5ff;background:#7e52b737;font-size:16px}
+#home .mk-home-welcome-actions {display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+#home .mk-home-welcome-actions button {display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 15px;border-radius:11px;border:1px solid #9b75cb;color:#fff;background:#7043a4;font:700 13px 'DM Sans',system-ui,sans-serif;cursor:pointer}
+#home .mk-home-welcome-actions .mk-home-welcome-replay {background:transparent;color:#ead6ff;border-color:#85659d}
+#home .mk-home-welcome-actions button:focus-visible,#home .mk-home-welcome-transcript summary:focus-visible {outline:3px solid #d3adff;outline-offset:3px}
+#home .mk-home-welcome-status {flex:1 1 100%;min-height:0;color:#d4c0e7;font-size:12px}
+#home .mk-home-welcome-status:empty {display:none}
+#home .mk-home-welcome-transcript {margin-top:9px;color:#e5d9ef;font-size:12px}
+#home .mk-home-welcome-transcript summary {cursor:pointer;width:max-content;padding:5px 0;text-decoration:underline;text-underline-offset:3px}
+#home .mk-home-welcome-transcript p {margin:6px 0 0;color:inherit;font-size:13px;line-height:1.6}
+@media(max-width:767px) {
+ html.mobile-classic #home .mk-home-welcome {width:100%;max-width:420px;margin:16px auto;padding:14px;background:#fff;color:#32253e;box-shadow:none;border-color:#ddd0ed}
+ html.mobile-classic #home .mk-home-welcome-actions .mk-home-welcome-replay {color:#5a367f;border-color:#b9a6d2}
+ html.mobile-classic #home .mk-home-welcome-status,html.mobile-classic #home .mk-home-welcome-transcript {color:#554864}
+}
+@media(prefers-reduced-motion:reduce){#home .mk-home-welcome *{transition:none!important;animation:none!important}}

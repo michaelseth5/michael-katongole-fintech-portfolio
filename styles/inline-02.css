@@ -1,0 +1,39 @@
+
+/* Refined editorial image layout */
+:root{--line:#343849;--panel:#10131c;--panel2:#151924}
+.demo-hero-identity{display:flex;align-items:center;gap:24px;margin:22px 0 18px}
+.demo-hero-identity .hero-headshot{width:142px;height:142px;margin:0;flex-shrink:0;object-fit:cover;border-radius:18px}
+.demo-hero-identity h1{margin:0;font-size:clamp(42px,4.6vw,78px);line-height:1.02}
+.job.demo-entry{display:grid!important;grid-template-columns:minmax(155px,210px) minmax(0,1fr)!important;gap:28px!important;align-items:start;padding:27px;border-radius:10px;background:#10131c}
+.demo-entry-art,.demo-milestone-art{display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#ffffff0c,transparent 80%);border-radius:12px;min-width:0}
+.demo-entry-art{min-height:140px;padding:16px}
+.demo-entry-art img,.demo-milestone-art img,.demo-school img{object-fit:contain!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;width:100%!important;max-width:185px!important;max-height:115px!important;opacity:.95;mask-image:radial-gradient(ellipse 90% 88% at center,#000 70%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 90% 88% at center,#000 70%,transparent 100%)}
+.demo-entry-body{min-width:0}
+.demo-entry-body .date{margin-bottom:8px}
+.demo-entry-body h2{margin:5px 0 12px}
+.demo-monogram{font-size:40px;font-weight:800;color:#bba5f7}
+#achievements .simple-list article.demo-milestone{display:grid;grid-template-columns:175px minmax(0,1fr);align-items:center;gap:26px;background:#10131c;border-radius:10px}
+.demo-milestone-art{min-height:108px;padding:12px}
+.demo-milestone-body{min-width:0}
+.demo-school{display:grid!important;grid-template-columns:145px minmax(0,1fr)!important;gap:25px;align-items:center;border-radius:10px!important;background:#10131c!important}
+.demo-school img{width:145px!important}
+.project-block{grid-template-columns:minmax(0,40%) minmax(0,60%);gap:30px}
+.project-block .visual{background:#10142180;border-color:#ffffff18;border-radius:9px}
+.project-block .visual svg{opacity:.9;mix-blend-mode:screen}
+.slide-deck-tile,.skills-bottom-grid article{border-radius:9px;background:#10131c}
+@media(max-width:700px){
+  .demo-hero-identity{gap:14px}
+  .demo-hero-identity .hero-headshot{width:96px;height:96px}
+  .demo-hero-identity h1{font-size:clamp(32px,7.4vw,52px)}
+  .job.demo-entry{grid-template-columns:1fr!important;gap:12px!important}
+  .demo-entry-art{min-height:90px;justify-content:flex-start;max-width:220px;padding:10px}
+  .demo-entry-art img{max-width:165px!important;max-height:75px!important}
+  #achievements .simple-list article.demo-milestone{grid-template-columns:115px minmax(0,1fr);gap:14px}
+  .demo-milestone-art{min-height:80px}
+  .demo-school{grid-template-columns:105px minmax(0,1fr)!important;gap:12px}
+  .demo-school img{width:105px!important}
+  .project-block{grid-template-columns:1fr}
+}
+@media(max-width:390px){
+  #achievements .simple-list article.demo-milestone,.demo-school{grid-template-columns:1fr!important}
+}

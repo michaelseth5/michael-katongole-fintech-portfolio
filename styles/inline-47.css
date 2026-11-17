@@ -1,0 +1,42 @@
+
+/* Northeastern education: reserve separate rows so the heading never overlaps the seal. */
+#portfolio-intro-grid .mk-bento-layout .mk-bento-education{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ grid-template-rows:auto minmax(105px,1fr) auto!important;
+ gap:10px!important;
+ justify-items:stretch!important;
+ align-items:stretch!important;
+ padding:18px 22px!important;
+ background:transparent!important;
+ color:#33283f!important;
+ border:0!important;box-shadow:none!important;
+}
+#portfolio-intro-grid .mk-bento-education:hover{border:0!important;box-shadow:none!important}
+#portfolio-intro-grid .mk-bento-education .mk-bento-eyebrow{
+ color:#76667e!important;position:relative;z-index:1;align-self:start
+}
+#portfolio-intro-grid .mk-bento-education-logo{
+ position:relative!important;inset:auto!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ min-height:0!important;width:100%!important;height:100%!important;
+ background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+}
+#portfolio-intro-grid .mk-bento-education-logo img{
+ display:block;width:auto!important;height:auto!important;max-width:100%!important;
+ max-height:125px!important;object-fit:contain!important;filter:none!important;
+}
+#portfolio-intro-grid .mk-bento-education h3{
+ position:relative;z-index:1;align-self:end;
+ margin:0!important;padding:0!important;
+ font:800 clamp(17px,1.85vw,25px)/1.12 'Space Grotesk',sans-serif!important;
+ max-width:100%!important;letter-spacing:-.045em;
+ color:#30263e!important;text-shadow:none!important;
+}
+#portfolio-intro-grid .mk-bento-education h3 span{color:#9d69c6!important}
+@media(max-width:750px){
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-education{
+  grid-template-rows:auto minmax(80px,1fr) auto!important;min-height:220px!important;
+ }
+ #portfolio-intro-grid .mk-bento-education-logo img{max-height:105px!important}
+}

@@ -1,0 +1,78 @@
+
+/* Restore midnight-black Home and Selected Projects while preserving the
+   coordinated pastel palettes in Experience, Skills, Hobbies, Milestones, Contact. */
+#home{
+ --section-accent:#b99afb;
+ color:#f5f1fc!important;
+ background:
+ radial-gradient(ellipse at 89% 9%,rgba(104,67,167,.28),transparent 49%),
+ radial-gradient(ellipse at 8% 90%,rgba(44,53,92,.30),transparent 54%),
+ linear-gradient(155deg,#080912 0%,#10101d 53%,#0b0d18 100%)!important;
+}
+#home.hero,#home .hero{background:transparent!important;color:#f5f1fc!important}
+#home h1,#home .subtitle,#home p{color:#f1edf8!important}
+#home h1 .mk-title-solid{color:#f5f1fb!important}
+#home h1 .mk-title-glow{
+ background-image:linear-gradient(90deg,#a47be9,#e3c1ff,#a77ce6)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+}
+#home .eyebrow,#home .eyebrowline{color:#bca1eb!important}
+#home .mk-social-link{background:#191726!important;color:#e9defc!important;border-color:#504066!important}
+#home .mk-social-link:hover{background:#2d2343!important;border-color:#a67bdf!important}
+#home .hero-headshot{box-shadow:0 15px 47px rgba(0,0,0,.48)!important}
+#home .actions .btn.primary{background:#a678e4!important;color:#100e1a!important}
+#project-details{
+ --section-accent:#b998ec;
+ color:#f4f0fc!important;
+ background:
+ radial-gradient(ellipse at 91% 9%,rgba(98,61,161,.26),transparent 48%),
+ radial-gradient(ellipse at 6% 85%,rgba(39,48,93,.23),transparent 51%),
+ linear-gradient(155deg,#0a0b15 0%,#141121 54%,#0c0e19 100%)!important;
+ border-top:1px solid #2d2540!important;
+}
+#project-details .page-hero{color:#f5f0fc!important}
+#project-details .page-hero h1,#project-details .page-hero h1 .mk-title-solid{
+ color:#f7f4fc!important;
+}
+#project-details .page-hero h1 .mk-title-glow{
+ background-image:linear-gradient(90deg,#ad82eb,#dec0ff,#a77ce9)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+}
+#project-details .page-hero h1 .highlight{color:#c59aef!important}
+#project-details .page-hero p{color:#bab1c9!important}
+#project-details .page-hero .eyebrow,#project-details .page-hero .back{color:#bfa4e3!important}
+#project-details .page-hero::after{
+ background:linear-gradient(90deg,#735592,#433954,transparent 95%)!important;
+}
+#project-details .slide-deck-shelf,
+#project-details .slide-deck-tile,
+#project-details .project-block{
+ color:#ece7f6!important;
+ background:linear-gradient(145deg,#1b192b,#111522)!important;
+ border:1px solid #3a3450!important;
+ box-shadow:0 8px 29px rgba(0,0,0,.23)!important;
+}
+#project-details .slide-deck-shelf h2,#project-details .slide-deck-tile strong,
+#project-details .project-block h2,#project-details .project-block h3{
+ color:#f4efff!important;
+}
+#project-details .slide-deck-shelf p,#project-details .slide-deck-tile p,
+#project-details .project-block p,#project-details .project-block li,
+#project-details .case-box p{color:#c6bfd6!important}
+#project-details .project-block p b[style]{color:#d9c9ff!important}
+#project-details .slide-deck-tile .deck-tile-tag,
+#project-details .project-block .eyebrow,
+#project-details .slide-deck-shelf .eyebrow{color:#c6a2f2!important}
+#project-details .project-expand{
+ background:#231d37!important;border-color:#594674!important;color:#e9dafb!important;
+}
+#project-details .project-expand summary{color:#e9dafb!important}
+#project-details .case-box,#project-details .project-framework-item{
+ color:#ddd4ed!important;background:#211d32!important;
+ border-color:#403754!important;
+}
+#project-details .project-framework-label{color:#d4c6e6!important}
+#project-details .project-framework-num{color:#c9a2f7!important}
+#project-details .project-block:hover,#project-details .slide-deck-tile:hover{
+ border-color:#8b6aba!important;box-shadow:0 18px 42px rgba(0,0,0,.32)!important;
+}

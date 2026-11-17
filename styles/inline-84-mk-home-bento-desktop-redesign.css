@@ -1,0 +1,131 @@
+
+/* Move education into Craft, let the NYC map occupy the entire next row. */
+#portfolio-intro-grid .mk-bento-layout {
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  grid-template-rows:175px minmax(530px,auto) minmax(460px,auto)!important;
+  align-items:stretch!important;
+}
+#portfolio-intro-grid .mk-bento-layout > .mk-bento-mindset {
+  grid-column:span 4!important;grid-row:2!important;
+  height:100%!important;min-height:0!important;
+}
+#portfolio-intro-grid .mk-bento-layout > .mk-bento-memories {
+  grid-column:span 4!important;grid-row:2!important;
+  height:100%!important;min-height:0!important;
+}
+#portfolio-intro-grid .mk-bento-layout > .mk-bento-craft {
+  grid-column:span 4!important;grid-row:2!important;
+  height:100%!important;min-height:0!important;
+  display:flex!important;flex-direction:column!important;
+  padding:23px!important;text-align:center!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education {
+  display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;
+  gap:9px!important;width:100%!important;min-width:0!important;
+  border-top:1px solid rgba(117,89,141,.22)!important;
+  padding:17px 7px 15px!important;
+  margin:13px 0 11px!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education .mk-bento-eyebrow {
+  position:static!important;font:700 9px/1.5 'Space Grotesk',sans-serif!important;
+  color:#796d86!important;letter-spacing:.13em!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education .mk-bento-education-logo {
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  position:static!important;inset:auto!important;
+  width:100%!important;height:auto!important;min-height:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education .mk-bento-education-logo img {
+  width:80px!important;height:80px!important;max-width:80px!important;
+  max-height:80px!important;object-fit:contain!important;display:block!important;
+  filter:none!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education h3 {
+  position:static!important;font:800 clamp(20px,1.65vw,24px)/1.14 'Space Grotesk',sans-serif!important;
+  color:#30263e!important;letter-spacing:-.045em!important;
+  max-width:290px!important;text-align:center!important;
+  margin:0!important;padding:0!important;text-wrap:balance!important;
+}
+#portfolio-intro-grid .mk-bento-craft .mk-craft-education h3 span {
+  color:#9d69c6!important;
+}
+#portfolio-intro-grid .mk-bento-craft > .mk-bento-tech {
+  order:10!important;flex-shrink:0!important;
+  margin:auto -23px -23px!important;
+  border-radius:0 0 19px 19px!important;
+  min-height:35px!important;align-items:center!important;
+}
+#portfolio-intro-grid .mk-bento-craft > a {
+  margin-top:12px!important;margin-bottom:19px!important;
+  align-self:center!important;
+}
+#portfolio-intro-grid .mk-bento-layout > .mk-nyc-map-card {
+  grid-column:1 / -1!important;grid-row:3!important;
+  min-height:480px!important;height:480px!important;
+  align-self:stretch!important;border-radius:20px!important;
+  border:1px solid #ded6e7!important;
+  box-shadow:0 1px 1px rgba(49,34,71,.06),0 12px 24px rgba(40,30,60,.06)!important;
+}
+#portfolio-intro-grid .mk-nyc-map-canvas.mk-nyc-aerial-image {
+  background-position:50% 51%!important;background-size:cover!important;
+}
+#portfolio-intro-grid .mk-nyc-map-heading {
+  top:20px!important;left:20px!important;padding:15px 18px!important;
+}
+#portfolio-intro-grid .mk-nyc-map-footer {
+  left:20px!important;right:20px!important;bottom:20px!important;
+}
+#portfolio-intro-grid .mk-nyc-map-footer span {
+  font-size:10px!important;padding:9px 13px!important;
+}
+body .apple-topbar {
+  top:max(12px,env(safe-area-inset-top))!important;
+  padding-top:2px!important;
+  z-index:1000!important;
+}
+@media (min-width:751px) and (max-width:1023px) {
+ #portfolio-intro-grid .mk-bento-layout {
+   grid-template-rows:auto!important;
+   grid-template-columns:repeat(12,minmax(0,1fr))!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-mindset {
+   grid-column:span 6!important;grid-row:2!important;min-height:500px!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-memories {
+   grid-column:span 6!important;grid-row:2!important;min-height:500px!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-craft {
+   grid-column:1/-1!important;grid-row:3!important;
+   min-height:420px!important;height:auto!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-nyc-map-card {
+   grid-column:1/-1!important;grid-row:4!important;
+   min-height:420px!important;height:420px!important;
+ }
+ #portfolio-intro-grid .mk-bento-craft .mk-craft-education{margin:14px auto!important;max-width:450px!important}
+}
+@media (max-width:750px) {
+ #portfolio-intro-grid .mk-bento-layout {
+   display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+   grid-template-rows:auto!important;gap:12px!important;
+ }
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-name {grid-column:1!important;grid-row:1!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-facts {grid-column:1!important;grid-row:2!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-mindset {grid-column:1!important;grid-row:3!important;height:auto!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-memories {grid-column:1!important;grid-row:4!important;min-height:330px!important;height:330px!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-bento-craft {grid-column:1!important;grid-row:5!important;min-height:0!important;height:auto!important;}
+ #portfolio-intro-grid .mk-bento-layout > .mk-nyc-map-card {
+   grid-column:1!important;grid-row:6!important;
+   min-height:310px!important;height:310px!important;
+ }
+ #portfolio-intro-grid .mk-bento-craft .mk-craft-education h3 {font-size:22px!important;}
+ #portfolio-intro-grid .mk-bento-craft .mk-craft-education .mk-bento-education-logo img {width:76px!important;height:76px!important;}
+ #portfolio-intro-grid .mk-nyc-map-heading {top:10px!important;left:10px!important;padding:9px 11px!important;}
+ #portfolio-intro-grid .mk-nyc-map-footer {bottom:10px!important;left:10px!important;right:10px!important;gap:6px!important;}
+ #portfolio-intro-grid .mk-nyc-map-footer span {font-size:8px!important;padding:7px 8px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+ #portfolio-intro-grid .mk-nyc-radar-sweep,#portfolio-intro-grid .mk-nyc-radar-rings {animation:none!important;}
+}

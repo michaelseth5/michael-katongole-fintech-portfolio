@@ -1,0 +1,21 @@
+
+#project-details .bcom-project{margin:42px 0 6px;padding:clamp(20px,3vw,34px);border:1px solid rgba(161,124,204,.3);border-radius:26px;background:linear-gradient(135deg,rgba(93,58,128,.12),rgba(123,85,166,.055));box-shadow:0 14px 40px rgba(27,15,48,.06);min-width:0}
+#project-details .bcom-project-header{text-align:left;margin:0 0 24px}
+#project-details .bcom-project-header h2{font-size:clamp(28px,3vw,42px);line-height:1.12;letter-spacing:-.055em;margin:8px 0 11px;color:inherit}
+#project-details .bcom-project-header>p{max-width:760px;margin:0;color:inherit;opacity:.76;line-height:1.6;font-size:14px}
+#project-details .bcom-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+#project-details .bcom-project-card{min-width:0;display:flex;flex-direction:column;padding:clamp(18px,2.3vw,27px);border:1px solid rgba(166,133,204,.25);border-radius:22px;background:rgba(255,255,255,.67);color:#30263d;box-shadow:0 9px 28px rgba(43,27,71,.07)}
+#project-details .bcom-project-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+#project-details .bcom-project-number{font:700 10px 'Space Grotesk',sans-serif;letter-spacing:.13em;color:#8654ae}
+#project-details .bcom-project-type{font:650 10px 'Space Grotesk',sans-serif;border-radius:999px;padding:7px 11px;background:#ece0f8;color:#6b4093}
+#project-details .bcom-project-card h3{margin:0 0 9px;font-size:clamp(21px,2vw,28px);line-height:1.2;letter-spacing:-.04em;color:#2d203b}
+#project-details .bcom-project-lead{font-size:13px;line-height:1.65;color:#675a73;margin:0 0 17px}
+#project-details .bcom-project-points{display:grid;gap:14px;margin:0}
+#project-details .bcom-project-points>div{border-top:1px solid rgba(113,77,146,.13);padding-top:12px}
+#project-details .bcom-project-points dt{font:750 11px 'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:.1em;color:#8555ae;margin-bottom:4px}
+#project-details .bcom-project-points dd{font-size:13px;line-height:1.58;margin:0;color:#51465f}
+#project-details .bcom-project-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto;padding-top:23px}
+#project-details .bcom-project-actions a{background:#6f42a2;color:#fff;border-color:#6f42a2;max-width:100%;text-align:center}
+#project-details .bcom-project-actions a:hover{background:#5d328f}
+#project-details .bcom-project-footnote{font-size:11px;line-height:1.5;color:#7f718c;margin:18px 0 0}
+@media(max-width:800px){#project-details .bcom-project-grid{grid-template-columns:minmax(0,1fr)}#project-details .bcom-project{margin-top:26px;padding:16px;border-radius:20px}#project-details .bcom-project-card{padding:18px}}

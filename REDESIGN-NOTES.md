@@ -150,7 +150,7 @@ The inline blocks include startup / scroll restoration; featured-card reveal; qu
 
 `centered-ui-mindset.css`, `colorstack-fintech-project.css`, `connect-chatbot.css`, `desktop-theatre.css`, `editorial-titles.css`, `globe-teaser.css`, `globe.css`, `hero-legibility.css`, `hobbies-caption.css`, `home-globe-polish.css`, `home-scroll-cue.css`, `homepage-fixes.css`, `hover-personalities.css`, `la-connect-project.css`, `listening-reading.css`, `michael-tv.css`, `mobile-audit.css`, `mobile-classic.css`, `mobile-router.css`, `networking-presentation.css`, `polish.css`, `premium-decks.css`, `premium.css`, `scroll-flow.css`, `shared-gallery.css`, `site-footer.css`, `sports-emoji.css`, `tv-bezel.css`, `tv-channels.css`, `tv-remote-cursor.css`, `unified-gallery.css`, `ux.css`
 
-`index.html` also retains the legacy inline styles in their original order. `premium.css` is an explicit cascade layer: its important design rules take precedence over historical important overrides, without deleting them. Cinema effects and the TV functionality remain available.
+`styles/manifest.json` records all 110 former inline style blocks and existing stylesheets in their exact original order. Readable inline sources are in `styles/inline-*.css`; `scripts/build-styles.py` creates the committed `portfolio.css` bundle. Run that command after editing a CSS source. The two fonts are subsetted, self-hosted WOFF2 files with their OFL licenses. `premium.css` is an explicit cascade layer: its important design rules take precedence over historical important overrides, without deleting them. Cinema effects and the TV functionality remain available.
 
 ## Server scripts and test scripts
 
@@ -160,6 +160,7 @@ The inline blocks include startup / scroll restoration; featured-card reveal; qu
 - `tests/portfolio-audit.cjs`: markup, privacy metadata, source assets and preserved content checks. Two obsolete baseline expectations updated to the current authored education copy.
 - `tests/globe-smoke.cjs`: retained historic test; several assertions target a pre-November-17 mobile canvas and older Skills layout. Not used to validate this redesign.
 - `tests/live-data-smoke.cjs`: retained upstream read-only financial-source test.
+- `tests/performance-server.cjs`: gzip-enabled static test server reflecting deployment text compression; API responses are empty, labeled test fixtures.
 - `tests/premium-quality.cjs`: seven viewport widths, route ownership, hero fit, intro gating, globe startup, tabs, footers, chat, runtime exceptions and reduced motion.
 - `.github/workflows/premium-quality.yml`: isolated browser tests plus first-visit mobile Lighthouse report. Financial figures in browser tests are clearly marked fixtures and never enter production data.
 

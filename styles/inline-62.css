@@ -1,0 +1,47 @@
+
+/* Programs & Affiliations: a stable, evenly spaced logo rail.
+   Each original local affiliation graphic fits in a dedicated frame. */
+#achievements .dev-milestone{overflow:hidden!important}
+#achievements .dev-carousel{
+ width:100%!important;max-width:100%!important;overflow-x:auto!important;
+ overflow-y:hidden!important;
+}
+#achievements .dev-track{
+ display:flex!important;align-items:stretch!important;gap:16px!important;
+ margin:0!important;padding:0 0 7px!important;
+}
+#achievements .dev-track>.dev-program{
+ box-sizing:border-box!important;flex:0 0 clamp(205px,22vw,244px)!important;
+ min-width:0!important;min-height:242px!important;
+ display:flex!important;flex-direction:column!important;
+ align-items:center!important;justify-content:flex-start!important;
+ gap:14px!important;padding:18px 15px 19px!important;
+ text-align:center!important;overflow:hidden!important;
+}
+#achievements .dev-logo-frame{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ flex:0 0 120px!important;width:100%!important;height:120px!important;
+ min-width:0!important;overflow:hidden!important;
+ padding:10px 13px!important;border-radius:15px!important;
+ background:#fff!important;box-shadow:0 6px 20px rgba(45,31,60,.07)!important;
+}
+#achievements .dev-logo-frame>.dev-logo{
+ display:block!important;width:100%!important;height:100%!important;
+ max-width:100%!important;max-height:100%!important;
+ margin:0!important;padding:0!important;
+ object-fit:contain!important;object-position:center!important;
+ border:0!important;border-radius:0!important;
+ box-shadow:none!important;background:transparent!important;
+}
+#achievements .dev-track>.dev-program h3{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ flex:1 1 auto!important;width:100%!important;min-height:56px!important;
+ margin:0!important;padding:0!important;
+ font-size:14px!important;line-height:1.42!important;
+ color:#3d304a!important;
+}
+@media(max-width:650px){
+ #achievements .dev-track>.dev-program{flex-basis:205px!important;min-height:225px!important;padding:14px!important}
+ #achievements .dev-logo-frame{height:105px!important;flex-basis:105px!important}
+ #achievements .dev-track>.dev-program h3{font-size:13px!important}
+}

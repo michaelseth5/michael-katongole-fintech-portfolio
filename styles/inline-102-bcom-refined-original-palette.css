@@ -1,0 +1,60 @@
+
+/* Scoped BCOM polish using the site's existing violet/lavender palette. */
+#project-details #business-communication-assignment{
+ --bcom-violet:#8654ae;--bcom-purple:#6f42a2;--bcom-lavender:#b99bdf;
+ --bcom-ink:#30263d;--bcom-muted:#61546d;--bcom-edge:rgba(151,108,192,.30);
+ background:linear-gradient(140deg,rgba(110,76,149,.085),rgba(123,85,166,.035));
+ border-color:var(--bcom-edge);
+ box-shadow:0 12px 32px rgba(50,24,75,.07);
+}
+#project-details #business-communication-assignment .bcom-project-header h2{color:var(--bcom-ink)}
+#project-details #business-communication-assignment .bcom-project-header .eyebrow{color:var(--bcom-violet)}
+#project-details #business-communication-assignment .bcom-project-header>p{color:var(--bcom-muted);opacity:1}
+#project-details #business-communication-assignment .bcom-project-card{
+ background:linear-gradient(145deg,rgba(255,255,255,.91),rgba(249,245,253,.88));
+ border:1px solid rgba(151,108,192,.27);
+ color:var(--bcom-ink);
+ box-shadow:0 7px 24px rgba(47,28,68,.07);
+ transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+#project-details #business-communication-assignment .bcom-project-card:hover{
+ transform:translateY(-3px);
+ border-color:rgba(151,108,192,.48);
+ box-shadow:0 14px 34px rgba(109,66,162,.14),0 0 18px rgba(151,108,192,.09);
+}
+#project-details #business-communication-assignment .bcom-project-card h3{color:#30263d}
+#project-details #business-communication-assignment .bcom-project-number,
+#project-details #business-communication-assignment .bcom-project-points dt{color:var(--bcom-violet)}
+#project-details #business-communication-assignment .bcom-project-type{
+ background:#f0e7f8;color:#69428e;border:1px solid #dbc6ed;
+}
+#project-details #business-communication-assignment .bcom-project-lead,
+#project-details #business-communication-assignment .bcom-project-points dd{color:#51465f}
+#project-details #business-communication-assignment .bcom-project-footnote{color:#70617a}
+#project-details #business-communication-assignment .bcom-project-points>div{border-color:rgba(113,77,146,.16)}
+#project-details #business-communication-assignment .bcom-project-actions a.btn{
+ background:var(--bcom-purple);border-color:var(--bcom-purple);color:#fff;
+ box-shadow:0 4px 12px rgba(111,66,162,.13);
+}
+#project-details #business-communication-assignment .bcom-project-actions a.btn:hover{
+ background:#60378f;border-color:#60378f;
+ box-shadow:0 7px 18px rgba(111,66,162,.22);
+}
+#project-details #business-communication-assignment .bcom-pdf-download{color:var(--bcom-purple)}
+#project-details #business-communication-assignment .bcom-pdf-download:hover{color:#4e2879}
+#project-details #business-communication-assignment .bcom-screenshot{
+ background:#f9f5fc;color:#49345a;border:1px solid rgba(151,108,192,.26);
+}
+#project-details #business-communication-assignment .bcom-screenshot:hover{
+ border-color:#a07bc5;box-shadow:0 9px 22px rgba(109,66,162,.13);
+}
+#project-details #business-communication-assignment .bcom-screenshot:focus-visible,
+#project-details #business-communication-assignment a:focus-visible{
+ outline:3px solid #9972c4;outline-offset:3px;
+}
+#project-details #business-communication-assignment .bcom-screenshot img{background:#fff}
+#project-details #business-communication-assignment .bcom-screenshot-gallery{scrollbar-color:#bda2d3 transparent}
+@media(prefers-reduced-motion:reduce){
+ #project-details #business-communication-assignment .bcom-project-card{transition:none!important}
+ #project-details #business-communication-assignment .bcom-project-card:hover{transform:none!important}
+}

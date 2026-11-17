@@ -1,0 +1,14 @@
+
+#hobbies .hobbies-grid article.art-showcase {grid-column: 1 / -1; background: linear-gradient(135deg,#151826,#111520); }
+.art-showcase-desc{color:#a7abc3;max-width:850px;font-size:14px;line-height:1.65;margin:8px 0 18px}
+.art-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:19px}
+.art-photo-card{min-width:0;margin:0;background:#1e2230;border:1px solid #ffffff1c;border-radius:15px;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease}
+.art-photo-card:hover{transform:translateY(-3px);box-shadow:0 14px 40px #0005}
+.art-photo-card img{display:block;width:100%;aspect-ratio:1.15;object-fit:cover;object-position:center;transition:transform .5s ease}
+.art-photo-card:hover img{transform:scale(1.035)}
+.art-photo-card figcaption{padding:14px 14px 15px;display:flex;flex-direction:column;gap:7px;min-height:78px}
+.art-photo-card strong{color:#f3f4fa;font-size:13px;line-height:1.35;font-weight:650}
+.art-photo-card figcaption span{color:#b2b3c8;font-size:11px;line-height:1.35}
+@media(max-width:820px){.art-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:530px){.art-photo-grid{grid-template-columns:1fr}.art-photo-card img{aspect-ratio:1.25}}
+@media(prefers-reduced-motion:reduce){.art-photo-card,.art-photo-card img{transition:none}.art-photo-card:hover,.art-photo-card:hover img{transform:none}}

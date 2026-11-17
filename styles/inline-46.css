@@ -1,0 +1,17 @@
+
+/* Playful personal photos are the final Hobbies tab, while About keeps a roots card. */
+#portfolio-intro-grid .mk-bento-layout .mk-bento-roots{grid-column:span 5!important;grid-row:3!important;min-height:250px!important;background:linear-gradient(145deg,#eee7f6,#e6e0f3);display:flex;flex-direction:column;justify-content:center}
+#portfolio-intro-grid .mk-bento-roots h3{font:800 clamp(23px,2.8vw,35px)/1.08 'Space Grotesk',sans-serif;letter-spacing:-.06em;color:#322844;margin:14px 0}
+#portfolio-intro-grid .mk-bento-roots h3 span{color:#8c55b7}
+#portfolio-intro-grid .mk-bento-roots p{font-size:12px;line-height:1.65;color:#655875;max-width:430px;margin:0}
+#portfolio-intro-grid .mk-bento-roots-mark{position:absolute;right:20px;bottom:14px;color:#aa8fca;font:800 11px 'Space Grotesk',sans-serif;letter-spacing:.12em}
+#hobbies .unserious-hobby-slide .unserious-gallery{align-items:stretch!important}
+#hobbies .unserious-hobby-slide .unserious-photo{flex:0 0 clamp(210px,29%,330px)!important;width:clamp(210px,29%,330px)!important;min-width:0!important;margin:0!important;overflow:hidden;border-radius:17px;background:#191729;border:1px solid rgba(221,196,255,.2)}
+#hobbies .unserious-hobby-slide .unserious-photo img{display:block;width:100%;height:345px;object-fit:contain;object-position:center;background:#100e1a}
+#hobbies .unserious-hobby-slide .unserious-photo figcaption{padding:13px 15px;color:#f3ebff;font:600 12px 'Space Grotesk',sans-serif}
+#hobbies .unserious-hobby-slide>p{max-width:720px}
+@media(max-width:750px){
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-roots{grid-column:span 2!important;grid-row:auto!important;min-height:220px!important}
+ #hobbies .unserious-hobby-slide .unserious-photo{flex-basis:75vw!important;width:75vw!important}
+ #hobbies .unserious-hobby-slide .unserious-photo img{height:310px}
+}

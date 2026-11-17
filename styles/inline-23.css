@@ -1,0 +1,15 @@
+
+/* Networking is the sixth Hobbies carousel tab, not a duplicate standalone page. */
+#hobbies .hobby-carousel-track{align-items:flex-start;transition:height .36s ease;scrollbar-width:none}
+#hobbies .hobby-carousel-track::-webkit-scrollbar{display:none}
+#hobbies .hobby-carousel-track > .networking-hobby-slide{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+#hobbies .networking-hobby-kicker{color:#aaa8c8;font-size:11px;font-weight:700;letter-spacing:.13em;margin:4px 0 14px}
+#hobbies #networking{padding:0!important;margin:0!important;border:0!important;background:transparent!important}
+#hobbies #networking>.container{width:100%;max-width:none;padding:0!important}
+#hobbies #networking .seo-networking-intro{margin-bottom:24px}
+#hobbies #networking .seo-networking-intro h1{font-size:clamp(32px,5vw,54px)}
+#hobbies #networking .seo-networking-intro .eyebrow{display:none}
+#hobbies .network-event-slide{min-width:100%;box-sizing:border-box}
+#hobbies .hobby-carousel-track > article:hover{transform:none!important}
+@media(max-width:700px){#hobbies #networking .seo-networking-intro{margin-bottom:16px}}
+@media(prefers-reduced-motion:reduce){#hobbies .hobby-carousel-track{transition:none}}

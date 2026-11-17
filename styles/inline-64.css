@@ -1,0 +1,13 @@
+
+/* Interactive skills globe - scoped to the tech visualization. */
+#mk-skills-visual{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#mk-skills-visual.mk-skills-dragging{cursor:grabbing;touch-action:none}
+#mk-skills-visual .mk-skill-particle{appearance:none;border:0;background:transparent;padding:0;pointer-events:auto;cursor:pointer;transition:filter .18s ease;touch-action:none}
+#mk-skills-visual .mk-skill-particle:hover,
+#mk-skills-visual .mk-skill-particle:focus-visible,
+#mk-skills-visual .mk-skill-particle.mk-skill-selected{filter:drop-shadow(0 0 12px rgba(120,89,214,.55));outline:none}
+#mk-skills-visual .mk-skill-particle:hover .mk-icon,
+#mk-skills-visual .mk-skill-particle:focus-visible .mk-icon,
+#mk-skills-visual .mk-skill-particle.mk-skill-selected .mk-icon{box-shadow:0 0 0 2px rgba(115,91,210,.6),0 8px 20px rgba(96,76,171,.25)}
+#mk-skills-visual .mk-skills-status{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);white-space:nowrap;max-width:100%;padding:7px 12px;border-radius:100px;background:rgba(255,255,255,.85);border:1px solid rgba(130,114,186,.22);color:#635581;font:600 11px 'Space Grotesk',Arial,sans-serif;pointer-events:none;z-index:6}
+@media(max-width:600px){#mk-skills-visual .mk-skills-status{font-size:10px;bottom:0}}

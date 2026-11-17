@@ -1,0 +1,22 @@
+
+/* Selected Projects header blends seamlessly with the dark-plum section. */
+#project-details .page-hero{
+ background:transparent!important;
+ color:#f8f5ff!important;
+ border:0!important;
+ border-radius:0!important;
+ box-shadow:none!important;
+ padding:14px 0 18px!important;
+ margin:0 0 20px!important;
+ max-width:none!important;
+}
+#project-details .page-hero .back{color:#d7b9ff!important;font-weight:750}
+#project-details .page-hero .back:hover{color:#fff!important;text-decoration:underline}
+#project-details .page-hero .eyebrow{color:#c7a4f6!important;margin-top:18px!important}
+#project-details .page-hero .page-title{color:#fff!important}
+#project-details .page-hero .page-title .highlight{color:#c69af8!important}
+#project-details .page-hero p{color:#d3c9e4!important;max-width:800px}
+@media(max-width:680px){
+ #project-details .page-hero{padding:8px 0 14px!important;margin:0 0 14px!important}
+ #project-details .page-hero .eyebrow{margin-top:14px!important}
+}

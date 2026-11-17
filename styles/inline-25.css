@@ -1,0 +1,25 @@
+
+/* Refined two-tier hobby and networking navigation */
+#hobbies .hobby-carousel-dots button,#networking .network-carousel-tabs button{transition:background-color .24s ease,color .24s ease,border-color .24s ease,box-shadow .24s ease,transform .24s ease}
+#hobbies .hobby-carousel-dots button.active,#networking .network-carousel-tabs button.active{box-shadow:0 0 0 2px rgba(185,161,255,.17)}
+#hobbies .networking-hobby-slide .networking-hobby-kicker{margin-bottom:8px}
+#hobbies #networking .seo-networking-intro{max-width:760px;margin:0 0 22px!important;padding:0!important}
+#hobbies #networking .seo-networking-intro h1{margin:5px 0 8px}
+#hobbies #networking .seo-networking-intro p{margin:0;line-height:1.65}
+#networking .network-carousel-eyebrow{margin:0 0 11px;color:#ada9c9;font:700 11px/1.4 'Space Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase}
+#networking .network-carousel-controls{display:grid!important;grid-template-columns:42px minmax(0,1fr) 42px;gap:12px!important;align-items:center;margin:0 0 10px!important;width:100%;min-width:0}
+#networking .network-carousel-controls>button{width:42px;height:42px;flex:none}
+#networking .network-carousel-tabs{min-width:0;width:100%;display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;gap:8px!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important;-ms-overflow-style:none;scroll-snap-type:x proximity;overscroll-behavior-inline:contain;padding:4px 2px 7px;touch-action:pan-x}
+#networking .network-carousel-tabs::-webkit-scrollbar{display:none!important}
+#networking .network-carousel-tabs button{flex:0 0 auto;white-space:nowrap;scroll-snap-align:center;padding:10px 15px}
+#networking .network-carousel-tabs button.active{background:#eeeaff;color:#171925;border-color:#cbbdf8}
+#networking .network-carousel-meta{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:0 0 17px;color:#a6a7bf;font:650 11px/1.5 'Space Grotesk',sans-serif;letter-spacing:.04em}
+#networking .network-progress{display:flex;gap:5px;align-items:center}
+#networking .network-progress span{display:block;width:7px;height:5px;border-radius:99px;background:#45465b;transition:width .25s ease,background-color .25s ease}
+#networking .network-progress span.active{width:22px;background:#b9a1ff}
+#networking .network-carousel-track{width:100%;min-width:0;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important;-ms-overflow-style:none;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;touch-action:auto}
+#networking .network-event-slide{min-width:100%!important;flex:0 0 100%!important;scroll-snap-align:start}
+#networking .network-event-slide.is-entering .seo-event-header{animation:networkReveal .3s ease both}
+@keyframes networkReveal{from{opacity:.45;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){#networking .network-carousel-controls{grid-template-columns:36px minmax(0,1fr) 36px;gap:7px!important}#networking .network-carousel-controls>button{width:36px;height:36px}#networking .network-carousel-tabs button{padding:9px 12px}#networking .network-carousel-eyebrow{font-size:10px}#networking .network-carousel-meta{margin-bottom:13px}}
+@media(prefers-reduced-motion:reduce){#networking .network-event-slide.is-entering .seo-event-header{animation:none}#networking .network-progress span{transition:none}}

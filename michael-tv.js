@@ -368,7 +368,7 @@
            if(event.data===YT.PlayerState.PLAYING){
              playerStarted=true;pending=false;
              clearTimeout(clickDeadline);clickDeadline=0;
-             // The 25-second limit includes both embedded videos and their handoff.
+             // Playback remains user initiated; a generous fail-open deadline protects the full sequence.
              if(switching)releaseHandoff();else revealVideo();
            }else if(event.data===YT.PlayerState.ENDED){
              // Ignore a late end event from the first clip during the handoff.
@@ -400,7 +400,7 @@
    },reduced.matches?0:700);
    // Fail open rather than trapping people in an empty/blocked embed.
    clickDeadline=setTimeout(()=>{if(!playerStarted)finish('timeout')},4000);
-   maxDeadline=setTimeout(()=>finish('limit'),25000);
+   maxDeadline=setTimeout(()=>finish('limit'),180000);
    if(apiFailed){finish('error');return}
    if(apiReady || window.YT?.Player){apiReady=true;createPlayer()}
    else ensureAPI();

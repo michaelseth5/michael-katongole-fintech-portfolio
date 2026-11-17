@@ -1,0 +1,9 @@
+
+/* Rich dark-purple canvas around the midnight Home hero.
+   Interior hero and the individual section palettes remain untouched. */
+main{
+ background:
+  radial-gradient(ellipse at 12% 12%,rgba(104,62,156,.38),transparent 46%),
+  radial-gradient(ellipse at 92% 38%,rgba(94,58,144,.34),transparent 50%),
+  linear-gradient(135deg,#241532 0%,#2e1b43 54%,#1e142e 100%)!important;
+}

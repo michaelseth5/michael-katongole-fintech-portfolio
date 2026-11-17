@@ -1,0 +1,51 @@
+
+/* Motion system: scroll-synced navigation, soft luminous headings, animated radar. */
+#apple-navlinks a.active{color:#201a32!important}
+#apple-nav-indicator{box-shadow:0 3px 13px rgba(114,73,168,.23),0 1px 2px rgba(30,20,47,.13);border:1px solid rgba(155,118,208,.3)}
+.mk-animated-title .mk-title-solid{color:inherit}
+.mk-animated-title .mk-title-glow{
+ color:#c69cf7!important;
+ background:linear-gradient(105deg,#9160c4 10%,#dfb8ff 32%,#a96be1 50%,#e9cbff 70%,#a671d8 90%);
+ background-size:230% 100%;
+ -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+ animation:mk-title-shimmer 6.5s ease-in-out infinite, mk-title-halo 4.8s ease-in-out infinite;
+}
+@keyframes mk-title-shimmer{0%,100%{background-position:100% center}50%{background-position:0 center}}
+@keyframes mk-title-halo{0%,100%{filter:drop-shadow(0 0 0 rgba(172,105,226,0))}50%{filter:drop-shadow(0 0 9px rgba(172,105,226,.33))}}
+#experience .mk-animated-title .mk-title-solid,#skills .mk-animated-title .mk-title-solid,#achievements .mk-animated-title .mk-title-solid{color:#2a213e!important}
+#experience .mk-animated-title .mk-title-glow,#skills .mk-animated-title .mk-title-glow,#achievements .mk-animated-title .mk-title-glow{
+ background-image:linear-gradient(105deg,#7547ad 10%,#af69de 36%,#6f46ad 52%,#cf97e9 72%,#8d60c0 94%);
+}
+#project-details .mk-animated-title .mk-title-solid,#hobbies .mk-animated-title .mk-title-solid,#contact .mk-animated-title .mk-title-solid{color:#fff!important}
+#portfolio-intro-grid .mk-intro-heading .mk-title-solid{color:#292831!important}
+#portfolio-intro-grid .mk-intro-heading .mk-title-glow{font-style:normal}
+#home .mk-animated-title .mk-title-solid{color:inherit!important}
+/* Scanning laser sweeps cleanly from left to right over the New York map. */
+#portfolio-intro-grid .mk-bento-location{isolation:isolate}
+#portfolio-intro-grid .mk-location-radar{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+#portfolio-intro-grid .mk-location-radar-beam{
+ position:absolute;top:0;bottom:0;left:-20%;width:23%;
+ background:linear-gradient(90deg,transparent 0%,rgba(163,115,220,.07) 44%,rgba(150,91,214,.27) 91%,rgba(142,84,224,.7) 98%,transparent 100%);
+ filter:drop-shadow(0 0 10px rgba(135,88,203,.5));opacity:.8;
+ animation:mk-radar-scan 6.2s linear infinite;
+}
+@keyframes mk-radar-scan{0%{transform:translateX(0)}100%{transform:translateX(550%)}}
+#portfolio-intro-grid .mk-location-radar-crosshair{
+ position:absolute;left:68%;top:36%;width:46px;height:46px;border:1px solid rgba(153,94,207,.5);border-radius:50%;
+ box-shadow:0 0 0 9px rgba(165,117,210,.07),0 0 0 21px rgba(165,117,210,.035);
+ animation:mk-radar-pulse 3.3s ease-in-out infinite;
+}
+#portfolio-intro-grid .mk-location-radar-crosshair:before,#portfolio-intro-grid .mk-location-radar-crosshair:after{content:'';position:absolute;background:rgba(141,94,210,.47)}
+#portfolio-intro-grid .mk-location-radar-crosshair:before{height:1px;width:60px;left:-7px;top:22px}
+#portfolio-intro-grid .mk-location-radar-crosshair:after{width:1px;height:60px;top:-7px;left:22px}
+@keyframes mk-radar-pulse{0%,100%{opacity:.38;transform:scale(.83)}50%{opacity:.8;transform:scale(1.08)}}
+/* Deliberate hover response, without reflow or heavy scroll effects. */
+#portfolio-intro-grid .mk-bento-tile{transition:box-shadow .3s ease,border-color .3s ease}
+#portfolio-intro-grid .mk-bento-tile:hover{border-color:#c4a9df;box-shadow:0 12px 29px rgba(81,48,128,.13)}
+#portfolio-intro-grid .mk-bento-craft .mk-bento-tech{background-image:linear-gradient(90deg,#e8e5ed,#f0eaf7,#e8e5ed);background-size:220% 100%;animation:mk-tech-wash 8s ease-in-out infinite}
+@keyframes mk-tech-wash{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){
+ .mk-animated-title .mk-title-glow,.mk-location-radar-beam,.mk-location-radar-crosshair,#portfolio-intro-grid .mk-bento-craft .mk-bento-tech{animation:none!important}
+ #portfolio-intro-grid .mk-location-radar-beam{left:55%;opacity:.22}
+ #portfolio-intro-grid .mk-bento-tile{transition:none!important}
+}

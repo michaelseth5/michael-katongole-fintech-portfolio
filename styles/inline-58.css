@@ -1,0 +1,45 @@
+
+/* Restore the entire Let's Connect section to the earlier midnight palette. */
+#contact{
+ --section-accent:#be9aef;
+ color:#f3edfc!important;
+ background:
+  radial-gradient(ellipse at 83% 15%,rgba(129,76,196,.27),transparent 48%),
+  radial-gradient(ellipse at 8% 93%,rgba(75,63,148,.22),transparent 52%),
+  linear-gradient(145deg,#11101c 0%,#1b132b 58%,#0b0e1b 100%)!important;
+ border-top:1px solid #352949!important;
+}
+#contact::before{
+ background:radial-gradient(ellipse at 86% 22%,rgba(139,87,213,.13),transparent 52%)!important;
+}
+#contact .page-hero,#contact .page-hero h1,#contact .page-hero h1 .mk-title-solid{
+ color:#f6f1fc!important;
+}
+#contact .page-hero .mk-title-glow{
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+ background-image:linear-gradient(90deg,#a980f2,#e4c6ff,#ae86f0)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+}
+#contact .page-hero .highlight{color:#c5a0f0!important}
+#contact .page-hero .eyebrow,#contact .page-hero .back{color:#c2a2ee!important}
+#contact .page-hero p{color:#c9c0d7!important}
+#contact .page-hero::after{
+ background:linear-gradient(90deg,#73548f,#473355,transparent 95%)!important;
+}
+#contact .contact-single>.large-panel{
+ color:#eee8f8!important;
+ background:linear-gradient(145deg,#211c31,#131727)!important;
+ border:1px solid #49365e!important;
+ box-shadow:0 18px 45px rgba(0,0,0,.24)!important;
+}
+#contact .contact-single>.large-panel h2{color:#f5efff!important}
+#contact .contact-single>.large-panel .muted,
+#contact .contact-single>.large-panel p{color:#c5bbd5!important}
+#contact .contact-single>.large-panel .eyebrow{color:#c19aee!important}
+#contact .mk-social-link{
+ color:#ecdefb!important;background:#2c243d!important;
+ border:1px solid #58446c!important;
+}
+#contact .mk-social-link:hover{
+ background:#433253!important;border-color:#b28be1!important;
+}

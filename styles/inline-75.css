@@ -1,0 +1,11 @@
+
+/* Vision sits above and aligns to the center of the interactive globe. */
+.mk-globe-column{min-width:0;display:flex;flex-direction:column;align-items:stretch;justify-content:center;position:relative}
+.mk-globe-vision{max-width:570px;width:100%;margin:0 auto 4px;text-align:center;position:relative;z-index:2;padding:0 12px}
+.mk-globe-vision-eyebrow{color:#b997f2;font-size:10px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;margin-bottom:10px}
+.mk-globe-vision h2{font-size:clamp(20px,2vw,30px);line-height:1.17;letter-spacing:-.035em;color:#f8f4ff;margin:0 0 12px}
+.mk-globe-vision p{font-size:12px;line-height:1.56;color:#cec7dd;max-width:510px;margin:0 auto 8px}
+.mk-globe-vision p strong{color:#c5a0ff}
+.mk-globe-column .globe-wrap{width:100%;height:490px}
+@media(max-width:900px){.mk-globe-vision{padding:0 16px}.mk-globe-column .globe-wrap{height:420px}}
+@media(max-width:600px){.mk-globe-vision h2{font-size:23px}.mk-globe-vision p{font-size:12px}.mk-globe-column .globe-wrap{height:330px}}

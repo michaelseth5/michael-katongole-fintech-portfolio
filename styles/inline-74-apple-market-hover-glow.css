@@ -1,0 +1,78 @@
+
+/* Scoped Apple-inspired glass ticker; dramatic violet illumination only on interaction. */
+#markets.preview-markets{
+  width:calc(100% - 32px);
+  max-width:none;
+  margin:24px auto 0;
+  padding-top:0!important;
+  background:linear-gradient(155deg,#0d1124 0%,#14152b 100%);
+  border:1px solid rgba(198,167,255,.17);
+  border-radius:28px;
+  box-shadow:0 12px 36px rgba(12,9,32,.16);
+  overflow:hidden;
+  isolation:isolate;
+}
+#markets .preview-markets-head{padding:22px 28px 0;letter-spacing:.14em}
+#markets .preview-markets-head strong{color:#c7a4ff;font-weight:700}
+#markets .preview-markets-head a{color:#cec2e5}
+#markets .preview-viewport{
+  padding:60px 0 76px;
+  margin:-30px 0 -34px;
+  overflow-x:hidden;
+  overflow-y:visible;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+}
+#markets .preview-set{gap:18px;padding:38px 26px 48px}
+#markets .preview-tile{
+  width:196px;height:142px;padding:17px 18px;
+  border-radius:22px;
+  background:linear-gradient(155deg,rgba(38,40,69,.94),rgba(22,24,47,.97));
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 4px 16px rgba(3,4,16,.12);
+  color:#f8f6fd;
+  position:relative;
+  z-index:0;
+  transition:transform 420ms cubic-bezier(.2,.8,.2,1),border-color 350ms ease,background 350ms ease,box-shadow 420ms ease;
+  will-change:transform;
+}
+#markets .preview-tile b{font:600 14px/1.35 'Space Grotesk',sans-serif;letter-spacing:-.025em;color:#f6f3ff}
+#markets .preview-tile small{font:500 10px/1.4 'Space Grotesk',sans-serif;letter-spacing:.11em;color:#aba0c4}
+#markets .preview-tile span{font:600 26px/1.2 'Space Grotesk',sans-serif;letter-spacing:-.045em;color:#fff;font-variant-numeric:tabular-nums;margin-top:6px}
+#markets .preview-tile em{font-size:10px;color:#b6aecb}
+#markets .preview-tile svg{right:16px;bottom:17px;opacity:.72}
+/* 34x-brighter treatment: the large blurred halo and layered shadows are off by default. */
+#markets .preview-tile::before{
+  content:"";pointer-events:none;position:absolute;z-index:-1;
+  inset:-18px;border-radius:35px;
+  background:radial-gradient(ellipse at 50% 55%,rgba(157,95,252,.85) 0%,rgba(152,80,255,.54) 34%,rgba(120,49,228,.22) 61%,transparent 78%);
+  filter:blur(36px);opacity:0;transform:scale(.78);
+  transition:opacity 400ms ease,transform 450ms cubic-bezier(.2,.8,.2,1);
+}
+#markets .preview-tile:hover,
+#markets .preview-tile:focus-visible{
+  z-index:3;
+  transform:translateY(-10px) scale(1.035);
+  background:linear-gradient(145deg,#302750,#1d1c38);
+  border-color:rgba(216,178,255,.98);
+  box-shadow:0 0 0 1px rgba(211,168,255,.55),
+             0 0 16px 3px rgba(180,114,255,.9),
+             0 0 48px 14px rgba(157,81,255,.75),
+             0 0 110px 34px rgba(131,55,231,.52),
+             0 22px 42px rgba(15,8,35,.58),
+             inset 0 2px 0 rgba(255,255,255,.2);
+}
+#markets .preview-tile:hover::before,
+#markets .preview-tile:focus-visible::before{opacity:1;transform:scale(1.13)}
+#markets .preview-track:has(.preview-tile:hover),
+#markets .preview-track:focus-within{animation-play-state:paused}
+@media(max-width:700px){
+  #markets.preview-markets{width:calc(100% - 24px);border-radius:22px}
+  #markets .preview-markets-head{padding:18px 18px 0}
+  #markets .preview-set{gap:12px;padding-left:18px;padding-right:18px}
+  #markets .preview-tile{width:174px;height:133px;padding:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  #markets .preview-tile,#markets .preview-tile::before{transition:none!important}
+  #markets .preview-tile:hover,#markets .preview-tile:focus-visible{transform:none}
+}

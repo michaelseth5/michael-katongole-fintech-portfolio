@@ -1,0 +1,20 @@
+/* Professional development carousel - seven uploaded program logos */
+#achievements .simple-list article.dev-milestone{display:block;min-width:0;overflow:hidden;padding:clamp(22px,3vw,34px);background:linear-gradient(145deg,#121522,#0d1019);border:1px solid #303143;border-radius:16px}
+#achievements .dev-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px}
+#achievements .dev-heading h2{margin:9px 0 9px;font-size:clamp(26px,3vw,38px);letter-spacing:-.045em}
+#achievements .dev-heading p{max-width:690px;color:#aeafc4;font-size:14px;line-height:1.75;margin:0}
+#achievements .dev-controls{display:flex;align-items:center;gap:10px;flex:none}
+#achievements .dev-controls button{width:42px;height:42px;flex:none;border-radius:50%;border:1px solid #55546c;background:#1c2030;color:#f6f2ff;font-size:20px;cursor:pointer;transition:border .2s,transform .2s,background .2s}
+#achievements .dev-controls button:hover{border-color:#b9a1ff;background:#2b2940;transform:translateY(-2px)}
+#achievements .dev-controls button:disabled{opacity:.35;cursor:default;transform:none}
+#achievements .dev-counter{font:700 11px 'Space Grotesk',sans-serif;letter-spacing:.07em;color:#b9a1ff;min-width:55px;text-align:center}
+#achievements .dev-carousel{max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:5px}
+#achievements .dev-carousel::-webkit-scrollbar{display:none}
+#achievements .dev-track{display:flex;align-items:stretch;gap:14px;list-style:none;padding:0;margin:0}
+#achievements .dev-program{flex:0 0 clamp(176px,21vw,218px);min-width:0;scroll-snap-align:start;border:1px solid #34384c;border-radius:14px;background:#1a1c2a;padding:18px 13px 19px;text-align:center;transition:transform .25s,border-color .25s,box-shadow .25s}
+#achievements .dev-program:hover{transform:translateY(-3px);border-color:#9c8ccf;box-shadow:0 12px 28px #0003}
+#achievements .dev-logo{display:block;height:98px;width:160px;max-width:100%;border-radius:10px;margin:0 auto 16px;background:#fff;object-fit:contain;object-position:center;image-rendering:auto}
+#achievements .dev-program h3{color:#f5f3ff;font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.4;margin:0;font-weight:700;min-height:40px;display:grid;place-items:center}
+#achievements .dev-carousel:focus-visible{outline:2px solid #b9a1ff;outline-offset:3px}
+@media(max-width:700px){#achievements .dev-heading{display:block}#achievements .dev-controls{margin-top:17px}#achievements .dev-program{flex-basis:185px}#achievements .dev-logo{height:86px;width:140px}}
+@media(prefers-reduced-motion:reduce){#achievements .dev-carousel{scroll-behavior:auto}#achievements .dev-program,#achievements .dev-controls button{transition:none}}

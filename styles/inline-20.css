@@ -1,0 +1,6 @@
+
+html{scroll-padding-top:100px}
+#hobbies .hobby-carousel-track{overflow-x:auto!important;scrollbar-width:none}
+#hobbies .hobby-carousel-track::-webkit-scrollbar{display:none}
+#hobbies .hobby-carousel-track>.hobby-slide{width:100%!important;max-width:100%!important}
+@media(prefers-reduced-motion:reduce){#hobbies .hobby-carousel-track{scroll-behavior:auto!important}}

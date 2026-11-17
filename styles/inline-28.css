@@ -1,0 +1,7 @@
+/* Readable skill labels on the light Skills section */
+#skills .large-panel .skill{background:#eef0fb!important;color:#1e2740!important;border:1px solid #c4cbe3!important;font-size:14px!important;font-weight:650!important;line-height:1.45!important;letter-spacing:0!important;box-shadow:0 1px 2px rgba(38,47,92,.06)}
+#skills .large-panel .skill:hover{background:#e1ddff!important;border-color:#9c8bda!important;color:#18182d!important}
+#skills .large-panel .skills{gap:10px;margin:20px 0 0}
+#skills .large-panel .eyebrow{color:#505c7c!important;font-weight:800!important}
+#skills .large-panel{box-shadow:0 8px 26px rgba(38,47,92,.035)}
+@media(max-width:600px){#skills .large-panel .skill{padding:10px 13px!important;font-size:13px!important}}

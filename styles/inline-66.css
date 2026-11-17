@@ -1,0 +1,11 @@
+
+/* Extra breathing room between the midnight hero and the editorial about section. */
+.mk-purple-section-transition{
+  display:block;
+  width:100%;
+  height:clamp(96px, 10vw, 160px);
+  background:#39234f;
+}
+@media(max-width:700px){
+  .mk-purple-section-transition{height:clamp(56px, 12vw, 90px)}
+}

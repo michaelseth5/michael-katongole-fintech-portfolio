@@ -1,0 +1,20 @@
+
+/* Hobbies carousel */
+#hobbies .hobbies-carousel-wrap{display:grid;gap:16px}
+#hobbies .hobby-carousel-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+#hobbies .hobby-carousel-dots{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;flex:1}
+#hobbies .hobby-carousel-btn{width:46px;height:46px;border-radius:999px;border:1px solid #4d5570;background:#151927;color:#f5f5fb;font-size:28px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease}
+#hobbies .hobby-carousel-btn:hover{transform:translateY(-1px);background:#1b2031;border-color:#7f8ab6;box-shadow:0 10px 24px #0004}
+#hobbies .hobby-carousel-btn:focus-visible{outline:2px solid #b9a1ff;outline-offset:2px}
+#hobbies .hobby-carousel-dots button{border:1px solid #4b4f64;background:#141826;color:#d4d6e6;border-radius:999px;padding:9px 14px;font:600 12px/1.2 'Inter',sans-serif;cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+#hobbies .hobby-carousel-dots button:hover{transform:translateY(-1px);border-color:#8b92b4}
+#hobbies .hobby-carousel-dots button.active{background:#ece9ff;color:#161920;border-color:#ece9ff}
+#hobbies .hobby-slide.hob-enter{animation:hob-card-enter .3s ease-out both}
+@keyframes hob-card-enter{from{opacity:.78;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#hobbies .hobby-slide.hob-enter{animation:none!important}}
+#hobbies .hobby-carousel-track{display:flex!important;flex-wrap:nowrap!important;gap:0!important;overflow:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory}
+#hobbies .hobby-carousel-track > article{flex:0 0 100%;min-width:100%;scroll-snap-align:start;box-sizing:border-box}
+#hobbies .hobby-carousel-track > article + article{margin-left:0}
+#hobbies .hobby-carousel-track article.sports-showcase,
+#hobbies .hobby-carousel-track article.art-showcase{grid-column:auto!important}
+@media(max-width:700px){#hobbies .hobby-carousel-controls{justify-content:center} #hobbies .hobby-carousel-btn{width:42px;height:42px;font-size:24px} #hobbies .hobby-carousel-dots button{font-size:11px;padding:8px 12px}}

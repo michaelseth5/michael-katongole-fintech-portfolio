@@ -23,9 +23,9 @@ jobs:
       - name: Measure first-visit mobile performance
         if: always()
         run: |
-          python3 -m http.server 4173 > /tmp/portfolio-server.log 2>&1 &
+          node tests/performance-server.cjs > /tmp/portfolio-server.log 2>&1 &
           npx lighthouse http://127.0.0.1:4173 --chrome-flags="--headless --no-sandbox" --only-categories=performance,accessibility --output=json --output=html --output-path=./test-results/lighthouse --quiet
-          node -e "const r=require('./test-results/lighthouse.report.json'); console.log('Mobile performance:',r.categories.performance.score*100,'Accessibility:',r.categories.accessibility.score*100); if(r.categories.performance.score<0.9)process.exit(1)"
+          node -e "const r=require('./test-results/lighthouse.report.json'); console.log('Mobile performance:',r.categories.performance.score*100,'Accessibility:',r.categories.accessibility.score*100); for(const k of ['first-contentful-paint','largest-contentful-paint','total-blocking-time','cumulative-layout-shift','speed-index'])console.log(k,r.audits[k].displayValue); for(const a of Object.values(r.audits).filter(a=>a.details?.type==='opportunity'&&a.score<1))console.log(a.id,a.displayValue); if(r.categories.performance.score<0.9)process.exit(1)"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

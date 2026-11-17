@@ -1,0 +1,36 @@
+
+/* Fixed camera; animated commuting flows and a radar sweep over the map. */
+#portfolio-intro-grid .mk-nyc-map-card .leaflet-container{cursor:default!important}
+#portfolio-intro-grid .mk-nyc-map-card .leaflet-grab,#portfolio-intro-grid .mk-nyc-map-card .leaflet-dragging .leaflet-grab{cursor:default!important}
+#portfolio-intro-grid .mk-nyc-map-card .leaflet-marker-icon{pointer-events:none!important}
+#portfolio-intro-grid .mk-nyc-map-card .mk-flow-route{
+ stroke-dasharray:3 11!important;
+ animation:mk-nyc-commute 2.1s linear infinite;
+ filter:drop-shadow(0 0 2px rgba(96,67,220,.42));
+}
+@keyframes mk-nyc-commute{to{stroke-dashoffset:-56}}
+#portfolio-intro-grid .mk-nyc-radar{
+ position:absolute;inset:0;z-index:450;overflow:hidden;pointer-events:none;
+ mix-blend-mode:multiply;
+}
+#portfolio-intro-grid .mk-nyc-radar-sweep{
+ position:absolute;top:0;bottom:0;width:20%;left:-24%;
+ background:linear-gradient(90deg,transparent,rgba(137,80,206,.065) 45%,rgba(120,67,184,.19) 91%,rgba(128,71,205,.58) 97%,transparent);
+ filter:drop-shadow(0 0 7px rgba(127,61,190,.33));
+ animation:mk-nyc-sweep 6.8s linear infinite;
+}
+@keyframes mk-nyc-sweep{to{left:105%}}
+#portfolio-intro-grid .mk-nyc-radar-rings{
+ position:absolute;top:49%;left:51%;width:135px;height:135px;transform:translate(-50%,-50%);
+ border:1px solid rgba(125,75,185,.17);border-radius:50%;
+ box-shadow:0 0 0 35px rgba(130,82,192,.055),0 0 0 70px rgba(130,82,192,.025);
+ animation:mk-nyc-ring 4s ease-in-out infinite;
+}
+@keyframes mk-nyc-ring{50%{opacity:.5;scale:1.12}}
+#portfolio-intro-grid .mk-nyc-map-footer{z-index:650}
+#portfolio-intro-grid .mk-nyc-map-heading{z-index:650}
+@media(prefers-reduced-motion:reduce){
+ #portfolio-intro-grid .mk-nyc-radar-sweep,
+ #portfolio-intro-grid .mk-nyc-radar-rings,
+ #portfolio-intro-grid .mk-flow-route{animation:none!important}
+}

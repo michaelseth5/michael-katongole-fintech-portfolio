@@ -1,0 +1,73 @@
+
+/* Original editorial bento design inspired by contemporary layered portfolio UI. */
+#portfolio-intro-grid.mk-bento-about{background:radial-gradient(circle at 5% 83%,#e8edff 0,transparent 49%),radial-gradient(circle at 94% 15%,#fef1f8 0,transparent 49%),#faf9ff!important;padding:42px 0 56px!important}
+#portfolio-intro-grid.mk-bento-about:before{background-image:radial-gradient(#aaa1c0 0.75px,transparent 0.75px);background-size:27px 27px;opacity:.31}
+#portfolio-intro-grid .mk-intro-heading{margin-bottom:26px!important}
+#portfolio-intro-grid .mk-intro-heading h2{font-size:clamp(48px,7.5vw,105px);letter-spacing:-.078em;line-height:.9}
+#portfolio-intro-grid .mk-intro-heading h2 em{color:#9960b5}
+#portfolio-intro-grid .mk-bento-layout{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:175px minmax(350px,auto) 340px;gap:14px}
+#portfolio-intro-grid .mk-bento-tile,#portfolio-intro-grid .mk-bento-layout>.mk-ed-card{border:1px solid #e2dce9;border-radius:20px!important;box-shadow:0 1px 1px rgba(49,34,71,.035);min-width:0;overflow:hidden;position:relative}
+#portfolio-intro-grid .mk-bento-tile{background:linear-gradient(145deg,#f7f6f9,#eeedf2);padding:23px}
+#portfolio-intro-grid .mk-bento-name{grid-column:span 4;grid-row:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;text-align:center;background:#eeedf1}
+#portfolio-intro-grid .mk-bento-name-main{font:900 clamp(26px,3vw,45px)/.99 'Space Grotesk',sans-serif;letter-spacing:-.075em;color:#2d2931}
+#portfolio-intro-grid .mk-bento-name-main span{color:#a477d4}
+#portfolio-intro-grid .mk-bento-name-tag{font:700 10px 'Space Grotesk',sans-serif;letter-spacing:.25em;color:#938b9d}
+#portfolio-intro-grid .mk-bento-facts{grid-column:span 8;grid-row:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:20px 22px;background:#eceaf2}
+#portfolio-intro-grid .mk-bento-facts-label{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:4;white-space:nowrap;color:#9674b9;font:700 9px 'Space Grotesk',sans-serif;letter-spacing:.19em}
+#portfolio-intro-grid .mk-bento-fact-stack{display:flex;align-items:end;justify-content:center;width:100%;height:100%;padding-top:25px;isolation:isolate;perspective:800px}
+#portfolio-intro-grid .mk-bento-fact{position:relative;border:1px solid #ded9e3;background:#f9f8fc;border-radius:14px;min-width:0;flex:1;max-width:270px;height:100%;padding:22px 15px 12px;color:#2f2b38;box-shadow:0 10px 25px #1d17282a;text-align:left;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,opacity .25s ease;display:flex;flex-direction:column;gap:11px;font-family:'Space Grotesk',sans-serif}
+#portfolio-intro-grid .mk-bento-fact:nth-child(1){transform:translate(20px,13px) rotate(-5deg);z-index:1}
+#portfolio-intro-grid .mk-bento-fact:nth-child(2){transform:translateY(-2px);z-index:3}
+#portfolio-intro-grid .mk-bento-fact:nth-child(3){transform:translate(-20px,13px) rotate(5deg);z-index:2}
+#portfolio-intro-grid .mk-bento-fact:hover,#portfolio-intro-grid .mk-bento-fact:focus-visible{transform:translateY(-13px) scale(1.05);z-index:5;box-shadow:0 18px 30px #20142d42;outline:2px solid #aa80cf}
+#portfolio-intro-grid .mk-bento-fact strong{font-size:13px;font-weight:850}
+#portfolio-intro-grid .mk-bento-fact span{font-size:11px;line-height:1.5;color:#716b7b}
+#portfolio-intro-grid .mk-bento-mindset{grid-column:span 4;grid-row:2;background:#f0eef4;display:flex;flex-direction:column}
+#portfolio-intro-grid .mk-bento-craft{grid-column:span 4;grid-row:2;background:#f1eff4;display:flex;flex-direction:column}
+#portfolio-intro-grid .mk-bento-eyebrow{font:700 10px 'Space Grotesk',sans-serif;color:#90829d;letter-spacing:.17em}
+#portfolio-intro-grid .mk-bento-mindset h3,#portfolio-intro-grid .mk-bento-craft h3{font:800 clamp(32px,3vw,49px)/1.05 'Space Grotesk',sans-serif;color:#292630;letter-spacing:-.07em;margin:14px 0 6px}
+#portfolio-intro-grid .mk-bento-mindset h3 span,#portfolio-intro-grid .mk-bento-craft h3 span{color:#b28ae1}
+#portfolio-intro-grid .mk-bento-rule{width:45px;height:2px;background:#b997e4;margin:0 0 14px}
+#portfolio-intro-grid .mk-bento-mindset p,#portfolio-intro-grid .mk-bento-craft p{font:16px/1.7 Inter,Arial,sans-serif;color:#6f6b79;margin:0 0 16px}
+#portfolio-intro-grid .mk-bento-mindset p strong,#portfolio-intro-grid .mk-bento-craft p strong{font-weight:750;color:#4b4656}
+#portfolio-intro-grid .mk-bento-mini-photo{height:118px;max-width:165px;width:100%;margin:0 auto 15px;border:2px solid #b995e4;border-radius:15px;overflow:hidden;box-shadow:0 10px 22px rgba(89,59,116,.18)}
+#portfolio-intro-grid .mk-bento-mini-photo img{width:100%;height:100%;object-fit:cover;object-position:center 24%}
+#portfolio-intro-grid .mk-bento-bottom-copy{margin-top:auto!important}
+#portfolio-intro-grid .mk-bento-tech{margin:auto -23px 16px;padding:12px 14px;display:flex;gap:12px;overflow:hidden;white-space:nowrap;font:700 10px 'Space Grotesk',sans-serif;letter-spacing:.12em;color:#7b7287;background:#e8e5ed}
+#portfolio-intro-grid .mk-bento-tech span{color:#a98bcd}
+#portfolio-intro-grid .mk-bento-craft a{font:750 11px 'Space Grotesk',sans-serif;color:#68458e;text-decoration:none}
+#portfolio-intro-grid .mk-bento-layout .mk-bento-memories{grid-column:span 4!important;grid-row:2!important;min-height:350px!important;align-self:stretch}
+#portfolio-intro-grid .mk-bento-layout .mk-bento-playful{grid-column:span 5!important;grid-row:3!important;min-height:250px!important;align-self:stretch}
+#portfolio-intro-grid .mk-bento-layout .mk-bento-location{grid-column:span 7!important;grid-row:3!important;min-height:250px!important;background:linear-gradient(130deg,#f5f2fa,#e8e7f0)}
+#portfolio-intro-grid .mk-bento-location-map{position:absolute;inset:-25%;opacity:.22;background-image:linear-gradient(35deg,transparent 48%,#a69cb7 49%,#a69cb7 50%,transparent 51%),linear-gradient(110deg,transparent 48%,#bcb1cd 49%,#bcb1cd 50%,transparent 51%),repeating-linear-gradient(0deg,transparent 0 31px,#cbc3da 32px 33px,transparent 34px 60px),repeating-linear-gradient(90deg,transparent 0 31px,#cbc3da 32px 33px,transparent 34px 60px);background-size:150px 120px,120px 160px,100px 100px,100px 100px;transform:rotate(-10deg)}
+#portfolio-intro-grid .mk-bento-location:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#eeeaf5 1%,#eeeaf5bf 46%,transparent 100%);pointer-events:none}
+#portfolio-intro-grid .mk-bento-location-pin{position:absolute;right:20%;top:23%;font-size:43px;color:#a47cd5;z-index:2}
+#portfolio-intro-grid .mk-bento-location-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:start;justify-content:end;height:100%}
+#portfolio-intro-grid .mk-bento-location-label{font:750 10px 'Space Grotesk',sans-serif;letter-spacing:.15em;color:#847291;margin-bottom:10px}
+#portfolio-intro-grid .mk-bento-location h3{font:850 clamp(31px,4vw,53px)/.97 'Space Grotesk',sans-serif;letter-spacing:-.067em;color:#272432;margin:0 0 8px}
+#portfolio-intro-grid .mk-bento-coords{font:600 13px 'Space Grotesk',sans-serif;color:#87808c}
+#portfolio-intro-grid .mk-bento-time{font:750 12px 'Space Grotesk',sans-serif;color:#9e69c7;margin-top:8px}
+@media(max-width:1050px){
+ #portfolio-intro-grid .mk-bento-layout{grid-template-rows:175px auto auto}
+ #portfolio-intro-grid .mk-bento-name{grid-column:span 5}
+ #portfolio-intro-grid .mk-bento-facts{grid-column:span 7}
+ #portfolio-intro-grid .mk-bento-mindset{grid-column:span 4}
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-memories{grid-column:span 4!important}
+ #portfolio-intro-grid .mk-bento-craft{grid-column:span 4}
+}
+@media(max-width:750px){
+ #portfolio-intro-grid .mk-bento-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:11px}
+ #portfolio-intro-grid .mk-bento-name,#portfolio-intro-grid .mk-bento-facts,#portfolio-intro-grid .mk-bento-mindset,#portfolio-intro-grid .mk-bento-craft,
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-memories,#portfolio-intro-grid .mk-bento-layout .mk-bento-playful,#portfolio-intro-grid .mk-bento-layout .mk-bento-location{grid-column:span 2!important;grid-row:auto!important}
+ #portfolio-intro-grid .mk-bento-name{min-height:155px}
+ #portfolio-intro-grid .mk-bento-facts{min-height:190px;padding:24px 11px 12px}
+ #portfolio-intro-grid .mk-bento-fact{padding:14px 10px;height:128px}
+ #portfolio-intro-grid .mk-bento-fact strong{font-size:11px}
+ #portfolio-intro-grid .mk-bento-fact span{font-size:9px}
+ #portfolio-intro-grid .mk-bento-mindset,#portfolio-intro-grid .mk-bento-craft{min-height:0}
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-memories{min-height:330px!important}
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-playful{min-height:300px!important}
+ #portfolio-intro-grid .mk-bento-layout .mk-bento-location{min-height:230px!important}
+ #portfolio-intro-grid.mk-bento-about{padding-top:28px!important}
+}
+@media(prefers-reduced-motion:reduce){#portfolio-intro-grid .mk-bento-fact{transition:none!important}}

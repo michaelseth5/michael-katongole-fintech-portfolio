@@ -1,0 +1,8 @@
+
+#hobbies .rb-converts-slide{position:relative;isolation:isolate;min-height:520px;overflow:hidden;background:linear-gradient(145deg,#171a29 0%,#222541 52%,#131622 100%);border:1px solid #ffffff26;border-radius:22px;padding:clamp(24px,5vw,55px)!important;box-sizing:border-box}
+#hobbies .rb-converts-slide h2{font-size:clamp(44px,7vw,86px);line-height:1.05;letter-spacing:-.065em;margin:24px 0 18px;color:#f4f5ff}
+#hobbies .rb-converts-slide p{max-width:470px;color:#b9bfd1;font-size:16px;line-height:1.65;position:relative;z-index:2}
+#hobbies .rb-converts-status{display:inline-flex;width:fit-content;padding:10px 18px;border-radius:999px;color:#f5eaff;background:#6d5a9b55;border:1px solid #b6a5e388;font-size:13px;font-weight:700;letter-spacing:.04em;position:relative;z-index:2}
+#hobbies .rb-converts-mark{position:absolute;right:-.04em;bottom:-.18em;font-weight:900;font-size:clamp(220px,34vw,440px);letter-spacing:-.1em;line-height:1;color:#ffffff0b;pointer-events:none;z-index:0}
+#hobbies .rb-converts-slide .eyebrow{color:#b8a8e4}
+@media(max-width:600px){#hobbies .rb-converts-slide{min-height:430px}#hobbies .rb-converts-slide p{font-size:14px}}

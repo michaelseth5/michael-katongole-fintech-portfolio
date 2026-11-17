@@ -1,0 +1,32 @@
+
+/* Experience section: deep-purple backdrop matching the Home canvas. */
+#experience{
+ --section-accent:#c6a7f1;
+ color:#f5effd!important;
+ background:
+  radial-gradient(ellipse at 91% 10%,rgba(141,88,204,.28),transparent 45%),
+  radial-gradient(ellipse at 8% 89%,rgba(91,56,148,.30),transparent 51%),
+  linear-gradient(145deg,#231431 0%,#301c46 53%,#1c142d 100%)!important;
+ border-top:1px solid #47305f!important;
+ border-bottom:1px solid #45345b!important;
+}
+#experience::before{background:radial-gradient(ellipse at 78% 15%,rgba(174,111,229,.12),transparent 53%)!important}
+#experience .page-hero,#experience .page-hero h1,#experience .page-hero h1 .mk-title-solid{color:#f6f1fb!important}
+#experience .page-hero h1 .mk-title-glow{
+ color:transparent!important;-webkit-text-fill-color:transparent!important;
+ background-image:linear-gradient(95deg,#a885ee,#e4c2ff,#ab7de7)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+}
+#experience .page-hero h1 .highlight{color:#d4a9f7!important}
+#experience .page-hero p{color:#d7cae4!important}
+#experience .page-hero .eyebrow,#experience .page-hero .back{color:#cbb1ef!important}
+#experience .page-hero::after{background:linear-gradient(90deg,#9a78bf,#5d4175,transparent 95%)!important}
+#experience .note{background:#2f2343!important;color:#d6cae7!important;border:1px solid #655080!important}
+#experience .timeline .job,#experience .timeline .demo-entry{
+ background:linear-gradient(145deg,#fdfbff,#eee9f8)!important;
+ border-color:#e0d7ec!important;
+ color:#30283a!important;
+}
+#experience .timeline .job:hover{border-color:#bd9de5!important}
+#experience .timeline .job .date{color:#9563be!important}
+#experience .preview-education{background:#eeeaf6!important;border-color:#dacde7!important}

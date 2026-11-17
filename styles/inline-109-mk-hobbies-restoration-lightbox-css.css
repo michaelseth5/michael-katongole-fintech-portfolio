@@ -1,0 +1,134 @@
+
+/* Original pre-restyle colors are retained literally from the historical #hobbies rule. */
+#hobbies{
+ --hob-title:#292631;--hob-body:#51425c;--hob-heading:#392945;
+ --hob-accent:#70419a;--hob-lavender:#ab7bdb;--hob-card:#fffdfef0;
+ --hob-border:#d9c5e5;--hob-mute:#6a556f;
+ color:var(--hob-title)!important;
+ background:
+ radial-gradient(ellipse at 94% 8%,rgba(241,205,217,.55),transparent 46%),
+ radial-gradient(ellipse at 2% 91%,rgba(246,220,208,.40),transparent 48%),
+ linear-gradient(140deg,#fff9fa 0%,#f9ebf0 100%)!important;
+ overflow-x:clip;
+}
+#hobbies .page-hero h1,#hobbies .page-hero h1 .mk-title-solid{color:var(--hob-title)!important}
+#hobbies .page-hero .eyebrow,#hobbies .hobby-slide .eyebrow,
+#hobbies #beyond-code-editorial .bc-num{color:var(--hob-accent)!important}
+#hobbies .page-hero p,#hobbies .hobby-carousel-track>.hobby-slide>p,
+#hobbies .hobby-carousel-track>.hobby-slide>.art-showcase-desc,
+#hobbies .hobby-carousel-track>.hobby-slide>.travel-gallery-intro,
+#hobbies .hobby-carousel-track>.hobby-slide>.mentorship-extra-copy{color:var(--hob-body)!important}
+#hobbies #beyond-code-editorial{color:var(--hob-title)!important;background:#ffffffb8!important;border:1px solid var(--hob-border)!important;box-shadow:0 8px 28px #482d6512}
+#hobbies #beyond-code-editorial .bc-heading h2,
+#hobbies #beyond-code-editorial .bc-copy h3{color:var(--hob-heading)!important;text-shadow:none!important}
+#hobbies #beyond-code-editorial .bc-heading p,
+#hobbies #beyond-code-editorial .bc-copy p{color:var(--hob-body)!important}
+#hobbies #beyond-code-editorial .bc-stories{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ justify-content:center!important;width:100%!important;max-width:100%!important;
+ margin-inline:auto!important;box-sizing:border-box;
+ overflow:visible!important;gap:12px!important;padding:4px 2px 8px!important;
+}
+#hobbies #beyond-code-editorial .bc-story{
+ display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ min-width:0!important;width:auto!important;gap:12px!important;
+ padding:13px!important;border:1px solid var(--hob-border)!important;
+ border-radius:17px!important;background:var(--hob-card)!important;
+ box-shadow:0 6px 18px #4d306015;
+}
+#hobbies #beyond-code-editorial .bc-collage{
+ flex:none!important;width:100%!important;max-width:none!important;
+ min-width:0!important;height:auto!important;aspect-ratio:1.6!important;
+ order:0!important;margin:0 auto!important;
+}
+#hobbies #beyond-code-editorial .bc-copy{
+ flex:0 0 auto!important;order:1!important;min-width:0!important;
+ padding:0 2px!important;text-align:left!important;
+}
+#hobbies #beyond-code-editorial .bc-copy h3{
+ font-size:clamp(16.5px,1.43vw,21px)!important;line-height:1.22!important;
+ margin:5px 0 6px!important;
+}
+#hobbies #beyond-code-editorial .bc-copy p{
+ font-size:clamp(12.6px,1vw,13.65px)!important;line-height:1.52!important;
+ max-width:none!important;max-height:none!important;height:auto!important;
+ overflow:visible!important;scrollbar-width:auto!important;margin:0!important;
+}
+#hobbies #beyond-code-editorial .bc-num{font-size:10px!important}
+#hobbies #beyond-code-editorial .bc-tile{border-color:#f6e9fa!important}
+#hobbies .hobby-carousel-track>.hobby-slide{
+ color:var(--hob-title)!important;background:linear-gradient(145deg,#fffefe,#f5eef8)!important;
+ border-color:var(--hob-border)!important;box-shadow:0 9px 24px #59387717!important;
+}
+#hobbies .hobby-slide h2{color:var(--hob-heading)!important}
+#hobbies .hobby-carousel-dots button{color:var(--hob-accent)!important;background:#fff9!important;border-color:#b59ac9!important}
+#hobbies .hobby-carousel-dots button.active,#hobbies .hobby-carousel-dots button[aria-selected="true"]{
+ background:var(--hob-lavender)!important;color:#1a1126!important;border-color:#7951a5!important;
+}
+#hobbies .hobby-carousel-btn,#hobbies .photo-carousel-arrow{
+ background:#fff9!important;color:var(--hob-accent)!important;border-color:#bfa3d1!important;
+}
+#hobbies .photo-carousel-status{color:var(--hob-accent)!important}
+#hobbies .photo-carousel-shell .photo-carousel-rail>figure{background:#fff!important;border-color:#d7c4e2!important}
+#hobbies .sports-emoji-card{background:#fffdfedc!important;border-color:var(--hob-border)!important}
+/* Keep sports and gaming captions readable on their restored light cards. */
+#hobbies .sports-showcase .sports-emoji-card .sports-emoji-label{color:#70419a!important}
+#hobbies .sports-showcase .sports-emoji-card .sports-emoji-copy{color:#392945!important}
+#hobbies .rb-converts-slide{background:linear-gradient(145deg,#fffefe,#f4edf8)!important}
+#hobbies .rb-converts-slide p{color:var(--hob-body)!important}
+#hobbies .rb-converts-slide .rb-converts-status{color:var(--hob-accent)!important;background:#ede2f5!important;border-color:#bfa3d1!important}
+#hobbies #beyond-code-editorial .bc-tile img,
+#hobbies .hobby-carousel-track img{cursor:zoom-in;transition:transform .2s ease}
+#hobbies #beyond-code-editorial .bc-tile:hover img,
+#hobbies .photo-carousel-rail figure:hover img,
+#hobbies .sports-emoji-card:hover img{transform:scale(1.045)}
+#hobbies .hobby-carousel-track img:focus-visible,#hobbies #beyond-code-editorial img:focus-visible{
+ outline:3px solid var(--hob-accent);outline-offset:3px;border-radius:7px;
+}
+@media(max-width:1100px){
+ #hobbies #beyond-code-editorial .bc-stories{grid-template-columns:repeat(2,minmax(0,1fr))!important;max-width:100%!important}
+ #hobbies #beyond-code-editorial .bc-story:last-child{grid-column:1/-1;width:calc(50% - 6px)!important;justify-self:center}
+ #hobbies #beyond-code-editorial .bc-collage{aspect-ratio:1.9!important}
+}
+@media(max-width:620px){
+ #hobbies #beyond-code-editorial .bc-stories{grid-template-columns:minmax(0,1fr)!important}
+ #hobbies #beyond-code-editorial .bc-story:last-child{grid-column:auto;width:100%!important}
+ #hobbies #beyond-code-editorial .bc-story{padding:14px!important}
+ #hobbies #beyond-code-editorial .bc-collage{aspect-ratio:2!important;max-height:190px!important}
+ #hobbies #beyond-code-editorial .bc-copy h3{font-size:18.7px!important}
+ #hobbies #beyond-code-editorial .bc-copy p{font-size:13.65px!important}
+}
+#mk-hobby-lightbox{position:fixed;inset:0;z-index:2147483000;
+ display:grid;place-items:center;padding:clamp(10px,3vw,30px);
+ background:#090610eb;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);
+ opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
+#mk-hobby-lightbox.is-open{opacity:1;visibility:visible;pointer-events:auto}
+#mk-hobby-lightbox .hob-lb-panel{position:relative;width:min(100%,1100px);height:min(92svh,900px);
+ display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;min-width:0;
+ border:1px solid #ffffff38;border-radius:20px;background:#130e1be8;
+ box-shadow:0 30px 70px #0009;padding:48px 48px 24px;outline:none}
+#mk-hobby-lightbox .hob-lb-image{display:block;max-width:100%;max-height:calc(100% - 86px);width:auto;height:auto;object-fit:contain;border-radius:8px}
+#mk-hobby-lightbox .hob-lb-caption{color:#eee4f7;text-align:center;font-size:clamp(12px,1.5vw,16px);line-height:1.45;max-width:90%;overflow-wrap:anywhere}
+#mk-hobby-lightbox .hob-lb-counter{color:#d2b3f7;font:700 12px/1.2 system-ui,sans-serif;letter-spacing:.04em}
+#mk-hobby-lightbox button{position:absolute;display:grid;place-items:center;width:42px;height:42px;
+ border:1px solid #ffffff61;background:#22162ded;color:#fff;border-radius:50%;
+ font-size:23px;cursor:pointer;touch-action:manipulation}
+#mk-hobby-lightbox button:focus-visible{outline:3px solid #d7b0ff;outline-offset:3px}
+#mk-hobby-lightbox .hob-lb-close{top:8px;right:8px;font-size:25px}
+#mk-hobby-lightbox .hob-lb-prev{left:6px;top:50%;transform:translateY(-50%)}
+#mk-hobby-lightbox .hob-lb-next{right:6px;top:50%;transform:translateY(-50%)}
+body.hob-lightbox-open{overflow:hidden!important}
+@media(max-width:620px){
+ #mk-hobby-lightbox{padding:5px}
+ #mk-hobby-lightbox .hob-lb-panel{height:min(96svh,950px);padding:48px 26px 22px;border-radius:14px}
+ #mk-hobby-lightbox .hob-lb-caption{font-size:13px}
+ #mk-hobby-lightbox button{width:35px;height:35px;font-size:20px}
+ #mk-hobby-lightbox .hob-lb-prev{left:1px}#mk-hobby-lightbox .hob-lb-next{right:1px}
+}
+@media(prefers-reduced-motion:reduce){
+ #mk-hobby-lightbox,#hobbies #beyond-code-editorial .bc-tile img,
+ #hobbies .hobby-carousel-track img{transition:none!important}
+ #hobbies #beyond-code-editorial .bc-tile:hover img,
+ #hobbies .photo-carousel-rail figure:hover img,
+ #hobbies .sports-emoji-card:hover img{transform:none!important}
+}

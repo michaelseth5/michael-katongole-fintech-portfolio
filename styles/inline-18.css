@@ -1,0 +1,19 @@
+
+/* Networking event carousel, independent of Hobbies carousel */
+#networking .network-carousel-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 22px}
+#networking .network-carousel-tabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+#networking .network-carousel-tabs button,#networking .network-carousel-controls>button{appearance:none;border:1px solid #52566d;background:#1c2031;color:#e5e7f2;padding:11px 17px;border-radius:999px;cursor:pointer;font:650 13px/1.2 system-ui,sans-serif;transition:background .2s,border-color .2s,transform .2s}
+#networking .network-carousel-controls>button{width:42px;height:42px;display:grid;place-items:center;padding:0;font-size:18px}
+#networking .network-carousel-tabs button.active{background:#efecfc;color:#1b1e29;border-color:#efecfc}
+#networking .network-carousel-controls button:hover{transform:translateY(-1px);border-color:#b5a4e4}
+#networking .network-carousel-controls button:focus-visible{outline:3px solid #bbaffc;outline-offset:3px}
+#networking .network-carousel-track{display:flex;gap:0;overflow:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;align-items:flex-start;scrollbar-width:none}
+#networking .network-carousel-track::-webkit-scrollbar{display:none}
+#networking .network-event-slide{flex:0 0 100%;width:100%;min-width:0;scroll-snap-align:start}
+#networking .network-event-slide .seo-event-header{margin-top:0}
+#networking .jpmc-networking-grid img{object-position:center 34%}
+#networking .jpmc-networking-grid .seo-photo-1 img{object-position:center 54%}
+#networking .jpmc-networking-grid .seo-photo-2 img{object-position:center 35%}
+#networking .jpmc-networking-grid .seo-photo-3 img{object-position:center 30%}
+@media(max-width:650px){#networking .network-carousel-controls{gap:7px}#networking .network-carousel-tabs button{font-size:11px;padding:10px}#networking .network-carousel-controls>button{width:35px;height:35px}}
+@media(prefers-reduced-motion:reduce){#networking .network-carousel-track{scroll-behavior:auto}#networking .network-carousel-controls button{transition:none!important}}

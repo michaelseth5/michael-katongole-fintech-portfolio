@@ -1,0 +1,11 @@
+
+/* 20% larger desktop navigation, preserving responsive horizontal scrolling. */
+@media(min-width:901px){
+ .apple-navlinks{padding:8.4px!important;gap:3.6px!important}
+ .apple-navlinks a{font-size:15.6px!important;padding:15.6px 20.4px!important}
+ .apple-nav-indicator{top:8.4px!important;height:48px!important}
+}
+@media(min-width:541px) and (max-width:900px){
+ .apple-navlinks a{font-size:14.4px!important;padding:14.4px 15.6px!important}
+ .apple-nav-indicator{height:43.2px!important}
+}

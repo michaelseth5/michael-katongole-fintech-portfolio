@@ -1,0 +1,12 @@
+
+/* Highlight the eight user-selected strengths without removing any skills. */
+#skills .skill.skill-featured{
+  position:relative!important;
+  border-color:rgba(147,83,217,.8)!important;
+  background:linear-gradient(135deg,rgba(223,194,255,.36),rgba(170,123,241,.18))!important;
+  color:#312044!important;
+  box-shadow:0 0 0 1px rgba(160,101,236,.20),0 7px 22px rgba(123,69,192,.18)!important;
+  font-weight:800!important;
+}
+#skills .skill.skill-featured:focus-visible{outline:2px solid #8f56d0;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){#skills .skill.skill-featured{transition:none!important}}

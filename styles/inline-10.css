@@ -1,0 +1,9 @@
+
+/* Transparent logo updates with authentic proportions */
+#experience .entry-art, #experience .demo-entry-art, .education-card, .preview-school{overflow:hidden}
+#experience .entry-art img.mk-new-transparent-logo, #experience .demo-entry-art img.mk-new-transparent-logo{width:100%!important;max-width:185px!important;height:auto!important;max-height:84px!important;object-fit:contain!important;object-position:center!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;mask-image:none!important;-webkit-mask-image:none!important;filter:drop-shadow(0 4px 7px #0005)!important;opacity:1!important}
+#experience .entry-art:has(img[alt="Accenture logo"]),#experience .entry-art:has(img[alt="Bloomberg logo"]),#experience .demo-entry-art:has(img[alt="Accenture logo"]),#experience .demo-entry-art:has(img[alt="Bloomberg logo"]){background:#f3f3f5!important;border-radius:13px!important;min-height:94px!important}
+#experience .entry-art:has(img[alt="Citibank logo"]),#experience .demo-entry-art:has(img[alt="Citibank logo"]){background:transparent!important}
+#experience .entry-art img[alt="Citibank logo"],#experience .demo-entry-art img[alt="Citibank logo"]{max-width:135px!important;max-height:80px!important}
+.education-card img.mk-new-transparent-logo,.preview-school img.mk-new-transparent-logo{width:112px!important;max-width:100%!important;height:auto!important;max-height:112px!important;object-fit:contain!important;background:transparent!important;mask-image:none!important;-webkit-mask-image:none!important;padding:0!important;border:0!important;filter:none!important}
+@media(max-width:680px){#experience .entry-art img.mk-new-transparent-logo,#experience .demo-entry-art img.mk-new-transparent-logo{max-width:135px!important;max-height:67px!important}.education-card img.mk-new-transparent-logo,.preview-school img.mk-new-transparent-logo{width:83px!important;max-height:85px!important}}

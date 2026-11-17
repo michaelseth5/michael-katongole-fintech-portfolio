@@ -1,0 +1,36 @@
+
+/* Hero regression fix: #home IS the .hero element; prior #home.hero
+   transparency rule was overriding the intended black #home background. */
+main > #home.container.hero,
+main > section#home.hero{
+ background:
+  radial-gradient(ellipse at 82% 24%,rgba(102,67,162,.25),transparent 48%),
+  radial-gradient(ellipse at 11% 82%,rgba(44,49,88,.26),transparent 54%),
+  linear-gradient(150deg,#090a13 0%,#10101d 55%,#141021 100%)!important;
+ color:#f5f1fc!important;
+ border:1px solid rgba(174,139,226,.19)!important;
+ box-shadow:inset 0 0 85px rgba(106,67,157,.07),0 18px 55px rgba(16,12,33,.08)!important;
+}
+main > #home.hero::before{
+ background:radial-gradient(ellipse at 83% 20%,rgba(139,99,199,.09),transparent 54%)!important;
+}
+main > #home.hero h1,
+main > #home.hero .mk-title-solid,
+main > #home.hero .subtitle,
+main > #home.hero p{
+ color:#f4effb!important;
+ -webkit-text-fill-color:initial;
+}
+main > #home.hero .mk-title-glow{
+ color:transparent!important;
+ -webkit-text-fill-color:transparent!important;
+ background-image:linear-gradient(105deg,#a984f2,#d7b6ff,#ad82ed)!important;
+ -webkit-background-clip:text!important;background-clip:text!important;
+}
+main > #home.hero .eyebrow,
+main > #home.hero .eyebrowline{color:#c0a4eb!important}
+main > #home.hero .mk-social-link{
+ background:#1c192a!important;color:#ede5fc!important;border-color:#53436b!important;
+}
+main > #home.hero .mk-social-link:hover{background:#30243f!important;border-color:#b58fe7!important}
+main > #home.hero .actions .btn.primary{color:#160f20!important;background:#b18bea!important}

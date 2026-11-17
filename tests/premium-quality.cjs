@@ -58,6 +58,15 @@ const server=http.createServer((req,res)=>{
    const bounds=await page.evaluate(()=>({body:document.documentElement.scrollWidth,width:innerWidth}));
    assert.ok(bounds.body<=width+1,'Document width '+width+': '+JSON.stringify(bounds));
    assert.ok(visibleHero.y+visibleHero.height<=height-(mobile?0:50)+2,'Hero controls fit '+width+': '+JSON.stringify(visibleHero));
+   if(!mobile){
+    const chrome=await page.evaluate(()=>({
+     controls:document.querySelector('.tv-effects-control').getBoundingClientRect().toJSON(),
+     nav:document.querySelector('#apple-navlinks').getBoundingClientRect().toJSON(),
+     selector:document.querySelector('.tv-experience-button').getBoundingClientRect().toJSON()
+    }));
+    assert.ok(chrome.controls.right<=chrome.nav.left,'TV toggles do not overlap nav at '+width);
+    assert.ok(chrome.nav.right<=chrome.selector.left,'Nav does not overlap experience selector at '+width);
+   }
    if(mobile){
     assert.equal(await page.locator('#financial-globe').count(),0,'No mobile trade globe');
     assert.equal(await page.locator('script[src*="globe.gl"]').count(),0,'No mobile Globe.gl download');
@@ -70,6 +79,7 @@ const server=http.createServer((req,res)=>{
     await page.locator('#'+ids[i]).waitFor({state:'visible',timeout:15000});
     if(!mobile)await page.locator('#main-content[data-channel-busy=false]').waitFor({timeout:15000});
     assert.equal(await page.locator('#'+ids[i]).isVisible(),true,'Route '+routes[i]+' at '+width);
+    assert.equal(await page.locator('#home').isVisible(),false,'Home must be hidden on '+routes[i]+' at '+width);
     const size=await page.evaluate(mobile=>{
      const node=mobile?document.documentElement:document.querySelector('.tv-page.is-active');return{content:node.scrollWidth,width:node.clientWidth};
     },mobile);
@@ -96,7 +106,7 @@ const server=http.createServer((req,res)=>{
   }
   const reduce=await browser.newPage({viewport:{width:1280,height:800},reducedMotion:'reduce'});
   await reduce.addInitScript(()=>{sessionStorage.setItem('michael-tv-intro-seen-v1','1');sessionStorage.setItem('michael-tv-spotlight-shown-v2','1')});
-  await reduce.goto(base);await reduce.locator('#apple-navlinks a').nth(3).click();await reduce.waitForTimeout(500);
+  await reduce.goto(base);await reduce.locator('#apple-navlinks a').nth(3).click();await reduce.locator('#skills').waitFor({state:'visible'});await reduce.locator('#main-content[data-channel-busy=false]').waitFor();
   assert.equal(await reduce.locator('#skills').isVisible(),true);await reduce.close();
   fs.writeFileSync(path.join(output,'responsive-report.json'),JSON.stringify(report,null,2));
  }catch(error){failure=error;console.error(error);}finally{await browser.close();await new Promise(r=>server.close(r));}

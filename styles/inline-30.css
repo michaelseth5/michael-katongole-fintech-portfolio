@@ -1,0 +1,54 @@
+
+/* Portfolio-wide image presentation polish: preserve detail and image proportions. */
+img{image-rendering:auto;vertical-align:middle}
+#experience .demo-entry-art,#experience .entry-art,.education-card .demo-school,.preview-school,#achievements .demo-milestone-art{isolation:isolate}
+#experience .demo-entry-art img,#experience .entry-art img,#achievements .demo-milestone-art img,.demo-school img,.preview-school img,.education-card img{
+  object-fit:contain!important;object-position:center!important;
+  mask-image:none!important;-webkit-mask-image:none!important;
+  filter:none!important;opacity:1!important;
+  image-rendering:auto!important;
+}
+#experience .demo-entry-art,#achievements .demo-milestone-art{
+  background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.02))!important;
+  border:1px solid rgba(255,255,255,.08);border-radius:14px;
+}
+#experience .demo-entry-art img.preview-logo,#achievements .demo-milestone-art img.preview-logo,
+.preview-school img.preview-logo,.demo-school img.preview-logo{
+  max-width:100%!important;width:auto!important;height:auto!important;
+  max-height:115px!important;padding:8px!important;border-radius:10px;
+}
+#experience img.mk-new-transparent-logo,.education-card img.mk-new-transparent-logo{
+  background:transparent!important;padding:0!important;
+}
+#achievements .dev-logo{object-fit:contain!important;image-rendering:auto!important;
+  background:#fff!important;border:0!important;border-radius:10px;
+  box-shadow:0 3px 13px rgba(0,0,0,.09);
+}
+#project-details .project-cover{
+  overflow:hidden;border-radius:14px!important;
+  background:linear-gradient(140deg,#171b30,#111426)!important;
+}
+#project-details .project-cover img{display:block;width:100%;height:100%;object-fit:contain!important;object-position:center!important;image-rendering:auto}
+.slide-deck-tile .slide-cover{object-fit:contain!important;object-position:center!important;
+  background:#151927;border-radius:12px!important}
+#hobbies figure img,#networking figure img,.ds-team-feature img{
+  image-rendering:auto;object-position:center;
+}
+#hobbies .art-photo-card,#hobbies .travel-photo-card,
+#hobbies .mentorship-shot,#networking .seo-photo,.ds-team-feature{
+  overflow:hidden;border-radius:15px;
+  box-shadow:0 8px 26px rgba(0,0,0,.12);
+}
+#hobbies .art-photo-card img,#hobbies .travel-photo-card img,
+#networking .seo-photo img,.photo-carousel-rail img{
+  backface-visibility:hidden;transform:translateZ(0);
+  transition:transform .35s ease,filter .35s ease;
+}
+#hobbies .art-photo-card:hover img,#hobbies .travel-photo-card:hover img,
+#networking .seo-photo:hover img{transform:scale(1.015)}
+@media(max-width:700px){
+  #experience .demo-entry-art img.preview-logo,#achievements .demo-milestone-art img.preview-logo{max-height:88px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #hobbies .art-photo-card img,#hobbies .travel-photo-card img,#networking .seo-photo img{transition:none!important;transform:none!important}
+}

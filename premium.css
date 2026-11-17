@@ -382,4 +382,12 @@
  :root body #home .demo-hero-identity h1 {font-size:32px!important}
  :root body #home .hero-lane-panel {min-height:96px!important}
 }
+
+@media(max-width:767px){
+ :root.mobile-classic body.mk-mobile-route-active #main-content > [data-mk-mobile-page]:not([data-mk-active]) {display:none!important;visibility:hidden!important;pointer-events:none!important}
+ :root.mobile-classic body.mk-mobile-route-active #main-content > [data-mk-mobile-page][data-mk-active] {visibility:visible!important;pointer-events:auto!important}
+ :root.mobile-classic body #main-content > .mk-purple-section-transition {display:none!important}
+ :root.mobile-classic body .tv-home-section-buttons-mobile {top:88px!important;bottom:auto!important;right:12px!important}
+ :root.mobile-classic body .tv-home-section-buttons-mobile[hidden] {display:none!important}
+}
 }

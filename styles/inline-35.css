@@ -1,0 +1,19 @@
+
+/* Keep the final editorial row filled: interests on the left, rotating memories on the right. */
+@media(min-width:951px){
+  #portfolio-intro-grid .mk-ed-values{grid-column:span 8!important}
+  #portfolio-intro-grid .mk-ed-interest{grid-column:span 5!important}
+  #portfolio-intro-grid .mk-ed-gallery.mk-photo-carousel{grid-column:span 7!important;min-height:295px}
+}
+@media(min-width:681px) and (max-width:950px){
+  #portfolio-intro-grid .mk-ed-interest{grid-column:span 5!important}
+  #portfolio-intro-grid .mk-ed-gallery.mk-photo-carousel{grid-column:span 7!important;min-height:250px}
+}
+@media(max-width:680px){
+  #portfolio-intro-grid .mk-ed-interest{grid-column:span 1!important}
+  #portfolio-intro-grid .mk-ed-gallery.mk-photo-carousel{grid-column:span 1!important;min-height:250px}
+}
+@media(max-width:420px){
+  #portfolio-intro-grid .mk-ed-interest{grid-column:span 2!important}
+  #portfolio-intro-grid .mk-ed-gallery.mk-photo-carousel{grid-column:span 2!important;min-height:260px}
+}

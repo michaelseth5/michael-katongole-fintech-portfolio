@@ -1,0 +1,5 @@
+
+#hobbies .travel-photo-card img{object-position:center 45%}
+#hobbies .travel-photo-card{background:#171a26}
+#hobbies .hobby-carousel-track{overscroll-behavior-inline:contain}
+@media(prefers-reduced-motion:reduce){#hobbies .hobby-carousel-track{scroll-behavior:auto!important}}

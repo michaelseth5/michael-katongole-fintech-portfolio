@@ -1,0 +1,20 @@
+
+:is(.photo-carousel-controls,.network-carousel-controls,.hobby-carousel-controls,.mk-photo-carousel-controls).mk-shared-carousel-controls {
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  margin-block:16px 12px; width:100%;
+}
+.mk-shared-carousel-controls :is(button.photo-carousel-arrow,button.network-prev,button.network-next,button.hobby-carousel-prev,button.hobby-carousel-next,button.mk-photo-prev,button.mk-photo-next) {
+  appearance:none; width:42px; height:42px; flex:0 0 42px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid rgba(140,119,183,.38); background:rgba(255,255,255,.78);
+  color:#423451; box-shadow:none; font-size:19px; transition:background .2s,border-color .2s;
+}
+.mk-shared-carousel-controls button:hover { border-color:#a18ac5; }
+.mk-shared-carousel-controls :is(.photo-carousel-status,.hobby-carousel-status) { min-width:54px; text-align:center; font-variant-numeric:tabular-nums; }
+.mk-food-slide { text-align:center; }
+@media(max-width:640px) {
+  .mk-shared-carousel-controls { gap:8px; margin-block:12px 8px; }
+  .mk-shared-carousel-controls :is(button.photo-carousel-arrow,button.network-prev,button.network-next,button.hobby-carousel-prev,button.hobby-carousel-next,button.mk-photo-prev,button.mk-photo-next) {
+    width:36px; height:36px; flex-basis:36px; font-size:17px;
+  }
+}

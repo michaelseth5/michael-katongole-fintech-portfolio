@@ -1,0 +1,57 @@
+
+/* Six-location New York metro atlas: interactive tiles with editorial overlays. */
+#portfolio-intro-grid .mk-bento-layout .mk-nyc-map-card{
+ position:relative!important;isolation:isolate;overflow:hidden;
+ min-height:340px!important;grid-row:3!important;grid-column:span 7!important;
+ background:#ece8f2!important;padding:0!important;border:1px solid #ded6e7!important;
+}
+#portfolio-intro-grid .mk-nyc-map-card::after{display:none!important;content:none!important}
+#portfolio-intro-grid .mk-nyc-map-canvas{position:absolute;inset:0;z-index:1;background:#e7e8e5}
+#portfolio-intro-grid .mk-nyc-map-card .leaflet-container{background:#e7e8e5;font-family:'Space Grotesk',sans-serif}
+#portfolio-intro-grid .mk-nyc-map-card .leaflet-control-attribution{font-size:9px!important;opacity:.77}
+#portfolio-intro-grid .mk-nyc-map-card .leaflet-control-zoom{border:0;box-shadow:0 4px 16px #2d164522;margin:66px 13px 0 0}
+#portfolio-intro-grid .mk-nyc-map-card .leaflet-control-zoom a{color:#5d3a85;background:#ffffffeb;width:29px;height:29px;line-height:29px}
+#portfolio-intro-grid .mk-nyc-map-heading{
+ position:absolute;z-index:600;left:14px;top:12px;max-width:calc(100% - 110px);
+ pointer-events:none;padding:11px 15px 12px;
+ border:1px solid #ffffffd9;border-radius:12px;
+ background:rgba(255,255,255,.92);
+ box-shadow:0 8px 30px rgba(48,28,65,.1);backdrop-filter:blur(10px);
+}
+#portfolio-intro-grid .mk-nyc-map-kicker{display:block;color:#815ba3;font:800 9px 'Space Grotesk',sans-serif;letter-spacing:.16em;margin-bottom:5px}
+#portfolio-intro-grid .mk-nyc-map-heading h3{
+ margin:0!important;color:#292236!important;font:800 clamp(12px,1.15vw,17px)/1.16 'Space Grotesk',sans-serif!important;letter-spacing:-.035em!important;
+}
+#portfolio-intro-grid .mk-nyc-map-heading h3 span{color:#935bc7}
+#portfolio-intro-grid .mk-nyc-map-footer{
+ position:absolute;z-index:600;bottom:16px;left:14px;right:14px;
+ display:flex;align-items:center;justify-content:space-between;gap:8px;
+ pointer-events:none;
+}
+#portfolio-intro-grid .mk-nyc-map-footer span{
+ color:#604379;font:800 9px 'Space Grotesk',sans-serif;letter-spacing:.075em;
+ background:rgba(255,255,255,.92);border:1px solid #ffffffba;border-radius:100px;
+ padding:7px 10px;box-shadow:0 2px 12px #1f11331c;
+}
+#portfolio-intro-grid .mk-nyc-map-dot{display:inline-block;background:#a468e8;width:7px;height:7px;border-radius:50%;margin-right:4px;box-shadow:0 0 0 3px #b484e733}
+#portfolio-intro-grid .mk-nyc-map-pin{background:transparent;border:none}
+#portfolio-intro-grid .mk-nyc-map-marker{
+ display:flex;align-items:center;gap:4px;width:max-content;
+ padding:4px 7px 4px 5px;color:#44245f;
+ background:rgba(255,255,255,.94);border:1px solid #ac82cf;
+ border-radius:30px;white-space:nowrap;box-shadow:0 2px 12px rgba(56,22,82,.18);
+ font:800 10px 'Space Grotesk',sans-serif;
+}
+#portfolio-intro-grid .mk-nyc-map-marker::before{
+ content:'';display:block;flex:none;width:7px;height:7px;
+ background:#974fcd;border-radius:50%;box-shadow:0 0 0 3px #ac7bd82e;
+}
+#portfolio-intro-grid .mk-nyc-map-marker.jersey{color:#213c56;border-color:#94a9be}
+#portfolio-intro-grid .mk-nyc-map-marker.jersey::before{background:#426e99;box-shadow:0 0 0 3px #719bb534}
+#portfolio-intro-grid .mk-nyc-map-card .leaflet-tooltip{font:600 11px 'Space Grotesk',sans-serif}
+@media(max-width:750px){
+ #portfolio-intro-grid .mk-bento-layout .mk-nyc-map-card{grid-column:span 2!important;grid-row:auto!important;min-height:360px!important}
+ #portfolio-intro-grid .mk-nyc-map-heading{max-width:calc(100% - 72px);left:10px;top:10px;padding:10px 12px}
+ #portfolio-intro-grid .mk-nyc-map-footer{left:10px;right:10px}
+ #portfolio-intro-grid .mk-nyc-map-footer span{font-size:8px}
+}

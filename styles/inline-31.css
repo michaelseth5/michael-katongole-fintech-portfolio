@@ -1,0 +1,41 @@
+
+/* Selected Projects: quick-scan responsive card layout, expandable engineering details */
+#project-details .page-hero{padding:44px 0 25px!important;max-width:100%}
+#project-details .page-hero .page-title{margin:10px 0 8px;font-size:clamp(40px,5vw,66px)}
+#project-details .page-hero p{margin:0;font-size:15px;max-width:760px;line-height:1.6}
+#project-details .slide-deck-shelf{margin:0 0 27px!important;padding:17px 20px!important}
+#project-details .slide-deck-shelf .deck-shelf-title{font-size:clamp(20px,2.4vw,29px);margin:5px 0}
+#project-details .slide-deck-shelf>.muted{font-size:13px;margin:0 0 12px}
+#project-details .slide-deck-grid{gap:12px!important}
+#project-details .slide-deck-tile{padding:10px!important;display:grid;grid-template-columns:145px minmax(0,1fr);column-gap:14px;align-content:center;min-height:106px}
+#project-details .slide-deck-tile .slide-cover{grid-row:1/5;width:145px;height:88px;aspect-ratio:auto;margin:0;object-fit:contain}
+#project-details .slide-deck-tile .deck-tile-tag{margin:0}
+#project-details .slide-deck-tile strong{font-size:17px}
+#project-details .slide-deck-tile span:not(.deck-tile-tag){font-size:12px}
+#project-details .slide-deck-tile em{font-size:12px}
+#project-details .selected-projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:18px}
+#project-details .selected-projects-grid>.project-block{display:flex!important;flex-direction:column;gap:0!important;padding:0!important;min-width:0;border:1px solid #343348!important;border-radius:17px;background:#141724;overflow:hidden;align-items:stretch!important}
+#project-details .project-block>.visual{width:100%;height:auto!important;aspect-ratio:16/9;border:0!important;border-radius:0!important;flex:none}
+#project-details .project-block>.visual img,#project-details .project-block>.visual svg{display:block;width:100%;height:100%;object-fit:contain}
+#project-details .project-block>div:nth-child(2){padding:18px 20px 20px;display:flex;flex-direction:column;min-width:0;flex:1}
+#project-details .project-block .eyebrow{font-size:10px;letter-spacing:.12em}
+#project-details .project-block h2{font-size:clamp(22px,2.1vw,29px);margin:8px 0;line-height:1.17}
+#project-details .project-block>div:nth-child(2)>p{font-size:13px;line-height:1.65;margin:0 0 12px}
+#project-details .project-block>div:nth-child(2)>p:nth-of-type(2){font-size:11px;line-height:1.6;color:#b9b9d0;margin-bottom:16px}
+#project-details .project-expand{margin-top:auto;min-width:0;border:1px solid #55506c;border-radius:11px;background:#1c1e2e;overflow:hidden}
+#project-details .project-expand summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;color:#e8deff;font-size:13px;font-weight:750;transition:background .2s}
+#project-details .project-expand summary::-webkit-details-marker{display:none}
+#project-details .project-expand summary:hover{background:#302c47}
+#project-details .project-expand summary:focus-visible{outline:2px solid #b8a2ff;outline-offset:-3px}
+#project-details .project-expand-icon{font-size:20px;font-weight:500;line-height:1;transition:transform .2s}
+#project-details .project-expand[open] .project-expand-icon{transform:rotate(45deg)}
+#project-details .project-expand .case-box{margin:0!important;border:0!important;border-top:1px solid #444259!important;border-radius:0!important}
+#project-details .project-expand .project-framework-item{padding:13px 14px}
+#project-details .project-expand .project-framework-label{margin-bottom:5px;gap:8px}
+#project-details .project-expand .project-framework-label h3{font-size:13px}
+#project-details .project-expand .project-framework-item p{font-size:12px;line-height:1.65}
+#project-details .project-expand .actions{margin:10px!important;display:flex;flex-wrap:wrap;gap:8px}
+#project-details .project-expand .actions .btn{font-size:11px;padding:9px 11px}
+@media(max-width:1050px){#project-details .selected-projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){#project-details .selected-projects-grid{grid-template-columns:1fr;gap:14px}#project-details .slide-deck-tile{grid-template-columns:115px minmax(0,1fr)}#project-details .slide-deck-tile .slide-cover{width:115px;height:75px}#project-details .page-hero{padding-top:38px!important}}
+@media(prefers-reduced-motion:reduce){#project-details .project-expand-icon{transition:none}}

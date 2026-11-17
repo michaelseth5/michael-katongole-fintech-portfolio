@@ -1,0 +1,19 @@
+
+#achievements .dev-milestone{overflow:visible!important}
+#achievements .dev-heading{display:block!important;margin-bottom:22px!important}
+#achievements .dev-heading>div{max-width:760px}
+#achievements .dev-heading h2{text-align:left!important}
+#achievements .dev-heading p{text-align:left!important;max-width:700px!important}
+#achievements .dev-controls{display:none!important}
+#achievements .dev-carousel{overflow:visible!important;width:100%!important;max-width:none!important;scroll-snap-type:none!important}
+#achievements .dev-track{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;padding:0!important;margin:0!important;transform:none!important;width:100%!important}
+#achievements .dev-track>.dev-program{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;min-width:0!important;width:auto!important;min-height:205px!important;flex:auto!important;padding:20px!important;margin:0!important;border:1px solid rgba(40,33,51,.14)!important;border-radius:10px!important;background:#faf8f3!important;box-shadow:none!important;transform:none!important;filter:none!important;text-align:left!important;transition:border-color .2s ease!important}
+#achievements .dev-track>.dev-program:hover{border-color:rgba(40,33,51,.4)!important;box-shadow:none!important;transform:none!important}
+#achievements .dev-logo-frame{height:76px!important;min-height:76px!important;flex:0 0 76px!important;width:100%!important;display:flex!important;justify-content:flex-start!important;align-items:center!important;padding:0!important;margin:0 0 14px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+#achievements .dev-logo{height:auto!important;width:auto!important;max-width:150px!important;max-height:64px!important;object-fit:contain!important;object-position:left center!important;filter:grayscale(1) contrast(1.1)!important;opacity:.85!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;transition:filter .2s,opacity .2s!important}
+#achievements .dev-program:hover .dev-logo{filter:none!important;opacity:1!important}
+#achievements .dev-track>.dev-program h3{display:block!important;min-height:0!important;text-align:left!important;font-size:15px!important;line-height:1.35!important;font-weight:650!important;margin:0 0 7px!important;color:#302a3b!important}
+#achievements .dev-track>.dev-program .dev-meta{margin:0!important;color:#706979!important;font-size:12px!important;line-height:1.4!important;text-align:left!important}
+@media(max-width:900px){#achievements .dev-track{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:480px){#achievements .dev-track{grid-template-columns:1fr!important}#achievements .dev-track>.dev-program{min-height:165px!important}}
+@media(prefers-reduced-motion:reduce){#achievements .dev-logo{transition:none!important}}

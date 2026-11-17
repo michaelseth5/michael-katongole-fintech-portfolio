@@ -1,0 +1,10 @@
+
+/* Six event tabs scroll horizontally without wrapping or squeezing */
+#networking .network-carousel-tabs{display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scroll-snap-type:x proximity;gap:7px;padding:5px 3px;min-width:0;max-width:100%}
+#networking .network-carousel-tabs .network-tab{flex:0 0 auto;scroll-snap-align:start;white-space:nowrap}
+#networking .network-carousel-controls{min-width:0}
+#networking .seo-networking-grid.photo-carousel-rail{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:14px}
+#networking .photo-carousel-rail > figure{flex:0 0 min(360px,85%);scroll-snap-align:start;margin:0;min-width:0}
+#networking .photo-carousel-rail > figure img{width:100%;height:240px;object-fit:cover;display:block}
+#networking .seo-event-header h2{line-height:1.1}
+@media(max-width:700px){#networking .photo-carousel-rail>figure{flex-basis:85%}#networking .photo-carousel-rail>figure img{height:210px}}

@@ -1,0 +1,19 @@
+
+/* NYC radar: wider scan and larger, faster pulsing rings. */
+#portfolio-intro-grid .mk-nyc-radar-sweep{
+  width:26%!important;
+  left:-28%;
+  animation-duration:4.2s!important;
+}
+#portfolio-intro-grid .mk-nyc-radar-rings{
+  width:185px!important;
+  height:185px!important;
+  box-shadow:0 0 0 48px rgba(130,82,192,.055),0 0 0 96px rgba(130,82,192,.025)!important;
+  animation-duration:2.6s!important;
+}
+@media(max-width:600px){
+ #portfolio-intro-grid .mk-nyc-radar-rings{width:145px!important;height:145px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #portfolio-intro-grid .mk-nyc-radar-sweep,#portfolio-intro-grid .mk-nyc-radar-rings{animation:none!important}
+}
