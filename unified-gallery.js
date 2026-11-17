@@ -131,6 +131,9 @@ const initializePortfolioGalleries = () => {
     let hasDragged = false;
     let pending = null;
     function preloadAdjacent(index) {
+      const page=shell.closest('.tv-page');
+      const box=shell.getBoundingClientRect();
+      if((page&&!page.classList.contains('is-active')) || !box.width || box.bottom<=0 || box.top>=innerHeight)return;
       // Avoid prefetching images for categories that are not visible yet.
       const parentSlide = shell.closest('.hobby-slide,.network-event-slide');
       if (parentSlide && !parentSlide.classList.contains('ug-current')) return;
