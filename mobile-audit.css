@@ -227,6 +227,13 @@
   html.mobile-classic body #main-content .mk-mobile-skill span{
     min-width:0;overflow-wrap:anywhere;
   }
+  html.mobile-classic body #main-content .mk-mobile-skill .mk-mobile-skill-glyph{
+    display:inline-flex;align-items:center;justify-content:center;
+    flex:0 0 29px;width:29px;height:29px;
+    border:1px solid #ab90cc;border-radius:7px;
+    background:#e7d9f8;color:#3b225a;
+    font:800 12px/1 system-ui,sans-serif;
+  }
   html.mobile-classic body #main-content .mk-mobile-skill[aria-pressed="true"]{
     background:#e8d9fa!important;border-color:#6b3b9a!important;
     outline:2px solid #6b3b9a!important;outline-offset:1px;
