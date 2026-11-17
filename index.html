@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><script id="mk-start-at-top">
-/* Do not reopen at the last saved scroll position. Keep later navigation intact. */
-(()=> {
-  if ('scrollRestoration' in history) history.scrollRestoration='manual';
-  let finished=false;
-  const reset=()=>{
-    if(finished)return;
-    const scroll=document.scrollingElement || document.documentElement;
-    const previous=document.documentElement.style.scrollBehavior;
-    document.documentElement.style.scrollBehavior='auto';
-    scroll.scrollTop=0;
-    window.scrollTo(0,0);
-    const active=document.querySelector('#main-content .tv-page.is-active');
-    if(active)active.scrollTop=0;
-    document.documentElement.style.scrollBehavior=previous;
-  };
-  window.addEventListener('pageshow',()=>{
-    reset();
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{reset();finished=true}));
-  },{once:true});
-  window.addEventListener('load',reset,{once:true});
-})();
-</script><script>/* Run after viewport meta so phones report actual CSS width; before all styles and desktop scripts. */
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><script id="mk-scroll-restoration">if('scrollRestoration' in history)history.scrollRestoration='manual';</script><script>/* Run after viewport meta so phones report actual CSS width; before all styles and desktop scripts. */
 (()=>{if(matchMedia('(max-width: 767px)').matches)document.documentElement.classList.add('mobile-classic')})();</script><script id="sony-startup-controller">
 /* Pre-paint 2-second startup slate. Does not depend on remote assets. */
 (() => {
@@ -2772,7 +2750,7 @@ body .apple-topbar {
   #contact .mk-chat-panel .mk-chat-form{margin-top:auto!important}
 }
 </style>
-<link rel="stylesheet" href="mobile-classic.css?v=3"/><link rel="stylesheet" href="mobile-audit.css?v=1"/><link rel="stylesheet" href="editorial-titles.css?v=2"/><link rel="stylesheet" href="desktop-theatre.css?v=3" media="(min-width: 768px)"/><style>
+<link rel="stylesheet" href="mobile-classic.css?v=3"/><link rel="stylesheet" href="mobile-audit.css?v=1"/><link rel="stylesheet" href="mobile-router.css?v=1"/><link rel="stylesheet" href="editorial-titles.css?v=2"/><link rel="stylesheet" href="desktop-theatre.css?v=3" media="(min-width: 768px)"/><style>
 /* Center the Hobbies card copy consistently, with readable line lengths. */
 #hobbies .hobby-carousel-track > .hobby-slide > .eyebrow,
 #hobbies .hobby-carousel-track > .hobby-slide > .networking-hobby-kicker,
@@ -7464,4 +7442,4 @@ body.tv-mode #main-content.tv-stage .tv-page.is-active #contact.section #mk-port
   transition:none!important;
  }
 }
-</style><script src="mobile-audit.js?v=1" defer></script><script src="site-footer.js?v=1" defer></script><script src="scroll-flow.js?v=1" defer></script></body></html>
+</style><script src="mobile-audit.js?v=1" defer></script><script src="site-footer.js?v=1" defer></script><script src="mobile-router.js?v=1" defer></script><script src="scroll-flow.js?v=1" defer></script></body></html>
