@@ -93,6 +93,22 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator('script[src*="globe.gl"]').count(),0,'No mobile Globe.gl download');
     assert.equal(await page.locator('script[src*="michael-tv.js"]').count(),0,'No mobile intro videos');
    }
+   const roleBox=await page.locator('.hero-lane-panels').boundingBox();
+   const pillLayout=await page.locator('.hero-lane-tabs').evaluate(e=>({
+    overflow:e.scrollWidth>e.clientWidth+2,
+    rows:new Set([...e.children].map(b=>Math.round(b.getBoundingClientRect().top))).size,
+    fade:e.closest('.hero-lane-tab-rail').dataset.edgeRight
+   }));
+   assert.equal(pillLayout.rows,1,'Role pills stay on one row at '+width);
+   if(mobile && pillLayout.overflow)assert.equal(pillLayout.fade,'true','Visible mobile overflow fade at '+width);
+   for(const role of ['quant','strategy','product','software']){
+    await page.locator('#lane-'+role).focus();
+    await page.locator('#lane-'+role).press('Enter');
+    const activeBox=await page.locator('.hero-lane-panels').boundingBox();
+    assert.equal(activeBox.y,roleBox.y,'No switcher position jump at '+width);
+    assert.equal(activeBox.height,roleBox.height,'No switcher height jump at '+width);
+    assert.equal(await page.locator('#panel-'+role).isVisible(),true);
+   }
    await page.screenshot({path:path.join(output,'home-'+width+'.png')});
    for(let i=1;i<routes.length;i++){
     if(mobile){await page.locator('.mk-mobile-menu-button').click();await page.locator('.mk-mobile-menu a').filter({hasText:new RegExp('^'+(routes[i]==='reading'?'Literature':routes[i][0].toUpperCase()+routes[i].slice(1))+'$')}).click();}
@@ -133,7 +149,12 @@ const server=http.createServer((req,res)=>{
   }
   const reduce=await browser.newPage({viewport:{width:1280,height:800},reducedMotion:'reduce'});
   await reduce.addInitScript(()=>{sessionStorage.setItem('michael-tv-intro-seen-v1','1');sessionStorage.setItem('michael-tv-spotlight-shown-v2','1')});
-  await reduce.goto(base);await reduce.locator('#apple-navlinks a').nth(3).click();await reduce.locator('#skills').waitFor({state:'visible'});await reduce.locator('#main-content[data-channel-busy=false]').waitFor();
+  await reduce.goto(base);
+  await reduce.locator('#lane-product').click();
+  assert.equal(await reduce.locator('#panel-product').evaluate(e=>e.getAnimations().length),0,'Reduced motion skips role animation');
+  await reduce.locator('#lane-product').press('End');
+  assert.equal(await reduce.locator('#lane-product').getAttribute('aria-selected'),'true');
+  await reduce.locator('#apple-navlinks a').nth(3).click();await reduce.locator('#skills').waitFor({state:'visible'});await reduce.locator('#main-content[data-channel-busy=false]').waitFor();
   assert.equal(await reduce.locator('#skills').isVisible(),true);await reduce.close();
   fs.writeFileSync(path.join(output,'responsive-report.json'),JSON.stringify(report,null,2));
  }catch(error){failure=error;console.error(error);}finally{await browser.close();await new Promise(r=>server.close(r));}
