@@ -41,6 +41,11 @@
     if(key)setOwnership(footer,key);
   });
   setOwnership(quote,'contact');
+  // Legacy promotional blocks remain part of Home, not orphaned below every page.
+  [...main.children].forEach(node=>{
+    if(node.hasAttribute('data-mk-mobile-page') || node.matches('script,style'))return;
+    setOwnership(node,'home');
+  });
   // Milestones remain inside the Experience page, so they never create a second long route.
   const footerLinks=main.querySelectorAll('.mk-site-footer .mk-footer-nav a');
   const allMenuLinks=menu?[...menu.querySelectorAll('a[href^="#"]')]:[];
@@ -102,7 +107,7 @@
     const link=event.target.closest('a[href^="#"]');
     if(!link)return;
     const hash=decodeURIComponent(link.hash.slice(1)).toLowerCase();
-    if(!Object.hasOwn(paths,hash))return;
+    if(!Object.prototype.hasOwnProperty.call(paths,hash))return;
     event.preventDefault();
     event.stopImmediatePropagation();
     navigate(hash,{focus:link!==brand});
