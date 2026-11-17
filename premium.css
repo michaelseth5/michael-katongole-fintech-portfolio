@@ -372,4 +372,14 @@
  :root body #skills .sectionhead {text-align:left!important;align-items:start!important}
  :root body .mk-footer-nav {display:flex!important}
 }
+
+:root body .tv-home-progress[hidden],:root body .tv-home-section-buttons[hidden],
+:root body #home :is(.gf-zoom-controls,.gf-expand)[hidden] {display:none!important}
+:root body #home .gf-static-fallback {clip-path:circle(40% at 50% 50%)!important;filter:drop-shadow(0 0 24px #b696da44)}
+:root body #home.gf-static-mode .mk-home-legend {display:none!important}
+@media(max-width:767px) and (min-height:781px){
+ :root body #home .demo-hero-identity .hero-headshot {width:76px!important;height:84px!important}
+ :root body #home .demo-hero-identity h1 {font-size:32px!important}
+ :root body #home .hero-lane-panel {min-height:96px!important}
+}
 }

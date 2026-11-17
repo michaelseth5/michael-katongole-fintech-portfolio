@@ -4278,7 +4278,14 @@ body .apple-topbar {
    draw();raf=requestAnimationFrame(tick);
   }else{draw();raf=0;}
  }
- function start(){if(!visible||raf)return;last=0;raf=requestAnimationFrame(tick);}
+ function start(){
+  if(!visible||raf||document.hidden||(window.__portfolioChannelIsActive&&!window.__portfolioChannelIsActive('skills')))return;
+  last=0;raf=requestAnimationFrame(tick);
+ }
+ document.addEventListener('portfolio:channel-change',()=>{
+  if(window.__portfolioChannelIsActive?.('skills')){resize();start();}
+  else if(raf){cancelAnimationFrame(raf);raf=0;}
+ });
  host.addEventListener("pointerdown",e=>{
   if(e.button!==0||e.target.closest("button")&&e.pointerType==="mouse")return;
   drag={id:e.pointerId,x:e.clientX,y:e.clientY,moved:false};

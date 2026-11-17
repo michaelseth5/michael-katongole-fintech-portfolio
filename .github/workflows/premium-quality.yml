@@ -21,6 +21,7 @@ jobs:
       - name: Test all routes at seven viewport widths
         run: node tests/premium-quality.cjs
       - name: Measure first-visit mobile performance
+        if: always()
         run: |
           python3 -m http.server 4173 > /tmp/portfolio-server.log 2>&1 &
           npx lighthouse http://127.0.0.1:4173 --chrome-flags="--headless --no-sandbox" --only-categories=performance,accessibility --output=json --output=html --output-path=./test-results/lighthouse --quiet

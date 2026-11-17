@@ -316,6 +316,9 @@
     status.textContent=message;
     panel.innerHTML='<h3>Global goods trade</h3><p class="gf-static-note">Interactive country statistics require a WebGL-enabled browser. Annual trade data is supplied by UN Comtrade and World Bank.</p>';
     zoomControls.hidden=true;fullscreen.hidden=true;
+    hero?.classList.add('gf-static-mode');
+    const hint=hero?.querySelector('.mk-home-caption-hint');
+    if(hint)hint.textContent='Static view · Enable WebGL for country exploration';
   }
   async function init() {
     // Check capability before Three.js can emit renderer errors in disabled-GPU browsers.
