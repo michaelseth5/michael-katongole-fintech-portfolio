@@ -6,7 +6,9 @@
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
   const small=matchMedia('(max-width:767px)');
   const revealSelector=[
-    '.page-hero','.mk-intro-top','.mk-intro-heading','.bc-story',
+    '.page-hero > .eyebrow','.page-hero > h1','.page-hero > h2',
+    '.page-hero > p','.page-hero > .back','.mk-intro-top',
+    '.mk-intro-heading','.bc-story',
     '.timeline > article','.selected-projects-grid > *','.project-block',
     '.dev-milestone','.dev-track > .dev-program',
     '.network-event-slide','.large-panel','.mk-connect-left',
@@ -96,7 +98,6 @@
     },{root:scrollRoot,threshold:.06,rootMargin:'0px 0px 70px 0px'});
     elements.forEach(el=>{
       if(el.classList.contains('is-visible'))return;
-      if(visible(el)){el.classList.add('is-visible');return}
       io.observe(el);
     });
     host.classList.add('flow-enabled');
