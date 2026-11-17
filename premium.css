@@ -375,7 +375,7 @@
 
 :root body .tv-home-progress[hidden],:root body .tv-home-section-buttons[hidden],
 :root body #home :is(.gf-zoom-controls,.gf-expand)[hidden] {display:none!important}
-:root body #home .gf-static-fallback {clip-path:circle(40% at 50% 50%)!important;filter:drop-shadow(0 0 24px #b696da44)}
+:root body #home .gf-static-fallback {clip-path:circle(36.8% at 50% 50%)!important;filter:drop-shadow(0 0 24px #b696da44)}
 :root body #home.gf-static-mode .mk-home-legend {display:none!important}
 @media(max-width:767px) and (min-height:781px){
  :root body #home .demo-hero-identity .hero-headshot {width:76px!important;height:84px!important}
@@ -390,4 +390,11 @@
  :root.mobile-classic body .tv-home-section-buttons-mobile {top:88px!important;bottom:auto!important;right:12px!important}
  :root.mobile-classic body .tv-home-section-buttons-mobile[hidden] {display:none!important}
 }
+
+:root body #beyond-code-editorial {background:transparent!important;border:0!important;box-shadow:none!important}
+:root body #beyond-code-editorial .bc-story {background:linear-gradient(145deg,#2a1d39,#1b1426)!important;border:1px solid var(--line)!important;border-radius:24px!important;padding:28px!important;margin-bottom:18px!important;box-shadow:0 12px 30px #0002!important}
+:root body #beyond-code-editorial .bc-copy {background:transparent!important;color:var(--txt)!important}
+:root body #beyond-code-editorial .bc-copy h3 {color:var(--txt)!important}
+:root body #beyond-code-editorial .bc-copy p {color:var(--muted)!important;font-size:16px!important}
+:root body #beyond-code-editorial .bc-num {color:var(--accent)!important}
 }

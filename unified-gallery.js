@@ -1,7 +1,7 @@
 'use strict';
 /* One album viewer for Hobbies and Networking. Existing captions and images are
    read from the authored DOM; no article text or links are changed. */
-(() => {
+const initializePortfolioGalleries = () => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const roots = ['hobbies', 'networking'].map(id => document.getElementById(id)).filter(Boolean);
   if (!roots.length) return;
@@ -271,4 +271,6 @@
     }
     setupChips(networking, '.network-carousel-controls', '.network-carousel-tabs button', '.network-carousel-track > article');
   }
-})();
+};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializePortfolioGalleries,{once:true});
+else initializePortfolioGalleries();

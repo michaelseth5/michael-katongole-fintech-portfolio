@@ -99,7 +99,7 @@
     setTimeout(()=>{
       choice.close();choice.remove();
       if(mode==='cinema')showMobileIntro();
-      else {intro.style.display='none';try{sessionStorage.setItem(KEY,'1')}catch{}}
+      else {document.documentElement.classList.remove('mobile-entry-pending');window.dispatchEvent(new Event('resize'));intro.style.display='none';try{sessionStorage.setItem(KEY,'1')}catch{}}
     },matchMedia('(prefers-reduced-motion:reduce)').matches?170:350);
   };
   choice.addEventListener('click',e=>{const btn=e.target.closest('[data-choice]');if(btn)selectMobile(btn.dataset.choice)});
@@ -122,6 +122,7 @@
   const finish=()=>{
     try{sessionStorage.setItem(KEY,'1')}catch{}
     intro.close();intro.style.display='none';
+    document.documentElement.classList.remove('mobile-entry-pending');window.dispatchEvent(new Event('resize'));
     window.dispatchEvent(new CustomEvent('michael-tv:home-enter',{detail:{reason:'mobile'}}));
   };
   $('.mk-mobile-skip',intro).addEventListener('click',finish);

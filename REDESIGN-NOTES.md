@@ -194,3 +194,7 @@ A text-node comparison against the baseline showed removals only from the author
 - Contact: enter several questions, scroll the conversation, verify input stays at the bottom, quotes and footer share the light canvas.
 - Keyboard: visible focus, hero tab arrows, Experience tab arrows, gallery and modal Escape behavior.
 - CI outputs: inspect seven viewport screenshots and measured Lighthouse results.
+
+## Additional performance work
+
+Project screenshots now use local WebP copies of the same source images. `assets/project-previews/sources.json` records their original URLs and encoded file sizes. The first mobile selector gates the mounted page to prevent an initial Home flash and unnecessary early image rendering. Gallery setup waits for its authored tabs to exist, so only the active album remains exposed to keyboard and screen-reader navigation.

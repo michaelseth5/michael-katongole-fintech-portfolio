@@ -42,6 +42,16 @@ const server=http.createServer((req,res)=>{
   assert.equal(await fresh.locator('#panel-strategy').isVisible(),true);
   assert.equal(await fresh.locator('#home h1').innerText(),"Hi, I'm\nMichael Katongole.");
   await fresh.close();
+  const freshMobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  const mobileRequests=[];freshMobile.on('request',r=>mobileRequests.push(r.url()));
+  await freshMobile.goto(base,{waitUntil:'domcontentloaded'});
+  await freshMobile.locator('#mtv-mobile-choice[open]').waitFor();
+  assert.equal(await freshMobile.locator('#main-content').isVisible(),false,'First visit waits for mobile experience choice');
+  assert.equal(mobileRequests.some(u=>/youtube|globe\.gl/.test(u)),false,'Graphic-only mobile entry');
+  await freshMobile.locator('[data-choice=instant]').click();
+  await freshMobile.locator('#mtv-mobile-choice[open]').waitFor({state:'hidden'});
+  assert.equal(await freshMobile.locator('#home').isVisible(),true);
+  await freshMobile.close();
   for(const width of [375,390,430,1280,1440,1536,1920]){
    const mobile=width<768,height=mobile?844:width===1280?800:1000;
    const context=await browser.newContext({viewport:{width,height},isMobile:mobile,hasTouch:mobile});
@@ -91,6 +101,12 @@ const server=http.createServer((req,res)=>{
      await page.locator('[data-exp-tab=career]').click();
     }
     if(routes[i]==='skills')assert.ok(await page.getByRole('button',{name:'Figma',exact:true}).isVisible());
+    if(routes[i]==='hobbies'){
+     await page.getByRole('tab',{name:'R&B Concerts',exact:true}).click();
+     await page.locator('#hobbies .hobby-slide.ug-current').waitFor();
+     assert.match(await page.locator('#hobbies .hobby-slide.ug-current').innerText(),/R&B Concerts/);
+     assert.match(await page.locator('#hobbies .hobby-slide.ug-current').innerText(),/Under Construction/);
+    }
     if(routes[i]==='contact'){
      await page.locator('[data-mk-question]').first().click();
      assert.equal(await page.locator('.mk-chat-message[data-role=visitor]').count(),1);
