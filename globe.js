@@ -307,7 +307,23 @@
     getTrade(feature);
   }
 
+  function staticFallback(message) {
+    const img=document.createElement('img');
+    img.className='gf-static-fallback';img.src='assets/mobile-globe.webp';
+    img.alt='Static world globe. Interactive trade exploration requires WebGL.';
+    img.width=640;img.height=640;img.decoding='async';
+    mount.replaceChildren(img);
+    status.textContent=message;
+    panel.innerHTML='<h3>Global goods trade</h3><p class="gf-static-note">Interactive country statistics require a WebGL-enabled browser. Annual trade data is supplied by UN Comtrade and World Bank.</p>';
+    zoomControls.hidden=true;fullscreen.hidden=true;
+  }
   async function init() {
+    // Check capability before Three.js can emit renderer errors in disabled-GPU browsers.
+    const probe=document.createElement('canvas');
+    let context=null;
+    try {context=probe.getContext('webgl2') || probe.getContext('webgl');} catch {}
+    if(!context){staticFallback('Static view · WebGL unavailable');return;}
+    context.getExtension('WEBGL_lose_context')?.loseContext();
     try {
       await loadLibrary('https://unpkg.com/globe.gl/dist/globe.gl.min.js');
       const response = await fetch('assets/countries.geojson');

@@ -22,6 +22,18 @@
       select(tabs[next], true);
     });
   });
+  const experienceButton=document.createElement('button');
+  experienceButton.type='button';experienceButton.className='tv-experience-button';
+  experienceButton.textContent='Michael TV';
+  experienceButton.setAttribute('aria-label','Choose Michael TV experience');
+  experienceButton.addEventListener('click',()=>window.portfolioChooseExperience?.());
+  document.body.append(experienceButton);
+  const menu=document.querySelector('.mk-mobile-menu');
+  if(menu){
+    const button=document.createElement('button');button.type='button';button.className='btn ghost';
+    button.textContent='Michael TV';button.addEventListener('click',()=>window.portfolioChooseExperience?.());
+    menu.append(button);
+  }
   // Escape closes the expanded transcript without interrupting playback.
   document.addEventListener('keydown', event => {
     if(event.key !== 'Escape') return;

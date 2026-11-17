@@ -505,6 +505,8 @@
    window.dispatchEvent(new CustomEvent('michael-tv:home-enter',{detail:{reason:'instant'}}));
    document.querySelector('#apple-navlinks a[href="#home"]')?.focus?.({preventScroll:true});
  };
+ window.portfolioChooseExperience=openPicker;
+ window.portfolioReplayIntro=()=>openIntro(true);
  const choose=selected=>{
    choice.classList.add('mtv-choice-leaving');
    cards.find(card=>card.dataset.mtvChoice===selected)?.classList.add('is-chosen');

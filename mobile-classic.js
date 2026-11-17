@@ -32,21 +32,9 @@
  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
  document.body.prepend(menu);document.body.prepend(nav);
  // Move authored content, not copies: the original links, text and section IDs stay intact.
- const ordered=['home','site-preview-notice','portfolio-intro-grid','experience','project-details','skills','achievements','networking','listening-reading','hobbies','contact'];
+ const ordered=['home','site-preview-notice','portfolio-intro-grid','experience','project-details','skills','networking','listening-reading','hobbies','contact'];
  const owned=ordered.map(id=>document.getElementById(id)).filter(Boolean);
  owned.forEach(el=>main.append(el));
- // Experience includes the existing milestones in the same simple mobile scroll.
- const mobileExperience=$('#experience'),mobileMilestones=$('#achievements');
- if(mobileExperience && mobileMilestones){
-   mobileExperience.append(mobileMilestones);
-   mobileMilestones.style.marginTop='32px';
-   const milestoneJump=add('a',{href:'#achievements',textContent:'View Milestones & Leadership ↓'});
-   milestoneJump.className='mk-mobile-milestone-link';
-   milestoneJump.style.cssText='display:inline-flex;margin:12px 0 20px;padding:10px 17px;border:1px solid #9972c8;border-radius:999px;color:#7043a4;text-decoration:none;font-weight:700;font-size:13px';
-   const expHeader=mobileExperience.querySelector('.page-hero');
-   if(expHeader)expHeader.append(milestoneJump);
- }
-
  // The Education block remains the same DOM node; it belongs under Skills on mobile.
  const edu=$('.mk-craft-education');const skills=$('#skills');
  if(edu&&skills){const placeholder=document.createComment('Education original location');edu.before(placeholder);skills.append(edu);window.addEventListener('resize',()=>{if(!mq.matches)placeholder.after(edu);else skills.append(edu);});}
@@ -125,6 +113,7 @@
   reopen.style.cssText='display:inline-block;margin:16px;color:#7651a6;font-weight:600;font-size:13px';
   (document.querySelector('.mk-footer')||document.querySelector('footer'))?.append(reopen);
   const openChoice=()=>{intro.close();intro.style.display='none';choice.classList.remove('is-leaving');document.body.append(choice);choice.showModal();choice.querySelector('[data-choice]')?.focus({preventScroll:true})};
+  window.portfolioChooseExperience=openChoice;
   reopen.addEventListener('click',e=>{e.preventDefault();openChoice()});
   let stored=null;try{stored=localStorage.getItem(REMEMBER)}catch{}
   if(stored==='cinema')showMobileIntro();
@@ -144,6 +133,7 @@
   });
  }
  if(seen){
+   window.portfolioChooseExperience=()=>{try{sessionStorage.removeItem(KEY)}catch{}location.reload();};
    const link=add('a',{href:'#choose-experience',textContent:'Choose experience'});
    link.style.cssText='display:inline-block;margin:16px;color:#7651a6;font-weight:600;font-size:13px';
    link.addEventListener('click',e=>{

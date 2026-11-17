@@ -327,4 +327,37 @@
  :root body #home .subtitle {font-size:21px!important}
  :root body #home .hero-lane-panel {min-height:100px!important}
 }
+
+/* Preview fixes: explicit label reset, centered orb, compact working TV toolbar. */
+:root body .sr-only {position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+:root body #home .mk-home-welcome-head {position:static!important;width:auto!important;height:auto!important;min-height:0!important;clip:auto!important;clip-path:none!important;overflow:visible!important;white-space:normal!important;display:flex!important;visibility:visible!important;opacity:1!important}
+:root body #home .mk-home-welcome-name {position:static!important;width:auto!important;height:auto!important;clip:auto!important;clip-path:none!important;overflow:visible!important;color:#f1e7fc!important;font-size:13px!important}
+:root body #skills .sectionhead {display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:start!important;gap:12px!important;min-height:0!important;height:auto!important;padding:0!important;margin:0 0 20px!important;text-align:center!important}
+:root body #skills .sectionhead :is(h2,p) {padding:0!important;margin:0!important}
+:root body #skills .mk-skills-orbit::before {inset:auto!important;left:50%!important;top:50%!important;transform:none!important;translate:-50% -50%!important}
+:root body.tv-mode .tv-hardware .apple-topbar {inset:12px 170px auto 214px!important}
+:root body.tv-mode .tv-effects-control {gap:8px!important;left:30px!important;width:166px!important}
+:root body.tv-mode .tv-effects-toggle {position:relative!important;width:64px!important;height:44px!important;flex:0 0 64px!important;display:grid!important;place-items:center!important;border:1px solid #ffffff24!important;border-radius:999px!important;background:#ffffff08!important;box-shadow:none!important;padding:0!important;transform:none!important;margin:0!important}
+:root body.tv-mode .tv-effects-toggle::after {content:'FX'!important;position:static!important;color:#dfd3ec!important;font:600 12px 'DM Sans',sans-serif!important}
+:root body.tv-mode .tv-effects-toggle[aria-checked=true] {background:#c6b0eb33!important;border-color:#c6b0eb99!important}
+:root body.tv-mode .tv-effects-toggle :is(.tv-effects-track,.tv-effects-knob) {display:none!important}
+:root body.tv-mode .tv-effects-description {position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important}
+:root body.tv-mode .tv-remote-toggle {display:flex!important;flex-direction:row!important;width:80px!important;min-height:44px!important;border:1px solid #ffffff24!important;border-radius:999px!important;background:#ffffff08!important;padding:8px!important;color:#dfd3ec!important}
+:root body.tv-mode .tv-remote-toggle>span:last-child {display:block!important;position:static!important;width:auto!important;height:auto!important;clip:auto!important;clip-path:none!important;overflow:visible!important;font-size:10px!important;white-space:normal!important;line-height:1.2!important}
+:root body.tv-mode .tv-remote-switch {display:none!important}
+:root body .tv-experience-button {position:fixed;right:30px;top:26px;z-index:91;height:44px;min-width:122px;border:1px solid #ffffff24;border-radius:999px;background:#282130;color:#eee5fa;font:600 13px 'DM Sans',sans-serif;padding:8px 16px}
+:root body.tv-mode .tv-home-progress {position:absolute!important;inset:auto!important;left:16px!important;bottom:10px!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:0!important;width:max-content!important;height:44px!important;transform:none!important;padding:0!important}
+:root body.tv-mode .tv-home-progress::before {display:none!important}
+:root body.tv-mode .tv-home-progress button {width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;position:relative!important;padding:0!important}
+:root body.tv-mode .tv-home-progress button::after {inset:18px!important;width:8px!important;height:8px!important;margin:0!important;transform:none!important}
+:root body #home .gf-static-fallback {width:100%!important;height:100%!important;object-fit:contain!important;display:block!important}
+:root body #home .gf-static-note {font-size:12px!important;text-align:center!important;color:#c2b7ce!important}
+@media(min-width:768px) and (max-width:1050px){
+ :root body.tv-mode .tv-hardware .apple-topbar {inset:12px 115px auto 145px!important}
+ :root body.tv-mode .tv-effects-control {left:23px!important;width:124px!important;gap:4px!important}
+ :root body.tv-mode .tv-effects-toggle {width:44px!important;flex-basis:44px!important}
+ :root body .tv-experience-button {right:24px;min-width:90px;padding-inline:8px;font-size:12px}
+ :root body.tv-mode .tv-remote-toggle {width:65px!important}
+}
+@media(max-width:767px){:root body .tv-experience-button {display:none!important}}
 }

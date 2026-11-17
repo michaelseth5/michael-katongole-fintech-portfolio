@@ -32,8 +32,8 @@
    effectButton.title=enabled?'Turn retro screen effects off':'Turn retro screen effects on';
    try{localStorage.setItem(TV_EFFECT_KEY,enabled?'1':'0')}catch{}
  };
- let effectsEnabled=true;
- try{effectsEnabled=localStorage.getItem(TV_EFFECT_KEY)!=='0'}catch{}
+ let effectsEnabled=false;
+ try{effectsEnabled=localStorage.getItem(TV_EFFECT_KEY)==='1'}catch{}
  setEffects(effectsEnabled);
  effectButton.addEventListener('click',()=>{
    const enabled=effectButton.getAttribute('aria-checked')!=='true';
