@@ -63,19 +63,6 @@
    detail.open=false;
    detail.addEventListener('toggle',()=>{if(!detail.open)return;$$('details.project-expand').forEach(other=>{if(other!==detail)other.open=false;});});
  });
- // The existing Ask Michael DOM moves into a bottom sheet, retaining event handlers.
- const chat=$('#mk-portfolio-chat');
- if(chat){
-  const sheet=add('div',{className:'mk-mobile-chat-sheet',hidden:true});sheet.setAttribute('role','dialog');sheet.setAttribute('aria-label','Ask Michael');
-  const close=add('button',{className:'mk-mobile-close',type:'button',textContent:'Close ×'});
-  const trigger=add('button',{className:'mk-mobile-chat-button',type:'button',textContent:'Ask Michael'});
-  trigger.setAttribute('aria-expanded','false');
-  const dismiss=()=>{sheet.hidden=true;trigger.setAttribute('aria-expanded','false');trigger.focus({preventScroll:true});};
-  close.addEventListener('click',dismiss);
-  trigger.addEventListener('click',()=>{sheet.hidden=!sheet.hidden;trigger.setAttribute('aria-expanded',String(!sheet.hidden));if(!sheet.hidden)close.focus();});
-  sheet.append(close,chat);document.body.append(trigger,sheet);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!sheet.hidden)dismiss();});
- }
  // First-visit graphics-only Michael TV. No YouTube code, iframe, or video requests.
  const KEY='michael-mobile-intro-seen-v1';let seen=false;try{seen=sessionStorage.getItem(KEY)==='1'}catch{}
  if(!seen){

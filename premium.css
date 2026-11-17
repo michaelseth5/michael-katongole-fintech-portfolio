@@ -198,4 +198,45 @@
 :root body #hobbies .sports-emoji-card {background:#2b2039!important;border:1px solid var(--line)!important;border-radius:20px!important;color:var(--txt)!important}
 :root body #hobbies :is(.sports-emoji-label,.sports-emoji-copy) {color:var(--txt)!important;opacity:1!important;visibility:visible!important}
 
+
+/* Contact is a single warm, light canvas from cards through footer. */
+:root body #contact,
+:root body .tv-page:has(>#contact),
+:root body .tv-page:has(>#contact) :is(.mk-footer-quotes,.mk-site-footer),
+:root body .mk-footer-quotes,
+:root body .mk-site-footer[data-footer-page=contact] {background:#f4f1ed!important;color:#302a35!important;box-shadow:none!important;border-color:#d8d2da!important}
+:root body #contact :is(.mk-connect-left,.mk-chat-panel) {background:#f4f1ed!important;color:#302a35!important;border:1px solid #d8d2da!important;border-radius:24px!important;box-shadow:none!important;padding:28px!important;min-width:0!important}
+:root body #contact :is(h1,h2,h3,.mk-title-solid,.mk-title-glow,.mk-chat-title,.mk-connect-link,.eyebrow) {color:#302a35!important;-webkit-text-fill-color:#302a35!important;background:none!important}
+:root body #contact :is(p,.mk-chat-subtitle,.mk-chat-disclaimer) {color:#625a67!important}
+:root body #contact .mk-connect-layout {display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)!important;align-items:stretch!important;gap:24px!important}
+:root body #contact .mk-connect-links {display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
+:root body #contact .mk-connect-link {min-height:52px!important;border:1px solid #d8d2da!important;border-radius:14px!important;background:#f4f1ed!important;box-shadow:none!important}
+:root body #contact .mk-chat-panel {display:flex!important;flex-direction:column!important;height:510px!important;min-height:0!important;max-height:none!important}
+:root body #contact .mk-chat-head {flex:0 0 auto!important}
+:root body #contact .mk-chat-conversation {display:flex!important;flex:1 1 0!important;height:auto!important;min-height:80px!important;max-height:none!important;overflow-y:auto!important;overscroll-behavior:contain;margin:18px 0!important;padding:0 4px!important;gap:10px!important}
+:root body #contact .mk-chat-message {flex:0 0 auto!important;background:#e7e1e9!important;color:#302a35!important;font-size:14px!important}
+:root body #contact .mk-chat-message[data-role=visitor] {background:#ddd3e5!important;color:#302a35!important}
+:root body #contact .mk-chat-message a {color:#593b7c!important;text-decoration:underline}
+:root body #contact .mk-chat-chips {flex:0 0 auto!important;gap:6px!important;margin:0 0 10px!important}
+:root body #contact .mk-chat-chips button {min-height:44px!important;border:1px solid #c9bece!important;background:transparent!important;color:#4a3d56!important;padding:7px 12px!important;font-size:12px!important}
+:root body #contact .mk-chat-form {flex:0 0 auto!important;position:static!important;margin-top:auto!important;background:#f4f1ed!important;border:1px solid #baadbf!important;border-radius:999px!important;padding:5px!important}
+:root body #contact .mk-chat-form input {color:#302a35!important;min-height:44px!important;font-family:'DM Sans',sans-serif!important;font-size:16px!important}
+:root body #contact .mk-chat-form input::placeholder {color:#736779!important}
+:root body #contact .mk-chat-form button {width:44px!important;height:44px!important;min-width:44px!important;background:#59416f!important;color:#fff!important}
+:root body #contact .mk-chat-disclaimer {font-size:12px!important;line-height:1.5!important;margin:10px 0 0!important}
+:root body .mk-footer-quotes {padding:28px 24px!important;border-top:1px solid #d8d2da!important}
+:root body .mk-footer-quotes :is(blockquote,figcaption,.mk-footer-quotes-kicker,.mk-footer-quote-count) {color:#514656!important}
+:root body .mk-footer-quotes blockquote {font-size:clamp(19px,2vw,26px)!important;line-height:1.45!important}
+:root body .mk-footer-quote-stage {min-height:125px!important;height:auto!important}
+:root body .mk-footer-quote-controls button {min-height:44px!important;background:transparent!important;color:#514656!important;border:1px solid #bcb0c3!important}
+:root body .mk-site-footer[data-footer-page=contact] :is(a,span) {color:#625a67!important}
+/* Layered arrivals progress inside each page, without a wheel or touch hijack. */
+:root body [data-stack-card] {position:sticky!important;top:var(--stack-top,24px)!important;align-self:start!important;z-index:var(--stack-index,1);transform-origin:50% 0}
+:root body [data-stack-card]::before {pointer-events:none}
+:root body .flow-enabled [data-flow-reveal] {transition-duration:400ms!important;transition-timing-function:var(--ease)!important}
+:root body .flow-enabled [data-flow-exit] {opacity:1!important;transform:none!important;animation:none!important}
+@media(prefers-reduced-motion:reduce){
+ :root body *, :root body *::before, :root body *::after {animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+ :root body [data-stack-card] {position:relative!important;top:auto!important;transform:none!important}
+}
 }
