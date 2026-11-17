@@ -218,7 +218,7 @@
     min-height:54px!important;padding:8px 10px!important;
     border:1px solid #bfa9d6!important;border-radius:12px!important;
     background:#f9f5ff!important;color:#312044!important;
-    font:700 14px/1.25 'DM Sans',system-ui,sans-serif!important;
+    font:700 16px/1.25 'DM Sans',system-ui,sans-serif!important;
     text-align:left!important;box-shadow:none!important;
   }
   html.mobile-classic body #main-content .mk-mobile-skill img{
@@ -245,11 +245,24 @@
   html.mobile-classic body :is(.mk-mobile-chat-button,.mk-mobile-close){
     min-width:44px!important;min-height:44px!important;
   }
+  html.mobile-classic body .mk-site-footer .mk-footer-icons a,
+  html.mobile-classic body .mk-site-footer .mk-footer-nav a {
+    min-width:44px!important;min-height:44px!important;
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  }
+  html.mobile-classic body #main-content :is(.mk-skill-category-legend button,.dev-controls button,
+    .mk-footer-quote-controls button,.ug-chip-rail button,.hobby-carousel-dots button){
+    min-width:44px!important;min-height:44px!important;
+  }
+  html.mobile-classic body #main-content :is(.section,.container,.large-panel,.card,.project-block,
+    .network-event-slide,.hobby-slide,.mk-bento-tile,.mk-skills-mobile-grid){
+    min-width:0!important;
+  }
 }
 @media(max-width:359px){
   html.mobile-classic body #main-content #mk-skills-mobile-grid{gap:8px!important}
   html.mobile-classic body #main-content .mk-mobile-skill{
-    font-size:13px!important;padding:7px 8px!important;gap:7px!important;
+    font-size:16px!important;padding:7px 8px!important;gap:7px!important;
   }
 }
 @media(max-width:767px) and (prefers-reduced-motion:reduce){
