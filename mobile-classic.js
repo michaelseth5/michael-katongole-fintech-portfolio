@@ -66,13 +66,13 @@
  // First-visit graphics-only Michael TV. No YouTube code, iframe, or video requests.
  const KEY='michael-mobile-intro-seen-v1';let seen=false;try{seen=sessionStorage.getItem(KEY)==='1'}catch{}
  if(!seen){
-  const intro=add('div',{className:'mk-mobile-intro'});intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-label','Michael TV introduction');
+  const intro=add('dialog',{className:'mk-mobile-intro'});intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-label','Michael TV introduction');
   intro.innerHTML='<div class="mk-mobile-intro-card"><div class="mk-mobile-intro-title">MICHAEL TV</div><div class="mk-mobile-tape" aria-hidden="true"><i></i><i></i></div><button class="mk-mobile-play" type="button">PRESS PLAY</button><button class="mk-mobile-skip" type="button">Skip</button></div>';
   document.body.append(intro);
 
   // Preserve mobile's graphic-only PRESS PLAY screen; show it only after Cinema is selected.
   intro.style.display='none';
-  const choice=document.createElement('div');
+  const choice=document.createElement('dialog');
   choice.id='mtv-mobile-choice';
   choice.setAttribute('role','dialog');
   choice.setAttribute('aria-modal','true');
@@ -102,14 +102,14 @@
   document.head.append(style);
   choice.innerHTML=`<div class="mtv-m-inner"><div class="mtv-m-eyebrow">M I C H A E L&nbsp; T V&nbsp; P R E S E N T S</div><h2 id="mtv-mobile-choice-title">Welcome to Michael TV</h2><p class="mtv-m-subtitle">Choose your experience.</p><div class="mtv-m-cards"><button type="button" class="mtv-m-card" data-choice="cinema"><strong>Cinema Michael TV</strong><span>Full cinematic intro, credits, and the original experience.</span><em>Full Experience</em></button><button type="button" class="mtv-m-card" data-choice="instant"><strong>Instant Michael TV</strong><span>Skip the introduction and explore right away.</span><em>Enter Portfolio</em></button></div><label class="mtv-m-remember"><input type="checkbox" id="mtv-m-remember">Remember my choice</label><p class="mtv-m-footer">Your choice. Your experience.</p></div>`;
   const REMEMBER='michael-tv-remember-choice-v1';
-  const showMobileIntro=()=>{intro.style.display='';$('.mk-mobile-play',intro)?.focus({preventScroll:true});};
+  const showMobileIntro=()=>{intro.style.display='';intro.showModal();$('.mk-mobile-play',intro)?.focus({preventScroll:true});};
   const selectMobile=mode=>{
     const check=$('#mtv-m-remember',choice);
     try{if(check.checked)localStorage.setItem(REMEMBER,mode);else localStorage.removeItem(REMEMBER)}catch{}
     if(typeof navigator.vibrate==='function')navigator.vibrate(10);
     choice.classList.add('is-leaving');
     setTimeout(()=>{
-      choice.remove();
+      choice.close();choice.remove();
       if(mode==='cinema')showMobileIntro();
       else {intro.style.display='none';try{sessionStorage.setItem(KEY,'1')}catch{}}
     },matchMedia('(prefers-reduced-motion:reduce)').matches?170:350);
@@ -124,37 +124,24 @@
   reopen.href='#choose-experience';reopen.textContent='Choose experience';
   reopen.style.cssText='display:inline-block;margin:16px;color:#7651a6;font-weight:600;font-size:13px';
   (document.querySelector('.mk-footer')||document.querySelector('footer'))?.append(reopen);
-  const openChoice=()=>{intro.style.display='none';choice.classList.remove('is-leaving');document.body.append(choice);choice.querySelector('[data-choice]')?.focus({preventScroll:true})};
+  const openChoice=()=>{intro.close();intro.style.display='none';choice.classList.remove('is-leaving');document.body.append(choice);choice.showModal();choice.querySelector('[data-choice]')?.focus({preventScroll:true})};
   reopen.addEventListener('click',e=>{e.preventDefault();openChoice()});
   let stored=null;try{stored=localStorage.getItem(REMEMBER)}catch{}
   if(stored==='cinema')showMobileIntro();
   else if(stored==='instant'){try{sessionStorage.setItem(KEY,'1')}catch{}}
   else openChoice();
-  const voice=add('div',{className:'mk-mobile-voice',hidden:true});
-  voice.setAttribute('role','dialog');voice.setAttribute('aria-label','Welcome recording');
-  voice.innerHTML='<strong>Michael TV</strong><div><button class="mk-mobile-voice-toggle" type="button">Pause</button><button class="mk-mobile-voice-replay" type="button">Replay</button><button class="mk-mobile-voice-close" type="button">Close</button></div><details><summary>Transcript</summary><p>Hey, I\'m Michael. Welcome to my little corner of the internet. I\'m a software engineer passionate about using software engineering, data science, and artificial intelligence to drive innovation across industries and solve real-world problems. I love working at the intersection of finance and technology, building solutions that solve real-world complex problems. This site reflects the projects I\'m building, the experiences I\'ve had, and the ambitions I\'m working towards. I think technology has the power to change finance, and I\'m absolutely determined to be part of that change. But anyway, enough about me. Go have a look around, have a little wander, and enjoy the show.</p></details>';
-  document.body.append(voice);
-  let audio;
-  const finish=()=>{try{sessionStorage.setItem(KEY,'1')}catch{}intro.classList.add('is-leaving');setTimeout(()=>intro.remove(),210);};
+  const finish=()=>{
+    try{sessionStorage.setItem(KEY,'1')}catch{}
+    intro.close();intro.style.display='none';
+    window.dispatchEvent(new CustomEvent('michael-tv:home-enter',{detail:{reason:'mobile'}}));
+  };
   $('.mk-mobile-skip',intro).addEventListener('click',finish);
+  intro.addEventListener('cancel',e=>{e.preventDefault();finish();});
+  choice.addEventListener('cancel',e=>{e.preventDefault();selectMobile('instant');});
   $('.mk-mobile-play',intro).addEventListener('click',()=>{
-   // Invoke play synchronously from user gesture, never from a timer.
-   audio=new Audio('/audio/welcome.m4a?v=2');audio.preload='none';
-   audio.addEventListener('error',()=>{voice.hidden=true;},{once:true});
-   audio.addEventListener('ended',()=>{voice.hidden=true;},{once:true});
-   const playback=audio.play();
-   if(playback&&typeof playback.then==='function')playback.then(()=>{voice.hidden=false;}).catch(()=>{voice.hidden=true;});
-   finish();
+    finish();
+    $('#home .mk-home-welcome-play')?.click();
   });
-  $('.mk-mobile-voice-toggle',voice).addEventListener('click',e=>{
-   if(!audio)return;
-   if(audio.paused){audio.play().catch(()=>{});e.currentTarget.textContent='Pause';}
-   else{audio.pause();e.currentTarget.textContent='Play';}
-  });
-  $('.mk-mobile-voice-replay',voice).addEventListener('click',()=>{if(!audio)return;audio.currentTime=0;audio.play().catch(()=>{});$('.mk-mobile-voice-toggle',voice).textContent='Pause';});
-  $('.mk-mobile-voice-close',voice).addEventListener('click',()=>{audio?.pause();voice.hidden=true;});
-  // Focus follows the selector when visible; otherwise use the graphic-only intro.
-  if(intro.style.display!=='none')$('.mk-mobile-play',intro).focus();
  }
  if(seen){
    const link=add('a',{href:'#choose-experience',textContent:'Choose experience'});
