@@ -46,8 +46,8 @@
  });
  document.body.appendChild(effectWrap);
 
- const channelNames=['HOME','PROJECTS','EXPERIENCE','SKILLS','MILESTONES','NETWORKING','READING','HOBBIES','CONTACT'];
- const channelKeys=['home','projects','experience','skills','milestone','networking','reading','hobbies','contact'];
+ const channelNames=['HOME','PROJECTS','EXPERIENCE','SKILLS','NETWORKING','LITERATURE','HOBBIES','CONTACT'];
+ const channelKeys=['home','projects','experience','skills','networking','reading','hobbies','contact'];
  const bezel=document.createElement('div');
  bezel.className='tv-hardware';
  bezel.setAttribute('aria-label','Michael TV frame');
@@ -99,7 +99,7 @@
  const activeIndex=()=>{
    const p=document.querySelector('.tv-page.is-active');
    const n=Number(p?.dataset.channel);
-   return Number.isInteger(n)&&n>=0&&n<9?n:0;
+   return Number.isInteger(n)&&n>=0&&n<channelKeys.length?n:0;
  };
  setChannelIndex(activeIndex());
  document.addEventListener('portfolio:channel-change',event=>{
@@ -123,7 +123,7 @@
  };
  const navigate=(index)=>{
    if(poweredOff)return;
-   const normalized=(index+9)%9;
+   const normalized=(index+channelKeys.length)%channelKeys.length;
    clickTone();
    window.portfolioGoToChannel?.(channelKeys[normalized]);
  };
@@ -154,7 +154,7 @@
  });
  document.addEventListener('keydown',event=>{
    if(event.defaultPrevented||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey||event.repeat||poweredOff)return;
-   if(!/^[1-9]$/.test(event.key))return;
+   if(!/^[1-8]$/.test(event.key))return;
    if(event.target.closest('input,textarea,select,[contenteditable],[role="spinbutton"],[role="slider"],dialog'))return;
    event.preventDefault();
    const index=Number(event.key)-1;

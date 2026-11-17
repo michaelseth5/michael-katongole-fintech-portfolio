@@ -11,7 +11,7 @@
   const stage = document.createElement('div');
   stage.className = 'gf-stage';
   const year = 2024;
-  const topConnections = 25; // 25 routes: one core and one pulse each (50 arc objects max).
+  const topConnections = 14; // Restore ff97b3c: 14 core routes + 8 pulses (22 meshes max).
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const state = {
     globe: null, features: [], countryByCode: new Map(), selected: null,
@@ -187,7 +187,7 @@
     // and one short traveling pulse. No separate glow geometry.
     const routeLayers = [
       ...arcs.map(route => ({...route, layer:'core'})),
-      ...(!reducedMotion ? arcs.map(route => ({...route, layer:'pulse'})) : [])
+      ...(!reducedMotion ? arcs.slice(0,8).map(route => ({...route, layer:'pulse'})) : [])
     ];
     const endpoints = arcs.flatMap(route => [
       {lat:route.startLat,lng:route.startLng,flow:route.flow},
@@ -510,5 +510,18 @@
     fullscreen.title = active ? 'Exit fullscreen' : 'Expand interactive globe';
     fullscreen.setAttribute('aria-label', fullscreen.title);
   });
-  init();
+  let started = false;
+  const beginWhenVisible = () => {
+    if (started || document.querySelector('#mtv-choice[open],#mtv-intro[open]')) return;
+    if (window.__portfolioChannelIsActive && !window.__portfolioChannelIsActive('home')) return;
+    const box = mount.getBoundingClientRect();
+    if (box.width < 1 || box.height < 1 || box.bottom < 0 || box.top > innerHeight) return;
+    started = true;
+    init();
+  };
+  new IntersectionObserver(beginWhenVisible, {threshold:.05}).observe(mount);
+  document.addEventListener('portfolio:channel-change', beginWhenVisible);
+  window.addEventListener('michael-tv:home-enter', beginWhenVisible);
+  document.addEventListener('sony:startup-complete', () => requestAnimationFrame(beginWhenVisible));
+  beginWhenVisible();
 })();
