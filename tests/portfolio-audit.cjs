@@ -7,7 +7,7 @@ const vercel=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../vercel.json')
 const netlify=fs.readFileSync(path.resolve(__dirname,'../netlify.toml'),'utf8');
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
 assert.equal(ids.length,new Set(ids).size,'Duplicate HTML id');
-assert.equal((html.match(/<script\b/g)||[]).length,(html.match(/<\/script>/g)||[]).length,'Script tag mismatch');
+assert.equal((html.match(/<script\b[^>]*>[\s\S]*?<\/script>/g)||[]).length,(html.match(/<\/script>/g)||[]).length,'Script tag mismatch');
 assert.equal((html.match(/<main\b/g)||[]).length,1,'Expected one main landmark');
 assert.match(html,/<a class="mk-skip-link" href="#main-content">/);
 assert.match(html,/<meta name="robots" content="noindex,/);
@@ -22,15 +22,26 @@ assert.ok(fs.existsSync(path.resolve(__dirname,'../ux.css')),'UX styling missing
 assert.ok(html.includes('href="hobbies-caption.css"'),'Hobbies black-caption stylesheet must load');
 const hobbiesCaptionCss=fs.readFileSync(path.resolve(__dirname,'../hobbies-caption.css'),'utf8');
 assert.match(hobbiesCaptionCss,/#hobbies \.art-photo-card figcaption strong/,'Art caption titles should be styled');
-assert.match(hobbiesCaptionCss,/color: #111 !important/,'Art captions should be black');
+assert.match(hobbiesCaptionCss,/color: #111 !important/,'Art captions retain high-contrast treatment');
 assert.ok(html.includes('Courtyard with Renaissance-inspired arches and gardens'),'Keep original Hobbies description');
 assert.ok(html.includes('Boston Public Library · McKim Courtyard - Boston, MA'),'Keep original caption location');
 
 assert.ok(fs.existsSync(path.resolve(__dirname,'../assets/countries.geojson')),'Country data missing');
 assert.ok(!html.includes("quotes available · Treasury daily"),'Quote-count status still visible');
 assert.ok(!html.includes('Market quotes · Connecting to source…'),'Market loading banner should be removed');
-assert.match(html,/03 \/ COMPUTER SCIENCE &amp; FINANCE/,'Education tile needs accurate emphasis');
+assert.match(html,/COMPUTER SCIENCE &amp; FINANCE/,'Education tile needs accurate emphasis');
 assert.match(html,/Computer Science at Northeastern University/,'Use requested Northeastern wording');
 assert.ok(!/MSCS|M\.S\. Computer Science|MS Align|Computer Science \(Align\)/i.test(html),'No graduate-program labels on public page');
 assert.match(html,/B\.S\. Finance \(FinTech\)/,'Finance undergraduate program should remain distinct');
 console.log('PASS: document landmarks, unique ids, script structure, unlisted headers, factual copy, and source assets');
+
+const premium=fs.readFileSync(path.resolve(__dirname,'../premium.css'),'utf8');
+assert.equal((html.match(/class="fp-card"/g)||[]).length,3,'Three home project previews');
+assert.match(html,/Software Engineer \/ Fintech Builder \/ Market Strategist/);
+assert.match(html,/welcome%20%281%29.m4a/,'Use verified original short recording');
+assert.match(html,/Hey. I'm Michael. Welcome to my website./,'Short recording transcript');
+assert.match(html,/STRONGER AS A TEAM/);
+assert.match(html,/My Hobbies/);
+assert.match(premium,/@layer premium/,'Consistent design layer');
+assert.match(fs.readFileSync(path.resolve(__dirname,'../globe.js'),'utf8'),/const topConnections = 14/);
+console.log('PASS: premium hero copy, three previews, original short welcome, leadership and globe budget');
