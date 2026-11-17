@@ -190,6 +190,7 @@
     current=next;
     const active=panels[current];
     active.classList.add('is-active');
+    active.scrollTop=0; // Native instant reset on each channel change.
     active.setAttribute('aria-hidden','false');
     active.inert=false;
     updateNav();
@@ -220,6 +221,9 @@
       noiseCanvas.style.opacity='0';
       fadeShutter.style.opacity='0';
       busy=false;
+      document.dispatchEvent(new CustomEvent('portfolio:channel-settled',{
+        detail:{key:channels[current].key,index:current}
+      }));
     };
     if(mobile.matches){
       setPanel(index);
