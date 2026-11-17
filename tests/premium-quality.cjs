@@ -103,7 +103,7 @@ const server=http.createServer((req,res)=>{
     if(routes[i]==='skills')assert.ok(await page.getByRole('button',{name:'Figma',exact:true}).isVisible());
     if(routes[i]==='hobbies'){
      await page.getByRole('tab',{name:'R&B Concerts',exact:true}).click();
-     await page.locator('#hobbies .hobby-slide.ug-current').waitFor();
+     await page.locator('#hobbies .hobby-slide[data-slide-label="R&B Concerts"].ug-current').waitFor();
      assert.match(await page.locator('#hobbies .hobby-slide.ug-current').innerText(),/R&B Concerts/);
      assert.match(await page.locator('#hobbies .hobby-slide.ug-current').innerText(),/Under Construction/);
     }

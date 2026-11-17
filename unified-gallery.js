@@ -275,5 +275,5 @@ const initializePortfolioGalleries = () => {
     setupChips(networking, '.network-carousel-controls', '.network-carousel-tabs button', '.network-carousel-track > article');
   }
 };
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializePortfolioGalleries,{once:true});
-else initializePortfolioGalleries();
+if(document.readyState==='complete')initializePortfolioGalleries();
+else document.addEventListener('DOMContentLoaded',initializePortfolioGalleries,{once:true});
