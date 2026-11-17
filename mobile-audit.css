@@ -37,6 +37,10 @@
     overflow-x:clip!important;box-shadow:none!important;
     scroll-margin-top:calc(70px + env(safe-area-inset-top))!important;
   }
+  html.mobile-classic body #main-content > :is(#experience,#project-details,#skills,#achievements,
+    #networking,#listening-reading,#hobbies,#contact,#portfolio-intro-grid) > .container{
+    padding-inline:0!important;width:100%!important;max-width:100%!important;
+  }
   html.mobile-classic body #home.hero.mk-unified-hero{
     background:linear-gradient(180deg,#211333,#170f26)!important;
     min-height:0!important;height:auto!important;
