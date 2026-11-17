@@ -119,3 +119,44 @@
  :root body #home .demo-hero-identity {gap:14px!important}
  :root body #home .demo-hero-identity h1 {font-size:32px!important}
 }
+/* Home previews share the same numbered case-card language as Projects. */
+:root body #portfolio-intro-grid {background:#1b1326!important;color:var(--txt)!important}
+:root body #portfolio-intro-grid .container {max-width:1320px!important}
+:root body #portfolio-intro-grid :is(.mk-intro-top,.mk-bento-craft,.mk-bento-mindset,.mk-nyc-map-card) {color:var(--txt)!important}
+:root body #portfolio-intro-grid :is(h2,h3) {color:var(--txt)!important}
+:root body #portfolio-intro-grid :is(p,.mk-bento-fact) {color:var(--muted)!important}
+:root body #projects {padding:56px 0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+:root body #projects .fp-head {text-align:left!important;max-width:none!important;margin-bottom:26px!important}
+:root body #projects .fp-list {display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:20px!important}
+:root body #projects .fp-card {position:relative!important;display:flex!important;flex-direction:column!important;min-width:0!important;padding:22px!important;background:linear-gradient(155deg,#2e203e,#21172e)!important;border:1px solid var(--line)!important;border-radius:24px!important;box-shadow:0 16px 40px #0002!important;transform:none!important;opacity:1!important}
+:root body #projects .fp-card:hover {border-color:#c6b0eb66!important;box-shadow:0 20px 44px #0003!important;translate:0 -4px}
+:root body #projects .fp-label {font-size:11px!important;letter-spacing:.07em!important;margin:0 0 12px!important}
+:root body #projects .fp-row {gap:10px!important;align-items:start!important}
+:root body #projects .fp-name {font-size:clamp(21px,1.8vw,30px)!important;line-height:1.15!important;letter-spacing:-.04em!important;color:var(--txt)!important}
+:root body #projects .fp-star {position:relative!important;z-index:3!important;flex-shrink:0!important;border:1px solid var(--line)!important;border-radius:999px!important;background:#ffffff08!important;color:#eee5fa!important;padding:9px 12px!important;font-size:12px!important;display:inline-flex!important;align-items:center!important;gap:5px!important}
+:root body #projects .fp-star svg {width:14px!important;height:14px!important;fill:currentColor}
+:root body #projects .fp-frame {height:280px!important;min-height:0!important;margin:18px 0!important;padding:20px 14px 0!important;border-radius:18px!important;overflow:hidden!important;background:linear-gradient(145deg,#59416e,#312242)!important;box-shadow:inset 0 1px 0 #ffffff15!important;border:1px solid #ffffff14!important}
+:root body #projects .fp-desc {position:relative!important;z-index:1!important;color:#eee5fa!important;font-size:13px!important;line-height:1.5!important;margin:0!important;max-width:none!important}
+:root body #projects .fp-stage {position:relative!important;height:195px!important;margin-top:24px!important;transform:none!important;perspective:900px}
+:root body #projects .fp-win {border:1px solid #ffffff36!important;border-radius:12px!important;box-shadow:0 18px 30px #0004!important;background:#20182d!important;padding-top:15px!important;overflow:hidden!important}
+:root body #projects .fp-win:before {background:radial-gradient(circle,#e0cfee 2px,transparent 3px) 8px 50%/8px 8px repeat-x!important;width:24px!important;height:14px!important;top:0!important;left:6px!important}
+:root body #projects .fp-win img {display:block!important;object-fit:cover!important;object-position:top!important;width:100%!important;height:100%!important}
+:root body #projects .fp-win.fp-main {position:absolute!important;inset:10px 2% -25px!important;width:96%!important;height:auto!important;transform:rotateX(5deg)!important;z-index:2!important}
+:root body #projects .fp-back-l {position:absolute!important;left:-6%!important;right:auto!important;top:0!important;width:75%!important;height:160px!important;transform:rotate(-8deg)!important;opacity:.7!important}
+:root body #projects .fp-back-r {position:absolute!important;right:-6%!important;left:auto!important;top:0!important;width:75%!important;height:160px!important;transform:rotate(8deg)!important;opacity:.7!important}
+:root body #projects .fp-tags {display:flex!important;flex-wrap:wrap!important;gap:6px!important;margin:0!important;padding:0!important;list-style:none!important}
+:root body #projects .fp-tags li {color:#d2c4e2!important;background:#ffffff08!important;border:1px solid #ffffff18!important;border-radius:999px!important;padding:5px 9px!important;font-size:11px!important}
+:root body #projects .fp-more {display:inline-flex!important;align-items:center!important;min-height:44px!important;margin-top:24px!important;color:var(--accent)!important;font-size:14px!important}
+:root body #project-details {background:#140e20!important;color:var(--txt)!important}
+:root body #project-details .project-block {padding:28px!important;margin-bottom:24px!important;gap:28px!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important}
+:root body #project-details .project-block h2 {font-size:clamp(26px,2.6vw,42px)!important;line-height:1.15!important}
+:root body #project-details :is(.fp-walkthrough,.fp-walkthrough-body,.fp-case-body,.case-box) {background:#1c1428!important;color:var(--txt)!important;border-color:var(--line)!important;border-radius:20px!important}
+:root body #project-details :is(.fp-walkthrough,.fp-case-body,.project-expand) :is(p,li,span) {color:inherit}
+:root body #project-details :is(.fp-walkthrough,.fp-case-body) p {color:var(--muted)!important}
+:root body #project-details .fp-frame {border-radius:20px!important;overflow:hidden!important}
+:root body #project-details .fp-case-actions {flex-wrap:wrap!important}
+:root body .mk-site-footer {padding:24px 32px!important;background:#191221!important;border-top:1px solid var(--line)!important;color:var(--muted)!important;min-height:0!important}
+:root body .mk-footer-inner {display:flex!important;flex-wrap:wrap!important;justify-content:space-between!important;align-items:center!important;gap:12px 24px!important;max-width:1320px!important;margin:auto!important;padding:0!important}
+:root body .mk-footer-nav {gap:14px!important;flex-wrap:wrap!important}
+:root body .mk-footer-nav a {display:inline-flex!important;align-items:center!important;min-height:44px!important;font-size:12px!important;color:inherit!important}
+:root body .mk-footer-icons a {width:44px!important;height:44px!important;color:inherit!important}
