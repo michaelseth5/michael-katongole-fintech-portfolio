@@ -1239,6 +1239,10 @@ requestAnimationFrame(()=>{
 </script><dialog id="fp-case-lightbox" aria-label="Project screenshot viewer"><div class="fp-lightbox-shell"><button type="button" class="fp-close" aria-label="Close image viewer">×</button><button type="button" class="fp-prev" aria-label="Previous screenshot">‹</button><img class="fp-lightbox-image" alt="" src=""><button type="button" class="fp-next" aria-label="Next screenshot">›</button><span class="fp-counter" aria-live="polite"></span></div></dialog>
 <script id="synapse-inline-walkthrough-init">
 (()=>{
+ let initialized=false;
+ const initialize=()=>{
+
+(()=>{
 "use strict";
 const specs=[
  {repo:"https://github.com/michaelseth5/synapse-solution",id:"project-1",name:"Synapse Solution",kind:"synapse",
@@ -1469,6 +1473,20 @@ specs.forEach(cfg=>{
  go(0);
 });
 })();
+
+ };
+ const activate=()=>{
+  if(initialized)return;
+  const root=document.getElementById('project-details');
+  const active=window.__portfolioChannelIsActive?window.__portfolioChannelIsActive('projects'):root?.hasAttribute('data-mk-active');
+  if(!active)return;
+  initialized=true;initialize();
+ };
+ document.addEventListener('portfolio:channel-change',activate);
+ document.addEventListener('portfolio:mobile-page-change',activate);
+ document.addEventListener('DOMContentLoaded',activate,{once:true});
+ activate();
+})();
 </script>
 <script id="fp-case-lightbox-init">
 (()=>{"use strict";
@@ -1580,6 +1598,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 <script id="mk-hobbies-accessible-lightbox">
 (()=>{
+ let initialized=false;
+ const initialize=()=>{
+
+(()=>{
  const init=()=>{
   const root=document.getElementById('hobbies');if(!root)return;
   const slides=[...root.querySelectorAll('.hobby-carousel-track>.hobby-slide')];
@@ -1675,5 +1697,19 @@ document.addEventListener('DOMContentLoaded',()=>{
   },{passive:true});
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+
+ };
+ const activate=()=>{
+  if(initialized)return;
+  const root=document.getElementById('hobbies');
+  const active=window.__portfolioChannelIsActive?window.__portfolioChannelIsActive('hobbies'):root?.hasAttribute('data-mk-active');
+  if(!active)return;
+  initialized=true;initialize();
+ };
+ document.addEventListener('portfolio:channel-change',activate);
+ document.addEventListener('portfolio:mobile-page-change',activate);
+ document.addEventListener('DOMContentLoaded',activate,{once:true});
+ activate();
 })();
 </script><script src="mobile-audit.js?v=1" defer></script><script src="site-footer.js?v=1" defer></script><script src="mobile-router.js?v=1" defer></script><script src="scroll-flow.js?v=1" defer></script><script src="premium.js?v=1" defer></script></body></html>

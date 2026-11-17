@@ -262,18 +262,28 @@ const initializePortfolioGalleries = () => {
     root.classList.add('ug-root-ready');
     sync();
   }
-  roots.forEach(root => root.querySelectorAll('.photo-carousel-shell').forEach(shell => setupAlbum(shell, root)));
-  const hobbies = document.getElementById('hobbies');
-  if (hobbies) setupChips(hobbies, '.hobby-carousel-controls', '.hobby-carousel-dots button', '.hobby-carousel-track > article');
-  const networking = document.getElementById('networking');
-  if (networking) {
-    const controls = networking.querySelector('.network-carousel-controls');
-    if (controls && !controls.querySelector('.ug-event-number')) {
-      const badge = document.createElement('span');badge.className = 'ug-event-number';badge.setAttribute('aria-label','Event number');
-      controls.prepend(badge);
+  const initialized=new WeakSet();
+  function activate(root){
+    if(initialized.has(root))return;
+    initialized.add(root);
+    root.querySelectorAll('.photo-carousel-shell').forEach(shell=>setupAlbum(shell,root));
+    if(root.id==='hobbies')setupChips(root,'.hobby-carousel-controls','.hobby-carousel-dots button','.hobby-carousel-track > article');
+    if(root.id==='networking'){
+      const controls=root.querySelector('.network-carousel-controls');
+      if(controls&&!controls.querySelector('.ug-event-number')){
+        const badge=document.createElement('span');badge.className='ug-event-number';badge.setAttribute('aria-label','Event number');controls.prepend(badge);
+      }
+      setupChips(root,'.network-carousel-controls','.network-carousel-tabs button','.network-carousel-track > article');
     }
-    setupChips(networking, '.network-carousel-controls', '.network-carousel-tabs button', '.network-carousel-track > article');
   }
+  const activateCurrent=()=>roots.forEach(root=>{
+    const active=window.__portfolioChannelIsActive?window.__portfolioChannelIsActive(root.id):root.hasAttribute('data-mk-active');
+    if(active)activate(root);
+  });
+  document.addEventListener('portfolio:channel-change',activateCurrent);
+  document.addEventListener('portfolio:mobile-page-change',activateCurrent);
+  activateCurrent();
+
 };
 if(document.readyState==='complete')initializePortfolioGalleries();
 else document.addEventListener('DOMContentLoaded',initializePortfolioGalleries,{once:true});

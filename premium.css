@@ -400,4 +400,10 @@
 
 /* The first-screen heading uses the font weight already preloaded in the head. */
 :root body :is(#mtv-mobile-choice,#mtv-choice) h2 {font-family:'Space Grotesk',system-ui,sans-serif!important;font-weight:700!important}
+
+:root body #home .mk-home-welcome-transcript summary {color:#e3d4f2!important}
+:root body #contact :is(.back,.highlight) {color:#59416f!important;-webkit-text-fill-color:#59416f!important}
+:root body #contact .mk-chat-beta {background:#59416f!important;color:#fff!important}
+:root body :is(#hobbies,#networking,#listening-reading) :is(.hobby-slide h2,.seo-event-header h2,.network-event-slide h2,.lr-book-card h3,.lr-podcast-card h3) {color:var(--txt)!important}
+:root body #listening-reading p {color:var(--muted)!important}
 }
