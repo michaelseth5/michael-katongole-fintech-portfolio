@@ -30,13 +30,20 @@
       button.className='mk-mobile-skill';
       button.setAttribute('aria-pressed','false');
       button.setAttribute('aria-label',name);
-      const img=document.createElement('img');
-      img.src='assets/skills/'+file+'.svg';
-      img.alt='';img.loading='lazy';img.decoding='async';
-      img.width=29;img.height=29;
+      const icon=document.createElement('span');
+      if(file==='mysql'){
+        // SQL has no matching local SVG; use an accessible text mark instead.
+        icon.className='mk-mobile-skill-glyph';icon.textContent='DB';
+      }else{
+        const img=document.createElement('img');
+        img.src='assets/skills/'+file+'.svg';
+        img.alt='';img.loading='lazy';img.decoding='async';
+        img.width=29;img.height=29;
+        icon.appendChild(img);
+      }
       const text=document.createElement('span');
       text.textContent=name;
-      button.append(img,text);
+      button.append(icon,text);
       button.addEventListener('click',()=>{
         const selected=button.getAttribute('aria-pressed')==='true';
         grid.querySelectorAll('[aria-pressed]').forEach(item=>item.setAttribute('aria-pressed','false'));
