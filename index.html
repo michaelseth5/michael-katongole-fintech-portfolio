@@ -2750,7 +2750,7 @@ body .apple-topbar {
   #contact .mk-chat-panel .mk-chat-form{margin-top:auto!important}
 }
 </style>
-<link rel="stylesheet" href="mobile-classic.css?v=3"/><link rel="stylesheet" href="editorial-titles.css?v=2"/><link rel="stylesheet" href="desktop-theatre.css?v=3" media="(min-width: 768px)"/><style>
+<link rel="stylesheet" href="mobile-classic.css?v=3"/><link rel="stylesheet" href="mobile-audit.css?v=1"/><link rel="stylesheet" href="editorial-titles.css?v=2"/><link rel="stylesheet" href="desktop-theatre.css?v=3" media="(min-width: 768px)"/><style>
 /* Center the Hobbies card copy consistently, with readable line lengths. */
 #hobbies .hobby-carousel-track > .hobby-slide > .eyebrow,
 #hobbies .hobby-carousel-track > .hobby-slide > .networking-hobby-kicker,
@@ -4096,6 +4096,8 @@ body .apple-topbar {
 <script id="mk-skills-sphere-v2">
 (() => {
  "use strict";
+ // The small-screen icon grid is built by mobile-audit.js; skip sphere canvas and RAF.
+ if (matchMedia('(max-width: 767px)').matches) return;
  const host=document.getElementById("mk-skills-visual");
  const canvas=document.getElementById("mk-skills-wireframe");
  const layer=document.getElementById("mk-skills-logos");
@@ -7440,4 +7442,4 @@ body.tv-mode #main-content.tv-stage .tv-page.is-active #contact.section #mk-port
   transition:none!important;
  }
 }
-</style><script src="site-footer.js?v=1" defer></script><script src="scroll-flow.js?v=1" defer></script></body></html>
+</style><script src="mobile-audit.js?v=1" defer></script><script src="site-footer.js?v=1" defer></script><script src="scroll-flow.js?v=1" defer></script></body></html>
