@@ -50,67 +50,14 @@
  // The Education block remains the same DOM node; it belongs under Skills on mobile.
  const edu=$('.mk-craft-education');const skills=$('#skills');
  if(edu&&skills){const placeholder=document.createComment('Education original location');edu.before(placeholder);skills.append(edu);window.addEventListener('resize',()=>{if(!mq.matches)placeholder.after(edu);else skills.append(edu);});}
- // Static globe remains an image on mobile: zoom affects only the image, never
- // initializes WebGL, Sony hardware, or the desktop globe controls.
- const staticGlobe=$('#home .mk-unified-globe.globe-wrap');
- if(staticGlobe){
-   const visual=add('div',{className:'mk-mobile-globe-visual'});
-   visual.setAttribute('role','img');
-   visual.setAttribute('aria-label','Static Earth globe');
-   staticGlobe.append(visual);
-   const mobileZoom=add('div',{className:'mk-mobile-globe-zoom'});
-   mobileZoom.setAttribute('role','group');
-   mobileZoom.setAttribute('aria-label','Static globe zoom');
-   const makeZoom=(symbol,label)=> {
-     const button=add('button',{type:'button',textContent:symbol});
-     button.setAttribute('aria-label',label);
-     return button;
-   };
-   const plus=makeZoom('+','Zoom in on globe');
-   const minus=makeZoom('−','Zoom out from globe');
-   const reset=makeZoom('↺','Reset globe zoom');
-   mobileZoom.append(minus,reset,plus);
-   staticGlobe.after(mobileZoom);
-   let zoom=1, pinchFrame=0, pendingZoom=1;
-   const changeZoom=value=>{
-     zoom=Math.min(3,Math.max(.6,value));
-     pendingZoom=zoom;
-     if(pinchFrame)return;
-     pinchFrame=requestAnimationFrame(()=>{
-       pinchFrame=0;
-       visual.style.setProperty('--mk-mobile-zoom',String(pendingZoom));
-     });
-   };
-   plus.addEventListener('click',()=>changeZoom(zoom*1.3));
-   minus.addEventListener('click',()=>changeZoom(zoom/1.3));
-   reset.addEventListener('click',()=>changeZoom(1));
-   let lastDistance=null;
-   const pinchDistance=touches=>Math.hypot(
-     touches[0].clientX-touches[1].clientX,
-     touches[0].clientY-touches[1].clientY
-   );
-   staticGlobe.addEventListener('touchstart',e=>{
-     if(e.touches.length===2){
-       lastDistance=pinchDistance(e.touches);
-       visual.classList.add('is-pinching'); // No transition while fingers move.
-     }
-   },{passive:true});
-   staticGlobe.addEventListener('touchmove',e=>{
-     if(e.touches.length!==2){lastDistance=null;return;}
-     e.preventDefault();
-     const next=pinchDistance(e.touches);
-     if(lastDistance)changeZoom(zoom*next/lastDistance);
-     lastDistance=next;
-   },{passive:false});
-   const endPinch=e=>{
-     if(e.touches.length!==2){
-       lastDistance=null;
-       visual.classList.remove('is-pinching');
-     }
-   };
-   staticGlobe.addEventListener('touchend',endPinch);
-   staticGlobe.addEventListener('touchcancel',endPinch);
- }
+ // No globe assets, controls, canvas, trade data, or placeholder on mobile.
+ // Desktop Globe.gl remains in its original channel and is loaded only above 767px.
+ const heroRight=$('#home .mk-home-right');
+ if(heroRight)heroRight.remove();
+ const standaloneGlobe=$('#home .mk-unified-globe.globe-wrap');
+ if(standaloneGlobe)standaloneGlobe.remove();
+ const globeCaption=$('#home .mk-home-globe-caption');
+ if(globeCaption)globeCaption.remove();
 
  $$('details.project-expand').forEach(detail=>{
    detail.open=false;
