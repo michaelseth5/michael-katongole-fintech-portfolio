@@ -512,6 +512,7 @@
   });
   let started = false;
   const beginWhenVisible = () => {
+    if (window.__sonyBootComplete === false) return;
     if (started || document.querySelector('#mtv-choice[open],#mtv-intro[open]')) return;
     if (window.__portfolioChannelIsActive && !window.__portfolioChannelIsActive('home')) return;
     const box = mount.getBoundingClientRect();

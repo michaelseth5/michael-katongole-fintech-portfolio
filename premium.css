@@ -1,3 +1,4 @@
+@layer premium {
 /* One visual language. Authored content and TV controls retain their own DOM. */
 :root { --bg:#0e0b15; --panel:#20182d; --panel2:#291e39; --line:#ffffff24; --txt:#f7f4fb; --muted:#c2b7ce; --purple:#c6b0eb; --cyan:#c6b0eb; --lime:#c6b0eb; --accent:#c6b0eb; --max:1320px; --ease:cubic-bezier(.22,1,.36,1); --radius:24px; }
 :root body {background:#0e0b15!important;color:var(--txt)!important;font:400 16px/1.6 'DM Sans',system-ui,sans-serif!important}
@@ -160,3 +161,41 @@
 :root body .mk-footer-nav {gap:14px!important;flex-wrap:wrap!important}
 :root body .mk-footer-nav a {display:inline-flex!important;align-items:center!important;min-height:44px!important;font-size:12px!important;color:inherit!important}
 :root body .mk-footer-icons a {width:44px!important;height:44px!important;color:inherit!important}
+/* Skills: one solid orb, one family of glass tiles, and readable skill lists. */
+:root body #skills {background:linear-gradient(180deg,#160f24,#2e1e40 65%,#503b64)!important;color:var(--txt)!important}
+:root body #skills .container {max-width:1320px!important}
+:root body #skills .mk-skills-orbit {width:min(680px,100%)!important;height:clamp(400px,48dvh,540px)!important;min-height:0!important;background:transparent!important;border:0!important;margin:16px auto 28px!important;isolation:isolate}
+:root body #skills .mk-skills-orbit::before {display:block!important;content:''!important;position:absolute!important;left:50%!important;top:50%!important;inset:auto!important;translate:-50% -50%;width:var(--mk-sphere-size,380px)!important;height:var(--mk-sphere-size,380px)!important;border-radius:50%!important;background:radial-gradient(circle at 32% 27%,#9870b9,#654181 40%,#352146 78%,#21142f)!important;box-shadow:inset -22px -24px 55px #120b2680,inset 3px 4px 18px #d9b8ff30,0 0 65px #b38bd535!important;z-index:-1!important;pointer-events:none}
+:root body #skills #mk-skills-wireframe {opacity:0!important}
+:root body #skills .mk-skill-particle {min-width:54px!important;min-height:54px!important;padding:4px!important;border:0!important;outline-offset:2px!important;background:transparent!important;pointer-events:auto!important}
+:root body #skills .mk-skill-particle .mk-icon {width:52px!important;height:52px!important;border-radius:16px!important;background:#f7f1ffed!important;border:1px solid #ffffffa0!important;box-shadow:0 8px 24px #0d071e55!important;backdrop-filter:blur(16px)}
+:root body #skills .mk-skill-particle:is(:hover,:focus-visible,.mk-skill-selected) .mk-icon {box-shadow:0 0 0 3px #d9b8ff,0 0 30px #c6b0eb66!important}
+:root body #skills .mk-skills-status {position:absolute!important;bottom:0!important;top:auto!important;left:50%!important;transform:translateX(-50%)!important;background:#1d142bcc!important;color:#eee5fa!important;border:1px solid #ffffff28!important;border-radius:999px!important;padding:9px 18px!important;font-size:13px!important;width:max-content!important;max-width:100%!important;text-align:center!important}
+:root body #skills .mk-skills-legend {text-align:center!important;color:#e2d6ed!important;font-size:14px!important;margin:12px auto 32px!important}
+:root body #skills .three {grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important}
+:root body #skills .large-panel {padding:24px!important;min-height:0!important;--skill-accent:#c6b0eb;--skill-rgb:198,176,235}
+:root body #skills .large-panel::before {display:none!important}
+:root body #skills .skill {background:#ffffff08!important;border:1px solid var(--line)!important;color:#eee5fa!important;padding:7px 11px!important;border-radius:10px!important;font-size:13px!important}
+:root body #skills .eyebrow {color:#dfc9f5!important}
+/* Experience, galleries, and interests use the same spacing and muted surfaces. */
+:root body #experience,:root body #experience #achievements {background:transparent!important;color:var(--txt)!important}
+:root body #experience .mk-exp-tabs {margin:0 auto 32px!important;background:#ffffff08!important;border:1px solid var(--line)!important}
+:root body #experience .mk-exp-tabs button {min-height:44px!important;color:var(--txt)!important}
+:root body #experience .mk-exp-tabs button[aria-selected=true] {background:var(--accent)!important;color:#1b1229!important}
+:root body #experience .timeline {grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px!important}
+:root body #experience .job {display:grid!important;grid-template-columns:1fr!important;gap:18px!important;padding:28px!important;align-items:start!important}
+:root body #experience .job .date {color:var(--accent)!important}
+:root body #experience .demo-milestone {padding:26px!important}
+:root body #experience #achievements .page-title {color:var(--txt)!important}
+:root body :is(#networking,#hobbies,#listening-reading) {background:transparent!important;color:var(--txt)!important}
+:root body :is(#networking,#hobbies,#listening-reading) :is(.page-title,.mk-title-solid,.mk-intro-heading,.lr-title) {color:var(--txt)!important;-webkit-text-fill-color:var(--txt)!important;background:none!important}
+:root body :is(#networking,#hobbies,#listening-reading) :is(.seo-event-header,.network-carousel-controls,.hobbies-carousel-wrap,.hobby-carousel-controls,.lr-podcast-card,.lr-book-card) {background:#21172e!important;color:var(--txt)!important;border-color:var(--line)!important;box-shadow:none!important;border-radius:20px!important}
+:root body :is(#networking,#hobbies,#listening-reading) :is(.seo-event-copy,.hobby-slide>p,.lr-subtitle,.lr-podcast-description) {color:var(--muted)!important}
+:root body :is(#networking,#hobbies) .ug-chip-rail button {background:#ffffff08!important;color:#e1d5ec!important;border:1px solid var(--line)!important;border-radius:999px!important;min-height:44px!important;font-size:13px!important}
+:root body :is(#networking,#hobbies) .ug-chip-rail button:is(.active,[aria-selected=true]) {background:var(--accent)!important;color:#1b1229!important;border-color:var(--accent)!important}
+:root body #hobbies .rb-converts-slide {background:linear-gradient(140deg,#2b1f3a,#1b1425)!important;color:var(--txt)!important}
+:root body #hobbies .rb-converts-status {background:#c6b0eb1a!important;color:#e1c9f7!important;border:1px solid #c6b0eb55!important}
+:root body #hobbies .sports-emoji-card {background:#2b2039!important;border:1px solid var(--line)!important;border-radius:20px!important;color:var(--txt)!important}
+:root body #hobbies :is(.sports-emoji-label,.sports-emoji-copy) {color:var(--txt)!important;opacity:1!important;visibility:visible!important}
+
+}
