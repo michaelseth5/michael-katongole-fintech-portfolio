@@ -2,15 +2,44 @@
 /* Small, accessible interactions shared by every portfolio page. */
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const tabs = [...document.querySelectorAll('[data-lane]')];
+  const tabs = [...document.querySelectorAll('#home [data-lane]')];
+  const rail = document.querySelector('#home .hero-lane-tabs');
+  const railFrame = rail?.closest('.hero-lane-tab-rail');
+  const announcement = document.querySelector('#home .hero-role-announcement');
+  let panelAnimation = null;
+  function updateEdges() {
+    if(!rail || !railFrame)return;
+    railFrame.dataset.edgeLeft = String(rail.scrollLeft > 2);
+    railFrame.dataset.edgeRight = String(rail.scrollWidth - rail.clientWidth - rail.scrollLeft > 2);
+  }
   function select(tab, focus = false) {
+    const changed = tab.getAttribute('aria-selected') !== 'true';
+    panelAnimation?.cancel();
     tabs.forEach(button => {
       const active = button === tab;
+      const panel = document.getElementById(button.getAttribute('aria-controls'));
       button.setAttribute('aria-selected', String(active));
       button.tabIndex = active ? 0 : -1;
-      document.getElementById(button.getAttribute('aria-controls')).hidden = !active;
+      panel.hidden = !active;
+      panel.inert = !active;
+      panel.tabIndex = active ? 0 : -1;
+      panel.setAttribute('aria-hidden', String(!active));
+      if(active && changed) {
+        panel.scrollTop = 0;
+        if(!reduced.matches) panelAnimation = panel.animate(
+          [{opacity:0,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],
+          {duration:280,easing:'cubic-bezier(.22,1,.36,1)'}
+        );
+        announcement.textContent = tab.textContent.trim() + '. ' + panel.textContent.trim();
+      }
     });
     if (focus) tab.focus({preventScroll:true});
+    if(rail && rail.scrollWidth > rail.clientWidth + 2) {
+      const box=tab.getBoundingClientRect(),parent=rail.getBoundingClientRect();
+      rail.scrollTo({left:rail.scrollLeft+box.left-parent.left-(rail.clientWidth-box.width)/2,
+        behavior:reduced.matches?'instant':'smooth'});
+    }
+    requestAnimationFrame(updateEdges);
   }
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => select(tab));
@@ -22,6 +51,14 @@
       select(tabs[next], true);
     });
   });
+  document.querySelectorAll('#home .hero-lane-panel').forEach(panel=>panel.addEventListener('keydown',event=>{
+    if(['ArrowUp','ArrowDown','PageUp','PageDown','Home','End'].includes(event.key))event.stopPropagation();
+  }));
+  rail?.addEventListener('scroll', updateEdges, {passive:true});
+  if(rail)new ResizeObserver(updateEdges).observe(rail);
+  document.fonts?.ready.then(updateEdges);
+  reduced.addEventListener('change',()=>{if(reduced.matches)panelAnimation?.cancel();});
+  updateEdges();
   const experienceButton=document.createElement('button');
   experienceButton.type='button';experienceButton.className='tv-experience-button';
   experienceButton.textContent='Michael TV';

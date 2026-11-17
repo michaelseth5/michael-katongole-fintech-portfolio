@@ -36,10 +36,21 @@ const server=http.createServer((req,res)=>{
   await fresh.locator('#mtv-intro[open]').waitFor({state:'hidden'});
   await fresh.locator('#financial-globe canvas').waitFor({timeout:60000});
   assert.equal(await fresh.locator('.mk-home-welcome-play').isEnabled(),true);
-  await fresh.locator('#lane-fintech').click();
-  assert.equal(await fresh.locator('#panel-fintech').isVisible(),true);
-  await fresh.locator('#lane-fintech').press('ArrowRight');
+  await fresh.locator('#lane-quant').click();
+  assert.equal(await fresh.locator('#panel-quant').isVisible(),true);
+  await fresh.locator('#lane-quant').press('ArrowRight');
   assert.equal(await fresh.locator('#panel-strategy').isVisible(),true);
+  const roleHeight=await fresh.locator('.hero-lane-panels').evaluate(e=>e.getBoundingClientRect().height);
+  assert.equal(await fresh.locator('.hero-lane-tabs [role=tab]').count(),4);
+  for(const role of ['software','quant','strategy','product']){
+    await fresh.locator('#lane-'+role).click();
+    assert.equal(await fresh.locator('#panel-'+role).isVisible(),true);
+    assert.equal(await fresh.locator('.hero-lane-panels').evaluate(e=>e.getBoundingClientRect().height),roleHeight,'Stable role panel height');
+  }
+  assert.match(await fresh.locator('.hero-role-announcement').getAttribute('aria-live'),/polite/);
+  await fresh.locator('#lane-product').press('Home');
+  assert.equal(await fresh.locator('#lane-software').getAttribute('aria-selected'),'true');
+
   assert.equal(await fresh.locator('#home h1').innerText(),"Hi, I'm\nMichael Katongole.");
   await fresh.close();
   const freshMobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
