@@ -12,7 +12,8 @@
     '.timeline > article','.selected-projects-grid > *','.project-block',
     '.dev-milestone','.dev-track > .dev-program',
     '.network-event-slide','.large-panel','.mk-connect-left',
-    '.mk-chat-panel','.hobbies-carousel-wrap','.mk-craft-education'
+    '.mk-chat-panel','.hobbies-carousel-wrap','.mk-craft-education',
+    '.mk-site-footer'
   ].join(',');
   let io=null,scrollRoot=null,raf=0,activePage=null;
   const ready=new WeakSet();
