@@ -1,0 +1,13 @@
+name: Live portfolio fingerprint
+on:
+  pull_request:
+    branches: [production]
+  push:
+    branches: [production]
+jobs:
+  fingerprint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/stamp-assets.py --check
+      - run: python3 scripts/check-live-fingerprint.py
