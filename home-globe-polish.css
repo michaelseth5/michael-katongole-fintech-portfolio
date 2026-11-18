@@ -124,7 +124,9 @@
     max-width:100%!important;
   }
   #home.hero.mk-unified-hero > .fade.mk-unified-identity > p,
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity > p {
+  #home.hero.mk-unified-hero > .fade.mk-unified-identity :where(.hero-role-panel) > p,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity > p,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity :where(.hero-role-panel) > p {
     font-size:clamp(12px,.99vw,16px)!important;
     line-height:1.48!important;
     max-width:61ch!important;
@@ -736,7 +738,9 @@
     line-height:1.38!important;
   }
   #home.hero.mk-unified-hero > .fade.mk-unified-identity > p,
-  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity > p {
+  #home.hero.mk-unified-hero > .fade.mk-unified-identity :where(.hero-role-panel) > p,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity > p,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity :where(.hero-role-panel) > p {
     font-size:clamp(14px,1.12vw,19px)!important;
     line-height:1.57!important;
     max-width:64ch!important;
@@ -812,7 +816,9 @@
     font-size:clamp(14px,1.08vw,17px)!important;
   }
   #home.hero.mk-unified-hero > .fade.mk-unified-identity > p,
+  #home.hero.mk-unified-hero > .fade.mk-unified-identity :where(.hero-role-panel) > p,
   body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity > p,
+  body.tv-mode .tv-hardware #main-content.tv-stage #home > .fade.mk-unified-identity :where(.hero-role-panel) > p,
   #home.hero.mk-unified-hero .mk-vision-market-statement {
     font-size:clamp(13px,.98vw,15px)!important;
     line-height:1.43!important;

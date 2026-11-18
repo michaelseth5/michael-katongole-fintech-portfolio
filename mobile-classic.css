@@ -158,7 +158,8 @@ html.mobile-classic :is(.marquee,.marquee-inner,.preview-track,.mk-glow,.mk-reve
     background:none!important;filter:none!important;text-shadow:none!important;
   }
   html.mobile-classic body #home.hero.mk-unified-hero .subtitle,
-  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-identity > p {
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-identity > p,
+  html.mobile-classic body #home.hero.mk-unified-hero .mk-unified-identity :where(.hero-role-panel) > p {
     width:100%!important;max-width:390px!important;margin:0 auto!important;
     font-size:16px!important;line-height:1.6!important;
     color:#51435e!important;-webkit-text-fill-color:#51435e!important;text-align:center!important;
