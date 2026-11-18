@@ -32,3 +32,11 @@ The Yahoo Finance chart URL is **unofficial** and may fail due to access restric
 - Add verified GitHub, LinkedIn, project-demo and walkthrough URLs.
 - Verify education and job timeline text and review the included resume for accuracy and privacy.
 - Check the deployed site on mobile and verify live market status after deployment.
+
+## Vercel release workflow
+
+- Production deploys come from the `production` branch only.
+- Run `python3 scripts/stamp-assets.py` after changing versioned CSS or JavaScript, then open a PR into `production`.
+- Preview the merged commit and compare it with [the fingerprint](docs/LIVE-FINGERPRINT.md) on desktop and at 375px before promotion.
+- To roll back, use Vercel Deployments to restore the previous verified deployment and check the live URL again.
+- Never promote a deployment from a non-production branch.
