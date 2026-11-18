@@ -6114,18 +6114,13 @@ body.hob-lightbox-open{overflow:hidden!important}
   -webkit-text-fill-color:#8754b0!important;
 }
 
-/* Light lavender gradient for Let's Connect only; preserve its layout and chat behavior. */
+/* Use the same section gradient and lavender overlay as Hobbies. */
 #contact.section{
   --section-accent:#8a57b5;
   color:#3a294c!important;
-  background:linear-gradient(180deg,#fffaff 0%,#f4eafb 50%,#e9daf5 100%)!important;
-  background-image:linear-gradient(180deg,#fffaff 0%,#f4eafb 50%,#e9daf5 100%)!important;
-  background-color:#f4eafb!important;
-  background-repeat:no-repeat!important;
-  background-size:100% 100%!important;
+  background:var(--portfolio-surface)!important;
   border-top:1px solid rgba(182,148,209,.32)!important;
 }
-#contact.section::before{background:none!important;background-image:none!important;opacity:0!important}
 #contact.section .mk-connect-left{
   background:linear-gradient(150deg,rgba(255,255,255,.94),rgba(245,234,253,.92))!important;
   border:1px solid #d9c2e8!important;
