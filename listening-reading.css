@@ -66,3 +66,9 @@
 @media(max-width:700px){
  #listening-reading .lr-books{grid-template-columns:1fr}
 }
+
+/* Center the two finance/business podcasts on row two of the four-column desktop playlist. */
+@media(min-width:901px){
+ #listening-reading .lr-podcasts .lr-card--allin{grid-column:2}
+ #listening-reading .lr-podcasts .lr-card--wallstreet{grid-column:3}
+}
