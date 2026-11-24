@@ -1,5 +1,5 @@
 'use strict';
-/* Desktop-only spotlight reveal after Michael TV finishes. Welcome playback is optional. */
+/* Desktop-only Broadway reveal, after Michael TV finishes. Decorative and non-interactive. */
 (() => {
   if (!matchMedia('(min-width: 768px)').matches ||
       document.documentElement.classList.contains('mobile-classic')) return;
@@ -48,7 +48,6 @@
     if (spotlight && !raf) raf = requestAnimationFrame(updateTarget);
   }
   function stopEffects() {
-    button()?.removeEventListener('click',stopEffects);
     clearTimeout(curtainTimer);clearTimeout(endTimer);clearTimeout(fallbackTimer);
     curtainTimer=endTimer=fallbackTimer=0;
     if (raf) cancelAnimationFrame(raf);raf=0;
@@ -69,7 +68,6 @@
     updateTarget();
     if (!spotlight) return;
     lighting = true;
-    button()?.addEventListener('click',stopEffects,{once:true});
     // The spotlight clock runs for exactly 7000 ms, regardless of curtain timing.
     spotlight.classList.add('is-running');
     endTimer = setTimeout(stopEffects,LIGHT_MS);
@@ -79,7 +77,18 @@
     started = true;
     markShown();
     if (reduced.matches) return; // Reduced-motion users see the page directly.
-    beginLight();
+    scene = document.createElement('div');
+    scene.className = 'mk-broadway-scene';
+    scene.setAttribute('aria-hidden','true');
+    scene.innerHTML =
+      '<div class="mk-broadway-curtain mk-broadway-left"></div>' +
+      '<div class="mk-broadway-curtain mk-broadway-right"></div>' +
+      '<div class="mk-broadway-valance"></div>';
+    document.body.append(scene);
+    requestAnimationFrame(() => requestAnimationFrame(() => scene?.classList.add('is-opening')));
+    curtainTimer = setTimeout(beginLight,CURTAIN_MS);
+    // Curtain removal must not stop the spotlight.
+    fallbackTimer = setTimeout(()=>{scene?.remove();scene=null;fallbackTimer=0},1550);
   }
   function onIntroOpen() { stopEffects(); } // Do not replay once the visit's light show ran.
   window.addEventListener('michael-tv:intro-open',onIntroOpen);
