@@ -159,7 +159,7 @@
      welcomeCaption.textContent='Tap to hear my welcome.';
    });
  };
- const startWelcome=()=>{ startOutro(); };
+ const startWelcome=()=>{ finish('films-ended'); };
  welcomeTap.addEventListener('click',playWelcome);
  welcomeNext.addEventListener('click',()=>finish('welcome-skip'));
  welcomeVoice.addEventListener('ended',()=>{if(active&&!exiting&&activeWelcomeMedia===welcomeVoice)startOutro()});
@@ -357,7 +357,7 @@
            }else if(event.data===YT.PlayerState.ENDED){
              // Ignore a late end event from the first clip during the handoff.
              if(switching)return;
-             if(playingOutro)finish('outro-ended');else if(showingCouch)playMainVideo();else startOutro();
+             if(playingOutro)finish('outro-ended');else if(showingCouch)playMainVideo();else finish('films-ended');
            }
          },
          onError:()=>playingOutro?showOutroFallback():finish('error')
@@ -402,7 +402,6 @@
  };
  function finish(reason){
    if(!active||exiting)return;
-   if(reason==='ended'&&!playingOutro){startOutro();return}
    exiting=true;pending=false;
    stopWelcome();
    clearRun();markSeen();
