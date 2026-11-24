@@ -26,10 +26,6 @@
  const pickerStyle=document.createElement('style');
  pickerStyle.id='mtv-choice-styles';
  pickerStyle.textContent=`
- #mtv-intro.mtv-studio-frame .mtv-video-ratio{width:min(100%,calc((100dvh - 104px) * 16 / 9))!important;height:auto!important;aspect-ratio:16/9;max-height:100%;}
- #mtv-intro.mtv-studio-frame .mtv-video-ratio iframe{inset:0!important;width:100%!important;height:100%!important;transform:none!important;}
- #mtv-intro.mtv-studio-frame .mtv-video-ratio::before,#mtv-intro.mtv-studio-frame .mtv-video-ratio::after{display:none!important;}
- @media(max-width:819px){#mtv-intro.mtv-studio-frame .mtv-video-ratio{width:min(100%,calc((100dvh - 92px) * 16 / 9))!important;}}
  #mtv-choice{position:fixed;inset:0;box-sizing:border-box;border:0;padding:0;max-width:none;max-height:none;width:100%;height:100dvh;background:radial-gradient(ellipse 60% 50% at 58% 40%,rgba(105,67,155,.22),transparent 74%),#0d0b14;color:#f9f7fc;overflow:auto;overscroll-behavior:contain;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,sans-serif}
  #mtv-choice::backdrop{background:#0d0b14}
  #mtv-choice *{box-sizing:border-box}
@@ -159,7 +155,15 @@
      welcomeCaption.textContent='Tap to hear my welcome.';
    });
  };
- const startWelcome=()=>{ finish('films-ended'); };
+ const startWelcome=()=>{
+   if(!active||exiting)return;
+   try{player?.stopVideo?.()}catch{}
+   // A deliberate replay includes the whole introduction, including the new speech.
+   clearTimeout(maxDeadline);maxDeadline=0;
+   welcomePanel.hidden=false;dialog.classList.add('mtv-welcome-active');
+   welcomeCaption.textContent='Hey.';
+   welcomeTap.hidden=false; // Explicit tap after VIDEO 2: reliable under browser audio rules.
+ };
  welcomeTap.addEventListener('click',playWelcome);
  welcomeNext.addEventListener('click',()=>finish('welcome-skip'));
  welcomeVoice.addEventListener('ended',()=>{if(active&&!exiting&&activeWelcomeMedia===welcomeVoice)startOutro()});
@@ -184,12 +188,25 @@
  let clickDeadline=0,maxDeadline=0,timeTicker=0,apiScript=null,glitchTimer=0,bootTimer=0,staticFrame=0,handoffTimer=0,transitionTimer=0;
  let lastFocused=null,showingCouch=true,switching=false,handoffStartedAt=0,playingOutro=false;
  const markSeen=()=>{try{sessionStorage.setItem(KEY,'1')}catch{}};
- function showOutroFallback(){ finish('outro-unavailable'); }
+ function showOutroFallback(){
+   if(!active||exiting)return;
+   clearTimeout(clickDeadline);clickDeadline=0;
+   dialog.classList.remove('mtv-video-visible');
+   welcomePanel.hidden=false;dialog.classList.add('mtv-welcome-active');
+   welcomeCaption.textContent='The ending could not play automatically.';
+   welcomeTap.hidden=true;
+   let link=welcomePanel.querySelector('.mtv-outro-link');
+   if(!link){link=document.createElement('a');link.className='mtv-outro-link';
+     link.href='https://www.youtube.com/watch?v='+OUTRO_VIDEO;
+     link.target='_blank';link.rel='noopener noreferrer';
+     link.textContent='Watch the ending on YouTube ↗';
+     link.style.cssText='display:inline-block;margin:12px;padding:10px 16px;color:#fff;text-decoration:underline;font-weight:700';
+     welcomePanel.append(link);}
+ }
  function startOutro(){
    if(!active||exiting||playingOutro)return;
    stopWelcome();
    playingOutro=true;showingCouch=false;switching=false;
-   dialog.classList.remove('mtv-studio-frame');
    pending=true;playerStarted=false;trackingFinished=true;
    dialog.classList.remove('mtv-welcome-active','mtv-handoff-active');
    dialog.classList.add('mtv-video-visible');
@@ -321,7 +338,6 @@
  function playMainVideo(){
    if(!active||exiting||!showingCouch||!player)return;
    showingCouch=false;playerStarted=false;pending=true;switching=true;
-   dialog.classList.add('mtv-studio-frame');
    handoffStartedAt=performance.now();
    dialog.classList.add('mtv-handoff-active');
    label.textContent='TRACKING ▶';
