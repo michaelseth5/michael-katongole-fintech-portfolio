@@ -26,6 +26,7 @@
  const pickerStyle=document.createElement('style');
  pickerStyle.id='mtv-choice-styles';
  pickerStyle.textContent=`
+ #mtv-intro.mtv-studio-frame .mtv-video-ratio iframe{transform:translateY(clamp(8px,2vh,18px));}
  #mtv-choice{position:fixed;inset:0;box-sizing:border-box;border:0;padding:0;max-width:none;max-height:none;width:100%;height:100dvh;background:radial-gradient(ellipse 60% 50% at 58% 40%,rgba(105,67,155,.22),transparent 74%),#0d0b14;color:#f9f7fc;overflow:auto;overscroll-behavior:contain;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,sans-serif}
  #mtv-choice::backdrop{background:#0d0b14}
  #mtv-choice *{box-sizing:border-box}
@@ -207,6 +208,7 @@
    if(!active||exiting||playingOutro)return;
    stopWelcome();
    playingOutro=true;showingCouch=false;switching=false;
+   dialog.classList.remove('mtv-studio-frame');
    pending=true;playerStarted=false;trackingFinished=true;
    dialog.classList.remove('mtv-welcome-active','mtv-handoff-active');
    dialog.classList.add('mtv-video-visible');
@@ -338,6 +340,7 @@
  function playMainVideo(){
    if(!active||exiting||!showingCouch||!player)return;
    showingCouch=false;playerStarted=false;pending=true;switching=true;
+   dialog.classList.add('mtv-studio-frame');
    handoffStartedAt=performance.now();
    dialog.classList.add('mtv-handoff-active');
    label.textContent='TRACKING ▶';
